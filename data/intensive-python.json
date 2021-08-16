@@ -1,10 +1,9 @@
 {
     "intro-course": {
         "topic": "[Introduction to Intensive Python](/intensive-python/slides/intro-intensive-python.pdf)",
-        "materials": ["[Syllabus](syllabus.html)", "[Schedule](schedule.html)",
-                      "[Meet the Teacher](http://cs1331.gatech.edu/slides/meet-simpkins.html)",
-                      "[Video: Getting Started](https://youtu.be/order)",
-                      "Exercise: [CS 2316 Pre-test](../exercises/pre-test.html)"],
+        "materials": ["[Meet the Teacher](http://cs1331.github.io/slides/meet-simpkins.html)",
+                      "[Video: Getting Started on macOS](https://youtu.be/znjTbnH42Rk)",
+                      "[Video: Getting Started on Windows/WSL2]()"],
         "order": [1]
     },
     "intro-python": {
@@ -14,24 +13,24 @@
         "order": [2]
     },
     "values-variables": {
-        "topic": "[Values and Variables](/intensive-python/slides/python-values-variables.pdf)",
+        "topic": "[Values and Variables](/intensive-python/slides/values-variables.pdf)",
         "materials": ["Reading: PfP", "[Video: Values and Variables](https://youtu.be/iKG_hAXy0qQ)",
                      "[Drill - Values and Variables](../exercises/values-variables)"],
         "order": [3]
     },
     "functions": {
-        "topic": "[Functions](intensive-python/slides/python-functions.pdf)",
-        "materials": ["[CS1 Python Functions](intensive-python/slides/cs1-python-functions.pdf)", "TP 3"],
+        "topic": "[Functions](/intensive-python/slides/functions.pdf)",
+        "materials": ["TP 3"],
         "order": [4]
     },
     "modules-programs": {
-        "topic": "[Modules and Programs](intensive-python/slides/python-modules-programs.pdf)",
-        "materials": ["TP 1,14", "Exercise: [BMI Module](../exercises/bmi.html)", "Exercise: [Hangman](../exercises/hangman.html)"],
+        "topic": "[Modules and Programs](/intensive-python/slides/modules-programs.pdf)",
+        "materials": ["TP 1,14", "Exercise: [BMI Module](../exercises/bmi)", "Exercise: [Hangman](../exercises/hangman)"],
         "order": [5]
     },
     "data-structures": {
-        "topic": "[Data Structures](intensive-python/slides/python-data-structures.pdf)",
-        "materials": ["[ITCS - Lists](http://interactivepython.org/runestone/static/thinkcspy/Lists/toctree.html)", "[ITCS - Dictionaries](http://interactivepython.org/runestone/static/thinkcspy/Dictionaries/toctree.html)", "TP 10,11,12", "[Video: Data Structures](https://youtu.be/TtAQxtgPOwI)"],
+        "topic": "[Data Structures](/intensive-python/slides/data-structures.pdf)",
+        "materials": ["TP 10,11,12", "[Video: Data Structures](https://youtu.be/TtAQxtgPOwI)"],
         "order": [6]
     },
     "ipython": {
@@ -40,29 +39,28 @@
         "order": [7]
     },
     "control-structures": {
-        "topic": "[Control Structures](intensive-python/slides/python-control-structures.pdf)",
-        "materials": ["[ITCS - Selection](http://interactivepython.org/runestone/static/thinkcspy/Selection/toctree.html)",
-                      "[ITCS - Iteration](http://interactivepython.org/runestone/static/thinkcspy/MoreAboutIteration/toctree.html)", "TP 5, 7",
-                      "Drill: [Data Transformation](../exercises/data-transformation.html)",
-                      "Exercise: [Data Utilities](../exercises/data-util.html)",
-                      "Exercise: [Grades Module](../exercises/grades.html)"],
+        "topic": "[Control Structures](/intensive-python/slides/control-structures.pdf)",
+        "materials": ["TP 5, 7",
+                      "Drill: [Data Transformation](../exercises/data-transformation)",
+                      "Exercise: [Data Utilities](../exercises/data-util)",
+                      "Exercise: [Grades Module](../exercises/grades)"],
         "order": [8]
     },
     "functional-programming": {
-        "topic": "[Functional programming](intensive-python/slides/python-functional-programming.pdf)",
+        "topic": "[Functional programming](/intensive-python/slides/functional-programming.pdf)",
         "materials": ["TP 19"],
         "order": [9]
     },
     "data-representation": {
-        "topic": "[Data Representation](intensive-python/slides/python-data-representation.pdf)",
+        "topic": "[Data Representation](intensive-python/slides/data-representation.pdf)",
         "materials": [""],
         "order": [100]
     },
     "classes-objects": {
-        "topic": "[Classes and Objects](intensive-python/slides/python-classes-objects.pdf)",
-        "materials": ["[ITCS - Classes and Objects](http://interactivepython.org/runestone/static/thinkcspy/ClassesBasics/toctree.html)", "[OOP Code](../code/classes)",
+        "topic": "[Classes and Objects](/intensive-python/slides/classes-objects.pdf)",
+        "materials": ["[OOP Code](../code/classes)",
                       "TP 15 - 18",
-                     "[Exercise: Treating People as Objects](../exercises/people-objects.html)"],
+                     "[Exercise: Treating People as Objects](../exercises/people-objects)"],
         "order": [10]
     },
     "review1": {
@@ -84,13 +82,13 @@
         "order": [100]
     },
     "file-io": {
-        "topic": "[File IO](intensive-python/slides/python-file-io.pdf)",
-        "materials": ["IP 8", "[Exercise: Tree](../exercises/tree.html)"],
+        "topic": "[File IO](/intensive-python/slides/file-io.pdf)",
+        "materials": ["IP 8", "[Exercise: Logs](../exercises/logs)"],
         "order": [13]
     },
     "csv-files": {
-        "topic": "[CSV Files](intensive-python/slides/python-csv-files.pdf)",
-        "materials": ["IP 8", "Exercise: [Student Emails](../exercises/student-emails.html) ([Sample Answer](../exercises/student_emails.py))", "Exercise: [Tides](../exercises/tides.html)", "Exercise: [Calculate Grades](../exercises/calc-grades.html)"],
+        "topic": "[CSV Files](/intensive-python/slides/csv-files.pdf)",
+        "materials": ["IP 8", "Exercise: [Student Emails](../exercises/student-emails) ([Sample Answer](../exercises/student_emails.py))", "Exercise: [Tides](../exercises/tides)", "Exercise: [Calculate Grades](../exercises/calc-grades)"],
         "order": [14]
     },
     "xml": {
@@ -100,21 +98,21 @@
                       "[XML Details](intensive-python/slides/xml-details.pdf)",
                       "[Python XML and Database APIs](intensive-python/slides/python-xml-database.pdf)",
                       "[people.xml](../code/structured-files/people.xml)",
-                      "Exercise: [Books](../exercises/books.html)"],
+                      "Exercise: [Books](../exercises/books)"],
         "order": [100]
     },
     "json": {
         "topic": "[JavaScript Object Notation](intensive-python/slides/json.pdf)",
-        "materials": ["IP 8", "[JSON Spec](http://json.org/)", "Exercise: [Data Converter](../exercises/data-converter.html)"],
+        "materials": ["IP 8", "[JSON Spec](http://json.org/)", "Exercise: [Data Converter](../exercises/data-converter)"],
         "order": [100]
     },
     "data-exchange-formats": {
-        "topic": "[Data Exchange Formats](intensive-python/slides/python-data-exchange-formats.pdf)",
-        "materials": ["IP 8", "[XML Details](intensive-python/slides/xml-details.pdf)",
-                      "[Python XML and Database APIs](intensive-python/slides/python-xml-database.pdf)",
+        "topic": "[Data Exchange Formats](/intensive-python/slides/data-exchange-formats.pdf)",
+        "materials": ["IP 8", "[XML Details](/intensive-python/slides/xml-details.pdf)",
+                      "[Python XML and Database APIs](/intensive-python/slides/python-xml-database.pdf)",
                       "[JSON Spec](http://json.org/)",
                       "[people.xml](../code/structured-files/people.xml)",
-                      "Exercise: [Books](../exercises/books.html)"],
+                      "Exercise: [Books](../exercises/books)"],
         "order": [15]
     },
     "html": {
@@ -224,7 +222,7 @@
         "order": [100]
     },
     "scipy": {
-        "topic": "[Data Analytics in Python](intensive-python/slides/scipy.pdf)",
+        "topic": "[Data Analytics in Python](/intensive-python/slides/scipy.pdf)",
         "materials": ["[Example code](https://gitlab.com/datamastery/datamastery.gitlab.io/tree/master/code/analytics)",
                       "[SciPy.org](https://scipy.org/)"],
         "order": [30]
