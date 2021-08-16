@@ -26,3 +26,23 @@ sudo apt install python3
 sudo apt install python3-pip
 sudo apt install python3-venv
 ```
+
+## macOS
+
+macOS is a Unix and already has a decent terminal and command-line shell.  There are two ways to install Python.org Python (as opposed to [Anaconda](https://www.anaconda.com/) Python or some other Python distribution).
+
+1. Download the macOS installer from [python.org](https://www.python.org/).
+
+or
+
+2. Install [Homebrew](https://brew.sh/) and use Homebrew to install Python:
+
+```sh
+brew install python3
+```
+
+If you use macOS, I highly recommend using Homebrew to manage Unix tools in general.  With either of the installation methods above you don't need to install `pip` and `venv` separately.  Debian/Ubuntu packages tend to be more modular, which is nice for containerized applications.
+
+## Text Editors and Other Tools
+
+- [Text Editors for Programmers](/intensive-python/text-editors/)

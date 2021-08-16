@@ -1,6 +1,6 @@
 {
     "intro-course": {
-        "topic": "[Introduction to Intensive Python](/intensive-python/slides/intro-intensive-python.pdf)",
+        "topic": "[Introduction to Intensive Python](/intensive-python/)",
         "materials": ["[Meet the Teacher](http://cs1331.github.io/slides/meet-simpkins.html)",
                       "[Video: Getting Started on macOS](https://youtu.be/znjTbnH42Rk)",
                       "[Video: Getting Started on Windows/WSL2]()"],
