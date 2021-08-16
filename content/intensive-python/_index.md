@@ -5,9 +5,8 @@ courseName: "Intensive Python"
 layout: "single"
 ---
 
+## Books
 
-
-
-Book: https://www.informit.com/store/python-for-programmers-9780135224335
+- [Python for Programmers](https://www.informit.com/store/python-for-programmers-9780135224335)
 
 
