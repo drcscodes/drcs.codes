@@ -1,0 +1,152 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes </title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=http://DrCS.codes//css/syntax.css>
+<link rel=stylesheet href=http://DrCS.codes//css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=http://DrCS.codes//css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=../>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<p>% Introduction to Computing with Python</p>
+<h2 id=computing>Computing</h2>
+<p><strong>Computing</strong> is any purposeful activity that marries the representation of some dynamic domain with the representation of some dynamic machine that provides theoretical, empirical or practical understanding of that domain or that machine.</p>
+<p>&ndash; Isbell, et. al., <em>(Re)Defining Computing Curricula by (Re)Defining Computing</em>, SIGCSE Bulletin, Volume 41, Number 4, December 2009</p>
+<h2 id=models-languages-machines>Models, Languages, Machines</h2>
+<p>Computing is fundamentally a modelling activity.</p>
+<ul>
+<li>
+<p>A <em>model</em> is a representation of some information, physical reality, or a virtual entity in a manner that can then be interpreted, manipulated, and transformed.</p>
+</li>
+<li>
+<p>A <em>language</em> is a means of representation.</p>
+<ul>
+<li>A language enables reasoning and manipulation of the model.</li>
+</ul>
+</li>
+<li>
+<p>A computational <em>machine</em> allows us to execute our models.</p>
+</li>
+</ul>
+<p>In this course we will learn the Python programming language.</p>
+<h2 id=python-gives-you-wings>Python gives you wings!</h2>
+<p><img src=python.png alt></p>
+<p><a href=http://xkcd.com/353/>http://xkcd.com/353/</a></p>
+<h2 id=the-python-language>The Python Language</h2>
+<ul>
+<li>
+<p>Python is a general-purpose programming language, meaning you can write any kind of program in Python</p>
+<ul>
+<li>A <em>domain-specific language</em> is designed for one application. E.g., SQL is just for manipulating relational databases.</li>
+</ul>
+</li>
+<li>
+<p>Python is interpreted, meaning you can run programs directly after you write them; you don’t have to compile programs to some intermediate form for the operating system or a virtual machine to execute.</p>
+</li>
+<li>
+<p>Python is a great <a href=https://www.python.org/doc/essays/omg-darpa-mcc-position/>&ldquo;glue&rdquo;</a> language; Python programs often bring together disparate components to do a coherent task.</p>
+</li>
+</ul>
+<p>The coolest thing about Python &mldr;</p>
+<h2 id=the-python-name>The Python Name</h2>
+<p><img src=Flyingcircus_2.jpg alt></p>
+<p><a href="https://en.wikipedia.org/w/index.php?curid=6130072">https://en.wikipedia.org/w/index.php?curid=6130072</a></p>
+<p>Python was named for Monty Python, of which Python’s creator, Guido van Rossum, is a big fan.</p>
+<h2 id=the-python-program>The <code>python</code> Program</h2>
+<p>Practically speaking, Python is a program on your computer that interprets Python programs and statements.</p>
+<ul>
+<li>
+<p>You can ask <code>python</code> a question without running any Python code. For example, this is how you ask which version of Python is installed (Note: the <code>$</code> character is the command prompt in the Unix Bash shell. The Windows command prompt is <code>C:\></code>.):</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python --version
+Python 3.5.2 :: Continuum Analytics, Inc.
+</code></pre></div><p>If you get some other response, like command not found, then you haven’t properly installed Python.</p>
+</li>
+</ul>
+<h2 id=executing-python-code>Executing Python Code</h2>
+<ul>
+<li>
+<p>You can run a Python program, which has a .py extension by convention:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python myprogram.py
+</code></pre></div></li>
+<li>
+<p>Or you can invoke the interactive Python shell (sometimes called REPL for &ldquo;Read-Eval-Print Loop&rdquo;):</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python
+Python 3.5.2 |Continuum Analytics, Inc.| <span style=color:#f92672>(</span>default, Jul  <span style=color:#ae81ff>2</span> 2016, 17:53:06<span style=color:#f92672>)</span>
+<span style=color:#f92672>[</span>GCC 4.4.7 <span style=color:#ae81ff>20120313</span> <span style=color:#f92672>(</span>Red Hat 4.4.7-1<span style=color:#f92672>)]</span> on linux
+Type <span style=color:#e6db74>&#34;help&#34;</span>, <span style=color:#e6db74>&#34;copyright&#34;</span>, <span style=color:#e6db74>&#34;credits&#34;</span> or <span style=color:#e6db74>&#34;license&#34;</span> <span style=color:#66d9ef>for</span> more information.
+&gt;&gt;&gt;
+</code></pre></div><p>To exit the Python shell type Ctrl-D on Unix, or Ctrl-Z on Windows.</p>
+</li>
+</ul>
+<h2 id=hello-python>Hello, Python</h2>
+<p>Since Kernighan and Ritchie&rsquo;s &ldquo;The C Programming Language&rdquo; it&rsquo;s customary for your first program in a new language to be &ldquo;Hello, world!&rdquo;</p>
+<ul>
+<li>
+<p>Open your text editor, paste the following code into a buffer (or tab or window or whatever your editor calls it), and save it as <code>hello.py</code>:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python>print(<span style=color:#e6db74>&#34;Hello, world!&#34;</span>)
+</code></pre></div></li>
+<li>
+<p>Then open your command shell (terminal on Unix or CMD.exe on Windows), go to the directory where you saved <code>hello.py</code> and enter:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python hello.py
+</code></pre></div><p>Hello, world! will be printed to the console on the next line.</p>
+</li>
+</ul>
+<h2 id=interpreting-python-programs>Interpreting Python Programs</h2>
+<p>What happens when we enter <code>python hello.py</code> at an operating system command shell prompt?</p>
+<ol>
+<li><code>python</code> tells the OS to load the Python interpreter into memory and run it. <code>python</code> is the name of an executable file on your hard disk which your OS can find because its directory is on the <code>PATH</code></li>
+<li>We invoke <code>python</code> with a <em>command line argument</em>, which <code>python</code> reads after it starts running</li>
+<li>Since the command line argument was the name of a file (<code>hello.py</code>), the <code>python</code> loads the file named by the argument and executes the Python code in it.</li>
+</ol>
+<p>A Python program, or script, is just a sequence of Python statements and expressions.</p>
+<h2 id=the-python-repl>The Python REPL</h2>
+<p>Invoke the Python interactive shell by entering python at your command shell’s prompt without any arguments and type in the same line we put in hello.py:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python
+Python 3.5.2 |Continuum Analytics, Inc.| <span style=color:#f92672>(</span>default, Jul  <span style=color:#ae81ff>2</span> 2016, 17:53:06<span style=color:#f92672>)</span>
+<span style=color:#f92672>[</span>GCC 4.4.7 <span style=color:#ae81ff>20120313</span> <span style=color:#f92672>(</span>Red Hat 4.4.7-1<span style=color:#f92672>)]</span> on linux
+Type <span style=color:#e6db74>&#34;help&#34;</span>, <span style=color:#e6db74>&#34;copyright&#34;</span>, <span style=color:#e6db74>&#34;credits&#34;</span> or <span style=color:#e6db74>&#34;license&#34;</span> <span style=color:#66d9ef>for</span> more information.
+&gt;&gt;&gt;
+</code></pre></div><p><code>>>></code> is the command prompt for the Python REPL.</p>
+<ul>
+<li>REPL stands for <em>Read</em> <em>E</em>val <em>P</em>rint <em>L</em>oop &ndash; <em>R</em>ead an expression or statement at the command prompt, <em>E</em>valuate the expression or execute the statement, <em>P</em>rint the result to the console, <em>L</em>oop back to <em>R</em>ead step</li>
+</ul>
+<p>We’ll spend a lot of time in the REPL.</p>
+<h2 id=conclusion>Conclusion</h2>
+<ul>
+<li>
+<p>Python is an interpreted general purpose language</p>
+</li>
+<li>
+<p>Python code can be run as programs or interactively in a Python REPL</p>
+</li>
+<li>
+<p>Python is a great glue language</p>
+</li>
+<li>
+<p>Python is fun!</p>
+</li>
+</ul>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>

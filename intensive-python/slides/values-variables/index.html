@@ -1,0 +1,471 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes Values and Variables</title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=http://DrCS.codes//css/syntax.css>
+<link rel=stylesheet href=http://DrCS.codes//css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=http://DrCS.codes//css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=../>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<ul>
+<li>Values and Variables</li>
+</ul>
+<p>** Languages and Computation</p>
+<p>Every powerful language has three mechanisms for combining simple ideas to form more complex ideas:([[http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html][SICP 1.1]])</p>
+<ul>
+<li>primitive expressions, which represent the simplest entities the language is concerned with,</li>
+<li>means of combination, by which compound elements are built from simpler ones, and</li>
+<li>means of abstraction, by which compound elements can be named and manipulated as units.</li>
+</ul>
+<p>Today we&rsquo;ll begin learning Python&rsquo;s facilities for primitive expresions, combination, and elementary abstraction.</p>
+<p>** Values</p>
+<p>An expression has a value, which is found by evaluating the expression. When you type expressions into the Python REPL, Python evaluates them and prints their values.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>1
+1
+3.14
+3.14
+&ldquo;pie&rdquo;
+&lsquo;pie&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>The expressions above are literal values. A literal is a textual representation of a value in Python source code.</p>
+<ul>
+<li>Do strings always get printed with single quotes even if we diefine them with double quotes?</li>
+</ul>
+<p>** Types</p>
+<p>All values have types. Python can tell you the type of a value with the built-in type function:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>type(1)
+&lt;class &lsquo;int&rsquo;>
+type(3.14)
+&lt;class &lsquo;float&rsquo;>
+type(&ldquo;pie&rdquo;)
+&lt;class &lsquo;str&rsquo;>
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>What&rsquo;s the type of &lsquo;1&rsquo;?</li>
+</ul>
+<p>** The Meaning of Types</p>
+<p>Types determine which operations are available on values. For example, exponentiation is defined for numbers (like int or float):</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>2**3
+8
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>&mldr; but not for ~str~ (string) values:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>&ldquo;pie&rdquo;**3
+Traceback (most recent call last):
+File &ldquo;&rdquo;, line 1, in
+TypeError: unsupported operand type(s) for ** or pow(): &lsquo;str&rsquo; and &lsquo;int&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Overloaded Operators</p>
+<p>Some operators are overloaded, meaning they have different meanings when applied to different types. For example, + means addition for numbers and concatenation for strings:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>2 + 2
+4
+&ldquo;Yo&rdquo; + &ldquo;lo!&rdquo;
+&lsquo;Yolo!&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>~*~ means multiplication for numbers and repetition for strings:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>2 * 3
+6
+&ldquo;Yo&rdquo; * 3
+&lsquo;YoYoYo&rsquo;
+3 * &ldquo;Yo&rdquo;
+&lsquo;YoYoYo&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Expression Evaluation</p>
+<p>Mathematical expressions are evaluated using precedence and associativity rules as you would expect from math:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>2 + 4 * 10
+42
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>If you want a different order of operations, use parentheses:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>(2 + 4) * 10
+60</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>#+END_SRC</p>
+<p>Note that precedence and associativity rules apply to overloaded versions of operators as well:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>&ldquo;Honey&rdquo; + &ldquo;Boo&rdquo; * 2
+&lsquo;HoneyBooBoo&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>How could we slighlty modify the expression above to evaluate to &lsquo;HoneyBooHoneyBoo&rsquo; ?</li>
+</ul>
+<p>** Variables</p>
+<p>A variable is a name for a value. You bind a value to a variable using an assignment statement (or as we&rsquo;ll learn later, passing an argument to a function):</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>a = &ldquo;Ok&rdquo;
+a
+&lsquo;Ok&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>~=~ is the assignment operator and an assignment statement has the form ~&lt;variable_name> = ~</p>
+<p>Variable names, or identifiers, may contain letters, numbers, or underscores and may not begin with a number.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>16_candles = &ldquo;Molly Ringwald&rdquo;
+File &ldquo;&rdquo;, line 1
+16_candles = &ldquo;Molly Ringwald&rdquo;
+^
+SyntaxError: invalid syntax
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Python is Dynamically Typed</p>
+<p>Python is dynamically typed, meaning that types are not resoved until run-time. This means two things practically:</p>
+<ol>
+<li>Values have types, variables don&rsquo;t:
+#+BEGIN_SRC python
+<blockquote>
+<blockquote>
+<p>a = 1</p>
+<blockquote>
+<p>type(a)
+&lt;class &lsquo;int&rsquo;>
+a = 1.1 # This would not be allowed in a statically typed language
+type(a)
+&lt;class &lsquo;float&rsquo;>
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+<li>Python doesn&rsquo;t report type errors until run-time. We&rsquo;ll see many examples of this fact.</li>
+</ol>
+<p>** Keywords</p>
+<p>Python reserves some identifiers for its own use.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>class = &ldquo;CS 2316&rdquo;
+File &ldquo;&rdquo;, line 1
+class = &ldquo;CS 2316&rdquo;
+^
+SyntaxError: invalid syntax
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>The assignment statement failed becuase class is one of Python&rsquo;s keywords:</p>
+<p>#+BEGIN_SRC python
+False class finally is return
+None continue for lambda try
+True def from nonlocal while
+and del global not with
+as elif if or yield
+assert else import pass
+break except in raise
+#+END_SRC</p>
+<ul>
+<li>What hapens if you try to use a variable name on the list of keywords?</li>
+<li>What happens if you use ~print~ as a variable name?</li>
+</ul>
+<p>** Assignment Semantics</p>
+<p>Python evaluates the expression on the right-hand side, then binds the expression&rsquo;s value to the variable on the left-hand side. Variables can be reassigned:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>a = &lsquo;Littering and &mldr; '
+a
+&lsquo;Littering and &mldr; '
+a = a * 2
+a
+&lsquo;Littering and &mldr; Littering and &mldr; '
+a = a * 2
+a # I&rsquo;m freakin&rsquo; out, man!
+&lsquo;Littering and &mldr; Littering and &mldr; Littering and &mldr; Littering and &mldr; '
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Note that the value of ~a~ used in the expression on the right hand side is the value it had before the assignment statement.</p>
+<p>What&rsquo;s the type of ~a~?</p>
+<p>** Type Conversions</p>
+<p>Python can create new values out of values with different types by applying conversions named after the target type.</p>
+<p>#+BEGIN_SRC Python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>int(2.9)
+2
+float(True)
+1.0
+int(False)
+0
+str(True)
+&lsquo;True&rsquo;
+int(&ldquo;False&rdquo;)
+Traceback (most recent call last):
+File &ldquo;&rdquo;, line 1, in
+ValueError: invalid literal for int() with base 10: &lsquo;False&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>What happens if you evaluate the expression ~integer(&lsquo;1&rsquo;)~ ?</li>
+</ul>
+<p>** Strings</p>
+<p>Three ways to define string literals:</p>
+<ul>
+<li>
+<p>with single quotes: &lsquo;Ni!&rsquo;</p>
+</li>
+<li>
+<p>double quotes: &ldquo;Ni!&rdquo;</p>
+</li>
+<li>
+<p>Or with triples of either single or double quotes, which creates a multi-line string:</p>
+<p>#+BEGIN_SRC Python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>&ldquo;&ldquo;&ldquo;I do HTML for them all,
+&mldr; even made a home page for my dog.&rdquo;&rdquo;&rdquo;
+&lsquo;I do HTML for them all,\neven made a home page for my dog.&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</li>
+</ul>
+<p>** Strings</p>
+<p>Note that the REPL echoes the value with a ~\n~ to represent the newline character. Use the print function to get your intended output:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>nerdy = &ldquo;&ldquo;&ldquo;I do HTML for them all,
+&mldr; even made a home page for my dog.&rdquo;&rdquo;&rdquo;
+nerdy
+&lsquo;I do HTML for them all,\neven made a home page for my dog.&rsquo;
+print(nerdy)
+I do HTML for them all,
+even made a home page for my dog.
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>That&rsquo;s pretty [[http://braverhund.com][nerdy]].</p>
+<p>** Strings</p>
+<p>Choice of quote character is usually a matter of taste, but the choice can sometimes buy convenience. If your string contains a quote character you can either escape it:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>journey = &lsquo;Don't stop believing.&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>or use the other quote character:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>journey = &ldquo;Don&rsquo;t stop believing.&rdquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>How does Python represent the value of the variable ~journey~ ?</li>
+</ul>
+<p>** String Operations</p>
+<p>Because strings are sequences we can get a string&rsquo;s length with ~len()~:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>i = &ldquo;team&rdquo;
+len(i)
+4
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>and access characters in the string by index (offset from beginning – first index is 0) using ~[]~:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>i[1]
+&lsquo;e&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Note that the result of an index access is a string:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>type(i[1])
+&lt;class &lsquo;str&rsquo;>
+i[3] + i[1]
+&lsquo;me&rsquo;
+i[-1] + i[1] # Note that a negative index goes from the end
+&lsquo;me&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>What is the index of the first character of a string?</li>
+<li>What is the index of the last character of a string?</li>
+</ul>
+<p>** String Slicing</p>
+<p>~[:end]~ gets the first characters up to but not including ~end~</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>al_gore = &ldquo;manbearpig&rdquo;
+al_gore[:3]
+&lsquo;man&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>~[begin:end]~ gets the characters from ~begin~ up to but not including end</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>al_gore[3:7]
+&lsquo;bear&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>~[begin:]~ gets the characters from ~begin~ to the end of the string</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>al_gore[7:]
+&lsquo;pig&rsquo;</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>#+END_SRC</p>
+<ul>
+<li>What is the relationship between the ending index of a slice and the beginning index of a slice beginning right after the first slice?</li>
+</ul>
+<p>** String Methods</p>
+<p>~str~ is a class (you&rsquo;ll learn about classes later) with many methods (a method is a function that is part of an object). Invoke a method on a string using the dot operator.</p>
+<p>~str.find(substr)~ returns the index of the first occurence of
+~substr~ in ~str~</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>&lsquo;foobar&rsquo;.find(&lsquo;o&rsquo;)
+1
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<ul>
+<li>Write a string slice expression that returns the username from an email address, e.g., for &lsquo;<a href=mailto:bob@aol.com>bob@aol.com</a>&rsquo; it returns &lsquo;bob&rsquo;.</li>
+<li>Write a string slice expression that returns the host name from an email address, e.g., for &lsquo;<a href=mailto:bob@aol.com>bob@aol.com</a>&rsquo; it returns &lsquo;aol.com&rsquo;.</li>
+</ul>
+<p>** Values, Variables, and Expression</p>
+<ul>
+<li>Values are the atoms of computer programs</li>
+<li>We (optionally) combine values using operators and functions to form compound expressions</li>
+<li>We create variables, which are identifiers that name values, define other identifiers that name functions, classes, modules and packages</li>
+<li>By choosing our identifiers, or names, carefully we can create beautiful, readable programs</li>
+</ul>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>

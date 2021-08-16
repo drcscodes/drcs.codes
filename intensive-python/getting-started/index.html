@@ -1,0 +1,50 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes Getting Started</title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=http://DrCS.codes//css/syntax.css>
+<link rel=stylesheet href=http://DrCS.codes//css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=http://DrCS.codes//css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python>Intensive Python</a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=../>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<h1 id=getting-started>Getting Started</h1>
+<h2 id=ubuntuwsl2>Ubuntu/WSL2</h2>
+<p>If you are using Windows 10 or 11, install WSL2, the Windows Subsystem for Linux, Version 2. WSL2 provides a very nice Linux environment, including a full Linux kernel and distribution of yoru choosing (I will use the latest Ubuntu in demonstrations). You can install the Windows version of Python and all the other tools used in this course, but Python is primarily a Linux/Unix technology and all course demonstrations on Windows will use WSL2.</p>
+<p>Install WSL2 (See detailed instructions at <a href=https://docs.microsoft.com/en-us/windows/wsl/install-win10#simplified-installation-for-windows-insiders>https://docs.microsoft.com/en-us/windows/wsl/install-win10#simplified-installation-for-windows-insiders</a>. Note that Windows 10 with all updates from 2021-07-29 and later should support the simplified install.)</p>
+<ol>
+<li>Start PowerShell in admin mode by typing Windows+R, typing <code>powershell</code> in the text box, and running it with Ctrl-Enter.</li>
+<li>On the PowerShell command line, enter <code>wsl --install</code>. Accept the defaults to install the latest version of Ubuntu LTS.</li>
+<li>Install Windows Terminal: <a href=https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701>https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701</a></li>
+</ol>
+<p>Now you have WSL and a very nice terminal installed. In a WSL Ubuntu terminal window, install the necessary Python tools with the commands below (each one on its own line):</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>sudo apt update
+sudo apt upgrade
+sudo apt install python3
+sudo apt install python3-pip
+sudo apt install python3-venv
+</code></pre></div>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>
