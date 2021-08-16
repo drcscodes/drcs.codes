@@ -1,0 +1,358 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes Functions</title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=http://DrCS.codes//css/syntax.css>
+<link rel=stylesheet href=http://DrCS.codes//css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=http://DrCS.codes//css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=http://DrCS.codes/>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<ul>
+<li>Functions</li>
+</ul>
+<p>** Functions</p>
+<p>A function is a reusable block of code. Functions</p>
+<ul>
+<li>have names (usually),</li>
+<li>contain a sequence of statements, and</li>
+<li>return values, either explicitly or implicitly.</li>
+</ul>
+<p>We&rsquo;ve already used several built-in functions. Today we will learn how to define our own.</p>
+<p>** Hello, Functions!</p>
+<p>We define a function using the def keyword:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def say_hello():
+&mldr; print(&lsquo;Hello&rsquo;)
+&mldr;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>(blank line tells Python shell you&rsquo;re finished defining the function)</p>
+<p>Once the function is defined, you can call it:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>say_hello()
+Hello
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Defining Functions</p>
+<p>The general form of a function definition is</p>
+<p>#+BEGIN_SRC python
+def &lt;function_name>(&lt;parameter_list>):
+&lt;function_body>
+#+END_SRC</p>
+<ul>
+<li>The first line is called the header.</li>
+<li>~function_name~ is the name you use to call the function.</li>
+<li>~parameter_list~ is a list of parameters to the function, which may be empty.</li>
+<li>~function_body~ is a sequence of expressions and statements.</li>
+</ul>
+<p>** Function Parameters</p>
+<p>Provide a list of parameter names inside the parentheses of the function header, which creates local variables in the function.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def say_hello(greeting):
+&mldr; print(greeting)
+&mldr;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Then call the function by passing <em>arguments</em> to the function: values that are bound to parameter names.</p>
+<p>Here we pass the value &lsquo;Hello&rsquo;, which is bound to ~say_hello~&rsquo;s parameter ~greeting~ and printed to the console by the code inside ~say_hello~.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>say_hello(&lsquo;Hello&rsquo;)
+Hello
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Here we pass the value &lsquo;Guten Tag!':</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>say_hello(&lsquo;Guten Tag!')
+Guten Tag!
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Variable Scope</p>
+<p>Parameters are local variables. They are not visible outside the function:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>greeting
+Traceback (most recent call last):
+File &ldquo;&rdquo;, line 1, in
+NameError: name &lsquo;greeting&rsquo; is not defined
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Global variables are visible outside the function and inside the function.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>global_hello = &lsquo;Bonjour&rsquo;
+global_hello
+&lsquo;Bonjour&rsquo;
+def say_global_hello():
+&mldr; print(global_hello)
+&mldr;
+say_global_hello()
+Bonjour
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Redefining and Shadowing</p>
+<p>A function a kind of variable. If you define a function with the same name as a variable, it re-binds the name, and vice-versa.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>global_hello = &lsquo;Bonjour&rsquo;
+def global_hello():
+&mldr; print(&lsquo;This is the global_hello() function.')
+&mldr;
+global_hello
+&lt;function global_hello at 0x10063b620>
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>A function parameter with the same name as a global variable shadows the global variable.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>greeting = &lsquo;Hi ya!&rsquo;
+def greet(greeting):
+&mldr; print(greeting)
+&mldr;
+greeting
+&lsquo;Hi ya!&rsquo;
+greet(&lsquo;Hello&rsquo;)
+Hello
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Muliple Parameters</p>
+<p>A function can take any number of parameters.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def greet(name, greeting):
+&mldr; print(greeting + &lsquo;, ' + name)
+&mldr;
+greet(&lsquo;Professor Falken&rsquo;, &lsquo;Greetings&rsquo;)
+Greetings, Professor Falken
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Parameters can be of multiple types.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def greet(name, greeting, number):
+&mldr; print(greeting * number + &lsquo;, ' + name)
+&mldr;
+greet(&lsquo;Professor Falken&rsquo;, &lsquo;Greetings&rsquo;, 2)
+GreetingsGreetings, Professor Falken
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Positional and Keyword Arguments</p>
+<p>Thus far we&rsquo;ve called functions using positional arguments, meaning that argument values are bound to parameters in the order in which they appear in the call.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def greet(name, greeting, number):
+&mldr; print(greeting * number + &lsquo;, ' + name)
+&mldr;
+greet(&lsquo;Professor Falken&rsquo;, &lsquo;Greetings&rsquo;, 2)
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>We can also call functions with keyword arguments in any order.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>greet(greeting=&lsquo;Hello&rsquo;, number=2, name=&lsquo;Dolly&rsquo;)
+HelloHello, Dolly
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>If you call a function with both positional and keyword arguments, the positional ones must come first.</p>
+<p>** Default Parameter Values</p>
+<p>You can specify default parameter values so that you don&rsquo;t have to provide an argument.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def greet(name, greeting=&lsquo;Hello&rsquo;):
+&mldr; print(greeting + &lsquo;, ' + name)
+&mldr;
+greet(&lsquo;Elmo&rsquo;)
+Hello, Elmo
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>If you provide an argument for a parameter with a default value, the parameter takes the argument value passed in the call instead of the default value.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>greet(&lsquo;Elmo&rsquo;, &lsquo;Hi&rsquo;)
+Hi, Elmo
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Variable Argument Lists</p>
+<p>You can collect a variable number of positional arguments as a tuple by preprending a parameter name with ~*~</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def echo(*args):
+&mldr; print(args)
+&mldr;
+echo(1, &lsquo;fish&rsquo;, 2, &lsquo;fish&rsquo;)
+(1, &lsquo;fish&rsquo;, 2, &lsquo;fish&rsquo;)
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>You can collect variable keyword arguements as a dictionary with ~**~</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def print_dict(**kwargs):
+&mldr; print(kwargs)
+&mldr;
+print_dict(a=1, steak=&lsquo;sauce&rsquo;)
+{&lsquo;a&rsquo;: 1, &lsquo;steak&rsquo;: &lsquo;sauce&rsquo;}
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Return Values</p>
+<p>Functions return values.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def average(nums):
+&mldr; return sum(nums) / len(nums)
+&mldr;
+average([100, 90, 80])
+90.0
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>If you don&rsquo;t explicitly return a value, ~None~ is returned implicitly.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def g():
+&mldr; print(&ldquo;man&rdquo;)
+&mldr;
+fbi = g()
+man
+fbi
+type(fbi)
+&lt;class &lsquo;NoneType&rsquo;>
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Functions are expressions like any other.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>grades_line = [&lsquo;Chris&rsquo;, 100, 90, 80]
+grades = {}
+grades[grades_line[0]] = average(grades_line[1:])
+grades
+{&lsquo;Chris&rsquo;: 90.0}
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Inner Functions</p>
+<p>Information hiding is a general principle of software engineering. If you only need a function in one place, inside another function, you can declare it inside that function so that it is visible only in that function.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def factorial(n):
+&mldr; def fac_iter(n, accum):
+&mldr; if n &lt;= 1:
+&mldr; return accum
+&mldr; return fac_iter(n - 1, n * accum)
+&mldr; return fac_iter(n, 1)
+&mldr;
+factorial(5)
+120
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>~fac_iter()~ is a (tail) recursive function. Recursion is important for computer scientists, but a practically-oriented Python-programming engineer will mostly use iteration, higher-order functions and loops, which are more [[http://neopythonic.blogspot.com/2009/04/tail-recursion-elimination.html][Pythonic]]. Any recursive computation can be formulated as an imperative computation.</p>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>

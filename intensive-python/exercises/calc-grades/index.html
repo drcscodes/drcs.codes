@@ -1,0 +1,88 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes Grades Report Exercise</title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=http://DrCS.codes//css/syntax.css>
+<link rel=stylesheet href=http://DrCS.codes//css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=http://DrCS.codes//css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=http://DrCS.codes/>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<h1 id=calc-grades>Calc Grades</h1>
+<h2 id=introduction>Introduction</h2>
+<p>In this assignment you will practice writing Python command-line utilities, file I/O, processing CSV files, and processing Python data structures.</p>
+<h2 id=problem-description>Problem Description</h2>
+<p>You&rsquo;re a teacher who needs to calculate final grades and get summary information on students in a class.</p>
+<h2 id=solution-description>Solution Description</h2>
+<p>Write a program called <code>calc_grades.py</code> that reads student item scores from a CSV file such as <a href=super-grades.csv>super-grades.csv</a>, writes a new CSV file with the same data as the input file with the following additional columns:</p>
+<ul>
+<li>average score for the student,</li>
+<li>letter grade based on grade cutoffs: A: 90, B: 80, C: 70, D: 60;</li>
+</ul>
+<p>And an additional row at the end with &ldquo;Averages&rdquo; for the student name and the average for each graded item.</p>
+<p>After writing the CSV file, the program should print to the console the number of As, Bs, Cs, Ds, and Fs, and the GPA for the class.</p>
+<p>Your script should use command-line options <code>-i</code> for the input CSV file and <code>-o</code> for the output file.</p>
+<h3 id=sample-output>Sample Output</h3>
+<p>Given the input file <a href=super-grades.csv>super-grades.csv</a>, this is what running your program should look like:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python calc_grades.py -h
+usage: calc_grades.py <span style=color:#f92672>[</span>-h<span style=color:#f92672>]</span> -i INFILE -o OUTFILE
+
+Calculate course grades.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i INFILE, --input-file INFILE
+                        Input CSV file containing student names and item
+                        scores.
+  -o OUTFILE, --output-file OUTFILE
+                        Output CSV file <span style=color:#66d9ef>for</span> score and grade calculations.
+$ python calc_grades.py -i super-grades.csv -o final-grades.csv
+Number of As: <span style=color:#ae81ff>3</span>
+Number of Bs: <span style=color:#ae81ff>0</span>
+Number of Cs: <span style=color:#ae81ff>1</span>
+Number of Ds: <span style=color:#ae81ff>1</span>
+Number of Fs: <span style=color:#ae81ff>1</span>
+Class GPA: 2.50
+$ cat final-grades.csv
+Student,Exam 1,Exam 2,Exam 3,Average,Grade
+Thorny,100,90,80,90.00,A
+Mac,88,99,111,99.33,A
+Farva,45,56,67,56.00,F
+Rabbit,59,61,67,62.33,D
+Ursula,73,79,83,78.33,C
+Foster,89,97,101,95.67,A
+Averages,75.67,80.33,84.83,NA
+</code></pre></div><h2 id=tips-and-considerations>Tips and Considerations</h2>
+<ul>
+<li>Some of this should be <a href=grades.html>familiar</a>.</li>
+<li>Use the Python <a href=https://docs.python.org/3/howto/argparse.html>argparse</a> module to handle command-line options.</li>
+</ul>
+<h2 id=sample-solution>Sample Solution</h2>
+<p>Don&rsquo;t peek until you&rsquo;ve tried it yourself!</p>
+<ul>
+<li><a href=calc_grades.py>calc_grades.py</a></li>
+</ul>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes Classes and Objects</title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=http://DrCS.codes//css/syntax.css>
+<link rel=stylesheet href=http://DrCS.codes//css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=http://DrCS.codes//css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=http://DrCS.codes/>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<ul>
+<li>Classes and Objects</li>
+</ul>
+<p>** Python is Object-Oriented</p>
+<p>Every value in Python is an object, meaning an instance of a class. Even values that are considered &ldquo;primitive&rdquo; in some other languages.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>type(1)
+&lt;class &lsquo;int&rsquo;>
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Class Definitions</p>
+<p>#+BEGIN_SRC python
+class &lt;class_name>():
+#+END_SRC</p>
+<ul>
+<li>~&lt;class_name>~ is an identifier</li>
+<li>~~ is a comma-separated list of superclasses. Can be empty, in which case ~object~ is implicit superclass</li>
+<li>~~ is a non-empty sequence of statements</li>
+</ul>
+<p>A class definition creates a class object in much the same way that a function definition creates a function object.</p>
+<p>** Class Attributes</p>
+<p>#+BEGIN_SRC python
+class Stark:
+creator = &ldquo;George R.R. Martin&rdquo;
+words = &ldquo;Winter is coming&rdquo;
+sigil = &ldquo;Direwolf&rdquo;
+home = &ldquo;Winterfell&rdquo;</p>
+<pre><code>def __init__(self, name=None):
+    self.name = name if name else &quot;No one&quot;
+
+def full_name(self):
+    return &quot;{} Stark&quot;.format(self.name)
+</code></pre>
+<p>#+END_SRC</p>
+<p>~creator~, ~words~, ~sigil~, and ~home~ are <em>class attributes</em>. Class attributes belong to the class and are shared by all instances</p>
+<p>** Instance Attributes</p>
+<p>#+BEGIN_SRC python
+class Stark:
+creator = &ldquo;George R.R. Martin&rdquo;
+words = &ldquo;Winter is coming&rdquo;
+sigil = &ldquo;Direwolf&rdquo;
+home = &ldquo;Winterfell&rdquo;</p>
+<pre><code>def __init__(self, name=None):
+    self.name = name if name else &quot;No one&quot;
+
+def full_name(self):
+    return &quot;{} Stark&quot;.format(self.name)
+</code></pre>
+<p>#+END_SRC</p>
+<ul>
+<li>~self.name~ is an instance attribute becuase it is prefaced with ~self.~ and defined in a method that has a first parameter named ~self~. Each instance of the class has its own copies of instance attributes.</li>
+<li>~full_name~ is an instance method because it defined in a class and has at least one parameter. The first parameter is implicitly a reference to the instance on which a method is called.</li>
+</ul>
+<p>** Classes and Objects</p>
+<p>In this example, ~ned~ and ~robb~ are <em>instances</em> of ~Stark~. Each instance has it&rsquo;s own ~name~.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import got
+ned = got.Stark(&ldquo;Eddard&rdquo;)
+ned.name
+&lsquo;Eddard&rsquo;
+robb = got.Stark(&ldquo;Robb&rdquo;)
+robb.name
+&lsquo;Robb&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Ivoking the ~full_name()~ method on an object implicitly passes the object as the first argument (~self~), which you could (but shoudn&rsquo;t) do explicitly:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>ned.full_name() # This is normal
+&lsquo;Eddard Stark&rsquo;
+got.Stark.full_name(ned) # This is only instructive
+&lsquo;Eddard Stark&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Class Members</p>
+<p>Each instance shares the class attributes ~creator~, ~words~, ~sigil~, and ~home~.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>got.Stark.sigil
+&lsquo;Direwolf&rsquo;
+ned.sigil
+&lsquo;Direwolf&rsquo;
+robb.sigil
+&lsquo;Direwolf&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Remember that the ~is~ operator returns ~True~ if its operands reference the same object in memory. So this deomonstrates that ~sigil~ is shared between the ~Stark~ class and all instances of the ~Stark~ class:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>got.Stark.sigil is ned.sigil
+True
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Superclasses</p>
+<p>Superclasses, or parent classes, or base classes, define attributes that you wish to be common to a family of objects.</p>
+<p>Notice that all of our noble houses have the same creator, and every instance has a name. We can represent this commonality by creating a base class for all house classes:</p>
+<p>#+BEGIN_SRC python
+class GotCharacter:
+creator = &ldquo;George R.R. Martin&rdquo;</p>
+<pre><code>def __init__(self, name=None):
+    self.name = name if name else &quot;No one&quot;
+</code></pre>
+<p>#+END_SRC</p>
+<p>** Refactored ~Stark~</p>
+<p>Here is ~Stark~ refactored to use the ~GotCharacter~ superclass:</p>
+<p>#+BEGIN_SRC python
+class Stark(GotCharacter):
+words = &ldquo;Winter is coming&rdquo;
+sigil = &ldquo;Direwolf&rdquo;
+home = &ldquo;Winterfell&rdquo;</p>
+<pre><code>def __init__(self, name):
+    # This is how you invoke a superclass method
+    super().__init__(name)
+</code></pre>
+<p>#+END_SRC</p>
+<p>Exercise: refactor the other GoT houses to use the ~GotCharacter~ superclass.</p>
+<p>** Magic, a.k.a., Dunder Methods</p>
+<p>Methods with names that begin and end with ~__~</p>
+<p>#+BEGIN_SRC python
+class SuperTrooper(Trooper):</p>
+<pre><code>def __init__(self, name, is_mustached):
+    super().__init__(name)
+    self.is_mustached = is_mustached
+
+# Used by print()
+def __str__(self):
+    return &quot;&lt;{} {}&gt;&quot;.format(self.name, &quot;:-{&quot; if self.is_mustached else &quot;:-|&quot;)
+
+# Used by REPL
+def __repr__(self):
+    return str(self)
+
+# Makes instances of SuperTrooper orderable
+def __lt__(self, other):
+    if self.is_mustached and not other.is_mustached:
+        return False
+    elif not self.is_mustached and other.is_mustached:
+        return True
+    else:
+        return self.name &lt; other.name
+</code></pre>
+<p>#+END_SRC</p>
+<p>** Sortable SuperTroopers</p>
+<p>With the definition of ~<strong>lt</strong>(self, other)~ in ~SuperTrooper~, a list of ~SuperTrooper~ is sortable.</p>
+<p>#+BEGIN_SRC python
+sts = [SuperTrooper(&ldquo;Thorny&rdquo;, True),
+SuperTrooper(&ldquo;Mac&rdquo;, True),
+SuperTrooper(&ldquo;Rabbit&rdquo;, True),
+SuperTrooper(&ldquo;Farva&rdquo;, True),
+SuperTrooper(&ldquo;Foster&rdquo;, False)]
+print(&ldquo;SuperTroopers:")
+print(sts)
+print(&ldquo;SuperTroopers sorted by mustache, then by name:")
+print(sorted(sts))
+#+END_SRC</p>
+<p>Produces:</p>
+<p>#+BEGIN_SRC sh
+SuperTroopers:
+[&lt;Thorny :-{>, &lt;Mac :-{>, &lt;Rabbit :-{>, &lt;Farva :-{>, &lt;Foster :-|>]
+SuperTroopers sorted by mustache, then by name:
+[&lt;Foster :-|>, &lt;Farva :-{>, &lt;Mac :-{>, &lt;Rabbit :-{>, &lt;Thorny :-{>]
+#+END_SRC</p>
+<p>** Final Thoughts</p>
+<p>Recall the design of the Game of Thrones character types:</p>
+<ul>
+<li>A superclass ~GotCharacter~ with class attributes common to Got characters of all houses.</li>
+<li>A class for each house, subclassing ~GotCharacter~ and defining the common attributes of all house members.
+<ul>
+<li>Each character is an instance of one of these house classes, like ~Lannister~, ~Stark~, etc.</li>
+</ul>
+</li>
+</ul>
+<p>Is this a good design? What if you had an instance of a ~Stark~ and you later found out that they&rsquo;re a ~Targaryen~? Refactor the design of the Got character classes to allow a character to change houses without having to modify the code and re-run the program.</p>
+<p>** Conclusion</p>
+<p>[[https://www.youtube.com/embed/az5qOjhsang][Magic!]]</p>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>

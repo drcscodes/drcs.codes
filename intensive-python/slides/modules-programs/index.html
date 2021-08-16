@@ -1,0 +1,241 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes Modules and Programs</title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=http://DrCS.codes//css/syntax.css>
+<link rel=stylesheet href=http://DrCS.codes//css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=http://DrCS.codes//css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=http://DrCS.codes/>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<ul>
+<li>Modules and Programs</li>
+</ul>
+<p>** Python Programs</p>
+<p>Python code organized in</p>
+<ul>
+<li>modules,</li>
+<li>packages, and</li>
+<li>scripts.</li>
+</ul>
+<p>We&rsquo;ve already used some modules, now we&rsquo;ll learn what they are, how
+they&rsquo;re orgainized in packages, and how to write Python programs that
+can be run on their own, not just entered in the Python command shell.</p>
+<p>** Importing Modules</p>
+<p>~import~ing a module means getting names from the module into scope. When you import a module, you can access the modules components with the dot operator as in the previous example.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import math
+math.sqrt(64)
+8.0
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>You can also import a module and give it an alias: import as </p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import math as m
+m.sqrt(64)
+8.0
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Importing into Local Scope</p>
+<p>Remember that importing brings names into the scope of the import.
+Here we import the math module into one function.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def hypotenuse(a, b):
+&mldr; import math
+&mldr; return math.sqrt(a<em>a + b</em>b)
+&mldr;
+hypotenuse(3, 4)
+5.0
+math.sqrt(64)
+Traceback (most recent call last):
+File &ldquo;&rdquo;, line 1, in
+NameError: name &lsquo;math&rsquo; is not defined
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Importing Names from a Module</p>
+<p>You can choose to import only certain names from a module:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>from math import sqrt
+sqrt(64)
+8.0
+floor(1.2)
+Traceback (most recent call last):
+File &ldquo;&rdquo;, line 1, in
+NameError: name &lsquo;floor&rsquo; is not defined
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Or all names from a module:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>from math import *
+floor(1.2)
+1
+sin(0)
+0.0
+sin(.5 * pi)
+1.0
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Notice that with this syntax you don&rsquo;t have to use a fully-qualified
+name, e.g., ~module.name~</p>
+<p>** Module Search Path</p>
+<p>Just as an operating system command shell searches for executable programs by searching the directories listed in the ~PATH~ environment variable, Python finds modules by searching directories. The module search path is stored in ~sys.path~:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import sys
+from pprint import pprint
+pprint(sys.path)
+['',
+&lsquo;/home/chris/miniconda3/lib/python35.zip&rsquo;,
+&lsquo;/home/chris/miniconda3/lib/python3.5&rsquo;,
+&lsquo;/home/chris/miniconda3/lib/python3.5/plat-linux&rsquo;,
+&lsquo;/home/chris/miniconda3/lib/python3.5/lib-dynload&rsquo;,
+&lsquo;/home/chris/miniconda3/lib/python3.5/site-packages&rsquo;,
+&lsquo;/home/chris/miniconda3/lib/python3.5/site-packages/setuptools-23.0.0-py3.5.egg&rsquo;]
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Notice that the current directory, represented by the ~''~ at the beginning of the search path.</p>
+<p>Also, note use of ~pprint~.</p>
+<p>** Python Scripts</p>
+<p>Take a look at the draw.py file. Notice the if statement at the bottom:</p>
+<p>#+BEGIN_SRC python</p>
+<h1 id=is-this-the-main-top-level-module>Is this the main (top-level) module?</h1>
+<p>if <strong>name</strong> == &lsquo;<strong>main</strong>':
+stand()
+head()
+body()
+leftarm()
+rightarm()
+leftleg()
+rightleg()
+# Pause so the user can see the drawing before exiting.
+input(&lsquo;Press any key to exit.')
+#+END_SRC</p>
+<p>This makes the module a runnable Python program. It&rsquo;s similar to the main function or method from some other programming languages. With it we can import the file as a module to use its functions (or objects or variables), or run it from the command line.</p>
+<p>** Shebang!</p>
+<p>Another way to run a Python program (on Unix) is to tell the host operating system how to run it. We do that with a &ldquo;shebang&rdquo; line at the beginning of a Python program:</p>
+<p>#+BEGIN_SRC python
+#!/usr/bin/env python3
+#+END_SRC</p>
+<p>This line says &ldquo;run python3 and pass this file as an argument.&rdquo; So if you have a program called foo with shebang line as above and which has been set executable (chmod +x foo.py), thse are equivalent:</p>
+<p>#+BEGIN_SRC python
+$ python3 foo.py
+$ ./foo.py
+#+END_SRC</p>
+<p>** Interactive Programs</p>
+<p>The input() function Python reads all the characters typed into the console until the user presses ENTER and returns them as a string:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>x = input()
+abcdefg1234567
+x
+&lsquo;abcdefg1234567&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>We can also supply a prompt for the user:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>input(&lsquo;Give me a number: &lsquo;)
+Give me a number: 3
+&lsquo;3&rsquo;
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>And remember, input() returns a string that may need to be converted.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>2 * int(input(&ldquo;Give me a number and I&rsquo;ll double it: &ldquo;))
+Give me a number and I&rsquo;ll double it: 3
+6
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Command Line Arguments</p>
+<p>#+ATTR_LaTeX: height=3in
+[[file:Argument_Clinic.png]]</p>
+<p>#+BEGIN_SRC python
+$ python args.py one 2 two + one
+#+END_SRC</p>
+<p>The ~python~ invocation above contains 6 command line arguments.</p>
+<p>** Command-line Arguments in Python</p>
+<p>When you run a Python program, Python collects the arguments to the
+program in a variable called sys.argv. Given a Python program
+(~arguments.py~):</p>
+<p>#+BEGIN_SRC python
+#!/usr/bin/env python3
+import sys</p>
+<p>if len(sys.argv) &lt; 2:
+print(&ldquo;You&rsquo;ve given me nothing to work with.")
+else:
+print(sys.argv[1] +&rdquo;? Well I disagree!")
+#+END_SRC</p>
+<p>#+BEGIN_SRC python
+$ ./arguments.py Pickles
+Pickles? Well I disagree!
+$ ./arguments.py
+You&rsquo;ve given me nothing to work with.
+#+END_SRC</p>
+<p>** Conclusion</p>
+<p>[[https://www.youtube.com/embed/kQFKtI6gn9Y][Python Arguments]]</p>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>

@@ -1,0 +1,283 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes Functional Programming</title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=http://DrCS.codes//css/syntax.css>
+<link rel=stylesheet href=http://DrCS.codes//css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=http://DrCS.codes//css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=http://DrCS.codes/>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<ul>
+<li>Functional Programming in Python</li>
+</ul>
+<p>** Functional Features in Python</p>
+<p>Functions are first class, meaning they can be</p>
+<ul>
+<li>stored in variables and data structures</li>
+<li>passed as arguments to functions</li>
+<li>returned from functions</li>
+</ul>
+<p>** Higher-Order Functions</p>
+<p>A higher order function is a function that takes another function as a parameter or returns a function as a value. We&rsquo;ve already used one:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>help(sorted)
+&mldr;
+sorted(iterable, key=None, reverse=False)
+Return a new list containing all items from the iterable in ascending order.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<pre><code>A custom key function can be supplied to customise the sort order, and the
+reverse flag can be set to request the result in descending order.
+</code></pre>
+<p>#+END_SRC</p>
+<p>The second parameter, ~key~, is a function. In general, a <em>sort key</em> is the part of an object on which comparisons are made in a sorting algorithm.</p>
+<p>** Sorting without a ~key~</p>
+<p>Say we have a list of tuples, <em>(name, gpa, major)</em>:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import pprint as pp
+studs = [(&ldquo;Stan&rdquo;, 2.5, &ldquo;ISyE&rdquo;), (&ldquo;Kyle&rdquo;, 2.2, &ldquo;CS&rdquo;),
+&mldr; (&ldquo;Cartman&rdquo;, 2.4, &ldquo;CmpE&rdquo;), (&ldquo;Kenny&rdquo;, 4.0, &ldquo;ME&rdquo;)]
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>The default sort order is simply elementwise by the default order for each type in the tuple:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>pp.pprint(sorted(studs))
+[(&lsquo;Cartman&rsquo;, 2.4, &lsquo;CmpE&rsquo;),
+(&lsquo;Kenny&rsquo;, 4.0, &lsquo;ME&rsquo;),
+(&lsquo;Kyle&rsquo;, 2.2, &lsquo;CS&rsquo;),
+(&lsquo;Stan&rsquo;, 2.5, &lsquo;ISyE&rsquo;)]
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Answer for yourself: what if two students had the same name?</p>
+<p>** Sorting with a ~key~</p>
+<p>If we want a different sort order, we can define a function that extracts the part of each tuple by which we want to sort.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>def by_gpa(stud):
+&mldr; return stud[1]
+&mldr;
+pp.pprint(sorted(studs, key=by_gpa))
+[(&lsquo;Kyle&rsquo;, 2.2, &lsquo;CS&rsquo;),
+(&lsquo;Cartman&rsquo;, 2.4, &lsquo;CmpE&rsquo;),
+(&lsquo;Stan&rsquo;, 2.5, &lsquo;ISyE&rsquo;),
+(&lsquo;Kenny&rsquo;, 4.0, &lsquo;ME&rsquo;)]
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>~sorted~ is a <em>higher-order function</em> because it takes a function as an argument.</p>
+<p>** Lambda Functions</p>
+<p>The ~by_gpa~ function is pretty simple. Instead of defining a named function, we can define it inline with an anonymous function, a.k.a., a <em>lambda function</em>:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>pp.pprint(sorted(studs, key=lambda t: t[1]))
+[(&lsquo;Kyle&rsquo;, 2.2, &lsquo;CS&rsquo;),
+(&lsquo;Cartman&rsquo;, 2.4, &lsquo;CmpE&rsquo;),
+(&lsquo;Stan&rsquo;, 2.5, &lsquo;ISyE&rsquo;),
+(&lsquo;Kenny&rsquo;, 4.0, &lsquo;ME&rsquo;)]
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>The general form is ~lambda &lt;parameter_list>: ~</p>
+<p>The body of a lambda function is limited to a single expression, which is implicitly returned.</p>
+<p>** ~map~</p>
+<p>Common task: build a sequence out of transformations of elements of an existing sequence. Here&rsquo;s the imperative approach:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>houses = [&ldquo;Stark&rdquo;, &ldquo;Lannister&rdquo;, &ldquo;Targaryen&rdquo;]
+shout = []
+for house in houses:
+&mldr; shout.append(house.upper())
+&mldr;
+shout
+[&lsquo;STARK&rsquo;, &lsquo;LANNISTER&rsquo;, &lsquo;TARGARYEN&rsquo;]
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Heres' the functional approach:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>list(map(lambda house: house.upper(), houses))
+[&lsquo;STARK&rsquo;, &lsquo;LANNISTER&rsquo;, &lsquo;TARGARYEN&rsquo;]
+#+END_SRC
+Note that ~map~ returns an iterator, so we pass it to the ~list~ constructor.</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** ~filter~</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>nums = [0,1,2,3,4,5,6,7,8,9]
+filter(lambda x: x % 2 == 0, nums)
+&lt;filter object at 0x1013e87f0>
+list(filter(lambda x: x % 2 == 0, nums))
+[0, 2, 4, 6, 8]
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** List Comprehensions</p>
+<p>A list comprehension iterates over a (optionally filtered) sequence,
+applies an operation to each element, and collects the results of these
+operations in a new list, just like ~map~.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>grades = [100, 90, 0, 80]
+[x for x in grades]
+[100, 90, 0, 80]
+[x + 10 for x in grades]
+[110, 100, 10, 90]
+#+END_SRC
+We can also filter in a comprehension:</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>[x + 50 for x in grades if x &lt; 50]
+[50]
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Comprehensions are more Pythonic than using ~map~ and ~filter~ directly.</p>
+<p>** Dictionary Comprehensions</p>
+<p>First, zip:</p>
+<p>#+BEGIN_SRC python
+words = [&ldquo;Winter is coming&rdquo;, &ldquo;Hear me roar&rdquo;, &ldquo;Fire and blood&rdquo;]</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>list(zip(houses, words))
+[(&lsquo;Stark&rsquo;, &lsquo;Winter is coming&rsquo;), (&lsquo;Lannister&rsquo;, &lsquo;Hear me roar&rsquo;), (&lsquo;Targaryen&rsquo;, &lsquo;Fire and blood&rsquo;)]
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Dictionary comprehension using tuple unpacking:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>house2words = {house: words for house, words in zip(houses, words)}
+house2words
+{&lsquo;Lannister&rsquo;: &lsquo;Hear me roar&rsquo;, &lsquo;Stark&rsquo;: &lsquo;Winter is coming&rsquo;, &lsquo;Targaryen&rsquo;: &lsquo;Fire and blood&rsquo;}
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Of course, we could just use the ~dict~ constructor on the ~zip~ object.</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>dict(zip(houses, words))
+{&lsquo;Lannister&rsquo;: &lsquo;Hear me roar&rsquo;, &lsquo;Stark&rsquo;: &lsquo;Winter is coming&rsquo;, &lsquo;Targaryen&rsquo;: &lsquo;Fire and blood&rsquo;}
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** ~reduce~</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>import functools
+functools.reduce(lambda x, y: x + y, [0,1,2,3,4,5,6,7,8,9])
+45
+#+END_SRC
+Confirm this using the standard sum $\Sigma_{i=1}^{n} i = \frac{n(n + 1)}{2}$</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>Here&rsquo;s factorial:</p>
+<p>#+BEGIN_SRC python</p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>functools.reduce(lambda x, y: x * y, [1,2,3,4,5])
+120
+functools.reduce(lambda x, y: x * y, range(1,6))
+120
+#+END_SRC</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>** Generator Functions</p>
+<p>You won&rsquo;t be tested on generator functions, but they&rsquo;re too cool not to show you!</p>
+<p>#+BEGIN_SRC python
+def class_dates(first, last, class_days):
+&ldquo;&ldquo;&ldquo;Generate dates from first to last whose weekdays are in class_days</p>
+<pre><code>&gt;&gt;&gt; import datetime
+&gt;&gt;&gt; begin = datetime.date(2016, 8, 22)
+&gt;&gt;&gt; end = datetime.date(2016, 8, 25)
+&gt;&gt;&gt; list(class_dates(begin, end, &quot;TR&quot;))
+[datetime.date(2016, 8, 23), datetime.date(2016, 8, 25)]
+&quot;&quot;&quot;
+day = first
+# e.g., &quot;MWF&quot; =&gt; [0, 2, 4]
+class_day_ints = [i for i, letter in enumerate(&quot;MTWRFSU&quot;)
+                       if letter in class_days]
+while day &lt;= last:
+    if day.weekday() in class_day_ints:
+        yield day
+    day += dt.timedelta(days=1)
+</code></pre>
+<p>#+END_SRC</p>
+<p>** Exercise</p>
+<p>Write comprehension expressions that build the data structures in the [[../exercises/grades.html][Grades]] exercise.</p>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>

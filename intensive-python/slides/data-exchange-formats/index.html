@@ -1,0 +1,154 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes Data Exchange Formats</title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=http://DrCS.codes//css/syntax.css>
+<link rel=stylesheet href=http://DrCS.codes//css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=http://DrCS.codes//css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=http://DrCS.codes/>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<ul>
+<li>Data Exchange Formats</li>
+</ul>
+<p>** Data Exchange Formats</p>
+<ul>
+<li>
+<p>XML</p>
+<ul>
+<li>A verbose textual representation of trees</li>
+</ul>
+</li>
+<li>
+<p>JSON</p>
+<ul>
+<li>JavaScript Object notation &ndash; like a Python ~dict~</li>
+</ul>
+</li>
+</ul>
+<p>** XML Format</p>
+<p>[[../code/structured-files][people.xml]]:</p>
+<p>#+BEGIN_SRC xml</p>
+<p>** Parsing XML with ElementTree</p>
+<p>Use Python&rsquo;s built-in [[https://docs.python.org/3/library/xml.etree.elementtree.html][ElementTree API]]</p>
+<p>#+BEGIN_SRC python
+In [17]: import xml.etree.ElementTree as ET</p>
+<p>In [18]: root = ET.parse(&lsquo;people.xml&rsquo;)</p>
+<p>In [21]: persons = root.findall(&ldquo;person&rdquo;)</p>
+<p>In [24]: for person in persons:
+&mldr;: print(person.find(&ldquo;firstName&rdquo;).text, end="")
+&mldr;: print(person.find(&ldquo;lastName&rdquo;).text)
+&mldr;: for profession in person.find(&ldquo;professions&rdquo;):
+&mldr;: print("\t", profession.text)
+&mldr;:
+AlanTuring
+Computer Scientist
+Mathematician
+Computer Scientist
+Cryptographer
+StephenHawking
+Physicist
+Comedian
+#+END_SRC</p>
+<p>** JSON Format</p>
+<p>Just like Python data structures except:</p>
+<ul>
+<li>double quotes &ndash; " &ndash; for all strings</li>
+<li>~true~ and ~false~ boolean literals instead of ~True~ and ~False~</li>
+<li>~null~ instead of ~None~</li>
+</ul>
+<p>Here&rsquo;s the XML people example represented as JSON:</p>
+<p>#+BEGIN_SRC python
+{
+&ldquo;people&rdquo;: {
+&ldquo;person&rdquo;: [
+{
+&ldquo;firstName&rdquo;: &ldquo;Alan&rdquo;,
+&ldquo;lastName&rdquo;: &ldquo;Turing&rdquo;,
+&ldquo;professions&rdquo;: {
+&ldquo;profession&rdquo;: [&ldquo;Computer Scientist&rdquo;, &ldquo;Mathematician&rdquo;,
+&ldquo;Computer Scientist&rdquo;, &ldquo;Cryptographer&rdquo;]
+}
+},
+{
+&ldquo;firstName&rdquo;: &ldquo;Stephen&rdquo;,
+&ldquo;lastName&rdquo;: &ldquo;Hawking&rdquo;,
+&ldquo;professions&rdquo;: {
+&ldquo;profession&rdquo;: [&ldquo;Physicist&rdquo;, &ldquo;Comedian&rdquo;]
+}
+}
+]
+}
+}
+#+END_SRC</p>
+<p>** Reading JSON</p>
+<p>Use Python&rsquo;s built-in [[https://docs.python.org/3/library/json.html][JSON encoder and decoder]]</p>
+<ul>
+<li>Loading from a string:</li>
+</ul>
+<p>#+BEGIN_SRC python
+In [2]: json.loads('{&ldquo;CS4400&rdquo;: [&ldquo;CS1301&rdquo;,&ldquo;CS1315&rdquo;,&ldquo;CS1371&rdquo;], &ldquo;CS3600&rdquo;:[&ldquo;CS1332&rdquo;]}')
+Out[2]: {&lsquo;CS3600&rsquo;: [&lsquo;CS1332&rsquo;], &lsquo;CS4400&rsquo;: [&lsquo;CS1301&rsquo;, &lsquo;CS1315&rsquo;, &lsquo;CS1371&rsquo;]}
+#+END_SRC</p>
+<ul>
+<li>Loading from a file (notice that you must provide a file object, not just a file name):</li>
+</ul>
+<p>#+BEGIN_SRC python
+In [8]: cat fall2017-breaks.json
+{
+&ldquo;2017-09-04&rdquo;: &ldquo;Labor Day&rdquo;,
+&ldquo;2017-10-09&rdquo;: &ldquo;Fall Student Recess&rdquo;,
+&ldquo;2017-10-09&rdquo;: &ldquo;Fall Student Recess&rdquo;,
+&ldquo;2017-11-22&rdquo;: &ldquo;Student Recess&rdquo;,
+&ldquo;2017-11-23&rdquo;: &ldquo;Thanksgiving Break&rdquo;,
+&ldquo;2017-11-24&rdquo;: &ldquo;Thanksgiving Break&rdquo;
+}</p>
+<p>In [9]: json.load(open(&lsquo;fall2017-breaks.json&rsquo;))
+Out[9]:
+{&lsquo;2017-09-04&rsquo;: &lsquo;Labor Day&rsquo;,
+&lsquo;2017-10-09&rsquo;: &lsquo;Fall Student Recess&rsquo;,
+&lsquo;2017-11-22&rsquo;: &lsquo;Student Recess&rsquo;,
+&lsquo;2017-11-23&rsquo;: &lsquo;Thanksgiving Break&rsquo;,
+&lsquo;2017-11-24&rsquo;: &lsquo;Thanksgiving Break&rsquo;}
+#+END_SRC</p>
+<p>** Writing JSON</p>
+<ul>
+<li>Dumping to a string</li>
+</ul>
+<p>#+BEGIN_SRC python
+In [11]: prereqs = {&lsquo;CS3600&rsquo;: [&lsquo;CS1332&rsquo;], &lsquo;CS4400&rsquo;: [&lsquo;CS1301&rsquo;, &lsquo;CS1315&rsquo;, &lsquo;CS1371&rsquo;]}</p>
+<p>In [12]: json.dumps(prereqs)
+Out[12]: &lsquo;{&ldquo;CS3600&rdquo;: [&ldquo;CS1332&rdquo;], &ldquo;CS4400&rdquo;: [&ldquo;CS1301&rdquo;, &ldquo;CS1315&rdquo;, &ldquo;CS1371&rdquo;]}&rsquo;
+#+END_SRC</p>
+<ul>
+<li>Dumping to a file (notice the write-mode file object):</li>
+</ul>
+<p>#+BEGIN_SRC python
+In [14]: json.dump(prereqs, open(&lsquo;prereqs.json&rsquo;, &lsquo;wt&rsquo;))</p>
+<p>In [15]: cat prereqs.json
+{&ldquo;CS3600&rdquo;: [&ldquo;CS1332&rdquo;], &ldquo;CS4400&rdquo;: [&ldquo;CS1301&rdquo;, &ldquo;CS1315&rdquo;, &ldquo;CS1371&rdquo;]}
+#+END_SRC</p>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>
