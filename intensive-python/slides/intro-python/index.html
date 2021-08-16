@@ -70,13 +70,13 @@
 <p><img src=Flyingcircus_2.jpg alt></p>
 <p><a href="https://en.wikipedia.org/w/index.php?curid=6130072">https://en.wikipedia.org/w/index.php?curid=6130072</a></p>
 <p>Python was named for Monty Python, of which Python’s creator, Guido van Rossum, is a big fan.</p>
-<h2 id=the-python-program>The <code>python</code> Program</h2>
+<h2 id=the-python3-program>The <code>python3</code> Program</h2>
 <p>Practically speaking, Python is a program on your computer that interprets Python programs and statements.</p>
 <ul>
 <li>
-<p>You can ask <code>python</code> a question without running any Python code. For example, this is how you ask which version of Python is installed (Note: the <code>$</code> character is the command prompt in the Unix Bash shell. The Windows command prompt is <code>C:\></code>.):</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python --version
-Python 3.5.2 :: Continuum Analytics, Inc.
+<p>You can ask <code>python3</code> a question without running any Python code. For example, this is how you ask which version of Python is installed (Note: the <code>$</code> character is the command prompt in the Unix Bash shell. The Windows command prompt is <code>C:\></code>.):</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>❯ python3 --version
+Python 3.8.10
 </code></pre></div><p>If you get some other response, like command not found, then you haven’t properly installed Python.</p>
 </li>
 </ul>
@@ -84,16 +84,16 @@ Python 3.5.2 :: Continuum Analytics, Inc.
 <ul>
 <li>
 <p>You can run a Python program, which has a .py extension by convention:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python myprogram.py
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python3 myprogram.py
 </code></pre></div></li>
 <li>
 <p>Or you can invoke the interactive Python shell (sometimes called REPL for &ldquo;Read-Eval-Print Loop&rdquo;):</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python
-Python 3.5.2 |Continuum Analytics, Inc.| <span style=color:#f92672>(</span>default, Jul  <span style=color:#ae81ff>2</span> 2016, 17:53:06<span style=color:#f92672>)</span>
-<span style=color:#f92672>[</span>GCC 4.4.7 <span style=color:#ae81ff>20120313</span> <span style=color:#f92672>(</span>Red Hat 4.4.7-1<span style=color:#f92672>)]</span> on linux
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>❯ python3
+Python 3.8.10 <span style=color:#f92672>(</span>default, Jun  <span style=color:#ae81ff>2</span> 2021, 10:49:15<span style=color:#f92672>)</span>
+<span style=color:#f92672>[</span>GCC 9.4.0<span style=color:#f92672>]</span> on linux
 Type <span style=color:#e6db74>&#34;help&#34;</span>, <span style=color:#e6db74>&#34;copyright&#34;</span>, <span style=color:#e6db74>&#34;credits&#34;</span> or <span style=color:#e6db74>&#34;license&#34;</span> <span style=color:#66d9ef>for</span> more information.
 &gt;&gt;&gt;
-</code></pre></div><p>To exit the Python shell type Ctrl-D on Unix, or Ctrl-Z on Windows.</p>
+</code></pre></div><p>To exit the Python shell type Ctrl-D on Linux/Unix, or Ctrl-Z on Windows.</p>
 </li>
 </ul>
 <h2 id=hello-python>Hello, Python</h2>
@@ -105,23 +105,23 @@ Type <span style=color:#e6db74>&#34;help&#34;</span>, <span style=color:#e6db74>
 </code></pre></div></li>
 <li>
 <p>Then open your command shell (terminal on Unix or CMD.exe on Windows), go to the directory where you saved <code>hello.py</code> and enter:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python hello.py
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python3 hello.py
 </code></pre></div><p>Hello, world! will be printed to the console on the next line.</p>
 </li>
 </ul>
 <h2 id=interpreting-python-programs>Interpreting Python Programs</h2>
-<p>What happens when we enter <code>python hello.py</code> at an operating system command shell prompt?</p>
+<p>What happens when we enter <code>python3 hello.py</code> at an operating system command shell prompt?</p>
 <ol>
-<li><code>python</code> tells the OS to load the Python interpreter into memory and run it. <code>python</code> is the name of an executable file on your hard disk which your OS can find because its directory is on the <code>PATH</code></li>
-<li>We invoke <code>python</code> with a <em>command line argument</em>, which <code>python</code> reads after it starts running</li>
-<li>Since the command line argument was the name of a file (<code>hello.py</code>), the <code>python</code> loads the file named by the argument and executes the Python code in it.</li>
+<li><code>python3</code> tells the OS to load the Python interpreter into memory and run it. <code>python</code> is the name of an executable file on your hard disk which your OS can find because its directory is on the <code>PATH</code></li>
+<li>We invoke <code>python</code> with a <em>command line argument</em>, which <code>python3</code> reads after it starts running</li>
+<li>Since the command line argument was the name of a file (<code>hello.py</code>), the <code>python3</code> loads the file named by the argument and executes the Python code in it.</li>
 </ol>
 <p>A Python program, or script, is just a sequence of Python statements and expressions.</p>
 <h2 id=the-python-repl>The Python REPL</h2>
 <p>Invoke the Python interactive shell by entering python at your command shell’s prompt without any arguments and type in the same line we put in hello.py:</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ python
-Python 3.5.2 |Continuum Analytics, Inc.| <span style=color:#f92672>(</span>default, Jul  <span style=color:#ae81ff>2</span> 2016, 17:53:06<span style=color:#f92672>)</span>
-<span style=color:#f92672>[</span>GCC 4.4.7 <span style=color:#ae81ff>20120313</span> <span style=color:#f92672>(</span>Red Hat 4.4.7-1<span style=color:#f92672>)]</span> on linux
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>❯ python3
+Python 3.8.10 <span style=color:#f92672>(</span>default, Jun  <span style=color:#ae81ff>2</span> 2021, 10:49:15<span style=color:#f92672>)</span>
+<span style=color:#f92672>[</span>GCC 9.4.0<span style=color:#f92672>]</span> on linux
 Type <span style=color:#e6db74>&#34;help&#34;</span>, <span style=color:#e6db74>&#34;copyright&#34;</span>, <span style=color:#e6db74>&#34;credits&#34;</span> or <span style=color:#e6db74>&#34;license&#34;</span> <span style=color:#66d9ef>for</span> more information.
 &gt;&gt;&gt;
 </code></pre></div><p><code>>>></code> is the command prompt for the Python REPL.</p>
