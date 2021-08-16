@@ -1,0 +1,16 @@
+{{ $course := .Get "course" }}
+{{ $lesson := .Get "lesson"}}
+
+{{ $courseData := index .Site.Data $course }}
+{{ $lessonData := index $courseData $lesson }}
+
+<tr>
+    <td>{{ .Get "sessionNumber" }}</td>
+    <td>{{ index $lessonData "topic" | markdownify }}</td>
+    <td>
+        {{ range (index $lessonData "materials") }}
+            {{ . | markdownify }}<br />
+        {{ end }}
+    </td>
+</tr>
+
