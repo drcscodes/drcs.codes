@@ -21,7 +21,7 @@
     },
     "functions": {
         "topic": "[Functions](/intensive-python/slides/functions.pdf)",
-        "materials": ["TP 3", "Homework: [Dates](../hw/dates)"],
+        "materials": ["TP 3"],
         "order": [4]
     },
     "modules-programs": {
@@ -44,7 +44,8 @@
         "materials": ["TP 5, 7",
                       "Drill: [Data Transformation](../exercises/data-transformation)",
                       "Exercise: [Data Utilities](../exercises/data-util)",
-                      "Exercise: [Grades Module](../exercises/grades)"],
+                      "Exercise: [Grades Module](../exercises/grades)",
+                      "Homework: [Dates](../hw/dates)"],
         "order": [8]
     },
     "functional-programming": {
