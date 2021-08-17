@@ -9,18 +9,19 @@
     "intro-python": {
         "topic": "[Intro to Python](/intensive-python/slides/intro-python.pdf)",
         "materials": ["Reading: TP 1",
-                      "[Video: Intro to Python](https://youtu.be/ZDCHBkTMfE8)"],
+                      "[Video: Intro to Python](https://youtu.be/ZDCHBkTMfE8)",
+                    "Homework: [hw0](../hw/hw0)"],
         "order": [2]
     },
     "values-variables": {
         "topic": "[Values and Variables](/intensive-python/slides/values-variables.pdf)",
         "materials": ["Reading: PfP", "[Video: Values and Variables](https://youtu.be/iKG_hAXy0qQ)",
-                     "[Drill - Values and Variables](../exercises/values-variables)"],
+                     "Exercise: [Values and Variables](../exercises/values-variables)"],
         "order": [3]
     },
     "functions": {
         "topic": "[Functions](/intensive-python/slides/functions.pdf)",
-        "materials": ["TP 3"],
+        "materials": ["TP 3", "Homework: [Dates](../hw/dates)"],
         "order": [4]
     },
     "modules-programs": {
@@ -34,7 +35,7 @@
         "order": [6]
     },
     "ipython": {
-        "topic": "[iPython](intensive-python/slides/ipython.pdf)",
+        "topic": "[iPython](/intensive-python/slides/ipython.pdf)",
         "materials": [""],
         "order": [7]
     },
