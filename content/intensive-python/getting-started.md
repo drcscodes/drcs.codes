@@ -31,6 +31,20 @@ sudo apt install python3-pip
 sudo apt install python3-venv
 ```
 
+If your system does not have Python 2 installed, you can make Python 3 "the" Python on your system.  You can determine whether Python 2 is installed by trying to run it:
+
+```sh
+python -V
+```
+
+If you get a message like "command not found" then Python 2 is not installed.  Make Python 3 "the' Python with:
+
+```sh
+sudo apt install python-is-python3
+```
+
+Now `python` and `python3` are the same and you don't have to remember to append `3` to Python commands.
+
 ## macOS
 
 macOS is a Unix and already has a decent terminal and command-line shell.  There are two ways to install Python.org Python (as opposed to [Anaconda](https://www.anaconda.com/) Python or some other Python distribution).

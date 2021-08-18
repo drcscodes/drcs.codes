@@ -22,7 +22,7 @@ In this course we will learn the Python programming language.
 
 ## Python gives you wings!
 
-![](python.png)
+![-](python.png){height=80%}
 
 [http://xkcd.com/353/](http://xkcd.com/353/)
 
@@ -40,10 +40,9 @@ The coolest thing about Python ...
 
 ## The Python Name
 
-![](Flyingcircus_2.jpg)
+![](Flyingcircus_2.jpg){height=70% text-align=center}
 
 [https://en.wikipedia.org/w/index.php?curid=6130072](https://en.wikipedia.org/w/index.php?curid=6130072)
-
 
 Python was named for Monty Python, of which Python’s creator, Guido van Rossum, is a big fan.
 
@@ -54,7 +53,7 @@ Practically speaking, Python is a program on your computer that interprets Pytho
 - You can ask `python3` a question without running any Python code. For example, this is how you ask which version of Python is installed (Note: the `$` character is the command prompt in the Unix Bash shell. The Windows command prompt is `C:\>`.):
 
     ```sh
-    ❯ python3 --version
+    $ python3 --version
     Python 3.8.10
     ```
 
@@ -71,7 +70,7 @@ Practically speaking, Python is a program on your computer that interprets Pytho
 - Or you can invoke the interactive Python shell (sometimes called REPL for "Read-Eval-Print Loop"):
 
     ```sh
-    ❯ python3
+    $ python3
     Python 3.8.10 (default, Jun  2 2021, 10:49:15)
     [GCC 9.4.0] on linux
     Type "help", "copyright", "credits" or "license" for more information.
@@ -113,7 +112,7 @@ A Python program, or script, is just a sequence of Python statements and express
 Invoke the Python interactive shell by entering python at your command shell’s prompt without any arguments and type in the same line we put in hello.py:
 
 ```sh
-❯ python3
+$ python3
 Python 3.8.10 (default, Jun  2 2021, 10:49:15)
 [GCC 9.4.0] on linux
 Type "help", "copyright", "credits" or "license" for more information.

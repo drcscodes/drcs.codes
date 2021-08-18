@@ -37,6 +37,7 @@ Having a go-to text editor improves your productivity in part because you can se
 - Trim trailing white space at the end of lines
 - Add a newline character to the end of files
 
+## VS Code Configuration
 
 Here is a minimal starter configuration for VS Code.  To open settings, type Ctrl+, on Windows/Linux, or Cmd-, on macOS.
 
@@ -58,3 +59,9 @@ Here is a minimal starter configuration for VS Code.  To open settings, type Ctr
     "workbench.tree.indent": 16,
 }
 ```
+
+### `code` Shell Command
+
+I's convenient to be able to launch your editor from the command line.  Insall a `code` shell command for VS Code by activating the command palette (within VS Code) with Ctrl+Shift+P (Cmd+Shift+P on macOS) and selecting `Shell Command: Install 'code' command in PATH`.
+
+> If the method above may not work on macOS due to permissions issues with your `/usr/local/bin` directory.  If so, follow the directions here: https://code.visualstudio.com/docs/setup/mac#_alternative-manual-instructions.

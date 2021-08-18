@@ -1,5 +1,5 @@
 ---
-layout: exercise
+layout: exehomeworkrcise
 title: Treating People as Objects
 ---
 

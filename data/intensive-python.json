@@ -24,9 +24,17 @@
         "materials": ["TP 3"],
         "order": [4]
     },
+    "strings": {
+        "topic": "[Strings](/intensive-python/slides/strings.pdf)",
+        "materials": ["TP 3",
+            "Exercise 1: [Email Utilities](../exercises/email-utils)"],
+        "order": [4]
+    },
     "modules-programs": {
         "topic": "[Modules and Programs](/intensive-python/slides/modules-programs.pdf)",
-        "materials": ["TP 1,14", "Exercise: [BMI Module](../exercises/bmi)", "Exercise: [Hangman](../exercises/hangman)"],
+        "materials": ["TP 1,14",
+            "Exercise 1: [BMI Module](../exercises/bmi)",
+            "Homework: [Dates](../hw/dates)"],
         "order": [5]
     },
     "data-structures": {
@@ -42,10 +50,10 @@
     "control-structures": {
         "topic": "[Control Structures](/intensive-python/slides/control-structures.pdf)",
         "materials": ["TP 5, 7",
-                      "Drill: [Data Transformation](../exercises/data-transformation)",
+                      "Exercise 1: [Data Transformation](../exercises/data-transformation)",
                       "Exercise: [Data Utilities](../exercises/data-util)",
-                      "Exercise: [Grades Module](../exercises/grades)",
-                      "Homework: [Dates](../hw/dates)"],
+                      "Exercise: [Grades Module](../exercises/grades)"
+                      ],
         "order": [8]
     },
     "functional-programming": {
@@ -62,7 +70,8 @@
         "topic": "[Classes and Objects](/intensive-python/slides/classes-objects.pdf)",
         "materials": ["[OOP Code](../code/classes)",
                       "TP 15 - 18",
-                     "[Exercise: Treating People as Objects](../exercises/people-objects)"],
+                     "[Exercise 1: Dog Module](../exercises/dog)",
+                     "[Homework: Treating People as Objects](../hw/people-objects)"],
         "order": [10]
     },
     "review1": {
