@@ -47,6 +47,7 @@
 <li>Trim trailing white space at the end of lines</li>
 <li>Add a newline character to the end of files</li>
 </ul>
+<h2 id=vs-code-configuration>VS Code Configuration</h2>
 <p>Here is a minimal starter configuration for VS Code. To open settings, type Ctrl+, on Windows/Linux, or Cmd-, on macOS.</p>
 <div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-json data-lang=json>{
     <span style=color:#f92672>&#34;editor.wordWrap&#34;</span>: <span style=color:#e6db74>&#34;on&#34;</span>,
@@ -64,7 +65,11 @@
     <span style=color:#960050;background-color:#1e0010>//</span> <span style=color:#960050;background-color:#1e0010>Controls</span> <span style=color:#960050;background-color:#1e0010>tree</span> <span style=color:#960050;background-color:#1e0010>indentation</span> <span style=color:#960050;background-color:#1e0010>in</span> <span style=color:#960050;background-color:#1e0010>pixels.</span>
     <span style=color:#f92672>&#34;workbench.tree.indent&#34;</span>: <span style=color:#ae81ff>16</span>,
 }
-</code></pre></div>
+</code></pre></div><h3 id=code-shell-command><code>code</code> Shell Command</h3>
+<p>I&rsquo;s convenient to be able to launch your editor from the command line. Insall a <code>code</code> shell command for VS Code by activating the command palette (within VS Code) with Ctrl+Shift+P (Cmd+Shift+P on macOS) and selecting <code>Shell Command: Install 'code' command in PATH</code>.</p>
+<blockquote>
+<p>If the method above may not work on macOS due to permissions issues with your <code>/usr/local/bin</code> directory. If so, follow the directions here: <a href=https://code.visualstudio.com/docs/setup/mac#_alternative-manual-instructions>https://code.visualstudio.com/docs/setup/mac#_alternative-manual-instructions</a>.</p>
+</blockquote>
 </main>
 <script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>

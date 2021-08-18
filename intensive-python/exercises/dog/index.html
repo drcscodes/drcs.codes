@@ -1,0 +1,51 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes Dog Module</title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=http://DrCS.codes//css/syntax.css>
+<link rel=stylesheet href=http://DrCS.codes//css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=http://DrCS.codes//css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=http://DrCS.codes/>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<h1 id=dog-module>Dog Module</h1>
+<p>Write a module named <code>dog</code> which has a class named <code>Dog</code> with</p>
+<ul>
+<li>an instance variable named <code>name</code></li>
+<li>an instance variable named <code>breed</code></li>
+<li>a constructor/initializer that takes <code>name</code> and <code>breed</code> parameters and uses them to initialize the instance variables</li>
+<li>a string representation that prints the name and breed of the dog, e.g., <code>'Chloe the Doberman'</code></li>
+</ul>
+<p>When your <code>dog</code> module is run as a script, it should use the first two command line arguments to your script to pass as the name and breed in the construction of an instance of <code>Dog</code>, then print the <code>Dog</code> instance using the <code>print</code> function. When the <code>dog</code> module is imported as a module, it should not print anything. For example:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>&gt;&gt;&gt; import dog
+&gt;&gt;&gt; d <span style=color:#f92672>=</span> dog.Dog<span style=color:#f92672>(</span><span style=color:#e6db74>&#34;Dante&#34;</span>, <span style=color:#e6db74>&#34;Deutscher Schäferhund&#34;</span><span style=color:#f92672>)</span>
+&gt;&gt;&gt; d
+Dante the Deutscher Schäferhund
+&gt;&gt;&gt; quit<span style=color:#f92672>()</span>
+$ python dog.py Chloe Doberman
+Chloe the Doberman
+</code></pre></div>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>
