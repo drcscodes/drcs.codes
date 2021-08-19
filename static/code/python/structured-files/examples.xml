@@ -1,0 +1,163 @@
+
+
+<biography>
+
+
+<xs:element name="fullName">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="first" type="xs:string"/>
+      <xs:element name="middle" type="xs:string"
+		  minOccurs="0"/>
+      <xs:element name="last" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:element>
+
+<fullName>
+  <first>Rob</first>
+  <last>Myers</first>
+
+
+<xs:element name="fullName">
+  <xs:complexType>
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+	<xs:attribute name="language"
+		      type="xs:language"/>
+      </xs:extension> 
+    </xs:simpleContent>
+  </xs:complexType> 
+</xs:element>
+
+<fullName language="en">Scott Means</fullName>
+
+
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="fullName" type="xs:string"/> 
+</xs:schema>
+
+<?xml version="1.0"?>
+<fullName>Scott Means</fullName>
+
+
+<song:songs xmlns:singer="http://songs.com/singerVocab"
+	    xmlns:song="http://songs.com/songVocab"
+	    Elementformdefault="qualified">
+
+  <song:song>
+    <singer:singer>
+      <singer:title>M.C.</singer:title>
+      <singer:name>Hammer</singer:name>
+    </singer:singer>
+    <song:title>Hammer Time</song:title>
+  </song:song>
+</song:songs>
+
+<songs>
+  <song>
+    <singer>
+      <title>M.C.</title>
+      <name>Hammer</name>
+    </singer>
+    <title>Hammer Time</title>
+  </song>
+</songs>
+  
+
+
+<SCRIPT LANGUAGE="JavaScript">
+  if (location.host.toLowerCase().indexOf("ibiblio") &lt; 0) {
+    location.href="http://ibiblio.org/xml/";
+  }
+</SCRIPT>
+
+<company>W.L. Gore &amp; Associates</company>
+
+<company>W.L. Gore &#38; Associates</company>
+
+<person born="1912-06-23" died="1954-06-07">
+  Alan Turing
+</person>
+
+<person born="1912-06-23" died="1954-06-07">
+  <name first="Alan" last="Turing"/>
+  <profession value="computer scientist"/>
+  <profession value="mathematician"/>
+  <profession value="cryptographer"/>
+</person>
+
+
+<?robots index="yes" follow="no"?>
+
+
+
+<?php
+  mysql_connect("database.unc.edu", "clerk", "password");
+  $result = mysql("HR", "SELECT LastName, FirstName 
+     FROM Employees ORDER BY LastName, FirstName");
+  $i = 0;
+  while ($i < mysql_numrows ($result)) {
+    $fields = mysql_fetch_row($result);
+    echo "<person>$fields[1] $fields[0] </person>\r\n";
+    $i++;
+  }
+  mysql_close( );
+?>
+
+
+
+<?xml-stylesheet href="person.css" type="text/css"?>
+<person> 
+  Alan Turing
+</person>
+
+<p>
+You can use a default <code>xmlns</code> attribute
+to avoid havingto add the svg prefix to all your 
+elements:
+</p>
+
+<pre>
+<![CDATA[
+<svg xmlns="http://www.w3.org/2000/svg" 
+     width="12cm" height="10cm">
+  <ellipse rx="110" ry="130" />
+  <rect x="4cm" y="1cm" width="3cm" height="6cm" />
+</svg>
+]]>
+</pre>
+
+
+
+  <paragraph>
+    <name><first_name>Alan</first_name> <last_name>Turing</last_name>
+    </name> was one of the first people to truly deserve the name
+    <emphasize>computer scientist</emphasize>. Although his
+    contributions to the field are too numerous to list, his
+    best-known are theeponymous <emphasize>Turing Test</emphasize> and
+    <emphasize>Turing Machine</emphasize>.
+  </paragraph>
+
+  <definition>The <term>Turing Test</term> is to this day the standard
+  test for determining whether a computer is truly intelligent. This
+  test has yet to be passed. </definition>
+
+  <definition>A <term>Turing Machine</term> is an abstract finite
+  state automaton with infinite memory that can be proven equivalent
+  to any other finite state automaton with arbitrarily large
+  memory. Thus what is true for one Turing machine is true for all
+  Turing machines no matter how implemented. </definition>
+
+  <paragraph>
+    <name><last_name>Turing</last_name></name> was also an
+    accomplished <profession>mathematician</profession> and
+    <profession>cryptographer</profession>. His assistance was crucial
+    in helping the Allies decode the German Enigma cipher. He
+    committed suicide on <date><month>June</month> <day>7</day>,
+    <year>1954</year></date> after being convicted of homosexuality
+    and forced to take female hormone injections.
+  </paragraph>
+</biography>
+

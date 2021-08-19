@@ -1,11 +1,13 @@
-def split(text, delim=","):
+from typing import *
+
+def split(text: str, delim=",") -> List[str]:
     """Return a list of fields in text separated by delim.
 
     Parameters:
     text: str -- the string to split into fields
 
     Return:
-    list[str]
+    List[str] of fields in text
 
     Usage examples:
     >>> split("foo, bar, baz")
@@ -13,17 +15,17 @@ def split(text, delim=","):
     """
     fields = []
     begin = 0
-    end = text.find(delim)
+    end = text.find(delim, begin)
     while True:
-        if end == -1:
-            fields.append(text[begin:])
-            break
+        # if end == -1:
+        #     fields.append(text[begin:])
+        #     break
         fields.append(text[begin:end])
         begin = end + 1
-        end = text.find(delim, end + 1)
+        end = text.find(delim, begin)
     return fields
 
-def zip(xs, ys):
+def zip(xs: Sequence, ys: Sequence) -> Sequence[Tuple]:
     """Return [(x0, y0), ..., (xn, yn)] where n is 1 - min(len(xs), len(ys))
 
     Parameters:
@@ -31,7 +33,7 @@ def zip(xs, ys):
     ys: Sequence -- the "right list
 
     Return:
-    list[tuple]
+    Sequence[Tuple] of pairs of corresponding elements in xs and yx
 
     Usage examples:
     >>> zip(['a', 'b', 'c', 'd'], [1,2,3])
@@ -42,14 +44,16 @@ def zip(xs, ys):
         result.append((xs[i], ys[i]))
     return result
 
-def zip_with_indexes(xs):
+def zip_with_indexes(xs: Sequence) -> Sequence[Tuple[int, Any]]:
     """Return [(0, x0), ..., (n, xn)] where n is 1 - len(xs)
 
     Parameters:
     xs: Sequence -- a sequence
 
     Return:
-    list[tuple]
+
+    List[Tuple[int, Any]] of pairs of indexes in xs and values at
+    corresponding index
 
     Usage examples:
     >>> zip_with_indexes(['a', 'b', 'c', 'd'])
@@ -60,15 +64,15 @@ def zip_with_indexes(xs):
         result.append((i, xs[i]))
     return result
 
-def lookup_key(v, d):
+def lookup_key(v: Any, d: Dict) -> Union[Any, None]:
     """Return a key in dict d which maps to v, or None if v isn't present
 
     Parameters:
     v: Any -- a value which may be in dictionary d
-    d, : dict -- a dictionary which may contain the value v
+    d: Dict -- a dictionary which may contain the value v
 
     Return:
-    Any
+    Any -- a key in d which maps to v
 
     Usage examples:
     >>> lookup_key(1, {'a': 1, 1: 'b', 'c': 2})
@@ -79,15 +83,15 @@ def lookup_key(v, d):
             return key
     return None
 
-def lookup_keys(v, d):
+def lookup_keys(v: Any, d: Dict) -> Sequence[Any]:
     """Return list of keys in dict d which map to value
 
     Parameters:
     v: Any -- a value which may be in dictionary d
-    d, : dict -- a dictionary which may contain the value v
+    d: dict -- a dictionary which may contain the value v
 
     Return:
-    list[Any]
+    Sequence[Any] of all keys in d that map to v
 
     Usage examples:
     >>> lookup_keys(1, {'a': 1, 1: 'b', 'c': 2, 'd': 1})
