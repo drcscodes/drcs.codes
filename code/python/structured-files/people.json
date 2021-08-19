@@ -1,0 +1,21 @@
+{
+  "people": {
+    "person": [
+      {
+        "firstName": "Alan",
+        "lastName": "Turing",
+        "professions": {
+          "profession": ["Computer Scientist", "Mathematician",
+                         "Computer Scientist", "Cryptographer"]
+         }
+       },
+       {
+         "firstName": "Stephen",
+         "lastName": "Hawking",
+         "professions": {
+           "profession": ["Physicist", "Comedian"]
+         }
+       }
+    ]
+  }
+}

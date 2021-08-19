@@ -1,0 +1,9 @@
+Capitals CSV with header lines.
+This is another annoying header line.
+We'll eventually get to the header row.
+
+Country; Capital
+Japan; Tokyo
+France; Paris
+Germany; Berlin
+U.S.A.;Washington, D.C

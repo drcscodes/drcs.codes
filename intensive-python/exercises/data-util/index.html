@@ -46,21 +46,23 @@
 <h3 id=required-functions>Required Functions</h3>
 <p>Implement the following functions in your <code>data_util.py</code> file. For convenience you can simply copy the code below.</p>
 <p><strong>IMPORTANT</strong>: Do not modify the provided docstrings!</p>
-<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>split</span>(text, delim<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;,&#34;</span>):
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=color:#f92672>from</span> typing <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
+
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>split</span>(text: str, delim<span style=color:#f92672>=</span><span style=color:#e6db74>&#34;,&#34;</span>) <span style=color:#f92672>-&gt;</span> List[str]:
     <span style=color:#e6db74>&#34;&#34;&#34;Return a list of fields in text separated by delim.
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Parameters:
 </span><span style=color:#e6db74>    text: str -- the string to split into fields
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Return:
-</span><span style=color:#e6db74>    list[str]
+</span><span style=color:#e6db74>    List[str] of fields in text
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Usage examples:
 </span><span style=color:#e6db74>    &gt;&gt;&gt; split(&#34;foo, bar, baz&#34;)
 </span><span style=color:#e6db74>    [&#39;foo&#39;, &#39; bar&#39;, &#39; baz&#39;]
 </span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
 
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>zip</span>(xs, ys):
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>zip</span>(xs: Sequence, ys: Sequence) <span style=color:#f92672>-&gt;</span> Sequence[Tuple]:
     <span style=color:#e6db74>&#34;&#34;&#34;Return [(x0, y0), ..., (xn, yn)] where n is 1 - min(len(xs), len(ys))
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Parameters:
@@ -68,51 +70,53 @@
 </span><span style=color:#e6db74>    ys: Sequence -- the &#34;right list
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Return:
-</span><span style=color:#e6db74>    list[tuple]
+</span><span style=color:#e6db74>    Sequence[Tuple] of pairs of corresponding elements in xs and yx
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Usage examples:
 </span><span style=color:#e6db74>    &gt;&gt;&gt; zip([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;], [1,2,3])
 </span><span style=color:#e6db74>    [(&#39;a&#39;, 1), (&#39;b&#39;, 2), (&#39;c&#39;, 3)]
 </span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
 
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>zip_with_indexes</span>(xs):
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>zip_with_indexes</span>(xs: Sequence) <span style=color:#f92672>-&gt;</span> Sequence[Tuple[int, Any]]:
     <span style=color:#e6db74>&#34;&#34;&#34;Return [(0, x0), ..., (n, xn)] where n is 1 - len(xs)
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Parameters:
 </span><span style=color:#e6db74>    xs: Sequence -- a sequence
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Return:
-</span><span style=color:#e6db74>    list[tuple]
+</span><span style=color:#e6db74>
+</span><span style=color:#e6db74>    List[Tuple[int, Any]] of pairs of indexes in xs and values at
+</span><span style=color:#e6db74>    corresponding index
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Usage examples:
 </span><span style=color:#e6db74>    &gt;&gt;&gt; zip_with_indexes([&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;])
 </span><span style=color:#e6db74>    [(0, &#39;a&#39;), (1, &#39;b&#39;), (2, &#39;c&#39;), (3, &#39;d&#39;)]
 </span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
 
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>lookup_key</span>(v, d):
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>lookup_key</span>(v: Any, d: Dict) <span style=color:#f92672>-&gt;</span> Union[Any, <span style=color:#66d9ef>None</span>]:
     <span style=color:#e6db74>&#34;&#34;&#34;Return a key in dict d which maps to v, or None if v isn&#39;t present
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Parameters:
 </span><span style=color:#e6db74>    v: Any -- a value which may be in dictionary d
-</span><span style=color:#e6db74>    d, : dict -- a dictionary which may contain the value v
+</span><span style=color:#e6db74>    d: Dict -- a dictionary which may contain the value v
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Return:
-</span><span style=color:#e6db74>    Any
+</span><span style=color:#e6db74>    Any -- a key in d which maps to v
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Usage examples:
 </span><span style=color:#e6db74>    &gt;&gt;&gt; lookup_key(1, {&#39;a&#39;: 1, 1: &#39;b&#39;, &#39;c&#39;: 2})
 </span><span style=color:#e6db74>    &#39;a&#39;
 </span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
 
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>lookup_keys</span>(v, d):
+<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>lookup_keys</span>(v: Any, d: Dict) <span style=color:#f92672>-&gt;</span> Sequence[Any]:
     <span style=color:#e6db74>&#34;&#34;&#34;Return list of keys in dict d which map to value
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Parameters:
 </span><span style=color:#e6db74>    v: Any -- a value which may be in dictionary d
-</span><span style=color:#e6db74>    d, : dict -- a dictionary which may contain the value v
+</span><span style=color:#e6db74>    d: dict -- a dictionary which may contain the value v
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Return:
-</span><span style=color:#e6db74>    list[Any]
+</span><span style=color:#e6db74>    Sequence[Any] of all keys in d that map to v
 </span><span style=color:#e6db74>
 </span><span style=color:#e6db74>    Usage examples:
 </span><span style=color:#e6db74>    &gt;&gt;&gt; lookup_keys(1, {&#39;a&#39;: 1, 1: &#39;b&#39;, &#39;c&#39;: 2, &#39;d&#39;: 1})

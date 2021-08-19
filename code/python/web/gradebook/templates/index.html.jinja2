@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>Gradebook</title>
+</head>
+<body>
+<h1>Available Grades</h1>
+<ul>
+  {% for course, term in courses %}
+      <li><a href="grades/{{course}}/{{term}}">{{course}}, {{term}}</a></li>
+  {% endfor %}
+</ul>
+</body>
+</html>
