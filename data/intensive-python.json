@@ -75,8 +75,7 @@
     },
     "classes-objects": {
         "topic": "[Classes and Objects](/intensive-python/slides/classes-objects.pdf)",
-        "materials": ["[OOP Code](../code/classes)",
-                      "TP 15 - 18",
+        "materials": [ "TP 15 - 18",
                       "[Basics Example Code](/code/python/classes)",
                      "[Exercise 1: Dog Module](../exercises/dog)",
                      "[Homework: Treating People as Objects](../hw/people-objects)"],
@@ -103,14 +102,14 @@
     "file-io": {
         "topic": "[File IO](/intensive-python/slides/file-io.pdf)",
         "materials": ["IP 8",
-            "[Basics Example Code](/code/python/structured-files)",
+            "[Structured Files Example Code](/code/python/structured-files)",
             "[Exercise: Logs](../exercises/logs)"],
         "order": [13]
     },
     "csv-files": {
         "topic": "[CSV Files](/intensive-python/slides/csv-files.pdf)",
         "materials": ["IP 8",
-            "[Basics Example Code](/code/python/structured-files)",
+            "[Structured Files Example Code](/code/python/structured-files)",
             "Exercise: [Student Emails](../exercises/student-emails)",
              "Exercise: [Tides](../exercises/tides)",
             "Exercise: [Calculate Grades](../exercises/calc-grades)"],
@@ -122,7 +121,7 @@
                       "[Python ElementTree API](https://docs.python.org/3/library/xml.etree.elementtree.html)",
                       "[XML Details](intensive-python/slides/xml-details.pdf)",
                       "[Python XML and Database APIs](intensive-python/slides/python-xml-database.pdf)",
-                      "[Basics Example Code](/code/python/structured-files)",
+                      "[Structured Files Example Code](/code/python/structured-files)",
                       "[people.xml](../code/structured-files/people.xml)",
                       "Exercise: [Books](../exercises/books)"],
         "order": [100]
