@@ -27,6 +27,7 @@ Video: Getting Started on macOS
 Video: Getting Started on Windows/WSL2
 2 Intro to Python Reading: TP 1
 Video: Intro to Python
+Basics Example Code
 Homework: hw0
 3 Values and Variables Reading: PfP</description></item><item><title>MSA Boot Camp 2021 Schedule</title><link>http://DrCS.codes/intensive-python/msabc2021/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://DrCS.codes/intensive-python/msabc2021/</guid><description>Lessons PfP means Python for Programmers TP means Think Python, 2nd Edition, by Allen B. Downey Session Topic Resources Monday, 2021-08-16, 13:30 - 17:00
 1 Introduction to Intensive Python Meet the Teacher
@@ -34,6 +35,7 @@ Video: Getting Started on macOS
 Video: Getting Started on Windows/WSL2
 2 Intro to Python Reading: TP 1
 Video: Intro to Python
+Basics Example Code
 Homework: hw0
 3 Values and Variables Reading: PfP</description></item><item><title>Student Emails</title><link>http://DrCS.codes/intensive-python/exercises/student-emails/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>http://DrCS.codes/intensive-python/exercises/student-emails/</guid><description>Student Emails Introduction In this assignment you will practice writing Python command-line utilities, file I/O, processing CSV files, and processing Python data structures.
 Problem Description You&amp;rsquo;re a teacher who needs to extract all the student emails from a CSV class roster downloaded from T-Square.

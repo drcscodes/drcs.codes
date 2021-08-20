@@ -93,21 +93,6 @@
 </span><span style=color:#e6db74>    [(0, &#39;a&#39;), (1, &#39;b&#39;), (2, &#39;c&#39;), (3, &#39;d&#39;)]
 </span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
 
-<span style=color:#66d9ef>def</span> <span style=color:#a6e22e>lookup_key</span>(v: Any, d: Dict) <span style=color:#f92672>-&gt;</span> Union[Any, <span style=color:#66d9ef>None</span>]:
-    <span style=color:#e6db74>&#34;&#34;&#34;Return a key in dict d which maps to v, or None if v isn&#39;t present
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>    Parameters:
-</span><span style=color:#e6db74>    v: Any -- a value which may be in dictionary d
-</span><span style=color:#e6db74>    d: Dict -- a dictionary which may contain the value v
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>    Return:
-</span><span style=color:#e6db74>    Any -- a key in d which maps to v
-</span><span style=color:#e6db74>
-</span><span style=color:#e6db74>    Usage examples:
-</span><span style=color:#e6db74>    &gt;&gt;&gt; lookup_key(1, {&#39;a&#39;: 1, 1: &#39;b&#39;, &#39;c&#39;: 2})
-</span><span style=color:#e6db74>    &#39;a&#39;
-</span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
-
 <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>lookup_keys</span>(v: Any, d: Dict) <span style=color:#f92672>-&gt;</span> Sequence[Any]:
     <span style=color:#e6db74>&#34;&#34;&#34;Return list of keys in dict d which map to value
 </span><span style=color:#e6db74>
