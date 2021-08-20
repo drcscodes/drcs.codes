@@ -1,0 +1,9 @@
+{{ $contentDir := .Get "contentDir" }}
+{{ $path := .Get "path" }}
+{{ $filepath := printf "%s%s" $contentDir $path  }}
+
+<ul>
+{{ range (readDir $filepath) }}
+    <li><a href="{{ $path }}/{{ .Name }}">{{ .Name }}</a></li>
+{{ end }}
+</ul>

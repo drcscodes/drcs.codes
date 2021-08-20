@@ -87,21 +87,6 @@ def zip_with_indexes(xs: Sequence) -> Sequence[Tuple[int, Any]]:
     [(0, 'a'), (1, 'b'), (2, 'c'), (3, 'd')]
     """
 
-def lookup_key(v: Any, d: Dict) -> Union[Any, None]:
-    """Return a key in dict d which maps to v, or None if v isn't present
-
-    Parameters:
-    v: Any -- a value which may be in dictionary d
-    d: Dict -- a dictionary which may contain the value v
-
-    Return:
-    Any -- a key in d which maps to v
-
-    Usage examples:
-    >>> lookup_key(1, {'a': 1, 1: 'b', 'c': 2})
-    'a'
-    """
-
 def lookup_keys(v: Any, d: Dict) -> Sequence[Any]:
     """Return list of keys in dict d which map to value
 

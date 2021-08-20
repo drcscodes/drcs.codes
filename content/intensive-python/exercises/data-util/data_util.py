@@ -16,13 +16,14 @@ def split(text: str, delim=",") -> List[str]:
     fields = []
     begin = 0
     end = text.find(delim, begin)
-    while True:
-        # if end == -1:
-        #     fields.append(text[begin:])
-        #     break
+    while end != -1:
         fields.append(text[begin:end])
+        # Move begin to first index of next field
         begin = end + 1
         end = text.find(delim, begin)
+    # After loop finishes, begin points to first index after last delim,
+    # or 0 if there were no delims in text.  Add last field.
+    fields.append(text[begin:])
     return fields
 
 def zip(xs: Sequence, ys: Sequence) -> Sequence[Tuple]:
@@ -40,7 +41,8 @@ def zip(xs: Sequence, ys: Sequence) -> Sequence[Tuple]:
     [('a', 1), ('b', 2), ('c', 3)]
     """
     result = []
-    for i in range(min(len(xs), len(ys))):
+    shortest_len = min(len(xs), len(ys))
+    for i in range(shortest_len):
         result.append((xs[i], ys[i]))
     return result
 
@@ -63,25 +65,6 @@ def zip_with_indexes(xs: Sequence) -> Sequence[Tuple[int, Any]]:
     for i in range(len(xs)):
         result.append((i, xs[i]))
     return result
-
-def lookup_key(v: Any, d: Dict) -> Union[Any, None]:
-    """Return a key in dict d which maps to v, or None if v isn't present
-
-    Parameters:
-    v: Any -- a value which may be in dictionary d
-    d: Dict -- a dictionary which may contain the value v
-
-    Return:
-    Any -- a key in d which maps to v
-
-    Usage examples:
-    >>> lookup_key(1, {'a': 1, 1: 'b', 'c': 2})
-    'a'
-    """
-    for key, value in d.items():
-        if value == v:
-            return key
-    return None
 
 def lookup_keys(v: Any, d: Dict) -> Sequence[Any]:
     """Return list of keys in dict d which map to value

@@ -10,36 +10,42 @@
         "topic": "[Intro to Python](/intensive-python/slides/intro-python.pdf)",
         "materials": ["Reading: TP 1",
                       "[Video: Intro to Python](https://youtu.be/ZDCHBkTMfE8)",
+                      "[Basics Example Code](/code/python/basics)",
                     "Homework: [hw0](../hw/hw0)"],
         "order": [2]
     },
     "values-variables": {
         "topic": "[Values and Variables](/intensive-python/slides/values-variables.pdf)",
         "materials": ["Reading: PfP", "[Video: Values and Variables](https://youtu.be/iKG_hAXy0qQ)",
+            "[Basics Example Code](/code/python/basics)",
                      "Exercise: [Values and Variables](../exercises/values-variables)"],
         "order": [3]
     },
     "functions": {
         "topic": "[Functions](/intensive-python/slides/functions.pdf)",
-        "materials": ["TP 3"],
+        "materials": ["TP 3", "[Basics Example Code](/code/python/basics)"],
         "order": [4]
     },
     "strings": {
         "topic": "[Strings](/intensive-python/slides/strings.pdf)",
         "materials": ["TP 3",
+            "[Basics Example Code](/code/python/basics)",
             "Exercise 1: [Email Utilities](../exercises/email-utils)"],
         "order": [4]
     },
     "modules-programs": {
         "topic": "[Modules and Programs](/intensive-python/slides/modules-programs.pdf)",
         "materials": ["TP 1,14",
+            "[Basics Example Code](/code/python/basics)",
             "Exercise 1: [BMI Module](../exercises/bmi)",
             "Homework: [Dates](../hw/dates)"],
         "order": [5]
     },
     "data-structures": {
         "topic": "[Data Structures](/intensive-python/slides/data-structures.pdf)",
-        "materials": ["TP 10,11,12", "[Video: Data Structures](https://youtu.be/TtAQxtgPOwI)"],
+        "materials": ["TP 10,11,12",
+            "[Basics Example Code](/code/python/basics)",
+            "[Video: Data Structures](https://youtu.be/TtAQxtgPOwI)"],
         "order": [6]
     },
     "ipython": {
@@ -50,6 +56,7 @@
     "control-structures": {
         "topic": "[Control Structures](/intensive-python/slides/control-structures.pdf)",
         "materials": ["TP 5, 7",
+            "[Basics Example Code](/code/python/basics)",
                       "Exercise 1: [Data Transformation](../exercises/data-transformation)",
                       "Exercise: [Data Utilities](../exercises/data-util)",
                       "Exercise: [Grades Module](../exercises/grades)"
@@ -58,7 +65,7 @@
     },
     "functional-programming": {
         "topic": "[Functional programming](/intensive-python/slides/functional-programming.pdf)",
-        "materials": ["TP 19"],
+        "materials": ["TP 19", "[Basics Example Code](/code/python/basics)"],
         "order": [9]
     },
     "data-representation": {
@@ -70,6 +77,7 @@
         "topic": "[Classes and Objects](/intensive-python/slides/classes-objects.pdf)",
         "materials": ["[OOP Code](../code/classes)",
                       "TP 15 - 18",
+                      "[Basics Example Code](/code/python/classes)",
                      "[Exercise 1: Dog Module](../exercises/dog)",
                      "[Homework: Treating People as Objects](../hw/people-objects)"],
         "order": [10]
@@ -94,12 +102,18 @@
     },
     "file-io": {
         "topic": "[File IO](/intensive-python/slides/file-io.pdf)",
-        "materials": ["IP 8", "[Exercise: Logs](../exercises/logs)"],
+        "materials": ["IP 8",
+            "[Basics Example Code](/code/python/structured-files)",
+            "[Exercise: Logs](../exercises/logs)"],
         "order": [13]
     },
     "csv-files": {
         "topic": "[CSV Files](/intensive-python/slides/csv-files.pdf)",
-        "materials": ["IP 8", "Exercise: [Student Emails](../exercises/student-emails) ([Sample Answer](../exercises/student_emails.py))", "Exercise: [Tides](../exercises/tides)", "Exercise: [Calculate Grades](../exercises/calc-grades)"],
+        "materials": ["IP 8",
+            "[Basics Example Code](/code/python/structured-files)",
+            "Exercise: [Student Emails](../exercises/student-emails)",
+             "Exercise: [Tides](../exercises/tides)",
+            "Exercise: [Calculate Grades](../exercises/calc-grades)"],
         "order": [14]
     },
     "xml": {
@@ -108,13 +122,16 @@
                       "[Python ElementTree API](https://docs.python.org/3/library/xml.etree.elementtree.html)",
                       "[XML Details](intensive-python/slides/xml-details.pdf)",
                       "[Python XML and Database APIs](intensive-python/slides/python-xml-database.pdf)",
+                      "[Basics Example Code](/code/python/structured-files)",
                       "[people.xml](../code/structured-files/people.xml)",
                       "Exercise: [Books](../exercises/books)"],
         "order": [100]
     },
     "json": {
         "topic": "[JavaScript Object Notation](intensive-python/slides/json.pdf)",
-        "materials": ["IP 8", "[JSON Spec](http://json.org/)", "Exercise: [Data Converter](../exercises/data-converter)"],
+        "materials": ["IP 8", "[JSON Spec](http://json.org/)",
+            "[Basics Example Code](/code/python/structured-files)",
+            "Exercise: [Data Converter](../exercises/data-converter)"],
         "order": [100]
     },
     "data-exchange-formats": {
