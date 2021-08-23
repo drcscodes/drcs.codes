@@ -1,6 +1,6 @@
 ---
 title: Example Code
-layout: single
+layout: exercise
 ---
 
 {{< dirlisting contentDir="static" path="/code/python" >}}
