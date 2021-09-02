@@ -14,10 +14,10 @@ We'll use a simple Python web framework called [Flask](http://flask.pocoo.org/).
 
 ## Installing Flask
 
-To install Flask, use conda:
+To install Flask, use pip:
 
 ```sh
-$ conda install flask
+$ pip3 install flask
 ```
 
 To check that your Flask installation was successful, import it:
@@ -30,7 +30,7 @@ If you get no error messages, you're ready to start developing web applications 
 
 ## Hello, Flask!
 
-Download [hello_flask.py](../code/web/hello_flask.py) or paste the following into a file named `hello_flask.py`:
+Download [hello_flask.py](/code/python/web/hello_flask.py) or paste the following into a file named `hello_flask.py`:
 
 ```python
 from flask import Flask, request
@@ -92,7 +92,6 @@ Add this function to `hello_flask.py`
 
 ```python
 @app.route("/user/<name>")
-
 def user(name):
     return f"<h1>Hello, {name}!</h1>"
 ```
@@ -114,11 +113,11 @@ In the previous examples our view functions returned strings that we generated d
 - Flask uses the [Jinja2](http://jinja.pocoo.org/) template engine
 - By default, Flask looks for templates in a subdirectory named templates
 
-Download [hello_jinja2.py](../code/web/hello_jinja2.py) and the [templates](../code/web/templates) directory.
+Download [hello_jinja2.py](/code/python/web/hello_jinja2.py) and the [templates](/code/python/web/templates) directory.
 
 ## Template Variables
 
-Here's a simple template ([templates/user.html.jinja2](../code/web/templates/user.html.jinja2)):
+Here's a simple template ([templates/user.html.jinja2](/code/python/web/templates/user.html.jinja2)):
 
 ```html
 <html>
@@ -165,7 +164,7 @@ and for loops:
 
 ## Complete Example: Gradebook
 
-Download the files and subdirectories in [gradebook](../code/web/gradebook).
+Download [gradebook.zip](/code/python/web/gradebook.zip) and extract it.
 
 - In `grades.py` the `gradebook()` view function parses a CSV file from the local file system and passes data to the `grades.html.jinja2` template
 
@@ -185,7 +184,7 @@ def gradebook(course, term):
 
 - `grades.html.jinja2` uses nested for loops to populate an HTML table.
 
-Take a look at the `grades.html.jinjs2` template. How would it look if we used a `csv.DictReader`?
+Take a look at the `grades.html.jinja2` template. How would it look if we used a `csv.DictReader`?
 
 ## Closing Thoughts
 

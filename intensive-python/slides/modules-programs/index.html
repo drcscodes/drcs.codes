@@ -1,0 +1,159 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge,chrome=1">
+<title>Dr. CS codes </title>
+<meta name=viewport content="width=device-width">
+<link rel=stylesheet href=https://DrCS.codes/css/syntax.css>
+<link rel=stylesheet href=https://DrCS.codes/css/main.css>
+<link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous>
+<link href=https://DrCS.codes/css/navbar-top-fixed.css rel=stylesheet>
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class=navbar-brand href=/intensive-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span>
+</button>
+<div class="navbar-collapse collapse" id=navbarCollapse>
+<ul class="navbar-nav mr-auto">
+<li class=nav-item><a class=nav-link href=/intensive-python/getting-started/>Getting Started</a></li>
+<li class=nav-item><a class=nav-link href=/intensive-python/lessons/>Lessons</a></li>
+</ul>
+<ul class="navbar-nav pull-right">
+<li class="nav-item pull-right"><a class=nav-link href=https://DrCS.codes>Dr. CS codes</a></li>
+</ul>
+</div>
+</nav>
+<main role=main class=container>
+<p>% Modules and Programs</p>
+<h2 id=python-programs>Python Programs</h2>
+<p>Python code organized in</p>
+<ul>
+<li>modules,</li>
+<li>packages, and</li>
+<li>scripts.</li>
+</ul>
+<p>We&rsquo;ve already used some modules, now we&rsquo;ll learn what they are, how they&rsquo;re orgainized in packages, and how to write Python programs that can be run on their own, not just entered in the Python command shell.</p>
+<h2 id=importing-modules>Importing Modules</h2>
+<p><code>import</code>ing a module means getting names from the module into scope. When you import a module, you can access the modules components with the dot operator as in the previous example.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#f92672>import</span> math
+<span style=color:#f92672>&gt;&gt;&gt;</span> math<span style=color:#f92672>.</span>sqrt(<span style=color:#ae81ff>64</span>)
+<span style=color:#ae81ff>8.0</span>
+</code></pre></div><p>You can also import a module and give it an alias: import as </p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#f92672>import</span> math <span style=color:#66d9ef>as</span> m
+<span style=color:#f92672>&gt;&gt;&gt;</span> m<span style=color:#f92672>.</span>sqrt(<span style=color:#ae81ff>64</span>)
+<span style=color:#ae81ff>8.0</span>
+</code></pre></div><h2 id=importing-into-local-scope>Importing into Local Scope</h2>
+<p>Remember that importing brings names into the scope of the import.
+Here we import the math module into one function.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>hypotenuse</span>(a, b):
+<span style=color:#f92672>...</span>     <span style=color:#f92672>import</span> math
+<span style=color:#f92672>...</span>     <span style=color:#66d9ef>return</span> math<span style=color:#f92672>.</span>sqrt(a<span style=color:#f92672>*</span>a <span style=color:#f92672>+</span> b<span style=color:#f92672>*</span>b)
+<span style=color:#f92672>...</span>
+<span style=color:#f92672>&gt;&gt;&gt;</span> hypotenuse(<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>)
+<span style=color:#ae81ff>5.0</span>
+</code></pre></div><p>But it&rsquo;s not available at the top level.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> math<span style=color:#f92672>.</span>sqrt(<span style=color:#ae81ff>64</span>)
+Traceback (most recent call last):
+File <span style=color:#e6db74>&#34;&lt;stdin&gt;&#34;</span>, line <span style=color:#ae81ff>1</span>, <span style=color:#f92672>in</span> <span style=color:#f92672>&lt;</span>module<span style=color:#f92672>&gt;</span>
+<span style=color:#a6e22e>NameError</span>: name <span style=color:#e6db74>&#39;math&#39;</span> <span style=color:#f92672>is</span> <span style=color:#f92672>not</span> defined
+</code></pre></div><h2 id=importing-names-from-a-module>Importing Names from a Module</h2>
+<p>You can choose to import only certain names from a module:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#f92672>from</span> math <span style=color:#f92672>import</span> sqrt
+<span style=color:#f92672>&gt;&gt;&gt;</span> sqrt(<span style=color:#ae81ff>64</span>)
+<span style=color:#ae81ff>8.0</span>
+<span style=color:#f92672>&gt;&gt;&gt;</span> floor(<span style=color:#ae81ff>1.2</span>)
+Traceback (most recent call last):
+File <span style=color:#e6db74>&#34;&lt;stdin&gt;&#34;</span>, line <span style=color:#ae81ff>1</span>, <span style=color:#f92672>in</span> <span style=color:#f92672>&lt;</span>module<span style=color:#f92672>&gt;</span>
+<span style=color:#a6e22e>NameError</span>: name <span style=color:#e6db74>&#39;floor&#39;</span> <span style=color:#f92672>is</span> <span style=color:#f92672>not</span> defined
+</code></pre></div><p>Or all names from a module:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#f92672>from</span> math <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
+<span style=color:#f92672>&gt;&gt;&gt;</span> floor(<span style=color:#ae81ff>1.2</span>)
+<span style=color:#ae81ff>1</span>
+<span style=color:#f92672>&gt;&gt;&gt;</span> sin(<span style=color:#ae81ff>0</span>)
+<span style=color:#ae81ff>0.0</span>
+<span style=color:#f92672>&gt;&gt;&gt;</span> sin(<span style=color:#ae81ff>.5</span> <span style=color:#f92672>*</span> pi)
+<span style=color:#ae81ff>1.0</span>
+</code></pre></div><p>Notice that with this syntax you don&rsquo;t have to use a fully-qualified
+name, e.g., <code>module.name</code></p>
+<h2 id=module-search-path>Module Search Path</h2>
+<p>Just as an operating system command shell searches for executable programs by searching the directories listed in the <code>PATH</code> environment variable, Python finds modules by searching directories. The module search path is stored in <code>sys.path</code>:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#f92672>import</span> sys
+<span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#f92672>from</span> pprint <span style=color:#f92672>import</span> pprint
+<span style=color:#f92672>&gt;&gt;&gt;</span> pprint(sys<span style=color:#f92672>.</span>path)
+[<span style=color:#e6db74>&#39;&#39;</span>,
+ <span style=color:#e6db74>&#39;/usr/lib/python38.zip&#39;</span>,
+ <span style=color:#e6db74>&#39;/usr/lib/python3.8&#39;</span>,
+ <span style=color:#e6db74>&#39;/usr/lib/python3.8/lib-dynload&#39;</span>,
+ <span style=color:#e6db74>&#39;/home/chris/.local/lib/python3.8/site-packages&#39;</span>,
+ <span style=color:#e6db74>&#39;/usr/local/lib/python3.8/dist-packages&#39;</span>,
+ <span style=color:#e6db74>&#39;/usr/lib/python3/dist-packages&#39;</span>]
+</code></pre></div><p>Notice that the current directory, represented by the <code>''</code> at the beginning of the search path, is part of <code>sys.path</code>, which is why you can import modules located in your current directory.</p>
+<p>Also, note use of <code>pprint</code>.</p>
+<h2 id=writing-python-modules>Writing Python Modules</h2>
+<p>A Python module is a file containing definitions. These definitions can include classes, functions or vairables.</p>
+<p>Exercise 1</p>
+<h2 id=python-scripts>Python Scripts</h2>
+<p>A Python script is a file containing executable Python code. Our <code>hello.py</code> script from Day 1 is an example of a Python script.</p>
+<h2 id=if-__name__--__main__><code>if __name__ == '__main__'</code></h2>
+<p>Take a look at the draw.py file. Notice the if statement at the bottom:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e># Is this the main (top-level) module?</span>
+<span style=color:#66d9ef>if</span> __name__ <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;__main__&#39;</span>:
+    stand()
+    head()
+    body()
+    leftarm()
+    rightarm()
+    leftleg()
+    rightleg()
+    <span style=color:#75715e># Pause so the user can see the drawing before exiting.</span>
+    input(<span style=color:#e6db74>&#39;Press any key to exit.&#39;</span>)
+</code></pre></div><p>This makes the module a runnable Python program. It&rsquo;s similar to the main function or method from some other programming languages. With it we can import the file as a module to use its functions (or objects or variables), or run it from the command line.</p>
+<h2 id=shebang>Shebang!</h2>
+<p>Another way to run a Python program (on Unix) is to tell the host operating system how to run it. We do that with a &ldquo;shebang&rdquo; line at the beginning of a Python program:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e>#!/usr/bin/env python3</span>
+</code></pre></div><p>This line says &ldquo;run python3 and pass this file as an argument.&rdquo; So if you have a program called foo with shebang line as above and which has been set executable (<code>chmod +x foo.py</code>), thse are equivalent:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#960050;background-color:#1e0010>$</span> python3 foo<span style=color:#f92672>.</span>py
+<span style=color:#960050;background-color:#1e0010>$</span> <span style=color:#f92672>./</span>foo<span style=color:#f92672>.</span>py
+</code></pre></div><h2 id=interactive-programs>Interactive Programs</h2>
+<p>The input() function Python reads all the characters typed into the console until the user presses ENTER and returns them as a string:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> x <span style=color:#f92672>=</span> input()
+abcdefg1234567
+<span style=color:#f92672>&gt;&gt;&gt;</span> x
+<span style=color:#e6db74>&#39;abcdefg1234567&#39;</span>
+</code></pre></div><p>We can also supply a prompt for the user:</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> input(<span style=color:#e6db74>&#39;Give me a number: &#39;</span>)
+Give me a number: <span style=color:#ae81ff>3</span>
+<span style=color:#e6db74>&#39;3&#39;</span>
+</code></pre></div><p>And remember, input() returns a string that may need to be converted.</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>*</span> int(input(<span style=color:#e6db74>&#34;Give me a number and I&#39;ll double it: &#34;</span>))
+Give me a number <span style=color:#f92672>and</span> I<span style=color:#e6db74>&#39;ll double it: 3</span>
+<span style=color:#ae81ff>6</span>
+</code></pre></div><h2 id=command-line-arguments>Command Line Arguments</h2>
+<p><img src=Argument_Clinic.png alt>{height=50%}</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#960050;background-color:#1e0010>$</span> python args<span style=color:#f92672>.</span>py one <span style=color:#ae81ff>2</span> two <span style=color:#f92672>+</span> one
+</code></pre></div><p>The <code>python</code> invocation above contains 6 command line arguments.</p>
+<h2 id=command-line-arguments-in-python>Command-line Arguments in Python</h2>
+<p>When you run a Python program, Python collects the arguments to the
+program in a variable called sys.argv. Given a Python program
+(<code>arguments.py</code>):</p>
+<div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#75715e>#!/usr/bin/env python3</span>
+<span style=color:#f92672>import</span> sys
+
+<span style=color:#66d9ef>if</span> len(sys<span style=color:#f92672>.</span>argv) <span style=color:#f92672>&lt;</span> <span style=color:#ae81ff>2</span>:
+    print(<span style=color:#e6db74>&#34;You&#39;ve given me nothing to work with.&#34;</span>)
+<span style=color:#66d9ef>else</span>:
+    print(sys<span style=color:#f92672>.</span>argv[<span style=color:#ae81ff>1</span>] <span style=color:#f92672>+</span><span style=color:#e6db74>&#34;? Well I disagree!&#34;</span>)
+</code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=color:#960050;background-color:#1e0010>$</span> <span style=color:#f92672>./</span>arguments<span style=color:#f92672>.</span>py Pickles
+Pickles<span style=color:#960050;background-color:#1e0010>?</span> Well I disagree<span style=color:#960050;background-color:#1e0010>!</span>
+<span style=color:#960050;background-color:#1e0010>$</span> <span style=color:#f92672>./</span>arguments<span style=color:#f92672>.</span>py
+You<span style=color:#e6db74>&#39;ve given me nothing to work with.</span>
+</code></pre></div><h2 id=conclusion>Conclusion</h2>
+<p><a href="https://www.youtube.com/watch?v=DkQhK8O9Jik">Python Arguments</a></p>
+</main>
+<script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script>
+</body>
+</html>
