@@ -1,0 +1,133 @@
+{
+    "cnds-go-intro": {
+        "topic": "[Introduction](/cnds-go/slides/cnds-go-intro.pdf)",
+        "materials": ["[Meet the Teacher](http://cs1331.github.io/slides/meet-simpkins.html)",
+                      "[Video: Getting Started on macOS]()",
+                      "[Video: Getting Started on Linux]()",
+                      "[Video: Getting Started on Windows/WSL2]()"],
+        "order": [1]
+    },
+    "go-types": {
+        "topic": "[Go Types](/cnds-go/slides/go-basics.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 1, 2",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 2, 3",
+                      "[Go Language Specification](https://go.dev/ref/spec)",
+                      "[Go Standard Library Packages](https://pkg.go.dev/std)"],
+        "order": [2]
+    },
+    "go-functions": {
+        "topic": "[Functions](/cnds-go/slides/go-functions.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 5",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 5"],
+        "order": [3]
+    },
+    "go-modules-packages": {
+        "topic": "[Go Modules and Packages](/cnds-go/slides/go-modules-packages.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 10, [Using Go Modules](https://go.dev/blog/using-go-modules)",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 9"],
+        "order": [4]
+    },
+    "go-concurrency": {
+        "topic": "[Go Concurrency](/cnds-go/slides/go-concurrency.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 8",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 10"],
+        "order": [5]
+    },
+    "go-testing": {
+        "topic": "[Go Testing](/cnds-go/slides/go-testing.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 11",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 13"],
+        "order": [6]
+    },
+    "go-servers": {
+        "topic": "[Go Servers](/cnds-go/slides/go-servers.pdf)",
+        "materials": ["Basic Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 12",
+                      "Additional Reading: [Cloud-Native Go](https://www.ebooks.com/en-us/book/210272474/cloud-native-go/matthew-a-titmus/) Ch 12"],
+        "order": [7]
+    },
+
+    "requirements": {
+        "topic": "[Requirements](/cnds-go/slides/app-requirements.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []()"],
+        "order": [8]
+    },
+    "ddd": {
+        "topic": "[Domain-Driven Design](/cnds-go/slides/ddd.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []()"],
+        "order": [8]
+    },
+    "domain-modeling": {
+        "topic": "[Domain Modeling](/cnds-go/slides/domain-modeling.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []()"],
+        "order": [8]
+    },
+    "service-architecture": {
+        "topic": "[Service Architecture](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []()"],
+        "order": [8]
+    },
+    "": {
+        "topic": "[](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []()"],
+        "order": [8]
+    },
+    "": {
+        "topic": "[](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []("],
+        "order": [8]
+    },
+    "": {
+        "topic": "[](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []("],
+        "order": [8]
+    },
+    "": {
+        "topic": "[](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []("],
+        "order": [8]
+    },
+    "": {
+        "topic": "[](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []("],
+        "order": [8]
+    },
+    "": {
+        "topic": "[](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []("],
+        "order": [8]
+    },
+    "": {
+        "topic": "[](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []("],
+        "order": [8]
+    },
+    "": {
+        "topic": "[](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []("],
+        "order": [8]
+    },
+    "": {
+        "topic": "[](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []("],
+        "order": [8]
+    },
+    "": {
+        "topic": "[](/cnds-go/slides/.pdf)",
+        "materials": ["Basic Reading: []()",
+                      "Additional Reading: []("],
+        "order": [8]
+    }
+}

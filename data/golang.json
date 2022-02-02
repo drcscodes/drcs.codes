@@ -1,0 +1,90 @@
+{
+    "cnds-go-intro": {
+        "topic": "[Introduction](/cnds-go/slides/cnds-go-intro.pdf)",
+        "materials": ["[Meet the Teacher](http://cs1331.github.io/slides/meet-simpkins.html)",
+                      "[Video: Getting Started on macOS]()",
+                      "[Video: Getting Started on Linux]()",
+                      "[Video: Getting Started on Windows/WSL2]()"],
+        "order": [1]
+    },
+    "go-programs": {
+        "topic": "[Go Programs](/cnds-go/slides/go-programs.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 1, 2",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch ",
+                      "[Go Language Specification](https://go.dev/ref/spec)",
+                      "[Go Standard Library Packages](https://pkg.go.dev/std)"],
+        "order": [2]
+    },
+    "go-values-variables": {
+        "topic": "[Values and Variables](/cnds-go/slides/go-values-variables.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 3",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch "],
+        "order": [3]
+    },
+    "go-control-structures": {
+        "topic": "[Control Structures](/cnds-go/slides/go-control-structures.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 1, 2",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch "],
+        "order": [4]
+    },
+    "go-data-structures": {
+        "topic": "[Data Structures](/cnds-go/slides/go-data-structures.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 4",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch "],
+        "order": [5]
+    },
+    "go-functions": {
+        "topic": "[Functions](/cnds-go/slides/go-functions.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 5",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch "],
+        "order": [6]
+    },
+    "go-errors": {
+        "topic": "[Go Errors](/cnds-go/slides/go-errors.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 5",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 8"],
+        "order": [7]
+    },
+    "go-interfaces": {
+        "topic": "[Go Interfaces](cnds-go/slides/go-interfaces.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 7",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch "],
+        "order": [8]
+    },
+    "go-concurrency-1": {
+        "topic": "[Go Concurrency 1](/cnds-go/slides/go-concurrency-1.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 8",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch "],
+        "order": [9]
+    },
+    "go-concurrency-2": {
+        "topic": "[Go Concurrency 2](/cnds-go/slides/go-concurrency-2.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 9",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch "],
+        "order": [10]
+    },
+    "go-modules-packages": {
+        "topic": "[Go Modules and Packages](/cnds-go/slides/go-modules-packages.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 10, [Using Go Modules](https://go.dev/blog/using-go-modules)",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 9"],
+        "order": [11]
+    },
+    "go-testing": {
+        "topic": "[Go Testing](/cnds-go/slides/go-testing.pdf)",
+        "materials": ["Basic Reading: [GoPL](https://www.informit.com/store/go-programming-language-9780134190440) Ch 11",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 13"],
+        "order": [12]
+    },
+    "go-std-lib": {
+        "topic": "[Go Standard Library](/cnds-go/slides/go-std-lib.pdf)",
+        "materials": ["Basic Reading: [Go Standard Library Packages](https://pkg.go.dev/std)",
+                      "Additional Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 11"],
+        "order": [13]
+    },
+    "go-servers": {
+        "topic": "[Go Servers](/cnds-go/slides/go-servers.pdf)",
+        "materials": ["Basic Reading: [Learning Go](https://www.ebooks.com/en-us/book/210238288/learning-go/jon-bodner/) Ch 12",
+                      "Additional Reading: [Cloud-Native Go](https://www.ebooks.com/en-us/book/210272474/cloud-native-go/matthew-a-titmus/) Ch 5"],
+        "order": [14]
+    }
+}

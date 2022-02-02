@@ -1,0 +1,98 @@
+{
+    "software-engineering": {
+        "topic": "[Software Engineering](/swe/slides/software-engineering.pdf)",
+        "materials": ["Core Reading: []()",
+                      "[Video: Software Engineering]()"],
+        "order": [1]
+    },
+    "agile-software-development": {
+        "topic": "[](/swe/slides/agile-software-development.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []()"],
+        "order": [2]
+    },
+    "version-control": {
+        "topic": "[](/swe/slides/version-control.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [3]
+    },
+    "build-automation": {
+        "topic": "[](/swe/slides/build-automation.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [4]
+    },
+    "testing": {
+        "topic": "[](/swe/slides/testing.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [5]
+    },
+    "software-design": {
+        "topic": "[](/swe/slides/software-design.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [6]
+    },
+    "ddd": {
+        "topic": "[](/swe/slides/ddd.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [7]
+    },
+    "clean-code": {
+        "topic": "[](/swe/slides/clean-code.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [8]
+    },
+    "clean-classes": {
+        "topic": "[](/swe/slides/clean-clases.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [9]
+    },
+    "oo-design": {
+        "topic": "[](/swe/slides/oo-design.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [10]
+    },
+    "solid-principles": {
+        "topic": "[](/swe/slides/solid-principles.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [11]
+    },
+    "oo-design-patterns": {
+        "topic": "[](/swe/slides/oo-design-patterns.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [11]
+    },
+    "creational-patterns": {
+        "topic": "[](/swe/slides/creational-patterns.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [11]
+    },
+    "structural-patterns": {
+        "topic": "[](/swe/slides/structural-patterns.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [11]
+    },
+    "behavioral-patterns": {
+        "topic": "[](/swe/slides/behavioral-patterns.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [11]
+    },
+    "architectural-patterns": {
+        "topic": "[](/swe/slides/architectural-patterns.pdf)",
+        "materials": ["Core Reading: []()",
+                      "Additional Reading: []("],
+        "order": [11]
+    }
+}

@@ -76,4 +76,4 @@ That's it.  Now you can run `python` and `pip` in the `cmd` shell or Powershell.
 
 ## Text Editors and Other Tools
 
-- [Text Editors for Programmers](/intensive-python/text-editors/)
+- [Text Editors for Programmers](/computing/text-editors/)

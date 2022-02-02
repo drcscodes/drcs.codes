@@ -1,13 +1,14 @@
 {
-    "intro-course": {
-        "topic": "[Introduction to Intensive Python](/data-manipulation/)",
+    "intro-dm": {
+        "topic": "[Introduction to Data Manipulation](/data-manipulation/)",
         "materials": ["[Meet the Teacher](http://cs1331.github.io/slides/meet-simpkins.html)",
                       "[Video: Getting Started on macOS](https://youtu.be/znjTbnH42Rk)",
-                      "[Video: Getting Started on Windows/WSL2]()"],
+                      "[Video: Getting Started on Windows/WSL2]()",
+                      "[Video: Getting Started on Linux]()"],
         "order": [1]
     },
     "file-io": {
-        "topic": "[File IO](/intensive-python/slides/file-io.pdf)",
+        "topic": "[File IO](/data-manipulation/slides/file-io.pdf)",
         "materials": ["IP 8",
             "[Structured Files Example Code](/code/python/structured-files)",
             "[Exercise: Logs](../exercises/logs)"],
@@ -55,7 +56,7 @@
         "order": [16]
     },
     "regular-expressions": {
-        "topic": "[Regular Expressions](/data-manipulation/slides/python-regular-expressions.pdf)",
+        "topic": "[Regular Expressions](/data-manipulation/slides/regular-expressions.pdf)",
         "materials": ["IP 7", "[Python RE Module](https://docs.python.org/3/library/re.html)", "[Python Regex HowTo](https://docs.python.org/3/howto/regex.html)"],
         "order": [17]
     },
@@ -65,7 +66,7 @@
         "order": [100]
     },
     "web-scraping": {
-        "topic": "[Web Scraping](/data-manipulation/slides/python-web-scraping.pdf)",
+        "topic": "[Web Scraping](/data-manipulation/slides/web-scraping.pdf)",
         "materials": ["[Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)",
                       "[wx.py](../code/web/wx.py)",
                       "[movie.py](../code/web/movie.py)",
@@ -73,12 +74,12 @@
         "order": [18]
     },
     "web-services": {
-        "topic": "[Web Services](/data-manipulation/slides/python-web-services.pdf)",
+        "topic": "[Web Services](/data-manipulation/slides/web-services.pdf)",
         "materials": ["IP 8", "[Requests](http://docs.python-requests.org/en/master/)", "[OAuth](https://oauth.net/)", "[JSON Spec](http://json.org/)"],
         "order": [19]
     },
-    "relational-model": {
-        "topic": "[Relational Model](/data-manipulation/slides/relational-model.pdf)</a>",
+    "relational-data-model": {
+        "topic": "[Relational Model](/data-manipulation/slides/relational-data-model.pdf)</a>",
         "materials": [""],
         "order": [100]
     },
@@ -106,6 +107,14 @@
                      "Exercise: [Pubs Queries](../exercises/pubs-queries.sql)"],
         "order": [20]
     },
+    "sql": {
+        "topic": "[SQL](/data-manipulation/slides/sql.pdf)",
+        "materials": ["[MySQL Guide](../databases/mysql.html)",
+                      "Exercise: [Registration Database](../exercises/registration-database.html)",
+                     "Exercise: [Pubs Queries](../exercises/pubs-queries.sql)"],
+        "order": [20]
+    },
+
     "sql-crud": {
         "topic": "[SQL CRUD](/data-manipulation/slides/sql-crud.pdf)",
         "materials": ["[MySQL Guide](../databases/mysql.html)",
