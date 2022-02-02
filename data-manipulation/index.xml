@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Data Manipulation on Dr. CS codes</title><link>https://DrCS.codes/data-manipulation/</link><description>Recent content in Data Manipulation on Dr. CS codes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://DrCS.codes/data-manipulation/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started</title><link>https://DrCS.codes/data-manipulation/getting-started/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/data-manipulation/getting-started/</guid><description>Getting Started These instructions are for installing the necessary tools and Python components for this course. We use the Python.org distribution of Python, but if you already have another distribution, such as Anaconda, that will work fine as long as it includes Python &amp;gt;= 3.7, pip, and venv.
+Ubuntu/WSL2 If you are using Windows 10 or 11, install WSL2, the Windows Subsystem for Linux, Version 2. WSL2 provides a very nice Linux environment, including a full Linux kernel and distribution of your choosing (I will use the latest Ubuntu in demonstrations).</description></item><item><title>Lessons</title><link>https://DrCS.codes/data-manipulation/lessons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/data-manipulation/lessons/</guid><description>Lessons PfP means Python for Programmers TP means Think Python, 2nd Edition, by Allen B. Downey Session Topic Resources 1 Introduction to Data Manipulation Meet the Teacher
+Video: Getting Started on macOS
+Video: Getting Started on Windows/WSL2
+Video: Getting Started on Linux
+2 File IO IP 8
+Structured Files Example Code
+Exercise: Logs
+3 CSV Files IP 8</description></item></channel></rss>

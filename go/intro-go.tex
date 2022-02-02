@@ -1,0 +1,101 @@
+% Created 2022-01-31 Mon 22:33
+% Intended LaTeX compiler: pdflatex
+\documentclass[smaller]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{verbatim, multicol, tabularx}
+\usepackage{sourcecodepro}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+\setbeamertemplate{footline}[frame number]
+\hypersetup{colorlinks=true,urlcolor=blue}
+\usetheme{default}
+\date{}
+\title{Introduction to Go Programming}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Introduction to Go Programming},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.2 (Org mode 9.4.4)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{Introduction to Go Programming}
+\label{sec:orgcb3594a}
+
+\begin{frame}[label={sec:org09fa5af}]{The Go Programming Language}
+Made by Google.
+\end{frame}
+
+
+\begin{frame}[label={sec:orgaf0f58b},fragile]{Installing Go}
+ \begin{enumerate}
+\item Download the Go distribution for your OS from \url{https://go.dev/dl/}
+\item Install Go using the instructions for your OS at \url{https://go.dev/doc/install}
+\end{enumerate}
+
+If installation was successful, you should see this at the command line (\texttt{❯} is the command prompt.  The command to type appears after the prompt, and the output of the command is printed on the next line.):
+
+\lstset{language=sh,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+❯ go version
+go version go1.17.3 darwin/amd64
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgb8c1a61},fragile]{\texttt{GOPATH}}
+ After installing Go, the \texttt{go} executable will be in your path.  But the \texttt{go} command (more later) can also
+
+\begin{itemize}
+\item instal executable utilities, and
+\item store local copies of third party module dependencies to speed up builds.
+\end{itemize}
+
+These packages are stored in the file path named in the \texttt{GOPATH} environment variable.  If \texttt{GOPATH} is not set, default is \texttt{\$HOME/go}.   Good idea to set it explicitly by placing
+
+\lstset{language=sh,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+\end{lstlisting}
+
+in your \texttt{\$HOME/.profile} for bash, or \texttt{\$HOME/.zshenv} for zsh.  Alter the values above if you want to customize the \texttt{GOPATH} location.
+\end{frame}
+
+\begin{frame}[label={sec:orge0cb31f},fragile]{Hello, World!}
+ Since the Kernighan and Ritchie classic, \emph{The C Programming Language}\footnote{\url{https://www.informit.com/store/c-programming-language-9780131103627}}, it's tradition to start with a program that simply print's \texttt{Hello, world} to the console.
+
+Create a file named \texttt{hello.go} with the following contents:
+
+\lstset{language=go,label=orgd95d491,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+package main
+
+import "fmt"
+
+func main()  {
+	fmt.Println("Hello, world!")
+}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org62d2fd5},fragile]{The \texttt{go} Command}
+ go run
+go build
+\end{frame}
+\end{document}
