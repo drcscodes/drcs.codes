@@ -57,7 +57,7 @@ in your ~$HOME/.profile~ for bash, or ~$HOME/.zshenv~ for zsh.  Alter the values
 
 ** Hello, World!
 
-Since the Kernighan and Ritchie classic, /The C Programming Language/[fn:1], it's tradition to start with a program that simply print's ~Hello, world~ to the console.
+Since the Kernighan and Ritchie classic, /The C Programming Language/[fn:1], it's tradition to start with a program that simply prints ~Hello, world~ to the console.
 
 Create a file named ~hello.go~ with the following contents:
 

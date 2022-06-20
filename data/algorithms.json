@@ -1,0 +1,234 @@
+[
+  {"reading": [
+      "[CLRS: Introduction to Algorithms, 4ed](https://mitpress.mit.edu/books/introduction-algorithms-fourth-edition)",
+      "[ADM: Algorithm Design Manual, 3ed](https://link.springer.com/book/10.1007/978-3-030-54256-6)"
+    ]
+  },
+  {
+    "section": "Foundations"
+  },
+  {
+    "lesson": "intro-algorithms",
+    "slides": "[Introduction to Algorithms](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: CLRS 1, 2.1",
+      "Additional: ADM 1"
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "algorithm-analysis",
+    "slides": "[Algorithm Analysis](/algorithms/algorithm-analysis.pdf)",
+    "reading": [
+      "Basic: CLRS"
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+  {
+    "lesson": "",
+    "slides": "[](/algorithms/intro-algorithms.pdf)",
+    "reading": [
+      "Basic: "
+    ],
+    "exercises": [
+      "[]()"
+    ],
+    "video": "[]()"
+  },
+
+
+
+]
