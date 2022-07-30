@@ -1,275 +1,221 @@
-[
-  {
-    "section": "Propositional Logic (PL)"
-  },
-  {
-    "lesson": "intro-logic",
-    "slides": "[Introduction to Logic](/discrete-math/intro-logic.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 1.1-1.3"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "conditionals",
-    "slides": "[Conditionals](/discrete-math/conditionals.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 1.4"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "deduction",
-    "slides": "[Deduction](/discrete-math/deduction.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 1.5-1.7"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "proof-by-contradiction",
-    "slides": "[Proof by Contradiction](/discrete-math/proof-by-contradiction.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 1.8-1.9"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {"section": "First-Order Logic (FOL)"},
-  {
-    "lesson": "fol-symbolization",
-    "slides": "[FOL Symbolization](/discrete-math/fol-symbolization.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 2.1"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "fol-syntax-semantics",
-    "slides": "[FOL Synax and Semantics](/discrete-math/fol-syntax-semantics.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 2.2"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "fol-syntax-semantics",
-    "slides": "[FOL Synax and Semantics](/discrete-math/fol-syntax-semantics.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 2.2"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "fol-inference-rules",
-    "slides": "[FOL Inference Rules](/discrete-math/fol-inference-rules.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 2.3-2.4"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {"section": "Mathematical Induction"},
-  {
-    "lesson": "induction-recursion",
-    "slides": "[Induction and Recursion](/discrete-math/induction-recursion.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 3.1-3.2"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "recurrence-relations",
-    "slides": "[Recurrence Relations](/discrete-math/recurrence-relations.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 3.3"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "inductive-arithmetic",
-    "slides": "[Inductive Arithmetic](/discrete-math/inductive-arithmetic.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 3.4-3.5"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {"section": "Set Theory and Combinatorics"},
-  {
-    "lesson": "basic-sets",
-    "slides": "[Basic Sets](/discrete-math/basic-sets.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 4.1-4.2"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "combinatorics",
-    "slides": "[Combinatorics](/discrete-math/combinatorics.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 4.3-4.5"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "infinite-sets",
-    "slides": "[Infinite Sets](/discrete-math/infinite-sets.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 5.1-5.2"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "set-theory",
-    "slides": "[Set Theory](/discrete-math/set-theory.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 5.3"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {"section": "Functions"},
-  {
-    "lesson": "functions",
-    "slides": "[Functions](/discrete-math/functions.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 6.1-6.2"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "relations",
-    "slides": "[Relations](/discrete-math/relations.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 6.3"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "integers",
-    "slides": "[Integers](/discrete-math/integers.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 6.4"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {"section": "Boolean Algebra"},
-  {
-    "lesson": "lattices",
-    "slides": "[Lattices](/discrete-math/lattices.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 7.1-7.2"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "boolean-algebra",
-    "slides": "[Boolean Algebra](/discrete-math/boolean-algebra.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 7.3"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "logic-curcuits",
-    "slides": "[Logic Circuite](/discrete-math/logic-circuits.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 7.4"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "boolean-functions",
-    "slides": "[Boolean Functions](/discrete-math/boolean-functions.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 7.5-7.6"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {"section": "Graph Theory"},
-  {
-    "lesson": "graph-traversal",
-    "slides": "[Graph Traversal](/discrete-math/graph-traversal.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 8.1-8.2"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  },
-  {
-    "lesson": "planar-graphs",
-    "slides": "[Planar Graphs](/discrete-math/planar-graphs.pdf)",
-    "reading": [
-      "Basic: [Intro Discrete Math via Logic and Proof](https://link.springer.com/book/10.1007/978-3-030-25358-5) 8.3-8.4"
-    ],
-    "exercises": [
-      "[]()"
-    ],
-    "video": "[]()"
-  }
-]
+{
+  "materials": [
+    "BoP: [Book of Proof](http://www.people.vcu.edu/~rhammack/BookOfProof/)",
+    "PLL: [Probability: Lectures and Labs](https://www.markhuberdatascience.org/probability-textbook)"
+  ],
+  "lessons": [
+    {
+      "section": "Fundamentals"
+    },
+    {
+      "lesson": "sets",
+      "slides": "[Sets](/discrete-math/sets.pdf)",
+      "reading": [
+        "BoP 1.1-1.4"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "set-operations",
+      "slides": "[Set Operations](/discrete-math/sets.pdf)",
+      "reading": [
+        "BoP 1.5-1.10"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "propositional-logic",
+      "slides": "[Propositional Logic](/discrete-math/propositional-logic.pdf)",
+      "reading": [
+        "BoP 2.1-2.6"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "first-order-logic",
+      "slides": "[First-Order Logic](/discrete-math/first-order-logic.pdf)",
+      "reading": [
+        "BoP 2.7-2.12"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "section": "Combinatorics"
+    },
+    {
+      "lesson": "counting",
+      "slides": "[Counting](/discrete-math/counting.pdf)",
+      "reading": [
+        "BoP 3.1-3.5"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "applications-counting",
+      "slides": "[Applications of Counting](/discrete-math/applications-counting.pdf)",
+      "reading": [
+        "BoP 3.6-3.10"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "discrete-probability",
+      "slides": "[Discrete Probability](/discrete-math/discrete-probability.pdf)",
+      "reading": [
+        "PLL 1-3"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "section": "Proving Conditional Statements"
+    },
+    {
+      "lesson": "direct-proof",
+      "slides": "[Direct Proof](/discrete-math/direct-proof.pdf)",
+      "reading": [
+        "BoP 4"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "contrapositive-proof",
+      "slides": "[Contrapositive Proof](/discrete-math/contrapositive-proof.pdf)",
+      "reading": [
+        "BoP 5"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "proof-by-contradiction",
+      "slides": "[Proof by Contradiction](/discrete-math/proof-by-conradiction.pdf)",
+      "reading": [
+        "BoP 6"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "section": "Advanced Proofs"
+    },
+    {
+      "lesson": "non-conditional-proofs",
+      "slides": "[Non-Conditional Proofs](/discrete-math/non-conditional-proofs.pdf)",
+      "reading": [
+        "BoP 7"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "set-proofs",
+      "slides": "[Set Proofs](/discrete-math/set-proofs.pdf)",
+      "reading": [
+        "BoP 8"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "disproof",
+      "slides": "[Disproof](/discrete-math/disproof.pdf)",
+      "reading": [
+        "BoP 9"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "mathematical-induction",
+      "slides": "[Mathematical Induction](/discrete-math/mathematical-induction.pdf)",
+      "reading": [
+        "BoP 10"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "section": "Functions"
+    },
+    {
+      "lesson": "relations",
+      "slides": "[Relations](/discrete-math/relations.pdf)",
+      "reading": [
+        "BoP 11"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "functions",
+      "slides": "[Functions](/discrete-math/functions.pdf)",
+      "reading": [
+        "BoP 12"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "calculus",
+      "slides": "[Calculus](/discrete-math/calculus.pdf)",
+      "reading": [
+        "BoP 13"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "infinity",
+      "slides": "[Infinity](/discrete-math/infinity.pdf)",
+      "reading": [
+        "BoP 14"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    }
+  ]
+}

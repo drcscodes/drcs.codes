@@ -1,11 +1,24 @@
 {{ $course := .Get "course" }}
 
 {{ $courseData := index .Site.Data $course }}
+{{ $materials := index $courseData "materials" }}
+{{ $lessons := index $courseData "lessons" }}
+
+<h2>Course Materials</h2>
+
+<ul>
+{{ range $materials }}
+<li>{{ . | markdownify }}</li>
+{{ end }}
+</ul>
+
+<h2>Lessons</h2>
 
 <div class="table-responsive">
     <table class="table table-bordered table-hover">
 
       <thead class="thead-light">
+        <th>#</th>
         <th>Slides</th>
         <th>Readings</th>
         <th>Exercises</th>
@@ -13,13 +26,14 @@
       </thead>
 
 
-{{ range $courseData }}
+{{ range $i, $lesson := $lessons }}
 {{ if index . "section" }}
  <thead class="thead-light">
-   <th colspan=4>{{ index . "section" | markdownify }}</th>
+   <th colspan=5>{{ index . "section" | markdownify }}</th>
  </thead>
 {{ else }}
 <tr>
+    <td>{{ $i }}</td>
     <td>{{ index . "slides" | markdownify }}</td>
     <td>
         {{ range (index . "reading") }}

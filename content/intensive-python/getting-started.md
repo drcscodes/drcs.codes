@@ -1,7 +1,7 @@
 ---
 title: "Getting Started"
 draft: false
-layout: "single"
+layout: "course"
 courseName: "Intensive Python"
 ---
 
@@ -37,29 +37,43 @@ If your system does not have Python 2 installed, you can make Python 3 "the" Pyt
 python -V
 ```
 
-If you get a message like "command not found" then Python 2 is not installed.  Make Python 3 "the' Python with:
+If you get a message like "command not found" then Python 2 is not installed.  Make Python 3 "the" Python with:
 
 ```sh
 sudo apt install python-is-python3
+```
+
+or (substitute the latest Python version istalled on your system for 3.10.5):
+
+```sh
+pyenv global 3.10.5
+❯ python -V
+Python 3.10.5
 ```
 
 Now `python` and `python3` are the same and you don't have to remember to append `3` to Python commands.
 
 ## macOS
 
-macOS is a Unix and already has a decent terminal and command-line shell.  There are two ways to install Python.org Python (as opposed to [Anaconda](https://www.anaconda.com/) Python or some other Python distribution).
-
-1. Download the macOS installer from [python.org](https://www.python.org/).
-
-or
-
-2. Install [Homebrew](https://brew.sh/) and use Homebrew to install Python:
-
-    ```sh
-    brew install python3
-    ```
+macOS is a Unix and already has a decent terminal and command-line shell.  There are two ways to install Python.org Python (as opposed to [Anaconda](https://www.anaconda.com/) Python or some other Python distribution).  The first is to download the macOS installer from [python.org](https://www.python.org/), and the second is to use [Homebrew](https://brew.sh/).
 
 If you use macOS, I highly recommend using Homebrew to manage Unix tools in general.  With either of the installation methods above you don't need to install `pip` and `venv` separately.  Debian/Ubuntu packages tend to be more modular, which is nice for containerized applications.
+
+Then install `pyenv`:
+
+```sh
+brew install pyenv
+```
+
+Then make Python 3 the global Python (substitute the latest Python version istalled on your system for 3.10.5):
+
+```sh
+pyenv global 3.10.5
+❯ python -V
+Python 3.10.5
+```
+
+TODO: I think maybe you just install pyenv and then use pyeenv to install Python.
 
 ## Windows
 

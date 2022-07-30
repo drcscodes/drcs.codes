@@ -1,0 +1,84 @@
+{
+    "intro-course": {
+        "topic": "[Introduction to Intensive Python](/intensive-python/)",
+        "materials": ["[Meet the Teacher](http://cs1331.github.io/slides/meet-simpkins.html)",
+                      "[Video: Getting Started on macOS](https://youtu.be/znjTbnH42Rk)",
+                      "[Video: Getting Started on Windows/WSL2]()"],
+        "order": [1]
+    },
+    "intro-python": {
+        "topic": "[Intro to Python](/intensive-python/slides/intro-python.pdf)",
+        "materials": ["Reading: TP 1",
+                      "[Video: Intro to Python](https://youtu.be/ZDCHBkTMfE8)",
+                      "[Basics Example Code](/code/python/basics)",
+                    "Homework: [hw0](../hw/hw0)"],
+        "order": [2]
+    },
+    "values-variables": {
+        "topic": "[Values and Variables](/intensive-python/slides/values-variables.pdf)",
+        "materials": ["Reading: PfP", "[Video: Values and Variables](https://youtu.be/iKG_hAXy0qQ)",
+            "[Basics Example Code](/code/python/basics)",
+                     "Exercise: [Values and Variables](../exercises/values-variables)"],
+        "order": [3]
+    },
+    "functions": {
+        "topic": "[Functions](/intensive-python/slides/functions.pdf)",
+        "materials": ["TP 3", "[Basics Example Code](/code/python/basics)"],
+        "order": [4]
+    },
+    "strings": {
+        "topic": "[Strings](/intensive-python/slides/strings.pdf)",
+        "materials": ["TP 3",
+            "[Basics Example Code](/code/python/basics)",
+            "Exercise 1: [Email Utilities](../exercises/email-utils)"],
+        "order": [4]
+    },
+    "modules-programs": {
+        "topic": "[Modules and Programs](/intensive-python/slides/modules-programs.pdf)",
+        "materials": ["TP 1,14",
+            "[Basics Example Code](/code/python/basics)",
+            "Exercise 1: [BMI Module](../exercises/bmi)",
+            "Homework: [Dates](../hw/dates)"],
+        "order": [5]
+    },
+    "data-structures": {
+        "topic": "[Data Structures](/intensive-python/slides/data-structures.pdf)",
+        "materials": ["TP 10,11,12",
+            "[Basics Example Code](/code/python/basics)",
+            "[Video: Data Structures](https://youtu.be/TtAQxtgPOwI)"],
+        "order": [6]
+    },
+    "ipython": {
+        "topic": "[iPython](/intensive-python/slides/ipython.pdf)",
+        "materials": [""],
+        "order": [7]
+    },
+    "control-structures": {
+        "topic": "[Control Structures](/intensive-python/slides/control-structures.pdf)",
+        "materials": ["TP 5, 7",
+            "[Basics Example Code](/code/python/basics)",
+                      "Exercise 1: [Data Transformation](../exercises/data-transformation)",
+                      "Exercise: [Data Utilities](../exercises/data-util)",
+                      "Exercise: [Grades Module](../exercises/grades)"
+                      ],
+        "order": [8]
+    },
+    "functional-programming": {
+        "topic": "[Functional programming](/intensive-python/slides/functional-programming.pdf)",
+        "materials": ["TP 19", "[Basics Example Code](/code/python/basics)"],
+        "order": [9]
+    },
+    "data-representation": {
+        "topic": "[Data Representation](intensive-python/slides/data-representation.pdf)",
+        "materials": [""],
+        "order": [100]
+    },
+    "classes-objects": {
+        "topic": "[Classes and Objects](/intensive-python/slides/classes-objects.pdf)",
+        "materials": [ "TP 15 - 18",
+                      "[Basics Example Code](/code/python/classes)",
+                     "[Exercise 1: Dog Module](../exercises/dog)",
+                     "[Homework: Treating People as Objects](../hw/people-objects)"],
+        "order": [10]
+    }
+}

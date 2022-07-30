@@ -2,7 +2,7 @@
 title: "Intensive Python"
 draft: false
 courseName: "Intensive Python"
-layout: "single"
+layout: "course"
 ---
 
 # Intensive Python

@@ -1,0 +1,608 @@
+#+TITLE: Functions
+#+AUTHOR:
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil ':nil
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [smaller, aspectratio=1610]
+#+LaTeX_HEADER: \setbeamertemplate{navigation symbols}{}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx}
+#+LaTeX_HEADER: \usepackage{sourcecodepro}
+#+LaTeX_HEADER: \usepackage[T1]{fontenc}
+#+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+#+LaTeX_HEADER: \lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
+#+LaTeX_HEADER: \setlength{\parskip}{.25\baselineskip}
+# #+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
+
+* Functions
+
+** Functions
+
+A function is a reusable block of code. Functions
+
+- have names (usually),
+- contain a sequence of statements, and
+- return values, either explicitly or implicitly.
+
+We've already used several built-in functions. Today we will learn how to define our own.
+
+** Hello, Functions!
+
+We define a function using the def keyword:
+
+#+begin_src python
+>>> def greet():
+...     print('Hello')
+...
+#+end_src
+
+(blank line tells Python shell you're finished defining the function)
+
+Once the function is defined, you can call it:
+
+#+begin_src python
+>>> greet()
+Hello
+#+end_src
+
+> What happens if you evaluate ~greet~ (without the ~()~) in the Python REPL?
+
+** Defining Functions
+
+The general form of a function definition is
+
+#+begin_src python
+def <function_name>(<parameter_list>):
+    <function_body>
+#+end_src
+
+- The first line is called the header.
+- ~function_name~ is the name you use to call the function.
+- ~parameter_list~ is a list of parameters to the function, which may be empty.
+- ~function_body~ is a sequence of expressions and statements.
+
+** Function Parameters
+
+Provide a list of parameter names inside the parentheses of the function header, which creates local variables in the function.
+
+#+begin_src python
+>>> def greet(name):
+        g = "Hello, " + name + "!"
+...     print(g)
+...
+#+end_src
+
+Then call the function by passing *arguments* to the function: values that are bound to parameter names.
+
+Here we pass the value 'Hello', which is bound to ~greet~'s parameter ~name~ and printed to the console by the code inside ~greet~.
+
+#+begin_src python
+>>> greet('Dolly')
+Hello, Dolly!
+#+end_src
+
+** Function Call Semantics
+
+***                                                                                               :BMCOL:B_block:
+    :PROPERTIES:
+    :BEAMER_col: 0.3
+    :BEAMER_env: block
+    :END:
+
+#+begin_src python
+>>> g = "Dolly"
+#+end_src
+
+Creates a global value[fn:1].
+
+#+name: dolly
+#+begin_src ditaa :cmdline --no-separation :file diagrams/dolly.png
++-------------------------------+
+|global scope                   |
+|                addr1          |
+|           +-----+-------+     |
+|  +-----+  | str |       |     |
+| g|addr1+->+-----+       |     |
+|  +-----+  |    Dolly    |     |
+|           +-------------+     |
++-------------------------------+
+#+end_src
+
+#+ATTR_LATEX: :width 1.75in
+#+RESULTS: dolly
+[[file:diagrams/dolly.png]]
+
+[fn:1] Since ~str~ is a sequence data structure, this memory image is a slight simplification.
+
+***                                                                                               :BMCOL:B_block:
+    :PROPERTIES:
+    :BEAMER_col: 0.3
+    :BEAMER_env: block
+    :BEAMER_envargs: <2->
+    :END:
+
+#+begin_src python
+>>> greet(g)
+#+end_src
+
+Passes argument ~g~ /by value/, that is, the object pointer in ~g~ is copied to ~greet~'s ~name~ parameter.
+
+#+name: greet-dolly
+#+begin_src ditaa :cmdline --no-separation :file diagrams/greet-dolly.png
++-------------------------------+
+|global scope                   |
+|                addr1          |
+|           +-----+-------+     |
+|  +-----+  | str |       |     |
+| g|addr1+->+-----+       |     |
+|  +-----+  |    Dolly    |     |
+|           +-------------+     |
+|                  ^            |
+|                  |            |
+|                  |            |
+| +----------------|----------+ |
+| |greet scope     |          | |
+| |                |          | |
+| |     +-----+    |          | |
+| | name|addr1+----/          | |
+| |     +-----+               | |
+| +---------------------------+ |
++-------------------------------+
+#+end_src
+
+#+ATTR_LATEX: :width 1.75in
+#+RESULTS: greet-dolly
+[[file:diagrams/greet-dolly.png]]
+
+
+***                                                                                               :BMCOL:B_block:
+    :PROPERTIES:
+    :BEAMER_col: 0.3
+    :BEAMER_env: block
+    :BEAMER_envargs: <3->
+    :END:
+
+
+#+ATTR_LATEX: :options basicstyle=\ttfamily\scriptsize, numbers=left
+#+begin_src python
+def greet(name):
+    g = "Hello, "+name+"!"
+    print(g)
+#+end_src
+
+Notice that ~greet~'s ~g~ shadows the global ~g~.
+#+name: greet-scoppe
+#+begin_src ditaa :cmdline --no-separation :file diagrams/greet-scoppe.png
++-----------------------------------+
+|global scope                       |
+|                  addr1            |
+|             +-----+-------+       |
+|    +-----+  | str |       |       |
+|   g|addr1+->+-----+       |       |
+|    +-----+  |    Dolly    |       |
+|             +-------------+       |
+|                    ^              |
+|                    |              |
+|                    |              |
+|   +----------------|----------+   |
+|   |greet scope     |          |   |
+|   |                |          |   |
+|   |     +-----+    |          |   |
+|   | name|addr1+----/          |   |
+|   |     +-----+               |   |
+|   |                           |   |
+|   |           +-----+-------+ |   |
+|   |  +-----+  | str |       | |   |
+|   | g|addr2+->+-----+       | |   |
+|   |  +-----+  |Hello, Dolly!| |   |
+|   |           +-------------+ |   |
+|   +---------------------------+   |
++-----------------------------------+
+#+end_src
+
+#+ATTR_LATEX: :width 1.75in
+#+RESULTS: greet-scoppe
+[[file:diagrams/greet-scoppe.png]]
+
+
+** Strict Argument Evaluation
+
+Arguments to functions are evaluated strictly, meaning that they are evaluated before control is transferred to the function body.
+
+Here we pass the value 'Guten Tag!':
+
+#+begin_src python
+>>> greet('Guten Tag!')
+Guten Tag!
+#+end_src
+
+** Variable Scope
+
+Parameters are local variables. They are not visible outside the function:
+
+#+begin_src python
+>>> name
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'name' is not defined
+#+end_src
+
+Global variables are visible outside the function and inside the function.
+
+#+begin_src python
+>>> global_hello = 'Bonjour'
+>>> global_hello
+'Bonjour'
+>>> def say_global_hello():
+...     print(global_hello)
+...
+>>> say_global_hello()
+Bonjour
+#+end_src
+
+** Shadowing Global Variables
+
+Local variables shadow global variables.
+
+#+begin_src python
+>>> x = 1
+>>> def f():
+...     x = 2
+...     print("local x:", x)
+...     print("global x:", globals()["x"])
+...
+>>> f()
+local x: 2
+global x: 1
+#+end_src
+
+- Tip: evaluate ~globals()["__name__"]~ in the Python REPL.
+
+A function parameter is a local variable.
+
+#+begin_src python
+>>> name = 'Hi ya!'
+>>> def greet(name):
+...     print(name)
+...
+>>> name
+'Hi ya!'
+>>> greet('Hello')
+Hello
+#+end_src
+
+** Namespaces
+
+Every place where a variable can be defined is called a *namespace* or a *frame* (sometimes also called a *symbol table*, which is how namespaces are implemented by compilers and interpreters).
+
+- Top level, or *global* names (either the Python REPL or a script) are in a namespace called ~__main__~.
+- Each function *call* also gets a namespace for the local variables in the function.
+- These namespaces are hierarchical -- name resolution starts with the innermost namespace, which is why local variables "hide" or "shadow" global variables.
+
+** Memory Model With Function Calls
+
+** Redefining Names
+
+A function a kind of variable. If you define a function with the same name as a variable, it re-binds the name, and vice-versa.
+
+#+begin_src python
+>>> global_hello = 'Bonjour'
+>>> def global_hello():
+...     print('This is the global_hello() function.')
+...
+>>> global_hello
+<function global_hello at 0x10063b620>
+#+end_src
+
+** Python Scope Gotchas
+
+Python has notoriously weird scoping rules.
+
+** Muliple Parameters
+
+A function can take any number of parameters.
+
+#+begin_src python
+>>> def greet(name, name):
+...     print(name + ', ' + name)
+...
+>>> greet('Professor Falken', 'Greetings')
+Greetings, Professor Falken
+#+end_src
+
+Parameters can be of multiple types.
+
+#+begin_src python
+>>> def greet(name, name, number):
+...     print(name * number + ', ' + name)
+...
+>>> greet('Professor Falken', 'Greetings', 2)
+GreetingsGreetings, Professor Falken
+#+end_src
+
+** Positional and Keyword Arguments
+
+Thus far we've called functions using positional arguments, meaning that argument values are bound to parameters in the order in which they appear in the call.
+
+#+begin_src python
+>>> def greet(name, name, number):
+...     print(name * number + ', ' + name)
+...
+>>> greet('Professor Falken', 'Greetings', 2)
+#+end_src
+
+We can also call functions with keyword arguments in any order.
+
+#+begin_src python
+>>> greet(name='Hello', number=2, name='Dolly')
+HelloHello, Dolly
+#+end_src
+
+If you call a function with both positional and keyword arguments, the positional ones must come first.
+
+** Default Parameter Values
+
+You can specify default parameter values so that you don't have to provide an argument.
+
+#+begin_src python
+>>> def greet(name, name='Hello'):
+...     print(name + ', ' + name)
+...
+>>> greet('Elmo')
+Hello, Elmo
+#+end_src
+
+If you provide an argument for a parameter with a default value, the parameter takes the argument value passed in the call instead of the default value.
+
+#+begin_src python
+>>> greet('Elmo', 'Hi')
+Hi, Elmo
+#+end_src
+
+** Return Values
+
+Functions return values.
+
+#+begin_src python
+>>> def double(num):
+...     return num * 2
+...
+>>> double(2)
+4
+#+end_src
+
+If you don't explicitly return a value, ~None~ is returned implicitly.
+
+#+begin_src python
+>>> def g():
+...     print("man") # This is not a return!
+...
+>>> fbi = g()
+man # This is a side-effect of calling g(), not a return value
+>>> type(fbi)
+<class 'NoneType'>
+#+end_src
+
+Function calls are expressions like any other, that is, a function call has a value, so a function call can appear anywhere a value can appear.
+
+#+begin_src python
+>>> double(2) + double(3)
+10
+#+end_src
+
+** Function Design Recipe
+
+1. Examples
+    - What a few representative calls to the function look like in the Python REPL.
+        - Think from the function *user's* perspective.
+        - Examples become doctests in the function's docstring.
+
+2. Header
+    - Parameter names and types
+    - Return type
+
+3. Description
+    - Short paragraph (1 or 2 sentences) describing the function's behavior.
+
+4. Body
+    - Implement the algorithm (sequence of statements) that accomplishes the function's task, deriving the function's output (return value) and/or effect from the the function's inputs (arguments).
+
+5. Test
+    - Test your function on some representative inputs (try to include edge cases).
+
+
+** Writing Function Examples
+
+Let's apply this design recipe in the creation of a simple function to calculate the length of the hypotenuse from the lengths of the two legs (the sides that join in a right angle).
+
+First, decide the name of the function.
+
+- Descriptive word(s)
+    - Verbs may imply an imperative function called for its effect, not a return value
+        - ~print("hello")~, ~exit()~
+    - Nouns may imply a pure function, a return value derived only from the function's arguments with no side effects
+        - ~type(1)~, ~double(2)~
+
+- Avoid Python keywords or names of library functions.
+    - Tip:
+
+        #+begin_src python
+        >>> import keyword
+        >>> keyword.kwlist # lists all the Python keywords
+        >>> keyword.iskeyword("foo") # True if "foo" is a keyword
+        #+end_src
+
+- Follow Python's [[https://www.python.org/dev/peps/pep-0008/][naming conventions]].
+
+** Hypotenuse Function Examples
+
+We'll name our function ~hypotenuse~. General naming tips:
+
+- Only abbreviate if abbreviation is well-known or obvious
+    - If you must, form a new abbreviation by eliminating vowels starting from the right, e.g., ~format~ $\rightarrow$ ~formt~ $\rightarrow$ ~fmt~
+- Some abbreviations are idiomatic, e.g., ~i~ as an loop variable used as an ~int~ index
+- Length of the name should be inversely proportional to its scope
+    - Local variables can be short
+    - Modules, functions, and classes should have more descriptive names
+
+Our examples:
+#+begin_src python
+>>> hypotenuse(3, 4)
+5
+>>> hypotenuse(5, 12)
+13
+#+end_src
+
+** Function Headers
+
+The function header includes the function's name and parameter names.  We add a *type contract*, which we document using Python's new (as of 3.5) [[https://docs.python.org/3/library/typing.html][type hints]] feature.  Here are a few basic types.  A full explanation is in [[https://www.python.org/dev/peps/pep-0484][PEP 484]], including a complete list of [[https://www.python.org/dev/peps/pep-0484/#the-typing-module][types in the ~typing~ module]]
+
+:::::::::::::: {.columns}
+::: {.column width="40%"}
+- ~int~
+- ~float~
+- ~str~
+:::
+::: {.column width="60%"}
+- ~List[int]~
+- ~Tuple[float]~
+- ~Dict[str, int]~
+:::
+::::::::::::::
+
+** Hypotenuse Function Header
+
+Deciding on the type contract of ~hypotenuse~:
+
+- The sides of a triangle are measured with numbers. What kind of numbers, ~int~s, ~floats~?
+- The return value is also a number.  Is the return type the same type as the parameters?
+
+Since integer values can be represented as ~float~s, we settle on the this:
+
+#+begin_src python
+def hypotenuse(a: float, b: float) -> float:
+#+end_src
+
+The type contract says: if you pass two values of type ~float~ in your call to ~hypotenuse~, the function will return a value of type ~float~.
+
+** Hypotenuse Function Description
+
+The function description states what the functions does.  We place this description in the function's [[https://www.python.org/dev/peps/pep-0257/][docstring]].  Any string that occurs as the first item in the definition of a module, function, class, or method is a docstring.  By convention we use triple double quotes for docstrings.
+
+#+begin_src python
+def hypotenuse(a: float, b: float) -> float:
+    """Take the lengths of the two legs, a and b, of a right triangle
+    and return the length of the hypotenuse.
+    """
+#+end_src
+
+This incomplete but legal version of the function returns ~None~ because it doesn't have a return statement.
+
+- Tip: We can *stub* the function with a return statement that returns a dummy value, like 0.0, so code that uses our function will work but produce incorrect results.  That way we can get the "plumbing" of our program working before filling in the details of the functions.
+
+** Designing a Function Body
+
+The function body implements an algorithm that produces the functions output (or effect) based on the function's inputs.  The algorithm for calculating a hypotenuse is:
+
+1. Square leg ~a~
+2. Square leg ~b~
+3. Sum the squares
+4. Take the square root of the sum of the squares.
+
+The last step produces the final result.
+
+Later in the course will learn how to design algorithms.  FOr now we can think of algorithm design intuitively.
+
+The next slide shows the algorithm above translated to Python code.
+
+** Hypotenuse Function Body
+
+#+begin_src python
+import math
+
+def hypotenuse(a: float, b: float) -> float:
+    """Take the lengths of the two legs, a and b, of a right triangle
+    and return the length of the hypotenuse.
+    """
+    a2 = a * a
+    b2 = b * b
+    sum_squares = a2 + b2
+    result = math.sqrt(sum_squares)
+    return result
+#+end_src
+
+Of course this function can be shortened, but this version shows every detail.
+
+** Testing the Hypotenuse Function
+
+We can test our function manually in the REPL or by adding example functions calls to a script.  We should also add the examples we created in step 1 of the function design recipe to the docstring.
+
+#+begin_src python
+import math
+
+def hypotenuse(a: float, b: float) -> float:
+    """Take the lengths of the two legs, a and b, of a right triangle
+    and return the length of the hypotenuse.
+
+    >>> hypotenuse(3, 4)
+    5
+    >>> hypotenuse(5, 12)
+    13
+    """
+    a2 = a * a
+    b2 = b * b
+    sum_squares = a2 + b2
+    result = math.sqrt(sum_squares)
+    return result
+#+end_src
+
+If we do this then we get automated testing for free with [[https://docs.python.org/3/library/doctest.html][doctest]].
+
+# Advanced Python Function Features
+
+** Variable Argument Lists
+
+You can collect a variable number of positional arguments as a tuple by preprending a parameter name with ~*~
+
+#+begin_src python
+>>> def echo(*args):
+...     print(args)
+...
+>>> echo(1, 'fish', 2, 'fish')
+(1, 'fish', 2, 'fish')
+#+end_src
+
+You can collect variable keyword arguments as a dictionary with ~**~
+
+#+begin_src python
+>>> def print_dict(**kwargs):
+...     print(kwargs)
+...
+>>> print_dict(a=1, steak='sauce')
+{'a': 1, 'steak': 'sauce'}
+#+end_src
+
+** Inner Functions
+
+Information hiding is a general principle of software engineering. If you only need a function in one place, inside another function, you can declare it inside that function so that it is visible only in that function.
+
+#+begin_src python
+>>> def factorial(n):
+...    def fac_iter(n, accum):
+...        if n <= 1:
+...            return accum
+...        return fac_iter(n - 1, n * accum)
+...    return fac_iter(n, 1)
+...
+>>> factorial(5)
+120
+#+end_src
+
+~fac_iter()~ is a (tail) recursive function. Recursion is important for computer scientists, but a practically-oriented Python-programming engineer will mostly use iteration, higher-order functions and loops, which are more [[http://neopythonic.blogspot.com/2009/04/tail-recursion-elimination.html][Pythonic]]. Any recursive computation can be formulated as an imperative computation.
