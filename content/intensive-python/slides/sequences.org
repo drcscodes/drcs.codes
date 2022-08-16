@@ -434,10 +434,9 @@ Sum the grades using Python's built-in ~sum()~ function
 
 ** Tuples
 
-Tuples are like lists, but are immutable.
+Tuples are like lists, but are immutable.  Tuples are created by separating objects with commas.
 
 #+BEGIN_SRC python
-Tuples are created by separating objects with commas
 >>> pair = 1, 2
 >>> pair
 (1, 2)

@@ -311,26 +311,6 @@ fun.py     grades.py  maths.py   people.py  pp.py
 
   - ~%cd~, ~%cat~, ~%cp~, ~%env~, ~%ls~, ~%man~, ~%mkdir~, ~%more~, ~%mv~, ~%pwd~, ~%rm~,  and ~%rmdir~
 
-
-** Timing Code in iPython
-
-#+begin_src sh
-In [23]: import numpy as np
-
-In [24]: pylist = list(range(1, 100000))
-
-In [25]: nparray = np.arange(1, 1000000)
-
-In [35]: %timeit _ = [x * 2 for x in pylist]
-100 loops, best of 3: 7.89 ms per loop
-
-In [37]: %timeit _ = nparray.copy() * 2
-100 loops, best of 3: 3.76 ms per loop
-#+end_src
-
-Notice that I copied the Numpy array before applying the ~* 2~ operation to make the comparison to the Python list comprehension fair. You'll learn why when we discuss Numpy in the next lecture.
-
-
 ** Conclusion
 
 - Python is an interpreted general purpose language

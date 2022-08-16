@@ -35,7 +35,7 @@
        "lesson": "values-variables",
         "slides": "[Values and Variables](/intensive-python/slides/values-variables.pdf)",
      "reading": [
-         "PfP"
+         "PfP 2; TP 2"
      ],
       "exercises": [
       ],
@@ -63,7 +63,7 @@
         "lesson": "functions",
         "slides": "[Functions](/intensive-python/slides/functions.pdf)",
         "reading": [
-            "TP 3"
+            "PfP 4; TP 3"
         ],
         "exercises": [
             "[BMI](/python/exercises/bmi)",
@@ -110,7 +110,7 @@
             "PfP 6"
         ],
       "exercises": [
-
+          "[Data Manipulation](data-manipulation)"
       ],
       "projects": [
         "[]()"
@@ -121,10 +121,9 @@
         "lesson": "control-structures",
         "slides": "[Control Structures](/intensive-python/slides/control-structures.pdf)",
         "reading": [
-         "TP 5, 7"
+         "PfP 3; TP 5, 7"
         ],
         "exercises": [
-            "[Data Transformation](/python/exercises/data-transformation)",
             "[Data Utilities](/python/exercises/data-util)",
             "[Grades Module](/python/exercises/grades)"
 
