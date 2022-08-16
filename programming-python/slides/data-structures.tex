@@ -1,0 +1,790 @@
+% Created 2022-07-04 Mon 10:41
+% Intended LaTeX compiler: pdflatex
+\documentclass[smaller]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{verbatim, multicol, tabularx,color}
+\usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+\lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, keywordstyle=\bf, stringstyle=\color{blue}, commentstyle=\color{green}}
+\setbeamertemplate{footline}[frame number]
+\hypersetup{colorlinks=true,urlcolor=blue}
+\logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
+\usetheme{default}
+\date{}
+\title{Data Structures}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Data Structures},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{Data Structures}
+\label{sec:org1de8709}
+
+\begin{frame}[label={sec:org47861a6}]{Built-in Data Structures}
+Values can be collected in data structures:
+
+\begin{itemize}
+\item Lists
+\item Tuples
+\item Dictionaries
+\item Sets
+\end{itemize}
+
+This lecture just an overview. See the \href{https://docs.python.org/3.6/library/stdtypes.html}{Python documentation} for
+complete details.
+\end{frame}
+
+\begin{frame}[label={sec:orge73f1bb},fragile]{Lists}
+ A list is an indexed sequence of Python objects.
+
+\begin{itemize}
+\item Create a list with square brackets
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys = ['Stan', 'Kyle', 'Cartman', 'Kenny']
+\end{lstlisting}
+
+\begin{itemize}
+\item Create an empty list with empty square brackets or \texttt{list()} function
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> empty = []
+>>> leer = list()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org2842cbe},fragile]{Accessing List Elements}
+ Individual list elements are accessed by index.
+
+\begin{itemize}
+\item First element at index 0
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys = ['Stan', 'Kyle', 'Cartman', 'Kenny']
+>>> boys[0]
+'Stan'
+\end{lstlisting}
+
+\begin{itemize}
+\item Negative indexes offset from the end of the list backwards
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys[-1]
+'Kenny'
+\end{lstlisting}
+
+\begin{itemize}
+\item Lists are mutable, meaning you can add, delete, and modify elements
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys[2] = 'Eric'
+>>> boys
+['Stan', 'Kyle', 'Eric', 'Kenny']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org1e6c104},fragile]{Lists are Heterogeneous}
+ Normally you store elements of the same type in a list, but you can mix element types
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> mixed = [1, 'Two', 3.14]
+>>> type(mixed[0])
+<class 'int'>
+>>> type(mixed[1])
+<class 'str'>
+>>> type(mixed[2])
+<class 'float'>
+\end{lstlisting}
+
+\begin{itemize}
+\item What's the length of the second element of \texttt{mixed} ?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org21565a1},fragile]{Creating Lists from Strings}
+ \begin{itemize}
+\item Create a list from a string with str's \texttt{split()} function:
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> grades_line = "90, 85, 92, 100"
+>>> grades_line.split()
+['90,', '85,', '92,', '100']
+\end{lstlisting}
+
+\begin{itemize}
+\item By default \texttt{split()} uses whitespace to delimit elements. To use a different delimiter, pass as argument to \texttt{split()}:
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> grades_line.split(',')
+['90', ' 85', ' 92', ' 100']
+\end{lstlisting}
+
+\begin{itemize}
+\item The \texttt{list()} function converts any iterable object (like sequences) to a list. Remember that strings are sequences of characters:
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> list('abcdefghijklmnopqrstuvwxyz')
+['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y',
+'z']
+\end{lstlisting}
+
+\begin{itemize}
+\item Use the \texttt{split()} method to separate an email address in to user name and host name.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org0bc6115},fragile]{List Operators}
+ The \texttt{in} operator tests for list membership. Can be negated with not:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys
+['Stan', 'Kyle', 'Cartman', 'Kenny']
+>>> 'Kyle' in boys
+True
+>>> 'Kyle' not in boys
+False
+\end{lstlisting}
+
+\begin{itemize}
+\item The + operator concatenates two lists:
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> girls = ['Wendy', 'Annie', 'Bebe', 'Heidi']
+>>> kids = boys + girls
+>>> kids
+['Stan', 'Kyle', 'Cartman', 'Kenny', 'Wendy', 'Annie', 'Bebe', 'Heidi']
+\end{lstlisting}
+
+\begin{itemize}
+\item The * operator repeats a list to produce a new list:
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> ['Ni'] * 5
+['Ni', 'Ni', 'Ni', 'Ni', 'Ni']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org604024f},fragile]{Functions on Lists}
+ Python provides several built-in functions that take list parameters.
+
+\begin{itemize}
+\item \texttt{len(xs)} returns the number of elements in the list \texttt{xs} (more generally, the sequence \texttt{xs})
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> kids
+['Stan', 'Kyle', 'Cartman', 'Kenny', 'Wendy', 'Annie', 'Bebe', 'Heidi']
+>>> len(kids)
+8
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{min(xs)} returns the least element of \texttt{xs}, \texttt{max(xs)} returns the greatest
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> min([8, 6, 7, 5, 3, 0, 9])
+0
+>>> max([8, 6, 7, 5, 3, 0, 9])
+9
+\end{lstlisting}
+
+\begin{itemize}
+\item What is \texttt{min(kids)}?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgc851694},fragile]{The \texttt{del} Statement}
+ The \texttt{del} statement deletes variables.
+
+\begin{itemize}
+\item Each element of a list is a variable whose name is formed by indexing into the list with square brackets.
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys = ['Stan', 'Kyle', 'Cartman', 'Kenny']
+>>> boys[3]
+'Kenny'
+\end{lstlisting}
+
+\begin{itemize}
+\item Like any variable, a list element can be deleted with \texttt{del}
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> del boys[3]
+>>> boys
+['Stan', 'Kyle', 'Cartman'] # You killed Kenny!
+\end{lstlisting}
+
+\begin{itemize}
+\item A list variable is a variable, so you can delete the whole list
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> del boys
+>>> boys
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+NameError: name 'boys' is not defined
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org4b10cf3},fragile]{List Methods}
+ Methods are invoked on an object (an instance of a class) by appending a dot, \texttt{.}, and the method name.
+
+\begin{itemize}
+\item \texttt{xs.count(x)}: number of occurences of \texttt{x} in the sequence \texttt{xs}
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> surfin_bird = "Bird bird bird b-bird's the word".split()
+>>> surfin_bird
+['Bird', 'bird', 'bird', "b-bird's", 'the', 'word']
+>>> surfin_bird.count('bird')
+2
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{xs.append(x)} adds the single element \texttt{x} to the end of \texttt{xs}
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys.append('Butters')
+>>> boys
+['Stan', 'Kyle', 'Cartman', 'Kenny', 'Butters']
+s.extend(t) adds the elements of t to the end of s
+>>> boys.extend(['Tweak', 'Jimmy'])
+>>> boys
+['Stan', 'Kyle', 'Cartman', 'Kenny', 'Butters', 'Tweak', 'Jimmy']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgd8a1afd},fragile]{List Methods}
+ \begin{itemize}
+\item \texttt{xs.remove(x)} removes the first occurrence of \texttt{x} in \texttt{xs}, or raises a \texttt{ValueError} if \texttt{x} is not in \texttt{xs}
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys.remove('Kenny')
+>>> boys
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak', 'Jimmy']
+>>> boys.remove('Professor Chaos')
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+ValueError: list.remove(x): x not in list
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{xs.pop()} removes and returns the last element of the list
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak', 'Jimmy']
+>>> boys.pop()
+'Jimmy'
+>>> boys
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgfbad7aa},fragile]{Slicing}
+ Slicing lists works just like slicing strings (they're both sequences)
+
+\begin{itemize}
+\item Take the first two elements:
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys = ['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak']
+>>> boys[0:2]
+['Stan', 'Kyle']
+\end{lstlisting}
+
+\begin{itemize}
+\item Take every second element, starting with the first:
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys[::2]
+['Stan', 'Cartman', 'Tweak']
+>>> boys[0:5:2] # same as above
+['Stan', 'Cartman', 'Tweak']
+\end{lstlisting}
+
+\begin{itemize}
+\item Take the second from the end:
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys[-2]
+'Butters'
+\end{lstlisting}
+
+Note that slice operations return new lists.
+
+\begin{itemize}
+\item What's the value of \texttt{boys[-1:1]} ?
+\item What's the value of \texttt{boys[-1:1:-1]} ?
+\item What's the value of \texttt{boys[::-1]} ?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org656b29b},fragile]{Aliases}
+ Aliasing occurs when two or more variables reference the same object
+
+\begin{itemize}
+\item Assignment from a variable creates an alias
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> brats = boys
+>>> boys
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak']
+>>> brats
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak']
+\end{lstlisting}
+
+Now boys and brats are aliases.
+
+\begin{itemize}
+\item Changes to one are reflected in the other, becuase they reference the same object
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> brats.append('Timmy')
+>>> brats
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak', 'Timmy']
+>>> boys
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak', 'Timmy']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org8a7adac},fragile]{Copies}
+ Operators create copies
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> brats + ['Bebe', 'Wendy']
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak', 'Timmy', 'Bebe',
+'Wendy']
+>>> brats
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak', 'Timmy']
+\end{lstlisting}
+
+You have to reassign to the list to make an update:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> brats = brats + ['Bebe', 'Wendy'] # could also use shortcut +=
+>>> brats
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak', 'Timmy', 'Bebe',
+'Wendy']
+\end{lstlisting}
+
+Notice that after the reassignment, \texttt{brats} is no longer an alias of \texttt{boys}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak', 'Timmy']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org4d767d0},fragile]{Slicing Creates Copies (Usually)}
+ \begin{itemize}
+\item Slice on the right hand side of an assignment creates a copy:
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> first_two = boys[:2]
+>>> first_two
+['Stan', 'Kyle']
+>>> first_two[0] = 'Stan the man'
+>>> first_two
+['Stan the man', 'Kyle']
+>>> boys
+['Stan', 'Kyle', 'Cartman', 'Butters', 'Tweak', 'Timmy']
+\end{lstlisting}
+
+\begin{itemize}
+\item Slices on the left hand side allow for flexible assignment
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> boys[0:2] = ['Randy', 'Sharon', 'Gerald', 'Sheila']
+>>> boys
+['Randy', 'Sharon', 'Gerald', 'Sheila', 'Cartman', 'Butters',
+'Tweak', 'Timmy']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org8b64473},fragile]{A Few More List Operations}
+ You can combine the elements of a list to form a string with \texttt{str}'s \texttt{join()} method.
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> aretha = ['R', 'E', 'S', 'P', 'E', 'C', 'T']
+>>> "-".join(aretha)
+'R-E-S-P-E-C-T'
+\end{lstlisting}
+
+\texttt{sorted()} function returns a new list
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> sorted(aretha)
+['C', 'E', 'E', 'P', 'R', 'S', 'T']
+>>> aretha # Notice original is unchanged
+['R', 'E', 'S', 'P', 'E', 'C', 'T']
+\end{lstlisting}
+
+\texttt{sort()} method modifies the list it is invoked on
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> aretha.sort()
+>>> aretha
+['C', 'E', 'E', 'P', 'R', 'S', 'T']
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org5ad63ed},fragile]{Example: Grades}
+ Start with a list representing a line from a gradebook file
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> grades_line = ['Chris', 100, 90, 95]
+>>> grades_line
+['Chris', 100, 90, 95]
+\end{lstlisting}
+
+Get the sublist containing just the grades by slicing
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> grades = grades_line[1:]
+>>> grades
+[100, 90, 95]
+\end{lstlisting}
+
+Sum the grades using Python's built-in \texttt{sum()} function
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> sum(grades)
+285
+\end{lstlisting}
+
+\begin{itemize}
+\item And get the average by dividing by the number of grades
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> sum(grades) / len(grades)
+95.0
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgca77040},fragile]{Tuples}
+ Tuples are like lists, but are immutable.
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+Tuples are created by separating objects with commas
+>>> pair = 1, 2
+>>> pair
+(1, 2)
+\end{lstlisting}
+
+Tuples can be used in assignments to "unpack" a sequence
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a, b = [1, 2]
+>>> a
+1
+>>> b
+2
+\end{lstlisting}
+
+Tuple assignment can be used to swap values
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> b, a = a, b
+>>> a, b
+(2, 1)
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org3285a93},fragile]{Dictionaries}
+ A dictionary is a map from keys to values.
+
+Create dictionaries with \texttt{\{\}}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> capitals = {}
+\end{lstlisting}
+
+Add key-value pairs with assignment operator
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> capitals['Georgia'] = 'Atlanta'
+>>> capitals['Alabama'] = 'Montgomery'
+>>> capitals
+{'Georgia': 'Altanta', 'Alabama': 'Montgomery'}
+\end{lstlisting}
+
+Keys are unique, so assignment to same key updates mapping
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> capitals['Alabama'] = 'Birmingham'
+>>> capitals
+{'Georgia': 'Altanta', 'Alabama': 'Birmingham'}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgbecb8aa},fragile]{Dictionary Operations}
+ Remove a key-value mapping with \texttt{del} statement
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> del capitals['Alabama']
+>>> capitals
+{'Georgia': 'Atlanta'}
+\end{lstlisting}
+
+Use the \texttt{in} operator to test for existence of key (not value)
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> 'Georgia' in capitals
+True
+>>> 'Atlanta' in capitals
+False
+\end{lstlisting}
+
+Extend a dictionary with \texttt{update()} method, get values as a list
+with values method
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> capitals.update({'Tennessee': 'Nashville', 'Mississippi':
+'Jackson'})
+>>> capitals.values()
+dict_values(['Jackson', 'Nashville', 'Atlanta'])
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org6d94bd5},fragile]{Conversions to \texttt{dict}}
+ Any sequence of two-element sequences can be converted to a \texttt{dict}
+
+A list of two-element lists:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> dict([[1, 1], [2, 4], [3, 9], [4, 16]])
+{1: 1, 2: 4, 3: 9, 4: 16}
+\end{lstlisting}
+
+A list of two-element tuples:
+
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> dict([('Lassie', 'Collie'), ('Rin Tin Tin', 'German
+Shepherd')])
+{'Rin Tin Tin': 'German Shepherd', 'Lassie': 'Collie'}
+\end{lstlisting}
+
+Even a list of two-character strings:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> dict(['a1', 'a2', 'b3', 'b4'])
+{'b': '4', 'a': '2'}
+\end{lstlisting}
+
+Notice that subsequent pairs overwrote previously set keys.
+\end{frame}
+
+\begin{frame}[label={sec:orgdf705f6},fragile]{Sets}
+ Sets have no duplicates, like the keys of a \texttt{dict}. They can be iterated
+over (we'll learn that later) but can't be accessed by index.
+
+\begin{itemize}
+\item Create an empty set with \texttt{set()} function, add elements with \texttt{add()} method
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> names = set()
+>>> names.add('Ally')
+>>> names.add('Sally')
+>>> names.add('Mally')
+>>> names.add('Ally')
+>>> names
+{'Ally', 'Mally', 'Sally'}
+\end{lstlisting}
+
+\begin{itemize}
+\item Converting to set a convenient way to remove duplicates
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> set([1,2,3,4,3,2,1])
+{1, 2, 3, 4}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org73150f7},fragile]{Set Operations}
+ Intersection (elements in \texttt{a} \alert{and} \texttt{b})
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a = {1, 2}
+>>> b = {2, 3}
+>>> a & b # or a.intersetion(b)
+{2}
+\end{lstlisting}
+
+Union (elements in \texttt{a} \alert{or} \texttt{b})
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a | b # or a.union(b)
+{1, 2, 3}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgcef9116},fragile]{Set Operations}
+ Difference (elements in \texttt{a} that are not in \texttt{b})
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a - b # or a.difference(b)
+{1}
+\end{lstlisting}
+
+Symmetric difference (elements in \texttt{a} or \texttt{b} but not both)
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a ^ b # or a.symmetric_difference(b)
+{1, 3}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org38a872b},fragile]{Set Predicates}
+ A predicate function asks a question with a \texttt{True} or \texttt{False} answer.
+
+Subset of:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>>a <= b # or a.issubset(b)
+False
+\end{lstlisting}
+
+Proper subset of:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a < b
+False
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgb952bec},fragile]{Set Predicates}
+ Superset of:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a >= b # or a.issuperset(b)
+False
+\end{lstlisting}
+
+Proper superset of:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a > b
+False
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgf46b706}]{Closing Thoughts}
+Typical Python programs make extensive use of built-in data structures and often combine them (lists of lists, dictionaries of lists, etc)
+
+\begin{itemize}
+\item These are just the basics
+\item Explore these data structures on your own
+\item Read the books and Python documentation
+\end{itemize}
+
+
+This is a small taste of the expressive power and syntactic
+convenience of Python's data structures.
+\end{frame}
+\end{document}

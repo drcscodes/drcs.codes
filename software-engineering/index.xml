@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Software-engineerings on Dr. CS codes</title><link>https://DrCS.codes/software-engineering/</link><description>Recent content in Software-engineerings on Dr. CS codes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://DrCS.codes/software-engineering/index.xml" rel="self" type="application/rss+xml"/><item><title>Getting Started</title><link>https://DrCS.codes/software-engineering/getting-started/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/software-engineering/getting-started/</guid><description>Getting Started These instructions are for installing the necessary tools and Python components for this course. We use the Python.org distribution of Python, but if you already have another distribution, such as Anaconda, that will work fine as long as it includes Python &amp;gt;= 3.7, pip, and venv.
-Ubuntu/WSL2 If you are using Windows 10 or 11, install WSL2, the Windows Subsystem for Linux, Version 2. WSL2 provides a very nice Linux environment, including a full Linux kernel and distribution of your choosing (I will use the latest Ubuntu in demonstrations).</description></item><item><title>Lessons</title><link>https://DrCS.codes/software-engineering/lessons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/software-engineering/lessons/</guid><description>Lessons Session Topic Resources Software Development 1 Software Engineering Core Reading:
-Video: Software Engineering
-2 Core Reading:
-Additional Reading:
-3 Core Reading:
-Additional Reading: [](
-4 Core Reading:
-Additional Reading: [](
-5 Core Reading:
-Additional Reading: [](
-Software Design 6 Core Reading:</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Software-engineerings on Dr. CS codes</title><link>https://DrCS.codes/software-engineering/</link><description>Recent content in Software-engineerings on Dr. CS codes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://DrCS.codes/software-engineering/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://DrCS.codes/software-engineering/buisiness-domains/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/software-engineering/buisiness-domains/</guid><description>% Business Domains</description></item><item><title>Getting Started</title><link>https://DrCS.codes/software-engineering/getting-started/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/software-engineering/getting-started/</guid><description>Getting Started These instructions are for installing the necessary tools and Python components for this course. We use the Python.org distribution of Python, but if you already have another distribution, such as Anaconda, that will work fine as long as it includes Python &amp;gt;= 3.7, pip, and venv.
+Ubuntu/WSL2 If you are using Windows 10 or 11, install WSL2, the Windows Subsystem for Linux, Version 2. WSL2 provides a very nice Linux environment, including a full Linux kernel and distribution of your choosing (I will use the latest Ubuntu in demonstrations).</description></item><item><title>Lessons</title><link>https://DrCS.codes/software-engineering/lessons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/software-engineering/lessons/</guid><description>Lessons Session Topic Resources Software Development 1 Software Engineering Core Reading: Video: Software Engineering
+2 Core Reading: Additional Reading: 3 Core Reading: Additional Reading: [](
+4 Core Reading: Additional Reading: [](
+5 Core Reading: Additional Reading: [](
+Software Design 6 Core Reading: Additional Reading: [](
+7 Core Reading: Additional Reading: [](
+8 Core Reading: Additional Reading: [](
+9 Core Reading: Additional Reading: [](
+10 Core Reading: Additional Reading: [](</description></item></channel></rss>

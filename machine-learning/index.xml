@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Machine-learnings on Dr. CS codes</title><link>https://DrCS.codes/machine-learning/</link><description>Recent content in Machine-learnings on Dr. CS codes</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><atom:link href="https://DrCS.codes/machine-learning/index.xml" rel="self" type="application/rss+xml"/><item><title/><link>https://DrCS.codes/machine-learning/slides/cs4641-intro/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/cs4641-intro/</guid><description>% Introduction to CS4641
+Machine Learning: The Big Idea {height=70%}
+Machine Learning: The Big Idea {height=70%}
+Machine Learning: The Big Idea {height=70%}
+Machine Learning: The Big Idea {height=70%}
+Berlin is cold!
+Course Logistics Syllabus Schedule Project Getting started</description></item><item><title/><link>https://DrCS.codes/machine-learning/slides/error/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/error/</guid><description>% Error and Noise
+Error Measures An error measure quantifies the performance of an $h \in \mathcal{H}$, that is, its agreement with the target function $f$.
+$$ Error = E(h, f) $$
+The target function is unknown and we only have samples from it (our data set, $\mathcal{D}$), so we use a pointwise approximation. Classification error is
+$$ e(h(\vec{x}), f(\vec{x})) = \llbracket h(\vec{x}) \ne f(\vec{x}) \rrbracket $$
+for some $\vec{x}$, where $\llbracket \cdot \rrbracket$ evaluates to 1 if argument is true, and to 0 if it is false.</description></item><item><title/><link>https://DrCS.codes/machine-learning/slides/intro-ml/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/intro-ml/</guid><description>% Introduction to Machine Learning
+What is learning? &amp;ldquo;Learning is any process by which a system improves performance from experience.&amp;rdquo;
+Herbert Simon What is machine learning? The hype answer:
+&amp;ldquo;Machine learning is the next Internet&amp;rdquo;
+Tony Tether, Director, DARPA &amp;ldquo;Machine learning is the hot new thing&amp;rdquo;
+John Hennessy, President, Stanford &amp;ldquo;Machine learning is today’s discontinuity&amp;rdquo;
+Jerry Yang, CEO, Yahoo &amp;ldquo;Machine learning is the new electricity&amp;rdquo; -Andrew Ng, Chief Scientist Baidu</description></item><item><title/><link>https://DrCS.codes/machine-learning/slides/linear-classification/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/linear-classification/</guid><description>% Linear Classification
+The Linear Model In the next few lectures we will
+extend the perceptron learning algorithm to handle non-linearly separable data, explore online versis batch learning, learn three different learning settings &amp;ndash; classification, regression, and probability estimation learn a fundamental concept in machine learning: gradient descent see how the learning rate hyperparameter The Linear Model Recall that the linear model for binary classification is:
+$$ \mathcal{H} = {h(\vec{x}) = sign(\vec{w}^T \cdot \vec{x})} $$</description></item><item><title/><link>https://DrCS.codes/machine-learning/slides/linear-regression/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/linear-regression/</guid><description>% Linear Regression
+The Linear Model So far we&amp;rsquo;ve dealt with classification, where the target function maps feature vectors to discrete classes, but the linear model is more versatile. Consider the credit analysis problem:
+{height=30%}
+We can use the linear model to learn
+a yes/no (perceptron) an arbitrary real number (linear regression) a probability (logistic regression) As we&amp;rsquo;ll see later, we can even learn to separate classes that are not linearly separable due to their nature, not noise in the data set.</description></item><item><title/><link>https://DrCS.codes/machine-learning/slides/ml-practice/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/ml-practice/</guid><description>% Practical Considerations in Machine Learning
+Overfitting Overfitting has occurred when your training error decreases and your test error increases.
+The primary cause of overfitting is noise in the data set.
+More complex models are more likely to overfit.
+Regularization Constraining the model to prevent overfitting.
+Validation The most important use of validation is for model selection.
+Cross-Validation? A resampling technique
+Occam&amp;rsquo;s Razor Sampling Bias Data Snooping</description></item><item><title/><link>https://DrCS.codes/machine-learning/slides/ml-theory/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/ml-theory/</guid><description>% Computational Learning Theory
+Decidability Computation
+Decidability &amp;ndash; which problems have algorithmic solutions Machine Learning
+Feasibility &amp;ndash; what assumptions must we make to trust that we can learn an unknown target function from a sample data set Complexity Complexity is a measure of efficiency. More efficient solutions use fewer resources.
+Computation &amp;ndash; resources are time and space
+Time complexity &amp;ndash; as a function of problem size, $n$, how many steps must an algorithm take to solve a problem Space complexity &amp;ndash; how much memory does an algorithm need Machine learning &amp;ndash; resource is data</description></item><item><title/><link>https://DrCS.codes/machine-learning/slides/numpy/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/numpy/</guid><description>% NumPy
+Numerical Python Provides efficient storage and operations on dense data buffers, i.e., arrays.
+ndarray is the fundamental object Vectorized operations on arrays Broadcasting File IO amd memory-mapped files In [1]: import numpy as np NumPy Array Element Types Arrays have elements of homogeneous data type
+In [2]: a = np.array([1, 2, 3.14]) In [3]: type(a) Out[3]: numpy.ndarray In [4]: a Out[4]: array([ 1. , 2. , 3.14]) In [5]: type(a[0]) Out[5]: numpy.</description></item><item><title/><link>https://DrCS.codes/machine-learning/slides/pandas/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/pandas/</guid><description>% Pandas % Data Manipulation in Python
+Pandas Built on NumPy Adds data structures and data manipulation tools Enables easier data cleaning and analysis import pandas as pd pd.set_option(&amp;#34;display.width&amp;#34;, 120) That last line allows you to display DataFrames with many columns without wrapping.
+Pandas Fundamentals Three fundamental Pandas data structures:
+Series - a one-dimensional array of values indexed by a pd.Index Index - an array-like object used to access elements of a Series or DataFrame DataFrame - a two-dimensional array with flexible row indices and column names Series from List In [4]: data = pd.</description></item><item><title/><link>https://DrCS.codes/machine-learning/slides/pla/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/pla/</guid><description>% Linear Separators % The Perceptron Learning Algorithm
+Learning Problem Setup Every machine learning problem contains the following elements:
+An input $\vec{x}$ (though, as we&amp;rsquo;ll see later, $\vec{x}$ can be a list aof arbitrary feature values, not necessarily a vector) An unkown target function $f: \mathcal{X} \rightarrow \mathcal{Y}$ A data set $\mathcal{D}$ A learning model, which consists of a hypothesis class $\mathcal{H}$, and a learning algorithm. A learning algorithm uses elements of $\mathcal{D}$ to estimate parameters of of a particular $h(\vec{x})$ from $\mathcal{H}$ which maps every $\vec{x}$ to an element of $\mathcal{Y}$.</description></item><item><title/><link>https://DrCS.codes/machine-learning/slides/spark-intro/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/machine-learning/slides/spark-intro/</guid><description>% Introduction to Spark
+Apache Spark &amp;ldquo;Unified computing engine&amp;rdquo;
+cluster manager for running programs distributed across multiple computers (&amp;ldquo;nodes&amp;rdquo;) Spark cluster manager, YARN, or Mesos libraries for parallel data processing Spark Applications Driver process runs main() function on a node in the cluster Maintains information about the Spark application Responds to user&amp;rsquo;s program or input Analyzes, distributes, and schedules work across executors Executor processes Carry out work assigned by driver Report state of computation to driver {height=30%}</description></item></channel></rss>

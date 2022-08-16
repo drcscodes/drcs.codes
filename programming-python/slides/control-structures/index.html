@@ -1,0 +1,145 @@
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Dr. CS codes</title><meta name=viewport content="width=device-width"><link rel=stylesheet href=https://DrCS.codes/css/syntax.css><link rel=stylesheet href=https://DrCS.codes/css/main.css><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link href=https://DrCS.codes/css/navbar-top-fixed.css rel=stylesheet></head><body><nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class=navbar-brand href=/programming-python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="navbar-collapse collapse" id=navbarCollapse><ul class="navbar-nav mr-auto"></ul><ul class="navbar-nav pull-right"><li class="nav-item pull-right"><a class=nav-link href=https://DrCS.codes>Dr. CS codes</a></li></ul></div></nav><main role=main class=container><p>% Control Structures</p><h2 id=structured-programming>Structured Programming</h2><p>Any algorithm can be expressed by:</p><ul><li>Sequence - one statement after another</li><li>Selection - conditional execution (not conditional jumping)</li><li>Repetition - loops</li></ul><p>We&rsquo;ve already seen sequences of statements. Today we&rsquo;ll learn
+selection (conditional execution), and repetition.</p><h2 id=the-if-else-statement>The <code>if-else</code> Statement</h2><p>Conditional execution:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>if</span> boolean_expression:
+</span></span><span style=display:flex><span>    <span style=color:#75715e># a single statement executed when boolean_expression is true</span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>    <span style=color:#75715e># a single statement executed when boolean_expression is false</span>
+</span></span></code></pre></div><ul><li><code>boolean_expression</code> is not enclosed in parentheses</li><li><code>else:</code> not required</li></ul><p>Example:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>if</span> (num <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span>) <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;I like &#34;</span> <span style=color:#f92672>+</span> str(num))
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;I&#39;m ambivalent about &#34;</span> <span style=color:#f92672>+</span> str(num))
+</span></span></code></pre></div><h2 id=blocks>Blocks</h2><p>Python is block-structured. Contiguous sequences of statements at the
+same indentation level form a block. Blocks are like single statements
+(not expressions - they don&rsquo;t have values).</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>if</span> num <span style=color:#f92672>%</span> <span style=color:#ae81ff>2</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span>   print(str(num) <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; is even.&#34;</span>)
+</span></span><span style=display:flex><span>   print(<span style=color:#e6db74>&#34;I like even numbers.&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>    print(str(num) <span style=color:#f92672>+</span> <span style=color:#e6db74>&#34; is odd.&#34;</span>);
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;I&#39;m ambivalent about odd numbers.&#34;</span>)
+</span></span></code></pre></div><h2 id=multi-way-if-else-statements>Multi-way <code>if-else</code> Statements</h2><p>This is hard to follow:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>if</span> color <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;red&#34;</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Redrum!&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span> color <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;yellow&#34;</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;Submarine&#34;</span>)
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>        print(<span style=color:#e6db74>&#34;A Lack of Color&#34;</span>)
+</span></span></code></pre></div><p>This multi-way if-else is equivalent, and clearer:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>if</span> color <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;red&#34;</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Redrum!&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>elif</span> color <span style=color:#f92672>==</span> <span style=color:#e6db74>&#34;yellow&#34;</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;Submarine&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span>    print(<span style=color:#e6db74>&#34;A Lack of Color&#34;</span>)
+</span></span></code></pre></div><h2 id=if-else-expression><code>if</code>-<code>else</code> Expression</h2><p>One often wants to assign different values to a variable based on a condition. <code>if-else</code> expressions can reduce some of the verbosity of <code>if-else</code> statements.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>current_conditions</span>():
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>     <span style=color:#66d9ef>return</span> {<span style=color:#e6db74>&#39;precipitation&#39;</span>: <span style=color:#66d9ef>None</span>}
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> is_raining <span style=color:#f92672>=</span> current_conditions()[<span style=color:#e6db74>&#39;precipitation&#39;</span>]
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> cooking_method <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;grilling&#34;</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> is_raining <span style=color:#66d9ef>else</span> <span style=color:#e6db74>&#34;baking&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> cooking_method
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#39;grilling&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span>
+</span></span></code></pre></div><h2 id=shake--bake>Shake & Bake!</h2><p>What is the value of the expression <code>"result" if not "first" else "last"</code>?</p><h2 id=loops>Loops</h2><p>Algorithms often call for repeated action, e.g. :</p><ul><li>“repeat &mldr; while (or until) some condition is true” (looping) or</li><li>“for each element of this array/list/etc. &mldr;” (iteration)</li></ul><p>Python provides two control structures for repeated actions:</p><ul><li><code>while</code> loop</li><li><code>for</code> iteration statement</li></ul><h2 id=while-loops><code>while</code> Loops</h2><p><code>while</code> loops are pre-test loops: the loop condition is tested before the
+loop body is executed</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>while</span> condition: <span style=color:#75715e># condition is any boolean expression</span>
+</span></span><span style=display:flex><span>    <span style=color:#75715e># loop body executes as long as condition is true</span>
+</span></span></code></pre></div><p>Example</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>countdown</span>(n):
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>     <span style=color:#66d9ef>while</span> n <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>0</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>         print(n)
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>         n <span style=color:#f92672>-=</span> <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>print(<span style=color:#e6db74>&#39;Blast off!&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> countdown(<span style=color:#ae81ff>5</span>)
+</span></span><span style=display:flex><span><span style=color:#ae81ff>5</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>4</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>Blast off<span style=color:#960050;background-color:#1e0010>!</span>
+</span></span></code></pre></div><h2 id=for-statements><code>for</code> Statements</h2><p><code>for</code> is an <em>iteration</em> statement</p><ul><li>iteration means visiting the elements of an iterable data structure</li></ul><p>In the for loop:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> animal <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Peacock&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#66d9ef>for</span> animal <span style=color:#f92672>in</span> [<span style=color:#e6db74>&#39;Giraffe&#39;</span>, <span style=color:#e6db74>&#39;Alligator&#39;</span>, <span style=color:#e6db74>&#39;Liger&#39;</span>]:
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>     print(animal)
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span>Giraffe
+</span></span><span style=display:flex><span>Alligator
+</span></span><span style=display:flex><span>Liger
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> animal
+</span></span><span style=display:flex><span><span style=color:#e6db74>&#39;Liger&#39;</span>
+</span></span></code></pre></div><ul><li><code>animal</code> is assigned to each element of the iterable list of animals in successive executions of the <code>for</code> loop&rsquo;s body</li><li>notice that the loop variable re-assigned an existing variable</li></ul><h2 id=break-and-else><code>break</code> and <code>else</code></h2><ul><li><code>break</code> terminates execution of a loop</li><li>optional <code>else</code> clause executes only of loop completes without
+executing a <code>break</code></li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>sweet_animals</span>(animals):
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>     <span style=color:#66d9ef>for</span> animal <span style=color:#f92672>in</span> animals:
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>         print(animal)
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>         <span style=color:#66d9ef>if</span> animal <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;Liger&#39;</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>             print(<span style=color:#e6db74>&#39;Mad drawing skillz!&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>             <span style=color:#66d9ef>break</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>     <span style=color:#66d9ef>else</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>         print(<span style=color:#e6db74>&#39;No animals of note.&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> sweet_animals([<span style=color:#e6db74>&#39;Peacock&#39;</span>, <span style=color:#e6db74>&#39;Liger&#39;</span>, <span style=color:#e6db74>&#39;Alligator&#39;</span>])
+</span></span><span style=display:flex><span>Peacock
+</span></span><span style=display:flex><span>Liger
+</span></span><span style=display:flex><span>Mad drawing skillz<span style=color:#960050;background-color:#1e0010>!</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> sweet_animals([<span style=color:#e6db74>&#39;Peacock&#39;</span>, <span style=color:#e6db74>&#39;Tiger&#39;</span>, <span style=color:#e6db74>&#39;Alligator&#39;</span>])
+</span></span><span style=display:flex><span>Peacock
+</span></span><span style=display:flex><span>Tiger
+</span></span><span style=display:flex><span>Alligator
+</span></span><span style=display:flex><span>No animals of note<span style=color:#f92672>.</span>
+</span></span></code></pre></div><h2 id=run-time-errors>Run-time Errors</h2><p>An error detected during execution is called an exception and is represented at runtime by an exception object. The Python interpreter raises an exception at the point an error occurs. The exception is handled by some exception-handling code. Here we don&rsquo;t handle the ValueError ourselves, so it&rsquo;s handled by the Python shell:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> int(<span style=color:#e6db74>&#39;e&#39;</span>)
+</span></span><span style=display:flex><span>Traceback (most recent call last):
+</span></span><span style=display:flex><span>File <span style=color:#e6db74>&#34;&lt;stdin&gt;&#34;</span>, line <span style=color:#ae81ff>1</span>, <span style=color:#f92672>in</span> <span style=color:#f92672>&lt;</span>module<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>ValueError</span>: invalid literal <span style=color:#66d9ef>for</span> int() <span style=color:#66d9ef>with</span> base <span style=color:#ae81ff>10</span>: <span style=color:#e6db74>&#39;e&#39;</span>
+</span></span></code></pre></div><p>We can handle an exception by enclosing potentially error-raising code
+in a try block and handling errors in an except clause.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>    code_that_may_raise_error()
+</span></span><span style=display:flex><span><span style=color:#66d9ef>except</span> ExceptionType <span style=color:#66d9ef>as</span> e:
+</span></span><span style=display:flex><span>    print(str(e))
+</span></span><span style=display:flex><span>    code_that_handles_exception()
+</span></span></code></pre></div><p><code>ExceptionType</code> and <code>as e</code> are optional. If left off, except clause will catch any
+exception.</p><h2 id=exception-handling-example>Exception Handling Example</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_number_from_user</span>():
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>     input_is_invalid <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>     <span style=color:#66d9ef>while</span> input_is_invalid:
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>         num <span style=color:#f92672>=</span> input(<span style=color:#e6db74>&#39;Please enter a whole number: &#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>         <span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>             num <span style=color:#f92672>=</span> int(num)
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>             <span style=color:#75715e># Won&#39;t get here if exception is raised. &#39;</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>             input_is_invalid <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>         <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>ValueError</span>:
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>             print(num <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39; is not a whole number. Try again.&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>    <span style=color:#66d9ef>return</span> num
+</span></span><span style=display:flex><span><span style=color:#f92672>...</span>
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> get_number_from_user()
+</span></span><span style=display:flex><span>Please enter a whole number: e
+</span></span><span style=display:flex><span>e <span style=color:#f92672>is</span> <span style=color:#f92672>not</span> a whole number<span style=color:#f92672>.</span> Try again<span style=color:#f92672>.</span>
+</span></span><span style=display:flex><span>Please enter a whole number: <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>3</span>
+</span></span></code></pre></div><h2 id=raising-exceptions>Raising Exceptions</h2><p><img src=raising-arizona.jpg alt="raise UnsafeBabyError('Not secured to motorcycle')">{height=50%}</p><p>You can use exceptions for error handling in your code by raising exceptions.</p><h2 id=super-troopers>Super Troopers</h2><p>Here&rsquo;s a snippet that ensures construction of a valid <a href=/code/python/classes/trooper.py><code>SuperTrooper</code></a>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span><span style=color:#66d9ef>class</span> <span style=color:#a6e22e>SuperTrooper</span>(Trooper):
+</span></span><span style=display:flex><span>    job <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;Hilarity&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>def</span> __init__(self, name, is_mustached):
+</span></span><span style=display:flex><span>        super()<span style=color:#f92672>.</span>__init__(name)
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Discovers the error:</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> is_mustached:
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Create an instance of an exception class and raise it:</span>
+</span></span><span style=display:flex><span>            <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>ValueError</span>(<span style=color:#e6db74>&#39;A Super Trooper must have a mustache&#39;</span>)
+</span></span></code></pre></div><p>If you try to create a <code>SuperTrooper</code> without a mustache, you get a <code>ValueError</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> <span style=color:#f92672>import</span> trooper
+</span></span><span style=display:flex><span><span style=color:#f92672>&gt;&gt;&gt;</span> trooper<span style=color:#f92672>.</span>SuperTrooper(<span style=color:#e6db74>&#34;Dr.CS&#34;</span>, is_mustached<span style=color:#f92672>=</span><span style=color:#66d9ef>False</span>)
+</span></span><span style=display:flex><span>Traceback (most recent call last):
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;&lt;stdin&gt;&#34;</span>, line <span style=color:#ae81ff>1</span>, <span style=color:#f92672>in</span> <span style=color:#f92672>&lt;</span>module<span style=color:#f92672>&gt;</span>
+</span></span><span style=display:flex><span>  File <span style=color:#e6db74>&#34;[path elided]/trooper.py&#34;</span>, line <span style=color:#ae81ff>25</span>, <span style=color:#f92672>in</span> __init__
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>raise</span> <span style=color:#a6e22e>ValueError</span>(<span style=color:#e6db74>&#39;A Super Trooper must have a mustache&#39;</span>)
+</span></span><span style=display:flex><span><span style=color:#a6e22e>ValueError</span>: A Super Trooper must have a mustache
+</span></span></code></pre></div><h2 id=exception-code-design>Exception Code Design</h2><p>Error handling using exceptions involves:</p><ol><li><p>The exception object that represents the error and contains information about the error</p><ul><li>Exception objects must derive from <a href=https://docs.python.org/3/library/exceptions.html#BaseException><code>BaseException</code></a>. If you define your own exception, use <a href=https://docs.python.org/3/library/exceptions.html#Exception><code>Exception</code></a> as the base class</li><li>Best to simply use exceptions already defined in the standard library</li></ul></li><li><p>The code that discovers the error, creates the exception object and <code>raise</code>s it to be caught by the error handling code, and</p></li><li><p>The code that catches the exception and handles the error the exception represents</p></li></ol><p>Creating exceptions is more common in library code. Applications will often catch exceptions, which is straightforward.</p><h2 id=exception-code-design-example>Exception Code Design Example</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>get_number_from_user</span>():
+</span></span><span style=display:flex><span>    input_is_invalid <span style=color:#f92672>=</span> <span style=color:#66d9ef>True</span>
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>while</span> input_is_invalid:
+</span></span><span style=display:flex><span>        num <span style=color:#f92672>=</span> input(<span style=color:#e6db74>&#39;Please enter a whole number: &#39;</span>)
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>try</span>:
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Input problem discovered and raised inside int function</span>
+</span></span><span style=display:flex><span>            num <span style=color:#f92672>=</span> int(num)
+</span></span><span style=display:flex><span>            <span style=color:#75715e># Won&#39;t get here if exception is raised. &#39;</span>
+</span></span><span style=display:flex><span>            input_is_invalid <span style=color:#f92672>=</span> <span style=color:#66d9ef>False</span>
+</span></span><span style=display:flex><span>        <span style=color:#75715e># Input value problem caught and handled in &#34;catch clause&#34;</span>
+</span></span><span style=display:flex><span>        <span style=color:#66d9ef>except</span> <span style=color:#a6e22e>ValueError</span>:
+</span></span><span style=display:flex><span>            print(num <span style=color:#f92672>+</span> <span style=color:#e6db74>&#39; is not a whole number. Try again.&#39;</span>)
+</span></span><span style=display:flex><span>   <span style=color:#66d9ef>return</span> num
+</span></span></code></pre></div><p>For more details on exceptions, see <a href=https://docs.python.org/3/tutorial/errors.html>https://docs.python.org/3/tutorial/errors.html</a></p><h2 id=conclusion>Conclusion</h2><p>Python provides all the control structures you need for controlling program flow:</p><ul><li><p>Sequence - one statement after another</p></li><li><p>Selection</p><ul><li><code>if</code> - <code>elif</code> - <code>else</code> statements</li><li><code>if</code> - <code>else</code> expressions</li></ul></li><li><p>Repetition</p><ul><li><code>while</code> loops</li><li><code>for</code> iteration statements</li></ul></li></ul></main><script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script></body></html>

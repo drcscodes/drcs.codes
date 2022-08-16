@@ -1,0 +1,233 @@
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Dr. CS codes</title><meta name=viewport content="width=device-width"><link rel=stylesheet href=https://DrCS.codes/css/syntax.css><link rel=stylesheet href=https://DrCS.codes/css/main.css><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link href=https://DrCS.codes/css/navbar-top-fixed.css rel=stylesheet></head><body><nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class=navbar-brand href=/machine-learning></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="navbar-collapse collapse" id=navbarCollapse><ul class="navbar-nav mr-auto"></ul><ul class="navbar-nav pull-right"><li class="nav-item pull-right"><a class=nav-link href=https://DrCS.codes>Dr. CS codes</a></li></ul></div></nav><main role=main class=container><p>% Pandas
+% Data Manipulation in Python</p><h2 id=pandas>Pandas</h2><ul><li>Built on NumPy</li><li>Adds data structures and data manipulation tools</li><li>Enables easier data cleaning and analysis</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span><span style=color:#f92672>import</span> pandas <span style=color:#66d9ef>as</span> pd
+</span></span><span style=display:flex><span>pd<span style=color:#f92672>.</span>set_option(<span style=color:#e6db74>&#34;display.width&#34;</span>, <span style=color:#ae81ff>120</span>)
+</span></span></code></pre></div><p>That last line allows you to display DataFrames with many columns without wrapping.</p><h2 id=pandas-fundamentals>Pandas Fundamentals</h2><p>Three fundamental Pandas data structures:</p><ul><li><code>Series</code> - a one-dimensional array of values indexed by a <code>pd.Index</code></li><li><code>Index</code> - an array-like object used to access elements of a <code>Series</code> or <code>DataFrame</code></li><li><code>DataFrame</code> - a two-dimensional array with flexible row indices and column names</li></ul><h2 id=series-from-list>Series from List</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>4</span>]: data <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>Series([<span style=color:#e6db74>&#39;a&#39;</span>,<span style=color:#e6db74>&#39;b&#39;</span>,<span style=color:#e6db74>&#39;c&#39;</span>,<span style=color:#e6db74>&#39;d&#39;</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>5</span>]: data
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>5</span>]:
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0</span>    a
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span>    b
+</span></span><span style=display:flex><span><span style=color:#ae81ff>2</span>    c
+</span></span><span style=display:flex><span><span style=color:#ae81ff>3</span>    d
+</span></span><span style=display:flex><span>dtype: object
+</span></span></code></pre></div><p>The 0..3 in the left column are the <code>pd.Index</code> for <code>data</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>7</span>]: data<span style=color:#f92672>.</span>index
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>7</span>]: RangeIndex(start<span style=color:#f92672>=</span><span style=color:#ae81ff>0</span>, stop<span style=color:#f92672>=</span><span style=color:#ae81ff>4</span>, step<span style=color:#f92672>=</span><span style=color:#ae81ff>1</span>)
+</span></span></code></pre></div><p>The elements from the Python list we passed to the <code>pd.Series</code> constructor make up the values:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>8</span>]: data<span style=color:#f92672>.</span>values
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>8</span>]: array([<span style=color:#e6db74>&#39;a&#39;</span>, <span style=color:#e6db74>&#39;b&#39;</span>, <span style=color:#e6db74>&#39;c&#39;</span>, <span style=color:#e6db74>&#39;d&#39;</span>], dtype<span style=color:#f92672>=</span>object)
+</span></span></code></pre></div><p>Notice that the values are stored in a Numpy array.</p><h2 id=series-from-dictionary>Series from Dictionary</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>salary <span style=color:#f92672>=</span> {<span style=color:#e6db74>&#34;Data Scientist&#34;</span>: <span style=color:#ae81ff>110000</span>,
+</span></span><span style=display:flex><span>          <span style=color:#e6db74>&#34;DevOps Engineer&#34;</span>: <span style=color:#ae81ff>110000</span>,
+</span></span><span style=display:flex><span>          <span style=color:#e6db74>&#34;Data Engineer&#34;</span>: <span style=color:#ae81ff>106000</span>,
+</span></span><span style=display:flex><span>          <span style=color:#e6db74>&#34;Analytics Manager&#34;</span>: <span style=color:#ae81ff>112000</span>,
+</span></span><span style=display:flex><span>          <span style=color:#e6db74>&#34;Database Administrator&#34;</span>: <span style=color:#ae81ff>93000</span>,
+</span></span><span style=display:flex><span>          <span style=color:#e6db74>&#34;Software Architect&#34;</span>: <span style=color:#ae81ff>125000</span>,
+</span></span><span style=display:flex><span>          <span style=color:#e6db74>&#34;Software Engineer&#34;</span>: <span style=color:#ae81ff>101000</span>,
+</span></span><span style=display:flex><span>          <span style=color:#e6db74>&#34;Supply Chain Manager&#34;</span>: <span style=color:#ae81ff>100000</span>}
+</span></span></code></pre></div><p>Create a <code>pd.Series</code> from a <code>dict</code>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>14</span>]: salary_data <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>Series(salary)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>15</span>]: salary_data
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>15</span>]:
+</span></span><span style=display:flex><span>Analytics Manager         <span style=color:#ae81ff>112000</span>
+</span></span><span style=display:flex><span>Data Engineer             <span style=color:#ae81ff>106000</span>
+</span></span><span style=display:flex><span>Data Scientist            <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Database Administrator     <span style=color:#ae81ff>93000</span>
+</span></span><span style=display:flex><span>DevOps Engineer           <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Software Architect        <span style=color:#ae81ff>125000</span>
+</span></span><span style=display:flex><span>Software Engineer         <span style=color:#ae81ff>101000</span>
+</span></span><span style=display:flex><span>Supply Chain Manager      <span style=color:#ae81ff>100000</span>
+</span></span><span style=display:flex><span>dtype: int64
+</span></span></code></pre></div><p>The index is a sorted sequence of the keys of the dictionary passed to <code>pd.Series</code></p><p>[^1] <a href=https://www.glassdoor.com/List/Best-Jobs-in-America-LST_KQ0,20.htm>https://www.glassdoor.com/List/Best-Jobs-in-America-LST_KQ0,20.htm</a>.</p><h2 id=series-with-custom-index>Series with Custom Index</h2><p>General form of Series constructor is <code>pd.Series(data, index=index)</code></p><ul><li>Default is integer sequence for sequence data and sorted keys of dictionaries</li><li>Can provide a custom index:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>29</span>]: pd<span style=color:#f92672>.</span>Series([<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>], index<span style=color:#f92672>=</span>[<span style=color:#e6db74>&#39;a&#39;</span>, <span style=color:#e6db74>&#39;b&#39;</span>, <span style=color:#e6db74>&#39;c&#39;</span>])
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>29</span>]:
+</span></span><span style=display:flex><span>a    <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span>b    <span style=color:#ae81ff>2</span>
+</span></span><span style=display:flex><span>c    <span style=color:#ae81ff>3</span>
+</span></span><span style=display:flex><span>dtype: int64
+</span></span></code></pre></div><p>The index object itself is an immutable array with set operations.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>30</span>]: i1 <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>Index([<span style=color:#ae81ff>1</span>,<span style=color:#ae81ff>2</span>,<span style=color:#ae81ff>3</span>,<span style=color:#ae81ff>4</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>31</span>]: i2 <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>Index([<span style=color:#ae81ff>3</span>,<span style=color:#ae81ff>4</span>,<span style=color:#ae81ff>5</span>,<span style=color:#ae81ff>6</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>32</span>]: i1[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>32</span>]: Int64Index([<span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>], dtype<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;int64&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>33</span>]: i1 <span style=color:#f92672>&amp;</span> i2 <span style=color:#75715e># intersection</span>
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>33</span>]: Int64Index([<span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>], dtype<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;int64&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>34</span>]: i1 <span style=color:#f92672>|</span> i2 <span style=color:#75715e># union</span>
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>34</span>]: Int64Index([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>4</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>], dtype<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;int64&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>35</span>]: i1 <span style=color:#f92672>^</span> i2 <span style=color:#75715e># symmetric difference</span>
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>35</span>]: Int64Index([<span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>2</span>, <span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>6</span>], dtype<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;int64&#39;</span>)
+</span></span></code></pre></div><h2 id=series-indexing-and-slicing>Series Indexing and Slicing</h2><p>Indexing feels like dictionary access due to flexible index objects (download <a href=../code/hotjobs.py>hotjobs.py</a> to play along):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>37</span>]: data <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>Series([<span style=color:#e6db74>&#39;a&#39;</span>, <span style=color:#e6db74>&#39;b&#39;</span>, <span style=color:#e6db74>&#39;c&#39;</span>, <span style=color:#e6db74>&#39;d&#39;</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>38</span>]: data[<span style=color:#ae81ff>0</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>38</span>]: <span style=color:#e6db74>&#39;a&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>39</span>]: salary_data[<span style=color:#e6db74>&#39;Software Engineer&#39;</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>39</span>]: <span style=color:#ae81ff>101000</span>
+</span></span></code></pre></div><p>But you can also slice using these flexible indices:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>40</span>]: salary_data[<span style=color:#e6db74>&#39;Data Scientist&#39;</span>:<span style=color:#e6db74>&#39;Software Engineer&#39;</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>40</span>]:
+</span></span><span style=display:flex><span>Data Scientist            <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Database Administrator     <span style=color:#ae81ff>93000</span>
+</span></span><span style=display:flex><span>DevOps Engineer           <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Software Architect        <span style=color:#ae81ff>125000</span>
+</span></span><span style=display:flex><span>Software Engineer         <span style=color:#ae81ff>101000</span>
+</span></span><span style=display:flex><span>dtype: int64
+</span></span></code></pre></div><h2 id=basic-dataframe-structure>Basic DataFrame Structure</h2><p>A DataFrame is a series Serieses with the same keys. For example, consider the following dictionary of dictionaries meant to leverage your experience with spreadsheets (in <a href=../code/spreadsheet.py>spreadsheet.py</a>):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>5</span>]: <span style=color:#f92672>import</span> spreadsheet; spreadsheet<span style=color:#f92672>.</span>cells
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>5</span>]:
+</span></span><span style=display:flex><span>{<span style=color:#e6db74>&#39;A&#39;</span>: {<span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#39;A1&#39;</span>, <span style=color:#ae81ff>2</span>: <span style=color:#e6db74>&#39;A2&#39;</span>, <span style=color:#ae81ff>3</span>: <span style=color:#e6db74>&#39;A3&#39;</span>},
+</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;B&#39;</span>: {<span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#39;B1&#39;</span>, <span style=color:#ae81ff>2</span>: <span style=color:#e6db74>&#39;B2&#39;</span>, <span style=color:#ae81ff>3</span>: <span style=color:#e6db74>&#39;B3&#39;</span>},
+</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;C&#39;</span>: {<span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#39;C1&#39;</span>, <span style=color:#ae81ff>2</span>: <span style=color:#e6db74>&#39;C2&#39;</span>, <span style=color:#ae81ff>3</span>: <span style=color:#e6db74>&#39;C3&#39;</span>},
+</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;D&#39;</span>: {<span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#39;D1&#39;</span>, <span style=color:#ae81ff>2</span>: <span style=color:#e6db74>&#39;D2&#39;</span>, <span style=color:#ae81ff>3</span>: <span style=color:#e6db74>&#39;D3&#39;</span>}}
+</span></span></code></pre></div><p>All of these dictionaries have the same keys, so we can pass this dictionary of dictionaries to the DataFrame constructor:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>7</span>]: ss <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>DataFrame(spreadsheet<span style=color:#f92672>.</span>cells); ss
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>7</span>]:
+</span></span><span style=display:flex><span>    A   B   C   D
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span>  A1  B1  C1  D1
+</span></span><span style=display:flex><span><span style=color:#ae81ff>2</span>  A2  B2  C2  D2
+</span></span><span style=display:flex><span><span style=color:#ae81ff>3</span>  A3  B3  C3  D3
+</span></span></code></pre></div><h2 id=basic-dataframe-structure-1>Basic DataFrame Structure</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>5</span>]: <span style=color:#f92672>import</span> spreadsheet; spreadsheet<span style=color:#f92672>.</span>cells
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>5</span>]:
+</span></span><span style=display:flex><span>{<span style=color:#e6db74>&#39;A&#39;</span>: {<span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#39;A1&#39;</span>, <span style=color:#ae81ff>2</span>: <span style=color:#e6db74>&#39;A2&#39;</span>, <span style=color:#ae81ff>3</span>: <span style=color:#e6db74>&#39;A3&#39;</span>},
+</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;B&#39;</span>: {<span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#39;B1&#39;</span>, <span style=color:#ae81ff>2</span>: <span style=color:#e6db74>&#39;B2&#39;</span>, <span style=color:#ae81ff>3</span>: <span style=color:#e6db74>&#39;B3&#39;</span>},
+</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;C&#39;</span>: {<span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#39;C1&#39;</span>, <span style=color:#ae81ff>2</span>: <span style=color:#e6db74>&#39;C2&#39;</span>, <span style=color:#ae81ff>3</span>: <span style=color:#e6db74>&#39;C3&#39;</span>},
+</span></span><span style=display:flex><span> <span style=color:#e6db74>&#39;D&#39;</span>: {<span style=color:#ae81ff>1</span>: <span style=color:#e6db74>&#39;D1&#39;</span>, <span style=color:#ae81ff>2</span>: <span style=color:#e6db74>&#39;D2&#39;</span>, <span style=color:#ae81ff>3</span>: <span style=color:#e6db74>&#39;D3&#39;</span>}}
+</span></span></code></pre></div><p>All of these dictionaries have the same keys, so we can pass this dictionary of dictionaries to the DataFrame constructor:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>7</span>]: ss <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>DataFrame(spreadsheet<span style=color:#f92672>.</span>cells); ss
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>7</span>]:
+</span></span><span style=display:flex><span>    A   B   C   D
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span>  A1  B1  C1  D1
+</span></span><span style=display:flex><span><span style=color:#ae81ff>2</span>  A2  B2  C2  D2
+</span></span><span style=display:flex><span><span style=color:#ae81ff>3</span>  A3  B3  C3  D3
+</span></span></code></pre></div><ul><li><p>Each column is a Series whose keys (index) are the values printed to the left (1, 2 and 3).</p></li><li><p>Each row is a Series whose keys (index) are the column headers.</p></li></ul><p>Try evaluating <code>ss.columns</code> and <code>ss.index</code>.</p><h2 id=dataframe-example>DataFrame Example</h2><p>Download <a href=http://datamastery.gitlab.io/code/analytics/hotjobs.py>hotjobs.py</a> and do a <code>%load hotjobs.py</code> (to evaluate the code in the top-level namespace instead of importing it).</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>42</span>]: jobs <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>DataFrame({<span style=color:#e6db74>&#39;salary&#39;</span>: salary, <span style=color:#e6db74>&#39;openings&#39;</span>: openings})
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>43</span>]: jobs
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>43</span>]:
+</span></span><span style=display:flex><span>                        openings  salary
+</span></span><span style=display:flex><span>Analytics Manager           <span style=color:#ae81ff>1958</span>  <span style=color:#ae81ff>112000</span>
+</span></span><span style=display:flex><span>Data Engineer               <span style=color:#ae81ff>2599</span>  <span style=color:#ae81ff>106000</span>
+</span></span><span style=display:flex><span>Data Scientist              <span style=color:#ae81ff>4184</span>  <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Database Administrator      <span style=color:#ae81ff>2877</span>   <span style=color:#ae81ff>93000</span>
+</span></span><span style=display:flex><span>DevOps Engineer             <span style=color:#ae81ff>2725</span>  <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Software Architect          <span style=color:#ae81ff>2232</span>  <span style=color:#ae81ff>125000</span>
+</span></span><span style=display:flex><span>Software Engineer          <span style=color:#ae81ff>17085</span>  <span style=color:#ae81ff>101000</span>
+</span></span><span style=display:flex><span>Supply Chain Manager        <span style=color:#ae81ff>1270</span>  <span style=color:#ae81ff>100000</span>
+</span></span><span style=display:flex><span>UX Designer                 <span style=color:#ae81ff>1691</span>   <span style=color:#ae81ff>92500</span>
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>46</span>]: jobs<span style=color:#f92672>.</span>index
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>46</span>]:
+</span></span><span style=display:flex><span>Index([<span style=color:#e6db74>&#39;Analytics Manager&#39;</span>, <span style=color:#e6db74>&#39;Data Engineer&#39;</span>, <span style=color:#e6db74>&#39;Data Scientist&#39;</span>,
+</span></span><span style=display:flex><span>       <span style=color:#e6db74>&#39;Database Administrator&#39;</span>, <span style=color:#e6db74>&#39;DevOps Engineer&#39;</span>, <span style=color:#e6db74>&#39;Software Architect&#39;</span>,
+</span></span><span style=display:flex><span>       <span style=color:#e6db74>&#39;Software Engineer&#39;</span>, <span style=color:#e6db74>&#39;Supply Chain Manager&#39;</span>, <span style=color:#e6db74>&#39;UX Designer&#39;</span>],
+</span></span><span style=display:flex><span>      dtype<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;object&#39;</span>)
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>47</span>]: jobs<span style=color:#f92672>.</span>columns
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>47</span>]: Index([<span style=color:#e6db74>&#39;openings&#39;</span>, <span style=color:#e6db74>&#39;salary&#39;</span>], dtype<span style=color:#f92672>=</span><span style=color:#e6db74>&#39;object&#39;</span>)
+</span></span></code></pre></div><h2 id=simple-dataframe-indexing>Simple DataFrame Indexing</h2><p>Simplest indexing of DataFrame is by column name.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>48</span>]: jobs[<span style=color:#e6db74>&#39;salary&#39;</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>48</span>]:
+</span></span><span style=display:flex><span>Analytics Manager         <span style=color:#ae81ff>112000</span>
+</span></span><span style=display:flex><span>Data Engineer             <span style=color:#ae81ff>106000</span>
+</span></span><span style=display:flex><span>Data Scientist            <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Database Administrator     <span style=color:#ae81ff>93000</span>
+</span></span><span style=display:flex><span>DevOps Engineer           <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Software Architect        <span style=color:#ae81ff>125000</span>
+</span></span><span style=display:flex><span>Software Engineer         <span style=color:#ae81ff>101000</span>
+</span></span><span style=display:flex><span>Supply Chain Manager      <span style=color:#ae81ff>100000</span>
+</span></span><span style=display:flex><span>UX Designer                <span style=color:#ae81ff>92500</span>
+</span></span><span style=display:flex><span>Name: salary, dtype: int64
+</span></span></code></pre></div><p>Each colum is a Series:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>49</span>]: type(jobs[<span style=color:#e6db74>&#39;salary&#39;</span>])
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>49</span>]: pandas<span style=color:#f92672>.</span>core<span style=color:#f92672>.</span>series<span style=color:#f92672>.</span>Series
+</span></span></code></pre></div><h2 id=general-row-indexing>General Row Indexing</h2><p>The <code>loc</code> indexer indexes by row name:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>13</span>]: jobs<span style=color:#f92672>.</span>loc[<span style=color:#e6db74>&#39;Software Engineer&#39;</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>13</span>]:
+</span></span><span style=display:flex><span>openings     <span style=color:#ae81ff>17085</span>
+</span></span><span style=display:flex><span>salary      <span style=color:#ae81ff>101000</span>
+</span></span><span style=display:flex><span>Name: Software Engineer, dtype: int64
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>14</span>]: jobs<span style=color:#f92672>.</span>loc[<span style=color:#e6db74>&#39;Data Engineer&#39;</span>:<span style=color:#e6db74>&#39;Databse Administrator&#39;</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>14</span>]:
+</span></span><span style=display:flex><span>                        openings  salary
+</span></span><span style=display:flex><span>Data Engineer               <span style=color:#ae81ff>2599</span>  <span style=color:#ae81ff>106000</span>
+</span></span><span style=display:flex><span>Data Scientist              <span style=color:#ae81ff>4184</span>  <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Database Administrator      <span style=color:#ae81ff>2877</span>   <span style=color:#ae81ff>93000</span>
+</span></span></code></pre></div><p>Note that slice ending is inclusive when indexing by name.</p><p>The <code>iloc</code> indexer indexes rows by position:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>15</span>]: jobs<span style=color:#f92672>.</span>iloc[<span style=color:#ae81ff>1</span>:<span style=color:#ae81ff>3</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>15</span>]:
+</span></span><span style=display:flex><span>                openings  salary
+</span></span><span style=display:flex><span>Data Engineer       <span style=color:#ae81ff>2599</span>  <span style=color:#ae81ff>106000</span>
+</span></span><span style=display:flex><span>Data Scientist      <span style=color:#ae81ff>4184</span>  <span style=color:#ae81ff>110000</span>
+</span></span></code></pre></div><p>Note that slice ending is exclusive when indexing by integer position.</p><h2 id=special-case-row-indexing>Special Case Row Indexing</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>16</span>]: jobs[:<span style=color:#ae81ff>2</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>16</span>]:
+</span></span><span style=display:flex><span>                   openings  salary
+</span></span><span style=display:flex><span>Analytics Manager      <span style=color:#ae81ff>1958</span>  <span style=color:#ae81ff>112000</span>
+</span></span><span style=display:flex><span>Data Engineer          <span style=color:#ae81ff>2599</span>  <span style=color:#ae81ff>106000</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>17</span>]: jobs[jobs[<span style=color:#e6db74>&#39;salary&#39;</span>] <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>100000</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>17</span>]:
+</span></span><span style=display:flex><span>                    openings  salary
+</span></span><span style=display:flex><span>Analytics Manager       <span style=color:#ae81ff>1958</span>  <span style=color:#ae81ff>112000</span>
+</span></span><span style=display:flex><span>Data Engineer           <span style=color:#ae81ff>2599</span>  <span style=color:#ae81ff>106000</span>
+</span></span><span style=display:flex><span>Data Scientist          <span style=color:#ae81ff>4184</span>  <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>DevOps Engineer         <span style=color:#ae81ff>2725</span>  <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Software Architect      <span style=color:#ae81ff>2232</span>  <span style=color:#ae81ff>125000</span>
+</span></span><span style=display:flex><span>Software Engineer      <span style=color:#ae81ff>17085</span>  <span style=color:#ae81ff>101000</span>
+</span></span></code></pre></div><p>Try <code>jobs['salary'] > 100000</code> by itself. What&rsquo;s happening in <code>In[17]</code> above?</p><h2 id=loc-and-iloc-indexing><code>loc</code> and <code>iloc</code> Indexing</h2><p>The previous examples are shortcuts for <code>loc</code> and <code>iloc</code> indexing:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>20</span>]: jobs<span style=color:#f92672>.</span>iloc[:<span style=color:#ae81ff>2</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>20</span>]:
+</span></span><span style=display:flex><span>                   openings  salary
+</span></span><span style=display:flex><span>Analytics Manager      <span style=color:#ae81ff>1958</span>  <span style=color:#ae81ff>112000</span>
+</span></span><span style=display:flex><span>Data Engineer          <span style=color:#ae81ff>2599</span>  <span style=color:#ae81ff>106000</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>21</span>]: jobs<span style=color:#f92672>.</span>loc[jobs[<span style=color:#e6db74>&#39;salary&#39;</span>] <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>100000</span>]
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>21</span>]:
+</span></span><span style=display:flex><span>                    openings  salary
+</span></span><span style=display:flex><span>Analytics Manager       <span style=color:#ae81ff>1958</span>  <span style=color:#ae81ff>112000</span>
+</span></span><span style=display:flex><span>Data Engineer           <span style=color:#ae81ff>2599</span>  <span style=color:#ae81ff>106000</span>
+</span></span><span style=display:flex><span>Data Scientist          <span style=color:#ae81ff>4184</span>  <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>DevOps Engineer         <span style=color:#ae81ff>2725</span>  <span style=color:#ae81ff>110000</span>
+</span></span><span style=display:flex><span>Software Architect      <span style=color:#ae81ff>2232</span>  <span style=color:#ae81ff>125000</span>
+</span></span><span style=display:flex><span>Software Engineer      <span style=color:#ae81ff>17085</span>  <span style=color:#ae81ff>101000</span>
+</span></span></code></pre></div><h2 id=aggregate-functions>Aggregate Functions</h2><p>The values in a series is a <code>numpy.ndarray</code>, so you can use NumPy functions, broadcasting, etc.</p><ul><li>Average salary for all these jobs:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>14</span>]: np<span style=color:#f92672>.</span>average(jobs[<span style=color:#e6db74>&#39;salary&#39;</span>])
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>14</span>]: <span style=color:#ae81ff>107125.0</span>
+</span></span></code></pre></div><ul><li>Total number of openings:</li></ul><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>15</span>]: np<span style=color:#f92672>.</span>sum(jobs[<span style=color:#e6db74>&#39;openings&#39;</span>])
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>15</span>]: <span style=color:#ae81ff>34930</span>
+</span></span></code></pre></div><p>And so on.</p><h2 id=adding-column-by-applying-ufuncs>Adding Column by Applying Ufuncs</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>25</span>]: jobs[<span style=color:#e6db74>&#39;Percent Openings&#39;</span>] <span style=color:#f92672>=</span> jobs[<span style=color:#e6db74>&#39;openings&#39;</span>] <span style=color:#f92672>/</span> np<span style=color:#f92672>.</span>sum(jobs[<span style=color:#e6db74>&#39;openings&#39;</span>])
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>26</span>]: jobs
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>26</span>]:
+</span></span><span style=display:flex><span>                        openings  salary  DM Prepares  Percent Openings
+</span></span><span style=display:flex><span>Analytics Manager           <span style=color:#ae81ff>1958</span>  <span style=color:#ae81ff>112000</span>         <span style=color:#66d9ef>True</span>          <span style=color:#ae81ff>0.056055</span>
+</span></span><span style=display:flex><span>Data Engineer               <span style=color:#ae81ff>2599</span>  <span style=color:#ae81ff>106000</span>         <span style=color:#66d9ef>True</span>          <span style=color:#ae81ff>0.074406</span>
+</span></span><span style=display:flex><span>Data Scientist              <span style=color:#ae81ff>4184</span>  <span style=color:#ae81ff>110000</span>         <span style=color:#66d9ef>True</span>          <span style=color:#ae81ff>0.119782</span>
+</span></span><span style=display:flex><span>Database Administrator      <span style=color:#ae81ff>2877</span>   <span style=color:#ae81ff>93000</span>         <span style=color:#66d9ef>True</span>          <span style=color:#ae81ff>0.082365</span>
+</span></span><span style=display:flex><span>DevOps Engineer             <span style=color:#ae81ff>2725</span>  <span style=color:#ae81ff>110000</span>         <span style=color:#66d9ef>True</span>          <span style=color:#ae81ff>0.078013</span>
+</span></span><span style=display:flex><span>Software Architect          <span style=color:#ae81ff>2232</span>  <span style=color:#ae81ff>125000</span>         <span style=color:#66d9ef>True</span>          <span style=color:#ae81ff>0.063899</span>
+</span></span><span style=display:flex><span>Software Engineer          <span style=color:#ae81ff>17085</span>  <span style=color:#ae81ff>101000</span>         <span style=color:#66d9ef>True</span>          <span style=color:#ae81ff>0.489121</span>
+</span></span><span style=display:flex><span>Supply Chain Manager        <span style=color:#ae81ff>1270</span>  <span style=color:#ae81ff>100000</span>         <span style=color:#66d9ef>True</span>          <span style=color:#ae81ff>0.036358</span>
+</span></span></code></pre></div><h2 id=csv-files>CSV Files</h2><p>Pandas has a very powerful CSV reader. Do this in iPython (or <code>help(pd.read_csv)</code> in the Python REPL):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>pd<span style=color:#f92672>.</span>read_csv<span style=color:#960050;background-color:#1e0010>?</span>
+</span></span></code></pre></div><h2 id=read-a-csv-file-into-a-dataframe>Read a CSV File into a DataFrame</h2><p>Download <a href=../code/credit.csv>credit.csv</a>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>In [<span style=color:#ae81ff>34</span>]: credit <span style=color:#f92672>=</span> pd<span style=color:#f92672>.</span>read_csv(credit<span style=color:#f92672>.</span>csv)                                                    
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>In [<span style=color:#ae81ff>35</span>]: credit                                                                                     
+</span></span><span style=display:flex><span>Out[<span style=color:#ae81ff>35</span>]: 
+</span></span><span style=display:flex><span>    age  income  approve
+</span></span><span style=display:flex><span><span style=color:#ae81ff>0</span>    <span style=color:#ae81ff>64</span>      <span style=color:#ae81ff>90</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>1</span>    <span style=color:#ae81ff>78</span>      <span style=color:#ae81ff>92</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>2</span>    <span style=color:#ae81ff>38</span>      <span style=color:#ae81ff>80</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>3</span>    <span style=color:#ae81ff>29</span>      <span style=color:#ae81ff>66</span>       <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>4</span>    <span style=color:#ae81ff>94</span>      <span style=color:#ae81ff>79</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>5</span>    <span style=color:#ae81ff>95</span>      <span style=color:#ae81ff>94</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>6</span>    <span style=color:#ae81ff>61</span>      <span style=color:#ae81ff>40</span>       <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>7</span>    <span style=color:#ae81ff>21</span>      <span style=color:#ae81ff>38</span>       <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>8</span>    <span style=color:#ae81ff>33</span>      <span style=color:#ae81ff>54</span>       <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>9</span>    <span style=color:#ae81ff>96</span>      <span style=color:#ae81ff>50</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>10</span>   <span style=color:#ae81ff>83</span>      <span style=color:#ae81ff>75</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>11</span>   <span style=color:#ae81ff>32</span>      <span style=color:#ae81ff>44</span>       <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>12</span>   <span style=color:#ae81ff>49</span>      <span style=color:#ae81ff>37</span>       <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>13</span>   <span style=color:#ae81ff>49</span>      <span style=color:#ae81ff>83</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>14</span>   <span style=color:#ae81ff>79</span>      <span style=color:#ae81ff>56</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>15</span>   <span style=color:#ae81ff>90</span>      <span style=color:#ae81ff>67</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>16</span>   <span style=color:#ae81ff>40</span>      <span style=color:#ae81ff>30</span>       <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>17</span>   <span style=color:#ae81ff>61</span>      <span style=color:#ae81ff>71</span>        <span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>18</span>   <span style=color:#ae81ff>21</span>      <span style=color:#ae81ff>53</span>       <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</span></span><span style=display:flex><span><span style=color:#ae81ff>19</span>   <span style=color:#ae81ff>73</span>      <span style=color:#ae81ff>34</span>       <span style=color:#f92672>-</span><span style=color:#ae81ff>1</span>
+</span></span></code></pre></div></main><script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script></body></html>

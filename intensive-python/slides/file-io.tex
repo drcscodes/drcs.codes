@@ -1,0 +1,192 @@
+% Created 2022-08-13 Sat 11:01
+% Intended LaTeX compiler: pdflatex
+\documentclass[smaller, aspectratio=1610]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{verbatim, multicol, tabularx}
+\usepackage{sourcecodepro}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+\setbeamertemplate{footline}[frame number]
+\hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
+\setlength{\parskip}{.25\baselineskip}
+\usetheme{default}
+\date{}
+\title{File IO}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={File IO},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{File Input/Output}
+\label{sec:org65c1c8d}
+
+\begin{frame}[label={sec:org38f11b2},fragile]{Text File IO}
+ \begin{itemize}
+\item File IO is done in Python with the built-in \texttt{File} object which is returned by the built-in \texttt{open} function
+\item Use the 'w' open mode for writing
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+$ python
+>>> f = open("hello.txt","w") # open for writing, create if necessary
+>>> f.write("Hello, file!\n") # write string to file; notice \n ending
+>>> f.close()                 # close file, causing it to write to disk
+>>> exit()
+$ cat hello.txt
+Hello, file!
+\end{lstlisting}
+
+Use the ’r’ open mode for reading
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+$ python
+>>> f = open("hello.txt", "r") # open for reading in text mode
+>>> contents = f.read()
+# slurp the whole file into memory
+>>> contents
+'Hello, file!\n'
+>>> exit()
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org72db822},fragile]{Reading Lines from Text Files}
+ \begin{itemize}
+\item Text files often have data split into lines
+\item the \texttt{readlines()} function reads all lines into memory as a list
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> f = open("lines.txt", "r")
+>>> f.readlines()
+["line 1\n", "line 2\n", "line 3\n"]
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{readline()} reads one line at a time, returns empty string when fully read
+\item re-open file or use seek() to go back to beginning of file
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> f = open("lines.txt", "r")
+>>> f.readline()
+'line 1\n'
+>>> f.readline()
+'line 2\n'
+>>> f.readline()
+'line 3\n'
+>>> f.readline()
+''
+>>> f.seek(0)
+>>> f.readline()
+'line 1\n'
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orge553b71},fragile]{Processing Lines in a Text File}
+ Could use readlines() and iterate through list it returns
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> f = open("lines.txt", "r")
+>>> for line in f.readlines():
+...     print line
+...
+line 1
+line 2
+line 3
+\end{lstlisting}
+
+Better to take advantage of fact \texttt{File} is \texttt{Iterable}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> for line in open("lines.txt", "r"):
+...     print line
+...
+line 1
+line 2
+line 3
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orga6287c3},fragile]{Files are Buffered}
+ Try a little experiment. create a subdirectory named foo, cd to your new empty \texttt{foo} directory, lauch a Python shell, create open a new file named bar, and write something to it:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+$ mkdir foo
+$ cd foo
+$ python3
+Python 3.4.0 (v3.4.0:04f714765c13, Mar 15 2014, 23:02:41) ...
+>>> bar = open("bar", "w")
+>>> bar.write("last call!")
+10
+>>>
+\end{lstlisting}
+
+At this point, open another command shell or use your graphical file
+explorer to view the contents of the bar file. It’s empty. Now go back to
+your Python shell and do:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> bar.close()
+\end{lstlisting}
+
+Now view the contents of the \texttt{bar} file again. It has the text from the previous \texttt{write()} call. Files are buffered, and the buffer isn’t (guaranteed to be) flushed to disk until the file object is closed or the \texttt{File} Object goes out of scope or the program terminates (gracefully).
+\end{frame}
+
+\begin{frame}[label={sec:orgfaebd0f},fragile]{Context Management with \texttt{with}}
+ Python has context managers to close resources automatically. A context manager has the form
+
+\begin{quote}
+\begin{VERBATIM}
+with expression as variable:
+    block
+\end{VERBATIM}
+\end{quote}
+
+which is equivalent to
+
+\begin{quote}
+\begin{VERBATIM}
+variable = expression
+block
+variable.close()
+\end{VERBATIM}
+\end{quote}
+
+For example, the previous bar example is:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> with open("bar", "w") as bar:
+...     bar.write("last call!")
+...
+\end{lstlisting}
+
+And the file is closed and flushed to disk automatically after the block under the with statement finishes.
+\end{frame}
+\end{document}
