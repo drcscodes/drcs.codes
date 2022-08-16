@@ -22,6 +22,7 @@
         <th>Slides</th>
         <th>Readings</th>
         <th>Exercises</th>
+        <th>Projects</th>
         <th>Video</th>
       </thead>
 
@@ -42,6 +43,11 @@
     </td>
     <td>
         {{ range (index . "exercises") }}
+            {{ . | markdownify }}<br />
+        {{ end }}
+    </td>
+    <td>
+        {{ range (index . "projects") }}
             {{ . | markdownify }}<br />
         {{ end }}
     </td>

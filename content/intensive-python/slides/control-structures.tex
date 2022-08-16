@@ -1,0 +1,397 @@
+% Created 2022-08-15 Mon 12:39
+% Intended LaTeX compiler: pdflatex
+\documentclass[smaller, aspectratio=1610]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{verbatim, multicol, tabularx}
+\usepackage{sourcecodepro}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+\setbeamertemplate{footline}[frame number]
+\hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
+\setlength{\parskip}{.25\baselineskip}
+\usetheme{default}
+\date{}
+\title{Control Structures}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Control Structures},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{Control Structures}
+\label{sec:orga8846c7}
+
+\begin{frame}[label={sec:org0767561}]{Structured Programming}
+Any algorithm can be expressed by:
+
+\begin{itemize}
+\item Sequence - one statement after another
+\item Selection - conditional execution (not conditional jumping)
+\item Repetition - loops
+\end{itemize}
+
+We've already seen sequences of statements. Today we'll learn
+selection (conditional execution), and repetition.
+\end{frame}
+
+\begin{frame}[label={sec:orgcf289a8},fragile]{The \texttt{if-else} Statement}
+ Conditional execution:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+if boolean_expression:
+    # a single statement executed when boolean_expression is true
+else:
+    # a single statement executed when boolean_expression is false
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{boolean\_expression} is not enclosed in parentheses
+\item \texttt{else:} not required
+\end{itemize}
+
+Example:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+if (num % 2) == 0:
+    print("I like " + str(num))
+else:
+    print("I'm ambivalent about " + str(num))
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgdf2e1c7},fragile]{Blocks}
+ Python is block-structured. Contiguous sequences of statements at the
+same indentation level form a block. Blocks are like single statements
+(not expressions - they don't have values).
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+if num % 2 == 0:
+   print(str(num) + " is even.")
+   print("I like even numbers.")
+else:
+    print(str(num) + " is odd.");
+    print("I'm ambivalent about odd numbers.")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org80efecc},fragile]{Multi-way \texttt{if-else} Statements}
+ This is hard to follow:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+if color == "red":
+    print("Redrum!")
+else:
+    if color == "yellow":
+        print("Submarine")
+    else:
+        print("A Lack of Color")
+\end{lstlisting}
+
+This multi-way if-else is equivalent, and clearer:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+if color == "red":
+    print("Redrum!")
+elif color == "yellow":
+    print("Submarine")
+else:
+    print("A Lack of Color")
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgc35f045},fragile]{\texttt{if`-`else} Expression}
+ One often wants to assign different values to a variable based on a condition.  \texttt{if-else} expressions can reduce some of the verbosity of \texttt{if-else} statements.
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> def current_conditions():
+...     return {'precipitation': None}
+...
+>>> is_raining = current_conditions()['precipitation']
+>>> cooking_method = "grilling" if not is_raining else "baking"
+>>> cooking_method
+'grilling'
+>>>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orge66da50},fragile]{Shake \& Bake!}
+ What is the value of the expression \texttt{"result" if not "first" else "last"}?
+\end{frame}
+
+\begin{frame}[label={sec:org2b2707e},fragile]{Loops}
+ Algorithms often call for repeated action, e.g. :
+
+\begin{itemize}
+\item “repeat \ldots{} while (or until) some condition is true” (looping) or
+\item “for each element of this array/list/etc. \ldots{}” (iteration)
+\end{itemize}
+
+Python provides two control structures for repeated actions:
+
+\begin{itemize}
+\item \texttt{while} loop
+\item \texttt{for} iteration statement
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:orgcb7105b},fragile]{\texttt{while} Loops}
+ \texttt{while} loops are pre-test loops: the loop condition is tested before the
+loop body is executed
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+while condition: # condition is any boolean expression
+    # loop body executes as long as condition is true
+\end{lstlisting}
+
+Example
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> def countdown(n):
+...     while n > 0:
+...         print(n)
+...         n -= 1
+...
+print('Blast off!')
+...
+>>> countdown(5)
+5
+4
+3
+2
+1
+Blast off!
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgaa6d3dd},fragile]{\texttt{for} Statements}
+ \texttt{for} is an \alert{iteration} statement
+
+\begin{itemize}
+\item iteration means visiting the elements of an iterable data structure
+\end{itemize}
+
+In the for loop:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> animal = 'Peacock'
+>>> for animal in ['Giraffe', 'Alligator', 'Liger']:
+...     print(animal)
+...
+Giraffe
+Alligator
+Liger
+>>> animal
+'Liger'
+\end{lstlisting}
+
+\begin{itemize}
+\item \texttt{animal} is assigned to each element of the iterable list of animals in successive executions of the \texttt{for} loop's body
+\item notice that the loop variable re-assigned an existing variable
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org24ada8a},fragile]{\texttt{break} and \texttt{else}}
+ \begin{itemize}
+\item \texttt{break} terminates execution of a loop
+\item optional \texttt{else} clause executes only of loop completes without
+\end{itemize}
+executing a \texttt{break}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> def sweet_animals(animals):
+...     for animal in animals:
+...         print(animal)
+...         if animal == 'Liger':
+...             print('Mad drawing skillz!')
+...             break
+...     else:
+...         print('No animals of note.')
+...
+>>> sweet_animals(['Peacock', 'Liger', 'Alligator'])
+Peacock
+Liger
+Mad drawing skillz!
+>>> sweet_animals(['Peacock', 'Tiger', 'Alligator'])
+Peacock
+Tiger
+Alligator
+No animals of note.
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orga6e82ed},fragile]{Run-time Errors}
+ An error detected during execution is called an exception and is represented at runtime by an exception object. The Python interpreter raises an exception at the point an error occurs. The exception is handled by some exception-handling code. Here we don't handle the ValueError ourselves, so it's handled by the Python shell:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> int('e')
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'e'
+\end{lstlisting}
+
+We can handle an exception by enclosing potentially error-raising code
+in a try block and handling errors in an except clause.
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+try:
+    code_that_may_raise_error()
+except ExceptionType as e:
+    print(str(e))
+    code_that_handles_exception()
+\end{lstlisting}
+
+\texttt{ExceptionType} and \texttt{as e} are optional. If left off, except clause will catch any
+exception.
+\end{frame}
+
+\begin{frame}[label={sec:org6ce34c9},fragile]{Exception Handling Example}
+ \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> def get_number_from_user():
+...     input_is_invalid = True
+...     while input_is_invalid:
+...         num = input('Please enter a whole number: ')
+...         try:
+...             num = int(num)
+...             # Won't get here if exception is raised. '
+...             input_is_invalid = False
+...         except ValueError:
+...             print(num + ' is not a whole number. Try again.')
+...    return num
+...
+>>> get_number_from_user()
+Please enter a whole number: e
+e is not a whole number. Try again.
+Please enter a whole number: 3
+3
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org42dc7d0}]{Raising Exceptions}
+\begin{figure}[htbp]
+\centering
+\includegraphics[height=.7\textheight]{./raising-arizona.jpg}
+\caption{\texttt{raise UnsafeBabyError('Not secured to motorcycle')}}
+\end{figure}
+
+
+You can use exceptions for error handling in your code by raising exceptions.
+\end{frame}
+
+\begin{frame}[label={sec:org8a382db},fragile]{Super Troopers}
+ Here's a snippet that ensures construction of a valid \href{file:///python/code/classes/trooper.py}{\texttt{SuperTrooper}}:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+class SuperTrooper(Trooper):
+    job = 'Hilarity'
+
+    def __init__(self, name, is_mustached):
+        super().__init__(name)
+        # Discovers the error:
+        if not is_mustached:
+            # Create an instance of an exception class and raise it:
+            raise ValueError('A Super Trooper must have a mustache')
+\end{lstlisting}
+
+If you try to create a \texttt{SuperTrooper} without a mustache, you get a \texttt{ValueError}:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> import trooper
+>>> trooper.SuperTrooper("Dr.CS", is_mustached=False)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "[path elided]/trooper.py", line 25, in __init__
+    raise ValueError('A Super Trooper must have a mustache')
+ValueError: A Super Trooper must have a mustache
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orga58ccc8},fragile]{Exception Code Design}
+ Error handling using exceptions involves:
+
+\begin{enumerate}
+\item The exception object that represents the error and contains information about the error
+
+\begin{itemize}
+\item Exception objects must derive from \href{https://docs.python.org/3/library/exceptions.html\#BaseException}{\texttt{BaseException}}.  If you define your own exception, use \href{https://docs.python.org/3/library/exceptions.html\#Exception}{\texttt{Exception}} as the base class
+\item Best to simply use exceptions already defined in the standard library
+\end{itemize}
+
+\item the code that discovers the error, creates the exception object and \texttt{raise} s it to be caught by the error handling code, and
+\item the code that catches the exception and handles the error the exception represents
+\end{enumerate}
+
+Creating exceptions is more common in library code.  Applications will often catch exceptions, which is straightforward.
+\end{frame}
+
+\begin{frame}[label={sec:org57a26dc},fragile]{Exception Code Design Example}
+ \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+def get_number_from_user():
+    is_valid = False
+    while not is_valid:
+        num = input('Please enter a whole number: ')
+        try:
+            # Input problem discovered and raised inside int function
+            num = int(num)
+            # Won't get here if exception is raised. '
+            is_valid = True
+        # Input value problem caught and handled in "catch clause"
+        except ValueError:
+            print(num + ' is not a whole number. Try again.')
+   return num
+\end{lstlisting}
+
+For more details on exceptions, see \url{https://docs.python.org/3/tutorial/errors.html}
+\end{frame}
+
+\begin{frame}[label={sec:org92c3dc6},fragile]{Conclusion}
+ Python provides all the control structures you need for controlling program flow:
+
+\begin{itemize}
+\item Sequence - one statement after another
+\item Selection
+\begin{itemize}
+\item \texttt{if} - \texttt{elif} - \texttt{else} statements
+\item \texttt{if} - \texttt{else} expressions
+\end{itemize}
+
+\item Repetition
+\begin{itemize}
+\item \texttt{while} loops
+\item \texttt{for} iteration statements
+\end{itemize}
+\end{itemize}
+\end{frame}
+\end{document}

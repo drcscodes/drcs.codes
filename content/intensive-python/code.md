@@ -9,8 +9,8 @@ courseName: "Intensive Python"
 
 ## Python Basics
 
-{{< dirtree hugoDir="/static" subdir="python/code/basics" >}}
+{{< dirtree hugoDir="/content" subdir="python/code/basics" >}}
 
 ## Python Classes
 
-{{< dirtree hugoDir="/static" subdir="python/code/classes" >}}
+{{< dirtree hugoDir="/content" subdir="python/code/classes" >}}

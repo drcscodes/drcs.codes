@@ -3,4 +3,4 @@ title: Example Code
 layout: single
 ---
 
-{{< dirtree hugoDir="/static" subdir="code/python" >}}
+{{< dirtree hugoDir="/content" subdir="python/code" >}}

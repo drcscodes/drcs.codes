@@ -1,6 +1,6 @@
 ---
 layout: "exercise"
-title: "Exercise - BMI Module"
+title: "BMI"
 ---
 
 # `bmi` Module

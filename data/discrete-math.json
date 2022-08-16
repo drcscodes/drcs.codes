@@ -9,44 +9,56 @@
     },
     {
       "lesson": "sets",
-      "slides": "[Sets](/discrete-math/sets.pdf)",
+      "slides": "[Sets](/discrete-math/slides/sets.pdf)",
       "reading": [
         "BoP 1.1-1.4"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "set-operations",
-      "slides": "[Set Operations](/discrete-math/sets.pdf)",
+      "slides": "[Set Operations](/discrete-math/slides/sets.pdf)",
       "reading": [
         "BoP 1.5-1.10"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "propositional-logic",
-      "slides": "[Propositional Logic](/discrete-math/propositional-logic.pdf)",
+      "slides": "[Propositional Logic](/discrete-math/slides/propositional-logic.pdf)",
       "reading": [
         "BoP 2.1-2.6"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "first-order-logic",
-      "slides": "[First-Order Logic](/discrete-math/first-order-logic.pdf)",
+      "slides": "[First-Order Logic](/discrete-math/slides/first-order-logic.pdf)",
       "reading": [
         "BoP 2.7-2.12"
       ],
       "exercises": [
+        "[]()"
+      ],
+      "projects": [
         "[]()"
       ],
       "video": "[]()"
@@ -56,33 +68,42 @@
     },
     {
       "lesson": "counting",
-      "slides": "[Counting](/discrete-math/counting.pdf)",
+      "slides": "[Counting](/discrete-math/slides/counting.pdf)",
       "reading": [
         "BoP 3.1-3.5"
       ],
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+       "projects": [
+        "[]()"
+      ],
+     "video": "[]()"
     },
     {
       "lesson": "applications-counting",
-      "slides": "[Applications of Counting](/discrete-math/applications-counting.pdf)",
+      "slides": "[Applications of Counting](/discrete-math/slides/applications-counting.pdf)",
       "reading": [
         "BoP 3.6-3.10"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "discrete-probability",
-      "slides": "[Discrete Probability](/discrete-math/discrete-probability.pdf)",
+      "slides": "[Discrete Probability](/discrete-math/slides/discrete-probability.pdf)",
       "reading": [
         "PLL 1-3"
       ],
       "exercises": [
+        "[]()"
+      ],
+      "projects": [
         "[]()"
       ],
       "video": "[]()"
@@ -92,33 +113,42 @@
     },
     {
       "lesson": "direct-proof",
-      "slides": "[Direct Proof](/discrete-math/direct-proof.pdf)",
+      "slides": "[Direct Proof](/discrete-math/slides/direct-proof.pdf)",
       "reading": [
         "BoP 4"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "contrapositive-proof",
-      "slides": "[Contrapositive Proof](/discrete-math/contrapositive-proof.pdf)",
+      "slides": "[Contrapositive Proof](/discrete-math/slides/contrapositive-proof.pdf)",
       "reading": [
         "BoP 5"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "proof-by-contradiction",
-      "slides": "[Proof by Contradiction](/discrete-math/proof-by-conradiction.pdf)",
+      "slides": "[Proof by Contradiction](/discrete-math/slides/proof-by-conradiction.pdf)",
       "reading": [
         "BoP 6"
       ],
       "exercises": [
+        "[]()"
+      ],
+      "projects": [
         "[]()"
       ],
       "video": "[]()"
@@ -128,44 +158,56 @@
     },
     {
       "lesson": "non-conditional-proofs",
-      "slides": "[Non-Conditional Proofs](/discrete-math/non-conditional-proofs.pdf)",
+      "slides": "[Non-Conditional Proofs](/discrete-math/slides/non-conditional-proofs.pdf)",
       "reading": [
         "BoP 7"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "set-proofs",
-      "slides": "[Set Proofs](/discrete-math/set-proofs.pdf)",
+      "slides": "[Set Proofs](/discrete-math/slides/set-proofs.pdf)",
       "reading": [
         "BoP 8"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "disproof",
-      "slides": "[Disproof](/discrete-math/disproof.pdf)",
+      "slides": "[Disproof](/discrete-math/slides/disproof.pdf)",
       "reading": [
         "BoP 9"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "mathematical-induction",
-      "slides": "[Mathematical Induction](/discrete-math/mathematical-induction.pdf)",
+      "slides": "[Mathematical Induction](/discrete-math/slides/mathematical-induction.pdf)",
       "reading": [
         "BoP 10"
       ],
       "exercises": [
+        "[]()"
+      ],
+      "projects": [
         "[]()"
       ],
       "video": "[]()"
@@ -175,44 +217,56 @@
     },
     {
       "lesson": "relations",
-      "slides": "[Relations](/discrete-math/relations.pdf)",
+      "slides": "[Relations](/discrete-math/slides/relations.pdf)",
       "reading": [
         "BoP 11"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "functions",
-      "slides": "[Functions](/discrete-math/functions.pdf)",
+      "slides": "[Functions](/discrete-math/slides/functions.pdf)",
       "reading": [
         "BoP 12"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "calculus",
-      "slides": "[Calculus](/discrete-math/calculus.pdf)",
+      "slides": "[Calculus](/discrete-math/slides/calculus.pdf)",
       "reading": [
         "BoP 13"
       ],
       "exercises": [
         "[]()"
       ],
+      "projects": [
+        "[]()"
+      ],
       "video": "[]()"
     },
     {
       "lesson": "infinity",
-      "slides": "[Infinity](/discrete-math/infinity.pdf)",
+      "slides": "[Infinity](/discrete-math/slides/infinity.pdf)",
       "reading": [
         "BoP 14"
       ],
       "exercises": [
+        "[]()"
+      ],
+      "projects": [
         "[]()"
       ],
       "video": "[]()"

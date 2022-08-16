@@ -7,9 +7,15 @@ courseName: "Intensive Python"
 
 # Getting Started
 
-These instructions are for installing the necessary tools and Python components for this course.  We use the Python.org distribution of Python, but if you already have another distribution, such as Anaconda, that will work fine as long as it includes Python >= 3.7, `pip`, and `venv`.
+These instructions are for installing the necessary tools and Python components for this course.  We use the Python.org distribution of Python, but if you already have another distribution, such as Anaconda, that will work fine as long as it includes Python >= 3.6, `pip`, and `venv`.
 
-## Ubuntu/WSL2
+Jump to the section matching the operating system you will be using:
+
+- [Ubuntu/WSL](#ubuntu-and-wsl2)
+- [macOS](#macos)
+- [Windows](#windows)
+
+## Ubuntu and WSL2
 
 If you are using Windows 10 or 11, install WSL2, the Windows Subsystem for Linux, Version 2.  WSL2 provides a very nice Linux environment, including a full Linux kernel and distribution of your choosing (I will use the latest Ubuntu in demonstrations).
 
@@ -43,14 +49,6 @@ If you get a message like "command not found" then Python 2 is not installed.  M
 sudo apt install python-is-python3
 ```
 
-or (substitute the latest Python version istalled on your system for 3.10.5):
-
-```sh
-pyenv global 3.10.5
-❯ python -V
-Python 3.10.5
-```
-
 Now `python` and `python3` are the same and you don't have to remember to append `3` to Python commands.
 
 ## macOS
@@ -59,7 +57,14 @@ macOS is a Unix and already has a decent terminal and command-line shell.  There
 
 If you use macOS, I highly recommend using Homebrew to manage Unix tools in general.  With either of the installation methods above you don't need to install `pip` and `venv` separately.  Debian/Ubuntu packages tend to be more modular, which is nice for containerized applications.
 
-Then install `pyenv`:
+
+```sh
+brew install python3
+```
+
+### Optional: `pyenv`
+
+If you want to use multiple Python versions you can install `pyenv`:
 
 ```sh
 brew install pyenv
@@ -72,8 +77,6 @@ pyenv global 3.10.5
 ❯ python -V
 Python 3.10.5
 ```
-
-TODO: I think maybe you just install pyenv and then use pyeenv to install Python.
 
 ## Windows
 
