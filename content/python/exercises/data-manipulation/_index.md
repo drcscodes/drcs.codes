@@ -1,9 +1,9 @@
 ---
 layout: exercise
-title: Data Transformation
+title: Data Manipulation
 ---
 
-# Drill - Data Transformation
+# Data Manipulation
 
 ## Introduction
 

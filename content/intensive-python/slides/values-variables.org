@@ -617,7 +617,66 @@ What are the values of the following expressions?
 - ~1 == (1 and 0)~
 
 
-** Values, Variables, and Expression
+** Sequences
+
+Sequences are ordered.
+
+Lists are mutable.
+
+#+BEGIN_SRC python
+>>> boys = ['Stan', 'Kyle', 'Cartman', 'Kenny']
+>>> boys[0]
+'Stan'
+>>> empty = []
+>>> also_empty = list()
+#+END_SRC
+
+Tuples are immutable.
+
+#+BEGIN_SRC python
+>>> pair = 1, 2
+>>> pair
+(1, 2)
+>>> a, b = [1, 2]
+>>> a
+1
+>>> b
+2
+#+END_SRC
+
+Strings are immutable sequences of characters.
+
+
+** Dinctionaries and Sets
+
+A dictionary is a map from keys to values.
+
+#+BEGIN_SRC python
+>>> capitals = {}
+>>> capitals['Georgia'] = 'Atlanta'
+>>> capitals['Alabama'] = 'Montgomery'
+>>> capitals
+{'Georgia': 'Altanta', 'Alabama': 'Montgomery'}
+>>> capitals['Georgia']
+'Atlanta'
+#+END_SRC
+
+Sets have no duplicates, like the keys of a ~dict~. They can be iterated over (we'll learn that later) but can't be accessed by index.
+
+#+BEGIN_SRC python
+>>> names = set()
+>>> names.add('Ally')
+>>> names.add('Sally')
+>>> names.add('Mally')
+>>> names.add('Ally')
+>>> names
+{'Ally', 'Mally', 'Sally'}
+>>> set([1,2,3,4,3,2,1])  # Removes duplicates
+{1, 2, 3, 4}
+#+END_SRC
+
+
+** Values, Variables, and Expressions
 
 - Values are the atoms of computer programs
 - Expressions produce values

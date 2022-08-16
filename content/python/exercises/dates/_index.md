@@ -16,6 +16,8 @@ In this assignment you will practice:
 
 ## Problem Description
 
+You want to get information about dates and days that require some calculation
+
 ## Solution Description
 
 Write a module called `dates` (which you should save in a file called `dates.py`) with the following functions.  For each function, be sure to the function design recipe in [Practical Programming: An Introduction to Computer Science using Python 3.6](https://pragprog.com/book/gwpy3/practical-programming-third-edition), Chapter 3 and summarized in our slides on [Python functions](../programming-python/slides/functions.pdf), including the type contract using [type hints](https://docs.python.org/3/library/typing.html) and a [docstring](https://www.python.org/dev/peps/pep-0257/).
