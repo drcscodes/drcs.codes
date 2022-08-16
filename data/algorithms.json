@@ -1,0 +1,262 @@
+{
+  "materials": [
+    "[CLRS: Introduction to Algorithms, 4ed](https://mitpress.mit.edu/books/introduction-algorithms-fourth-edition)",
+    "[ADM: Algorithm Design Manual, 3ed](https://link.springer.com/book/10.1007/978-3-030-54256-6)"
+  ],
+  "lessons": [
+    {
+      "section": "Foundations"
+    },
+    {
+      "lesson": "intro-algorithms",
+      "slides": "[Introduction to Algorithms](/algorithms/intro-algorithms.pdf)",
+      "reading": [
+        "CLRS 1; ADM 1.1, 1.2, 1.5"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "correctness",
+      "slides": "[Correctness](/algorithms/correctness.pdf)",
+      "reading": [
+        "CLRS 2; ADM 1.3, 1.4, 1.6"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "algorithm-analysis",
+      "slides": "[Algorithm Analysis](/algorithms/algorithm-analysis.pdf)",
+      "reading": [
+        "CLRS 2.2-2.3, 3; ADM 2 "
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "section": "Data Structures"
+    },
+    {
+      "lesson": "lists",
+      "slides": "[Lists](/algorithms/lists.pdf)",
+      "reading": [
+        "CLRS: 10.2, 10.3; ADM: 3.1"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "stacks-queues",
+      "slides": "[Stacks and Queues](/algorithms/stacks-queues.pdf)",
+      "reading": [
+        "CLRS 10.1; ADM 3.2"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "hash-tables",
+      "slides": "[Hash Tables](/algorithms/hash-tables.pdf)",
+      "reading": [
+        "CLRS: 11; ADM: 3.3, 3.7"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "binary-search-trees",
+      "slides": "[Binary Search Trees](/algorithms/binary-search-trees.pdf)",
+      "reading": [
+        "CLRS: 12; ADM: 3.4"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "heaps",
+      "slides": "[Heaps](/algorithms/heaps.pdf)",
+      "reading": [
+        "CLRS: 6.1-6.3; ADM: 3.5"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "red-black-trees",
+      "slides": "[Red-Black Trees](/algorithms/red-black-trees.pdf)",
+      "reading": [
+        "CLRS: 13"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "section": "Algorithm Paradigms"
+    },
+    {
+      "lesson": "comparison-sorting",
+      "slides": "[Comparison-Based Sorting](/algorithms/comparison-sorting.pdf)",
+      "reading": [
+        "CLRS: 2.1, 2.3, 6.4, 7; ADM: 4.1-4.6"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "linear-sorting",
+      "slides": "[Linear-Time Sorting](/algorithms/linear-sorting.pdf)",
+      "reading": [
+        "CLRS: 8; ADM: 4.7"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "divide-conquer",
+      "slides": "[DIvide and Conquer](/algorithms/divide-conquer.pdf)",
+      "reading": [
+        "CLRS: 4; ADM: 5"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "randomized-algorithms",
+      "slides": "[Randomized Algorithms](/algorithms/randomized-algorithms.pdf)",
+      "reading": [
+        "CLRS: 5; ADM 6"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "graph-algorithms",
+      "slides": "[Graph Algorithms](/algorithms/graph-algorithms.pdf)",
+      "reading": [
+        "CLRS: 22; ADM: 7"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "weighted-graph-algorithms",
+      "slides": "[Weighted Graph Algorithms](/algorithms/weighted-graph-algorithms.pdf)",
+      "reading": [
+        "CLRS: 23, 24; ADM: 8"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "combinatorial-search",
+      "slides": "[Combinatorial Search](/algorithms/combinatorial-search.pdf)",
+      "reading": [
+        "ADM: 9"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "dynamic-programming",
+      "slides": "[Dynamic Programming](/algorithms/dynamic-programming.pdf)",
+      "reading": [
+        "CLRS: 15; ADM: 10"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "greedy-algorithms",
+      "slides": "[Greedy Algorithms](/algorithms/greedy-algorithms.pdf)",
+      "reading": [
+        "CLRS: 16"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "section": "Special Topics"
+    },
+    {
+      "lesson": "string-matching",
+      "slides": "[String Matching](/algorithms/string-matching.pdf)",
+      "reading": [
+        "CLRS: 32; ADM: 15.3, 21.3"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "np-completeness",
+      "slides": "[NP Completeness](/algorithms/np-completeness.pdf)",
+      "reading": [
+        "CLRS: 34; ADM: 11"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "approximation-algorithms",
+      "slides": "[Approximation Algorithms](/algorithms/approximation-algorithms.pdf)",
+      "reading": [
+        "CLRS: 35; ADM: 12"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "multithreaded-algorithms",
+      "slides": "[Multithreaded Algorithms](/algorithms/multithreaded-algorithms.pdf)",
+      "reading": [
+        "CLRS: 27"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": "[]()"
+    }
+  ]
+}

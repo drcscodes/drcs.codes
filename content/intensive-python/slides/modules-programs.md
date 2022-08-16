@@ -109,7 +109,7 @@ Exercise 1
 
 ## Python Scripts
 
-A Python script is a file containing executable Python code.  Our `hello.py` script from Day 1 is an example of a Python script.
+A Python script is a file containing executable Python code.  Our `hello.py` script from Day 1 is an example of a Python script.  Note that a module can be a Python script if it contains code that executes whenever the module
 
 ## `if __name__ == '__main__'`
 

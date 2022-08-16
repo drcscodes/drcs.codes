@@ -1,0 +1,120 @@
+#+TITLE: Counting
+#+AUTHOR:
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil tex:t
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [smaller]
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx}
+#+LaTeX_HEADER: \usepackage{sourcecodepro}
+#+LaTeX_HEADER: \usepackage[T1]{fontenc}
+#+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+#+LaTeX_HEADER: \lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+# #+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
+
+* Counting
+
+** Counting
+
+The number of objects of interest.
+
+At the end of this lesson you will
+
+- understand the basic collections into which we can group objects, and
+- know how to count several kinds of subsets of objects within collecions.
+
+** Lists
+
+
+A list is an ordered sequence of elements denoted in literal form with objects -- the elements or entries - enclosed in parentheses and separated by commas, e.g.:
+
+$$
+(a, b, c)
+$$
+
+Unlike sets, repetition is allowed and order matters:
+
+\begin{eqnarray*}
+(a, b, a)   & \ne & (a, b, b, a)\\
+(a, b, c)   & \ne & (c, b, a)
+\end{eqnarray*}
+
+Remember that in sets "repeated" elements represent a single element and the order in which the elements are enumerated is not significant:
+
+\begin{eqnarray*}
+\{a, b, a\} & = & \{a, b, b, a\}\\
+\{a, b, c\} & = & \{c, b, a\}
+\end{eqnarray*}
+
+** Aside: Lists and Tuples in Programming
+
+Programming languages typically distinguish between *lists*, which are mutable (elements can be changed), and *tuples*, which are immutable.  The mathematical notion of a list we discuss here corresponds to the programming notion of a tuple, and the notation often mirrors the mathematical notation with the same semantics.
+
+#+begin_src python
+>>> ['a', 'b', 'c'] # A Python list
+>>> ('a', 'b', 'c') # A Python tuple
+>>> {'a', 'b', 'c'} # A Python set
+#+end_src
+
+** Multiplication Principle
+
+The number of possible lists of length $n$ with $a_1$ possible choices for the first element, $a_2$ choices for the second element, and so on is the product
+
+$$
+\prod_{i = 1}^{n} a_i
+$$
+
+*** Example:
+If the set of vowels is $V = \{a, e, i, o, u\}$, the set of consonants, $C$, is the set of the remaining 21 letters in the 26-letter English alphabet, and every 3-letter word must start and end with a consonant with a vowel in the middle, then $|C| = 21$, $|V| = 5$ and the number of 3-letter words is $21 \cdot 5 \cdot 21 = 2205$.
+
+** Addition Principle
+
+If a finite set X can be decomposed as a union $X = X_1 \cup X_2 \cup \dots \cup X_n$, where $Xi \cap Xj = \emptyset$ whenever $i \ne j$, then $|X| = |X_1| + |X_2| + \dots + |X_n|$.
+
+** Subtraction Principle
+
+If $X$ is a subset of a finite set $U$, then $|overline{X}| = |U| - |X|$.
+
+** Factorials
+
+If $n$ is non-negative, then "n factorial", denoted $n!$ is
+
+\begin{equation*}
+      n! = \begin{cases}
+               1                 & \text{if } n \le 1\\
+               n * (n-1)!        & \text{otherwise}
+           \end{cases}
+\end{equation*}
+
+Put another way, $0! = 1$, $1! = 1$, and for $n > 1$, $n! = n \dot (n - 1) \dot (n - 2) \cdots 1$
+
+** Permutations
+
+A permutation of a set $X$ is a non-repetitive list of the elements of $X$.  If $|X| = n$, then the number of permutations of $X$ is $n!$.
+
+** k-Permutations
+
+A k-permutation of a set $X$ is a non-repetitive k-element list of elements from $X$.  If $|X| = n$, then the number of k-permutations of $X$ is
+
+$$
+P(n, k) = \frac{n!}{(n - k)!}
+$$
+
+If $k > n$, then $P(n, k) = 0$.
+
+** Combinations
+
+A k-combination is a k-element subset of a set.  If a set has $n$ elements, then the number of k-combinations is
+
+$$
+\binom{n}{k} = \frac{n!}{k!(n - k)!}
+$$
+
+$\binom{n}{k}$ is sometimes written $C(n, k)$

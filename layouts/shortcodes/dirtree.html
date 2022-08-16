@@ -1,0 +1,24 @@
+{{ $hugoDir := .Get "hugoDir" }}
+{{ $subdir := .Get "subdir" }}
+{{ $path := printf "%s/%s" $hugoDir $subdir  }}
+
+{{ define "dirlisting" }}
+{{ $dir := .dir }}
+{{ $hugoDir := .hugoDir }}
+<ul>
+{{ range (readDir $dir) }}
+    {{ if .IsDir }}
+        <li>{{ .Name }}</li>
+    {{ else }}
+        <li><a href="{{ strings.TrimPrefix $hugoDir $dir }}/{{ .Name }}">{{ .Name }}</a></li>
+    {{ end }}
+    {{ if .IsDir }}
+        {{ $newDir := printf "%s/%s" $dir .Name  }}
+        {{ template "dirlisting" (dict "dir" $newDir "hugoDir" $hugoDir) }}
+    {{ end }}
+
+{{ end }}
+</ul>
+{{ end }}
+
+{{ template "dirlisting" (dict "dir" $path "hugoDir" $hugoDir) }}

@@ -1,7 +1,7 @@
 ---
 title: "Getting Started"
 draft: false
-layout: "single"
+layout: "course"
 courseName: "Data Manipulation"
 ---
 

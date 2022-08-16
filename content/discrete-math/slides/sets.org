@@ -1,0 +1,113 @@
+#+TITLE: Sets
+#+AUTHOR:
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil tex:t
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [smaller]
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx}
+#+LaTeX_HEADER: \usepackage{sourcecodepro}
+#+LaTeX_HEADER: \usepackage[T1]{fontenc}
+#+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree, tikz}
+#+LaTeX_HEADER: \lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+# #+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
+
+* Sets
+
+** Sets
+
+Collection of elements.
+
+- Empty set: $\varnothing$
+- Integers: $\mathbb{Z}$
+- Natural numbers: $\mathbb{N}$
+- Real numbers: $\mathbb{R}$
+- Rational numbers: $\mathbb{Q}$
+
+** Cartesian Product
+
+ordered paris of elements from multiple sets
+
+** Subsets
+
+If $A \subseteq B$, then no element of $A$ is not in $B$.
+
+** Power Sets
+
+Powerset of $A$, $\mathcal{P}(A)$ is the set of all subsets of $A$.  There are $2^{|A|}$ subsets of $A$.
+
+** Set Union
+
+Like OR.  $A \cup B$ is a set of all elements of either $A$ or $B$.
+
+** Set Intersection
+
+Like AND.  $A \cap B$ is the set of all elements that are in in both $A$ and $B$.
+
+** Set Difference
+
+$A - B$ is the set of all things in $A$ that are not in $B$.
+
+** Complement
+
+Universal set, aka, universe of discourse, $U$.
+
+Complement of $A$, $\overline{A}$, is the set $U - A$.
+
+** Venn Diagrams
+
+# See https://latexdraw.com/how-to-draw-venn-diagrams-in-latex/
+
+#+begin_export latex
+\begin{tikzpicture}
+
+% Set A
+\node [draw,
+    circle,
+    minimum size =3cm,
+    label={135:$A$}] (A) at (0,0){};
+
+% Set B
+\node [draw,
+    circle,
+    minimum size =3cm,
+    label={45:$B$}] (B) at (1.8,0){};
+
+% Intersection
+\begin{scope}
+    \clip (0,0) circle(1.5cm);
+    \clip (1.8,0) circle(1.5cm);
+    \fill[lightgray](0,0) circle(1.5cm);
+\end{scope}
+
+% Set intersection label
+\node at (0.9,0) {$A\cap B$};
+
+\end{tikzpicture}
+#+end_export
+
+
+** Indexed Sets
+
+In $\{A_1, A_2, A_3, ..., A_n}, the subscripts $1 ... n$ are indexes and the set ${i: i \in \mathbb{N}$ is the index set.
+
+Index sets can be real numbers too, in which case we may prefer to write the index variable as $\alpha$, since $i$ often implies integer.
+
+** Well-Ordering Principle
+
+Every non-empty subset of $\mathbb{N}$ has a smallest element.
+
+** Division Algorithm
+
+Given integers $a$ and $b$ with $b > 0$, there exist unique integers $q$ and $r$ for which $a = qb + r$ and $0 \le r < b$.
+
+** Russell's Paradox
+
+Zermelo-Fraenkel axioms

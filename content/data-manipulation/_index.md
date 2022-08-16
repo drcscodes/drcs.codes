@@ -2,7 +2,7 @@
 title: "Data Manipulation"
 draft: false
 courseName: "Data Manipulation"
-layout: "single"
+layout: "course"
 ---
 
 # Data Manipulation

@@ -1,0 +1,90 @@
+{
+  "materials": [
+    "CNO: [Computer and Network Organization](https://www.distributed-systems.net/index.php/books/computer-and-network-organization/)"
+  ],
+  "lessons": [
+    {
+      "lesson": "intro-course",
+      "slides": "[Introduction to Computing](/computing/)",
+      "reading": [
+        "[Meet the Teacher](http://cs1331.github.io/slides/meet-simpkins.html)"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": ""
+    },
+    {
+      "lesson": "computers",
+      "slides": "[Computers](/computing/slides/computers.pdf)",
+      "reading": [
+          "Basic: ",
+          "Deeper dive: CNO 1-3"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": ""
+    },
+    {
+      "lesson": "command-shells",
+      "slides": "[Command Shells](/computing/slides/command-shells.pdf)",
+      "reading": [
+          "Basic: "
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": ""
+    },
+    {
+      "lesson": "text",
+      "slides": "[Text](/computing/slides/text.pdf)",
+      "reading": [
+          "Basic: ",
+          "Deeper dive: CNO 2.2.2"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": ""
+    },
+    {
+      "lesson": "markup-languages",
+      "slides": "[Mark-up Languages](/computing/slides/markup-languages.pdf)",
+      "reading": [
+          "Basic: ",
+          "Deeper dive: CNO 2.2.2"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": ""
+    },
+    {
+      "lesson": "networks",
+      "slides": "[Networks](/computing/slides/networks.pdf)",
+      "reading": [
+          "Basic: ",
+          "Deeper dive: CNO 6-10"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": ""
+    },
+    {
+      "lesson": "git",
+      "slides": "[Git](/computing/slides/git.pdf)",
+      "reading": [
+          "Basic: ",
+          "Deeper dive: CNO 2.2.2"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "video": ""
+    }
+
+  ]
+}

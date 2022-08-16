@@ -30,15 +30,13 @@
 
       <!-- Fixed navbar -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-          <a class="navbar-brand" href="/{{ .Section }}">{{ .Params.courseName }}</a>
+          <a class="navbar-brand" href="/{{ .Section }}">{{ .Title }}</a>
           <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <!-- </div> -->
           <div class="navbar-collapse collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item"><a class="nav-link" href="/{{ .Section }}/getting-started/">Getting Started</a></li>
-              <li class="nav-item"><a class="nav-link" href="/{{ .Section }}/lessons/">Lessons</a></li>
             </ul>
             <ul class="navbar-nav pull-right">
               <li class="nav-item pull-right"><a class="nav-link" href="{{ .Site.BaseURL }}">Dr. CS codes</a></li>

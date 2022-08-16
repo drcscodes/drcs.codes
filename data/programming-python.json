@@ -1,0 +1,312 @@
+{
+  "materials": [
+    "PPP: [Practical Programming: An Introduction to Computer Science Using Python 3.6, 3ed](https://pragprog.com/titles/gwpy3/practical-programming-third-edition/)",
+    "TP: [Think Python, 2nd Edition, by Allen B. Downey](http://greenteapress.com/wp/think-python-2e/)"
+  ],
+  "lessons": [
+    {
+      "lesson": "intro-course",
+      "slides": "[Introduction to Programming Principles in Python](/programming-python/)",
+      "reading": [
+        "[Meet the Teacher](http://cs1331.github.io/slides/meet-simpkins.html)"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[Getting Started on macOS](https://youtu.be/znjTbnH42Rk)"
+    },
+    {
+      "lesson": "intro-python",
+      "slides": "[Intro to Python](/programming-python/slides/intro-python.pdf)",
+      "reading": [
+        "PPP 1, 2; TP 1"
+      ],
+      "exercises": [
+        "[hw0](/exercises/python/hw0)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[Intro to Python](https://youtu.be/ZDCHBkTMfE8)"
+    },
+    {
+      "lesson": "values-variables",
+      "slides": "[Values and Variables](/programming-python/slides/values-variables.pdf)",
+      "reading": [
+        "PPP 2; TP 2"
+      ],
+      "exercises": [
+        "[Values and Variables](/exercises/python/values-variables)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[Values and Variables](https://youtu.be/iKG_hAXy0qQ)"
+    },
+    {
+      "lesson": "expressions",
+      "slides": "[expressions](/programming-python/slides/expressions.pdf)",
+      "reading": [
+        "PPP 2; TP 2"
+      ],
+      "exercises": [
+        "[Values and Variables](/exercises/python/values-variables)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[Values and Variables](https://youtu.be/iKG_hAXy0qQ)"
+    },
+    {
+      "lesson": "functions",
+      "slides": "[Functions](/programming-python/slides/functions.pdf)",
+      "reading": [
+        "PPP 3; TP 3"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "function-design",
+      "slides": "[Function Design](/programming-python/slides/function-design.pdf)",
+      "reading": [
+        "PPP 3; TP 3"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "strings",
+      "slides": "[Strings](/programming-python/slides/strings.pdf)",
+      "reading": [
+        "PPP 4, 7; TP 3"
+      ],
+      "exercises": [
+        "[Email Utilities](/exercises/python/email-utils.html)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "conditionals",
+      "slides": "[Conditionals](/programming-python/slides/conditionals.pdf)",
+      "reading": [
+        "PPP 5; TP 5.1-5.7"
+      ],
+      "exercises": [
+        "[Email Utilities](/exercises/python/email-utils)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "modules-programs",
+      "slides": "[Modules and Programs](/programming-python/slides/modules-programs.pdf)",
+      "reading": [
+        "PPP 6; TP 1,14"
+      ],
+      "exercises": [
+        "[BMI Module](/exercises/python/bmi)",
+        "[Dates](/exercises/python/dates)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "lists",
+      "slides": "[Lists](/programming-python/slides/lists.pdf)",
+      "reading": [
+        "PPP 8; TP 10,11,12"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[Data Structures](https://youtu.be/TtAQxtgPOwI)"
+    },
+    {
+      "lesson": "loops",
+      "slides": "[Loops](/programming-python/slides/loops.pdf)",
+      "reading": [
+        "PPP 9; TP 5, 7"
+      ],
+      "exercises": [
+        "[Data Transformation](/exercises/python/data-transformation)",
+        "[Data Utilities](/exercises/python/data-util)",
+        "[Grades Module](/exercises/python/grades)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "file-io",
+      "slides": "[File IO](/programming-python/slides/file-io.pdf)",
+      "reading": [
+        "PPP 10; TP 14"
+      ],
+      "exercises": [
+        "[Data Transformation](/exercises/python/data-transformation)",
+        "[Data Utilities](/exercises/python/data-util)",
+        "[Grades Module](/exercises/python/grades)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "collections",
+      "slides": "[Collections](/programming-python/slides/collections.pdf)",
+      "reading": [
+        "PPP 11; TP 5, 7"
+      ],
+      "exercises": [
+        "[Data Transformation](/exercises/python/data-transformation)",
+        "[Data Utilities](/exercises/python/data-util)",
+        "[Grades Module](/exercises/python/grades)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "algorithm-design",
+      "slides": "[Algorithm Design](/programming-python/slides/algorithm-design.pdf)",
+      "reading": [
+        "PPP 12; TP 7.5-7.6, 13"
+      ],
+      "exercises": [
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "algorithm-analysis",
+      "slides": "[Algorithm Analysis](/programming-python/slides/algorithm-analysis.pdf)",
+      "reading": [
+        "PPP 13; TP B"
+      ],
+      "exercises": [
+        "[Data Transformation](/exercises/python/data-transformation)",
+        "[Data Utilities](/exercises/python/data-util)",
+        "[Grades Module](/exercises/python/grades)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "searching-sorting",
+      "slides": "[Searching and Sorting](/programming-python/slides/searching-sorting.pdf)",
+      "reading": [
+        "PPP 13; TP B"
+      ],
+      "exercises": [
+        "[Data Transformation](/exercises/python/data-transformation)",
+        "[Data Utilities](/exercises/python/data-util)",
+        "[Grades Module](/exercises/python/grades)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "classes-objects",
+      "slides": "[Classes and Objects](/programming-python/slides/classes-objects.pdf)",
+      "reading": [
+        "PPP 7; TP 15-18",
+        "[Basics Example Code](/python/code/classes)"
+      ],
+      "exercises": [
+        "[Exercise 1: Dog Module](exercises/python/dog)",
+        "[Homework: Treating People as Objects](/exercises/python/people-objects)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "testing-debugging",
+      "slides": "[Testing and Debugging](/programming-python/slides/testing-debugging.pdf)",
+      "reading": [
+        "PPP 15; TP A"
+      ],
+      "exercises": [
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "python-guis",
+      "slides": "[Graphical User Interfaces](/programming-python/slides/python-guis.pdf)",
+      "reading": [
+        "PPP 16"
+      ],
+      "exercises": [
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "databases",
+      "slides": "[Databases](/programming-python/slides/databases.pdf)",
+      "reading": [
+        "PPP 17"
+      ],
+      "exercises": [
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    },
+    {
+      "lesson": "functional-programming",
+      "slides": "[Functional programming](/programming-python/slides/functional-programming.pdf)",
+      "reading": [
+        "TP 19",
+        "[Basics Example Code](/python/code/basics)"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "video": "[]()"
+    }
+  ]
+}

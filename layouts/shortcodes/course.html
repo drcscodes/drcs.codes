@@ -1,0 +1,60 @@
+{{ $course := .Get "course" }}
+
+{{ $courseData := index .Site.Data $course }}
+{{ $materials := index $courseData "materials" }}
+{{ $lessons := index $courseData "lessons" }}
+
+<h2>Course Materials</h2>
+
+<ul>
+{{ range $materials }}
+<li>{{ . | markdownify }}</li>
+{{ end }}
+</ul>
+
+<h2>Lessons</h2>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+
+      <thead class="thead-light">
+        <th>#</th>
+        <th>Slides</th>
+        <th>Readings</th>
+        <th>Exercises</th>
+        <th>Projects</th>
+        <th>Video</th>
+      </thead>
+
+
+{{ range $i, $lesson := $lessons }}
+{{ if index . "section" }}
+ <thead class="thead-light">
+   <th colspan=5>{{ index . "section" | markdownify }}</th>
+ </thead>
+{{ else }}
+<tr>
+    <td>{{ $i }}</td>
+    <td>{{ index . "slides" | markdownify }}</td>
+    <td>
+        {{ range (index . "reading") }}
+            {{ . | markdownify }}<br />
+        {{ end }}
+    </td>
+    <td>
+        {{ range (index . "exercises") }}
+            {{ . | markdownify }}<br />
+        {{ end }}
+    </td>
+    <td>
+        {{ range (index . "projects") }}
+            {{ . | markdownify }}<br />
+        {{ end }}
+    </td>
+    <td>{{ index . "video" | markdownify }}</td>
+</tr>
+{{ end }}
+{{ end }}
+
+</table>
+</div>
