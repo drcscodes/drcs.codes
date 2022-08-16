@@ -1,0 +1,153 @@
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Dr. CS codes Homework 2</title><meta name=viewport content="width=device-width"><link rel=stylesheet href=https://DrCS.codes/css/syntax.css><link rel=stylesheet href=https://DrCS.codes/css/main.css><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link href=https://DrCS.codes/css/navbar-top-fixed.css rel=stylesheet></head><body><nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class=navbar-brand href=/python></a>
+<button type=button class=navbar-toggler data-toggle=collapse data-target=#navbarCollapse aria-controls=navbarCollapse aria-expanded=false aria-label="Toggle navigation">
+<span class=navbar-toggler-icon></span></button><div class="navbar-collapse collapse" id=navbarCollapse><ul class="navbar-nav mr-auto"><li class=nav-item><a class=nav-link href=/python/getting-started/>Getting Started</a></li><li class=nav-item><a class=nav-link href=/python/lessons/>Lessons</a></li></ul><ul class="navbar-nav pull-right"><li class="nav-item pull-right"><a class=nav-link href=https://DrCS.codes>Dr. CS codes</a></li></ul></div></nav><main role=main class=container><h1 id=word-histogram>Word Histogram</h1><h2 id=introduction>Introduction</h2><p>In this homework you will practice</p><ul><li>data structures,</li><li>control structures,</li><li>functional programming, and</li><li>using modules that you learn on your own from documentation.</li></ul><h2 id=general-instructions>General Instructions</h2><p><strong>This is an individual assignment.</strong></p><p>Collaboration at a reasonable level will not result in substantially similar code. Students may only collaborate with fellow students currently enrolled in this course, the TAs and the lecturer. Collaboration means talking through problems, assisting with debugging, explaining a concept, etc. You should not exchange code or write code for others.</p><p>Notes:</p><ul><li>Include a comment with your name and GTID at the top of all Python files.</li><li><em>Do not wait until the last minute</em> to do this assignment in case you run into problems.</li><li>Pay close attention to whether problems require you to print or return the results! Printing instead of returning or vice versa will result in a point deduction.</li><li>Name all functions as specified in the instructions.</li><li>Unless otherwise stated, you can assume inputs will be valid in this assignment (i.e. error checking is not required).</li><li>In a Python module you must define a value (such as a function) before referencing it. So if you call function A from function B, the definition of function A must come before the definition of function B in the file.</li></ul><h2 id=problem-descrtiption>Problem Descrtiption</h2><p>You&rsquo;re a curious linguist with computer hacking skills and you want to see, roughly, if <a href=https://en.wikipedia.org/wiki/Zipf%27s_law>Zipf&rsquo;s Law</a> holds for texts contained in files lying around on your disk.</p><h2 id=solution-description>Solution Description</h2><p>Write a Python module in <code>word_hist.py</code> that includes the following functions. You should copy these function declarations and docstrings verbatim to ensure that we can successfully autograde your submission.</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span><span style=color:#f92672>from</span> typing <span style=color:#f92672>import</span> <span style=color:#f92672>*</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>normalize_text</span>(text: str) <span style=color:#f92672>-&gt;</span> str:
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;Return copy of text in lowercase with punctuation removed.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Usage Examples:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &gt;&gt;&gt; normalize_text(&#34;Numchuk skills, bow hunting skills, computer hacking skills...&#34;)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#39;numchuk skills bow hunting skills computer hacking skills&#39;
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>mk_word2count</span>(text: str) <span style=color:#f92672>-&gt;</span> Dict[str, int]:
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;Return a dictionary mapping words in text to their count in text. Be sure to account for newlines in the text!
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Usage Examples: (Note technique for testing dict equality.)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &gt;&gt;&gt; mk_word2count(&#39;the butcher the baker the candlestick maker&#39;) == {&#39;butcher&#39;: 1, &#39;baker&#39;: 1, &#39;candlestick&#39;: 1, &#39;the&#39;: 3, &#39;maker&#39;: 1}
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    True
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>dict2tuples</span>(word_dict: Dict[str, int],
+</span></span><span style=display:flex><span>                key: Callable[[Tuple], Any]<span style=color:#f92672>=</span><span style=color:#66d9ef>None</span>) <span style=color:#f92672>-&gt;</span> List[Tuple[str, int]]:
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;Convert a str:int dictionary to a sorted (in descending order) list of (str, int) tuples, optionally with a key function for the sorting the tuples
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Usage Examples:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &gt;&gt;&gt; dict2tuples({&#39;a&#39;: 2, &#39;b&#39;: 5, &#39;c&#39;: 1}, key=lambda t: t[1])
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    [(&#39;b&#39;, 5), (&#39;a&#39;, 2), (&#39;c&#39;, 1)]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>normalize_counts</span>(tuples: Sequence[Tuple[str, int]],
+</span></span><span style=display:flex><span>                     max_value: int<span style=color:#f92672>=</span><span style=color:#ae81ff>100</span>) <span style=color:#f92672>-&gt;</span> Sequence[Tuple[str, int]]:
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;Return: sequence of tuples with same first elements as input tuples
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    but whose second elements are normalized to the range 0 to
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    max_value.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Usage Examples:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &gt;&gt;&gt; wctups = [(&#39;a&#39;, 200), (&#39;the&#39;, 180), (&#39;an&#39;, 160), (&#39;shenannigans&#39;, 50)]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &gt;&gt;&gt; normalize_counts(wctups, 100)
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    [(&#39;a&#39;, 100), (&#39;the&#39;, 90), (&#39;an&#39;, 80), (&#39;shenannigans&#39;, 25)]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>word_hist</span>(bar_list: Sequence[Tuple[str, int]]) <span style=color:#f92672>-&gt;</span> List[str]:
+</span></span><span style=display:flex><span>    <span style=color:#e6db74>&#34;&#34;&#34;Create a text-based bar chart from bar_list. Return: List[str] with one
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    line per tuple in bar_list. Each string in the returned list has a
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    right-aligned label from the first element of the corresponding tuple
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    in bar_list, a | character, then a number of Xs equal to the
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    second element from the tuple.
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    Usage Examples:
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &gt;&gt;&gt; from pprint import pprint
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &gt;&gt;&gt; pprint(word_hist([(&#39;a&#39;, 10),(&#39;the&#39;, 9),(&#39;an&#39;, 8),(&#39;shenannigans&#39;, 2)]))
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    [&#39;           a | XXXXXXXXXX&#39;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     &#39;         the | XXXXXXXXX&#39;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     &#39;          an | XXXXXXXX&#39;,
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>     &#39;shenannigans | XX&#39;]
+</span></span></span><span style=display:flex><span><span style=color:#e6db74>    &#34;&#34;&#34;</span>
+</span></span></code></pre></div><h3 id=main><code>main</code></h3><p>Structure your main method as we have been taught:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>main</span>(args):
+</span></span><span style=display:flex><span>    <span style=color:#75715e># code intended to be executed when run as a script</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__<span style=color:#f92672>==</span><span style=color:#e6db74>&#34;__main__&#34;</span>:
+</span></span><span style=display:flex><span>   <span style=color:#f92672>import</span> sys
+</span></span><span style=display:flex><span>   main(sys<span style=color:#f92672>.</span>argv)
+</span></span></code></pre></div><p>The user may supply one to three command line arguments to <strong>your</strong> Python script. The first argument to the <code>python</code> interpreter, <code>sys.argv[0]</code>, is the name of your script, i.e., <code>args[0] = "word_hist.py"</code>, so there will be 1 to 4 arguments in <code>sys.argv</code>. <code>sys.argv</code>, a list of strings, should be passed as-is to the <code>main()</code> function to minimize confusion.</p><ul><li>The first argument will be the file name of Python script (ie. <code>args[0] = "word_hist.py"</code>).</li><li>The second argument, if supplied, must be the name of a text file to read and analyze.<ul><li>If the user supplies a file name on the command line and the file does not exist, you may simple allow the program to exit due to the missing file and let Python report that the file was not found.</li><li>If the user does not supply a file name on the command line, prompt the user for the file name. If the file does not exist, tell the user the file doesn&rsquo;t exist and prompt the user repeatedly until they enter the name of a file that exists.</li></ul></li><li>The third argument, if supplied, is the maximum bar length for the word frequency histogram.</li><li>The fourth argument, if supplied, is the number of lines of the bar graph to display.</li></ul><p>Here&rsquo;s a snippet of code that checks for the existence of a file:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span><span style=color:#f92672>import</span> os.path
+</span></span><span style=display:flex><span>os<span style=color:#f92672>.</span>path<span style=color:#f92672>.</span>exists(<span style=color:#e6db74>&#34;file_name.txt&#34;</span>) <span style=color:#75715e># returns True if file_name.txt exists</span>
+</span></span></code></pre></div><p>Once you have a valid file name, read the file contents into a string. Here&rsquo;s a snippet of code that opens a file for reading as text and reads the file contents into a <code>str</code> variable:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-Python data-lang=Python><span style=display:flex><span>infile <span style=color:#f92672>=</span> open(file_name, <span style=color:#e6db74>&#39;r&#39;</span>) <span style=color:#75715e># opens file_name as readable file object infile</span>
+</span></span><span style=display:flex><span>text <span style=color:#f92672>=</span> infile<span style=color:#f92672>.</span>read()          <span style=color:#75715e># dumps text data from infile into text variable</span>
+</span></span><span style=display:flex><span>infile<span style=color:#f92672>.</span>close()                <span style=color:#75715e># closes infile</span>
+</span></span></code></pre></div><p>Once you read the contents of the file into a <code>str</code>, use the functions you created above to:</p><ul><li>normalize the text to remove punctuation and make all letters lowercase,</li><li>create a dictionary mapping words from the text to the occurence counts,</li><li>create a list of tuples whose first elements are words from the word count dictionary, and whose second elements are the associated counts &ndash; this list should be sorted in descending order by word count, e.g., largest count first,</li><li>normalize the counts in the list of word count tuples to the maximum bar length of your histogram,</li><li>create a histogram using your <code>word_hist</code> function, and</li><li>print the first <code>num_lines</code> of the histogram, where <code>num_lines</code> is the number of lines of the histogram to display.</li></ul><p>Here&rsquo;s a sample program run, using the file <a href=i-have-a-dream.txt>i-have-a-dream.txt</a>:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ python hw2.py i-have-a-dream.txt <span style=color:#ae81ff>80</span> <span style=color:#ae81ff>80</span>
+</span></span><span style=display:flex><span>           the | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>            of | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>            to | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>           and | XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>             a | XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>            be | XXXXXXXXXXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>            we | XXXXXXXXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>          will | XXXXXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>          that | XXXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>            is | XXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>            in | XXXXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>          this | XXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>       freedom | XXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>            as | XXXXXXXXXXXXXXX
+</span></span><span style=display:flex><span>          from | XXXXXXXXXXXXX
+</span></span><span style=display:flex><span>          have | XXXXXXXXXXXXX
+</span></span><span style=display:flex><span>           our | XXXXXXXXXXXXX
+</span></span><span style=display:flex><span>          with | XXXXXXXXXXXX
+</span></span><span style=display:flex><span>             i | XXXXXXXXXXX
+</span></span><span style=display:flex><span>         negro | XXXXXXXXXX
+</span></span><span style=display:flex><span>           not | XXXXXXXXXX
+</span></span><span style=display:flex><span>           one | XXXXXXXXXX
+</span></span><span style=display:flex><span>           let | XXXXXXXXXX
+</span></span><span style=display:flex><span>           day | XXXXXXXXX
+</span></span><span style=display:flex><span>          ring | XXXXXXXXX
+</span></span><span style=display:flex><span>         dream | XXXXXXXX
+</span></span><span style=display:flex><span>          come | XXXXXXX
+</span></span><span style=display:flex><span>        nation | XXXXXXX
+</span></span><span style=display:flex><span>         every | XXXXXXX
+</span></span><span style=display:flex><span>           <span style=color:#66d9ef>for</span> | XXXXXX
+</span></span><span style=display:flex><span>            go | XXXXXX
+</span></span><span style=display:flex><span>          back | XXXXXX
+</span></span><span style=display:flex><span>         today | XXXXXX
+</span></span><span style=display:flex><span>           are | XXXXXX
+</span></span><span style=display:flex><span>          must | XXXXXX
+</span></span><span style=display:flex><span>     satisfied | XXXXXX
+</span></span><span style=display:flex><span>            by | XXXXXX
+</span></span><span style=display:flex><span>           you | XXXXXX
+</span></span><span style=display:flex><span>         their | XXXXXX
+</span></span><span style=display:flex><span>       justice | XXXXXX
+</span></span><span style=display:flex><span>          able | XXXXXX
+</span></span><span style=display:flex><span>          when | XXXXX
+</span></span><span style=display:flex><span>           all | XXXXX
+</span></span><span style=display:flex><span>            it | XXXX
+</span></span><span style=display:flex><span>        cannot | XXXX
+</span></span><span style=display:flex><span>           men | XXXX
+</span></span><span style=display:flex><span>         white | XXXX
+</span></span><span style=display:flex><span>          long | XXXX
+</span></span><span style=display:flex><span>           now | XXXX
+</span></span><span style=display:flex><span>           but | XXXX
+</span></span><span style=display:flex><span>         there | XXXX
+</span></span><span style=display:flex><span>      together | XXXX
+</span></span><span style=display:flex><span>          time | XXX
+</span></span><span style=display:flex><span>         which | XXX
+</span></span><span style=display:flex><span>            on | XXX
+</span></span><span style=display:flex><span>         faith | XXX
+</span></span><span style=display:flex><span>      children | XXX
+</span></span><span style=display:flex><span>       america | XXX
+</span></span><span style=display:flex><span>            my | XXX
+</span></span><span style=display:flex><span>          free | XXX
+</span></span><span style=display:flex><span>         check | XXX
+</span></span><span style=display:flex><span>           has | XXX
+</span></span><span style=display:flex><span>         shall | XXX
+</span></span><span style=display:flex><span>         great | XXX
+</span></span><span style=display:flex><span>           new | XXX
+</span></span><span style=display:flex><span>         years | XXX
+</span></span><span style=display:flex><span>           who | XXX
+</span></span><span style=display:flex><span>            an | XXX
+</span></span><span style=display:flex><span>          into | XXX
+</span></span><span style=display:flex><span>            so | XXX
+</span></span><span style=display:flex><span>         black | XXX
+</span></span><span style=display:flex><span>          hope | XXX
+</span></span><span style=display:flex><span>       hundred | XXX
+</span></span><span style=display:flex><span>   mississippi | XXX
+</span></span><span style=display:flex><span>            up | XXX
+</span></span><span style=display:flex><span>            us | XXX
+</span></span><span style=display:flex><span>          down | XXX
+</span></span><span style=display:flex><span>         <span style=color:#66d9ef>until</span> | XXX
+</span></span><span style=display:flex><span>      mountain | XXX
+</span></span><span style=display:flex><span>         later | XXX
+</span></span></code></pre></div><p>Note that the full output would be very long and words with low rank would have no <code>X</code>s.</p><h2 id=submission-instructions>Submission Instructions</h2><p>Submit your <code>word_hist.py</code> file on Canvas as an attachment. When you&rsquo;re ready, double-check that you have submitted and not just saved a draft.</p><h2 id=verify-the-success-of-your-submission-to-canvas>Verify the Success of Your Submission to Canvas</h2><p>Practice safe submission! Verify that your HW files were truly submitted correctly, the upload was successful, and that your program runs with no syntax or runtime errors. It is solely your responsibility to turn in your homework and practice this safe submission safeguard.</p><ul><li><p>After submitting the files to Canvas, return to the Assignment menu option and this homework. It should show the submitted files.</p></li><li><p>Download copies of your submitted files from the Canvas Assignment page <strong>placing them in a new folder</strong>.</p></li><li><p>Re-run and test the files you downloaded from Canvas to make sure it&rsquo;s what you expect.</p></li><li><p>This procedure helps guard against a few things.</p><ul><li>It helps insure that you turn in the correct files.</li><li>It helps you realize if you omit a file or files.\footnote{Missing files will not be given any credit, and non-compiling homework solutions will receive few to zero points. Also recall that late homework will not be accepted regardless of excuse. Treat the due date with respect. Do not wait until the last minute!
+(If you do discover that you omitted a file, submit all of your files again, not just the missing one.)</li><li>Helps find syntax errors or runtime errors that you may have added after you last tested your code.</li></ul></li></ul></main><script src=https://code.jquery.com/jquery-3.2.1.slim.min.js integrity=sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN crossorigin=anonymous></script>
+<script src=https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js integrity=sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q crossorigin=anonymous></script>
+<script src=../js/bootstrap.min.js></script></body></html>
