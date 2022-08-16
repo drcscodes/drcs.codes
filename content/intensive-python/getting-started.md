@@ -15,6 +15,8 @@ Jump to the section matching the operating system you will be using:
 - [macOS](#macos)
 - [Windows](#windows)
 
+Then install [Git](/computing/git).
+
 ## Ubuntu and WSL2
 
 If you are using Windows 10 or 11, install WSL2, the Windows Subsystem for Linux, Version 2.  WSL2 provides a very nice Linux environment, including a full Linux kernel and distribution of your choosing (I will use the latest Ubuntu in demonstrations).
