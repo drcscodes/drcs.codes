@@ -52,6 +52,13 @@ git config --global user.email chris.simpkins@gmail.com
 git config --global core.editor emacs
 ```
 
+Also maybe
+
+```sh
+git config --global --add push.default current
+git config --global --add push.autoSetupRemote true
+```
+
 ## Git, GitLab and GitHub
 
 Git is a distributed version control system. GitLab and GitHub are web applications that provide a nice web interface for remote repositories.

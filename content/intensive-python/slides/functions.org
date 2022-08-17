@@ -15,7 +15,7 @@
 #+LaTeX_HEADER: \usepackage{sourcecodepro}
 #+LaTeX_HEADER: \usepackage[T1]{fontenc}
 #+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-#+LaTeX_HEADER: \lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+#+LaTeX_HEADER: \lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}, upquote=false, literate={'}{\textquotesingle}1}
 #+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
 #+LaTeX_HEADER: \setlength{\parskip}{.25\baselineskip}
@@ -415,10 +415,6 @@ A function a kind of variable. If you define a function with the same name as a 
 <function global_hello at 0x10063b620>
 #+end_src
 
-** Python Scope Gotchas
-
-Python has notoriously weird scoping rules.
-
 ** Muliple Parameters
 
 A function can take any number of parameters.
@@ -534,7 +530,9 @@ You can collect variable keyword arguments as a dictionary with ~**~
 {'a': 1, 'steak': 'sauce'}
 #+end_src
 
-And you can do both, but the keword arguments come second.
+** Mixed Argument Lists
+
+And you can do positional and keyword variable arguments together, but the keword arguments come second.
 
 #+begin_src python
 >>> def print_stuff(*args, **kwargs):

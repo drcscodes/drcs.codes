@@ -1,4 +1,4 @@
-% Created 2022-08-15 Mon 19:07
+% Created 2022-08-17 Wed 12:43
 % Intended LaTeX compiler: pdflatex
 \documentclass[smaller, aspectratio=1610]{beamer}
 \usepackage[utf8]{inputenc}
@@ -17,7 +17,7 @@
 \usepackage{sourcecodepro}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}, upquote=false, literate={'}{\textquotesingle}1}
 \setbeamertemplate{footline}[frame number]
 \hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
 \setlength{\parskip}{.25\baselineskip}
@@ -36,9 +36,9 @@
 \maketitle
 
 \section{Modules and Programs}
-\label{sec:org35365e3}
+\label{sec:org07f77ec}
 
-\begin{frame}[label={sec:org2183131}]{Python Programs}
+\begin{frame}[label={sec:org86a5918}]{Python Programs}
 Python code organized in
 
 \begin{itemize}
@@ -50,7 +50,7 @@ Python code organized in
 We've already used some modules, now we'll learn what they are, how they're orgainized in packages, and how to write Python programs that can be run on their own, not just entered in the Python command shell.
 \end{frame}
 
-\begin{frame}[label={sec:org8eb6f8b},fragile]{Importing Modules}
+\begin{frame}[label={sec:org40d2d7c},fragile]{Importing Modules}
  To \texttt{import} a module means to get names from the module into scope, or add them to a namespace. When you import a module, you can access the module's members with the dot operator.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -70,7 +70,7 @@ You can  also import a module and give it an alias: \texttt{import <module> as <
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:orgb9b9e5d},fragile]{Importing into Local Scope}
+\begin{frame}[label={sec:orgf9faa8c},fragile]{Importing into Local Scope}
  Importing brings names into the scope of the import.  Here we import the math module into the scope of a single function:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -94,7 +94,7 @@ NameError: name 'math' is not defined
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org5623832},fragile]{Importing Names from a Module}
+\begin{frame}[label={sec:org1c2155a},fragile]{Importing Names from a Module}
  You can choose to import only certain names from a module:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -125,7 +125,7 @@ Using this syntax adds the names from the module to your namespace so that you d
 \end{frame}
 
 
-\begin{frame}[label={sec:orgd4aeca5},fragile]{Namespace Pollution}
+\begin{frame}[label={sec:orgedf8d14},fragile]{Namespace Pollution}
  It's usually better to import modules and access their members with dot notation.  When you \texttt{import ... from ..} from several modules, especially if you use \texttt{*}, you "pollute" your namespace with many names and potentially cause problems.
 
 \begin{block}{Active Review}
@@ -142,7 +142,7 @@ What happened?
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org699ffa0},fragile]{Writing Python Modules}
+\begin{frame}[label={sec:org0e4cdc1},fragile]{Writing Python Modules}
  A Python module is text file ending in \texttt{.py} -- this is why you should always name your Python source files with a \texttt{.py} ending.  A module typically includes classes, functions and variables.
 
 \begin{block}{Active Review}
@@ -175,7 +175,7 @@ Save the following code in a file named \texttt{arithmetic.py}:
 \end{frame}
 
 
-\begin{frame}[label={sec:org212e087},fragile]{Python Scripts}
+\begin{frame}[label={sec:orgdfffaaa},fragile]{Python Scripts}
  A Python script is any text file containing executable Python code.  Our \texttt{hello.py} script from Day 1 is an example of a Python script.  Note that a module can be a Python script if it contains code that executes whenever the module is run by the Python interpreter.
 
 \begin{block}{Active Review}
@@ -203,7 +203,7 @@ Save the following code in a file named \texttt{arithmetic.py}:
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org4a67a63},fragile]{\texttt{if \_\_name\_\_ == '\_\_main\_\_'}}
+\begin{frame}[label={sec:orgb758fc1},fragile]{\texttt{if \_\_name\_\_ == '\_\_main\_\_'}}
  To make a module a script that only evaluates definitions when imported and only runs the "script" parts when run by the Python interpreter, include an \texttt{if \_\_name\_\_ == '\_\_main\_\_'} block at the bottom.  The code in the \texttt{if \_\_name\_\_ == '\_\_main\_\_'} block will only execute when the module is run as a script.
 
 \begin{block}{Active Review}
@@ -233,7 +233,7 @@ if __name__ == '__main__':
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgc324f2b},fragile]{Shebang!}
+\begin{frame}[label={sec:org72ef44f},fragile]{Shebang!}
  Another way to run a Python program (on Unix) is to tell the host operating system how to run it. We do that with a "shebang" line at the beginning of a Python program:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -250,7 +250,7 @@ $ ./foo.py
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:orgb75c8b5},fragile]{Command-line Arguments}
+\begin{frame}[label={sec:orgf8c1714},fragile]{Command-line Arguments}
  When you run a Python program, Python collects the arguments to the program in a variable called sys.argv. Given a Python program (\texttt{arguments.py}):
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -275,7 +275,7 @@ You've given me nothing to work with.
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org64dc221},fragile]{Interactive Programs}
+\begin{frame}[label={sec:orge1cfe03},fragile]{Interactive Programs}
  The input() function Python reads all the characters typed into the console until the user presses ENTER and returns them as a string:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -306,7 +306,7 @@ Give me a number and I'll double it: 3
 \end{frame}
 
 
-\begin{frame}[label={sec:org509296d},fragile]{Module Search Path}
+\begin{frame}[label={sec:orgb9e3e4b},fragile]{Module Search Path}
  Just as an operating system command shell searches for executable programs by searching the directories listed in the \texttt{PATH} environment variable, Python finds modules by searching directories. The module search path is stored in \texttt{sys.path}:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -328,7 +328,7 @@ Notice that the current directory, represented by the \texttt{''} at the beginni
 Also, note use of \texttt{pprint}.
 \end{frame}
 
-\begin{frame}[label={sec:orgf2822db}]{Conclusion}
+\begin{frame}[label={sec:org109a38b}]{Conclusion}
 \begin{itemize}
 \item Be careful to distinguish between a Python RELP prompt, and an OS command shell prompt.
 \end{itemize}

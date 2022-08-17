@@ -1,4 +1,4 @@
-% Created 2022-08-13 Sat 11:01
+% Created 2022-08-17 Wed 12:46
 % Intended LaTeX compiler: pdflatex
 \documentclass[smaller, aspectratio=1610]{beamer}
 \usepackage[utf8]{inputenc}
@@ -17,7 +17,7 @@
 \usepackage{sourcecodepro}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}, upquote=false, literate={'}{\textquotesingle}1}
 \setbeamertemplate{footline}[frame number]
 \hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
 \setlength{\parskip}{.25\baselineskip}
@@ -36,9 +36,9 @@
 \maketitle
 
 \section{File Input/Output}
-\label{sec:org65c1c8d}
+\label{sec:org5c4c663}
 
-\begin{frame}[label={sec:org38f11b2},fragile]{Text File IO}
+\begin{frame}[label={sec:orgd34619c},fragile]{Text File IO}
  \begin{itemize}
 \item File IO is done in Python with the built-in \texttt{File} object which is returned by the built-in \texttt{open} function
 \item Use the 'w' open mode for writing
@@ -69,7 +69,7 @@ $ python
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org72db822},fragile]{Reading Lines from Text Files}
+\begin{frame}[label={sec:org807782f},fragile]{Reading Lines from Text Files}
  \begin{itemize}
 \item Text files often have data split into lines
 \item the \texttt{readlines()} function reads all lines into memory as a list
@@ -104,7 +104,7 @@ $ python
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:orge553b71},fragile]{Processing Lines in a Text File}
+\begin{frame}[label={sec:org72b6830},fragile]{Processing Lines in a Text File}
  Could use readlines() and iterate through list it returns
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -131,7 +131,7 @@ line 3
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:orga6287c3},fragile]{Files are Buffered}
+\begin{frame}[label={sec:orgbc94b4a},fragile]{Files are Buffered}
  Try a little experiment. create a subdirectory named foo, cd to your new empty \texttt{foo} directory, lauch a Python shell, create open a new file named bar, and write something to it:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -158,7 +158,7 @@ your Python shell and do:
 Now view the contents of the \texttt{bar} file again. It has the text from the previous \texttt{write()} call. Files are buffered, and the buffer isn’t (guaranteed to be) flushed to disk until the file object is closed or the \texttt{File} Object goes out of scope or the program terminates (gracefully).
 \end{frame}
 
-\begin{frame}[label={sec:orgfaebd0f},fragile]{Context Management with \texttt{with}}
+\begin{frame}[label={sec:orgfaee75d},fragile]{Context Management with \texttt{with}}
  Python has context managers to close resources automatically. A context manager has the form
 
 \begin{quote}

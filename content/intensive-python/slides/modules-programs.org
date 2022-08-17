@@ -4,9 +4,8 @@
 #+DATE:
 #+DESCRIPTION:
 #+KEYWORDS:
-#+LANGUAGE: en
-#+OPTIONS: H:2 ':nil toc:nil
-#+OPTIONS: 'nil
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil ':nil
 #+BEAMER_FRAME_LEVEL: 2
 #+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
 #+LaTeX_CLASS: beamer
@@ -16,7 +15,7 @@
 #+LaTeX_HEADER: \usepackage{sourcecodepro}
 #+LaTeX_HEADER: \usepackage[T1]{fontenc}
 #+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-#+LaTeX_HEADER: \lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+#+LaTeX_HEADER: \lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}, upquote=false, literate={'}{\textquotesingle}1}
 #+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
 #+LaTeX_HEADER: \setlength{\parskip}{.25\baselineskip}
