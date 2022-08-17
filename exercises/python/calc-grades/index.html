@@ -1,4 +1,28 @@
-<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Grades Report Exercise</title><meta name=viewport content="width=device-width"><link rel=stylesheet href=https://DrCS.codes/css/syntax.css><link rel=stylesheet href=https://DrCS.codes/css/main.css><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link href=/css/navbar-fixed-top.css rel=stylesheet><script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type=text/javascript></script></head><body><nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class=navbar-brand href=/exercises></a>
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Grades Report Exercise</title><meta name=viewport content="width=device-width"><link rel=stylesheet href=https://DrCS.codes/css/syntax.css><link rel=stylesheet href=https://DrCS.codes/css/main.css><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link href=/css/navbar-fixed-top.css rel=stylesheet><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+<script type=text/x-mathjax-config>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script><script type=text/x-mathjax-config>
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i &lt; all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script></head><body><nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class=navbar-brand href=/exercises></a>
 <span class=navbar-toggler-icon></span></a><div class="navbar-collapse collapse" id=navbarCollapse><ul class="navbar-nav mr-auto"><li class=nav-item><a class=nav-link onclick=history.back()>Back to course</a></li></ul><ul class="navbar-nav pull-right"><li class="nav-item pull-right"><a class=nav-link href=https://DrCS.codes>Dr. CS codes</a></li></ul></div></nav><div class=container><h1 id=calc-grades>Calc Grades</h1><h2 id=introduction>Introduction</h2><p>In this assignment you will practice writing Python command-line utilities, file I/O, processing CSV files, and processing Python data structures.</p><h2 id=problem-description>Problem Description</h2><p>You&rsquo;re a teacher who needs to calculate final grades and get summary information on students in a class.</p><h2 id=solution-description>Solution Description</h2><p>Write a program called <code>calc_grades.py</code> that reads student item scores from a CSV file such as <a href=super-grades.csv>super-grades.csv</a>, writes a new CSV file with the same data as the input file with the following additional columns:</p><ul><li>average score for the student,</li><li>letter grade based on grade cutoffs: A: 90, B: 80, C: 70, D: 60;</li></ul><p>And an additional row at the end with &ldquo;Averages&rdquo; for the student name and the average for each graded item.</p><p>After writing the CSV file, the program should print to the console the number of As, Bs, Cs, Ds, and Fs, and the GPA for the class.</p><p>Your script should use command-line options <code>-i</code> for the input CSV file and <code>-o</code> for the output file.</p><h3 id=sample-output>Sample Output</h3><p>Given the input file <a href=super-grades.csv>super-grades.csv</a>, this is what running your program should look like:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>$ python calc_grades.py -h
 </span></span><span style=display:flex><span>usage: calc_grades.py <span style=color:#f92672>[</span>-h<span style=color:#f92672>]</span> -i INFILE -o OUTFILE
 </span></span><span style=display:flex><span>

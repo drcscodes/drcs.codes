@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Git</title><meta name=viewport content="width=device-width"><link rel=stylesheet href=https://DrCS.codes/css/syntax.css><link rel=stylesheet href=https://DrCS.codes/css/main.css><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link href=/css/navbar-fixed-top.css rel=stylesheet><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+<script type=text/x-mathjax-config>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script><script type=text/x-mathjax-config>
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i &lt; all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script></head><body><nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class=navbar-brand href=/shared></a>
+<span class=navbar-toggler-icon></span></a><div class="navbar-collapse collapse" id=navbarCollapse><ul class="navbar-nav mr-auto"><li class=nav-item><a class=nav-link onclick=history.back()>Back to course</a></li></ul><ul class="navbar-nav pull-right"><li class="nav-item pull-right"><a class=nav-link href=https://DrCS.codes>Dr. CS codes</a></li></ul></div></nav><div class=container><h1 id=git>Git</h1><p>This guide provides a brief introduction to <a href=https://git-scm.com/>Git</a> and <a href=https://github.com/>GitHub</a></p><h2 id=installation>Installation</h2><h3 id=linux>Linux</h3><p>You almost certainly have it already. If not,</p><p>Debian-based (like Ubuntu):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>sudo apt-get install git
+</span></span></code></pre></div><p>Red Hat-based (like Fedora):</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>sudo yum install git
+</span></span></code></pre></div><p>Note: I haven&rsquo;t used Fedora in many years, so double check that.</p><h3 id=macos>macOS</h3><p>If you have a Mac, I recommend <a href=https://brew.sh/>Homebrew</a>. Then installing git is easy:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>brew install git
+</span></span></code></pre></div><p>It&rsquo;s a good idea to update <code>brew</code> and your <code>brew</code> packages first:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>brew update
+</span></span><span style=display:flex><span>brew upgrade
+</span></span></code></pre></div><h3 id=windows>Windows</h3><p>Download the Git for Windows installer from <a href=https://git-scm.com/downloads>Git&rsquo;s official downloads page</a> and run it. Then you&rsquo;ll also have <code>git-bash</code>, which gives you a Bash shell &ndash; a superior alternative to <code>cmd</code> or Power[sic] Shell.</p><h2 id=single-user-usage>Single-User Usage</h2><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh><span style=display:flex><span>git config --global user.name <span style=color:#e6db74>&#34;Christopher Simpkins&#34;</span>
+</span></span><span style=display:flex><span>git config --global user.email chris.simpkins@gmail.com
+</span></span><span style=display:flex><span>git config --global core.editor emacs
+</span></span></code></pre></div><h2 id=git-gitlab-and-github>Git, GitLab and GitHub</h2><p>Git is a distributed version control system. GitLab and GitHub are web applications that provide a nice web interface for remote repositories.</p><p>More to come &mldr;</p></div><script src=js/bootstrap.min.js></script></body></html>
