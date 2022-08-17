@@ -1,4 +1,4 @@
-% Created 2022-08-16 Tue 11:31
+% Created 2022-08-17 Wed 12:42
 % Intended LaTeX compiler: pdflatex
 \documentclass[smaller, aspectratio=1610]{beamer}
 \usepackage[utf8]{inputenc}
@@ -17,7 +17,7 @@
 \usepackage{sourcecodepro}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}, upquote=false, literate={'}{\textquotesingle}1}
 \setbeamertemplate{footline}[frame number]
 \hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
 \setlength{\parskip}{.25\baselineskip}
@@ -37,9 +37,9 @@
 
 
 \section{Values and Variables}
-\label{sec:org59e3298}
+\label{sec:org2c7ae6e}
 
-\begin{frame}[label={sec:org54d9957}]{Languages and Computation}
+\begin{frame}[label={sec:org8d33241}]{Languages and Computation}
 Every powerful language has three mechanisms for combining simple ideas to form more complex ideas:(\href{http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html}{SICP 1.1})
 
 \begin{itemize}
@@ -57,13 +57,13 @@ By the end of this lession you will
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org538b3b3}]{Values}
+\begin{frame}[label={sec:orga0fe4e2}]{Values}
 \begin{center}
 \includegraphics[height=.7\textheight]{./value-uga-shirt.jpeg}
 \end{center}
 \end{frame}
 
-\begin{frame}[label={sec:orge95de0d},fragile]{Expressions}
+\begin{frame}[label={sec:org817dd78},fragile]{Expressions}
  \begin{description}
 \item[{value}] a well-defined chunk of data in memory
 \item[{expression}] a sequence of symbols that can be \alert{evaluated} to produce a value
@@ -98,7 +98,7 @@ Compound expressions combine values using operators.  Here the \texttt{+} operat
 Have a Python REPL session open for this lesson so you can follow along and try your own ideas.
 \end{frame}
 
-\begin{frame}[label={sec:orga58c3fb},fragile]{Types}
+\begin{frame}[label={sec:org260d305},fragile]{Types}
  You can think of a type
 \begin{itemize}
 \item structurally: as an interpretation of the bits comprising a chunk of data,
@@ -125,7 +125,7 @@ All values have types. Python can tell you the type of a value with the built-in
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org4fe7d47},fragile]{Variables}
+\begin{frame}[label={sec:org0c5efb3},fragile]{Variables}
  Think of variable as a name for a value. You bind a value to a variable using an assignment statement (or by passing an argument to a function), after which the variable \alert{denotes} the value:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -166,7 +166,7 @@ Variable names, or identifiers, may contain letters, numbers, or underscores and
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org6ed78d7},fragile]{Keywords}
+\begin{frame}[label={sec:org8067eb0},fragile]{Keywords}
  Python reserves some identifiers for its own use.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -199,7 +199,7 @@ break      except     in         raise
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org8500c38},fragile]{Assignment Semantics}
+\begin{frame}[label={sec:org2a9959a},fragile]{Assignment Semantics}
  \texttt{=} stores the memory address of the value on the right-hand side in a memory cell referenced by the variable on the left hand side.  Python variables refer to these pointer memory cells. Evaluate these assignment statements in a Python REPL and make sure you understand them.
 
 \begin{columns}
@@ -245,7 +245,7 @@ b = 42
 \end{columns}
 \end{frame}
 
-\begin{frame}[label={sec:org5e23e20},fragile]{Types as Interpretations of Bits}
+\begin{frame}[label={sec:org675332d},fragile]{Types as Interpretations of Bits}
  You can represent the byte \texttt{01000001} with \texttt{b'\textbackslash{}x41'}.  \texttt{\textbackslash{}x} means the characters that follow are hexadecimal digits. You will probably never do this sort of thing in Python.  These examples simply illustrate what we mean by viewing types as interpretations of bits.
 
 
@@ -287,7 +287,7 @@ If you interpret the same bits as a \texttt{str}:
 \end{frame}
 
 
-\begin{frame}[label={sec:org01cf459},fragile]{Types as Sets of Values}
+\begin{frame}[label={sec:org49a693c},fragile]{Types as Sets of Values}
  \begin{itemize}
 \item \texttt{int} is like the set of integers, \(\mathbb{Z}\).
 \item \texttt{float} is like the set of real numbers, \(\mathbb{R}\).
@@ -298,7 +298,7 @@ If you interpret the same bits as a \texttt{str}:
 Again, this is not terribly useful in Python unless you want to think of compound expressions in set theoretic terms.
 \end{frame}
 
-\begin{frame}[label={sec:org589883e},fragile]{Aside: The Sizes of Types}
+\begin{frame}[label={sec:orge4645bd},fragile]{Aside: The Sizes of Types}
  One of the convenient things about Python is that you don't have to worry about overflow or underflow\footnote{In regular Python you don't have to worry about type size limits, but in scientific Python, which relies on libraries written in C, C++ and Fortran you do.}. For example, as in mathematics, the set \texttt{int} is unbounded:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -318,7 +318,7 @@ But you should consider \texttt{sys.maxsize}, the word size of your processor (6
 In many other programming languages, size limits can crop up in sometimes amusing ways, \href{https://arstechnica.com/information-technology/2014/12/gangnam-style-overflows-int\_max-forces-youtube-to-go-64-bit/}{Gangnam Style!}
 \end{frame}
 
-\begin{frame}[label={sec:orgec2dba5},fragile]{Types as Sets of Operations}
+\begin{frame}[label={sec:orgedeb4e5},fragile]{Types as Sets of Operations}
  Types determine which operations are available on values. For example, exponentiation is defined for numbers (like int or float):
 
 
@@ -344,7 +344,7 @@ TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'int'
 This is the primary way to think about types in Python.
 \end{frame}
 
-\begin{frame}[label={sec:org2574864},fragile]{Overloaded Operators}
+\begin{frame}[label={sec:orgf87e90f},fragile]{Overloaded Operators}
  Some operators are overloaded, meaning they have different meanings when applied to different types. For example, + means addition for numbers and concatenation for strings:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -368,7 +368,7 @@ This is the primary way to think about types in Python.
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org1a60658},fragile]{Expression Evaluation}
+\begin{frame}[label={sec:orgceb1b9c},fragile]{Expression Evaluation}
  Mathematical expressions are evaluated using precedence and associativity rules as you would expect from math:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -401,7 +401,7 @@ Note that precedence and associativity rules apply to overloaded versions of ope
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org17a399f},fragile]{Python is Dynamically Typed}
+\begin{frame}[label={sec:org2fa6d60},fragile]{Python is Dynamically Typed}
  Python is dynamically typed, meaning that types are not resoved until run-time. This means two things practically:
 
 \begin{enumerate}
@@ -431,7 +431,7 @@ Evaluate the following expressions in the Python REPL.  Be sure to type them exa
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgdda67fe},fragile]{Type Conversions}
+\begin{frame}[label={sec:org083b8ea},fragile]{Type Conversions}
  Convert a value to a different type by applying conversions named after the target type.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -460,7 +460,7 @@ Modify the following expressions to produce the indicated results.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org8c4b037},fragile]{Assignment Semantics}
+\begin{frame}[label={sec:orgd9bb685},fragile]{Assignment Semantics}
  Python evaluates the expression on the right-hand side, then binds the expression's value to the variable on the left-hand side. Variables can be reassigned:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -481,7 +481,7 @@ Note that the value of \texttt{a} used in the expression on the right hand side 
 What's the type of \texttt{a}?
 \end{frame}
 
-\begin{frame}[label={sec:org5637327},fragile]{Boolean Values}
+\begin{frame}[label={sec:orgfbe8697},fragile]{Boolean Values}
  There are \texttt{10} kinds of people:
 
 \begin{itemize}
@@ -490,7 +490,7 @@ What's the type of \texttt{a}?
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgc9507fb},fragile]{Python Booleans}
+\begin{frame}[label={sec:orgf41fe97},fragile]{Python Booleans}
  In Python, boolean values have the \texttt{bool} type. Four kinds of boolean
 expressions:
 
@@ -502,7 +502,7 @@ expressions:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orga1e3eef},fragile]{Comparison Operators}
+\begin{frame}[label={sec:orgbd3366d},fragile]{Comparison Operators}
  \begin{itemize}
 \item Equal to: \texttt{==}, like \(=\) in math
 
@@ -531,7 +531,7 @@ expressions:
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org68cfb82},fragile]{Logical Operators}
+\begin{frame}[label={sec:orge4e4345},fragile]{Logical Operators}
  The values produced by logial operators are often shown in truth tables:
 
 \begin{center}
@@ -560,7 +560,7 @@ not True       # False
 \end{frame}
 
 
-\begin{frame}[label={sec:org9668db1},fragile]{Truth in Python}
+\begin{frame}[label={sec:orga8a920a},fragile]{Truth in Python}
  The zero values of built-in types are equivalent to \texttt{False}:
 
 \begin{itemize}
@@ -582,7 +582,7 @@ All other values are equivalent to True.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org0cfa41e},fragile]{Short-circuit Evaluation}
+\begin{frame}[label={sec:org7d88cb8},fragile]{Short-circuit Evaluation}
  Logical expressions use short-circuit evaluation:
 
 \begin{itemize}
@@ -612,7 +612,7 @@ What are the values of the following expressions?
 \end{frame}
 
 
-\begin{frame}[label={sec:org28acf75},fragile]{Sequences}
+\begin{frame}[label={sec:orgaeb281a},fragile]{Sequences}
  Sequences are ordered.
 
 Lists are mutable.
@@ -644,7 +644,7 @@ Strings are immutable sequences of characters.
 \end{frame}
 
 
-\begin{frame}[label={sec:orgd251114},fragile]{Dinctionaries and Sets}
+\begin{frame}[label={sec:org3461915},fragile]{Dinctionaries and Sets}
  A dictionary is a map from keys to values.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -675,7 +675,7 @@ Sets have no duplicates, like the keys of a \texttt{dict}. They can be iterated 
 \end{frame}
 
 
-\begin{frame}[label={sec:org8be3d1f}]{Values, Variables, and Expressions}
+\begin{frame}[label={sec:org5b63a94}]{Values, Variables, and Expressions}
 \begin{itemize}
 \item Values are the atoms of computer programs
 \item Expressions produce values

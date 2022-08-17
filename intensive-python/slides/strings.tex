@@ -1,4 +1,4 @@
-% Created 2022-08-15 Mon 12:47
+% Created 2022-08-17 Wed 12:44
 % Intended LaTeX compiler: pdflatex
 \documentclass[smaller, aspectratio=1610]{beamer}
 \usepackage[utf8]{inputenc}
@@ -17,7 +17,7 @@
 \usepackage{sourcecodepro}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}, upquote=false, literate={'}{\textquotesingle}1}
 \setbeamertemplate{footline}[frame number]
 \hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
 \setlength{\parskip}{.25\baselineskip}
@@ -37,9 +37,9 @@
 
 
 \section{Strings}
-\label{sec:org7f34a92}
+\label{sec:orgff12cda}
 
-\begin{frame}[label={sec:org2ce5209},fragile]{Strings}
+\begin{frame}[label={sec:org44313ee},fragile]{Strings}
  Three ways to define string literals:
 
 \begin{itemize}
@@ -58,7 +58,7 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org33c9e9d},fragile]{Strings}
+\begin{frame}[label={sec:orgb27290c},fragile]{Strings}
  Note that the REPL echoes the value with a \texttt{\textbackslash{}n} to represent the newline character. Use the print function to get your intended output:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -75,7 +75,7 @@ even made a home page for my dog.
 That's pretty \href{http://bravehunde.org}{nerdy}.
 \end{frame}
 
-\begin{frame}[label={sec:orgfd446b1},fragile]{Strings}
+\begin{frame}[label={sec:org4dd8b3a},fragile]{Strings}
  Choice of quote character is usually a matter of taste, but the choice can sometimes buy convenience. If your string contains a quote character you can either escape it:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -97,7 +97,7 @@ or use the other quote character:
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgecc9232},fragile]{String Operations}
+\begin{frame}[label={sec:org55b951b},fragile]{String Operations}
  Because strings are sequences we can get a string's length with \texttt{len()}:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -135,7 +135,7 @@ Note that the result of an index access is a string:
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org8a04649},fragile]{String Slicing}
+\begin{frame}[label={sec:org29f4c31},fragile]{String Slicing}
  \texttt{[:end]} gets the first characters up to but not including \texttt{end}
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -169,7 +169,7 @@ Note that the result of an index access is a string:
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org3b25475},fragile]{String Methods}
+\begin{frame}[label={sec:orgcfb24ca},fragile]{String Methods}
  \texttt{str} is a class (you'll learn about classes later) with many methods (a method is a function that is part of an object). Invoke a method on a string using the dot operator.
 
 \texttt{str.find(substr)} returns the index of the first occurence of
@@ -189,7 +189,7 @@ Note that the result of an index access is a string:
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org69e6a2b},fragile]{String Interpolation with \%}
+\begin{frame}[label={sec:orgbc22626},fragile]{String Interpolation with \%}
  The old-style (2.X) string format operator, \%, takes a string with format
 specifiers on the left, and a single value or tuple of values on the right,
 and substitutes the values into the string according to the conversion
@@ -215,7 +215,7 @@ Here are the conversion rules:
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org533594d},fragile]{String Formatting with \texttt{\%}}
+\begin{frame}[label={sec:orga202cf7},fragile]{String Formatting with \texttt{\%}}
  Specify field widths with a number between \texttt{\%} and conversion rule:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -249,7 +249,7 @@ Notice that the field width indludes the decimal point and output is
 left-padded with spaces
 \end{frame}
 
-\begin{frame}[label={sec:org12ca6ae},fragile]{String Interpolation with \texttt{str.format()}}
+\begin{frame}[label={sec:org4e88f73},fragile]{String Interpolation with \texttt{str.format()}}
  Python 3.0 - 3.5 interpolation was done with the string method \texttt{format}:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -286,7 +286,7 @@ Or dictionaries (note that there's one dict argument, number 0):
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org852d406},fragile]{String Formatting with \texttt{str.format()}}
+\begin{frame}[label={sec:org62fce8c},fragile]{String Formatting with \texttt{str.format()}}
  Conversion types appear after a colon:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -321,7 +321,7 @@ USC           7
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org2eddfee},fragile]{f-Strings}
+\begin{frame}[label={sec:org6b25336},fragile]{f-Strings}
  Python 3.6 introduced a much more convenient inline string interpolator.  Prepend \texttt{f} to the opening quote, enclose arbitrary Python expressions in culy braces (\texttt{\{\}}), and put formatters similar to \texttt{str.format()} after colons.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -334,7 +334,7 @@ USC             7
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:orgafb4760},fragile]{Conclusion}
+\begin{frame}[label={sec:org06f2709},fragile]{Conclusion}
  \begin{itemize}
 \item Strings are a kind of \texttt{Sequence}
 \item Unlike some other languages, it's not a \texttt{Sequence[char]} -- single characters are also \texttt{str} s
