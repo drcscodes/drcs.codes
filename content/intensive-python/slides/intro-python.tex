@@ -1,4 +1,4 @@
-% Created 2022-08-13 Sat 10:08
+% Created 2022-08-17 Wed 12:43
 % Intended LaTeX compiler: pdflatex
 \documentclass[smaller, aspectratio=1610]{beamer}
 \usepackage[utf8]{inputenc}
@@ -17,9 +17,10 @@
 \usepackage{sourcecodepro}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}, upquote=false, literate={'}{\textquotesingle}1}
 \setbeamertemplate{footline}[frame number]
-\hypersetup{colorlinks=true,urlcolor=blue}
+\hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
+\setlength{\parskip}{.25\baselineskip}
 \usetheme{default}
 \date{}
 \title{Introduction to Python}
@@ -35,16 +36,16 @@
 \maketitle
 
 \section{Introduction to Computing with Python}
-\label{sec:org6b2129d}
+\label{sec:org03b043a}
 
-\begin{frame}[label={sec:org4482155}]{Computing}
+\begin{frame}[label={sec:orga258f92}]{Computing}
 \alert{\alert{Computing}} is any purposeful activity that marries the representation of some dynamic domain with the representation of some dynamic machine that provides theoretical, empirical or practical understanding of that domain or that machine.
 
 -- Isbell, et. al., \alert{(Re)Defining Computing Curricula by (Re)Defining Computing}, SIGCSE Bulletin, Volume 41, Number 4, December 2009
 \end{frame}
 
 
-\begin{frame}[label={sec:org5e93fc0}]{Models, Languages, Machines}
+\begin{frame}[label={sec:org7ef31fc}]{Models, Languages, Machines}
 Computing is fundamentally a modelling activity.
 
 \begin{itemize}
@@ -65,7 +66,7 @@ Computing is fundamentally a modelling activity.
 In this course we will learn the Python programming language, one of many programming languages in which computational models can be represented.
 \end{frame}
 
-\begin{frame}[label={sec:org6ebb52a}]{Python gives you wings!}
+\begin{frame}[label={sec:org3153aec}]{Python gives you wings!}
 \begin{center}
 \includegraphics[height=.8\textheight]{./python.png}
 \end{center}
@@ -73,7 +74,7 @@ In this course we will learn the Python programming language, one of many progra
 \url{http://xkcd.com/353/}
 \end{frame}
 
-\begin{frame}[label={sec:org2750112}]{The Python Language}
+\begin{frame}[label={sec:org8ccbff1}]{The Python Language}
 \begin{itemize}
 \item Python is a general-purpose programming language, meaning you can write any kind of program in Python
 
@@ -95,7 +96,7 @@ In this course we will learn the Python programming language, one of many progra
 The coolest thing about Python \ldots{}
 \end{frame}
 
-\begin{frame}[label={sec:orgafe90e3}]{The Python Name}
+\begin{frame}[label={sec:orgc17ec3e}]{The Python Name}
 \begin{center}
 \includegraphics[height=.7\textheight]{./Flyingcircus_2.jpg}
 \end{center}
@@ -105,7 +106,7 @@ The coolest thing about Python \ldots{}
 Python was named for Monty Python, of which Python’s creator, Guido van Rossum, is a big fan.
 \end{frame}
 
-\begin{frame}[label={sec:orga902983},fragile]{The \texttt{python3} Program}
+\begin{frame}[label={sec:org0cc52c5},fragile]{The \texttt{python3} Program}
  Practically speaking, Python is a program on your computer that interprets Python programs and statements.
 
 \begin{itemize}
@@ -121,7 +122,7 @@ If you get some other response, like command not found, then you haven’t prope
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgf1b2c0b},fragile]{Executing Python Code}
+\begin{frame}[label={sec:orgc8d8cfb},fragile]{Executing Python Code}
  \begin{itemize}
 \item You can run a Python program, which has a .py extension by convention:
 
@@ -145,7 +146,7 @@ To exit the Python shell type Ctrl-D on Linux/Unix, or Ctrl-Z on Windows.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org59a86c8},fragile]{Hello, Python}
+\begin{frame}[label={sec:org71a8958},fragile]{Hello, Python}
  Since Kernighan and Ritchie's "The C Programming Language" it's customary for your first program in a new language to be "Hello, world!"
 
 \begin{itemize}
@@ -167,7 +168,7 @@ Hello, world! will be printed to the console on the next line.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org3ed115a},fragile]{Interpreting Python Programs}
+\begin{frame}[label={sec:org28d9ba7},fragile]{Interpreting Python Programs}
  What happens when we enter \texttt{python3 hello.py} at an operating system command shell prompt?
 
 \begin{enumerate}
@@ -179,7 +180,7 @@ Hello, world! will be printed to the console on the next line.
 A Python program, or script, is just a sequence of Python statements and expressions.
 \end{frame}
 
-\begin{frame}[label={sec:org87a8b92},fragile]{The Python REPL}
+\begin{frame}[label={sec:org53c4649},fragile]{The Python REPL}
  Invoke the Python interactive shell by entering python at your command shell’s prompt without any arguments and type in the same line we put in hello.py:
 
 \lstset{language=sh,label= ,caption= ,captionpos=b,numbers=none}
@@ -206,7 +207,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 We’ll spend a lot of time in the REPL, but since this course is intended as a fast-paced introduction to Python for data analytics, we'll use \href{https://ipython.org/}{iPython}.
 \end{frame}
 
-\begin{frame}[label={sec:orgbef14ac},fragile]{iPython}
+\begin{frame}[label={sec:org9ec309a},fragile]{iPython}
  Two modes:
 
 \begin{itemize}
@@ -231,7 +232,7 @@ $ pip install ipython
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:orgfa41bfb},fragile]{iPython Shell History}
+\begin{frame}[label={sec:org7419b39},fragile]{iPython Shell History}
  \lstset{language=sh,label= ,caption= ,captionpos=b,numbers=none}
 \begin{lstlisting}
 In [1]: ['Sage', 'Thyme', 'Oragano', 'Posh']
@@ -255,7 +256,7 @@ Out[6]: True
 \texttt{In} is a list, \texttt{Out} is a dict.
 \end{frame}
 
-\begin{frame}[label={sec:org10381ae},fragile]{iPython Help}
+\begin{frame}[label={sec:org6ed3069},fragile]{iPython Help}
  Single \texttt{?} gives abbeviated version of python's \texttt{help}
 
 \lstset{language=sh,label= ,caption= ,captionpos=b,numbers=none}
@@ -286,7 +287,7 @@ Type:      function
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org0d9c03b},fragile]{iPython Magic Commands}
+\begin{frame}[label={sec:orgb9a7c50},fragile]{iPython Magic Commands}
  Special commands provided by iPython, prepended by \texttt{\%}.
 
 \begin{itemize}
@@ -322,7 +323,7 @@ Get a list of all magic commands with \texttt{\%lsmagic}
 \end{frame}
 
 
-\begin{frame}[label={sec:orgbd628ed},fragile]{iPython Shell Commands}
+\begin{frame}[label={sec:org8d38d0b},fragile]{iPython Shell Commands}
  Run shell commands by prepending with a \texttt{!}
 
 \lstset{language=sh,label= ,caption= ,captionpos=b,numbers=none}
@@ -340,7 +341,7 @@ iPython provides magic commands for most common shell commands.
 \end{frame}
 
 
-\begin{frame}[label={sec:org51036d7},fragile]{iPython Direcotry Bookmarking}
+\begin{frame}[label={sec:orgc0660a5},fragile]{iPython Direcotry Bookmarking}
  Great timesaving feature: bookmark directories
 
 \lstset{language=sh,label= ,caption= ,captionpos=b,numbers=none}
@@ -359,7 +360,7 @@ In [6]: cd cs2316code
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org0eaee52},fragile]{iPython Automagic commands}
+\begin{frame}[label={sec:org5300b41},fragile]{iPython Automagic commands}
  With \texttt{automagic} turned on, some shell commands can be run as if they were built into iPython:
 
 \lstset{language=sh,label= ,caption= ,captionpos=b,numbers=none}
@@ -382,28 +383,7 @@ fun.py     grades.py  maths.py   people.py  pp.py
 \end{itemize}
 \end{frame}
 
-
-\begin{frame}[label={sec:org73e1e70},fragile]{Timing Code in iPython}
- \lstset{language=sh,label= ,caption= ,captionpos=b,numbers=none}
-\begin{lstlisting}
-In [23]: import numpy as np
-
-In [24]: pylist = list(range(1, 100000))
-
-In [25]: nparray = np.arange(1, 1000000)
-
-In [35]: %timeit _ = [x * 2 for x in pylist]
-100 loops, best of 3: 7.89 ms per loop
-
-In [37]: %timeit _ = nparray.copy() * 2
-100 loops, best of 3: 3.76 ms per loop
-\end{lstlisting}
-
-Notice that I copied the Numpy array before applying the \texttt{* 2} operation to make the comparison to the Python list comprehension fair. You'll learn why when we discuss Numpy in the next lecture.
-\end{frame}
-
-
-\begin{frame}[label={sec:orgdb4a4d8}]{Conclusion}
+\begin{frame}[label={sec:org15bf693}]{Conclusion}
 \begin{itemize}
 \item Python is an interpreted general purpose language
 

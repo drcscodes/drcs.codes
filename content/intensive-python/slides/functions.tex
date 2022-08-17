@@ -1,4 +1,4 @@
-% Created 2022-08-14 Sun 19:59
+% Created 2022-08-17 Wed 12:41
 % Intended LaTeX compiler: pdflatex
 \documentclass[smaller, aspectratio=1610]{beamer}
 \usepackage[utf8]{inputenc}
@@ -17,7 +17,7 @@
 \usepackage{sourcecodepro}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
-\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}}
+\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}, upquote=false, literate={'}{\textquotesingle}1}
 \setbeamertemplate{footline}[frame number]
 \hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
 \setlength{\parskip}{.25\baselineskip}
@@ -36,9 +36,9 @@
 \maketitle
 
 \section{Functions}
-\label{sec:org677b849}
+\label{sec:org6fd5a5c}
 
-\begin{frame}[label={sec:org3803ae1}]{Functions}
+\begin{frame}[label={sec:org4fb60c1}]{Functions}
 A function is a reusable block of code. Functions
 
 \begin{itemize}
@@ -50,7 +50,7 @@ A function is a reusable block of code. Functions
 We've already used several built-in functions. Today we will learn how to define our own.
 \end{frame}
 
-\begin{frame}[label={sec:org2f1645f},fragile]{Hello, Functions!}
+\begin{frame}[label={sec:org7d4e4bc},fragile]{Hello, Functions!}
  We define a function using the def keyword:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -77,7 +77,7 @@ Hello
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orga8b9f77},fragile]{Defining Functions}
+\begin{frame}[label={sec:orge98bcaa},fragile]{Defining Functions}
  The general form of a function definition is
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -94,7 +94,7 @@ def <function_name>(<parameter_list>):
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:orgc3e5857},fragile]{Function Parameters}
+\begin{frame}[label={sec:orged55302},fragile]{Function Parameters}
  Provide a list of parameter names inside the parentheses of the function header, which creates local variables in the function.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -116,7 +116,7 @@ Hello, Dolly!
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org1a3f625},fragile]{Function Call Semantics}
+\begin{frame}[label={sec:org0bf1cf7},fragile]{Function Call Semantics}
  \begin{columns}
 \begin{column}{0.3\columnwidth}
 \begin{block}{}
@@ -172,7 +172,7 @@ Notice that \texttt{greet}'s \texttt{g} shadows the global \texttt{g}.
 \end{frame}
 
 
-\begin{frame}[label={sec:org9f752d9},fragile]{Strict Argument Evaluation}
+\begin{frame}[label={sec:org5be5366},fragile]{Strict Argument Evaluation}
  Arguments to functions are evaluated strictly, meaning that they are evaluated before control is transferred to the function body.
 
 \begin{columns}
@@ -224,7 +224,7 @@ Then, as before, the local \texttt{g} object is created.
 
 
 
-\begin{frame}[label={sec:org85a4f36},fragile]{Variable Scope}
+\begin{frame}[label={sec:org6292025},fragile]{Variable Scope}
  Parameters are local variables. They are not visible outside the function:
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -250,7 +250,7 @@ Bonjour
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org5237da5},fragile]{Shadowing Global Variables}
+\begin{frame}[label={sec:org21689c5},fragile]{Shadowing Global Variables}
  Local variables shadow global variables.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -285,7 +285,7 @@ Hello
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:orgc97c6b5},fragile]{Namespaces}
+\begin{frame}[label={sec:org090aaf6},fragile]{Namespaces}
  Every place where a variable can be defined is called a \alert{namespace} or a \alert{frame} (sometimes also called a \alert{symbol table}, which is how namespaces are implemented by compilers and interpreters).
 
 \begin{itemize}
@@ -295,7 +295,7 @@ Hello
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label={sec:org6959aeb},fragile]{Redefining Names}
+\begin{frame}[label={sec:org961b6c8},fragile]{Redefining Names}
  A function a kind of variable. If you define a function with the same name as a variable, it re-binds the name, and vice-versa.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -309,11 +309,7 @@ Hello
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org9e3176c}]{Python Scope Gotchas}
-Python has notoriously weird scoping rules.
-\end{frame}
-
-\begin{frame}[label={sec:org197a35e},fragile]{Muliple Parameters}
+\begin{frame}[label={sec:org4d91f47},fragile]{Muliple Parameters}
  A function can take any number of parameters.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -337,7 +333,7 @@ GreetingsGreetings, Professor Falken
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:org7ee81fe},fragile]{Positional and Keyword Arguments}
+\begin{frame}[label={sec:orgb7fe25c},fragile]{Positional and Keyword Arguments}
  Thus far we've called functions using positional arguments, meaning that argument values are bound to parameters in the order in which they appear in the call.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -359,7 +355,7 @@ Hello, DollyHello, Dolly
 If you call a function with both positional and keyword arguments, the positional ones must come first.
 \end{frame}
 
-\begin{frame}[label={sec:orge6bf364},fragile]{Default Parameter Values}
+\begin{frame}[label={sec:orgda29960},fragile]{Default Parameter Values}
  You can specify default parameter values so that you don't have to provide an argument.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -380,7 +376,7 @@ Hi, Guy
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}[label={sec:orgafee6e7},fragile]{Return Values}
+\begin{frame}[label={sec:org7e2085e},fragile]{Return Values}
  Functions return values.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -415,7 +411,7 @@ Function calls are expressions like any other, that is, a function call has a va
 \end{frame}
 
 
-\begin{frame}[label={sec:org9648bbb},fragile]{Variable Argument Lists}
+\begin{frame}[label={sec:org32bee25},fragile]{Variable Argument Lists}
  You can collect a variable number of positional arguments as a tuple by preprending a parameter name with \texttt{*}
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -437,8 +433,10 @@ You can collect variable keyword arguments as a dictionary with \texttt{**}
 >>> print_dict(a=1, steak='sauce')
 {'a': 1, 'steak': 'sauce'}
 \end{lstlisting}
+\end{frame}
 
-And you can do both, but the keword arguments come second.
+\begin{frame}[label={sec:org5de3a13},fragile]{Mixed Argument Lists}
+ And you can do positional and keyword variable arguments together, but the keword arguments come second.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
 \begin{lstlisting}
@@ -461,7 +459,7 @@ And you can do both, but the keword arguments come second.
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:org55150e0},fragile]{Inner Functions}
+\begin{frame}[label={sec:orgcc477e7},fragile]{Inner Functions}
  Information hiding is a general principle of software engineering. If you only need a function in one place, inside another function, you can declare it inside that function so that it is visible only in that function.
 
 \lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
@@ -494,7 +492,7 @@ def factorial(n):
 \end{block}
 \end{frame}
 
-\begin{frame}[label={sec:orgdb0ca43}]{Conclusion}
+\begin{frame}[label={sec:org8f15e95}]{Conclusion}
 \begin{itemize}
 \item Functions are the primary way we break a program into reusable pieces.
 \item Use functions liberally.
