@@ -1,5 +1,5 @@
 ---
-layout: exercises
+layout: exercise
 title: Dates
 ---
 
@@ -53,7 +53,7 @@ Write a function named `days_since_epoch` that takes no parameters and returns a
 
 > Inspired by Chapter 3, Exercise 8 in [Practical Programming: An Introduction to Computer Science using Python 3.6](https://pragprog.com/titles/gwpy3/practical-programming-third-edition)
 
-Write a function named `weeks_elapsed` that takes two `int` parameters indicating a number of days of elapsed time and returns an `int` value indicating the number of full weeks that would elapse in that number of days.
+Write a function named `weeks_elapsed` that takes an `int` parameter indicating a number of days of elapsed time and returns an `int` value indicating the number of full weeks that would elapse in that number of days.
 
 **Python REPL Examples**
 
@@ -65,7 +65,7 @@ Write a function named `weeks_elapsed` that takes two `int` parameters indicatin
 
 ### `weekday_from`
 
-Assume that you use numbers to indicate the day of the week. For example, you might use 0 to represent Monday, 1 to represent Tuesday, and so on.  There are always seven days in each week.
+You use numbers to indicate the day of the week, 0 to represent Monday, 1 to represent Tuesday, and so on.
 
 Write a function named `weekday_from` that takes two `int` parameters:
 - `today` -- the current day, and
@@ -101,4 +101,4 @@ False
 
 ### `doctest`
 
-We will use [doctest](https://docs.python.org/3/library/doctest.html) to test your module using Python REPL examples similar to the ones provided for each function above.  You may wish to include these test cases in your function docstrings, as well as others that you come up with on your own to test edge cases.  Remember that you can run docstring on your module like this:
+Use [doctest](https://docs.python.org/3/library/doctest.html) to test your module using Python REPL examples similar to the ones provided for each function above.  You may wish to include these test cases in your function docstrings, as well as others that you come up with on your own to test edge cases.  Remember that you can run docstring on your module like this:

@@ -110,7 +110,8 @@
             "PfP 6"
         ],
       "exercises": [
-          "[Data Manipulation](data-manipulation)"
+          "[Data Manipulation](/python/exercises/data-manipulation)",
+          "[Language Dictionary](/python/exercises/language-dictionary)"
       ],
       "projects": [
         "[]()"

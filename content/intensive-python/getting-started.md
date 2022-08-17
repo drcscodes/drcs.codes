@@ -15,7 +15,10 @@ Jump to the section matching the operating system you will be using:
 - [macOS](#macos)
 - [Windows](#windows)
 
-Then install [Git](/computing/git).
+Then install
+
+- [Git](/shared/git), and
+- [IntelliJ or PyCharm](/shared/intellij)
 
 ## Ubuntu and WSL2
 
