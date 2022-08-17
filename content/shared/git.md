@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: exercise
 title: Git
 ---
 
@@ -27,7 +27,7 @@ Note: I haven't used Fedora in many years, so double check that.
 
 ### macOS
 
-If you have a Mac, you must use [Homebrew](https://brew.sh/). Then installing git is easy:
+If you have a Mac, I recommend [Homebrew](https://brew.sh/). Then installing git is easy:
 
 ```sh
 brew install git

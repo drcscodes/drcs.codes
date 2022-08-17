@@ -22,9 +22,10 @@ Write a module called `matrixops` (which you should save in a file called `matri
 
 ### `matrix_scalar_mult`
 
-Multiplication of a $m \times n$ matrix $\mathbf{A}$ with a scalar number $x$ is defined as follows:
+Multiplication of a `$m \times n$` matrix $\mathbf{A}$ with a scalar number $x$ is defined as follows:
 
-   $$
+<div>
+$$
    \mathbf{A}x = \left[\begin{array}{cccc}
                   A_{11}x & A_{12}x & \cdots & A_{1n}x \\
                   A_{21}x & A_{22}x & \cdots & A_{2n}x \\
@@ -32,7 +33,7 @@ Multiplication of a $m \times n$ matrix $\mathbf{A}$ with a scalar number $x$ is
                   A_{m1}x & A_{m2}x & \cdots & A_{mn}x \\
                   \end{array}\right]
    $$
-
+</div>
 
 Write a function named `matrix_scalar_mult` that takes a matrix parameter named a represented as a list of lists and a number parameter named `x`, and returns a matrix represented as a list of lists with the same dimensions as a and whose elements are the corresponding elements of a multiplied by x. Assume that `a[][]` is rectangular -– each row has the same length -– and that `a[][]`’s dimensions are > 0.
 
