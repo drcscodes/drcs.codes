@@ -7,6 +7,6 @@ courseName: "MSA Boot Camp"
 
 ## Python Bootcamp for Georgia Tech MS Ananlytics
 
-This in-person bootcamp delivers all of the lessons in [Intensive Python](/intensive-python) and, as time permits, the firstfew lessons in [Data Manipulation](/data-manipulation).
+This in-person bootcamp delivers all of the lessons in [Professional Python](/professional-python) and, as time permits, the first few lessons in [Data Manipulation](/data-manipulation).
 
-To get started, go to [Intensive Python](/intensive-python) and click on the Getting Started link in the top menu.
+To get started, go to [Professional Python](/professional-python) and click on the Getting Started link in the top menu.

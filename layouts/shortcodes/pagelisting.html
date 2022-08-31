@@ -1,0 +1,14 @@
+{{ $section := .Get "section" }}
+{{ $subsection := .Get "subsection" }}
+{{ $filedir := printf "%s/%s/" $section $subsection  }}
+
+
+<ul>
+    {{ range (where $.Site.RegularPages "Section" $section) }}
+    {{ if eq .File.Dir $filedir }}
+    <li>
+        <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+    {{ end }}
+</ul>

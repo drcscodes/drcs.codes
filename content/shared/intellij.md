@@ -12,18 +12,21 @@ Almost all professional Java and Scala development teams use [IntelliJ IDEA](htt
 1. Get IntelliJ Ultimate Edition or PyCharm (if you're focused on Python, you may prefer PyCharm because it won't contain any distractions).
     - As a student or faculty member, you can get all of JetBrains's products free.  The easiest way is to visit [JetBrains's student license page](https://www.jetbrains.com/student/), click "APPLY NOW" and use your university email address.  You'll get an email within a few minutes with instructions on downloading the products in their "Product Pack for Students."
 
-2. Install the Scala plugin in IntelliJ (Preferences -> Plugins).
+2. If you're using IntelliJ, install the appropriate plugins, e.g., Python, Go, Java(Preferences -> Plugins).
 
-3. [Learn IntelliJ](https://www.jetbrains.com/help/idea/)
+3. Learn [IntelliJ](https://www.jetbrains.com/help/idea/) or [PyCharm](https://www.jetbrains.com/help/pycharm/).
 
-## Add a Few Customizations
+## Customize
 
-These are my personal modifications, which I find make IntelliJ more pleasant to use.
+1. Create a command-line launcher by clicking Tools | Create Command-line Launcher....  Then you'll be able to launch IntelliJ from a command line with `idea` or PyCharm with `charm`.
+
+2. Add a few customizations.  These are my personal modifications, which I find make IntelliJ more pleasant to use.  Go to IntelliJ | Preferences ... (File | Preferences ... on Windows or Linux) and:
 
 - Editor
   - General
     - Soft Wraps
-      - Check "Use Soft Wraps in Editor"
+      - Check "Soft wrap these files:" and enter `*` in the box
+        - This will prevent you from ever needing to scroll horizontally.  You can always toggle soft wraps for a particular file in your editor with View | Active Editor | Soft-Wrap.
     - Virtual Space
       - Uncheck all
     - On Save
@@ -42,18 +45,38 @@ These are my personal modifications, which I find make IntelliJ more pleasant to
   - Inlay Hints
     - Uncheck the ones that annoy you
 
+- Keymap (Note: these are macOS-specific.)
+  - Main Menu
+    - File
+      - Open...: **CTRL-CMD-O**
+      - New|File: ***CTRL-CMD-N***
+  - Plugins
+    - Terminal
+      - Open in Terminal: **CTRL-F12**
+
 ## Keyboard Shortcuts
 
-The more you keep your fingers on the keyboard, the faster you'll be.  Be sure to memorize a few basic shortcuts: https://www.jetbrains.com/help/idea/mastering-keyboard-shortcuts.html
+The more you keep your fingers on the keyboard, the faster you'll be.  Here are some shortcuts that I commit to memory (many of these are explained in [Discover IntelliJ IDEA](https://www.jetbrains.com/help/idea/discover-intellij-idea.html).
+
+> Note: for many commands, especially "switching" commands, adding a SHIFT reverses the direction.
+
+Here are a few shortcuts that I commit to memory.
+
+**macOS**
+
+- File|Open: **CTRL-CMD-O**
+  > You can open any file or directory, so you can actually use IntelliJ as a general-purpose text editor.  To open an IDEA project, open the project root directory (e.g., directory with a `.idea` subdirectory).
+- File|New|File: ***CTRL-CMD-N***
+- Switch between open projects: **CMD-`** (Window|Next Project Window)
+- Goto/Toggle Project Pane: **CMD-1**
+- Goto Editor: **ESC**
+- Open in Terminal: **CTRL-F12**
+- Goto/Toggle Terminal: **OPT-F12**
+- Switch between open files or tool windows: **CTRL-TAB**
+- Find Action: **SHIFT-OPT-A** (for when you don't know a key-binding)
 
 And once you feel comfortable you can level-up with [IntelliJ IDEA Pro Tips](https://www.jetbrains.com/help/idea/pro-tips.html).
 
-## Playing Nicely with Emacs
-
-Emacs's keybindings are far different from modern applications, and many of these keybindings cause problems (e.g., M-w in Emacs copies the selection, but in macOS it closes the current window).  I tried Intellij's Emacs keymap and didn't like it.  It may be easier to simply modify Emacs's keybindings to match Intellij's.  Here are some Emacs config files to give you a start:
-
-- For IntelliJ's macOS keymap: [intellij.el](intellij.el)
-
 ## Miscellaneous Tips
 
-- Add [JetBrains's .gitignore items](https://raw.githubusercontent.com/github/gitignore/master/Global/JetBrains.gitignore) to your [.gitignore](https://git-scm.com/docs/gitignore) file.
+- Add [JetBrains's .gitignore items](https://raw.githubusercontent.com/github/gitignore/master/Global/JetBrains.gitignore) to your [.gitignore](https://git-scm.com/docs/gitignore) file(s).
