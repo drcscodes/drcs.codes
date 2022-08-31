@@ -61,7 +61,7 @@ When you an expression into the Python REPL, Python evaluates it and prints its 
 
 The simplest expressions are *literal* values, as in the examples above.
 
-- literal :: a textual representation of a value in source code.
+- literal :: the textual representation of a value in source code.
 
 Compound expressions combine values using operators.  Here the ~+~ operator combines the two literal values ~2~ and ~3~ -- the *operands* -- to produce the value ~5~:
 
@@ -78,7 +78,6 @@ You can think of a type
 - structurally: as an interpretation of the bits comprising a chunk of data,
 - denotationally: as a set of values, or
 - abstraction-based: as the set of operations available for a type.
-  - This is the primary way to think of types in Python.
 
 All values have types. Python can tell you the type of a value with the built-in ~type~ function:
 
@@ -165,191 +164,35 @@ as          class       else        global      lambda      raise       yield
 - What happens if you use ~print~ as a variable name?
 - How can you fix it?
 
-** Assignment Semantics
+** Statements vs Expressions
 
-~=~ stores the memory address of the value on the right-hand side in a memory cell referenced by the variable on the left hand side.  Python variables refer to these pointer memory cells. Evaluate these assignment statements in a Python REPL and make sure you understand them.
-
-***                                                                                               :BMCOL:B_block:
-    :PROPERTIES:
-    :BEAMER_col: 0.3
-    :BEAMER_env: block
-    :END:
+Expressions have values, statements only have effects -- like binding a variable to a value or or effecting control flow in a program. Assignment using ~=~ is a statement -- it cannot be used where a value is expected.
 
 #+begin_src python
-a = 1
-b = 2
+>>> while guess = input("Guess a number: "):
+...     if guess == "7":
+...         break
+  Input In [42]
+    while guess = input("Guess a number: "):
+          ^
+SyntaxError: invalid syntax. Maybe you meant '==' or ':=' instead of '='?
 #+end_src
 
-#+name: assignment-semantics1
-#+begin_src ditaa :cmdline --no-separation :file diagrams/assignment-semantics1.png
-               addr1
-          +-----+-------+
- +-----+  | int |       |
-a|addr1+->+-----+       |
- +-----+  +      1      |
-          +-------------+
-
-               addr2
-          +-----+-------+
- +-----+  | int |       |
-b|addr2+->+-----+       |
- +-----+  +      2      |
-          +-------------+
-#+end_src
-
-#+ATTR_LATEX: :width 1.75in
-#+RESULTS: assignment-semantics1
-[[file:diagrams/assignment-semantics1.png]]
-
-*** 						      :BMCOL:B_block:
-    :PROPERTIES:
-    :BEAMER_col: 0.3
-    :BEAMER_env: block
-    :BEAMER_envargs: <2->
-    :END:
+Since version 3.8, Python provides the "walrus" operator, ~:=~, which creates an assignment expression, where the assigned value is the value of the expression:
 
 #+begin_src python
-a = b
+>>> while guess := input("Guess a number: "):
+...     if guess == "7":
+...         break
+...
+Guess a number: 1
+Guess a number: 7
+>>>
 #+end_src
 
-#+name: assignment-semantics2
-#+begin_src ditaa :cmdline --no-separation :file diagrams/assignment-semantics2.png
-               addr1
-          +-----+-------+
- +-----+  | int |       |
-a|addr2+  +-----+       |
- +-----+  +      1      |
-       |  +-------------+
-       |
-       \--\
-          |
-          V    addr2
-          +-----+-------+
- +-----+  | int |       |
-b|addr2+->+-----+       |
- +-----+  +      2      |
-          +-------------+
-#+end_src
+Note that ~while~ and ~if~ are statements -- they don't produce values, they create effects.
 
-#+ATTR_LATEX: :width 1.75in
-#+RESULTS: assignment-semantics2
-[[file:diagrams/assignment-semantics2.png]]
-
-*** 						      :BMCOL:B_block:
-    :PROPERTIES:
-    :BEAMER_col: 0.3
-    :BEAMER_env: block
-    :BEAMER_envargs: <3->
-    :END:
-
-#+begin_src python
-b = 42
-#+end_src
-
-#+name: assignment-semantics3
-#+begin_src ditaa :cmdline --no-separation :file diagrams/assignment-semantics3.png
-               addr1
-          +-----+-------+
- +-----+  | int |       |
-a|addr2+  +-----+       |
- +-----+  +      1      |
-       |  +-------------+
-       \--\
-          |
-          V    addr2
-          +-----+-------+
- +-----+  | int |       |
-b|addr3+  +-----+       |
- +-----+  +      2      |
-       |  +-------------+
-       \--\
-          |
-          V    addr3
-          +-----+-------+
-          | int |       |
-          +-----+       |
-          +      42     |
-          +-------------+
-#+end_src
-
-#+ATTR_LATEX: :width 1.75in
-#+RESULTS: assignment-semantics3
-[[file:diagrams/assignment-semantics3.png]]
-
-** Types as Interpretations of Bits
-
-You can represent the byte ~01000001~ with ~b'\x41'~.  ~\x~ means the characters that follow are hexadecimal digits. You will probably never do this sort of thing in Python.  These examples simply illustrate what we mean by viewing types as interpretations of bits.
-
-
-***                                                                                               :BMCOL:B_block:
-    :PROPERTIES:
-    :BEAMER_col: 0.55
-    :BEAMER_env: block
-    :END:
-
-If you interpret those bits as an ~int~ you get:
-
-#+ATTR_LATEX: :options basicstyle=\ttfamily\scriptsize
-#+begin_src python
->>> n = int.from_bytes(b'\x41', byteorder='little')
->>> n
-65
-#+end_src
-
-#+name: type-bits-int
-#+begin_src ditaa :cmdline --no-separation :file diagrams/type-bits-int.png
-               addr1
-          +-----+-------+
- +-----+  | int |       |
-n|addr1+->+-----+       |
- +-----+  +   01000001  |
-          +-------------+
-#+end_src
-
-#+ATTR_LATEX: :width 1.75in
-#+RESULTS: type-bits-int
-[[file:diagrams/type-bits-int.png]]
-
-*** 						      :BMCOL:B_block:
-    :PROPERTIES:
-    :BEAMER_col: 0.45
-    :BEAMER_env: block
-    :BEAMER_envargs: <2->
-    :END:
-
-
-If you interpret the same bits as a ~str~:
-
-#+ATTR_LATEX: :options basicstyle=\ttfamily\scriptsize
-#+begin_src python
->>> s = str(b'\x41', encoding='utf-8')
->>> s
-'A'
-#+end_src
-
-#+name: type-bits-str
-#+begin_src ditaa :cmdline --no-separation :file diagrams/type-bits-str.png
-               addr2
-          +-----+-------+
- +-----+  | str |       |
-s|addr2+->+-----+       |
- +-----+  +   01000001  |
-          +-------------+
-#+end_src
-
-#+ATTR_LATEX: :width 1.75in
-#+RESULTS: type-bits-str
-[[file:diagrams/type-bits-str.png]]
-
-
-** Types as Sets of Values
-
-- ~int~ is like the set of integers, $\mathbb{Z}$.
-- ~float~ is like the set of real numbers, $\mathbb{R}$.
-- ~bool~ is the finite set of values ~True~ and ~False~.
-- ~str~ is the set of all sequences of characters from the UTF-8 character set.
-
-Again, this is not terribly useful in Python unless you want to think of compound expressions in set theoretic terms.
+We will see a few cases in future lessons where the walrus operator is helpful.
 
 ** Aside: The Sizes of Types
 
@@ -377,15 +220,12 @@ In many other programming languages, size limits can crop up in sometimes amusin
 
 Types determine which operations are available on values. For example, exponentiation is defined for numbers (like int or float):
 
-
 #+begin_src python
 >>> 2**3
 8
 #+end_src
 
-
 ... but not for ~str~ (string) values:
-
 
 #+begin_src python
 >>> "pie"**3
@@ -393,7 +233,6 @@ Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 TypeError: unsupported operand type(s) for ** or pow(): 'str' and 'int'
 #+end_src
-
 
 This is the primary way to think about types in Python.
 
@@ -462,15 +301,14 @@ Python is dynamically typed, meaning that types are not resoved until run-time. 
    #+end_src
 2. Python doesn't report type errors until run-time. We'll see many examples of this fact.
 
-
 *** Active Review
 
 Evaluate the following expressions in the Python REPL.  Be sure to type them exactly as written.
 
 - ~2 + 3~
-- ~'2' + '3'~
-- ~'2' + 3~
-- ~2 + '3'~
+- ~"2" + "3"~
+- ~"2" + 3~
+- ~2 + "3"~
 
 ** Type Conversions
 
@@ -495,28 +333,8 @@ ValueError: invalid literal for int() with base 10: 'False'
 
 Modify the following expressions to produce the indicated results.
 
-- ~'2' + 3~ (we want ~'23'~)
-- ~2 + '3'~ (we want ~5~)
-
-** Assignment Semantics
-
-Python evaluates the expression on the right-hand side, then binds the expression's value to the variable on the left-hand side. Variables can be reassigned:
-
-#+begin_src python
->>> a = 'Littering and ... '
->>> a
-'Littering and ... '
->>> a = a * 2
->>> a
-'Littering and ... Littering and ... '
->>> a = a * 2
->>> a              # I'm freakin' out, man!
-'Littering and ... Littering and ... Littering and ... Littering and ... '
-#+end_src
-
-Note that the value of ~a~ used in the expression on the right hand side is the value it had before the assignment statement.
-
-What's the type of ~a~?
+- ~"2" + 3~ (we want ~"23"~)
+- ~2 + "3"~ (we want ~5~)
 
 ** Boolean Values
 
@@ -570,7 +388,7 @@ The values produced by logial operators are often shown in truth tables:
 | True  | True  | False   | True      | True     |
 +-------+-------+---------+-----------+----------+
 
-Equivalent Python expressions:
+Some equivalent Python expressions:
 
 #+begin_src python
 True and True  # True
@@ -579,7 +397,6 @@ True or False  # True
 False or False # False
 not True       # False
 #+end_src
-
 
 ** Truth in Python
 
@@ -627,9 +444,7 @@ What are the values of the following expressions?
 
 ** Sequences
 
-Sequences are ordered.
-
-Lists are mutable.
+Sequences are ordered collections of objects -- lists, tuples, and strings.
 
 #+BEGIN_SRC python
 >>> boys = ['Stan', 'Kyle', 'Cartman', 'Kenny']
@@ -639,23 +454,29 @@ Lists are mutable.
 >>> also_empty = list()
 #+END_SRC
 
-Tuples are immutable.
+Lists are mutable.
+
+#+BEGIN_SRC python
+>>> boys[2] = 'Eric'
+>>> boys
+['Stan', 'Kyle', 'Eric', 'Kenny']
+#+END_SRC
+
+Tuples and strings are immutable.
 
 #+BEGIN_SRC python
 >>> pair = 1, 2
 >>> pair
 (1, 2)
->>> a, b = [1, 2]
->>> a
-1
->>> b
-2
+>>> pair[0] = 0
+Traceback (most recent call last):
+  Input In [37] in <cell line: 1>
+    pair[0] = 0
+TypeError: 'tuple' object does not support item assignment
 #+END_SRC
 
-Strings are immutable sequences of characters.
 
-
-** Dinctionaries and Sets
+** Dictionaries and Sets
 
 A dictionary is a map from keys to values.
 
