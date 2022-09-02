@@ -9,7 +9,7 @@ courseName: "Professional Python"
 
 These instructions are for installing the necessary tools and Python components for this course.  We use the Python.org distribution of Python, but if you already have another distribution, such as Anaconda, that will work fine as long as it includes Python >= 3.6, `pip`, and `venv`.
 
-Jump to the section matching the operating system you will be using:
+Jump to the section matching the operating system you will be using to install Python:
 
 - [macOS](#macos)
 - [Windows](#windows)
@@ -17,8 +17,8 @@ Jump to the section matching the operating system you will be using:
 
 Then install
 
-- [Git](/shared/git), and
-- [IntelliJ or PyCharm](/shared/intellij).
+- [IntelliJ or PyCharm](/shared/intellij) and
+- [Git](/shared/git).
 
 You may also want to install a [text editor](/shared/text-editors).
 

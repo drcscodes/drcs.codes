@@ -16,7 +16,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "correctness",
@@ -27,7 +29,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "algorithm-analysis",
@@ -38,7 +42,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "section": "Data Structures"
@@ -52,7 +58,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "stacks-queues",
@@ -63,7 +71,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "hash-tables",
@@ -74,7 +84,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "binary-search-trees",
@@ -85,7 +97,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "heaps",
@@ -96,7 +110,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "red-black-trees",
@@ -107,7 +123,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "section": "Algorithm Paradigms"
@@ -121,7 +139,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "linear-sorting",
@@ -132,7 +152,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "divide-conquer",
@@ -143,7 +165,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "randomized-algorithms",
@@ -154,7 +178,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "graph-algorithms",
@@ -165,7 +191,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "weighted-graph-algorithms",
@@ -176,7 +204,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "combinatorial-search",
@@ -187,7 +217,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "dynamic-programming",
@@ -198,7 +230,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "greedy-algorithms",
@@ -209,7 +243,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "section": "Special Topics"
@@ -223,7 +259,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "np-completeness",
@@ -234,7 +272,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "approximation-algorithms",
@@ -245,7 +285,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     },
     {
       "lesson": "multithreaded-algorithms",
@@ -256,7 +298,9 @@
       "exercises": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+        ]
     }
   ]
 }

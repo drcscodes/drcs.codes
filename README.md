@@ -13,10 +13,10 @@ pip3 install pandoc-imagine
 
 Compile one slide:
 ```sh
-pandoc --filter pandoc-imagine -f markdown -t beamer --listings -H beamer-common.tex <slide-name>.md -o <slide-name>.pdf
+pandoc --filter pandoc-imagine -f markdown -t beamer --listings -H beamer-common.tex -V colorlinks=true -V linkcolor=blue <slide-name>.md -o <slide-name>.pdf
 ```
 
 Compile all slides in a directory:
 ```sh
-for file in `ls *.md`; do pandoc --filter pandoc-imagine -f markdown -t beamer --listings -H beamer-common.tex $file -o `(basename $file .md)`.pdf; done
+for file in `ls *.md`; do pandoc --filter pandoc-imagine -f markdown -t beamer --listings -H beamer-common.tex -V colorlinks=true -V linkcolor=blue $file -o `(basename $file .md)`.pdf; done
 ```
