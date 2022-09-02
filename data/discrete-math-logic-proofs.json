@@ -11,7 +11,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "conditionals",
@@ -22,7 +24,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "deduction",
@@ -33,7 +37,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "proof-by-contradiction",
@@ -44,9 +50,13 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
-  {"section": "First-Order Logic (FOL)"},
+  {
+    "section": "First-Order Logic (FOL)"
+  },
   {
     "lesson": "fol-symbolization",
     "slides": "[FOL Symbolization](/discrete-math/fol-symbolization.pdf)",
@@ -56,7 +66,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "fol-syntax-semantics",
@@ -67,7 +79,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "fol-syntax-semantics",
@@ -78,7 +92,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "fol-inference-rules",
@@ -89,9 +105,13 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
-  {"section": "Mathematical Induction"},
+  {
+    "section": "Mathematical Induction"
+  },
   {
     "lesson": "induction-recursion",
     "slides": "[Induction and Recursion](/discrete-math/induction-recursion.pdf)",
@@ -101,7 +121,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "recurrence-relations",
@@ -112,7 +134,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "inductive-arithmetic",
@@ -123,9 +147,13 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
-  {"section": "Set Theory and Combinatorics"},
+  {
+    "section": "Set Theory and Combinatorics"
+  },
   {
     "lesson": "basic-sets",
     "slides": "[Basic Sets](/discrete-math/basic-sets.pdf)",
@@ -135,7 +163,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "combinatorics",
@@ -146,7 +176,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "infinite-sets",
@@ -157,7 +189,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "set-theory",
@@ -168,9 +202,13 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
-  {"section": "Functions"},
+  {
+    "section": "Functions"
+  },
   {
     "lesson": "functions",
     "slides": "[Functions](/discrete-math/functions.pdf)",
@@ -180,7 +218,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "relations",
@@ -191,7 +231,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "integers",
@@ -202,9 +244,13 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
-  {"section": "Boolean Algebra"},
+  {
+    "section": "Boolean Algebra"
+  },
   {
     "lesson": "lattices",
     "slides": "[Lattices](/discrete-math/lattices.pdf)",
@@ -214,7 +260,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "boolean-algebra",
@@ -225,7 +273,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "logic-curcuits",
@@ -236,7 +286,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "boolean-functions",
@@ -247,9 +299,13 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
-  {"section": "Graph Theory"},
+  {
+    "section": "Graph Theory"
+  },
   {
     "lesson": "graph-traversal",
     "slides": "[Graph Traversal](/discrete-math/graph-traversal.pdf)",
@@ -259,7 +315,9 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   },
   {
     "lesson": "planar-graphs",
@@ -270,6 +328,8 @@
     "exercises": [
       "[]()"
     ],
-    "video": "[]()"
+    "videos": [
+      "[]()"
+    ]
   }
 ]

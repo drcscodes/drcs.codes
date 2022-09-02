@@ -12,7 +12,10 @@
       "exercises": [
         "[]()"
       ],
-      "video": ""
+      "videos": [
+        "[]()"
+        ]
+
     },
     {
       "lesson": "computers",
@@ -24,7 +27,10 @@
       "exercises": [
         "[]()"
       ],
-      "video": ""
+      "videos": [
+        "[]()"
+        ]
+
     },
     {
       "lesson": "command-shells",
@@ -35,7 +41,10 @@
       "exercises": [
         "[]()"
       ],
-      "video": ""
+      "videos": [
+        "[]()"
+        ]
+
     },
     {
       "lesson": "text",
@@ -47,7 +56,10 @@
       "exercises": [
         "[]()"
       ],
-      "video": ""
+      "videos": [
+        "[]()"
+        ]
+
     },
     {
       "lesson": "markup-languages",
@@ -59,7 +71,10 @@
       "exercises": [
         "[]()"
       ],
-      "video": ""
+      "videos": [
+        "[]()"
+        ]
+
     },
     {
       "lesson": "networks",
@@ -71,7 +86,10 @@
       "exercises": [
         "[]()"
       ],
-      "video": ""
+      "videos": [
+        "[]()"
+        ]
+
     },
     {
       "lesson": "git",
@@ -83,7 +101,10 @@
       "exercises": [
         "[]()"
       ],
-      "video": ""
+      "videos": [
+        "[]()"
+        ]
+
     }
 
   ]

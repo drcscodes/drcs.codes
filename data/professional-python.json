@@ -17,7 +17,10 @@
       "projects": [
         "[]()"
       ],
-      "video": "[Getting Started on macOS](https://youtu.be/znjTbnH42Rk)"
+      "videos": [
+        "[Install Python and PyCharm on macOS]()",
+        "[Install and Set up Git on macOS]()"
+      ]
     },
     {
       "lesson": "intro-python",
@@ -31,7 +34,25 @@
       "projects": [
         "[]()"
       ],
-      "video": "[Intro to Python](https://youtu.be/ZDCHBkTMfE8)"
+      "videos": [
+        "[Introduction to Python]()"
+      ]
+    },
+    {
+      "lesson": "tour-python",
+      "slides": "[Tour of Python](/professional-python/slides/tour-python.pdf)",
+      "reading": [
+        "PfP 1; TP 1"
+      ],
+      "exercises": [
+        "[]()"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "videos": [
+        "[Tour of Python]()"
+      ]
     },
     {
       "lesson": "values-variables",
@@ -44,7 +65,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[Values and Variables](https://youtu.be/iKG_hAXy0qQ)"
+      "videos": [
+        "[Values and Variables]()"
+      ]
     },
     {
       "lesson": "modules-programs",
@@ -53,12 +76,14 @@
         "PfP: 2; TP 1,14"
       ],
       "exercises": [
-        "[]()"
+        "[BMI](/python/exercises/bmi)"
       ],
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[Modules and Programs]()"
+      ]
     },
     {
       "lesson": "functions",
@@ -67,13 +92,14 @@
         "PfP 4; TP 3"
       ],
       "exercises": [
-        "[BMI](/python/exercises/bmi)",
         "[Dates](/python/exercises/dates)"
       ],
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[Functions]()"
+      ]
     },
     {
       "lesson": "strings",
@@ -88,7 +114,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[Strings]()"
+      ]
     },
     {
       "lesson": "control-structures",
@@ -103,7 +131,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[Control Structures]()"
+      ]
     },
     {
       "lesson": "data-structures",
@@ -117,7 +147,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[Data Structures]()"
+      ]
     },
     {
       "lesson": "file-io",
@@ -130,14 +162,15 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[File IO]()"
+      ]
     },
     {
       "lesson": "functional-programming",
       "slides": "[Functional programming](/professional-python/slides/functional-programming.pdf)",
       "reading": [
-        "TP 19",
-        "[Basics Example Code](/code/python/basics)"
+        "TP 19"
       ],
       "exercises": [
         "[]()"
@@ -145,7 +178,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[Functional Programming]()"
+      ]
     },
     {
       "lesson": "classes-objects",
@@ -161,7 +196,43 @@
         "[Treating People as Objects](/python/exercises/people-objects)",
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[Classes and Objects]()"
+      ]
+    },
+    {
+      "lesson": "testing",
+      "slides": "[Testing](/professional-python/slides/testing.pdf)",
+      "reading": [
+        "PPP 15; TP A"
+      ],
+      "exercises": [
+        "[Dog Module](/python/exercises/dog)",
+        "[]()"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "videos": [
+        "[Python Testing]()"
+      ]
+    },
+    {
+      "lesson": "packaging",
+      "slides": "[Packaging](/professional-python/slides/packaging.pdf)",
+      "reading": [
+        ""
+      ],
+      "exercises": [
+        "[Dog Module](/python/exercises/dog)",
+        "[]()"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "videos": [
+        "[Python Packaging]()"
+      ]
     }
   ]
 }

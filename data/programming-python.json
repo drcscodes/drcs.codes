@@ -16,11 +16,14 @@
       "projects": [
         "[]()"
       ],
-      "video": "[Getting Started on macOS](https://youtu.be/znjTbnH42Rk)"
+      "videos": [
+        "[Computing Basics on macOS]()",
+        "[Install Python and PyCharm on macOS]()"
+      ]
     },
     {
-      "lesson": "intro-python",
-      "slides": "[Intro to Python](/programming-python/slides/intro-python.pdf)",
+      "lesson": "intro-programming-python",
+      "slides": "[Introduction to Programming Principles in Python](/programming-python/slides/intro-programming-python.pdf)",
       "reading": [
         "PPP 1, 2; TP 1"
       ],
@@ -30,7 +33,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[Intro to Python](https://youtu.be/ZDCHBkTMfE8)"
+      "videos": [
+        "[Introduction to Programming Principles in Python]()"
+      ]
     },
     {
       "lesson": "values-variables",
@@ -44,7 +49,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[Values and Variables](https://youtu.be/iKG_hAXy0qQ)"
+      "videos": [
+        "[Values and Variables]()"
+      ]
     },
     {
       "lesson": "expressions",
@@ -58,7 +65,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[Values and Variables](https://youtu.be/iKG_hAXy0qQ)"
+      "videos": [
+        "[Values and Variables]()"
+      ]
     },
     {
       "lesson": "functions",
@@ -72,7 +81,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "function-design",
@@ -86,7 +97,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "strings",
@@ -100,7 +113,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "conditionals",
@@ -114,7 +129,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "modules-programs",
@@ -129,7 +146,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "lists",
@@ -143,7 +162,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[Data Structures](https://youtu.be/TtAQxtgPOwI)"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "loops",
@@ -159,7 +180,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "file-io",
@@ -175,7 +198,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "collections",
@@ -191,7 +216,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "algorithm-design",
@@ -204,7 +231,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "algorithm-analysis",
@@ -220,7 +249,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "searching-sorting",
@@ -236,7 +267,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "classes-objects",
@@ -252,7 +285,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "testing-debugging",
@@ -265,7 +300,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "python-guis",
@@ -278,7 +315,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "databases",
@@ -291,7 +330,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     },
     {
       "lesson": "functional-programming",
@@ -306,7 +347,9 @@
       "projects": [
         "[]()"
       ],
-      "video": "[]()"
+      "videos": [
+        "[]()"
+      ]
     }
   ]
 }
