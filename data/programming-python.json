@@ -17,13 +17,12 @@
         "[]()"
       ],
       "videos": [
-        "[Computing Basics on macOS]()",
-        "[Install Python and PyCharm on macOS]()"
+        "[]()"
       ]
     },
     {
-      "lesson": "intro-programming-python",
-      "slides": "[Introduction to Programming Principles in Python](/programming-python/slides/intro-programming-python.pdf)",
+      "lesson": "intro-computing",
+      "slides": "[Introduction to Computing](/programming-python/slides/intro-computing.pdf)",
       "reading": [
         "PPP 1, 2; TP 1"
       ],
@@ -34,7 +33,24 @@
         "[]()"
       ],
       "videos": [
-        "[Introduction to Programming Principles in Python]()"
+        "[Introduction to Computing]()"
+      ]
+    },
+    {
+      "lesson": "intro-programming-python",
+      "slides": "[Introduction to Programming in Python](/programming-python/slides/intro-programming-python.pdf)",
+      "reading": [
+        "PPP 1, 2; TP 1"
+      ],
+      "exercises": [
+        "[hw0](/exercises/python/hw0)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "videos": [
+        "[Install Python and PyCharm on macOS]()",
+        "[Install Python and PyCharm on Windows]()"
       ]
     },
     {
@@ -55,7 +71,7 @@
     },
     {
       "lesson": "expressions",
-      "slides": "[expressions](/programming-python/slides/expressions.pdf)",
+      "slides": "[Expressions](/programming-python/slides/expressions.pdf)",
       "reading": [
         "PPP 2; TP 2"
       ],
@@ -67,6 +83,23 @@
       ],
       "videos": [
         "[Values and Variables]()"
+      ]
+    },
+    {
+      "lesson": "modules-programs",
+      "slides": "[Modules and Programs](/programming-python/slides/modules-programs.pdf)",
+      "reading": [
+        "PPP 6; TP 1,14"
+      ],
+      "exercises": [
+        "[BMI Module](/exercises/python/bmi)",
+        "[Dates](/exercises/python/dates)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "videos": [
+        "[]()"
       ]
     },
     {
@@ -125,23 +158,6 @@
       ],
       "exercises": [
         "[Email Utilities](/exercises/python/email-utils)"
-      ],
-      "projects": [
-        "[]()"
-      ],
-      "videos": [
-        "[]()"
-      ]
-    },
-    {
-      "lesson": "modules-programs",
-      "slides": "[Modules and Programs](/programming-python/slides/modules-programs.pdf)",
-      "reading": [
-        "PPP 6; TP 1,14"
-      ],
-      "exercises": [
-        "[BMI Module](/exercises/python/bmi)",
-        "[Dates](/exercises/python/dates)"
       ],
       "projects": [
         "[]()"
