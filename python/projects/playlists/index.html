@@ -1,0 +1,103 @@
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><title>Playlists</title><meta name=viewport content="width=device-width"><link rel=stylesheet href=https://DrCS.codes/css/syntax.css><link rel=stylesheet href=https://DrCS.codes/css/main.css><link rel=stylesheet href=https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css integrity=sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO crossorigin=anonymous><link href=/css/navbar-fixed-top.css rel=stylesheet><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script>
+<script type=text/x-mathjax-config>
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['$','$'], ['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script><script type=text/x-mathjax-config>
+  MathJax.Hub.Queue(function() {
+    // Fix <code> tags after MathJax finishes running. This is a
+    // hack to overcome a shortcoming of Markdown. Discussion at
+    // https://github.com/mojombo/jekyll/issues/199
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i = 0; i &lt; all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script></head><body><nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark"><a class=navbar-brand href=/python></a>
+<span class=navbar-toggler-icon></span></a><div class="navbar-collapse collapse" id=navbarCollapse><ul class="navbar-nav mr-auto"><li class=nav-item><a class=nav-link onclick=history.back()>Back to course</a></li></ul><ul class="navbar-nav pull-right"><li class="nav-item pull-right"><a class=nav-link href=https://DrCS.codes>Dr. CS codes</a></li></ul></div></nav><div class=container><h1 id=playlists>Playlists</h1><h2 id=introduction>Introduction</h2><p>In this assignment you will practice data transfer techniques such as</p><ul><li>reading <a href=https://docs.python.org/3/library/csv.html>CSV</a> files,</li><li>using data structures,</li><li>creating <a href=https://docs.python.org/3/library/json.html>JSON</a> files, and</li><li>using os tools.</li></ul><h2 id=problem-description>Problem Description</h2><p>You have a list of songs in a comma-separated values file and you want to publish it as a playlist to a site that supports the JSPF JSON format for sharing playlists.</p><h2 id=solution-description>Solution Description</h2><p>Write a Python program in a file named <code>csv2jspf.py</code> that reads a CSV file containing song information and writes the song information to a playlist file in <a href=https://www.xspf.org/jspf>JSPF</a> JSON format.</p><h3 id=part-1-reading-the-csv-file>Part 1: Reading the CSV File</h3><ol><li>Create a directory for your solution.</li><li>Download the <a href=weird-al.csv>weird-al.csv</a> file to your solution directory to use in testing your program.</li><li>View the contents of the <a href=weird-al.csv>weird-al.csv</a> file to determine its structure. Note that the field delimiter is <code>;</code>, not <code>,</code>.</li><li>Your program should take a single command-line argument, the name of a CSV song list file to use as input. You may assume that any CSV song list file given to your program will have the same structure as <a href=weird-al.csv>weird-al.csv</a>. You may also assume that any song list file given to your program will have a <code>.csv</code> extension.</li><li>If the file specified on the command line does not exist, report this to the user and exit.</li><li>Use Python’s standard csv module to parse the file into an appropriate data structure in memory.</li></ol><ul><li>Note that if you do this right the next part of this homework is trivial, so take a look at the next section when deciding how to structure your playlist data.</li></ul><h3 id=part-2-creating-the-jspf-file>Part 2: Creating the JSPF File</h3><p>Look at the <a href=https://www.xspf.org/jspf>JSPF specification</a> (which is given as a couple of easily read examples). Use the base name of the input file (the part before <code>.csv</code>) as the <code>title</code> of the playlist, yourself as the <code>creator</code>, the tracks in <code>track</code> (note the badly-named singular noun for list of tracks) come from the records in the CSV input file, and write the playlist data to a JSPF-formatted JSON file with the same base name as the input file, but with a <code>.json</code> extension. The value associated with the top-level <code>duration</code> key in the JSPF playlist is the total running time of the playlist in seconds.</p><h3 id=sample-jspf-file>Sample JSPF File</h3><p>If you ran your program on the [weird-al.csv(weird-al.csv) input file we provided, your JSPF file would look something like this:</p><pre tabindex=0><code>{
+  &#34;title&#34;: &#34;weird-al&#34;,
+  &#34;creator&#34;: &#34;chris&#34;,
+  &#34;duration&#34;: 1986,
+  &#34;track&#34;: [
+    {
+      &#34;title&#34;: &#34;A Complicated Song (Parody of \&#34;Complicated\&#34; by Avril Lavigne)&#34;,
+      &#34;duration&#34;: 219,
+      &#34;creator&#34;: &#34;Weird Al Yankovic&#34;,
+      &#34;album&#34;: &#34;Poodle Hat&#34;,
+      &#34;location&#34;: &#34;https://itunes.apple.com/us/album/a-complicated-song-parody-of-complicated-by-avril-lavigne/206901097?i=206902871&#34;,
+    },
+    {
+      &#34;title&#34;: &#34;Ebay (Parody of \&#34;I Want It That Way\&#34; by the Backstreet Boys)&#34;,
+      &#34;duration&#34;: 216,
+      &#34;creator&#34;: &#34;Weird Al Yankovic&#34;,
+      &#34;album&#34;: &#34;Poodle Hat&#34;,
+      &#34;location&#34;: &#34;https://itunes.apple.com/us/album/ebay-parody-of-i-want-it-that-way-by-the-backstreet-boys/206901097?i=206903768&#34;,
+    },
+    {
+      &#34;title&#34;: &#34;Fat&#34;,
+      &#34;duration&#34;: 217,
+      &#34;creator&#34;: &#34;Weird Al Yankovic&#34;,
+      &#34;album&#34;: &#34;Even Worse&#34;,
+      &#34;location&#34;: &#34;https://itunes.apple.com/us/album/fat/250500424?i=250500433&#34;,
+    },
+    {
+      &#34;title&#34;: &#34;Eat It&#34;,
+      &#34;duration&#34;: 200,
+      &#34;creator&#34;: &#34;Weird Al Yankovic&#34;,
+      &#34;album&#34;: &#34;In 3-D&#34;,
+      &#34;location&#34;: &#34;https://itunes.apple.com/us/album/eat-it/250495308?i=250495319&#34;,
+    },
+    {
+      &#34;title&#34;: &#34;Smells Like Nirvana&#34;,
+      &#34;duration&#34;: 222,
+      &#34;creator&#34;: &#34;Weird Al Yankovic&#34;,
+      &#34;album&#34;: &#34;Off the Deep End&#34;,
+      &#34;location&#34;: &#34;https://itunes.apple.com/us/album/smells-like-nirvana/250495074?i=250495085&#34;,
+    },
+    {
+      &#34;title&#34;: &#34;Amish Paradise (Parody of \&#34;Gangsta&#39;s Paradise\&#34; by Coolio)&#34;, 
+      &#34;duration&#34;: 200, 
+      &#34;creator&#34;: &#34;Weird Al Yankovic&#34;, 
+      &#34;album&#34;: &#34;Bad Hair Day&#34;, 
+      &#34;location&#34;: &#34;https://itunes.apple.com/us/album/amish-paradise-parody-of-gangstas-paradise-by-coolio/206900040?i=206900081&#34;,
+    }, 
+    {
+      &#34;title&#34;: &#34;White &amp; Nerdy (Parody of \&#34;Ridin&#39;\&#34; By Chamillionaire featuring Krayzie Bone)&#34;, 
+      &#34;duration&#34;: 170, 
+      &#34;creator&#34;: &#34;Weird Al Yankovic&#34;, 
+      &#34;album&#34;: &#34;Straight Outta Lynwood&#34;, 
+      &#34;location&#34;: &#34;https://itunes.apple.com/us/album/white-nerdy-parody-of-ridin/309731664?i=309732001&#34;,
+    }, 
+    {
+      &#34;title&#34;: &#34;Party In the CIA (Parody of \&#34;Party In the U.S.A.\&#34; By Miley Cyrus)&#34;, 
+      &#34;duration&#34;: 176, 
+      &#34;creator&#34;: &#34;Weird Al Yankovic&#34;, 
+      &#34;album&#34;: &#34;Alpocalypse&#34;, 
+      &#34;location&#34;: &#34;https://itunes.apple.com/us/album/party-in-the-cia-parody-of-party-in-the-u-s-a-by-miley-cyrus/438383158?i=438383166&#34;,
+    }, 
+    {
+      &#34;title&#34;: &#34;Canadian Idiot (Parody of \&#34;American Idiot\&#34; By Green Day)&#34;, 
+      &#34;duration&#34;: 143, 
+      &#34;creator&#34;: &#34;Weird Al Yankovic&#34;, 
+      &#34;album&#34;: &#34;Straight Outta Lynwood&#34;, 
+      &#34;location&#34;: &#34;https://itunes.apple.com/us/album/canadian-idiot-parody-of-american-idiot-by-green-day/309731664?i=309732012&#34;,
+    }, 
+    {
+      &#34;title&#34;: &#34;Word Crimes&#34;, 
+      &#34;duration&#34;: 223, 
+      &#34;creator&#34;: &#34;Weird Al Yankovic&#34;, 
+      &#34;album&#34;: &#34;Mandatory Fun&#34;, 
+      &#34;location&#34;: &#34;https://itunes.apple.com/us/album/word-crimes/891836396?i=891836406&#34;,
+    }
+  ],
+}
+</code></pre><p>Note that the example above is pretty-printed to look like the <a href=https://www.xspf.org/jspf>JSPF specification</a> and key-value pairs may appear in any order.</p><p>Bonus: Add a <code>duration</code> key to the JSPF playlist object whose value is the total running time of the playlist in seconds.</p><h3 id=tips-and-considerations>Tips and Considerations</h3><ul><li>Track duration in the JSPF file is in seconds, but in the input file the track durations are in minutes:seconds format.</li><li>Note the type of the value associated with the <code>track</code> key in the JDPF format.</li><li>Using the <a href=https://docs.python.org/3/library/csv.html>CSV</a> and <a href=https://docs.python.org/3/library/json.html>JSON</a> modules make this assignment trivial.</li></ul></div><script src=js/bootstrap.min.js></script></body></html>
