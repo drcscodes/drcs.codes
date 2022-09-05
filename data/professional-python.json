@@ -45,7 +45,7 @@
         "PfP 1; TP 1"
       ],
       "exercises": [
-        "[]()"
+        "[Compounding Table](/python/exercises/compounding-table)"
       ],
       "projects": [
         "[]()"
@@ -108,8 +108,7 @@
         "TP 3"
       ],
       "exercises": [
-        "[String Fun](/python/exercises/stringfun)",
-        "[Email Utilities](/python/exercises/email-utils)"
+        "[String Fun](/python/exercises/stringfun)"
       ],
       "projects": [
         "[]()"
@@ -160,7 +159,7 @@
       "exercises": [
       ],
       "projects": [
-        "[]()"
+        "[Word Histogram](/python/projects/word-hist)"
       ],
       "videos": [
         "[File IO]()"
@@ -190,11 +189,10 @@
       ],
       "exercises": [
         "[Dog Module](/python/exercises/dog)",
-        "[]()"
+        "[Treating People as Objects](/python/exercises/people-objects)"
       ],
       "projects": [
-        "[Treating People as Objects](/python/exercises/people-objects)",
-        "[]()"
+        "[Students](/python/projects/students)"
       ],
       "videos": [
         "[Classes and Objects]()"

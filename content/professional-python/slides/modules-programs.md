@@ -11,7 +11,7 @@ Python code organized in
 - packages, and
 - scripts.
 
-We've already used some modules, now we'll learn what they are, how they're organized in packages, and how to write Python programs that can be run on their own, not just entered in the Python command shell.
+We've already used some modules, now we'll learn what they are, how to write our own modules, and the relationship between modules and programs.
 
 ## Importing Modules
 
@@ -107,16 +107,16 @@ Save the following code in a file named `arithmetic.py`:
 
 ```python
 def add(a: int, b: int) -> int:
-return a + b
+    return a + b
 
 def sub(a: int, b: int) -> int:
-return a - b
+    return a - b
 
 def mul(a: int, b: int) -> int:
-return a * b
+    return a * b
 
 def div(a: int, b: int) -> int:
-return a / b
+    return a / b
 ```
 
 - In your Python REPL, evaluate `import arithemtic`.
@@ -155,11 +155,11 @@ To make a module a script that only evaluates definitions when imported and only
 Add the following to the bottom of your `arithmetic.py` module:
 
 ```python
-if __name__ == '__main__':
-import sys
-ops = {'+': add, '-': sub, '*': mult, '/': div}
-op = ops[sys.argv[2]]
-print(op(int(sys.arg[1]), int(sys.arg[2])))
+    if __name__ == '__main__':
+    import sys
+    ops = {'+': add, '-': sub, '*': mult, '/': div}
+    op = ops[sys.argv[2]]
+    print(op(int(sys.arg[1]), int(sys.arg[2])))
 ```
 
 - Run `arithmetic.py` in "script mode" with `python3 arithmetic.py`.
@@ -195,9 +195,9 @@ import sys
 print(sys.argv)
 
 if len(sys.argv) < 2:
-print("You've given me nothing to work with.")
+    print("You've given me nothing to work with.")
 else:
-print(sys.argv[1] +"? Well I disagree!")
+    print(sys.argv[1] +"? Well I disagree!")
 ```
 
 ```python
@@ -256,16 +256,83 @@ Notice that the current directory, represented by the `''` at the beginning of t
 
 Also, note use of `pprint`.
 
-## Third Party Modules
+## Packages
 
-Third party modules are delivered via packages.  These packages are downloaded and installed by `pip3` from the [Python Package Index](https://pypi.org/).
+There are two meanings for "package" in Python:
 
-See the [Python package tutorial](https://packaging.python.org/en/latest/tutorials/installing-packages/)
+1. Subdirectories into which modules are organized.  See [Python's module documentation](https://docs.python.org/3/tutorial/modules.html#packages) for details.
+2. An organized distribution of 3rd-party software, e.g., Python modules and supporting files, native code, etc.
+
+Here we discuss the second meaning.
+
+## Installing Packages
+
+The `pip3` command downloads and installs packages.
+
+- Packages come from the [Python Package Index](https://pypi.org/) by default.
+- `pip3` is quite flexible, allowing you to install from many kinds of sources. See the [Python package tutorial](https://packaging.python.org/en/latest/tutorials/installing-packages/) for details.
+
+You can invoke `pip3` in two ways, for example, to install `ipython`:
+
+```shell
+python3 -m pip install ipython
+```
+
+or
+
+```shell
+pip3 install ipython
+```
+
+## Virtual Environments
+
+Different Python projects may use different versions of the same package.  To avoid conflicts, use virtual environments.
+
+In the root directory of your Python project, create your virtual environment with:
+
+```shell
+python3 -m venv venv
+```
+
+This creates a virtual environment in the `venv` subdirectory of your project root directory.  Activate the virtual environment on macOS or Linux with:
+
+```shell
+source venv/bin/activate
+```
+
+or in Windows (PowerShell):
+
+```shell
+venv\bin\activate.ps1
+```
+
+> Note: when you configure an interpreter for a project in PyCharm, PyCharm creates a virtual environment in the `venv` directory of your project and activates it in any terminal session for you.
+
+Deactivate  a virtual environment with (macOS, Linux, or Windows):
+
+```shell
+deactivate
+```
+
+## `requirements.txt`
+
+In your Python projects you should include a `requirements.txt` file in the root directory of your project and add `requirements.txt` to your project's Git repository.  With your virtual environment activated and all required packages installed, create `requirements.txt` with:
+
+```shell
+python3 -m pip freeze > requirements.txt
+```
+
+Be sure to re-run that command and update in Git whenever you add new dependencies.  When another programmer clones your project's repository, they can create a virtual environment and install all the required dependencies into it with: 
+
+```shell
+python3 -m pip install -r requirements.txt
+```
 
 ## Conclusion
 
-- Be careful to distinguish between a Python RELP prompt, and an OS command shell prompt.
-
+- Be careful to distinguish between a Python REPL prompt, and an OS command shell prompt.
+- Follow `if __name__=='__main__'` and `main` function conventions when writing scripts.
+- Use virtual environments to manage dependencies in Python projects.
 
 ![Argument Clinic](./Argument_Clinic.png)
 

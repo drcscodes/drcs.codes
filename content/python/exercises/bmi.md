@@ -23,6 +23,16 @@ You want to live a healthy life and use your computer to help you analyze your f
 
 Create a module that provides convenience functions for converting imperial measures to metric equivalents, a function to calculate BMI, and two functions that tell you whether you are overweight or underweight according to government [BMI standards](https://www.nhlbi.nih.gov/health/educational/lose_wt/BMI/bmicalc.htm). Your module will be named `bmi` and contain the functions listed below.
 
+The BMI formula is:
+
+$$
+bmi = \frac{w}{h^2}
+$$
+
+where
+- w is weight in kilograms, and
+- h is height in meters.
+
 ### `doctest`
 
 The specification for each function is given as a [docstring](https://www.python.org/dev/peps/pep-0257/) -- which you should include in your code -- and the types of arguments and return values are given using type hints documented in [PEP 484 -- Type Hints](https://www.python.org/dev/peps/pep-0484/).
@@ -61,7 +71,8 @@ def lb2kg(pounds: float) -> float:
     """
 
 def bmi(weight: float, height: float) -> float:
-    """Return body mass index (BMI) for given weight in kg and height in meters.
+    """Return body mass index (BMI) for given weight in kg and height in meters.  
+    The BMI formula is bmi = (weight in kg) / (height in meters)^2
 
     Usage examples:
     >>> abs(bmi(66, 1.72) - 22.309) < .01

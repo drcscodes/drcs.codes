@@ -7,22 +7,22 @@ title: Company Scraper
 
 ## Introduction
 
-In this exercise you will practice
+In this project you will practice
 
 - web scraping, and
 - writing CSV files.
 
 ## Problem Description
 
-You need to process general information about many different companies from many different sectors. The only place you can consitently find this information is on the web.
+You need to process general information about many companies from many sectors. The only place you can consistently find this information is on the web.
 
 ## Solution Description
 
-Write a module called `company_scraper.py` that scrapes data from SEC.gov's Edgar search engine to extract the name and address of each company in a list of companies contained in a text file, and saves the data in a single CSV file.
+Write a script called `company_scraper.py` that scrapes data from SEC.gov's Edgar search engine to extract the name and address of each company in a list of companies contained in a text file, and saves the data in a single CSV file.
 
 - The Edgar search results are in URLs such as `https://www.sec.gov/cgi-bin/browse-edgar?CIK={ticker}`, where `{ticker}` is a company's ticker symbol.
 - Use a list of ticker symbols contained in a file such as [tickers.txt](tickers.txt) or [dow-jones.txt](dow-jones.txt)
-- Write the company's ticker, name, sector inductrial code (SIC), sector name, address line 1, address line 2, city, state, and zip to a CSV file with a header line like:
+- Write the company's ticker, name, sector industrial code (SIC), sector name, address line 1, address line 2, city, state, and zip to a CSV file with a header line like:
 
   `Ticker,Name,SIC,Sector,Addr1,Addr2,City,State,Zip`
 
@@ -56,7 +56,3 @@ WFC,WELLS FARGO & COMPANY/MN,6021,NATIONAL COMMERCIAL BANKS,420 MONTGOMERY STREE
 - Use Chrome's Developer Tools or Firefox's Firebug to help you find the HTML elements that contain the data.
 - Most of the elements that contain the data have distinct class attribute values, so you can easily extract their text content with [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) (note that BeautifulSoup refers to elements as `tag`s).
 - You'll need to use a regular expression to extract the sector name.
-
-## Sample Solution
-
-- [company_scraper.py](company_scraper.py)
