@@ -36,10 +36,10 @@ Almost all professional Java and Scala development teams use [IntelliJ IDEA](htt
       - Uncheck "Keep trailing spaces on caret line"
       - Check "Remove trailing blank lines at the end of saved files"
       - Check "Ensure every saved file ends with a line break"
-  - Smart Keys
-    - Uncheck "Insert paired brackets (), [], <>"
-    - Uncheck "Insert pair quote"
-    - Check "Surround selection on typing quote or brace"
+    - Smart Keys
+      - Uncheck "Insert paired brackets (), [], <>"
+      - Uncheck "Insert pair quote"
+      - Check "Surround selection on typing quote or brace"
   - Code Style
     - Hard wrap at 80 columns
       - Leave Wrap on Typing unchecked
@@ -51,9 +51,14 @@ Almost all professional Java and Scala development teams use [IntelliJ IDEA](htt
   - Main Menu
     - File
       - Open...: **CTRL-CMD-O**
+    - Window
+      - Editor Tabs
+        - Split Right: **CMD-\\**
+          - Chosen to match VC Code's split right shortcut.
   - Plugins
     - Terminal
       - Open in Terminal: **CTRL-F12**
+        - Open in Terminal means open a terminal session with its active directory set to the currently open file.  **OPT-F12** opens a terminal session in the project root directory.
 
 ## Keyboard Shortcuts
 
@@ -71,6 +76,8 @@ Here are a few shortcuts that I commit to memory.
 - Switch between open projects: **CMD-`** (Window|Next Project Window)
 - Goto/Toggle Project Pane: **CMD-1**
 - Goto Editor: **ESC**
+- Split Editor Right: **CMD-\\**
+- Close Focused Editor Tab or Window: **CMD-W**
 - Open in Terminal: **CTRL-F12**
 - Goto/Toggle Terminal: **OPT-F12**
 - Switch between open files or tool windows: **CTRL-TAB**

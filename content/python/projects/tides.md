@@ -1,13 +1,13 @@
 ---
 layout: exercise
-title: Tides Exercise
+title: Tides
 ---
 
 # Tides
 
 ## Introduction
 
-In this assignment you will practice writing Python command-line utilities, obtaining data, file I/O, processing CSV files, and using Python's date/time libraries.
+In this assignment you will practice writing Python command-line utilities, obtaining data, file I/O, processing CSV files, and using Python's `datetime` module.
 
 ## Problem Description
 
@@ -15,9 +15,9 @@ You are a scuba diving instructor who plans [dive trips](http://proscuba.trainin
 
 ## Solution Description
 
-Write a Python program that accepts command line arguments specifying time windows and days of the week, reads the NOAA tide tables to find high tides that occur on those days and during those time windows, and displays these days and tides to the user on the console.
+Write a Python script that accepts command line arguments specifying time windows and days of the week, reads the NOAA tide tables to find high tides that occur on those days and during those time windows, and displays these days and tides to the user on the console.
 
-Your program will use annual tide tables for the Port of Palm Beach (StationId: 8722588) stored in a CSV file, which you can download from [NOAA's Tides and Currents Service](https://tidesandcurrents.noaa.gov/noaatidepredictions/NOAATidesFacade.jsp?Stationid=8722588) (the ``CSV'' file is labeled ``Annual TXT'').
+Your program will use annual tide tables for the Port of Palm Beach (StationId: 8722588) stored in a CSV file, which you can download from [NOAA's Tides and Currents Service](https://tidesandcurrents.noaa.gov/noaatideannual.html?id=8722588).  The current year should be pre-selected and you'll need to choose "TXT" under Format.
 
 If the user supplies less than the required minimum of four command-line arguments, display a usage message such as:
 
@@ -59,7 +59,3 @@ $ python find_tides.py wpb-tides-2016.txt '10:00 AM' '11:00 AM' Sat Sun
 - Take note of the delimiter used in the NOAA annual tide table TXT file.
 - You'll want to use [Python's datetime module](https://docs.python.org/3/library/datetime.html), in particular you'll find [datetime.strptime](https://docs.python.org/3/library/datetime.html#datetime.datetime.strptime) useful.
 - Since the NOAA annual tide table TXT file contains lines with human-readable information, reporting tides to the user is a simple matter of printing lines that match the constraints given by the user on the command line, as in the example above.
-
-## Sample Solution
-
-[tides.py](tides.py)

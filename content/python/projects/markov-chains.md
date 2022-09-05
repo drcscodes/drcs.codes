@@ -1,5 +1,5 @@
 ---
-layout: homework
+layout: exercise
 title: Markov Chains
 ---
 
