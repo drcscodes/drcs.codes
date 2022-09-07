@@ -34,7 +34,7 @@
  </thead>
 {{ else }}
 <tr>
-    <td>{{ $i }}</td>
+    <td>{{ (add $i 1) }}</td>
     <td>{{ index . "slides" | markdownify }}</td>
     <td>
         {{ range (index . "reading") }}
