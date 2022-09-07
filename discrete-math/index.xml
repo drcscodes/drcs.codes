@@ -6,16 +6,16 @@ Ubuntu/WSL2 If you are using Windows 10 or 11, install WSL2, the Windows Subsyst
 Statements, a.k.a., sentences, are either true, false, or neither. Propositions are either true or false. Axioms are propositions that are assumed to be true. Consider them the starting rules of a system. Example:
 Assuming the axioms of standard arithmetic,</description></item><item><title>Introduction to Logic</title><link>https://DrCS.codes/discrete-math/slides/propositional-logic/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/discrete-math/slides/propositional-logic/</guid><description>Introduction to Logic Logic A foundational branch of mathematics (the other foundation is set theory) that deals with the assignment of truth values to statements, also called deduction or proof.
 Statements, a.k.a., sentences, are either true, false, or neither. Propositions are either true or false. Axioms are propositions that are assumed to be true. Consider them the starting rules of a system. Example:
-Assuming the axioms of standard arithmetic,</description></item><item><title>Lessons</title><link>https://DrCS.codes/discrete-math/lessons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/discrete-math/lessons/</guid><description>Course Materials BoP: Book of Proof PLL: Probability: Lectures and Labs Lessons # Slides Readings Exercises Projects Videos Fundamentals 1 Sets BoP 1.1-1.4
-2 Set Operations BoP 1.5-1.10
-3 Propositional Logic BoP 2.1-2.6
-4 First-Order Logic BoP 2.7-2.12
-Combinatorics 6 Counting BoP 3.1-3.5
-7 Applications of Counting BoP 3.6-3.10
-8 Discrete Probability PLL 1-3
-Proving Conditional Statements 10 Direct Proof BoP 4
-11 Contrapositive Proof BoP 5
-12 Proof by Contradiction BoP 6</description></item><item><title>Sets</title><link>https://DrCS.codes/discrete-math/slides/sets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/discrete-math/slides/sets/</guid><description>Sets Sets Collection of elements.
+Assuming the axioms of standard arithmetic,</description></item><item><title>Lessons</title><link>https://DrCS.codes/discrete-math/lessons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/discrete-math/lessons/</guid><description>Course Materials BoP: Book of Proof PLL: Probability: Lectures and Labs Lessons # Slides Readings Exercises Projects Videos Fundamentals 2 Sets BoP 1.1-1.4
+3 Set Operations BoP 1.5-1.10
+4 Propositional Logic BoP 2.1-2.6
+5 First-Order Logic BoP 2.7-2.12
+Combinatorics 7 Counting BoP 3.1-3.5
+8 Applications of Counting BoP 3.6-3.10
+9 Discrete Probability PLL 1-3
+Proving Conditional Statements 11 Direct Proof BoP 4
+12 Contrapositive Proof BoP 5
+13 Proof by Contradiction BoP 6</description></item><item><title>Sets</title><link>https://DrCS.codes/discrete-math/slides/sets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/discrete-math/slides/sets/</guid><description>Sets Sets Collection of elements.
 Empty set: $\varnothing$ Integers: $\mathbb{Z}$ Natural numbers: $\mathbb{N}$ Real numbers: $\mathbb{R}$ Rational numbers: $\mathbb{Q}$ Cartesian Product ordered paris of elements from multiple sets
 Subsets If $A \subseteq B$, then no element of $A$ is not in $B$.
 Power Sets Powerset of $A$, $\mathcal{P}(A)$ is the set of all subsets of $A$. There are $2^{|A|}$ subsets of $A$.
