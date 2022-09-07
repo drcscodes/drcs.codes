@@ -6,25 +6,8 @@
   ],
   "lessons": [
     {
-      "lesson": "intro-course",
-      "slides": "[Introduction to Professional Python](/professional-python/)",
-      "reading": [
-        "[Meet the Teacher](http://cs1331.github.io/slides/meet-simpkins.html)"
-      ],
-      "exercises": [
-        "[]()"
-      ],
-      "projects": [
-        "[]()"
-      ],
-      "videos": [
-        "[Install Python and PyCharm]()",
-        "[Install and Set up Git]()"
-      ]
-    },
-    {
-      "lesson": "intro-python",
-      "slides": "[Introduction to Python](/professional-python/slides/intro-python.pdf)",
+      "lesson": "intro-professional-python",
+      "slides": "[Course Introduction](/professional-python/slides/intro-professional-python.pdf)",
       "reading": [
         "PfP 1; TP 1"
       ],
@@ -35,7 +18,9 @@
         "[]()"
       ],
       "videos": [
-        "[Introduction to Python]()"
+        "[Install Python and PyCharm]()",
+        "[Install and Set up Git]()",
+        "[Introduction to Professional Python]()"
       ]
     },
     {

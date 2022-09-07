@@ -1,0 +1,10 @@
+{{ $course := .Get "course" }}
+
+{{ $courseData := index .Site.Data $course }}
+{{ $materials := index $courseData "materials" }}
+
+<ul>
+{{ range $materials }}
+<li>{{ . | markdownify }}</li>
+{{ end }}
+</ul>
