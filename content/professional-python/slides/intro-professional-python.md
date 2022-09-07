@@ -1,6 +1,6 @@
 ---
 aspectratio: 1610
-title: Introduction to Python
+title: Introduction to Professional Python
 ---
 
 ## Professional Python
@@ -45,7 +45,7 @@ The coolest thing about Python ...
 
 [https://en.wikipedia.org/w/index.php?curid=6130072](https://en.wikipedia.org/w/index.php?curid=6130072)
 
-Python was named for Monty Python, of which Python’s creator, Guido van Rossum, is a big fan.
+Python was named for Monty Python, of which Python’s creator, Guido van Rossum, is a big fan.  You don't have to be a fan, [but it helps.](https://docs.python.org/3/faq/general.html#do-i-have-to-like-monty-python-s-flying-circus)
 
 ## The `python3` Program
 
@@ -85,7 +85,7 @@ Three common ways to run Python code:
 
 3. In Jupyter Notebooks, which we'll use in the Data Manipulation course.
 
-You can also run shor Python code snippets on the command line using the `-c` option:
+You can also run short Python code snippets on the command line using the `-c` option:
 
   ```shell
   $ python3 -c "print(2 + 3)"
@@ -94,7 +94,7 @@ You can also run shor Python code snippets on the command line using the `-c` op
 
 ## Hello, Python
 
-Since Kernighan and Ritchie's "The C Programming Language" it's customary for your first program in a new language to be "Hello, world!"
+Since Kernighan and Ritchie's *The C Programming Language* it's customary for your first program in a new language to be "Hello, world!"  We'll keep that tradition.
 
 ### Active Review
 
