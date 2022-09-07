@@ -3,12 +3,19 @@ aspectratio: 1610
 title: Introduction to Python
 ---
 
-## Intensive Python
+## Professional Python
 
-- Faced-paced coverage of core Python
-- Assumes you know programming principles
-  - Not necessarily in Python
+- Faced-paced coverage of core Python.
+- Assumes you know programming principles, not necessarily in Python
 - Goes deeper into the Python language than a Python-based CS1 course
+- The video for each lesson is about 30 minutes.
+  - Each lesson should take you 45-60 minutes if you pause the video and do the active reviews when asked.
+- Each exercise should take you an hour or less.
+- Projects should take you two to 10 hours.
+
+If you do each lesson -- watching the video and pausing to do the active reviews -- and at least one exercise after each lesson, you will have a firm grasp of Python.  Doing the projects as well will make you an even stronger Python programmer ready to join a professional team as a junior programmer.
+
+- Altogether this course should take you 20 to 40 hours.
 
 ## Python gives you wings!
 
@@ -55,35 +62,49 @@ Practically speaking, Python is a program on your computer that interprets Pytho
 
 ## Executing Python Code
 
-- You can run a Python program, which has a .py extension by convention:
+Three common ways to run Python code:
+
+1. Scripts -- files containing Python code -- executed on the command line:
 
     ```sh
     $ python3 myprogram.py
     ```
 
-- Or you can invoke the interactive Python shell (sometimes called REPL for "Read-Eval-Print Loop"):
+2. Execute statements and expressions in the Python shell/interactive interpreter (commonly called a REPL for "Read-Eval-Print Loop"):
 
-    ```sh
-    $ python3
-    Python 3.8.10 (default, Jun  2 2021, 10:49:15)
-    [GCC 9.4.0] on linux
-    Type "help", "copyright", "credits" or "license" for more information.
-    >>>
-    ```
+  ```sh
+  $ python3
+  Python 3.8.10 (default, Jun  2 2021, 10:49:15)
+  [GCC 9.4.0] on linux
+  Type "help", "copyright", "credits" or "license" for more information.
+  >>> "Hello, world!"
+  'Hello, world!'
+  ```
 
-    To exit the Python shell type Ctrl-D on Linux/Unix, or Ctrl-Z on Windows.
+  To exit the Python shell type `exit()` and hit return, or type Ctrl-D on Linux/Unix, or Ctrl-Z on Windows.
+
+3. In Jupyter Notebooks, which we'll use in the Data Manipulation course.
+
+You can also run shor Python code snippets on the command line using the `-c` option:
+
+  ```shell
+  $ python3 -c "print(2 + 3)"
+  5
+  ```
 
 ## Hello, Python
 
 Since Kernighan and Ritchie's "The C Programming Language" it's customary for your first program in a new language to be "Hello, world!"
 
-- Open your text editor, paste the following code into a buffer (or tab or window or whatever your editor calls it), and save it as `hello.py`:
+### Active Review
+
+- Create a new file named `hello.py` and add the following line to it, and save it:
 
     ```python
     print("Hello, world!")
     ```
 
-- Then open your command shell (terminal on Unix or CMD.exe on Windows), go to the directory where you saved `hello.py` and enter:
+- Then open your OS command shell (terminal -- not a Python REPL), go to the directory where you saved `hello.py` and enter:
 
     ```sh
     $ python3 hello.py
@@ -91,19 +112,9 @@ Since Kernighan and Ritchie's "The C Programming Language" it's customary for yo
 
     Hello, world! will be printed to the console on the next line.
 
-## Interpreting Python Programs
-
-What happens when we enter `python3 hello.py` at an operating system command shell prompt?
-
-1. `python3` tells the OS to load the Python interpreter into memory and run it. `python` is the name of an executable file on your hard disk which your OS can find because its directory is on the `PATH`
-2. We invoke `python` with a *command line argument*, which `python3` reads after it starts running
-3. Since the command line argument was the name of a file (`hello.py`), the `python3` loads the file and executes the Python code in it.
-
-A Python program, or script, is just a sequence of Python statements and expressions.
-
 ## The Python REPL
 
-Invoke the Python interactive shell by entering python at your command shell’s prompt without any arguments and type in the same line we put in hello.py:
+Invoke the Python interactive shell by entering `python3` at your command shell’s prompt without any arguments:
 
 ```sh
 $ python3
@@ -121,31 +132,37 @@ Type "help", "copyright", "credits" or "license" for more information.
   3. *Print* the result to the console, and
   4. *Loop* back to *Read* step
 
-We’ll spend a lot of time in the REPL, but since this course is intended as a fast-paced introduction to Python for data analytics, we'll use the [iPython](https://ipython.org/) REPL.
+We’ll spend a lot of time in the REPL, but since this course is intended as a fast-paced introduction to Python for professional programmers, we'll use the [iPython](https://ipython.org/) REPL.
 
 ## iPython
 
 Two modes:
 
-- Interactive shell
+1. Interactive shell
 
-  - Replacement for `python` REPL
+  - Replacement for `python3` REPL
 
-- Jupyter notebook
+2. Jupyter notebook kernel
 
   - Interactive web-based documents mixing text, executable code, graphics
 
-Before we proceed, make sure your computer is ready (OS shell):
+In this course we'll only use iPython as a REPL. Since iPython is a third-party package, we need to install it before we can use it.  Enter this on your OS shell's command line (not Python REPL):
 
 ```sh
-$ pip3 install ipython
+pip3 install ipython
 ```
+
+We'll learn about `pip3` in the lesson on modules and programs.
 
 ## iPython Shell History
 
+### Active Review
+
+In your OS command shell, run `ipython` and type in the following (on the `In` lines) to get a feel for using iPython.
+
 ```sh
-In [1]: ['Sage', 'Thyme', 'Oragano', 'Posh']
-Out[1]: ['Sage', 'Thyme', 'Oragano', 'Posh']
+In [1]: ['Sage', 'Thyme', 'Oregano', 'Posh']
+Out[1]: ['Sage', 'Thyme', 'Oregano', 'Posh']
 
 In [2]: type(In[1])
 Out[2]: str
@@ -156,17 +173,17 @@ Out[3]: list
 In [4]: spices = Out[1]
 
 In [5]: spices
-Out[5]: ['Sage', 'Thyme', 'Oragano', 'Posh']
+Out[5]: ['Sage', 'Thyme', 'Oregano', 'Posh']
 
 In [6]: spices is Out[1]
 Out[6]: True
 ```
 
-`In` is a list, `Out` is a dict.
+Notice that every input is contained in the `In` list, and every output is contained in the `Out` dictionary.
 
 ## iPython Help
 
-Single `?` gives abbeviated version of python's `help`
+Single `?` gives abbreviated version of python's `help`
 
 ```sh
 In [7]: def add(a, b):
@@ -222,7 +239,6 @@ Usage:
 
 Get a list of all magic commands with `%lsmagic`
 
-
 ## iPython Shell Commands
 
 Run shell commands by prepending with a `!`
@@ -239,23 +255,22 @@ Out[29]: ['fun.py', 'grades.py', 'maths.py', 'people.py', 'pp.py']
 
 iPython provides magic commands for most common shell commands.
 
-
 ## iPython Directory Bookmarking
 
 Great time saving feature.
 
 ```sh
-In [3]: %pwd
-Out[3]: '/home/chris/vcs/github.com/cs2316/cs2316.github.io/code'
+In [1]: pwd
+Out[1]: '/Users/chris/vcs/github.com/drcscodes/drcs.codes-solutions'
 
-In [4]: %cd
-/home/chris
+In [2]: %bookmark drcs.codes-solutions '/Users/chris/vcs/github.com/drcscodes/drcs.codes-solutions'
 
-In [5]: %bookmark cs2316code ~/chris/vcs/github.com/cs2316/cs2316.github.io/code
+In [3]: cd
+/Users/chris
 
-In [6]: cd cs2316code
-(bookmark:cs2316code) -> ~/chris/vcs/github.com/cs2316/cs2316.github.io/code
-/home/chris/vcs/github.com/cs2316/cs2316.github.io/code
+In [4]: cd drcs.codes-solutions
+(bookmark:drcs.codes-solutions) -> /Users/chris/vcs/github.com/drcscodes/drcs.codes-solutions
+/Users/chris/vcs/github.com/drcscodes/drcs.codes-solutions
 ```
 
 ## iPython Automagic commands
@@ -278,7 +293,7 @@ fun.py     grades.py  maths.py   people.py  pp.py
 
 ## `%doctest_mode`
 
-iPython is superior to the Python.org REPL, but doctests use the Python.org REPL prompt.  For writing doctest examples, iPython offers the `%doctest_mode` magic.
+iPython is nicer than the Python.org REPL, but doctests use the Python.org REPL prompt.  For writing doctest examples, iPython offers the `%doctest_mode` magic.
 
 ```python
 In [93]: def dubbel(x: int) -> int:
@@ -299,10 +314,10 @@ In [97]:
 
 ## Conclusion
 
-- Python is an interpreted general purpose language
+- Python is an interpreted general purpose language.
 
-- Python code can be run as programs or interactively in a Python REPL
+- Python code can be run as programs or interactively in a Python REPL.
 
-- Python is a great glue language
+- Python is a great glue language.
 
 - Python is fun!
