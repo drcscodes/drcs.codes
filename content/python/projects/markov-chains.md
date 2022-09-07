@@ -19,7 +19,7 @@ You're interested in natural language processing, and in the problem of identify
 
 ## Solution Description
 
-Write a module named `source.py` with a class named `SourceModel` whose constructor takes a name for a source, and a courpus object of type `TextIOWrapper` (such as a file object -- see [io module](https://docs.python.org/3/library/io.html)) and builds a first-order Markov model of the transitions between letters in the source. Only alphabetic characters in the source corpus should be considered and they should be normalized to upper or lower case. For simplicity (see background) only consider the 26 letters of the English alphabet.
+Write a module named `source.py` with a class named `SourceModel` whose constructor takes a name for a source, and a courpus object of type `TextIOWrapper` (such as a file object -- see [io module](https://docs.python.org/3/library/io.html)) and builds a first-order Markov model of the transitions between letters in the source. Only alphabetic characters in the source corpus should be considered, and they should be normalized to upper or lower case. For simplicity (see background) only consider the 26 letters of the English alphabet (for languages whose alphabets have diacritics, simply drop them, e.g., use e for é, u for ü, etc.).
 
 Here are some example corpus files and test files:
 
@@ -52,10 +52,6 @@ Barber, baby, bubbles and a bumblebee.
 ```
 
 We would have the model:
-
-<img src="drseuss-model.svg" alt="Dr Seuss Language Model" width="95%" />
-
-TODO: resize image.
 
 ![Dr Seuss Language Model](drseuss-model.png)
 
@@ -108,9 +104,9 @@ A Markov chain can be represented as a transition matrix in which the probabilit
 | **y** | 0.01 | 1.00 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 |
 | **z** | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 | 0.01 |
 
-#### Prediction using a Markov model.
+#### Prediction using a Markov Chain Model.
 
-Given a Markov chain model of a source, we can compute the probability that the model would produce a given string of letters by applying the chain rule. Simply stated, we walk the transitions in the Markov chain and multiply the trasition probabilities. For example, the rpobability that "Big C, Little C" would be produced by our model, we would get the following probabilities from the transition matrix:
+Given a Markov chain model of a source, we can compute the probability that the model would produce a given string of letters by applying the chain rule. Simply stated, we walk the transitions in the Markov chain and multiply the transition probabilities. For example, to compute the probability that "Big C, Little C" would be produced by our model, we would get the following probabilities from the transition matrix and compute their product:
 
 ```
 p(b, i) = .12
@@ -127,9 +123,11 @@ p(e, c) = .01
 
 Multiplying them gives us 1.0588235294117648e-10. Notice that, in order to avoid getting zero-probability predictions using our simplified technique, we store .01 in our transition matrix for any bigram we don't see in the training corpus.
 
+> Note: for longer texts that would require long chains of multiplication it is possible to get floating-point underflow since each probability is < 1.  There are ways to avoid this, but numerical computation is beyond the scope of this course.  For this exercise, stick to shorter query sentences.
+
 #### Additional Information
 
-We've greatly simplified the presentation here to focus on the computer programming. For more information consult the following references.
+We've greatly simplified the presentation here to focus on the programming. For more information consult the following references.
 
 - Natural language processing: https://web.stanford.edu/~jurafsky/slp3/
 - Markov chains: Chapter 11 of http://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/book.html, direct link: https://www.dartmouth.edu/~chance/teaching_aids/books_articles/probability_book/Chapter11.pdf
@@ -146,7 +144,7 @@ class SourceModel:
         # Initialize a 26x26 matrix (e.g., 26-element list of 26-element lists)
         # Print "Training {lang} model ... "
         # Read the text_stream one character at a time.
-        # For each character, increment the correscponding (row, col) in your
+        # For each character, increment the corresponding (row, col) in your
         # matrix. The row is the for the previous character, the col is for
         # the current character. (You could also think of this in terms of bigrams.)
         # After you read the entire text_stream, you'll have a matrix of counts.
@@ -169,7 +167,7 @@ if __name__=="__main__":
 
    # Use the models to compute the probability that the test text was produced by the model
 
-   # Probabilities will be very small. Normalize the probablilities of all the model
+   # Probabilities will be very small. Normalize the probabilities of all the model
    # predictions to a probability distribution (so they sum to 1)
    # (closed-world assumption -- we only state probabilities relative to models we have).
 

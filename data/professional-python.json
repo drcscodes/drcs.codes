@@ -18,8 +18,8 @@
         "[]()"
       ],
       "videos": [
-        "[Install Python and PyCharm on macOS]()",
-        "[Install and Set up Git on macOS]()"
+        "[Install Python and PyCharm]()",
+        "[Install and Set up Git]()"
       ]
     },
     {
@@ -61,6 +61,7 @@
         "PfP 2; TP 2"
       ],
       "exercises": [
+        "[Values and Variables](/python/exercises/values-variables)"
       ],
       "projects": [
         "[]()"
@@ -144,7 +145,8 @@
         "[Matrix Operations](/python/exercises/matrixops)"
       ],
       "projects": [
-        "[]()"
+        "[Generate Sentence](/python/projects/generate-sentence)",
+        "[Genetic Algorithms](/python/projects/genetic-algorithms)"
       ],
       "videos": [
         "[Data Structures]()"
@@ -157,6 +159,7 @@
         "PfP: 2; TP 1,14"
       ],
       "exercises": [
+        "[Word Count](/python/exercises/word-count)"
       ],
       "projects": [
         "[Word Histogram](/python/projects/word-hist)"
@@ -175,7 +178,7 @@
         "[]()"
       ],
       "projects": [
-        "[]()"
+        "[Gradient Descent](/python/projects/gradient-descent)"
       ],
       "videos": [
         "[Functional Programming]()"
@@ -192,7 +195,8 @@
         "[Treating People as Objects](/python/exercises/people-objects)"
       ],
       "projects": [
-        "[Students](/python/projects/students)"
+        "[Students](/python/projects/students)",
+        "[Markov Chains I](python/projects/markov-chains-i)"
       ],
       "videos": [
         "[Classes and Objects]()"
@@ -205,7 +209,6 @@
         "PPP 15; TP A"
       ],
       "exercises": [
-        "[Dog Module](/python/exercises/dog)",
         "[]()"
       ],
       "projects": [
@@ -222,7 +225,6 @@
         ""
       ],
       "exercises": [
-        "[Dog Module](/python/exercises/dog)",
         "[]()"
       ],
       "projects": [
