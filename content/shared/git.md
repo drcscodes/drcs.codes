@@ -42,7 +42,7 @@ brew upgrade
 
 ### Windows
 
-Download the Git for Windows installer from [Git's official downloads page](https://git-scm.com/downloads) and run it. Then you'll also have `git-bash`, which gives you a Bash shell -- a superior alternative to `cmd` or PowerShell.
+Download the Git for Windows installer from [Git's official downloads page](https://git-scm.com/downloads) and run it. Then you'll also have `git-bash`, which gives you a Bash shell, an alternative to `cmd` or PowerShell.
 
 ## Setting Up Git
 
