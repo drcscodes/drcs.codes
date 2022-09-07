@@ -89,7 +89,7 @@ Since you will want to have a remote repository for collaboration and back-up pu
 
 2. On the Create a new repository page: 
     
-   - Enter a Repository name (e.g., propython-coursework).
+   - Enter a Repository name (e.g., python-coursework).
    - Select Public or Private.
    - Check the "Add a README file" checkbox.
    - Select an appropriate .gitignore template, e.g. "Python" if this repository will contain a Python project, "Go" for a Go project, etc.
@@ -97,19 +97,19 @@ Since you will want to have a remote repository for collaboration and back-up pu
 
 3. You should now be on the repository page for your new repository.  Click the green "Code" button, select "SSH" in the drop-down menu (assuming you have set up your SSH key), and the copy icon next to the clone URL, which should begin with `git@github.com`.
 
-4. On your local computer, open your Terminal program (or `cmd` or `Powershell` on Windows), navigate to the directory that you want to be the **parent** of the directory holding your local repository clone, and enter `git clone <github-repository-url>`, where `<github-repository-url` is the clone URL you copied to the clipboard in the previous step.
+4. On your local computer, open your Terminal program (or `cmd` or `Powershell` on Windows), navigate to the directory that you want to be the **parent** of the directory holding your local repository clone, and enter `git clone <github-repository-url>`, where `<github-repository-url>` is the clone URL you copied to the clipboard in the previous step.
 
    > Note: I use a common directory structure for clone repositories on all my computers.  I have a `vcs` directory, then a directory for each server which hosts clones, a directory for usernames/org-names matching the ones on the server, then the clones in those directories.  For example, for my `drcscodes` user's `propython-coursework` repository clone I would make the following directory structure and execute `git clone` as follows:
    
    ```shell
    ~/ $ mkdir -p vcs/github.com/drcscodes
    ~/ $ cd vcs/github.com/drcscodes
-   ~/vcs/github.com/drcscodes $ git clone git@github.com:drcscodes/propython-coursework.git
-   Cloning into 'propython-coursework'...
+   ~/vcs/github.com/drcscodes $ git clone git@github.com:drcscodes/python-coursework.git
+   Cloning into 'python-coursework'...
    ~/vcs/github.com/drcscodes $ cd propython-coursework
-   ~/vcs/github.com/drcscodes/propython-coursework $ git remote -v
-   origin	git@github.com:drcscodes/propython-coursework (fetch)
-   origin	git@github.com:drcscodes/propython-coursework (push)
+   ~/vcs/github.com/drcscodes/python-coursework $ git remote -v
+   origin	git@github.com:drcscodes/python-coursework (fetch)
+   origin	git@github.com:drcscodes/python-coursework (push)
    ```
 
-   After the commands above I'll have a `~/vcs/github.com/drcscodes/propython-coursework` directory which I can import into PyCharm as a new project.  You can follow the same steps, but substitute your own GitHub username and clone URLs.
+   After the commands above I'll have a `~/vcs/github.com/drcscodes/python-coursework` directory which I can import into PyCharm as a new project.  You can follow the same steps, but substitute your own GitHub username and clone URLs.
