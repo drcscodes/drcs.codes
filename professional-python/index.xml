@@ -28,13 +28,10 @@ macOS Windows Ubuntu/WSL Install and configure IntelliJ or PyCharm.</description
 Models, Languages, Machines Computing is fundamentally a modelling activity.
 A model is a representation of some information, physical reality, or a virtual entity in a manner that can then be interpreted, manipulated, and transformed.</description></item><item><title>Lessons</title><link>https://DrCS.codes/professional-python/lessons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/professional-python/lessons/</guid><description>Course Materials PfP: Python for Programmers PPP: Practical Programming: An Introduction to Computer Science Using Python 3.6, 3ed TP: Think Python, 2nd Edition, by Allen B. Downey Lessons # Slides Readings Exercises Projects Videos 1 Course Introduction PfP 1; TP 1
 hw0
-Install Python and PyCharm
-Install and Set up Git
-Introduction to Professional Python
-2 Tour of Python PfP 1; TP 1
-Compounding Table
-Tour of Python
-3 Values and Variables PfP 2; TP 2</description></item><item><title>Modules and Programs</title><link>https://DrCS.codes/professional-python/slides/modules-programs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/professional-python/slides/modules-programs/</guid><description>Modules and Programs Python Programs Python code organized in
+Install Python and PyCharm - Coming soon!
+Install and Set up Git - Coming soon!
+Introduction to Professional Python - Coming soon!
+2 Tour of Python PfP 1; TP 1</description></item><item><title>Modules and Programs</title><link>https://DrCS.codes/professional-python/slides/modules-programs/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/professional-python/slides/modules-programs/</guid><description>Modules and Programs Python Programs Python code organized in
 modules, packages, and scripts. We&amp;#39;ve already used some modules, now we&amp;#39;ll learn what they are, how they&amp;#39;re orgainized in packages, and how to write Python programs that can be run on their own, not just entered in the Python command shell.
 Importing Modules To import a module means to get names from the module into scope, or add them to a namespace.</description></item><item><title>MSA Boot Camp</title><link>https://DrCS.codes/professional-python/msabc2021/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/professional-python/msabc2021/</guid><description>Go to the general MSA Bootcamp page.</description></item><item><title>Practice</title><link>https://DrCS.codes/professional-python/practice/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://DrCS.codes/professional-python/practice/</guid><description>Python Practice These programming problems provide practice applying what you have learned in the lessons. Many of these problems are also linked in the lesson listings for the appropriate course and indicate the knowledge required to complete the practice activity.
 Exercises Exercises are designed to take no more than an hour to complete and give you practice using various features of Python.
