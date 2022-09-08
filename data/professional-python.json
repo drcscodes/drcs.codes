@@ -18,9 +18,9 @@
         "[]()"
       ],
       "videos": [
-        "[Install Python and PyCharm]()",
-        "[Install and Set up Git]()",
-        "[Introduction to Professional Python]()"
+        "Install Python and PyCharm - Coming soon!",
+        "Install and Set up Git - Coming soon!",
+        "Introduction to Professional Python - Coming soon!"
       ]
     },
     {
@@ -36,7 +36,7 @@
         "[]()"
       ],
       "videos": [
-        "[Tour of Python]()"
+        "Tour of Python - Coming soon!"
       ]
     },
     {
@@ -52,7 +52,7 @@
         "[]()"
       ],
       "videos": [
-        "[Values and Variables]()"
+        "Values and Variables - Coming soon!"
       ]
     },
     {
@@ -68,7 +68,7 @@
         "[]()"
       ],
       "videos": [
-        "[Modules and Programs]()"
+        "Modules and Programs - Coming soon!"
       ]
     },
     {
@@ -84,7 +84,7 @@
         "[]()"
       ],
       "videos": [
-        "[Functions]()"
+        "Functions - Coming soon!"
       ]
     },
     {
@@ -100,7 +100,7 @@
         "[]()"
       ],
       "videos": [
-        "[Strings]()"
+        "Strings - Coming soon!"
       ]
     },
     {
@@ -117,7 +117,7 @@
         "[]()"
       ],
       "videos": [
-        "[Control Structures]()"
+        "Control Structures - Coming soon!"
       ]
     },
     {
@@ -134,7 +134,7 @@
         "[Genetic Algorithms](/python/projects/genetic-algorithms)"
       ],
       "videos": [
-        "[Data Structures]()"
+        "Data Structures - Coming soon!"
       ]
     },
     {
@@ -150,7 +150,7 @@
         "[Word Histogram](/python/projects/word-hist)"
       ],
       "videos": [
-        "[File IO]()"
+        "File IO - Coming soon!"
       ]
     },
     {
@@ -166,7 +166,7 @@
         "[Gradient Descent](/python/projects/gradient-descent)"
       ],
       "videos": [
-        "[Functional Programming]()"
+        "Functional Programming - Coming soon!"
       ]
     },
     {
@@ -184,7 +184,7 @@
         "[Markov Chains I](python/projects/markov-chains-i)"
       ],
       "videos": [
-        "[Classes and Objects]()"
+        "Classes and Objects - Coming soon!"
       ]
     },
     {
@@ -200,7 +200,7 @@
         "[]()"
       ],
       "videos": [
-        "[Python Testing]()"
+        "Python Testing - Coming soon!"
       ]
     },
     {
@@ -216,7 +216,7 @@
         "[]()"
       ],
       "videos": [
-        "[Python Packaging]()"
+        "Python Packaging - Coming soon!"
       ]
     }
   ]
