@@ -92,6 +92,13 @@ while <continuation_condition>:
 
 ## f-Strings
 
+```python
+while fahr <= upper:
+    celsius = 5 * (fahr - 32) / 9
+    print(f"{fahr:<10} {celsius:>7.1f}")
+    fahr = fahr + step
+```
+
 - `5 * (fahr - 32) / 9` is an arithmetic expression that produces a `float` value due to the `float` division operator, `/`, so `celsius` references a `float` value.
 
 - `f"{fahr:<10} {celsius:>7.1f}"` is an f-string, short for formatted string literal.  The values of expressions enclosed within curly braces are inserted into the string.
@@ -106,7 +113,7 @@ while <continuation_condition>:
 
 ## `fahrenheit_celsius_v2.py`
 
-Parts of `fahrenheit_celsius_v1.py` are not idiomatic, or ["Pythonic"](https://docs.python.org/3/glossary.html).  Create a new version, `fahrenheit_celsius_v2.py`:
+Parts of `fahrenheit_celsius_v1.py` are not idiomatic, or ["Pythonic"](https://docs.python.org/3/glossary.html). Create a new version, `fahrenheit_celsius_v2.py`:
 
 ```python
 import sys
@@ -115,13 +122,14 @@ def fahrenheit2celsius(f: int) -> float:
     return 5 * (f - 32) / 9
 
 def main(args: list[str]) -> None:
+    # Set defaults if no args given
     if len(args) > 1:
         lower = int(args[1])
     else:
         lower = 0
     upper = int(args[2]) if len(args) > 2 else 300
     step = int(args[3]) if len(args) > 3 else 20
-
+    
     print(f"Fahrenheit Celsius")
     print(f"---------- -------")
     for f in range(lower, upper, step):
@@ -129,7 +137,6 @@ def main(args: list[str]) -> None:
         print(f"{f:<10} {c:>7.1f}")
 
 if __name__=='__main__':
-    print(sys.argv)
     main(sys.argv)
 ```
 
@@ -144,13 +151,14 @@ def fahrenheit2celsius(f: int) -> float:
     return 5 * (f - 32) / 9
 
 def main(args: list[str]) -> None:
+    # Set defaults if no args given
     if len(args) > 1:
         lower = int(args[1])
     else:
         lower = 0
     upper = int(args[2]) if len(args) > 2 else 300
     step = int(args[3]) if len(args) > 3 else 20
-
+    
     print(f"Fahrenheit Celsius")
     print(f"---------- -------")
     for f in range(lower, upper, step):
@@ -158,7 +166,6 @@ def main(args: list[str]) -> None:
         print(f"{f:<10} {c:>7.1f}")
 
 if __name__=='__main__':
-    print(sys.argv)
     main(sys.argv)
 ```
 :::
@@ -167,7 +174,6 @@ if __name__=='__main__':
 ```ditaa
 <-  Imports appear at the top of the file
     by convention.
-
 
 <-  Functions and classes are next.
     Definitions must appear before their uses, 
@@ -179,6 +185,8 @@ if __name__=='__main__':
     but recomended. We'll learn why later.
     
 
+    # is comment character. Everything after #
+    on a line is ignored by Python.
 
 
 
@@ -230,7 +238,6 @@ if __name__=='__main__':
 ```
 
 Every `.py` file whose base name is a legal Python identifier is a Python module.  As we'll learn in the lesson on modules and programs, the `if __name__=='__main__'` block is the starting point of a script, and is ignored when a module is imported.
-
 
 ## Functions and Type Annotations
 
@@ -322,8 +329,8 @@ is an idiomatic way to give `upper` a default value if one is not provided on th
 
 ```python
 for f in range(lower, upper, step):
-        c = fahrenheit2celsius(f)
-        print(f"{f:<10} {c:>7.1f}")
+    c = fahrenheit2celsius(f)
+    print(f"{f:<10} {c:>7.1f}")
 ```
 
 - A `range` object is an iterator that produces successive `int`s from `lower` to `upper`, not including `upper`, in increments of `step`.
