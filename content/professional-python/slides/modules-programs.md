@@ -131,7 +131,7 @@ A Python script is any text file containing executable Python code.  Our `hello.
 
 ### Active Review
 
-- Run `arithmetic.py` in "script mode" by entering `python3 arithmetic.py` in your OS command shell.
+- Run `arithmetic.py` as a script by entering `python3 arithmetic.py` in your OS command shell.
     - What happened?
 - Add the following to the bottom of your `arithmetic.py` file:
 
@@ -152,15 +152,15 @@ To make a module a script that only evaluates definitions when imported and only
 
 ### Active Review
 
-Add the following to the bottom of your `arithmetic.py` module:
+- Replace the free-standing code at the bottom of your `arithmetic.py` file with this (adding `if __name__=='__main__': above and indenting suite):
 
-```python
-    if __name__ == '__main__':
-    import sys
-    ops = {'+': add, '-': sub, '*': mult, '/': div}
-    op = ops[sys.argv[2]]
-    print(op(int(sys.arg[1]), int(sys.arg[2])))
-```
+  ```python
+      if __name__ == '__main__':
+          import sys
+          ops = {'+': add, '-': sub, '*': mult, '/': div}
+          op = ops[sys.argv[2]]
+          print(op(int(sys.arg[1]), int(sys.arg[2])))
+  ```
 
 - Run `arithmetic.py` in "script mode" with `python3 arithmetic.py`.
     - What happened?
@@ -183,6 +183,10 @@ This line says "run python3 and pass this file as an argument." So if you have a
 $ python3 foo.py
 $ ./foo.py
 ```
+
+Notes:
+- This form of the shebang line (`#!/usr/bin/env...`) also [works on Windows](https://docs.python.org/3/using/windows.html#shebang-lines).
+- You can specify a more specific version of Python, e.g., `#!/usr/bin/env python3.10`.
 
 ## Command-line Arguments
 
@@ -244,24 +248,22 @@ Just as an operating system command shell searches for executable programs by se
 >>> from pprint import pprint
 >>> pprint(sys.path)
 ['',
-'/usr/lib/python38.zip',
-'/usr/lib/python3.8',
-'/usr/lib/python3.8/lib-dynload',
-'/home/chris/.local/lib/python3.8/site-packages',
-'/usr/local/lib/python3.8/dist-packages',
-'/usr/lib/python3/dist-packages']
+ '/Library/Frameworks/Python.framework/Versions/3.10/lib/python310.zip',
+ '/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10',
+ '/Library/Frameworks/Python.framework/Versions/3.10/lib/python3.10/lib-dynload',
+ '/Users/drcs/vcs/github.com/drcscodes/python-coursework/venv/lib/python3.10/site-packages']
 ```
 
-Notice that the current directory, represented by the `''` at the beginning of the search path, is part of `sys.path`, which is why you can import modules located in your current directory.
-
-Also, note use of `pprint`.
+- Notice that the current directory, represented by the `''` at the beginning of the search path, is part of `sys.path`, which is why you can import modules located in your current directory.
+- Notice that our virtual environment is in the `sys.path`.
+- Note use of `pprint`, which "pretty prints" the `sys.path` list in a more easily readable format.
 
 ## Packages
 
 There are two meanings for "package" in Python:
 
 1. Subdirectories into which modules are organized.  See [Python's module documentation](https://docs.python.org/3/tutorial/modules.html#packages) for details.
-2. An organized distribution of 3rd-party software, e.g., Python modules and supporting files, native code, etc.
+2. A distribution of 3rd-party software, e.g., Python modules and supporting files, native code, etc.
 
 Here we discuss the second meaning.
 
@@ -300,13 +302,11 @@ This creates a virtual environment in the `venv` subdirectory of your project ro
 source venv/bin/activate
 ```
 
-or in Windows (PowerShell):
+or in Windows PowerShell (if this doesn't work, try `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`.  See [venv docs](https://docs.python.org/3/library/venv.html) for details.):
 
 ```shell
 venv\bin\activate.ps1
 ```
-
-> Note: when you configure an interpreter for a project in PyCharm, PyCharm creates a virtual environment in the `venv` directory of your project and activates it in any terminal session for you.
 
 Deactivate  a virtual environment with (macOS, Linux, or Windows):
 
@@ -328,13 +328,37 @@ Be sure to re-run that command and update in Git whenever you add new dependenci
 python3 -m pip install -r requirements.txt
 ```
 
+Take a look at a few prominent OSS Python projects and notice that they all have a `requirements.txt` in the project root directory.
+
+- [https://github.com/ansible/ansible](https://github.com/ansible/ansible)
+- [https://github.com/numpy/numpy](https://github.com/numpy/numpy) -- multiple task-specific requirements files
+- [https://github.com/pandas-dev/pandas](https://github.com/pandas-dev/pandas)
+- [https://github.com/keras-team/keras](https://github.com/keras-team/keras)
+- [https://github.com/pytorch/pytorch](https://github.com/pytorch/pytorch)
+
 ## Conclusion
 
 - Be careful to distinguish between a Python REPL prompt, and an OS command shell prompt.
+  
+  Typical macOS/Linux/Unix command shell:
+  ```shell
+  drcs@horand ~ $
+  ```
+
+  Typical Windows Powershell:
+  ```shell
+  PS C:>
+  ```
+
+  Python REPL:
+  ```shell
+  >>>
+  ```
+  
+  iPython REPL:
+  ```shell
+  In [1]: 
+  ```
+
 - Follow `if __name__=='__main__'` and `main` function conventions when writing scripts.
 - Use virtual environments to manage dependencies in Python projects.
-
-![Argument Clinic](./Argument_Clinic.png)
-
-
-[Arguments](https://www.youtube.com/watch?v=DkQhK8O9Jik)

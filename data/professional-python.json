@@ -127,11 +127,11 @@
         "PfP 5, 6"
       ],
       "exercises": [
+        "[Monty Hall](/python/exercises/monty-hall)",
         "[Matrix Operations](/python/exercises/matrixops)"
       ],
       "projects": [
-        "[Generate Sentence](/python/projects/generate-sentence)",
-        "[Genetic Algorithms](/python/projects/genetic-algorithms)"
+        "[Generate Sentence](/python/projects/generate-sentence)"
       ],
       "videos": [
         "Data Structures - Coming soon!"
@@ -163,7 +163,8 @@
         "[]()"
       ],
       "projects": [
-        "[Gradient Descent](/python/projects/gradient-descent)"
+        "[Gradient Descent](/python/projects/gradient-descent)",
+        "[Genetic Algorithms](/python/projects/genetic-algorithms)"
       ],
       "videos": [
         "Functional Programming - Coming soon!"
@@ -181,7 +182,7 @@
       ],
       "projects": [
         "[Students](/python/projects/students)",
-        "[Markov Chains I](python/projects/markov-chains-i)"
+        "[Markov Chains for Recognition](python/projects/markov-chains-recognition)"
       ],
       "videos": [
         "Classes and Objects - Coming soon!"

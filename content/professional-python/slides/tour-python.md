@@ -143,7 +143,7 @@ if __name__=='__main__':
 ## Program Structure
 
 :::: {.columns valign=top}
-::: {.column width="55%"}
+::: {.column width="64%"}
 ```python
 import sys
 
@@ -156,7 +156,7 @@ def main(args: list[str]) -> None:
         lower = int(args[1])
     else:
         lower = 0
-    upper = int(args[2]) if len(args) > 2 else 300
+    upper= int(args[2]) if len(args) > 2 else 300
     step = int(args[3]) if len(args) > 3 else 20
     
     print(f"Fahrenheit Celsius")
@@ -169,7 +169,7 @@ if __name__=='__main__':
     main(sys.argv)
 ```
 :::
-::: {.column with="45%"}
+::: {.column with="30%"}
 
 ```ditaa
 <-  Imports appear at the top of the file
@@ -187,9 +187,6 @@ if __name__=='__main__':
 
     # is comment character. Everything after #
     on a line is ignored by Python.
-
-
-
 
 
 
@@ -289,8 +286,8 @@ The `int()` constructor parses the `str` contained in `args[1]` and, if it's a v
 
 ### Active Review
 
-- Run your `fahrenheit_calsius.py` script from your OS command-line shell with different values for `lower`, `upper`, and `step`.
-  - If you have been running the script in PyCharm with Ctrl-R, you will need to open a terminal to run it from the OS shell so that you can provide command-line arguments.  You can open an OS command shell within PyCharm with Cmd-F12 on macOS, or Alt-F12 on Linux or Windows.
+- Run your `fahrenheit_celsius_v2.py` script from your OS command-line shell with different values for `lower`, `upper`, and `step`.
+  - You will need to run it from the OS shell so that you can provide command-line arguments.  You can use your terminal, or you can open an OS shell within PyCharm with OPT-F12 on macOS, or ALT-F12 on Linux or Windows.
   - Can you provide command-line arguments for some of the parameters of the script but not others?  Which combinations of arguments can you provide on the command-line?
 
 ## `if-else` Statements
