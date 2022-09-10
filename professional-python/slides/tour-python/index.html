@@ -46,7 +46,7 @@
 </span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;__main__&#39;</span>:
 </span></span><span style=display:flex><span>    main(sys<span style=color:#f92672>.</span>argv)
 </span></span></code></pre></div><h2 id=program-structure>Program Structure</h2><p>:::: {.columns valign=top}
-::: {.column width=&ldquo;55%&rdquo;}</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> sys
+::: {.column width=&ldquo;64%&rdquo;}</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span><span style=color:#f92672>import</span> sys
 </span></span><span style=display:flex><span>
 </span></span><span style=display:flex><span><span style=color:#66d9ef>def</span> <span style=color:#a6e22e>fahrenheit2celsius</span>(f: int) <span style=color:#f92672>-&gt;</span> float:
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>return</span> <span style=color:#ae81ff>5</span> <span style=color:#f92672>*</span> (f <span style=color:#f92672>-</span> <span style=color:#ae81ff>32</span>) <span style=color:#f92672>/</span> <span style=color:#ae81ff>9</span>
@@ -57,7 +57,7 @@
 </span></span><span style=display:flex><span>        lower <span style=color:#f92672>=</span> int(args[<span style=color:#ae81ff>1</span>])
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
 </span></span><span style=display:flex><span>        lower <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
-</span></span><span style=display:flex><span>    upper <span style=color:#f92672>=</span> int(args[<span style=color:#ae81ff>2</span>]) <span style=color:#66d9ef>if</span> len(args) <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>2</span> <span style=color:#66d9ef>else</span> <span style=color:#ae81ff>300</span>
+</span></span><span style=display:flex><span>    upper<span style=color:#f92672>=</span> int(args[<span style=color:#ae81ff>2</span>]) <span style=color:#66d9ef>if</span> len(args) <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>2</span> <span style=color:#66d9ef>else</span> <span style=color:#ae81ff>300</span>
 </span></span><span style=display:flex><span>    step <span style=color:#f92672>=</span> int(args[<span style=color:#ae81ff>3</span>]) <span style=color:#66d9ef>if</span> len(args) <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>3</span> <span style=color:#66d9ef>else</span> <span style=color:#ae81ff>20</span>
 </span></span><span style=display:flex><span>    
 </span></span><span style=display:flex><span>    print(<span style=color:#e6db74>f</span><span style=color:#e6db74>&#34;Fahrenheit Celsius&#34;</span>)
@@ -69,7 +69,7 @@
 </span></span><span style=display:flex><span><span style=color:#66d9ef>if</span> __name__<span style=color:#f92672>==</span><span style=color:#e6db74>&#39;__main__&#39;</span>:
 </span></span><span style=display:flex><span>    main(sys<span style=color:#f92672>.</span>argv)
 </span></span></code></pre></div><p>:::
-::: {.column with=&ldquo;45%&rdquo;}</p><pre tabindex=0><code class=language-ditaa data-lang=ditaa>&lt;-  Imports appear at the top of the file
+::: {.column with=&ldquo;30%&rdquo;}</p><pre tabindex=0><code class=language-ditaa data-lang=ditaa>&lt;-  Imports appear at the top of the file
     by convention.
 
 &lt;-  Functions and classes are next.
@@ -106,9 +106,6 @@
 
 
 
-
-
-
 &lt;-  The &#34;if __name__==&#39;__main__&#39;&#34; block is the
     entry point of the program. We&#39;ll learn
     the details when we learn about modules
@@ -122,7 +119,7 @@
 </span></span><span style=display:flex><span>    main(sys<span style=color:#f92672>.</span>argv)
 </span></span></code></pre></div><ul><li>Control is transferred to the first statement inside the <code>main</code> function.</li><li><code>args</code> becomes an alias for <code>sys.argv</code> in the <code>main</code> function. Formally, <code>sys.argv</code> is an <em>argument</em> or <em>actual parameter</em> and <code>args</code> is a <em>parameter</em>. In Python people often use <em>argument</em> to refer to both.</li></ul><h2 id=command-line-arguments>Command-Line Arguments</h2><p><code>sys.argv</code> is a <code>list[str]</code> containing the command-line arguments to the <strong><code>python3</code> program</strong>. In the script invocation:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell><span style=display:flex><span>python3 fahrenheit_celsius_v2.py <span style=color:#ae81ff>30</span> <span style=color:#ae81ff>100</span> <span style=color:#ae81ff>10</span> 
 </span></span></code></pre></div><p><code>sys.argv</code> has the value <code>['fahrenheit_celsius_v2.py', '30', '100', '10']</code></p><p>Note that all the elements of <code>sys.argv</code> are <code>str</code>s. If we want to treat any of them as a different data type, we must convert them, as we do in:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>        lower <span style=color:#f92672>=</span> int(args[<span style=color:#ae81ff>1</span>])
-</span></span></code></pre></div><p>The <code>int()</code> constructor parses the <code>str</code> contained in <code>args[1]</code> and, if it&rsquo;s a valid textual representation of an <code>int</code>, returns the <code>int</code> value.</p><h3 id=active-review-1>Active Review</h3><ul><li>Run your <code>fahrenheit_calsius.py</code> script from your OS command-line shell with different values for <code>lower</code>, <code>upper</code>, and <code>step</code>.<ul><li>If you have been running the script in PyCharm with Ctrl-R, you will need to open a terminal to run it from the OS shell so that you can provide command-line arguments. You can open an OS command shell within PyCharm with Cmd-F12 on macOS, or Alt-F12 on Linux or Windows.</li><li>Can you provide command-line arguments for some of the parameters of the script but not others? Which combinations of arguments can you provide on the command-line?</li></ul></li></ul><h2 id=if-else-statements><code>if-else</code> Statements</h2><p>In the <code>if-else</code> statement:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>    <span style=color:#66d9ef>if</span> len(args) <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1</span>:
+</span></span></code></pre></div><p>The <code>int()</code> constructor parses the <code>str</code> contained in <code>args[1]</code> and, if it&rsquo;s a valid textual representation of an <code>int</code>, returns the <code>int</code> value.</p><h3 id=active-review-1>Active Review</h3><ul><li>Run your <code>fahrenheit_celsius_v2.py</code> script from your OS command-line shell with different values for <code>lower</code>, <code>upper</code>, and <code>step</code>.<ul><li>You will need to run it from the OS shell so that you can provide command-line arguments. You can use your terminal, or you can open an OS shell within PyCharm with OPT-F12 on macOS, or ALT-F12 on Linux or Windows.</li><li>Can you provide command-line arguments for some of the parameters of the script but not others? Which combinations of arguments can you provide on the command-line?</li></ul></li></ul><h2 id=if-else-statements><code>if-else</code> Statements</h2><p>In the <code>if-else</code> statement:</p><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-python data-lang=python><span style=display:flex><span>    <span style=color:#66d9ef>if</span> len(args) <span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>1</span>:
 </span></span><span style=display:flex><span>        lower <span style=color:#f92672>=</span> int(args[<span style=color:#ae81ff>1</span>])
 </span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span>:
 </span></span><span style=display:flex><span>        lower <span style=color:#f92672>=</span> <span style=color:#ae81ff>0</span>
