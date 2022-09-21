@@ -142,7 +142,7 @@ as          class       else        global      lambda      raise       yield
 - What happens when you execute this assignment statement?
 
   ```python
-  >>> class = "CS 2316"
+  >>> class = "Professional Python"
   ```
 
 - What happens if you use `print` as a variable name?

@@ -37,21 +37,21 @@ def is_anagram(phrase1: str, phrase2: str) -> bool:
         False
         '''
     
-    def is_palindrome(phrase: str) -> bool:
-        '''Returns True if phrase is a palindrome, ignoring case, 
-        whitespace and punctuation.
-        
-        >>> is_palindrome('Radar')
-        True
-        >>> is_palindrome('Aibohphobia')
-        True
-        >>> is_palindrome('Red rum, sir, is murder!')
-        True
-        >>> is_palindrom('taco cat')
-        True
-        >>> is_palindrome('taco dog')
-        False
-        '''
+def is_palindrome(phrase: str) -> bool:
+    '''Returns True if phrase is a palindrome, ignoring case, 
+    whitespace and punctuation.
+    
+    >>> is_palindrome('Radar')
+    True
+    >>> is_palindrome('Aibohphobia')
+    True
+    >>> is_palindrome('Red rum, sir, is murder!')
+    True
+    >>> is_palindrom('taco cat')
+    True
+    >>> is_palindrome('taco dog')
+    False
+    '''
 ```
 
 
