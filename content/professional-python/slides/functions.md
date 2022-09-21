@@ -11,27 +11,7 @@ A function is a reusable block of code. Functions
 - contain a sequence of statements, and
 - return values, either explicitly or implicitly.
 
-We've already used several built-in functions. Today we will learn how to define our own.
-
-## Hello, Functions!
-
-We define a function using the def keyword:
-
-```python
-def greet():
-    print('Hello')
-```
-
-Once the function is defined, you can call it:
-
-```python
->>> greet()
-Hello
-```
-
-### Active Review
-
-- What happens if you evaluate `greet` (without the `()`) in the Python REPL?
+We've already seen functions in our tour of Python.  In this lesson we'll dive deeper.
 
 ## Defining Functions
 
@@ -47,97 +27,6 @@ def <function_name>(<parameter_list>):
 - `parameter_list` is a list of parameters to the function, which may be empty.
 - `function_body` (also called a suite in Python) is a sequence of expressions and statements.
 
-## Function Parameters
-
-Provide a list of parameter names inside the parentheses of the function header, which creates local variables in the function.
-
-```python
-def greet(name):
-    g = "Hello, " + name + "!"
-    print(g)
-```
-
-Then call the function by passing *arguments* to the function: values that are bound to parameter names.
-
-Here we pass the value `'Dolly'`, which is bound to `greet`'s parameter `name` and printed to the console by the code inside `greet`.
-
-```python
->>> greet('Dolly')
-Hello, Dolly!
-```
-
-## Variable Scope
-
-Parameters are local variables. They are not visible outside the function.
-
-```python
-def greet(name):
-    g = "Hello, " + name + "!"
-    print(g)
->>> greet('Dolly')
-Hello, Dolly!
->>> name
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-NameError: name 'name' is not defined
-```
-
-Global variables are visible outside the function and inside the function.
-
-```python
->>> global_hello = 'Bonjour'
->>> global_hello
-'Bonjour'
->>> def say_global_hello():
-...     print(global_hello)
-...
->>> say_global_hello()
-Bonjour
-```
-
-## Shadowing Global Variables
-
-Local variables shadow global variables.
-
-```python
->>> x = 1
->>> def f():
-...     x = 2
-...     print("local x:", x)
-...     print("global x:", globals()["x"])
-...
->>> f()
-local x: 2
-global x: 1
-```
-A function parameter is a local variable.
-
-```python
->>> name = 'Meat Loaf'
->>> def mayhem(name):
-...     print(f"His name is {name}.")
-...
->>> mayhem('Robert Paulson')
-His name is Robert Paulson.
->>> name
-'Meat Loaf'
-```
-
-## Scopes and Namespaces
-
-A **namespace** is a mapping from names to values (sometimes also called a *symbol table*).
-
-- Top level, or *global* names (either the Python REPL or a script) are in a namespace called `__main__`.
-- Global is also used to refer to names that are defined at the module level, i.e, outside any function or class. They are global to the module.
-- Each function *call* also gets a namespace for the local variables in the function.
-- These namespaces are hierarchical -- name resolution starts with the innermost namespace, which is why local variables "hide" or "shadow" global variables.
-- A variable's **scope** is the region of source code in which that variable is visible.
-- A namespace contains all the variables in a scope.
-
-### Active Review
-
-- Evaluate `globals()["__name__"]` in your Python REPL.
-
 ## Python Scopes
 
 ```{.ditaa im_opt="--no-separation" height="60%"}
@@ -145,7 +34,7 @@ A **namespace** is a mapping from names to values (sometimes also called a *symb
 | builtins                 |
 | +----------------------+ |
 | | global/module        | |
-| |                      | |
+| | x                    | |
 | | def f(x):            | |
 | | +-----------------+  | |
 | | | local, inside f |  | |
@@ -166,6 +55,15 @@ Scopes are determined statically but used dynamically.  Python determines the va
 2. Enclosing (for nested functions)
 3. Global
 4. Builtins
+
+Each scope is a *namespace*, a.k.a. environment or context.  Namespaces can be thought of as dictionaries that map (variable) names to values.
+
+### Active Review
+
+- Evaluate `globals()` in the `python3` REPL.
+- Evaluate `dir()`.
+- Import the `math` module.
+- Evaluate `globals()["math"]` in your Python REPL.
 
 ## Active Review: Python Scope Resolution
 
@@ -190,28 +88,6 @@ Apply the LEGB rule in the following exercises:
 - Comment-out the `x = 1` in the `if __name__=='__main__'` block and `x = 2` line in `def f()`.  Explain the program's behavior.
 - Uncomment the `x = 1` and leave the `x = 2` line in `def f()` commented-out.  Explain the program's new behavior.
 - Uncomment the `x = 2` and add `global x` as the first line `def f()`.  Explain the program's new behavior.
-
-## Multiple Parameters
-
-A function can take any number of parameters.
-
-```python
->>> def greet(greeting, name):
-...     print(greeting + ', ' + name)
-...
->>> greet('Greetings', 'Professor Falken')
-Greetings, Professor Falken
-```
-
-Parameters can be of multiple types.
-
-```python
->>> def greet(name, greeting, number):
-...     print(greeting * number + ', ' + name)
-...
->>> greet('Professor Falken', 'Hello', 2)
-HelloHello, Professor Falken
-```
 
 ## Positional and Keyword Arguments
 
@@ -255,7 +131,7 @@ Hi, Guy
 
 ## Return Values
 
-Functions return values.
+Functions return values, which means that a function call is an expression.
 
 ```python
 >>> def double(num):
@@ -268,22 +144,20 @@ Functions return values.
 If you don't explicitly return a value, `None` is returned implicitly.
 
 ```python
->>> def g():
-...     print("man") # This is not a return!
+>>> def dubbel(num):
+...     print(num * 2)
 ...
->>> fbi = g()
-man # This is a side-effect of calling g(), not a return value
->>> type(fbi)
+>>> res = dubbel(3)
+6
+>>> type(res)
 <class 'NoneType'>
 ```
 
-Function calls are expressions like any other, that is, a function call has a value, so a function call can appear anywhere a value can appear.
+### Active Review
 
-```python
->>> double(2) + double(3)
-10
-```
-
+- Define the `double` and `dubbel` functions above.
+- Evaluate `double(2) + double(3)`.  Explain how it works.
+- Evaluate `dubbel(2) + dubbel(3)`.  Explain the result.
 
 ## Variable Argument Lists
 
@@ -306,6 +180,20 @@ You can collect variable keyword arguments as a dictionary with `**`
 >>> print_dict(a=1, steak='sauce')
 {'a': 1, 'steak': 'sauce'}
 ```
+
+## Keyword-Only Arguments
+
+If a function has parameters following a varargs, the remaining arguments must be passed as keyword arguments.
+
+### Active Review
+
+- Look up the documentation for the built-in `print` function in a Python REPL.
+- Execute `print("Hello")` and note the output.
+- Execute `print("Hello", "world")` and note the output.
+- Execute `print("Hello", "world", end="")` and note the output.
+- Execute `print("Hello", "world", end="")`.  
+  - Why do you get the output you get?  
+  - How does the documentation for `print` alert you to this fact?
 
 ## Mixed Argument Lists
 
@@ -358,4 +246,6 @@ def factorial(n):
 ## Conclusion
 
 - Functions are the primary way we break a program into reusable pieces.
-- Use functions liberally.
+- Python offers very flexible function call semantics.
+- Be aware that all functions return values.
+  - If no `return` statement, `None` implicitly returned.

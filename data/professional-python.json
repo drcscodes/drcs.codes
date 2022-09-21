@@ -58,6 +58,22 @@
       ]
     },
     {
+      "lesson": "expressions",
+      "slides": "[Expressions](/professional-python/slides/expressions.pdf)",
+      "reading": [
+        "PfP 2; TP 2"
+      ],
+      "exercises": [
+        "[Guess Number](/python/exercises/guess-number)"
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "videos": [
+        "Expressions - Coming soon!"
+      ]
+    },
+    {
       "lesson": "modules-programs",
       "slides": "[Modules and Programs](/professional-python/slides/modules-programs.pdf)",
       "reading": [
@@ -71,6 +87,22 @@
       ],
       "videos": [
         "Modules and Programs - Coming soon!"
+      ]
+    },
+    {
+      "lesson": "packages-environments",
+      "slides": "[Packages and Environments](/professional-python/slides/packages-environments.pdf)",
+      "reading": [
+        "PfP: 2; TP 1,14"
+      ],
+      "exercises": [
+        ""
+      ],
+      "projects": [
+        "[]()"
+      ],
+      "videos": [
+        "Packages and Environments - Coming soon!"
       ]
     },
     {
