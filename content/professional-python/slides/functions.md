@@ -60,10 +60,11 @@ Each scope is a *namespace*, a.k.a. environment or context.  Namespaces can be t
 
 ### Active Review
 
-- Evaluate `globals()` in the `python3` REPL.
+- Evaluate `globals()` in the `python3` REPL (not iPython).
 - Evaluate `dir()`.
+- Evaluate `set(globals().keys()) == set(dir())`
 - Import the `math` module.
-- Evaluate `globals()["math"]` in your Python REPL.
+- Evaluate `dir(math)` in your Python REPL.
 
 ## Active Review: Python Scope Resolution
 
@@ -191,7 +192,7 @@ If a function has parameters following a varargs, the remaining arguments must b
 - Execute `print("Hello")` and note the output.
 - Execute `print("Hello", "world")` and note the output.
 - Execute `print("Hello", "world", end="")` and note the output.
-- Execute `print("Hello", "world", end="")`.  
+- Execute `print("Hello", "world", "")`.  
   - Why do you get the output you get?  
   - How does the documentation for `print` alert you to this fact?
 
