@@ -7,11 +7,11 @@ title: Expressions
 
 Every powerful language has three mechanisms for combining simple ideas to form more complex ideas:([SICP 1.1](http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-10.html))
 
-- *primitive expressions*, which represent the simplest entities the language is concerned with,
-- *means of combination*, by which compound elements are built from simpler ones, and
-- *means of abstraction*, by which compound elements can be named and manipulated as units.
+- _primitive expressions_, which represent the simplest entities the language is concerned with,
+- _means of combination_, by which compound elements are built from simpler ones, and
+- _means of abstraction_, by which compound elements can be named and manipulated as units.
 
-In the last lesson we learned about values and variables, and introduced compound expressions.  In this lesson we'll dive more deeply into compound expressions.
+In the last lesson we learned about values and variables, and introduced compound expressions. In this lesson we'll dive more deeply into compound expressions.
 
 ## Statements vs Expressions
 
@@ -39,7 +39,6 @@ Python 3.8 introduced the "walrus" operator, `:=`, which creates an assignment e
 Note that `while` and `if` are statements -- they don't produce values, they create effects.
 
 We will see a few cases in future lessons where the walrus operator is helpful.
-
 
 ## Expression Evaluation
 
@@ -75,7 +74,7 @@ Python is strongly typed, meaning that Python does not allow expressions with in
 
 ### Active Review
 
-Evaluate the following expressions in the Python REPL.  Be sure to type them exactly as written.
+Evaluate the following expressions in the Python REPL. Be sure to type them exactly as written.
 
 - `2 + 3`
 - `"2" + "3"`
@@ -129,7 +128,7 @@ expressions:
 
 - Equal to: `==`, like $=$ in math
 
-    - Remember, `=` is assignment operator, `==` is comparison operator!
+  - Remember, `=` is assignment operator, `==` is comparison operator!
 
 - Not equal to: `!=`, like $\ne$ in math
 - Greater than: `>`, like $>$ in math
@@ -149,14 +148,14 @@ expressions:
 
 ## Logical Operators
 
-The values produced by logial operators are often shown in truth tables:
+The values produced by logical operators are often shown in truth tables:
 
-| a     | b     | not a   | a and b   | a or b   |
+| a | b | not a | a and b | a or b |
 |-------+-------+---------+-----------+----------|
-| False | False | True    | False     | False    |
-| False | True  | True    | False     | True     |
-| True  | False | False   | False     | True     |
-| True  | True  | False   | True      | True     |
+| False | False | True | False | False |
+| False | True | True | False | True |
+| True | False | False | False | True |
+| True | True | False | True | True |
 
 Some examples:
 
@@ -184,7 +183,7 @@ The zero values of built-in types are equivalent to `False`:
 
 All other values are equivalent to True.
 
-- Every value in Python is either *truthy* or *falsey* and can be used in a boolean context.
+- Every value in Python is either _truthy_ or _falsey_ and can be used in a boolean context.
 
 ## Short-circuit Evaluation
 

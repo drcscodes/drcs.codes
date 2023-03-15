@@ -20,7 +20,7 @@ You run a phyical fitness contest modeled after Navy Special Warfare's physical 
 
 ## Solution Description
 
-You don't have the data file yet, but you want to be prepared so you wil create a module that caclulates elements of the composite score. Your module will be named `fit` and contain the functions listed below.
+You don't have the data file yet, but you want to be prepared so you will create a module that calculates elements of the composite score. Your module will be named `fit` and contain the functions listed below.
 
 ### `doctest`
 
@@ -32,7 +32,7 @@ Because each function will have a docstring that includes usage examples formatt
 python -m doctest -v fit.py
 ```
 
-If all the tests pass, then you'll probably (but not defnitely) get a 100 on this homework.
+If all the tests pass, then you'll probably (but not definitely) get a 100 on this homework.
 
 ### Required Functions
 
@@ -105,7 +105,7 @@ def winner(data, event):
 
 ### Testing Your Module Interactively
 
-In addition to running the doctests as described above, you can import your `fit` module in the Python REPL to test your functions as you write and modify them. For example, ssuming you're in the same directory as your `fit.py` file:
+In addition to running the doctests as described above, you can import your `fit` module in the Python REPL to test your functions as you write and modify them. For example, assuming you're in the same directory as your `fit.py` file:
 
 ```Python
 Python 3.6.3 |Continuum Analytics, Inc.| (default, Jul  2 2016, 17:53:06)
