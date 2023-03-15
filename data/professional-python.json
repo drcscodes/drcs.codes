@@ -144,8 +144,7 @@
         "PfP 3; TP 5, 7"
       ],
       "exercises": [
-        "[Data Manipulation](/python/exercises/data-manipulation)",
-        "[Grades Module](/python/exercises/grades)"
+        "[Monty Hall](/python/exercises/monty-hall)"
       ],
       "projects": [
         "[]()"
@@ -161,7 +160,7 @@
         "PfP 5, 6"
       ],
       "exercises": [
-        "[Monty Hall](/python/exercises/monty-hall)",
+        "[Data Manipulation](/python/exercises/data-manipulation)",
         "[Matrix Operations](/python/exercises/matrixops)"
       ],
       "projects": [
@@ -216,7 +215,7 @@
       ],
       "projects": [
         "[Students](/python/projects/students)",
-        "[Markov Chains for Recognition](python/projects/markov-chains-recognition)"
+        "[Markov Chains for Recognition](/python/projects/markov-chains-recognition)"
       ],
       "videos": [
         "Classes and Objects - Coming soon!"

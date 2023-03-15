@@ -1,9 +1,9 @@
 ---
 layout: exercise
-title: Water Temps Analysis
+title: Water Temperatures
 ---
 
-# Water Temperatures Analysis
+# Water Temperatures
 
 ## Introduction
 
@@ -49,9 +49,9 @@ Virginia Key FL    76
 Name: NOV, dtype: int64
 
 In [19]: warm_spots
-Out[19]: 
+Out[19]:
                   JAN  FEB  MAR  APR  MAY  JUN  JUL  AUG  SEP  OCT  NOV  DEC        AVG
-Location                                                                               
+Location
 Daytona Beach FL   61   59   65   65   72   78   81   81   79   71   71   65  70.666667
 Miami Beach FL     71   73   75   65   72   78   81   81   79   71   76   73  74.583333
 Stuart Beach FL    67   66   70   65   72   78   81   81   79   71   75   70  72.916667
