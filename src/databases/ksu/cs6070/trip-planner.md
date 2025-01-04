@@ -7,7 +7,7 @@ title: CS 6070 Project Details
 
 You will create a database for an application that allows users to explore the attractions in a given city and create a trip plan that lists all the attractions they will see during a trip to that city. The general description below describes the data your database will need to maintain and the constraints your database must enforce, in some cases with application code.
 
-<!-- Phase 1 example EER: [trip-planner.svg](trip-planner.svg) -->
+<!-- Phase 1 example EER: [trip-planner.svg](project-details/trip-planner.svg) -->
 
 ## General Description
 
@@ -23,14 +23,14 @@ Once a user has completed a trip, which the system knows simply by the fact that
 
 ## User Interface (UI) Mock-up
 
-Following is a list of mockups of the screens that make up the database application (the user documents, using terminology from our [conceptual design process](../../../slides/conceptual-design-process.pdf)), with UI flow arrows and textual descriptions. You can derive an EER diagram, semantic constraints, information flow diagram, relational model, SQL statements, and the application itself from these mock-ups and descriptions. Please note that these are low-fidelity mock-ups. Your UI will likely (and probably should) look different.
+Following is a list of mockups of the screens that make up the database application (the user documents, using terminology from our [conceptual design process](../../../databases/slides/conceptual-design-process.pdf)), with UI flow arrows and textual descriptions. You can derive an EER diagram, semantic constraints, information flow diagram, relational model, SQL statements, and the application itself from these mock-ups and descriptions. Please note that these are low-fidelity mock-ups. Your UI will likely (and probably should) look different.
 
 ### Login
 
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="login.png" alt="Login Screen" width="100%" />
+<img src="project-details/login.png" alt="Login Screen" width="100%" />
 </td>
 <td width="50%" valign="top">
 A user account is required to access the system, so the database must maintain user account information such as a user's name and email address. Some users will have administrative rights to the system in order to add and edit attraction information, and get reservation lists. Administrators are added only by database administrators. so there is no application screen for adding or editing administrators.
@@ -43,7 +43,7 @@ A user account is required to access the system, so the database must maintain u
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="registration.png" alt="" width="100%" />
+<img src="project-details/registration.png" alt="" width="100%" />
 </td>
 <td width="50%" valign="top">
 Items marked with a * are required.
@@ -58,7 +58,7 @@ Email is unique. Credit card is unique.
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="admin-dashboard.png" alt="Login Screen" width="100%" />
+<img src="project-details/admin-dashboard.png" alt="Login Screen" width="100%" />
 </td>
 <td width="50%" valign="top">
 An admin can add attractions, update attraction information, and get reports of an attraction’s rosters and schedules. An admin user will also have the ability to add and delete user accounts and place user accounts on hold if abuse is detected.
@@ -71,7 +71,7 @@ An admin can add attractions, update attraction information, and get reports of 
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="edit-attraction.png" alt="Edit Attraction Screen" width="100%" />
+<img src="project-details/edit-attraction.png" alt="Edit Attraction Screen" width="100%" />
 </td>
 <td width="50%" valign="top">
 An Attraction is some place that a visitor would want to visit. An attraction could be a tour, a monument, a public park to hang out in, or any other place of note in a city. Some attractions have a fee, and some are free. Some attractions require reservations for a particular time slot. At a minimum the database will need to maintain attractions' names, addresses, descriptions, hours of operations, and nearest public transportation so that users (or the trip planning system) can plan trips appropriately. Attractions that require reseravations for times slots will need to keep track of the data necessary for planning them and keep track of the reservations in the system so that the system knows the number of spaces available for each time slot.
@@ -84,7 +84,7 @@ An Attraction is some place that a visitor would want to visit. An attraction co
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="attraction-reports.png" alt="Attraction Reports Screen" width="100%" />
+<img src="project-details/attraction-reports.png" alt="Attraction Reports Screen" width="100%" />
 </td>
 <td width="50%" valign="top">
 Attraction dropdown only shows attractions that have time slot reservations. Select an attraction and a date, and the time slots for which there are reservations in the system are disiplayed in the time slots list. Select a time slot and the roster of customers with reservations for that time slot are diplateyed.
@@ -98,7 +98,7 @@ Attraction dropdown only shows attractions that have time slot reservations. Sel
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="customer-dashboard.png" alt="Customer Dashboard Screen" width="100%" />
+<img src="project-details/customer-dashboard.png" alt="Customer Dashboard Screen" width="100%" />
 </td>
 <td width="50%" valign="top">
 Main screen for a customer showing profile information and trips in the system.
@@ -111,7 +111,7 @@ Main screen for a customer showing profile information and trips in the system.
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="edit-trip.png" alt="Edit Trip Screen" width="100%" />
+<img src="project-details/edit-trip.png" alt="Edit Trip Screen" width="100%" />
 </td>
 <td width="50%" valign="top">
 Pick a city and a date, and all the attractions for that city with availability on that date (if applicable) are displayed. Pick an attraction, and all the time slots for reservations (if applicable) are displayed. Pick an attraction and time slot (if applicable) and press Add to Trip, and the attraction is added to the trip itinerary. If the selected time slot overlaps with a time slot already in the trip, a pop-up screen informs the user and the attraction is not added to the trip.
@@ -125,7 +125,7 @@ When book/confirm is pressed, if any of the reservation time slots are no longer
 <table>
 <tr>
 <td width="50%" valign="top">
-<img src="review-attraction.png" alt="Review Attraction Screen" width="100%" />
+<img src="project-details/review-attraction.png" alt="Review Attraction Screen" width="100%" />
 </td>
 <td width="50%" valign="top">
 The city pull-down is populated with cities in which the user has completed trips. Once a city is selected the attractions list is populated with attractions the user has visited (were on a trip whose end date has passed).
