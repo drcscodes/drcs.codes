@@ -1,0 +1,303 @@
+#+TITLE: Entity-Relationship Models
+#+AUTHOR:
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [smaller]
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
+
+* Entity-Relationship Models
+
+** Entity-Relationship Models
+
+- Entities
+- Attributes
+- Relationships
+
+** The Role of Conceptual Models
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[https://i.chzbgr.com/maxW500/6474992896/h503A45A5/][file:office-space-people-skills.jpg]]
+#+END_CENTER
+
+High-level but concrete view of data understandable by end users and database developers
+
+** Database Design Process
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[file:fig3_1-design-process.png]]
+#+END_CENTER
+
+ER modeling is the box labeled "Conceptual Design."
+
+** Entities and Entity Types
+
+An entity is a real or abstract thing with an independent existence in the world.
+
+- Person (real)
+- Building (real)
+- Job (abstract)
+- Course (abstract)
+
+In ER models we often say "entity" when we mean "entity type."
+
+- An entity type is a set of entities (instances) with the same attributes, i.e., properties of entities.
+
+- An entity set or entity collection is the set of instances of an entity type in a partcular database.
+
+Entity types are depicted with a rectangle.
+
+** Atomic vs. Composite Attributes
+
+- Atomic attributes have a single for an entity instance, e.g., ~GTID~.
+- Composite attributes are composed of one or more compents, e.g., ~BirthDate~
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[file:er-student-atomic-composite.png]]
+#+END_CENTER
+
+An instance of Student might look like:
+
+~("Tom Jones", 902109021, BirthDate(2000, 01, 25))~
+
+** Single-valued vs. Multi-valued Attributes
+
+- Single-valued attributes have one (atomic or composite) value for each instance.
+- Multi-valued attributes have a set of (atomic or composite) values for each instance.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[file:er-student-single-multi.png]]
+#+END_CENTER
+
+
+** Stored vs. Derived Attributes
+
+- All the attribute types we've seen so far are stored. A derived attribute gets its value from stored attributes and is not stored.
+- Age is derived from BirthDate.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[file:er-student-stored-derived.png]]
+#+END_CENTER
+
+
+** Complex Attributes
+
+- Composite and multi-value attribtes can be arbitrarily nested. Such attributes are called complex attributes.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[file:er-student-complex.png]]
+#+END_CENTER
+
+NULL values represent the absence of data. Can mean unknown or not applicable.
+
+** Semantic Constraints
+
+What if we wanted to ensure that no degree date were before the student's birthdate?
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .4\textheight
+[[file:er-student-complex.png]]
+#+END_CENTER
+
+\vspace{-.6in}
+
+- In general ER models can't express constraints on the values of particular attributes
+  - Can only express contstraints on structure -- attributes of an entity type, sets for multi-valued attributes, components for composite attributes, single values for atomicattributes.
+- To express constraints on the values of attributes (often in relation to the values of other attributes) we use a sematic constraint. For example:
+
+#+BEGIN_QUOTE
+The ~Date~ for any ~Degree~ of a ~Student~ instance cannot be prior to the ~BirthDate~ of the ~Student~ instance.
+#+END_QUOTE
+
+** Keys
+
+A key is a(n) (set of) attribute(s) whose value uniquely identifies an entity instance.
+
+- Key attributes are underlined.
+- No two entity instances in a database can have the same values for their key attribues.
+- An entity type may have multiple keys.
+- Composite keys are modeled with composite attributes.
+- Names of key attributes are underlined.
+- An entity type must have at least one key, otherwise it is a weak entity type (more later).
+- If no attributes are underlined, every attribute forms a composite key.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .5\textheight
+[[file:er-car-keys.png]]
+#+END_CENTER
+
+** Domains/Value Sets
+
+Each attribute has a type.
+
+- A type is a set of values, e.g., the set of integers, the set of months, etc.
+- The attribute value for an instance comes from the domain of the attribute.
+- Legal attribute values can be further restricted, e.g., BirthDate cannot be a future date.
+- Attribute types are not modeled in our ER diagram language but can be listed as semantic constraints.
+
+** Relationship Types
+
+Relationships between entity types are explicitly modeled. Relationships have
+
+- Names
+- Degree -- the number of participating entity types (we'll only consider binary reltionships)
+- Attributes (optional)
+- Constraints
+
+  - Cardinality
+  - Participation
+
+** Relationships as Attributes
+
+In this ER model a Student can have an Advisor.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :width .95\textwidth
+[[file:er-student-advisor-attribute.png]]
+#+END_CENTER
+
+\vspace{-.6in}
+
+- But an advisor is a professor, which is an entity that is related to many other entities.
+- And if a professor advises many students, the professor's information will be repeated in the database.
+
+** Elevating Attributes to Relationships
+
+The ~advises~ relationship type represents a relationship between Professor and Student.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :width .95\textwidth
+[[file:er-professor-student-relationship.png]]
+#+END_CENTER
+
+\vspace{-.6in}
+
+Relationship instances are represented as tuples of the key values of the related entity instances.
+
+- ~(123456789, 987654321)~ means the professor with GTID 123456789 is the advisor of the student with GTID 987654321.
+
+** Recursive Relationships
+
+An entity type can be related to itself. Here every employee has one supervisor. A supervisor may have many supervisees.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[file:er-employee-supervisor.pdf]]
+#+END_CENTER
+
+** Cardinality Ratios
+
+Two kinds of binary relationship constraints:
+
+- Cardinality ratios
+- Participation constraints
+
+We've already seen 1-to-many cardinality ratios. Here's a many-to-many cardinality ratio:
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :width .95\textwidth
+[[file:er-student-course.png]]
+#+END_CENTER
+
+** Attributes of Relationship Types
+
+Notice that the ~registered~ relationship has attributes.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :width .95\textwidth
+[[file:er-student-course.png]]
+#+END_CENTER
+
+\vspace{-.6in}
+
+A tuple for an instance of the registered attribute would have a Student key value, a Course key value, and the values for the attributes of the relationship. For example:
+
+- ~(123456789, 8675309, "P/F")~ means the Student with GTID 123456789 is registered for the course with CRN 8675309 in Pass/Fail mode.
+
+** Participation Constraints
+
+Two kinds of participatoin constraints.
+
+- Total (existence): every entity in an entity set participates in a relationship
+- Partial: some of the entities in an entity set participate in a relationship
+
+Here a department must have a manager, but not every employee is required to be a manager.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[file:er-department-manager.png]]
+#+END_CENTER
+
+
+** Weak Entity Types
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[file:bro-weak-entity.jpg]]
+#+END_CENTER
+
+** Weak Entity Types
+
+- Don't have keys
+- May have partial keys
+- Must have total participation with identifying entity type
+- Identifiable by a composite key: identifying entity's key + weak entity's partial key
+
+Identifying relationship is represented with double-lined diamond.
+
+** Courses and Department
+
+Here, a course is offered by a department.
+
+- Courses in different departments can have the same number.
+- The department key and the course number are sufficient to uniquely identify a course.
+- A department will only have one course with a given number, so the number is a partial key.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[file:er-department-course.png]]
+#+END_CENTER
+
+** Multiple Identifying Relationships
+
+A weak entity type can be identified in relation to multiple entity types.
+
+#+BEGIN_CENTER
+#+ATTR_LaTeX: :height .6\textheight
+[[file:er-inventory.pdf]]
+#+END_CENTER
+
+The key for an INVENTORY instance is
+
+#+BEGIN_QUOTE
+(StoreId, ProductId(MfrDate, SerialNo), InventoryId)
+#+END_QUOTE
+
+** Fin
+
+- Entity-relationship models express contents and constraints on data using
+
+  - entities,
+  - attributes, and
+  - relationships.
+
+- ER modeling is a part of conceptual design.
+- ER models are understood by both technical and non-technical stakeholders (e.g., customers).
+- Constraints that can't be modeled using in the ER modeling scheme can be expressed as semantic constraints.

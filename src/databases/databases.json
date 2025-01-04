@@ -1,0 +1,270 @@
+{
+    "materials": [
+        "[FoDS: Fundamentals of Database Systems by Elmasri and Navathe, 7th Ed](https://www.pearson.com/en-us/subject-catalog/p/fundamentals-of-database-systems/P200000003546/9780137502523)"
+    ],
+    "lessons": [
+        {
+            "part": "Databases Concepts and Conceptual Models"
+        },
+        {
+            "topic": "intro-databases",
+            "slides": "[Introduction to Databases](slides/intro-databases.pdf)",
+            "reading": [
+                "FoDS 1"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "database-concepts",
+            "slides": "[Database Concepts](slides/database-concepts.pdf)",
+            "reading": [
+                "FoDS 2"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "er-models",
+            "slides": "[ER Models](slides/er-models.pdf)",
+            "reading": [
+                "FoDS 3.1-3.7.3",
+                "[Movie Rental ER Exercise](exercises/movie-rental-er/)",
+                "[Video: ER Models](https://youtu.be/RAISMrNZgiA)"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "eer-models",
+            "slides": "[EER Models](slides/eer-models.pdf)",
+            "reading": [
+                "FoDS 4.1-4.3",
+                "[Humane Society EER Exercise](exercises/humane-society-eer/)"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "exam1review",
+            "slides": "Exam 1 Review",
+            "reading": [],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "exam1",
+            "slides": "Exam 1",
+            "reading": [],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "conceptual-design-process",
+            "slides": "<a href=\"slides/conceptual-design-process.pdf\">Conceptual Design Process</a>",
+            "reading": [
+                ""
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "part": "Relational Model"
+        },
+        {
+            "topic": "relational-model",
+            "slides": "[Relational Model](slides/relational-model.pdf)</a>",
+            "reading": [
+                "FoDS 5"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "relational-algebra",
+            "slides": "[Relational Algebra](slides/relational-algebra.pdf)",
+            "reading": [
+                "FoDS 8.1 - 8.3.4, 8.4.4",
+                "[Relational Algebra Exercises](exercises/relational-algebra-exercises.pdf) - [Answers](exercises/relational-algebra-exercises-answers.pdf)",
+                "[Relational Algebra Masterclass](exercises/relational-algebra-masterclass.pdf)"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "relational-calculus",
+            "slides": "[Relational Calculus](slides/relational-calculus.pdf)",
+            "reading": [
+                "FoDS 8.5"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": [],
+            "include_semester": false
+        },
+        {
+            "topic": "exam2review",
+            "slides": "Exam 2 Review",
+            "reading": [],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "exam2",
+            "slides": "Exam 2",
+            "reading": [],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "part": "Relational Databases and SQL"
+        },
+        {
+            "topic": "er-relational-mapping",
+            "slides": "[ER - Relational Mapping](slides/er-relational-mapping.pdf)</a>",
+            "reading": [
+                "FoDS 9"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "basic-relational-design",
+            "slides": "[Basic Relational Design](slides/basic-relational-design.pdf)",
+            "reading": [
+                "FoDS 14.1-14.3"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "sql-ddl",
+            "slides": "[SQL DDL](slides/sql-ddl.pdf)",
+            "reading": [
+                "FoDS 6"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "sql-crud",
+            "slides": "[SQL CRUD](slides/sql-crud.pdf)",
+            "reading": [
+                "FoDS 6",
+                "[Exercise: Registration Database](exercises/registration-database/)"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "sql-queries",
+            "slides": "[SQL Queries](slides/sql-queries.pdf)",
+            "reading": [
+                "FoDS 6",
+                "[Exercise: Dorms Queries](exercises/dorms-queries/)"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "sql-advanced",
+            "slides": "[Advanced SQL](slides/sql-advanced.pdf)",
+            "reading": [
+                "FoDS 6,7",
+                "[Exercise: Sakila Queries](exercises/sakila-queries/)"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "part": "Relational Database Design"
+        },
+        {
+            "topic": "relational-design",
+            "slides": "[Relational Design](slides/relational-design.pdf)",
+            "reading": [
+                "FoDS 14.1-14.5"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "advanced-relational-design",
+            "slides": "[Advanced Relational Design](slides/advanced-relational-design.pdf)",
+            "reading": [
+                "FoDS 15.1-15.3",
+                "[BCNF Decomposition Exercise](exercises/bcnf-decomposition.pdf)"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "exam3review",
+            "slides": "Exam 3 Review",
+            "reading": [],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "exam3",
+            "slides": "Exam 3",
+            "reading": [],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "nosql",
+            "slides": "[NoSQL Databases](slides/nosql.pdf)",
+            "reading": [
+                "FoDS 16.1-16.7"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": [],
+            "include_semester": true
+        },
+        {
+            "topic": "storage-structures",
+            "slides": "[Storage Structures](slides/storage-structures.pdf)",
+            "reading": [
+                "FoDS 16.1-16.7"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": [],
+            "include_semester": false
+        },
+        {
+            "topic": "index-structures",
+            "slides": "[Indexing Structures](slides/index-structures.pdf)",
+            "reading": [
+                "FoDS 17"
+            ],
+            "exercises": [],
+            "projects": [],
+            "videos": [],
+            "include_semester": false
+        }
+    ]
+}

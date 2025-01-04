@@ -1,0 +1,143 @@
+graph trip_planner {
+    node [shape=ellipse, peripheries=2] UAddress [label="Address"];
+    node [shape=ellipse, peripheries=1] UNumber [label="Number"]; UStreet [label="Street"]; UCity [label="City"]; UState [label="State"]; UZip [label="Zip"]; UCountry [label="Country"];
+
+    UNumber -- UAddress;
+    UStreet -- UAddress;
+    UCity -- UAddress;
+    UState -- UAddress;
+    UZip -- UAddress;
+    UCountry -- UAddress;
+
+    node [shape=box]; USER;
+    UAddress -- USER;
+    node [shape=ellipse]; IsAdmin; UName [label="Name"]; Email [label=<<u>Email</u>>]; Suspended;
+    UName -- USER;
+    Email -- USER;
+    IsAdmin -- USER;
+    Suspended -- USER;
+
+    node [shape=box] ATTRACTION;
+    node [shape=ellipse] AName [label=<<u>Name</u>>]; AAddress [label="Address"];  ADescription [label="Description"]; HoursOfOperation; DayOfWeek; OpeningTime; ClosingTime;
+
+    rankdir=LR
+    AName -- ATTRACTION;
+    AAddress -- ATTRACTION;
+    ADescription -- ATTRACTION;
+    ATTRACTION -- HoursOfOperation;
+    HoursOfOperation -- DayOfWeek
+    HoursOfOperation -- OpeningTime
+    HoursOfOperation -- ClosingTime
+    rankdir=TB
+
+    node [shape=box] RESERVED_ATTRACTION;
+    node [shape=box, peripheries=2] TIME_SLOT;
+    node [shape=ellipse, peripheries=1] TSStartDateTime [label=<<u>StartDateTime</u>>]; TSEndDateTime [label=<<u>EndDateTime</u>>]; Quantity;
+
+    node [shape=box] PAID_ATTRACTION;
+    node [shape=ellipse, peripheries=1] Price;
+
+    node [shape=circle]; sub_attraction [label="o"];
+
+    ATTRACTION -- sub_attraction;
+    sub_attraction -- RESERVED_ATTRACTION [dir="back", arrowhead="empty"];
+    sub_attraction -- PAID_ATTRACTION [dir="back", arrowhead="empty"];
+
+    TIME_SLOT -- TSStartDateTime;
+    TIME_SLOT -- TSEndDateTime;
+    TIME_SLOT -- Quantity;
+
+    node [shape=diamond, peripheries=2, style=solid, label="HAS"]; RA_TIME_SLOT;
+    RESERVED_ATTRACTION -- RA_TIME_SLOT [label="1"];
+    RA_TIME_SLOT -- TIME_SLOT [label="N", color="black:invis:black"];
+
+    PAID_ATTRACTION -- Price;
+
+    node [shape=box, peripheries=1]; PUBLIC_TRANSPORTATION [label="PUBLIC_TRANSPORTATION"];
+    node [shape=ellipse, peripheries=1] TName [label=<<u>Name</u>>]; TAddress [label="Address"];
+
+    PUBLIC_TRANSPORTATION -- TName;
+    PUBLIC_TRANSPORTATION -- TAddress;
+
+    node [shape=diamond] NEAREST_TO [label="NEAREST_TO"];
+    ATTRACTION --  NEAREST_TO [label="N", color="black:invis:black"];
+    NEAREST_TO -- PUBLIC_TRANSPORTATION [label="1"];
+
+    node [shape=box, peripheries=2]; TRIP [label="TRIP"];
+    node [shape=ellipse, peripheries=1] City [label=<<u>City</u>>]; StartDate [label=<<u>StartDate</u>>]; Booked [label="Booked"];
+    node [shape=ellipse, peripheries=1, style=dotted] TStartDateTime [label="StartDateTime"]; TEndDateTime [label="EndDateTime"]; TotalCost [label="TotalCost"];
+
+    City -- TRIP;
+    StartDate -- TRIP;
+    Booked -- TRIP;
+    TStartDateTime -- TRIP;
+    TEndDateTime -- TRIP;
+    TotalCost -- TRIP;
+
+    node [shape=diamond, peripheries=2, style=solid, label="PLANS"]; USER_TRIP;
+    USER -- USER_TRIP [label="1"];
+    USER_TRIP -- TRIP [label="N", color="black:invis:black"];
+
+    node [shape=box, peripheries=2] ACTIVITY [label="Activity"];
+    node [shape=ellipse, peripheries=1] AStartDateTime [label=<<u>StartDateTime</u>>]; AEndDateTime [label="EndDateTime"];
+
+    AStartDateTime -- ACTIVITY;
+    AEndDateTime -- ACTIVITY;
+
+    node [shape=diamond, peripheries=1] AT [label="AT"];
+
+    ACTIVITY -- AT [label="1", color="black:invis:black"];
+    AT -- ATTRACTION [label="1"];
+
+
+    node [shape=diamond, peripheries=2, style=solid, label="CONTAINS"]; TRIP_ACTIVITY;
+
+    // rankdir=LR
+    TRIP -- TRIP_ACTIVITY [label="1"];
+    TRIP_ACTIVITY -- ACTIVITY [label="N", color="black:invis:black"];
+
+    node [shape=diamond, peripheries=1, style=solid, label="RESERVES"]; RESERVATION;
+    node [shape=ellipse, peripheries=1] ReservationNumber [label=<<u>ReservationNumber</u>>]; NumberInParty [label="NumberInParty"];
+
+    ReservationNumber -- RESERVATION;
+    NumberInParty -- RESERVATION;
+
+    ACTIVITY -- RESERVATION [label="1"];
+    RESERVATION -- TIME_SLOT [label="1"];
+
+    node [shape=box, peripheries=1] CREDIT_CARD [label="CREDIT_CARD"];
+    node [shape=diamond, peripheries=1, style=solid, label="PAID_WITH"] PAID_WITH;
+    node [shape=ellipse, peripheries=1]; CCNumber [label=<<u>CCNumber</u>>]; CCAddress [label="Address"];  CCExpiry [label="Expiry"];  CVV [label="CVV"];
+
+    TRIP -- PAID_WITH [label="1"];
+    PAID_WITH -- CREDIT_CARD [label="1"];
+
+    CREDIT_CARD -- CCNumber;
+    CREDIT_CARD -- CCAddress;
+    CREDIT_CARD -- CCExpiry;
+    CREDIT_CARD -- CVV;
+
+    node [shape=diamond]; OWNS [label="OWNS"];
+
+    USER -- OWNS [label="1"];
+    OWNS -- CREDIT_CARD [label="1"];
+
+
+    node [shape=box, peripheries=2] REVIEW [label="REVIEW"];
+    node [shape=diamond, peripheries=2, style=solid, label="WRITES"]; WRITES;
+    node [shape=ellipse, peripheries=1]; Title [label="Title"]; Body [label="Body"]; ReviewDate [label="Date"];
+
+    REVIEW -- Title;
+    REVIEW -- Body;
+    REVIEW -- ReviewDate;
+
+    USER -- WRITES [label="1"];
+    WRITES -- REVIEW [label="N", color="black:invis:black"];
+
+    node [shape=diamond, peripheries=2, style=solid, label="RATES"]; RATES;
+
+    REVIEW -- RATES [label="N", color="black:invis:black"];
+    RATES -- ATTRACTION [label="1"];
+
+
+}

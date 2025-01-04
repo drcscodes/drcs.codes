@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dorms Query Exercise in SQLite</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/codehilite.css">
+</head>
+<body>
+    <button onclick="history.back()">Back to Course</button>
+    <div class="main">
+    <h1>Dorms Query Exercise in SQLite</h1>
+<h2>Introduction</h2>
+<p>In this exercise you will practice</p>
+<ul>
+<li>executing SQL scripts, and</li>
+<li>writing basic SQL queries.</li>
+</ul>
+<h2>Problem Description</h2>
+<p>You work for the housing department of a major university and want to analyze information in your residency database.</p>
+<h2>Solution Description</h2>
+<ol>
+<li>Download <a href="dorms-sqlite.sql">dorms-sqlite.sql</a></li>
+<li>On the command line, go to the directory where you downloaded the dorms database script above.</li>
+<li>Run the <code>dorms-sqlite.sql</code> script like this:</li>
+</ol>
+<p><code>sh
+   $ sqlite3 dorms.db &lt; dorms-sqlite.sql</code></p>
+<h3>Running Queries on the Dorms Database</h3>
+<p>Use SQLite in interactive mode by starting <code>sqlite3</code> with the <code>dorms.db</code> database file.</p>
+<div class="codehilite"><pre><span></span><code>```<span class="nv">sh</span><span class="w"></span>
+$<span class="w"> </span><span class="nv">sqlite3</span><span class="w"> </span><span class="nv">dorms</span>.<span class="nv">db</span><span class="w"></span>
+<span class="nv">SQLite</span><span class="w"> </span><span class="nv">version</span><span class="w"> </span><span class="mi">3</span>.<span class="mi">13</span>.<span class="mi">0</span><span class="w"> </span><span class="mi">2016</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">18</span><span class="w"> </span><span class="mi">10</span>:<span class="mi">57</span>:<span class="mi">30</span><span class="w"></span>
+<span class="nv">Enter</span><span class="w"> </span><span class="s2">&quot;.help&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nv">usage</span><span class="w"> </span><span class="nv">hints</span>.<span class="w"></span>
+<span class="nv">sqlite</span><span class="o">&gt;</span><span class="w"></span>
+```<span class="w"></span>
+</code></pre></div>
+
+<p>Tell SQLite to use headers and columns when displaying table data:</p>
+<div class="codehilite"><pre><span></span><code>```sh
+sqlite&gt; .headers on
+sqlite&gt; .mode column
+```
+</code></pre></div>
+
+<p>Pro tip: you can put the above directives to a file called <code>.sqliterc</code> in your home directory so you don't have to type them every time you start <code>sqlite3</code>.</p>
+<h3>Exploring the Database</h3>
+<p>Get a list of the tables:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="n">tables</span><span class="w"></span>
+<span class="n">dorm</span><span class="w">     </span><span class="n">student</span><span class="w"></span>
+</code></pre></div>
+
+<p>See the structure of a table:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="p">.</span><span class="k">schema</span><span class="w"> </span><span class="n">dorm</span><span class="w"></span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">dorm</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<span class="w">    </span><span class="n">dorm_id</span><span class="w"> </span><span class="nb">int</span><span class="w"> </span><span class="k">primary</span><span class="w"> </span><span class="k">key</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"></span>
+<span class="w">    </span><span class="n">spaces</span><span class="w"> </span><span class="nb">integer</span><span class="w"></span>
+<span class="p">);</span><span class="w"></span>
+</code></pre></div>
+
+<p>Run a simple query:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">sqlite</span><span class="o">&gt;</span><span class="w"> </span><span class="k">select</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="n">dorm</span><span class="p">;</span><span class="w"></span>
+<span class="n">dorm_id</span><span class="w">     </span><span class="n">name</span><span class="w">        </span><span class="n">spaces</span><span class="w"></span>
+<span class="c1">----------  ----------  ----------</span>
+<span class="mi">1</span><span class="w">           </span><span class="n">Armstrong</span><span class="w">   </span><span class="mi">124</span><span class="w"></span>
+<span class="mi">2</span><span class="w">           </span><span class="n">Brown</span><span class="w">       </span><span class="mi">158</span><span class="w"></span>
+<span class="mi">3</span><span class="w">           </span><span class="n">Caldwell</span><span class="w">    </span><span class="mi">158</span><span class="w"></span>
+</code></pre></div>
+
+<h3>Simple Queries</h3>
+<ul>
+<li>What are the names of all the dorms?</li>
+<li>Which students have GPAs greater than 3.0?</li>
+<li>Rank students by GPA.</li>
+<li>Which student has the top GPA?</li>
+<li>Which students are in Armstrong?</li>
+</ul>
+<h3>Advanced Queries</h3>
+<ul>
+<li>What is the total capacity (number of spaces) for all dorms?</li>
+<li>Which dorm has the most students?</li>
+<li>Which dorm's students have the highest average GPA?</li>
+</ul>
+<h2>Sample Answer</h2>
+<ul>
+<li><a href="dorms-queries.sql">dorms-queries.sql</a></li>
+</ul>
+    </div>
+</body>
+</html>

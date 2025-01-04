@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dorms Query Exercise</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/codehilite.css">
+</head>
+<body>
+    <button onclick="history.back()">Back to Course</button>
+    <div class="main">
+    <h1>Dorms</h1>
+<h2>Introduction</h2>
+<p>In this exercise you will practice</p>
+<ul>
+<li>executing SQL scripts, and</li>
+<li>writing basic SQL queries.</li>
+</ul>
+<h2>Problem Description</h2>
+<p>You work for the housing department of a major university and want to analyze information in your residency database.</p>
+<h2>Solution Description</h2>
+<ol>
+<li>Download <a href="dorms-schema.sql">dorms-schema.sql</a> and <a href="dorms-data.sql">dorms-data.sql</a></li>
+<li>On the command line, go to the directory where you downloaded the dorms database scripts.</li>
+<li>If on macOS, make sure your MySQL server is running:</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>$ mysql.server start
+Starting MySQL
+SUCCESS!
+</code></pre></div>
+
+<ol>
+<li>Run the <code>dorms.sql</code> script like this (can leave off -p if your password is blank):</li>
+</ol>
+<div class="codehilite"><pre><span></span><code>$ mysql -u root -p &lt; dorms-schema.sql
+$ mysql -u root -p &lt; dorms-data.sql
+</code></pre></div>
+
+<h3>Running Queries on the Dorms Database</h3>
+<p>Start MySQL's client and <code>use</code> the <code>dorms</code> database.</p>
+<div class="codehilite"><pre><span></span><code>$ mysql -u root -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with <span class="p">;</span> or <span class="se">\g</span>.
+...
+mysql&gt; use dorms
+...
+Database changed
+mysql&gt;
+</code></pre></div>
+
+<h3>Exploring the Database</h3>
+<p>Get a list of the tables:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="n">tables</span><span class="p">;</span><span class="w"></span>
+<span class="o">+</span><span class="c1">-----------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Tables_in_dorms</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">-----------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">dorm</span><span class="w">            </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">student</span><span class="w">         </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">-----------------+</span>
+<span class="mi">2</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<p>See the structure of a table:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">describe</span><span class="w"> </span><span class="n">dorm</span><span class="p">;</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------+------+-----+---------+-------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Field</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="k">Type</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="k">Null</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">Key</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">Default</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">Extra</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------+------+-----+---------+-------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">dorm_id</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">NO</span><span class="w">   </span><span class="o">|</span><span class="w"> </span><span class="n">PRI</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="o">|</span><span class="w">       </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">name</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="nb">text</span><span class="w">    </span><span class="o">|</span><span class="w"> </span><span class="n">YES</span><span class="w">  </span><span class="o">|</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="o">|</span><span class="w">       </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">spaces</span><span class="w">  </span><span class="o">|</span><span class="w"> </span><span class="nb">int</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">YES</span><span class="w">  </span><span class="o">|</span><span class="w">     </span><span class="o">|</span><span class="w"> </span><span class="k">NULL</span><span class="w">    </span><span class="o">|</span><span class="w">       </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">---------+---------+------+-----+---------+-------+</span>
+<span class="mi">3</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<h3>Simple Queries on Dorms Database</h3>
+<ul>
+<li>What are the names of all the dorms?</li>
+<li>Which students have GPAs greater than 3.0?</li>
+<li>Which students are in Armstrong?</li>
+<li>Rank students by GPA.</li>
+<li>Which student has the top GPA?</li>
+</ul>
+    </div>
+</body>
+</html>

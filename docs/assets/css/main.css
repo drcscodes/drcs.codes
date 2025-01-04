@@ -1,0 +1,73 @@
+body {
+  min-height: 75rem;
+  padding-top: 4.5rem;
+  font-family: -apple-system, "Helvetica Neue";
+  font-size: 14pt;
+  line-height: 1.25;
+}
+
+.main {
+  margin-right: auto;
+  margin-left: auto;
+  display: block;
+  width: 75%;
+  align-self: center;
+}
+
+ul.navbar {
+  list-style-type: none;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  overflow: hidden;
+  /* Legacy Black --  https://styleguide.kennesaw.edu/logo-guidelines/colors.php */
+  background-color: #2D2926;
+}
+
+li.navbar-item {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+li.navbar-item a {
+  display: block;
+  /* Hooty Hoo Gold --  https://styleguide.kennesaw.edu/logo-guidelines/colors.php */
+  color: #ffc629;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li.navbar-item a:hover {
+  /* Slap Rock Gray -- https://styleguide.kennesaw.edu/logo-guidelines/colors.php */
+  background-color: #B2B4B2;
+}
+
+table.member-list {
+  border: none;
+}
+
+td.member {
+  width: 20%;
+  padding: 10px;
+  vertical-align: top;
+}
+
+table.schedule, th, tr, td{
+    align-self: center;
+    border: 1px solid;
+    border-collapse: collapse;
+}
+
+table.schedule th, tr.internal-header {
+    background: lightgray;
+    text-align: center;
+}
+
+table.schedule tr:hover {
+    background: #ffc629;
+}

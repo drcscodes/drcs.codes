@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sakila Queries Exercise</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/codehilite.css">
+</head>
+<body>
+    <button onclick="history.back()">Back to Course</button>
+    <div class="main">
+    <h2>Introduction</h2>
+<p>In this exercise you will write more advanced queries on a database designed to resemble a real-world database system, MySQL's <a href="https://dev.mysql.com/doc/sakila/en/">Sakila Sample Database</a>.</p>
+<h2>Problem Description</h2>
+<p>You're writing software to manage a chain of movie rental stores.</p>
+<h2>Solution Description</h2>
+<p>Write the SQL statements that implement functions of your rental store management system. You may want to use this starter script: <a href="sakila-queries.sql">sakila-queries.sql</a>.</p>
+<ol>
+<li>Download the schema and data scripts for the <a href="https://dev.mysql.com/doc/sakila/en/">Sakila Sample Database</a>.</li>
+<li>
+<p>Write an SQL script with queries that answer the following questions:</p>
+</li>
+<li>
+<p>Which actors have the first name 'Scarlett'</p>
+</li>
+<li>Which actors have the last name 'Johansson'</li>
+<li>How many distinct actors last names are there?</li>
+<li>Which last names are not repeated?</li>
+<li>Which last names appear more than once?</li>
+<li>Which actor has appeared in the most films?</li>
+<li>Is 'Academy Dinosaur' available for rent from Store 1?</li>
+<li>Insert a record to represent Mary Smith renting 'Academy Dinosaur' from Mike Hillyer at Store 1 today .</li>
+<li>When is 'Academy Dinosaur' due?</li>
+<li>What is that average running time of all the films in the sakila DB?</li>
+<li>What is the average running time of films by category?</li>
+<li>Why does this query return the empty set?</li>
+</ol>
+<p>select * from film natural join inventory;</p>
+<h3>Sample solution</h3>
+<p>Don't peek until you've tried the exercise!</p>
+<ul>
+<li><a href="sakila-queries-answers.sql">sakila-queries-answers.sql</a></li>
+</ul>
+    </div>
+</body>
+</html>

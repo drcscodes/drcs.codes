@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CS 6070 - MySQL Guide</title>
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+</head>
+<body>
+    <nav>
+    <ul class="navbar">
+    <li class="navbar-item" style="float: left"><a class="navbar-link" href="../../../index.html">Dr. CS Codes</a></li>
+    <li class="navbar-item"><a class="navbar-link" href="syllabus.html">Syllabus</a></li>
+    <li class="navbar-item"><a class="navbar-link" href="schedule.html">Schedule</a></li>
+    <li class="navbar-item"><a class="navbar-link" href="resources.html">Resources</a></li>
+    <li class="navbar-item" style="float: right"><a class="navbar-link" href="https://chris.simpkins.phd/">Prof. Simpkins</a></li>
+</ul>
+
+    </nav>
+    <div class="main">
+    <h1>MySQL Guide</h1>
+<p>This guide walks you through installation, intitial setup, and general use of MySQL on your computer. After using this guide to install MySQL and become comfortable with the command-line client, you should bookmark the <a href="https://dev.mysql.com/doc/">MySQL online reference manual</a> to learn details.</p>
+<h2>Installing MySQL</h2>
+<h3>Linux</h3>
+<p>If you run Linux, you already know how to install MySQL. :-)</p>
+<ul>
+<li>On a Debian-based distro (like Ubuntu):</li>
+</ul>
+<p><code>bash
+  $ sudo apt-get update
+  $ sudo apt-get install mysql-server</code></p>
+<h3>Mac OS X</h3>
+<ol>
+<li>Install <a href="http://brew.sh/">Homebrew</a></li>
+<li>
+<p>Use <a href="http://brew.sh/">Homebrew</a> to install MySQL:</p>
+<p><code>bash
+$ brew install mysql</code></p>
+</li>
+</ol>
+<h3>Windows</h3>
+<ol>
+<li>
+<p>Download and run the Windows installer from <a href="https://dev.mysql.com/downloads/mysql/">dev.mysql.com</a>. Use the following configuration options:</p>
+<ul>
+<li>Select the "Developer Default" and "Only Install GA products" options.</li>
+<li>Next</li>
+<li>If you get a bunch of unstatisfied dependencies, click the "Execute" button before clicking "Next".</li>
+<li>Installation -- you'll see a list of components to be installed.  Click "Execute"</li>
+<li>Product Configuration<ul>
+<li>Group Replication</li>
+<li>Standalone MySQL Server/ Classic MySQL Replication</li>
+<li>Type and Networking<ul>
+<li>Unckeck "Open Windows Firewall Port"</li>
+</ul>
+</li>
+<li>Authentication method<ul>
+<li>Use Legacy Method</li>
+</ul>
+</li>
+<li>Root Password<ul>
+<li>Pick a short easy to remember password. Later we'll disable it altogether.</li>
+</ul>
+</li>
+<li>Windows Service</li>
+<li>Configure MSQL Server as a Windows Service</li>
+<li>Start the MySQL Server at System Startup</li>
+<li>Run Windows Service as...<ul>
+<li>Standard System Account</li>
+</ul>
+</li>
+<li>Document store</li>
+<li>Uncheck it all -- not needed for this class</li>
+<li>Apply Configuration</li>
+<li>Click Execute<ul>
+<li>If server configuration fails, click execute again. Will probably succeed second try</li>
+</ul>
+</li>
+<li>MySQL Router Configuration<ul>
+<li>Uncheck -- not needed for this class</li>
+</ul>
+</li>
+<li>Samples and Examples<ul>
+<li>Will ask for root password to connect to server</li>
+<li>Type in password you entered previously and click check</li>
+<li>Click next</li>
+<li>Apply Configuration</li>
+<li>Click execute</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Finish installation<ul>
+<li>Uncheck "Run shell"</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>To be able to run the <code>mysql</code> command line client you'll need to add the MySQL installation binaries directory to your <code>PATH</code>. Copy the following path element to your clipboard:</p>
+</li>
+</ol>
+<p><code>C:\Program Files\MySQL\MySQL Server 8.0\bin</code></p>
+<p>Now open your control panel, search for the "set environment variables" option, click the "Environment Variables" button, select the Path environment variable, and add the text you just copied to the clipboard. Here's a document explaining how to set environment variables in Windows: <a href="http://cs1331.gatech.edu/environment-variables.html">environment variables</a>. After you add the MySQL bin directory to your path, close the Windows command shell and re-open it so it re-reads the environment variables.</p>
+<h2>Running MySQL</h2>
+<p>MySQL is a client-server database system. To "run MySQL" you need both a server and a client.</p>
+<ol>
+<li>
+<p>Run the MySQL server</p>
+</li>
+<li>
+<p>Linux:</p>
+<p>Check that the server is running:</p>
+<p><code>bash
+ $ systemctl status mysql.service</code></p>
+<p>If the server isn't running, start it with:</p>
+<p><code>bash
+ $ sudo systemctl start mysql</code></p>
+</li>
+<li>
+<p>macOS:</p>
+<p><code>bash
+ $ mysql.server start</code></p>
+<ul>
+<li><strong>Occasional Problem with Homebrew Version of macOS</strong></li>
+</ul>
+<p>Every semester a few students do something that causes <code>mysql.server start</code> to fail with an error message that looks something like:</p>
+<p><code>sh
+   ERROR! The server quit without updating PID file (/usr/local/var/mysql/username.local.pid).</code></p>
+<p>Here's a brute force fix that seems to work:</p>
+<ol>
+<li>Uninstall mysql.</li>
+<li>Delete the <code>/usr/local/var/mysql</code> directory.</li>
+<li>Install mysql.</li>
+</ol>
+<p>Here's how a shell session executing the steps above might look:</p>
+<p><code>sh
+   $ brew uninstall mysql
+   $ sudo rm -rf /usr/local/var/mysql
+   $ brew install mysql</code></p>
+</li>
+<li>
+<p>Windows:</p>
+<ul>
+<li>In Control Panel, search for "Services".</li>
+<li>Find MySQL server. If not running, right-click and select start.</li>
+</ul>
+</li>
+<li>
+<p>Connect using the MySQL command line client. The general form of the <code>mysql</code> command is:</p>
+<p><code>bash
+$ mysql -h &lt;host_name&gt; -u &lt;user_name&gt; -p &lt;database_name&gt;</code></p>
+</li>
+<li>
+<p><code>&lt;host_name&gt;</code> is the name of the computer. Leave blank to connect to the MySQL server runnign on your computer (also known as <code>localhost</code>).</p>
+</li>
+<li><code>&lt;user_name&gt;</code> is the name of a MySQL user. Leave blank to use the user name of the shell account under which you run 'mysql`.</li>
+<li><code>-p</code> tells <code>mysql</code> to prompt for <code>&lt;user_name&gt;</code>'s password before connecting. If the user specified in <code>-u</code> has an empty password, you can leave off <code>-p</code>.</li>
+<li><code>&lt;database_name&gt;</code> is the name of a database to use upon starting the <code>mysql</code> client.</li>
+</ol>
+<p>So running the MySQL client as the root user would look like this:</p>
+<div class="codehilite"><pre><span></span><code>$ mysql -u root -p
+Enter password:
+Welcome to MySQL ...
+...
+mysql&gt;
+</code></pre></div>
+
+<p>The password is either empty, if you installed on macOS with HomeBrew or some linux package managers, or it's some value you chose when you ran the MySQL installer.</p>
+<h2>Initial MySQL Setup</h2>
+<p>Note: this step is optional. For most students you can skip user creation and root user password creation and simply use the root user with no password, which is fine as long as your operating system doesn't allow connections on port 3306, the port on which the MySQL server listens.</p>
+<h3>Setting a root password</h3>
+<p>MySQL has user accounts similar to operating system shells. If your installer asks you for a password for the MySQL root user, give it one. If your installer does not ask for a root password then the root password is blank. You can set a root password like this (<code>$</code> is the OS shell prompt, <code>mysql&gt;</code> is the <code>mysql</code> client prompt):</p>
+<div class="codehilite"><pre><span></span><code>$ mysql.server start
+Starting MySQL
+ SUCCESS!
+$ mysql -u root -p
+Enter password: <span class="o">(</span>press ENTER<span class="o">)</span>
+mysql&gt; alter user <span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span> identified by <span class="s1">&#39;rootpassword&#39;</span><span class="p">;</span>
+Query OK, <span class="m">0</span> rows affected <span class="o">(</span><span class="m">0</span>.01 sec<span class="o">)</span>
+</code></pre></div>
+
+<p>In the example above <code>rootpassword</code> is the root user's password. You should choose something other than the literal string <code>rootpassword</code>, or if you set a password during installation and wish to set the password to the empty string to save yourself some typing, you can set the root user's password to nothing like this:</p>
+<div class="codehilite"><pre><span></span><code>mysql&gt; alter user <span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span> identified by <span class="s1">&#39;&#39;</span><span class="p">;</span>
+</code></pre></div>
+
+<h3>Creating a User (Optional)</h3>
+<p>After setting a root password it's a good idea to set up MySQL user accounts for different purposes. For example, you can create a MySQL user account for CS 4400 example databases and another user for your project work. To set up a user (assuming <code>mysql.server</code> has already been started):</p>
+<ol>
+<li>
+<p>Log into the MySQL client program as root:</p>
+<p><code>bash
+$ mysql -u root -p
+Enter password: (enter the password you set above)</code></p>
+</li>
+<li>
+<p>Create a user:</p>
+<p><code>bash
+mysql&gt; create user 'cs4400'@'localhost' identified by 'cs4400password';
+Query OK, 0 rows affected (0.00 sec)</code></p>
+</li>
+<li>
+<p>Grant permissions for each database you want your user to use. (Note: you can grant permissions on a database before the database exists.)</p>
+<p><code>bash
+mysql&gt; grant all on humanedb.* to 'cs4400'@'localhost';
+Query OK, 0 rows affected (0.00 sec)</code></p>
+</li>
+</ol>
+<h2>Running The MySQL Interactive Command Line Client</h2>
+<p>All SQL commands and queries must be terminated with a semicolon. Some MySQL don't need to be terminated with a semicolon but function with a semicolon as well, so get in the habit of using semicolons.</p>
+<h3>Running SQL Scripts</h3>
+<p>Download the following files for practice:</p>
+<ul>
+<li><a href="../exercises/pubs-schema.sql">pubs-schema.sql</a></li>
+<li><a href="../exercises/pubs-data.sql">pubs-data.sql</a></li>
+</ul>
+<p>Method 1: redirect input when running mysql client from OS command line</p>
+<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pubs</span><span class="o">-</span><span class="k">schema</span><span class="p">.</span><span class="k">sql</span><span class="w"></span>
+</code></pre></div>
+
+<p>Method 2: use the source when already in a mysql shell in the directory containing your SQL script</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">source</span><span class="w"> </span><span class="n">pubs</span><span class="o">-</span><span class="k">data</span><span class="p">.</span><span class="k">sql</span><span class="w"></span>
+</code></pre></div>
+
+<p>Note: to follow along with the rest of this guide you'll need to run both SQL files.</p>
+<h3><code>show databases</code></h3>
+<p>The MySQL server can store many databases. To list the databases available in your MySQL server, use <code>show databases</code>.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="n">databases</span><span class="p">;</span><span class="w"></span>
+<span class="o">+</span><span class="c1">--------------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="k">Database</span><span class="w">           </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">--------------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">information_schema</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">company</span><span class="w">            </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">dorms</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">mysql</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">performance_schema</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">pubs</span><span class="w">               </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">sakila</span><span class="w">             </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">sys</span><span class="w">                </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">teach</span><span class="w">              </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">--------------------+</span>
+<span class="mi">9</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
+</code></pre></div>
+
+<h3><code>use &lt;database&gt;</code></h3>
+<p>To issue SQL commands and queries you'll need to <code>use</code> a database, and you can only use one database at a time.</p>
+<div class="codehilite"><pre><span></span><code><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">pubs</span><span class="p">;</span><span class="w"></span>
+<span class="k">Database</span><span class="w"> </span><span class="n">changed</span><span class="w"></span>
+<span class="n">mysql</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
+
+<h3><code>show tables</code></h3>
+<div class="codehilite"><pre><span></span><code><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">show</span><span class="w"> </span><span class="n">tables</span><span class="p">;</span><span class="w"></span>
+<span class="o">+</span><span class="c1">----------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">Tables_in_pubs</span><span class="w"> </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">----------------+</span>
+<span class="o">|</span><span class="w"> </span><span class="n">author</span><span class="w">         </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">author_pub</span><span class="w">     </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">book</span><span class="w">           </span><span class="o">|</span><span class="w"></span>
+<span class="o">|</span><span class="w"> </span><span class="n">pub</span><span class="w">            </span><span class="o">|</span><span class="w"></span>
+<span class="o">+</span><span class="c1">----------------+</span>
+<span class="mi">4</span><span class="w"> </span><span class="k">rows</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">set</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="p">.</span><span class="mi">00</span><span class="w"> </span><span class="n">sec</span><span class="p">)</span><span class="w"></span>
+
+<span class="n">mysql</span><span class="o">&gt;</span><span class="w"></span>
+</code></pre></div>
+    </div>
+</body>
+</html>
