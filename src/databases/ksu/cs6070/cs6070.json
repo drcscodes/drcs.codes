@@ -2,7 +2,8 @@
     "url": "https://drcs.codes/databases/ksu/cs6070/schedule.html",
     "number": "CS 6070",
     "title": "Databases",
-    "course_desctiption": "This course provides in-depth coverage of database management systems, database processing, data modeling, database design, development, and implementation. Particular emphasis is placed on the relational approach to database management and processing. This course includes implementation of current DBMS tools and SQL. Ethical and security topics related to databases will be discussed.",
+    "description": "This course provides in-depth coverage of database management systems, database processing, data modeling, database design, development, and implementation. Particular emphasis is placed on the relational approach to database management and processing. This course includes implementation of current DBMS tools and SQL. Ethical and security topics related to databases will be discussed.",
+    "credit_hours": "3-0-3",
     "learning_outcomes": [
         "explain fundamental concepts such as data independence, three-level database architecture, and database system components",
         "create a conceptual entity-relationship model from a list of database system requirements",
@@ -61,8 +62,8 @@
             "videos": []
         },
         {
-            "topic": "er-models1",
-            "slides": "[ER Models 1](@root/databases/slides/er-models.pdf)",
+            "topic": "er-models",
+            "slides": "[ER Models](@root/databases/slides/er-models.pdf)",
             "reading": [
                 "FoDS 3.1-3.7.3"
             ],
@@ -101,22 +102,6 @@
             "videos": []
         },
         {
-            "topic": "exam1review",
-            "slides": "Exam 1 Review",
-            "reading": [],
-            "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "exam1",
-            "slides": "Exam 1",
-            "reading": [],
-            "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
             "topic": "conceptual-design-process1",
             "slides": "[Conceptual Design Process 1](@root/databases/slides/conceptual-design-process.pdf)",
             "reading": [
@@ -127,15 +112,31 @@
             "videos": []
         },
         {
-            "topic": "conceptual-design-process2",
-            "slides": "[Conceptual Design Process 2](@root/databases/slides/conceptual-design-process.pdf)",
+            "topic": "project-kickoff",
+            "slides": "[Project Kickoff](project.html)",
             "reading": [
                 ""
             ],
             "exercises": [],
             "projects": [
-                "[Project Launch]()"
+                "[Trip Planner(trip-planner.html)"
             ],
+            "videos": []
+        },
+        {
+            "topic": "exam1review",
+            "slides": "Exam 1 Review",
+            "reading": ["[Exam 1 Practice](exam1-practice.pdf)", "[Exam 1 Practice Answers](exam1-practice-answers.pdf)"],
+            "exercises": [],
+            "projects": [],
+            "videos": []
+        },
+        {
+            "topic": "exam1",
+            "slides": "Exam 1",
+            "reading": [],
+            "exercises": [],
+            "projects": [],
             "videos": []
         },
         {
@@ -198,7 +199,7 @@
         {
             "topic": "exam2review",
             "slides": "Exam 2 Review",
-            "reading": [],
+            "reading": ["[Exam 2 Practice](exam2-practice.pdf)", "[Exam 2 Practice Answers](exam2-practice-answers.pdf)"],
             "exercises": [],
             "projects": [],
             "videos": []
@@ -215,18 +216,8 @@
             "part": "Relational Databases and SQL"
         },
         {
-            "topic": "er-relational-mapping1",
-            "slides": "[ER - Relational Mapping 1](@root/databases/slides/er-relational-mapping.pdf)",
-            "reading": [
-                "FoDS 9"
-            ],
-            "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "er-relational-mapping2",
-            "slides": "[ER - Relational Mapping 2](@root/databases/slides/er-relational-mapping.pdf)",
+            "topic": "er-relational-mapping",
+            "slides": "[ER - Relational Mapping](@root/databases/slides/er-relational-mapping.pdf)",
             "reading": [
                 "FoDS 9"
             ],
@@ -237,16 +228,6 @@
         {
             "topic": "basic-relational-design",
             "slides": "[Basic Relational Design](@root/databases/slides/basic-relational-design.pdf)",
-            "reading": [
-                "FoDS 14.1-14.3"
-            ],
-            "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "mysql-installfest",
-            "slides": "[MySQL Install Fest](mysql.html)",
             "reading": [
                 "FoDS 14.1-14.3"
             ],
@@ -268,10 +249,9 @@
             "topic": "sql-crud",
             "slides": "[SQL CRUD](@root/databases/slides/sql-crud.pdf)",
             "reading": [
-                "FoDS 6",
-                "[Exercise: Registration Database](@root/databases/exercises/registration-database.html)"
+                "FoDS 6"
             ],
-            "exercises": [],
+            "exercises": ["[Exercise: Registration Database](@root/databases/exercises/registration-database.html)"],
             "projects": [],
             "videos": []
         },
@@ -368,7 +348,7 @@
         {
             "topic": "exam3review",
             "slides": "Exam 3 Review",
-            "reading": [],
+            "reading": ["[Exam 3 Practice](exam3-practice.pdf)", "[Exam 3 Practice Answers](exam3-practice-answers.pdf)"],
             "exercises": [],
             "projects": [],
             "videos": []

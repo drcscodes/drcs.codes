@@ -42,7 +42,7 @@ Preferred method of communication: E-mail
 ## Course Description
 <hr style="color: #ffc629">
 
-
+This course provides in-depth coverage of database management systems, database processing, data modeling, database design, development, and implementation. Particular emphasis is placed on the relational approach to database management and processing. This course includes implementation of current DBMS tools and SQL. Ethical and security topics related to databases will be discussed.
 
 
 Prerequisites:
@@ -53,6 +53,8 @@ Prerequisites:
 
 
 
+
+Credit Hours: 3-0-3
 
 ## Course Materials
 <hr style="color: #ffc629">
