@@ -120,15 +120,15 @@ List each assignment in as much detail as possible. Include course requirements 
 
 Each assignment will be graded on a 100 point scale which you may consider a percentage with respect to the grading scale below.  Some assignments may have more than 100 points, in which case the points in excess of 100 are "extra credit."
 
-In general, every attempt will be made to provide grades and feedback within two weeks of the submission deadline of an assignment.  All grades to date will be posted before midterm so that students may make informed decisions bout course withdrawals, and before finals week so that students may budget their final exam study time appropriately.
+In general, every attempt will be made to provide grades and feedback within two weeks of the submission deadline of an assignment.  All grades to date will be posted before midterm so that students may make informed decisions about course withdrawals, and before finals week so that students may budget their final exam study time appropriately.
 
 ### GRADING SCALE:
 
-- 90% - 100% A
-- 80% - 89% B
-- 70% - 79% C
-- 60% - 69% D
-- 0% - 59% F
+- $\ge$ 90: A
+- $\ge$ 80: B
+- $\ge$ 70: C
+- $\ge$ 60: D
+- $\lt$ 60: F
 
 Midterm Grades: A midterm grade will be assigned by the midterm grade due date identified on the academic calendar. This midterm grade is for assessing mid-semester performance at least one week prior to the last day to withdraw without academic penalty. You may view your midterm grade in Owl Express. Note that only your final grade will be officially recorded on your academic transcript.
 

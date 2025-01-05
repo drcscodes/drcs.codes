@@ -13,51 +13,27 @@ table{
     border-collapse: collapse;
     border-spacing: 0;
     border: 2px solid;
-}
-
-th{
+}<p>th{
     border: 2px solid #000000;
     padding: 2px;
-}
-
-td{
+}</p><p>td{
     border: 1px solid #000000;
     padding: 2px;
 }
-</style>
-
-<h1>Registration Database</h1>
-<h2>Introduction</h2>
-<p>In this exercise you will practice</p>
-<ul>
+</style></p><h1>Registration Database</h1><h2>Introduction</h2><p>In this exercise you will practice</p><ul>
 <li>basic relational data modeling,</li>
 <li>writing SQL create table statements,</li>
 <li>writing SQL schema and data insertion scripts, and</li>
 <li>writing basic SQL queries.</li>
-</ul>
-<h2>Problem Description</h2>
-<p>You work for the registrar of a major university and have been tasked with creating a database to hold courses and semester schedules.</p>
-<h2>Solution Description</h2>
-<h3>Part 1: Creating the database</h3>
-<p>Write a SQL script named <code>registration-schema.sql</code> that creates a database with the following tables:</p>
-<ul>
-<li>
-<p>student(<u>student_id</u>, name, gpa)</p>
-</li>
-<li>
-<p>dept(<u>dept_id</u>, name, dean, building, room)</p>
-</li>
-<li>
-<p>course(<u>dept_id</u>, <u>course_id</u>, name, hours), where dept_id is a foreign key referencing the dept(dept_id)</p>
-</li>
-<li>
-<p>enrolled(<u>dept_id</u>, <u>course_id</u>, <u>student_id</u>), where (dept_id, course_id) is a foreign key referencing course(dept_id, course_id) and student_id is a foreign key referencing student(student_id)</p>
-</li>
-</ul>
-<h3>Part 2: Populating the database</h3>
-<p>Write a SQL script that populates the following data:</p>
-<h4>Student</h4>
-<p>|------------+---------+-----|
+</ul><h2>Problem Description</h2><p>You work for the registrar of a major university and have been tasked with creating a database to hold courses and semester schedules.</p><h2>Solution Description</h2><h3>Part 1: Creating the database</h3><p>Write a SQL script named <code>registration-schema.sql</code> that creates a database with the following tables:</p><ul>
+<li>student(<u>student_id</u>, name, gpa)</li>
+</ul><ul>
+<li>dept(<u>dept_id</u>, name, dean, building, room)</li>
+</ul><ul>
+<li>course(<u>dept_id</u>, <u>course_id</u>, name, hours), where dept_id is a foreign key referencing the dept(dept_id)</li>
+</ul><ul>
+<li>enrolled(<u>dept_id</u>, <u>course_id</u>, <u>student_id</u>), where (dept_id, course_id) is a foreign key referencing course(dept_id, course_id) and student_id is a foreign key referencing student(student_id)</li>
+</ul><h3>Part 2: Populating the database</h3><p>Write a SQL script that populates the following data:</p><h4>Student</h4><p>|------------+---------+-----|
 | student_id | name    | gpa |
 |------------+---------+-----|
 | 11         | Bush    | 3.0 |
@@ -65,9 +41,7 @@ td{
 | 13         | Clinton | 3.9 |
 | 22         | Sanders | 3.0 |
 | 33         | Trump   | 3.8 |
-|------------+---------+-----|</p>
-<h4>Enrolled</h4>
-<p>| dept_id | coruse_id | student_id |
+|------------+---------+-----|</p><h4>Enrolled</h4><p>| dept_id | coruse_id | student_id |
 |---------+-----------+------------|
 | CS | 101 | 11 |
 | Math | 101 | 11 |
@@ -75,17 +49,13 @@ td{
 | CS | 201 | 22 |
 | Math | 201 | 33 |
 | EE | 102 | 33 |
-| Math | 301 | 22 |</p>
-<h4>Department</h4>
-<p>| dept_id | name | dean | building | room |
+| Math | 301 | 22 |</p><h4>Department</h4><p>| dept_id | name | dean | building | room |
 |---------+------+------+----------+------|
 | CS | Computer Science |Rubio | Ajax | 100 |
 | Math | Mathemagics | Carson | Acme | 300 |
 | EE | Electrical Engineering | Kasich | Ajax | 200 |
 | IE | Industrial Engineering | Cruz |  | 200 |
-| Music | Musicology | Costello | North | 100 |</p>
-<h4>Course</h4>
-<table>
+| Music | Musicology | Costello | North | 100 |</p><h4>Course</h4><table>
 <thead>
 <tr>
 <th>dept_id</th>
@@ -156,18 +126,11 @@ td{
 <td>3</td>
 </tr>
 </tbody>
-</table>
-<h3>Part 3: Updating the database</h3>
-<p>Once the database has been populated, make the following updates:</p>
-<ul>
+</table><h3>Part 3: Updating the database</h3><p>Once the database has been populated, make the following updates:</p><ul>
 <li>Change the name of the Math dept to 'Mathematics'</li>
 <li>Change the name of the Music dept to 'Rock n Roll'</li>
 <li>Add an IE course, IE 202 Simulation, 3 hours.</li>
-</ul>
-<h3>Part 4: Querying the database</h3>
-<p>Write a sql script with queries that answer the following questions.</p>
-<p>Easy Queries:</p>
-<ul>
+</ul><h3>Part 4: Querying the database</h3><p>Write a sql script with queries that answer the following questions.</p><p>Easy Queries:</p><ul>
 <li>What are all the departments?</li>
 <li>What are the names of all the department deans?</li>
 <li>What is the name of the dean of the CS dept?</li>
@@ -175,17 +138,12 @@ td{
 <li>What are the course numbers of all the first-year courses?</li>
 <li>What are the course numbers of all the CS courses?</li>
 <li>What are all the CS and IE courses?</li>
-</ul>
-<p>Intermediate queries</p>
-<ul>
+</ul><p>Intermediate queries</p><ul>
 <li>What are the names of the students enrolled in CS 101?</li>
 <li>What is the total enrollment of each department?</li>
 <li>What are the names of the deans of departments that have zero enrollment?</li>
 <li>Which department(s) have the greatest enrollment?</li>
-</ul>
-<h2>Sample Solutions</h2>
-<p>Don't peek until you've tried the exercise on your own!</p>
-<ul>
+</ul><h2>Sample Solutions</h2><p>Don't peek until you've tried the exercise on your own!</p><ul>
 <li><a href="registration-schema.sql">registration-schema.sql</a></li>
 <li><a href="registration-data.sql">registration-data.sql</a></li>
 <li><a href="registration-queries.sql">registration-queries.sql</a></li>
