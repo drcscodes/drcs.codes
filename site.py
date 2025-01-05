@@ -16,7 +16,3 @@ out_dir = "docs"
 
 # Site tagline.
 # tagline = "Just another Ark site."
-
-markdown_settings = {
-    'extensions': ['markdown.extensions.extra', 'markdown.extensions.codehilite']
-}
