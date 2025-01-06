@@ -24,9 +24,9 @@ Week 7
 2025-02-19;measuring-performance;
 Week 8
 2025-02-24;regularization;
-2025-02-26;exam1review;
+2025-02-26;midterm-review;
 Week 9
-2025-03-03;exam1;
+2025-03-03;midterm-exam;
 Supervised Deep Learning
 2025-03-05;convolutional-networks;
 Week 10
@@ -45,12 +45,12 @@ Week 13
 Week 14
 2025-04-07;variational-autoencoders;
 2025-04-09;diffusion-models;
-Week 15
-2025-04-14;exam2review;
-2025-04-16;exam2;
 Beyond Deep Learning
+Week 15
+2025-04-14;reinforcement-learning;
+2025-04-16;deep-learning-philosophy;
 Week 16
-2025-04-21;reinforcement-learning;
-2025-04-23;deep-learning-philosophy;
+2025-04-21;deep-learning-ethics;
+2025-04-23;project-presentations;
 Week 17
-2025-04-28;deep-learning-ethics;
+2025-04-28;;

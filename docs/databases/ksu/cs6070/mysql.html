@@ -101,14 +101,14 @@
 <h2>Running MySQL</h2>
 <p>MySQL is a client-server database system. To "run MySQL" you need both a server and a client.</p>
 <ol>
-<li>
-<p>Run the MySQL server</p>
-</li>
+<li>Run the MySQL server</li>
+</ol>
+<ul>
 <li>
 <p>Linux:</p>
 <p>Check that the server is running:</p>
 </li>
-</ol>
+</ul>
 <p><code>bash
      $ systemctl status mysql.service</code></p>
 <div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">server</span><span class="w"> </span><span class="nv">isn</span><span class="err">&#39;t running, start it with:</span>
@@ -139,17 +139,15 @@
        $ sudo rm -rf /usr/local/var/mysql
        $ brew install mysql</code></p>
 <ul>
-<li>
-<p>Windows:</p>
-<ul>
+<li>Windows:<ul>
 <li>In Control Panel, search for "Services".</li>
 <li>Find MySQL server. If not running, right-click and select start.</li>
 </ul>
 </li>
-<li>
-<p>Connect using the MySQL command line client. The general form of the <code>mysql</code> command is:</p>
-</li>
 </ul>
+<ol start="2">
+<li>Connect using the MySQL command line client. The general form of the <code>mysql</code> command is:</li>
+</ol>
 <p><code>bash
     $ mysql -h &lt;host_name&gt; -u &lt;user_name&gt; -p &lt;database_name&gt;</code></p>
 <ul>
@@ -190,13 +188,13 @@ Query<span class="w"> </span>OK,<span class="w"> </span><span class="m">0</span>
 <p><code>bash
     $ mysql -u root -p
     Enter password: (enter the password you set above)</code></p>
-<ol>
+<ol start="2">
 <li>Create a user:</li>
 </ol>
 <p><code>bash
     mysql&gt; create user 'cs4400'@'localhost' identified by 'cs4400password';
     Query OK, 0 rows affected (0.00 sec)</code></p>
-<ol>
+<ol start="3">
 <li>Grant permissions for each database you want your user to use. (Note: you can grant permissions on a database before the database exists.)</li>
 </ol>
 <p><code>bash

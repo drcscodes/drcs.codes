@@ -77,21 +77,21 @@ At the end of the course, students should be able to:
 
 1. explain fundamental concepts such as data independence, three-level database architecture, and database system components
 
-1. create a conceptual entity-relationship model from a list of database system requirements
+2. create a conceptual entity-relationship model from a list of database system requirements
 
-1. model data using the relational data model
+3. model data using the relational data model
 
-1. manipulate relational data using relational algebra
+4. manipulate relational data using relational algebra
 
-1. map conceptual ER schemas to relational schemas
+5. map conceptual ER schemas to relational schemas
 
-1. design databases using functional dependencies and normal forms
+6. design databases using functional dependencies and normal forms
 
-1. implement a databases design using the data definition language in Structured Query Language (SQL)
+7. implement a databases design using the data definition language in Structured Query Language (SQL)
 
-1. populate a database, manipulate data in the database, and query the database using SQL
+8. populate a database, manipulate data in the database, and query the database using SQL
 
-1. use a professional relational database management system such as MySQL
+9. use a professional relational database management system such as MySQL
 
 
 ## Course Requirements and Assignments
@@ -104,8 +104,6 @@ At the end of the course, students should be able to:
 
 - Final Exam
 
-
-List each assignment in as much detail as possible. Include course requirements such as participation and/or attendance.
 
 ## Evaluation and Grading Policies
 <hr style="color: #ffc629">

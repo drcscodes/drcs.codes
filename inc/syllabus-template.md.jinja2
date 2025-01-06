@@ -93,7 +93,7 @@ Technology requirements:
 At the end of the course, students should be able to:
 
 {% for outcome in course["learning_outcomes"] %}
-1. {{outcome}}
+{{loop.index}}. {{outcome}}
 {% endfor %}
 
 ## Course Requirements and Assignments

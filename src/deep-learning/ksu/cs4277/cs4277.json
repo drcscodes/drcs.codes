@@ -19,7 +19,7 @@
         "Exams: 30%"
     ],
     "assignments": [
-        "3-6 Problem sets",
+        "5-10 Problem sets",
         "3-6 Programming assignments",
         "Research project"
     ],
@@ -34,7 +34,10 @@
     ],
     "recommended_materials": [
         "DPFC: Deep Learning Foundations and Concepts, by Bishop and Bishop, [https://www.bishopbook.com](https://www.bishopbook.com)",
-        "DDL: Dive into Deep Learning, by Ashton Zhang, et. al., [https://d2l.ai](https://d2l.ai)"
+        "DDL: Dive into Deep Learning, by Ashton Zhang, et. al., [https://d2l.ai](https://d2l.ai)",
+        "DL: Deep Learning, by Goodfellow, Bengio and Courville, [https://www.deeplearningbook.org](https://www.deeplearningbook.org)",
+        "LDL: Learning Deep Learning, by Ekman, [https://ldlbook.com](https://ldlbook.com)",
+        "ITLA: Information Theory, Inference and Learning Algorithms, by David MacKay, [http://www.inference.org.uk/mackay/itila/book.html](http://www.inference.org.uk/mackay/itila/book.html)"
     ],
     "technology_requirements": [
     ],
@@ -118,7 +121,8 @@
             "topic": "information-theory",
             "slides": "[Information Theory](@root/deep-learning/slides/information-theory.pdf)",
             "reading": [
-                "DLFC: 2."
+                "DLFC: 2.5",
+                "ITLA: 1,2"
             ],
             "exercises": [],
             "projects": [],
@@ -188,19 +192,19 @@
             "videos": []
         },
         {
-            "topic": "exam1review",
-            "slides": "Exam 1 Review",
+            "topic": "midterm-review",
+            "slides": "Midterm Review",
             "reading": [
-                "[Exam 1 Practice](exam1-practice.pdf)",
-                "[Exam 1 Practice Answers](exam1-practice-answers.pdf)"
+                "[Midterm Practice](midterm-practice.pdf)",
+                "[Midterm Practice Answers](midterm-practice-answers.pdf)"
             ],
             "exercises": [],
             "projects": [],
             "videos": []
         },
         {
-            "topic": "exam1",
-            "slides": "Exam 1",
+            "topic": "midterm-exam",
+            "slides": "Midterm Exam",
             "reading": [
             ],
             "exercises": [],
@@ -298,26 +302,6 @@
             "slides": "[Diffusion Models](@root/deep-learning/slides/diffusion-models.pdf)",
             "reading": [
                 "UDL: 18"
-            ],
-            "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "exam2review",
-            "slides": "Exam 2 Review",
-            "reading": [
-                "[Exam 2 Practice](exam2-practice.pdf)",
-                "[Exam 2 Practice Answers](exam2-practice-answers.pdf)"
-            ],
-            "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "exam2",
-            "slides": "Exam 2",
-            "reading": [
             ],
             "exercises": [],
             "projects": [],

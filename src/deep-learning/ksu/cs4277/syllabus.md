@@ -79,6 +79,12 @@ Recommended Texts:
 
 - DDL: Dive into Deep Learning, by Ashton Zhang, et. al., [https://d2l.ai](https://d2l.ai)
 
+- DL: Deep Learning, by Goodfellow, Bengio and Courville, [https://www.deeplearningbook.org](https://www.deeplearningbook.org)
+
+- LDL: Learning Deep Learning, by Ekman, [https://ldlbook.com](https://ldlbook.com)
+
+- ITLA: Information Theory, Inference and Learning Algorithms, by David MacKay, [http://www.inference.org.uk/mackay/itila/book.html](http://www.inference.org.uk/mackay/itila/book.html)
+
 
 
 
@@ -91,22 +97,22 @@ At the end of the course, students should be able to:
 
 1. understand the state-of-the-art technologies and their trends driving Deep Learning
 
-1. build, train, and apply fully connected deep neural networks
+2. build, train, and apply fully connected deep neural networks
 
-1. understand how to implement efficient neural networks
+3. understand how to implement efficient neural networks
 
-1. understand key parameters in Deep Learning architecture
+4. understand key parameters in Deep Learning architecture
 
-1. explain how Deep Learning works
+5. explain how Deep Learning works
 
-1. demonstrate the capability of communication with peers for research ideas in Deep Learning related fields
+6. demonstrate the capability of communication with peers for research ideas in Deep Learning related fields
 
 
 ## Course Requirements and Assignments
 <hr style="color: #ffc629">
 
 
-- 3-6 Problem sets
+- 5-10 Problem sets
 
 - 3-6 Programming assignments
 
