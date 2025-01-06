@@ -1,0 +1,56 @@
+Meeting times;Mondays and Wednesdays, 15:30-16:45 
+Room;Engineering Technology Center Room 310
+Foundations
+Week 1
+2025-01-06;intro-course;
+2025-01-08;machine-learning;Registration Ends (2025-01-10),Payment Deadline (2025-01-10)
+Week 2
+2025-01-13;neural-networks;
+2025-01-15;linear-algebra;Financial Aid Disbursement (2025-01-17),Graduation Petition Deadline (2025-01-17)
+Week 3
+2025-01-20;MLK Jr Day - No Class;Unpaid Course Deletion (2025-01-21)
+2025-01-22;shallow-networks;
+Week 4
+2025-01-27;deep-networks;
+2025-01-29;probability;
+Week 5
+2025-02-03;information-theory;
+2025-02-05;loss-functions;
+Week 6
+2025-02-10;matrix-calculus;
+2025-02-12;fitting-models;
+Week 7
+2025-02-17;gradients-initialization;
+2025-02-19;measuring-performance;
+Week 8
+2025-02-24;regularization;
+2025-02-26;exam1review;
+Week 9
+2025-03-03;exam1;
+Supervised Deep Learning
+2025-03-05;convolutional-networks;
+Week 10
+2025-03-10;Spring Break - No Class;
+2025-03-12;Spring Break - No Class;
+Week 11
+2025-03-17;residual-networks;
+2025-03-19;transformers;Midterm Grades Due (2025-03-21)
+Week 12
+2025-03-24;graph-nerual-networks;
+Generative Deep Learning
+2025-03-26;unsupervised-learning;Withdrawal Deadline (2025-03-28)
+Week 13
+2025-03-31;generative-adversarial-networks;
+2025-04-02;normalizing-flows;
+Week 14
+2025-04-07;variational-autoencoders;
+2025-04-09;diffusion-models;
+Week 15
+2025-04-14;exam2review;
+2025-04-16;exam2;
+Beyond Deep Learning
+Week 16
+2025-04-21;reinforcement-learning;
+2025-04-23;deep-learning-philosophy;
+Week 17
+2025-04-28;deep-learning-ethics;

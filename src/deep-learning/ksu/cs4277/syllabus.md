@@ -9,19 +9,19 @@ title: Syllabus
 **SYLLABUS**<br/>
 **College of Computing and Software Engineering**<br/>
 **Department of Computer Science**<br/>
-**{{course["number"]}}: {{course["title"]}}**<br/>
-**{{semester_info["academic_term"]}}**<br/>
+**CS 4277: Deep Learning**<br/>
+**Spring 2025**<br/>
 </center>
 
 ## Course Information
 <hr style="color: #ffc629">
 
 
-Class meeting times: {{semester_info["meeting_times"]}}
+Class meeting times: Mondays and Wednesdays, 15:30-16:45 
 
-Modality: {{semester_info["modality"]}}; Location: {{semester_info["room"]}}
+Modality: Traditional; Location: Engineering Technology Center Room 310
 
-Syllabus and detailed schedule is posted on course web site: [{{course["url"]}}]({{course["url"]}}).
+Syllabus and detailed schedule is posted on course web site: [https://drcs.codes/databases/ksu/cs4277/schedule.html](https://drcs.codes/databases/ksu/cs4277/schedule.html).
 
 ## Instructor Information
 <hr style="color: #ffc629">
@@ -35,80 +35,96 @@ Office Location: Norton Hall Room 330
 
 Office phone: N/A
 
-Office Hours: {{semester_info["office_hours"]}}
+Office Hours: TBD
 
 Preferred method of communication: E-mail
 
 ## Course Description
 <hr style="color: #ffc629">
 
-{{course["description"]}}
+This course covers the foundations of Deep Learning; how to build neural networks and how to design successful deep learning projects. The course topics include convolutional networks, sequence modeling such as recurrent and recursive neural networks (RNNs), long short-term memory (LSTM), Adam, Dropout, BatchNorm, Xavier/He initialization, state-of-the-art technologies, and research topics leveraging Deep Learning. The course includes programming assignments in a modern deep learning framework.
 
-{% if course["prerequisites"] %}
+
 Prerequisites:
 
-{% for item in course["prerequisites"] %}
-- {{item}}
-{% endfor %}
-{% endif %}
 
-{% if course["corequisites"] %}
+- CS 3642 Artificial Intelligence
+
+
+
+
 Corequisites:
 
-{% for item in course["corequisites"] %}
-- {{item}}
-{% endfor %}
-{% endif %}
 
-Credit Hours: {{course["credit_hours"]}}
+- CS 4267 Machine Learning
+
+
+
+Credit Hours: 3-0-3
 
 ## Course Materials
 <hr style="color: #ffc629">
 
 Required Texts:
 
-{% for material in course["required_materials"] %}
-- {{material}}
-{% endfor %}
 
-{% if course["recommended_materials"] %}
+- UDL: Understanding Deep Learning, by Simon J.D. Prince, [https://udlbook.github.io/udlbook/](https://udlbook.github.io/udlbook/)
+
+
+
 Recommended Texts:
 
-{% for material in course["recommended_materials"] %}
-- {{material}}
-{% endfor %}
-{% endif %}
 
-{% if course["technology_requirements"] %}
-Technology requirements:
+- DPFC: Deep Learning Foundations and Concepts, by Bishop and Bishop, [https://www.bishopbook.com](https://www.bishopbook.com)
 
-{% for requirement in course["technology_requirements"] %}
-- {{requirement}}
-{% endfor %}
-{% endif %}
+- DDL: Dive into Deep Learning, by Ashton Zhang, et. al., [https://d2l.ai](https://d2l.ai)
+
+
+
+
 
 ## Course Learning Outcomes
 <hr style="color: #ffc629">
 
 At the end of the course, students should be able to:
 
-{% for outcome in course["learning_outcomes"] %}
-1. {{outcome}}
-{% endfor %}
+
+1. understand the state-of-the-art technologies and their trends driving Deep Learning
+
+1. build, train, and apply fully connected deep neural networks
+
+1. understand how to implement efficient neural networks
+
+1. understand key parameters in Deep Learning architecture
+
+1. explain how Deep Learning works
+
+1. demonstrate the capability of communication with peers for research ideas in Deep Learning related fields
+
 
 ## Course Requirements and Assignments
 <hr style="color: #ffc629">
 
-{% for assignment in course["assignments"] %}
-- {{assignment}}
-{% endfor %}
+
+- 3-6 Problem sets
+
+- 3-6 Programming assignments
+
+- Research project
+
 
 ## Evaluation and Grading Policies
 <hr style="color: #ffc629">
 
-{% for item in course["grading"] %}
-- {{item}}
-{% endfor %}
+
+- Problem sets: 30%
+
+- Programming assignments: 30%
+
+- Research project: 10%
+
+- Exams: 30%
+
 
 Each assignment will be graded on a 100 point scale which you may consider a percentage with respect to the grading scale below.  Some assignments may have more than 100 points, in which case the points in excess of 100 are "extra credit."
 
@@ -133,7 +149,7 @@ Class attendance is required and very important for successful completion of the
 
 ### Email Policy
 
-Students must use their official KSU email address and put the course number, {{course["number"]}}, in the subject line of the email when sending email pertaining to the course.
+Students must use their official KSU email address and put the course number, CS 4277, in the subject line of the email when sending email pertaining to the course.
 
 ### Classroom Behavior
 
@@ -183,4 +199,4 @@ Federal, BOR, & KSU Required Syllabus Policies and Student Resources: [https://w
 ## Course Schedule
 <hr style="color: #ffc629">
 
-See the detailed course schedule at [{{course["url"]}}]({{course["url"]}}).
+See the detailed course schedule at [https://drcs.codes/databases/ksu/cs4277/schedule.html](https://drcs.codes/databases/ksu/cs4277/schedule.html).
