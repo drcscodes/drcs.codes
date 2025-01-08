@@ -151,29 +151,16 @@ Let's create a credit score based on two variables: age and income (in thousands
 
 - "Credit score" = $\sum_{i=1}^{d} w_i x_i$
 
-
 The weights $w_i$ represent the importance of corresponding features of input instances.
 
-## Learning Model
+From that "score" we take a decision:
 
-From that "score" we'll make a decision:
-
-- Approve credit if $\sum_{i=1}^{d} w_i x_i$ > threshold
+- Approve credit if $\sum_{i=1}^{d} w_i x_i \ge$ threshold
 - Deny credit if $\sum_{i=1}^{d} w_i x_i$ < threshold
 
-We can turn this into a learning model:
+## Data Sets
 
-$$
-h(x) = sign((\sum_{i=1}^{d} w_i x_i) + w_0)
-$$
-
-The "bias weight" $w_0$ corresponds to the threshold.
-
-Our learning model is a discriminant -- for an instance $\vec{x}$ it returns $+1$ or $-1$.
-
-## The Credit Data Set
-
-Let's look at a particular data set, $\mathcal{D}$, stored in [credit.csv](../code/credit.csv)
+Consider a hypothetical data set, $\mathcal{D}$, for the credit scoring problem.
 
 - Each data point represents a previous customer
 - Since this is is supervised learning, every data point has an associated label: $+1$ for a customer off whom the bank made money, $-1$ for a customer off whom the bank lost money
@@ -195,7 +182,7 @@ Data in this form is often called a *design matrix*, an $N \times D$ matrix in w
 ## Tabular Data vs. Unstructured Data
 
 ::::{.columns valign="top"}
-::: {.column width="40%"}
+::: {.column width="45%"}
 
 The credit data is an example of *tabular* or *structured* data.
 
@@ -212,9 +199,9 @@ The credit data is an example of *tabular* or *structured* data.
 We say it is structured because we impose the structure on it.  There is nothing inherent in the data that requires `age` to come before`income`, but we must choose some order and stick with it.
 
 :::
-::: {.column width="40%"}
+::: {.column width="45%"}
 
-![](elsa-anna-bench.jpeg){height="40%"}
+![](elsa-anna-bench.jpeg){height="45%"}
 
 
 Unstructured data is data whose structure is inherent in the data, not imposed by us.  Examples include images and natural langauge text.
@@ -297,20 +284,28 @@ We can easily obtain these with a Pandas DataFrame.
 
 ## Step 1: Iris feature matix and target array
 
-From the description on the [Iris Data Set page](https://archive.ics.uci.edu/ml/datasets/Iris) we know that the Iris instances have four features -- (sepal_length, sepal_width, petal_length, petal_width) -- and three classes -- (Iris-setosa, Iris-versicolour, Iris-virginica). We can read these into a DataFrame with
-
+From the description on the [Iris Data Set page](https://archive.ics.uci.edu/ml/datasets/Iris) we know that the Iris instances have four features -- (sepal_length, sepal_width, petal_length, petal_width) -- and three classes -- (Iris-setosa, Iris-versicolour, Iris-virginica). We can read these into a DataFrame with [^DataLoaders]
 
 ```Python
 import pandas as pd
-import sklearn
-iris = pd.read_csv("iris.data", names=["sepal_length",
-                                       "sepal_width",
-                                       "petal_length",
-                                       "petal_width",
-                                       "species"])
+iris = pd.read_csv(
+    "iris.data",
+    names=["sepal_length", "sepal_width", "petal_length", "petal_width", "species"])
+iris.head()
+   sepal_length  sepal_width  petal_length  petal_width      species
+0           5.1          3.5           1.4          0.2  Iris-setosa
+1           4.9          3.0           1.4          0.2  Iris-setosa
+2           4.7          3.2           1.3          0.2  Iris-setosa
+3           4.6          3.1           1.5          0.2  Iris-setosa
+4           5.0          3.6           1.4          0.2  Iris-setosa
 ```
 
-Note: this DataFrame is in [tidy format](http://vita.had.co.nz/papers/tidy-data.pdf).
+This DataFrame (in [tidy format](http://vita.had.co.nz/papers/tidy-data.pdf)) contains an $N \times D$ design matrix in the first four columns.
+
+
+[^DataLoaders]: You can get this data set through Scikit-learn's datasets module or the [ucimlrepo](https://github.com/uci-ml-repo/ucimlrepo) package, but I want to show the use of Pandas for general data manipulation.
+
+
 
 ## Step 1.1: Scikit-learn Input Data
 
@@ -334,7 +329,9 @@ There are 150 samples and 150 target labels.
 We want to separate our data into non-overlapping training and test subsets. Since the data in our data set are arranged in a neat order, we should randomize the samples and split in a way that represents each class equally in the training and test sets. Scikit-learn provides a library functoin to do this:
 
 ```Python
+import sklearn
 from sklearn.model_selection import train_test_split
+
 X_iris_train, X_iris_test, y_iris_train, y_iris_test = \
     train_test_split(X_iris,
                      y_iris,
@@ -420,44 +417,24 @@ A Scikit-learn estimator (model/hypothesis) is an object that has `fit` (train) 
 
 ## The Deep Learning Revolution
 
-The world of machine learning learning can be divided into two broad camps:
-
-- traditional machine learning which makes heavy use feature engineering, and
-- deep learning, which uses minimal or no feature engineering -- deep neural networks learn their own representations.
-
-::::{.columns valign="top"}
-::: {.column width="20%"}
-
-![Image Net Examples](imagenet.png){width="90%"}
-
-:::
-::: {.column width="80%"}
-
-In 2010, [Fei-Fei Li](https://profiles.stanford.edu/fei-fei-li) and her team published a data set of tens of millions of labeled photographs and launched the annual ImageNet Large Scale Visual Recognition Challenge (ILSVRC)
-
-- [ImageNet](https://image-net.org)
-
-:::
-::::
-
-::::{.columns valign="top"}
-::: {.column width="20%"}
+![](imagenet.png){height="60%"}
 
 
-![Ilya Sutskever, Geoff Hinton, Alex Krizhevsky](ilya-geoff-alex.jpg){width="90%"}[^UTorontoHintonNobel]
+In 2010, [Fei-Fei Li](https://profiles.stanford.edu/fei-fei-li) and her team published a data set of tens of millions of labeled photographs -- [ImageNet](https://image-net.org) -- and launched the annual ImageNet Large Scale Visual Recognition Challenge (ILSVRC)
 
-:::
-::: {.column width="80%"}
+In the first two years traditional approaches, characterized by complex feature engineering, continued to win.
 
+## AlexNet
+
+![Ilya Sutskever, Geoff Hinton, Alex Krizhevsky](ilya-geoff-alex.jpg){height="50%"}[^UTorontoHintonNobel]
 
 In 2012, Alex Krizhevsky and Ilya Sutskever from Geoff Hinton's lab at the University of Toronto **dominated** the ILSVRC with what is now called [AlexNet](https://www.cs.toronto.edu/~kriz/imagenet_classification_with_deep_convolutional.pdf)
 
-:::
-::::
-
 Since then, deep learning has practically taken over AI.
 
+
 [^UTorontoHintonNobel]: https://web.cs.toronto.edu/news-events/news/congratulations-pour-in-for-geoffrey-hinton-after-nobel-win
+
 
 ## Autonomous Cars
 
@@ -573,6 +550,14 @@ Impact:
 
 https://www.anthropic.com/customers/university-of-sydney
 
+## Ethics
+
+- Bias and fairness
+- Explainability
+- Weaponizing AI
+- Concentrating power
+- Existential risk
+
 ## Closing Thoughts
 
 Deep learning dominates AI today.
@@ -581,4 +566,4 @@ Deep learning dominates AI today.
 - Deep learning itself was written off decades ago.
 - Researchers should learn the right lessons from the story of deep learning.
 
-We'll learn that story, full of winters and springts, in the next lecture.
+We'll learn that story, full of winters and springs, in the next lecture.
