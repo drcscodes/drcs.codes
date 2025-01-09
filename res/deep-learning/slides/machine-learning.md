@@ -177,7 +177,7 @@ Consider a hypothetical data set, $\mathcal{D}$, for the credit scoring problem.
 Data in this form is often called a *design matrix*, an $N \times D$ matrix in which
 
 - each of the $N$ rows represent an example, and
-- each of the $D$ rows represents a *feature* (or *covariate* or *predictor*) of the data examples.
+- each of the $D$ columns represents a *feature* (or *covariate* or *predictor*) of the data examples.
 
 ## Tabular Data vs. Unstructured Data
 
