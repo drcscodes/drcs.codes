@@ -1,0 +1,168 @@
+<h2 id="web-applications">Web Applications</h2>
+<p>A web application is client-server application that uses the hyper-text transfer protocol (HTTP).</p>
+<ul>
+<li>HTTP request is sent from client to server</li>
+<li>HTTP response is sent back to client from server</li>
+<li>HTTP is stateless - there is no inherent relationship betwen request/response pairs
+<ul>
+<li>We simulate sessions (related request/response pairs) by setting cookies on the client.</li>
+</ul></li>
+<li>Web browsers – Firefox, Chrome – are platforms for clients.</li>
+<li>Web servers – Apache, Tomcat, nginx – are plaforms for servers.</li>
+</ul>
+<p>A particular set of web pages running in a browser that communicate with a particular set of web server applications constitutes a web application.</p>
+<h2 id="http-protocol">HTTP Protocol</h2>
+<p>HTTP request message contain a request line, headers, and a body. Each request line specifies a method. Methods we care about:</p>
+<ul>
+<li>GET - get a resource from a server running at a specified URI</li>
+<li>POST</li>
+<li>UPDATE</li>
+<li>DELETE</li>
+</ul>
+<p>For example, if you type http://www.gatech.edu/ in your browser’s address bar, or follow a hyperlink whose target is http://www.gatech.edu/, you browser will send a GET request that looks something like this:</p>
+<pre><code>GET http://www.gatech.edu/ HTTP/1.1</code></pre>
+<p>By the way, the inclusion of the access mechanism <code>http://</code> makes the URI above a URL. In gneral, though, it’s a waste of mentons to distinguish between URIs and URLs.</p>
+<p>See <a href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html" class="uri">http://www.w3.org/Protocols/rfc2616/rfc2616-sec5.html</a></p>
+<h2 id="web-application-structure">Web Application Structure</h2>
+<p>Web applications can be arbitrarily rich, but the core functionality of most web applications is to manage resources by implementing four operations:</p>
+<ul>
+<li>Create - create a new instance of a resourece (new email message, new customer account object, etc) - maps to the HTTP POST method.</li>
+<li>Read - read a resource - maps to the HTTP GET method.</li>
+<li>Update - modify a resource - maps to the HTTP PUT method.</li>
+<li>Delete - delete a resource - maps to the HTTP DELETE method.</li>
+</ul>
+<p>This paradigm is called “CRUD” and most web frameworks (and RESTful web services) are structured around these operations. In our sample application we’ll see a simple way to map these operations to HTTP methods</p>
+<h2 id="web-application-frameworks">Web Application Frameworks</h2>
+<p>Web frameworks typically provide:</p>
+<ul>
+<li>A model-view-controller (MVC) structure
+<ul>
+<li>Models house the domain logic</li>
+<li>Views house the UI elements</li>
+<li>Controllers service web requests, invoking model code and forwarding to views</li>
+</ul></li>
+<li>Routes, which map URLs to server files or handler code</li>
+<li>Templates, which dynamically insert server-side data into pages of HTML</li>
+<li>Authentication and authorization of user names, passwords, permissions</li>
+<li>Sessions, which keep track of a user during a single visit to a site</li>
+</ul>
+<p>and more . . .</p>
+<h2 id="play-framework">Play! Framework</h2>
+<div class="columns">
+<div class="column" data-valign="top" style="width:40%;">
+<ul>
+<li>Play! is written primarily in Scala but has a Java API as well.</li>
+<li>Play! is built on <a href="https://akka.io/">Akka</a>, making it efficient and limitlessly scalable.</li>
+</ul>
+</div><div class="column" data-valign="top" style="width:60%;">
+<p><img src="play-stack.png" style="width:100.0%" /></p>
+</div>
+</div>
+<h2 id="play-application-overview">Play! Application Overview</h2>
+<p><img src="play-request-response.png" /></p>
+<h2 id="hello-play">Hello, Play!</h2>
+<p>We’ll create a simple web application from scratch. We’ll see all the essential parts of a Play! application and how they fit together.</p>
+<ul>
+<li>Build files</li>
+<li>Directory structure</li>
+<li>A view using a Twirl template</li>
+<li>A controller using an Action</li>
+<li>A route to connect the view and the controller</li>
+</ul>
+<p>This tutorial is based on Play’s <a href="https://www.playframework.com/documentation/2.7.x/ImplementingHelloWorld">Hellow World Tutorial</a> but builds the application from scratch and removes irrelevant details.</p>
+<h2 id="a-build-configuration-for-hello-play">A Build Configuration for Hello, Play!</h2>
+<p>Create an empty directory called <code>hello-play</code>. This will be the project root directory.</p>
+<ul>
+<li>In the project root directory create a <code>build.sbt</code> with the following minimal contents:</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb2-1" data-line-number="1">name := <span class="st">&quot;&quot;&quot;hello-play&quot;&quot;&quot;</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">version := <span class="st">&quot;1.0-SNAPSHOT&quot;</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb2-5" data-line-number="5"><span class="kw">lazy</span> <span class="kw">val</span> root = (project in <span class="fu">file</span>(<span class="st">&quot;.&quot;</span>)).<span class="fu">enablePlugins</span>(PlayScala)</a>
+<a class="sourceLine" id="cb2-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb2-7" data-line-number="7">resolvers += Resolver.<span class="fu">sonatypeRepo</span>(<span class="st">&quot;snapshots&quot;</span>)</a>
+<a class="sourceLine" id="cb2-8" data-line-number="8"></a>
+<a class="sourceLine" id="cb2-9" data-line-number="9">scalaVersion := <span class="st">&quot;2.12.8&quot;</span></a>
+<a class="sourceLine" id="cb2-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb2-11" data-line-number="11">libraryDependencies += guice</a>
+<a class="sourceLine" id="cb2-12" data-line-number="12"></a>
+<a class="sourceLine" id="cb2-13" data-line-number="13">scalacOptions ++= Seq(</a>
+<a class="sourceLine" id="cb2-14" data-line-number="14">  <span class="st">&quot;-feature&quot;</span>,</a>
+<a class="sourceLine" id="cb2-15" data-line-number="15">  <span class="st">&quot;-deprecation&quot;</span>,</a>
+<a class="sourceLine" id="cb2-16" data-line-number="16">  <span class="st">&quot;-Xfatal-warnings&quot;</span></a>
+<a class="sourceLine" id="cb2-17" data-line-number="17">)</a></code></pre></div>
+<h2 id="a-congfiguration-for-the-build">A Congfiguration for the Build</h2>
+<p>In the project root directory, create a <code>project</code> directory. The <code>project</code> directory contains configuration information for the sbt build.</p>
+<ul>
+<li><p>In the <code>project</code> directory, create two files with the following contents:</p>
+<p><code>build.properties</code></p>
+<pre><code>sbt.version=1.2.8</code></pre>
+<p><code>plugins.sbt</code></p>
+<pre><code>addSbtPlugin(&quot;com.typesafe.play&quot; % &quot;sbt-plugin&quot; % &quot;2.7.0&quot;)</code></pre></li>
+</ul>
+<p>At this point we should have:</p>
+<pre><code>├── build.sbt
+└── project
+    ├── build.properties
+    └── plugins.sbt</code></pre>
+<h2 id="a-layout-for-views">A Layout for Views</h2>
+<p>In Play! ciews are typically implemented with <a href="https://www.playframework.com/documentation/2.7.x/ScalaTemplates">Twirl</a> templates. We’ll create a view in two steps: first we’ll create a layout template, then a template for rendering the hello page</p>
+<ul>
+<li>In the project root directory, create a directory named <code>app/views</code></li>
+<li><p>In the <code>app/views</code> directory create a file called <code>main.scala.html</code> with the following contents:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb6-1" data-line-number="1">@(title: String)(content: Html)</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">&lt;!DOCTYPE html&gt;</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">&lt;html lang=<span class="st">&quot;en&quot;</span>&gt;</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">    &lt;head&gt;</a>
+<a class="sourceLine" id="cb6-6" data-line-number="6">        &lt;title&gt;@title&lt;/title&gt;</a>
+<a class="sourceLine" id="cb6-7" data-line-number="7">    &lt;/head&gt;</a>
+<a class="sourceLine" id="cb6-8" data-line-number="8">    &lt;body&gt;</a>
+<a class="sourceLine" id="cb6-9" data-line-number="9">        @content</a>
+<a class="sourceLine" id="cb6-10" data-line-number="10">    &lt;/body&gt;</a>
+<a class="sourceLine" id="cb6-11" data-line-number="11">&lt;/html&gt;</a></code></pre></div></li>
+</ul>
+<p>This template provides a shared layout. Other templates that call this template insert their content inserted into the <code>@content</code> portion of this template</p>
+<h2 id="a-template-for-hello">A Template for Hello</h2>
+<ul>
+<li><p>In the <code>app/views</code> directory create a file called <code>hello.scala.html</code> with the following contents:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb7-1" data-line-number="1">@<span class="fu">main</span>(<span class="st">&quot;Hello&quot;</span>) {</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">  &lt;section id=<span class="st">&quot;top&quot;</span>&gt;</a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">      &lt;div <span class="kw">class</span>=<span class="st">&quot;wrapper&quot;</span>&gt;</a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">          &lt;h1&gt;Hello World&lt;/h1&gt;</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">      &lt;/div&gt;</a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">  &lt;/section&gt;</a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">}</a></code></pre></div></li>
+</ul>
+<p>Notice that this template takes advantage of Scala’s syntactic flexibility: the first argument list uses parentheses and the second argument list uses curly braces.</p>
+<h2 id="a-controller">A Controller</h2>
+<p>In Play!, controllers consist of actions and are housed in the</p>
+<ul>
+<li>In the project root directory create a directory named <code>app/controllers</code></li>
+<li><p>In the <code>app/controllers</code> directory create a file named <code>HomeController.scala</code> with the following contents:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw">package</span> controllers</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw">import</span> javax.<span class="fu">inject</span>._</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="kw">import</span> play.<span class="fu">api</span>.<span class="fu">mvc</span>._</a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="kw">class</span> HomeController @<span class="fu">Inject</span>()(cc: ControllerComponents)</a>
+<a class="sourceLine" id="cb8-7" data-line-number="7">    (<span class="kw">implicit</span> assetsFinder: AssetsFinder) </a>
+<a class="sourceLine" id="cb8-8" data-line-number="8">    <span class="kw">extends</span> <span class="fu">AbstractController</span>(cc) {</a>
+<a class="sourceLine" id="cb8-9" data-line-number="9">  <span class="kw">def</span> hello = Action {</a>
+<a class="sourceLine" id="cb8-10" data-line-number="10">    <span class="fu">Ok</span>(views.<span class="fu">html</span>.<span class="fu">hello</span>())</a>
+<a class="sourceLine" id="cb8-11" data-line-number="11">  }</a>
+<a class="sourceLine" id="cb8-12" data-line-number="12">}</a></code></pre></div></li>
+</ul>
+<p>There’s a lot going on here. For now consider all but the body of the class as boilerplate.</p>
+<h2 id="a-route">A Route</h2>
+<p>Play! routes URLs to controller actions via a routes files configuration.</p>
+<ul>
+<li>In the project root directory create a directory named <code>conf</code></li>
+<li><p>In the <code>conf</code> directory create a file named <code>routes</code> with the following contents:</p>
+<pre><code>GET     /hello      controllers.HomeController.hello</code></pre></li>
+</ul>
+<p>One last thing. Create an empty file at <code>conf/application.conf</code>. Play! won’t run if it’s not there.</p>
+<p>Now you can run your application with sbt:</p>
+<pre><code>$ sbt run</code></pre>
+<p>and see the view in your browser at <a href="http://localhost:9000/hello" class="uri">http://localhost:9000/hello</a></p>

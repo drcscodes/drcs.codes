@@ -1,0 +1,185 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 2340 Objects and Design}
+\newcommand{\lesson}{Git for Teams}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs2340/code}
+
+\author[Chris Simpkins] 
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Git for Teams}
+
+
+\begin{itemize}
+\item Tagging
+\item Branching
+\item Distributed Workflow
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Tagging}
+
+
+A tag is an alias for a commit.  Create an annotated tag with {\tt git tag -a}
+\begin{lstlisting}[language=bash]
+[chris@nijinsky ~/work/vcs/github/tomcat-todo]
+$ git tag -a m1 -m "Milestone 1: initial demo to class."
+\end{lstlisting}
+This creates an annotated tag ({\tt -a}) called {\tt m1} with a tag message of  "Milestone 1: initial demo to class."  We can list tags:
+\begin{lstlisting}[language=bash]
+[chris@nijinsky ~/work/vcs/github/tomcat-todo]
+$ git tag
+m1
+\end{lstlisting}
+And, for annotated tags, we can show the tag's details:
+\begin{lstlisting}[language=bash]
+[chris@nijinsky ~/work/vcs/github/tomcat-todo]
+$ git show m1
+tag m1
+Tagger: Chris Simpkins <chris.simpkins@gmail.com>
+Date:   Wed Jun 12 07:14:17 2013 -0400
+
+Milestone 1: initial demo to class.
+...
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Reverting to a Tag and Sharing Tags}
+
+
+Lets say we add and commit {\tt src/main/webapp/stylesheets/main.css} and modify {\tt src/main/webapp/list.jsp} to use the stylesheet, but then we want to revert our working copy of the repo to the {\tt m1} tag.  We can do this with {\tt git checkout}
+\vspace{-.05in}
+\begin{lstlisting}[language=bash]
+$ git checkout m1
+\end{lstlisting}
+Git gives us a message about being in a 'detached HEAD' state, and the new stylesheet changes are gone from our working copy.
+
+We can get back to the current version of the rep by checking out master:
+\begin{lstlisting}[language=bash]
+$ git checkout master
+\end{lstlisting}
+\vspace{-.05in}
+Tags aren't pushed to a remote unless you tell git to push the tags.  You can push all of your tags with {\tt git push --tags} or a specific tag with {\tt git push tag m1}.  You'll need to do this when you tag your milestones.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{}
+
+
+%% \begin{lstlisting}[language=bash]
+
+%% \end{lstlisting}
+
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{Branching}
+
+
+%% First: read Pro Git Chapter 4 to get the concepts, which we don't have time to cover in detail here.  We're just covering the basics you'll need to do your group project.\\
+
+%% A branch is just a movable pointer to a commit.  Each repo has a {\tt master} branch by default.  Create a new branch with {\tt git branch}.  For example, say we have a task of 
+%% \begin{lstlisting}[language=bash]
+
+%% \end{lstlisting}
+
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{}
+
+
+%% \begin{lstlisting}[language=bash]
+
+%% \end{lstlisting}
+
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{}
+
+
+%% \begin{lstlisting}[language=bash]
+
+%% \end{lstlisting}
+
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{}
+
+
+%% \begin{lstlisting}[language=bash]
+
+%% \end{lstlisting}
+
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+%% %------------------------------------------------------------------------
+%% \begin{frame}[fragile]{}
+
+
+%% \begin{lstlisting}[language=bash]
+
+%% \end{lstlisting}
+
+
+%% \end{frame}
+%% %------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

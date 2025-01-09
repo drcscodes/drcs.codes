@@ -1,0 +1,12 @@
+---
+layout: default
+title: CS 1331 Example Code
+---
+
+# CS 1331 Example Code
+
+{% for item in site.code %}
+  <h2>{{ item.title }}</h2>
+  <p>{{ item.description }}</p>
+  <p><a href="{{ item.url }}">{{ item.title }}</a></p>
+{% endfor %}

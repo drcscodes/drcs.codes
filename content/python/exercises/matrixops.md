@@ -26,25 +26,25 @@ Multiplication of a $m \times n$ matrix $\mathbf{A}$ with a scalar number $x$ is
 
 $$
 \mathbf{A}x = \left[\begin{array}{cccc}
-               A_{11}x & A_{12}x & \cdots & A_{1n}x \\
-               A_{21}x & A_{22}x & \cdots & A_{2n}x \\
-               \vdots & \vdots  & \ddots & \vdots \\
-               A_{m1}x & A_{m2}x & \cdots & A_{mn}x \\
+               A_{11}x & A_{12}x & \cdots & A_{1n}x \\\
+               A_{21}x & A_{22}x & \cdots & A_{2n}x \\\
+               \vdots & \vdots  & \ddots & \vdots \\\
+               A_{m1}x & A_{m2}x & \cdots & A_{mn}x \\\
                \end{array}\right]
 $$
 
 Write a function named `matrix_scalar_mult` that takes a matrix parameter named a represented as a list of lists and a number parameter named `x`, and returns a matrix represented as a list of lists with the same dimensions as a and whose elements are the corresponding elements of a multiplied by x. Assume that `a[][]` is rectangular -– each row has the same length -– and that `a[][]`’s dimensions are > 0.
 
-### `marrix_scalar_op`
+### `matrix_scalar_op`
 
 A matrix can be the left operand of the arithmetic operators \*, /, +, and - with scalar right operands. Multiplication of a matrix with a scalar we saw above can be generalized for any `op` as follows:
 
 $$
    \mathbf{A} \text{ op } x = \left[\begin{array}{cccc}
-                  A_{11} \text{ op } x & A_{12} \text{ op } x & \cdots & A_{1n} \text{ op } x \\
-                  A_{21} \text{ op } x & A_{22} \text{ op } x & \cdots & A_{2n} \text{ op } x \\
-                  \vdots & \vdots  & \ddots & \vdots \\
-                  A_{m1} \text{ op } x & A_{m2} \text{ op } x & \cdots & A_{mn} \text{ op } x \\
+                  A_{11} \text{ op } x & A_{12} \text{ op } x & \cdots & A_{1n} \text{ op } x \\\
+                  A_{21} \text{ op } x & A_{22} \text{ op } x & \cdots & A_{2n} \text{ op } x \\\
+                  \vdots & \vdots  & \ddots & \vdots \\\
+                  A_{m1} \text{ op } x & A_{m2} \text{ op } x & \cdots & A_{mn} \text{ op } x \\\
                   \end{array}\right]
 $$
 

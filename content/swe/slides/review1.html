@@ -1,0 +1,94 @@
+<h2 id="general-scala">General Scala</h2>
+<ul>
+<li>How do you pronouce Scala?</li>
+<li>The main version of Scala compiles to bytecode for which platform?</li>
+<li>How can you run Scala code?</li>
+<li>What is Scala’s primary build tool?</li>
+<li>What is the highest supertype of all Scala objects?</li>
+<li>What is the lowest subtype of all Scala objects?</li>
+<li>What is the difference between <code>==</code> and <code>eq</code>?</li>
+<li>Which packages are implicitly imported in every Scala source file?</li>
+</ul>
+<h2 id="values-variables-and-control-structures">Values, Variables and Control Structures</h2>
+<ul>
+<li>What is the value and type of <code>s</code> below?</li>
+</ul>
+<div class="sourceCode" id="cb1"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">val</span> moritz = <span class="dv">1865</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="kw">val</span> s = {</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="st">&quot;Max&quot;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">  moritz</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">}</a></code></pre></div>
+<ul>
+<li>What is the value and type of <code>result</code> below?</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">val</span> result = <span class="kw">if</span> (<span class="kw">true</span>) <span class="st">&quot;blue&quot;</span> <span class="kw">else</span> <span class="dv">2</span></a></code></pre></div>
+<ul>
+<li>What is the difference between a <code>val</code> and a <code>var</code>?</li>
+</ul>
+<h2 id="collections">Collections</h2>
+<ul>
+<li>Write an expression that gives the number of elements in <code>xs</code>.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">val</span> xs = Set( ... )</a></code></pre></div>
+<ul>
+<li>Write an expression that creates a <code>Map</code> referenced by a <code>val</code> named <code>langs</code> such that</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb4-1" data-line-number="1">scala&gt; <span class="fu">langs</span>(<span class="st">&quot;Lisp&quot;</span>)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2">res0: String = John McCarthy</a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">scala&gt; <span class="fu">langs</span>(<span class="st">&quot;Java&quot;</span>)</a>
+<a class="sourceLine" id="cb4-5" data-line-number="5">res1: String = James Gosling</a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7">scala&gt; <span class="fu">langs</span>(<span class="st">&quot;Pascal&quot;</span>)</a>
+<a class="sourceLine" id="cb4-8" data-line-number="8">res2: String = Niklaus Wirth</a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10">scala&gt; <span class="fu">langs</span>(<span class="st">&quot;Scala&quot;</span>)</a>
+<a class="sourceLine" id="cb4-11" data-line-number="11">res3: String = Martin Odersky</a></code></pre></div>
+<ul>
+<li>Write a for-comprehension that uses <code>langs</code> from the previous question to create a <code>Seq</code> of the last names of the values in <code>langs</code>, that is, <code>List(McCarthy, Gosling, Wirth, Odersky)</code>.</li>
+</ul>
+<h2 id="functions">Functions</h2>
+<ul>
+<li><p>Write a function called <code>mean</code> that takes a variable number of <code>Double</code> parameters and returns their arithmetic mean (sum divided by number of numbers).</p></li>
+<li><p>Given <code>xs: List[Int]</code>, write an invocation of the <code>filter</code> method on <code>xs</code> that passes a function literal which selects only the odd numbers in <code>xs</code>.</p></li>
+<li><p>Write a function named <code>listToString[T]</code> that takes a single <code>List[T]</code> and returns a string representation of the <code>List[T]</code>. The <code>listToString</code> function should have a single expression which calls a nested helper function which is recursive and uses pattern matching to recursively accumulate a string representation. Your helper function may use an if statement instead of pattern matching for partial credit.</p></li>
+</ul>
+<h2 id="classes-and-objects">Classes and Objects</h2>
+<ul>
+<li><p>Write the minimal Scala definition of a (non-case) class named <code>Item</code> which has two fields, <code>name</code> of type <code>String</code> and <code>hauptstadt</code> of type <code>String</code>.</p></li>
+<li><p>Write an <code>equals</code> method for the <code>Item</code> class above using the recipe we discussed in class.</p></li>
+<li><p>Write a <code>hashCode</code> method for the <code>Item</code> class above using the recipe we discussed in class.</p></li>
+<li><p>Write a companion object for the <code>Item</code> class above with a factory method that allows us to create an <code>Item</code> object with expression like <code>Item(&quot;Key Lime&quot;, 3.14)</code> (leaving off operator <code>new</code>).</p></li>
+</ul>
+<h2 id="inheritance">Inheritance</h2>
+<p>Given the <code>Person</code> class below, write the minimal non-final subclass of <code>Person</code> named <code>Employee</code> that adds a mutable <code>salary: Double</code> field and initializes the fields defined in <code>Person</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw">class</span> <span class="fu">Person</span>(<span class="kw">val</span> name: String)</a></code></pre></div>
+<h2 id="case-classes-and-pattern-matching">Case Classes and Pattern Matching</h2>
+<ul>
+<li>Given the classes below, write a function named <code>next</code> which takes a single parameter <code>fußgängerampel: AmpelMann</code> and returns the next <code>AmpelMann</code> in the <code>Grün -&gt; Rot -&gt; Grün</code> cycle. Your <code>next</code> function body should be a single <code>match</code> expression.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">sealed</span> <span class="kw">trait</span> AmpelMann</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">case</span> <span class="kw">object</span> Grün <span class="kw">extends</span> AmpelMann</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3"><span class="kw">case</span> <span class="kw">object</span> Rot <span class="kw">extends</span> AmpelMann</a></code></pre></div>
+<h2 id="algebraic-data-types">Algebraic Data Types</h2>
+<ul>
+<li>Write minimal traits/classes/case classes such that the following function would compile without warning or error, but if you removed one of the cases it would compile with a “match may not be exhaustive” warning.</li>
+</ul>
+<div class="sourceCode" id="cb7"><pre class="sourceCode scala"><code class="sourceCode scala"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">def</span> <span class="fu">hauptstadt</span>(land: Bundesland) = land <span class="kw">match</span> {</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2">  <span class="kw">case</span> land: Berlin =&gt; <span class="st">&quot;Berlin&quot;</span></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3">  <span class="kw">case</span> land: Brandenburg =&gt; <span class="st">&quot;Potsdam&quot;</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4">  <span class="kw">case</span> land: MecklenburgVolpommern =&gt; <span class="st">&quot;Schwerin&quot;</span></a>
+<a class="sourceLine" id="cb7-5" data-line-number="5">  <span class="kw">case</span> land: SachsenAnhalt =&gt; <span class="st">&quot;Magdeburg&quot;</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6">  <span class="kw">case</span> land: Sachsen =&gt; <span class="st">&quot;Dresden&quot;</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7">  <span class="kw">case</span> land: SchleswigHolstein =&gt; <span class="st">&quot;Kiel&quot;</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8">  <span class="kw">case</span> land: FreieHansestadtHamburg =&gt; <span class="st">&quot;Hamburg&quot;</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9">  <span class="kw">case</span> land: HansestadtBremen =&gt; <span class="st">&quot;Bremen&quot;</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10">  <span class="kw">case</span> land: Niedersachsen =&gt; <span class="st">&quot;Hannover&quot;</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11">  <span class="kw">case</span> land: NordrheinWestfalen =&gt; <span class="st">&quot;Düsseldorf&quot;</span></a>
+<a class="sourceLine" id="cb7-12" data-line-number="12">  <span class="kw">case</span> land: FreistaatThüringen =&gt; <span class="st">&quot;Erfurt&quot;</span></a>
+<a class="sourceLine" id="cb7-13" data-line-number="13">  <span class="kw">case</span> land: Hessen =&gt; <span class="st">&quot;Wiesbaden&quot;</span></a>
+<a class="sourceLine" id="cb7-14" data-line-number="14">  <span class="kw">case</span> land: RheinlandPfalz =&gt; <span class="st">&quot;Mainz&quot;</span></a>
+<a class="sourceLine" id="cb7-15" data-line-number="15">  <span class="kw">case</span> land: Saarland =&gt; <span class="st">&quot;Saarbrücken&quot;</span></a>
+<a class="sourceLine" id="cb7-16" data-line-number="16">  <span class="kw">case</span> land: BadenWürttemberg =&gt; <span class="st">&quot;Stuttgart&quot;</span></a>
+<a class="sourceLine" id="cb7-17" data-line-number="17">  <span class="kw">case</span> land: FreistaatBayern =&gt; <span class="st">&quot;München&quot;</span></a>
+<a class="sourceLine" id="cb7-18" data-line-number="18">}</a></code></pre></div>

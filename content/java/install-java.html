@@ -1,0 +1,103 @@
+---
+title: "Install Java"
+draft: false
+layout: "course"
+courseName: "Java"
+---
+
+<h1 class="title">Installing The Java Development Kit (JDK)</h1>
+
+<div class="section" id="windows">
+<h2>Windows</h2>
+<ol class="arabic">
+
+<li>Download the Windows x64 download from Oracle <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html">here</a>.</li>
+
+<p>NOTE: Make sure that you download the Java Development Kit (JDK) not the Java Runtime Environment (JRE). The JRE only allows you to run java programs, in order to develop your own java programs you will need the JDK.</p>
+
+<li>Run the installer that you just downloaded. Java will install in your "Program Files" folder. (You may also have a "java" folder in "Program Files (x86)" and you should ignore it because the java kit you are currently downloading will NOT install there.)</li>
+
+<li>Add the path to the bin folder in the java folder that you just installed to your PATH <a href="environment-variables.html">environment variable</a>. Make sure that it is the path to the bin folder and not the path to a file inside the bin folder. eg: <tt class="docutils literal"><span class="pre">C:\Program</span> Files\Java\jdk-10.0.2\bin</tt></li>
+
+<li><a href="#verification-instructions">Verify</a> that you have successfully installed java.</li>
+</ol>
+
+
+<div class="section" id="mac-os-x">
+<h2>Mac OS X</h2>
+<ol class="arabic simple">
+<li>Make sure that you have installed Homebrew before proceeding! Look at the top of the resources page on this website for instructions on installing Homebrew.</li>
+<li>Run the following command in the Terminal:</li>
+<h4>brew update</h4>
+<h4>brew tap caskroom/cask</h4>
+<h4>brew install Caskroom/cask/java</h4>
+<p>The commands running successfully looks like this:</p>
+<img alt="Homebrew-java-install-commands.png" class="align-center" src="/images/Homebrew-java-install-commands.png" style="width: 480px; padding-bottom: 5px;"/>
+<li><a href="#verification-instructions">Verify</a> that you have successfully installed java.</li>
+</ol>
+</div>
+
+
+<div class="section" id="linux">
+<h2>Linux</h2>
+<ol class="arabic simple">
+<li>Most distros use the openJDK instead of Oracle's. This can lead to some issues with JavaFx, so make sure you install the Oracle version by running the following commands according to your distribution (if yours isn't listed, you probably have the expertise to install the Oracle version of Java on your own):
+  <ul>
+  <li>
+    Ubuntu, Debian, Mint (anything using the APT package manager):
+      <pre>
+        sudo add-apt-repository ppa:linuxuprising/java
+        sudo apt update
+        sudo apt install oracle-java10-installer
+
+        # If you have other versions of java installed, run the following
+        sudo update-alternatives --config java       # Select the option with Oracle java 10
+        sudo update-alternatives --config javac      # Select the option with Oracle java 10</pre>
+  </li>
+  <li>
+    Fedora, CentOS (anything using RPM packages):
+      <ul>
+        <li>Install the rpm package <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk10-downloads-4416644.html">here</a>.
+        </li>
+        <li>Run the following:
+          <pre>
+            rpm -ivh /path/to/installed/rpm  # May need sudo
+
+            # Use the following commands to select Oracle Java 10 as the default
+            alternatives --config java
+            alternatives --config javac</pre>
+        </li>
+      </ul>
+  </li>
+  </ul>
+</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Add the JDK's <tt class="docutils literal">bin</tt> directory to your <tt class="docutils literal">PATH</tt> environment variable, if necessary (not required if using methods listed above).</li>
+<li><a href="#verification-instructions">Verify</a> that you have successfully installed java.</li>
+</ul>
+</li>
+</ol>
+</div>
+
+
+<h2>All Operating Systems</h2>
+<h4 id="verification-instructions">To confirm that your java installation was successful:</h4>
+<ul>
+<li>At the command prompt type <tt class="docutils literal">java <span class="pre">-version</span></tt>. You should get output on the next line like <tt class="docutils literal">java version 10.0.2</tt>.</li>
+<li>At the command prompt type <tt class="docutils literal">javac <span class="pre">-version</span></tt>. You should get output like <tt class="docutils literal">javac 10.0.2</tt>.</li>
+<li>The output should look something like this:</li>
+<pre>
+$ java --version
+java version 10.0.2
+Java(TM) SE Runtime Environment 18.3 (build 10.0.2+13)
+Java HotSpot(TM) 64-Bit Server VM (build 10.0.2+13, mixed mode)
+$ javac --version
+javac 10.0.2
+</pre>
+<li>The version number should be "10.*.*" Where the * can be any number. An older version of java will not work for the purposes of this class!</li>
+</ul>
+
+
+<h3>Oracle's installation instructions</h3>
+<blockquote><p>Oracle, the company that makes Java, has documentation <a href="https://docs.oracle.com/javase/10/">here</a></p></blockquote>

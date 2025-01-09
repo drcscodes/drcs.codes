@@ -1,0 +1,460 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 2340 Objects and Design}
+\newcommand{\lesson}{Agile Software Development}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs2340/code}
+
+\author[Chris Simpkins] 
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Agile Processes}
+
+
+Agile Manifesto (\url{http://agilemanifesto.org/}) value:
+\begin{itemize}
+\item {\large Individuals and interactions} over processes and tools
+\item {\large Working software} over comprehensive documentation
+\item {\large Customer collaboration} over contract negotiation
+\item {\large Responding to change} over following a plan
+\end{itemize}
+Guiding principle: change happens, so organize your process around that fact
+\begin{itemize}
+\item Some developers say ``we could build good software if only we had stable requirements''
+\item Agile developers recognize that requirements aren't stable and adjust their practices to that reality
+\end{itemize}
+Low ceremony, emphasis on working software over ``software development bureaucracy''
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{eXtreme Programming}
+
+
+Agile method characterized by 12 practices:
+\begin{itemize}
+\item The Planning Game
+\item Small releases
+\item Metaphor
+\item Simple design
+\item Testing
+\item Refactoring
+\item Pair programming
+\item Collective ownership
+\item Continuous integration
+\item 40 hour week
+\item On-site customer
+\item Coding standards
+\end{itemize}
+Based on already well-known ``best practices.''  XP takes them ``to the extreme''
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{XP Practices\footnote{From Extreme Programming Explained, by Kent Beck} (1 of 2)}
+
+
+\begin{itemize}
+\item The Planning Game -- Quickly determine the scope of the next release by combining business priorities and technical estimates. As reality overtakes the plan, update the plan.
+\item Small releases -- Put a simple system into production quickly, then release new versions on a very short cycle.
+\item Metaphor -- Guide all development with a simple shared story of how the whole system works.
+\item Simple design -- The system should be designed as simply as possible at any given moment. Extra complexity is removed as soon as it is discovered.
+\item Testing -- Programmers continually write unit tests, which must run flawlessly for development to continue. Customers write tests demonstrating that features are finished.
+\item Refactoring -- Programmers restructure the system without changing its behavior to remove duplication, improve communication, simplify, or add flexibility.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{XP Practices (2 of 2)}
+
+
+\begin{itemize}
+\item Pair programming -- All production code is written with two programmers at one machine.
+\item Collective ownership -- Anyone can change any code anywhere in the system at any time.
+\item Continuous integration -- Integrate and build the system many times a day, every time a task is completed.
+\item 40 hour week -- Work no more than 40 hours a week as a rule. Never work overtime a second week in a row.
+\item On-site customer -- Include a real, live user on the team, available full-time to answer questions.
+\item Coding standards -- Programmers write all code in accordance with rules emphasizing communication through the code.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Scrum}
+
+
+Scrum is a framework for organizing and managing work.
+\begin{itemize}
+\item Focuses on management of software development process rather than practices
+\item Timeboxed iterations called sprints
+\begin{itemize}
+\item Timeboxed means the schedule is firm.  If something doesn't get done, it goes into the next sprint.
+\end{itemize}
+\item Daily Meeting (Pigs and Chickens)
+\item Each sprint ends with a release, a ``ready'' deliverable that includes a subset of the final product features
+\end{itemize}
+Definition of ``Done'': team and project dependent.  Typically, when customer accepts a story (usually also means the functional tests pass).
+
+For a nice concise guide to Scrum, see \link{https://www.scrum.org/Portals/0/Documents/Scrum\%20Guides/2013/Scrum-Guide.pdf}{The Scrum Guide}.  We'll summarize in the next few slides.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{The Scrum Team}
+
+
+\begin{itemize}
+\item {\bf Product Owner} is the sole person responsible for managing the Product Backlog.  May delegate to deve team, but still responsible.
+\item {\bf Development Team} consists of professionals who do the work of delivering a potentially releasable Increment of ``Done'' product at the end of each Sprint. Only members of the Development Team create the Increment.
+\item {\bf Scrum Master} is responsible for ensuring Scrum is understood and enacted.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Scrum Events}
+
+
+\begin{itemize}
+\item Planning: product vision and product backlog in the form of epic user stories.
+\item Sprints: building the product in iterations.
+\end{itemize}
+
+The heart of Scrum is the Sprint, a time-box of one month or less during which a ``Done'', useable, and potentially releasable product Increment is created.  Each sprint has a goal, or a single coherent theme for the sprint that focuses the team.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Envisioning, a.k.a. Ideation, a.k.a. Product Planning}
+
+
+Participants
+\begin{itemize}
+\item Required: customer
+\item Recommended: Scrum team
+\item Vision will be refined in sprints with help of Scrum team
+\end{itemize}
+
+Inputs
+\begin{itemize}
+\item Initial idea or pivoted idea
+\item Planning horizon
+\item Completion date
+\item Budget/resources
+\item Confidence threshold -- definition of ``done'', when you have enough for management to make a go/no-go funding decision
+\end{itemize}
+Outputs
+\begin{itemize}
+\item Product vision
+\item Epic stories (would be in icebox in Pivotal Tracker)
+\item Product roadmap (optional)
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Product Vision Formats\footnote{Kenneth Rubin, {\it Essential Scrum: A Practical Guide to the Most Popular Agile Process}, Addison-Wesley, 2013}}
+
+
+\scriptsize
+\begin{itemize}
+\item {\bf Elevator statement} Write a 30-second to one-minute quick pitch of the product vision. Imagine you have stepped into an elevator with a venture capitalist and you have to pitch him on your product vision. Could you do it in a short elevator ride?
+\item {\bf Product datasheet} Write the product datasheet on the first day. Try to fit it on the front side of a one-page marketing piece.
+\item {\bf Product vision box} Draw the box in which you want to put the product when it ships. Can you come up with three or four salient points to illustrate on the box? (Drafting 15 points is easier than drafting three or four.)
+\item {\bf User conference slides} Create the two or three presentation slides that you would use to introduce the product at your user conference (or equivalent). Try to avoid any bullet points on your slides.
+\item {\bf Press release} Write the press release you want to issue when the product becomes available. Good press releases clearly communicate what is newsworthy in one page or less.
+\item {\bf Magazine review} Draft a fictitious magazine review bylined by the solution reviewer in your industry's most popular trade magazine.
+\end{itemize}
+\normalsize
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Epic Stories}
+
+
+A large user story, perhaps a few to many months in size, that can span an entire release or multiple releases. Epics are useful as placeholders for large requirements. Think: features.
+\begin{center}
+\includegraphics[height=1.5in]{story-hierarchy.png}
+\end{center}
+
+Epics must be broken down into ``sprintable'' stories that go into Sprint Backlogs.  We'll cover these stories when we discuss Pivotal Tracker.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{User Stories}
+
+
+
+\begin{quote}
+As a \hrulefill{}, I want to  \hrulefill{}, so that I can  \hrulefill{}
+\end{quote}
+
+Specifies
+\begin{itemize}
+\item type of user, 
+\item the task they are trying to do, and 
+\item why they want to do it.
+\end{itemize}
+In the description section, we put the actual interaction between the user and the system.  Remember this is WHAT and not HOW.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Story Example}
+
+\begin{quote}
+Epic: ``Buy a Product''
+\end{quote}
+
+User Stories:
+\begin{itemize}
+\item As a customer I want to add a product to my shopping cart so that I can continue shopping and come back to my cart later to check out.
+\item As a cutomer I want to edit the items in my cart so that I can change my mind without creating a new shopping session.
+\item As a customer I want to check out with my shopping cart so that I can pay for my products and have them shipped to me.
+\item ...
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Gathering Stories}
+
+
+\begin{center}
+\includegraphics[height=2.5in]{office-space-people-person.png}
+\end{center}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Gathering Stories}
+
+\vspace{-.1in}
+\begin{itemize}
+\item The goal of a {\bf user-story-writing workshop} is to collectively brainstorm desired business value and create user story placeholders for what the product or service is supposed to do.
+\item {\bf Story mapping} takes a user-centric perspective for generating a set of user stories. The basic idea is to decompose high-level user activity into a workflow that can be further decomposed into a set of detailed tasks.
+\end{itemize}
+\begin{center}
+\includegraphics[height=1.8in]{story-map.png}
+\end{center}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Sprint Events}
+
+
+\begin{itemize}
+\item {\bf Sprint Planning}: which stories will be implemented in this sprint, and how will they be implemented (design, tasks, etc.).  Decompose epic stories into ``sprintable'' stories as needed.
+\item {\bf Daily Scrum}: The Daily Scrum is a 15-minute time-boxed event for the Development Team to synchronize activities and create a plan for the next 24 hours.  Every team member answers:
+\begin{itemize}
+\item What did I do yesterday to help meet the Sprint Goal?
+\item What will I do today to help meet the Sprint Goal?
+\item Do I see any impediment that prevents me or the Development Team from meeting the Sprint Goal?
+\end{itemize}
+\item {\bf Sprint Review}: held at the end of the Sprint to inspect the Increment and adapt the Product Backlog if needed.
+\item {\bf Sprint Retrospective}: assess the effectiveness of the Scrum team and identify areas for improvement.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Scrum Artifacts}
+
+
+\begin{itemize}
+\item {\bf Product Backlog}: an ordered list of everything that might be needed in the product and is the single source of requirements for any changes to be made to the product. The Product Owner is responsible for the Product Backlog, including its content, availability, and ordering.
+\item {\bf Sprint Backlog}: the set of Product Backlog items selected for the Sprint, plus a plan for delivering the product Increment and realizing the Sprint Goal
+\item {\bf Increment}: the sum of all the Product Backlog items completed during a Sprint and the value of the increments of all previous Sprints.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Implementing Scrum with Pivotal Tracker}
+
+
+An automated tool to help manage agile projects.
+Divides work into:
+\begin{itemize}
+\item Chores:  work that has to be done, but that doesn't deliver direct benefit to the customer
+\item Stories:  pieces of functionality that form part of the actual application
+\item Bugs:  malfunctioning parts of the system that need to be fixed.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Setting up Pivotal Tracker}
+
+
+\begin{itemize}
+\item Go to \url{http://www.pivotaltracker.com}
+\item Create a public project (only public projects are free!)
+\item Add your team mates to the project
+\item Add me to the project (chris.simpkins@gatech.edu)
+\item  Add your TA to the project once you know them
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Creating Stories and Chores}
+
+\begin{itemize}
+\item Press Add Story button
+\item Fill out information
+\item Automatically goes into the icebox
+\item Once a chore/story/bug has an estimate, it moves to the backlog
+\item Prioritize the backlog by dragging and dropping
+\begin{itemize}
+\item Most complex (largest estimates) stories go first.
+\item Prioritizing complex tasks is a risk management strategy -- you have time to adapt
+\end{itemize}
+\end{itemize}
+A User Story should take no more than half an iteration to complete.  If a story takes an entire iteration, there is greater risk of not completing the story.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Estimation}
+
+
+Once a story is created it goes in the icebox, where we can estimate its required effort on an integral scale from 0--4.  These are called story points.
+
+A story point is an abstract measure of effort:
+\begin{itemize}
+\item For example a point might be an hour
+\item It might be a person-week
+\item It might mean ``easy''
+\begin{itemize}
+\item 1 = EASY
+\item 2  = MEDIUM
+\item 3 = HARD
+\end{itemize}
+\end{itemize}
+Velocity is the number of story points you can accomplish in a single sprint.  You guess this initially, then pivotal tracker calculates based on historical data after you've completed some sprints.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Story Life Cycle Categories}
+
+
+\begin{itemize}
+\item {\bf Icebox}, where every story starts.  Once a story is estimated, it can be moved into the backlog.
+\item {\bf Backlog}: the actual things you are going to do. We drag and drop things from the icebox into the backlog.  The backlog should be in priority order, things at the top will be worked on before things on the bottom.  You change priorities with simple drag and drop.
+\item {\bf Current}: the highest priority things will be moved from the backlog to Current based on your velocity.  You do not directly control what is put into Current.
+\item {\bf Done}: accepted stories, chores and bugs are put into done.  Again you don't directly move anything into done, it is automatic: developer team finshes and delivers, cusomter accepts.
+\end{itemize}
+Visually, stories move from right to left as they are ideated, estimated, implemented, completed, and accepted
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{A Day in a Team's Life}
+
+
+\begin{itemize}
+\item Log into Pivotal Tacker.
+\item Pick the highest priority item in current that is not being worked on.
+\item Click Start button.
+\item Open story and add any tasks.
+\item If not already present, write out the test procedure.
+\item Implement the story.
+\item Click Finish when done.
+\item Click Deliver when all tests pass.
+\item Customer clicks accept or reject.
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}

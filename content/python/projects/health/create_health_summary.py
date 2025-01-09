@@ -18,27 +18,15 @@ if __name__=="__main__":
             data[geo]["le"] = \
                 "".join([c for c in row[3] if c.isdigit() or c == "."])
 
-    # hle = csv.reader(gzip.open("hlth_hlye.tsv.gz", "rt"), delimiter="\t")
-    # for row in hle:
-    #     code, geo = row[0].split(",")
-    #     #age = code.split("_")[1].strip()
-    #     if code == "F_0_DFLE" and geo in eu:
-    #         data[geo]["hle_f"] = \
-    #             "".join([c for c in row[3] if c.isdigit() or c == "."])
-    #     if code == "M_0_DFLE" and geo in eu:
-    #         data[geo]["hle_m"] = \
-    #             "".join([c for c in row[3] if c.isdigit() or c == "."])
-
-
-    bme = csv.reader(gzip.open("hlth_ehis_bm1e.tsv.gz", "rt"), delimiter="\t")
-    bme_header = next(bme)
-    for row in bme:
+    bmi = csv.reader(gzip.open("hlth_ehis_bm1e.tsv.gz", "rt"), delimiter="\t")
+    bmi_header = next(bmi)
+    for row in bmi:
         unit,bmi,isced11,sex,age,time = row[0].split(",")
         if bmi.strip() == "BMI_GE30" and time.strip() == "2014"\
            and sex.strip() == "T" and age.strip() == "TOTAL":
             #print(bmi, time)
             for i, field in enumerate(row):
-                geo = bme_header[i].strip()
+                geo = bmi_header[i].strip()
                 if geo in eu:
                     data[geo]["obese"] = \
                         "".join([c for c in field if c.isdigit() or c == "."])
@@ -88,4 +76,4 @@ if __name__=="__main__":
     data["US"] = {"sk": 15.5, "obese": 37.7, "le": 77.7, "fv": 10, "ex": 51.7}
     df = pd.DataFrame(data).transpose()
     df.index.name = "country"
-    df.to_csv("euro-health.csv")
+    df.to_csv("health.csv")

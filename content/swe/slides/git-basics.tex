@@ -1,0 +1,512 @@
+\documentclass{beamer}
+
+\newcommand{\course}{CS 2340 Objects and Design}
+\newcommand{\lesson}{Git Basics}
+\newcommand{\code}{http://www.cc.gatech.edu/~simpkins/teaching/gatech/cs2340/code}
+
+\author[Chris Simpkins] 
+{Christopher Simpkins \\\texttt{chris.simpkins@gatech.edu}}
+\institute[Georgia Tech] % (optional, but mostly needed)
+
+\date[CS 1331]{}
+
+\include{beamer-common}
+
+% \beamerdefaultoverlayspecification{<+->}
+
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Version Control Systems}
+
+\begin{itemize}
+\item Records changes to files over time
+\item Allows you to recover older versions of a file (effectively ``undoing'' recent chagnes)
+\item Many people already do this
+\begin{itemize}
+\item manually by saving copies of files with version information embedded in the file name, or
+\item automatically using a commercial solutions such as Apples Time Machine.
+\end{itemize}
+\end{itemize}
+
+Neither of these approaches is sufficiently powerful for professional software development.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Local Version Control Systems}
+
+\begin{center}
+\includegraphics[height=1.5in]{local-vcs.png}
+\end{center}
+
+\begin{itemize}
+\item RCS - Revision Control System
+\item Stores file versions as diffs
+\begin{itemize}
+\item Any version of the file is constructed by applying each of the diffs in order from the original file.
+\end{itemize}
+\item Can be used by a team if team has access to a central machine (over ssh, for example), but very clumsy.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Centralized Version Control Systems}
+
+\begin{center}
+\includegraphics[height=1.5in]{centralized-vcs.png}
+\end{center}
+
+\begin{itemize}
+\item Central server contains the version database
+\item Programmers ``check out'' the project on their local computers
+\item Each programmer is dependent on central server
+\item Most popular VCS architecture (CVS, SVN, MKS, Perforce, StarTeam, etc.)
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Locking Models}
+
+\begin{itemize}
+\item Pessimistic locking (most commercial VCSes)
+\begin{itemize}
+\item When one programmer has a file ``checked out'' no one else can edit it.
+\end{itemize}
+\item Optimistic locking (Most open-source VCSes - CVS, SVN, Git, Hg)
+\begin{itemize}
+\item Files aren't locked.
+\item If two people edit a file, the first committer wins - the second person must resolve conflicts before committing their changes
+\end{itemize}
+
+\item Optimistic locking generally preferred, but ...
+\begin{itemize}
+\item Centralized VCSes can encourage infrequent commits to delay the hassle of conflict resolution.
+\item Distributed VCSes eliminate this problem by decoupling commits from merges (``pushes'' in Git parlance).
+\end{itemize}
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Distributed Verson Control Systems}
+
+\begin{columns}[t]
+\begin{column}{2.25in}
+\begin{center}
+\includegraphics[width=2.25in]{distributed-vcs.png}
+\end{center}
+\end{column}
+\begin{column}{2,5in}
+\begin{itemize}
+\item Each programmer has a local version of the repository
+\item Every repository is ``equal'' - no central authoritative repsitory (by default, at least)
+\item Each repository contains the entire project and all of its history
+\item Commits are made to the local repository
+\item Repositories are updated with changes from other repositories by merging the repositories
+\end{itemize}
+\end{column}
+\end{columns}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Git}
+
+\begin{itemize}
+\item Created in 2005 by Linus Torvalds to manage the Linux Kernel Super fast and proven in large open source projects
+\item Probably the leading DVCS in use today
+\item We'll use Git, and the GitHub hosting service in this class
+\end{itemize}
+
+Many prospective employers ask to see your GitHub projects. After this class, you'll have something to show them.
+
+\begin{itemize}
+\item
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Git Concepts}
+
+\begin{itemize}
+\item Git stores snapshots of the entire project, not file diffs.
+\item Every commit contains references to each of the files in the project, some of which may have changed for the particular commit. Pictorially:
+\begin{center}
+\includegraphics[height=1.5in]{git-commits.png}
+\end{center}
+\item In Git, every operation you do in normal day-to-day development is local, making it very fast and independent of central repositories or network access.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Local Git Workflow}
+
+
+To Git, a tracked file can be in one of three states:
+\begin{itemize}
+\item modified - working copy is different from repository version
+\item staged - working copy has been marked for inclusion in the next commit
+\item committed - working copy matches repository version
+\end{itemize}
+Pictorially, the local workflow looks like this:
+\begin{center}
+\includegraphics[height=1.5in]{git-local-workflow.png}
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Setting Up Git}
+
+
+Git configuration stored in three files (on Unix systems):
+\begin{itemize}
+\item {\tt /etc/gitconfig} contains settings for every user on the system
+\item {\tt $\sim$/.gitconfig} contains settings for a specific user, overriding values in {\tt /etc/gitconfig}
+\item {\tt .git/config} contains settings for a particular reporsitory, overriding values in {\tt $\sim$/.gitconfig} and {\tt /etc/gitconfig}
+\end{itemize}
+
+After you install Git, you'll want to configure your identity and your editor
+
+\begin{lstlisting}[language=Java]
+$ git config --global user.name "Chris Simpkins"
+$ git config --global user.email chris.simpkins@gmail.com
+$ git config --global core.editor emacs
+\end{lstlisting}
+You can configure settings for the local repository by leaving off the {\tt --global} option.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Initializing a Local Repository}
+
+
+To create a local Git repository, run {\tt git init}
+\begin{lstlisting}[language=Java]
+$ git init
+Initialized empty Git repository in /Users/chris/git-demo/.git/
+\end{lstlisting}
+Local repositories are stored in a {\tt .git} subdirectory of your working directory.
+\vspace{.1in}
+Now create a file:
+\begin{lstlisting}[language=Java]
+$ touch README.rst
+$ ls
+README.rst
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Getting the Status of a Working Directory}
+
+
+Run git status to get a picture of your local working directory:
+\begin{lstlisting}[language=Java]
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Untracked files:
+#   (use "git add <file>..." to include in what will be committed)
+#
+# README.rst
+nothing added to commit but untracked files present (use "git add" to
+track)
+\end{lstlisting}
+Usually Git tells you what you need to do next. In this case, we need to run {\tt git add} to track the {\tt README.rst} file.
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Adding Files to be Tracked}
+
+
+{\tt git add} adds a file to the staging area (a.k.a. cache, a.k.a. index) to be included in the next commit:
+
+\begin{lstlisting}[language=Java]
+$ git add README.rst
+$ git status
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+# new file:   README.rst
+\end{lstlisting}
+
+Remember, a file can be tracked or untracked, and a tracked file can be in one of three states:
+\begin{itemize}
+\item modified - working copy is different from repository version
+\item staged - working copy marked for inclusion in next commit
+\item committed - working file same as in repository
+\end{itemize}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Comitting Files to the Repository}
+
+
+Once a file has been staged, it can be committed to the repository with the {\tt git commit} command:
+
+\begin{lstlisting}[language=Java]
+$ git commit -m "Initial commit." README.rst
+[master (root-commit) 1d84037] Initial commit.
+ 0 files changed
+ create mode 100644 README.rst
+\end{lstlisting}
+
+The {\tt -m} option is the commit message. If you leave it off, Git invokes your {\tt core.editor} (vi if you didn't configure one) so you can add one. Now all our files are committed:
+
+\begin{lstlisting}[language=Java]
+￼$ git status
+# On branch master
+nothing to commit (working directory clean)
+\end{lstlisting}
+
+Every time we make changes to the file, we add the changed file to the repository with the same two step process:
+
+\begin{itemize}
+\item {\tt git add} to stage the file for inclusion in the next commit
+\item {\tt git commit} to add the changed file to the respository
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Unstaging Modified Files}
+
+
+Say we stage a change that we want to undo:
+
+\begin{lstlisting}[language=Java]
+$ echo "This is the REDME file for the project." >> README.rst
+$ git add README.rst
+\end{lstlisting}
+
+As usual, {\tt git status} tells us what to do:
+
+\begin{lstlisting}[language=Java]
+$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+# modified:   README.rst
+\end{lstlisting}
+
+To unstage a file that we staged with {\tt git add}, use {\tt git reset HEAD}:
+\begin{lstlisting}[language=Java]
+$ git reset HEAD README.rst
+Unstaged changes after reset:
+M README.rst
+\end{lstlisting}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Unmodifying Files}
+
+
+Say we have changes we want to get rid of by replacing our working file with the version in the respository. {\tt git status} tells us how:
+
+\begin{lstlisting}[language=Java]
+$ git status
+# On branch master
+# Changes not staged for commit:
+#   (use "git add <file>..." to update what will be committed)
+#   (use "git checkout -- <file>..." to discard changes in working
+directory)
+#
+# modified:   README.rst
+#
+no changes added to commit (use "git add" and/or "git commit -a")
+\end{lstlisting}
+
+Doing what git status tells us reverts the file.
+
+\begin{lstlisting}[language=Java]
+$ git checkout -- README.rst
+$ git status
+# On branch master
+nothing to commit (working directory clean)
+\end{lstlisting}
+Be careful with this command - it overwrites your working copy.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Creating a GitHub Repository}
+
+\vspace{-.1in}
+Click on Create a New Repo:
+
+\begin{center}
+\includegraphics[width=3.5in]{github-create-repo.png}
+\end{center}
+
+\begin{columns}[c]
+\begin{column}{2in}
+Make it private, and check the option to create a README:
+\end{column}
+\begin{column}{3in}
+%\begin{center}
+\includegraphics[width=3in]{github-new-repo.png}
+%\end{center}
+\end{column}
+\end{columns}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Adding Collaborators}
+
+
+On the repo page, click Settings:
+\begin{center}
+\includegraphics[width=4in]{github-settings.png}
+\end{center}
+
+
+On the settings page, click Collaborators and add me as a collaborator (I'm {\tt csimpkins} on GitHub):
+\vspace{-.1in}
+\begin{center}
+\includegraphics[width=4.8in]{github-collaborators.png}
+\end{center}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Cloning to Your Local Machine}
+
+
+Back on the repo page, copy the Git URL to your clipboard:
+\begin{center}
+\includegraphics[height=1in]{github-repo-page.png}
+\end{center}
+\vspace{-.1in}
+On your local machine, go to the directory where you want your working copy to live and clone the remote GitHub repository like this:
+\begin{lstlisting}[language=bash]
+$ git clone git@github.com:csimpkins/cs2340-hw.git
+Cloning into 'cs2340-hw'...
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (3/3), done.
+$ cd cs2340-hw/
+$ ls
+README.md
+\end{lstlisting}
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Working With Remotes}
+
+
+A remote repository is a copy of the repository that's on another machine on the network or Internet.
+\begin{itemize}
+\item The GitHub repository we just created is a remote.
+\item Every remote repository has a name (you can list all your remotes with {\tt git remote -v}).  When you clone a remote, that remote automatically get sthe name {\tt origin}.
+\item Collaborating with others means pushing changes to remotes and pulling changes from remotes.
+\end{itemize}
+You can have any number of remote repositories and push, fetch, and pull on any branch.  For now we'll focus on our single GitHub remote and the {\tt master} branch.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Pushing Changes To Your Remote}
+
+
+In Git parlance, pushing means uploading to the remote repository.  When you've committed your changes to your local repo and want to share them (or simply back them up to your remote) do a {\tt git push}:
+\begin{lstlisting}[language=bash]
+$ git push origin master
+\end{lstlisting}
+
+\begin{itemize}
+\item {\tt origin} is the name of your remote, which was set up automatically because you cloned it.
+\item {\tt master} is the name of the branch you're pushing.  For now you'll always be on {\tt master}, which is the default.
+\end{itemize}
+
+To update your local repository with changes from your remote, you use {\tt it fetch} or {\tt git pull}.  We'll discuss that in the next Git lesson.
+
+\end{frame}
+%------------------------------------------------------------------------
+
+%------------------------------------------------------------------------
+\begin{frame}[fragile]{Closing Thoughts}
+
+\begin{itemize}
+\item Version control isn't just for program source code. Learn to store all of your important files in version controllable, diffable, command-line manipulable plain text.
+\item You now have a general idea how to work with Git. You need much more practice.
+\item Read the first three chapters of Pro Git.
+\item Your first homework will be setting up your GitHub account.
+\item Create practice projects and experiment.
+\end{itemize}
+
+
+\end{frame}
+%------------------------------------------------------------------------
+
+
+% %------------------------------------------------------------------------
+% \begin{frame}[fragile]{}
+
+
+% \begin{lstlisting}[language=Java]
+
+% \end{lstlisting}
+
+% \begin{itemize}
+% \item
+% \end{itemize}
+
+
+% \end{frame}
+% %------------------------------------------------------------------------
+
+
+\end{document}
