@@ -33,10 +33,11 @@
         "UDL: Understanding Deep Learning, by Simon J.D. Prince, [https://udlbook.github.io/udlbook/](https://udlbook.github.io/udlbook/)"
     ],
     "recommended_materials": [
-        "DPFC: Deep Learning Foundations and Concepts, by Bishop and Bishop, [https://www.bishopbook.com](https://www.bishopbook.com)",
+        "DLFC: Deep Learning Foundations and Concepts, by Bishop and Bishop, [https://www.bishopbook.com](https://www.bishopbook.com)",
         "DDL: Dive into Deep Learning, by Ashton Zhang, et. al., [https://d2l.ai](https://d2l.ai)",
         "DL: Deep Learning, by Goodfellow, Bengio and Courville, [https://www.deeplearningbook.org](https://www.deeplearningbook.org)",
         "LDL: Learning Deep Learning, by Ekman, [https://ldlbook.com](https://ldlbook.com)",
+        "NND: Neural Network Design, by Hagan, et. al., [https://hagan.okstate.edu/nnd.html](https://hagan.okstate.edu/nnd.html)",
         "ITLA: Information Theory, Inference and Learning Algorithms, by David MacKay, [http://www.inference.org.uk/mackay/itila/book.html](http://www.inference.org.uk/mackay/itila/book.html)"
     ],
     "technology_requirements": [
@@ -53,7 +54,7 @@
                 "[Meet Prof. Simpkins](https://cs1331.github.io/slides/meet-simpkins.html)"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -63,28 +64,7 @@
                 "UDL: 1, 2"
             ],
             "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "neural-networks",
-            "slides": "[Neural Networks](@root/deep-learning/slides/neural-networks.pdf)",
-            "reading": [
-                "LDL: 2"
-            ],
-            "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "linear-algebra",
-            "slides": "[Linear Algebra](@root/deep-learning/slides/linear-algebra.pdf)",
-            "reading": [
-                "UDL: Appendix B.3",
-                "DDL: 2.3"
-            ],
-            "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -94,17 +74,27 @@
                 "UDL: 3"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": ["Assigned: [PS1](ps1.html)"],
             "videos": []
         },
         {
-            "topic": "deep-networks",
+            "topic": "deep-networks1",
             "slides": "[Deep Networks](@root/deep-learning/slides/deep-networks.pdf)",
             "reading": [
                 "UDL: 4"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
+            "videos": []
+        },
+        {
+            "topic": "deep-networks2",
+            "slides": "[Deep Networks](@root/deep-learning/slides/deep-networks.pdf)",
+            "reading": [
+                "UDL: 4"
+            ],
+            "exercises": [],
+            "assignments": ["Due: [PS1](ps1.html)"],
             "videos": []
         },
         {
@@ -112,21 +102,11 @@
             "slides": "[Probability](@root/deep-learning/slides/probability.pdf)",
             "reading": [
                 "UDL: Appendix A",
-                "DLFC: 2, 3"
+                "DLFC: 2, 3",
+                "ITLA 1, 2"
             ],
             "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "information-theory",
-            "slides": "[Information Theory](@root/deep-learning/slides/information-theory.pdf)",
-            "reading": [
-                "DLFC: 2.5",
-                "ITLA: 1,2"
-            ],
-            "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -136,7 +116,7 @@
                 "UDL: 5"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -149,17 +129,22 @@
                 "[Matrix Cookbook](https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf)"
             ],
             "exercises": [],
-            "projects": [],
-            "videos": []
+            "assignments": [],
+            "videos": [],
+            "include_semester": false
         },
         {
             "topic": "fitting-models",
             "slides": "[Fitting Models](@root/deep-learning/slides/fitting-models.pdf)",
             "reading": [
-                "UDL: 6"
+                "UDL: 6",
+                "UDL: Appendix B.5",
+                "DLFC: Appendix A",
+                "DDL: 2.3-2.4",
+                "[Matrix Cookbook](https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf)"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -169,7 +154,7 @@
                 "UDL: 7"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -179,7 +164,7 @@
                 "UDL: 8"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -189,7 +174,7 @@
                 "UDL: 9"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -200,7 +185,7 @@
                 "[Midterm Practice Answers](midterm-practice-answers.pdf)"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -209,20 +194,30 @@
             "reading": [
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
             "part": "Supervised Deep Learning"
         },
         {
-            "topic": "convolutional-networks",
+            "topic": "convolutional-networks1",
             "slides": "[Convolutional Networks](@root/deep-learning/slides/convolutional-networks.pdf)",
             "reading": [
                 "UDL: 10"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
+            "videos": []
+        },
+        {
+            "topic": "convolutional-networks2",
+            "slides": "[Convolutional Networks](@root/deep-learning/slides/convolutional-networks.pdf)",
+            "reading": [
+                "UDL: 10"
+            ],
+            "exercises": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -232,17 +227,27 @@
                 "UDL: 11"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
-            "topic": "transformers",
+            "topic": "transformers1",
             "slides": "[Transformers](@root/deep-learning/slides/transformers.pdf)",
             "reading": [
                 "UDL: 12"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
+            "videos": []
+        },
+        {
+            "topic": "transformers2",
+            "slides": "[Transformers](@root/deep-learning/slides/transformers.pdf)",
+            "reading": [
+                "UDL: 12"
+            ],
+            "exercises": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -252,30 +257,30 @@
                 "UDL: 13"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
             "part": "Generative Deep Learning"
         },
         {
-            "topic": "unsupervised-learning",
-            "slides": "[Unsupervised Learning](@root/deep-learning/slides/unserpervised-learning.pdf)",
+            "topic": "generative-adversarial-networks1",
+            "slides": "[Generative Adversarial Networks](@root/deep-learning/slides/generative-adversarial-networks.pdf)",
             "reading": [
-                "UDL: 14"
+                "UDL: 14,15"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
-            "topic": "generative-adversarial-networks",
+            "topic": "generative-adversarial-networks2",
             "slides": "[Generative Adversarial Networks](@root/deep-learning/slides/generative-adversarial-networks.pdf)",
             "reading": [
-                "UDL: 15"
+                "UDL: 14,15"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -285,7 +290,7 @@
                 "UDL: 16"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -295,7 +300,7 @@
                 "UDL: 17"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -305,7 +310,7 @@
                 "UDL: 18"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -318,7 +323,7 @@
                 "UDL: 19"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -328,7 +333,7 @@
                 "UDL: 20"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -338,16 +343,25 @@
                 "UDL: 21"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
-            "topic": "project-presentations",
+            "topic": "project-presentations1",
             "slides": "Project Presentations",
             "reading": [
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
+            "videos": []
+        },
+        {
+            "topic": "project-presentations2",
+            "slides": "Project Presentations",
+            "reading": [
+            ],
+            "exercises": [],
+            "assignments": [],
             "videos": []
         }
     ]
