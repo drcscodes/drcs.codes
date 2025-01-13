@@ -366,7 +366,6 @@ More generally:
 \end{center}
 ```
 
-Play around with the interactive figures on [https://udlbook.github.io/udlfigures/](https://udlbook.github.io/udlfigures/) to get a feel for the different funciton surfaces produced by different activation functions.
 
 ## Other Kinds of Activation Functions
 
@@ -374,11 +373,12 @@ Play around with the interactive figures on [https://udlbook.github.io/udlfigure
 ```{=latex}
 \begin{center}
 ```
-![](ShallowActivations.pdf)
+![](ShallowActivations.pdf){height="60%"}
 ```{=latex}
 \end{center}
 ```
 
+Play around with the interactive figures on [https://udlbook.github.io/udlfigures/](https://udlbook.github.io/udlfigures/) to get a feel for the different funciton surfaces produced by different activation functions.
 
 
 ## Closing Thoughts
