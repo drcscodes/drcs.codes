@@ -1,5 +1,5 @@
 ---
-title: Neural Networks
+title: Shallow Networks
 author: CS 4277 Deep Learning
 institute: Kennesaw State University
 aspectratio: 1610
@@ -42,10 +42,10 @@ $\mathbb{R}^{D}$ means an $D$-dimensional vectors of real numbers.
 Column vector in $\mathbb{R}^{3}$:
 
 $$
-\mathbf{x} = \left[\begin{array}{c}
+\vec{x} = \left[\begin{array}{c}
 1 \\ 2 \\ 3
 \end{array}\right]
-\mathbf{w} = \left[\begin{array}{c}
+\vec{w} = \left[\begin{array}{c}
 4 \\ 5 \\ 6
 \end{array}\right]
 $$
@@ -53,7 +53,7 @@ $$
 Transpose of a column vector is a row vector:
 
 $$
-\mathbf{x}^T = \left[\begin{array}{ccc}
+\vec{x}^T = \left[\begin{array}{ccc}
 1 & 2 & 3
 \end{array}\right]
 $$
@@ -61,7 +61,7 @@ $$
 Inner product, a.k.a. "dot" product of two vectors:
 
 $$
-\mathbf{x}^T\mathbf{w} =
+\vec{x}^T\vec{w} =
 \left[\begin{array}{ccc}
 1 & 2 & 3
 \end{array}\right]
@@ -90,7 +90,7 @@ General model of an artificial neuron:
 
 % Perceptron
 \draw (3.86,2) circle [radius=1.74cm];
-\node[compute](z) at (3,2){$z = \mathbf{x}^T \mathbf{w}$};
+\node[compute](z) at (3,2){$z = \vec{x}^T \vec{w}$};
 \node[compute](a) at (5,2){$a(z)$};
 
 % Output
@@ -118,10 +118,10 @@ General model of an artificial neuron:
 ## Simple Shallow Network
 
 A *shallow network* has an input layer, a single hidden layer, and an output layer.
-A neural network with one input, $x$, one output, $y$, and 10 paramters, $\mathbf{\phi}$ can be written mathematically as
+A neural network with one input, $x$, one output, $y$, and 10 paramters, $\vec{\phi}$ can be written mathematically as
 
 $$
-y = f(x, \mathbf{\phi}) = \phi_0 + \phi_1 a(\theta_{10} + \theta_{11}x) + \phi_2 a(\theta_{20} + \theta_{21}x) + \phi_3 a(\theta_{30} + \theta_{31}x)
+y = f(x, \vec{\phi}) = \phi_0 + \phi_1 a(\theta_{10} + \theta_{11}x) + \phi_2 a(\theta_{20} + \theta_{21}x) + \phi_3 a(\theta_{30} + \theta_{31}x)
 $$
 
 and depicted diagrammatically as
@@ -198,8 +198,8 @@ The flow of signals through network with input $x = 1$.
 
 - Top row: inputs multiplied by weights $\theta_{h_i 1}$ and added to biases $\theta_{h_i 0}$
 - Middle row: summed inputs passed through ReLU
-- Third row: ReLU outputs scaled by weights $\mathbf{\phi}$
-- Final row: outputs of hidden units summed and added to biases $\mathbf{\phi}$
+- Third row: ReLU outputs scaled by weights $\vec{\phi}$
+- Final row: outputs of hidden units summed and added to biases $\vec{\phi}$
 
 Look at the plots and guess the parameters.  Then go to [https://udlbook.github.io/udlfigures/](https://udlbook.github.io/udlfigures/), select "3.3a - 1D shallow network (ReLU)", check your guess and play around with the parameter values.
 :::
@@ -207,10 +207,10 @@ Look at the plots and guess the parameters.  Then go to [https://udlbook.github.
 
 ## General Single Input/Single Output Shallow Network Definition
 
-Given a shallow network with one input, $D$ hidden units, and one output, each hidden unit $h_i$ computes:
+Given a shallow network with one input, $D$ hidden units, and one output, each hidden unit $h_d$ computes:
 
 $$
-h_i = a(\theta_{i0} + \theta_{i1}x)
+h_d = a(\theta_{d0} + \theta_{d1}x)
 $$
 
 - What assumption does the equation above make about the activation function(s)?
@@ -218,7 +218,7 @@ $$
 and output $y$ is computed by:
 
 $$
-y = \phi_0 + \sum_{i=1}^{D}\phi_i h_i
+y = \phi_0 + \sum_{d=1}^{D}\phi_d h_d
 $$
 
 - Number of hidden units determines the network's *capacity*
@@ -332,7 +332,7 @@ See [https://udlbook.github.io/udlfigures/](https://udlbook.github.io/udlfigures
 ```
 
 
-A shallow neural network is a funciton $\mathbf{y} = f(\mathbf{x}, \mathbf{\phi})$ with $\mathbf{x} \in \mathbb{R}^{D_i}$, $\mathbf{y} \in \mathbb{R}^{D_o}$ and $\mathbf{h} \in \mathbb{R}^D$ from $D$ hidden units.  Each $\{h_d\}_{d=1}^D$ computes
+A shallow neural network is a function $\vec{y} = f(\vec{x}, \vec{\phi})$ with $\vec{x} \in \mathbb{R}^{D_i}$, $\vec{y} \in \mathbb{R}^{D_o}$ and $\vec{h} \in \mathbb{R}^D$ from $D$ hidden units.  Each $\{h_d\}_{d=1}^D$ computes
 
 $$
 h_d = a(\theta_{d0} + \sum_{i=1}^{D_i} \theta_{di} x_i)
@@ -346,7 +346,7 @@ $$
 
 ## Capacity of Shallow Networks
 
-For $i$-dimentional input, $D$ hidden units can divide input with $D_i$ hyperplanes into $2_{D_i}$ linear regions.
+For $i$-dimentional input, $D$ hidden units can divide input with $D_i$ hyperplanes into $2^{D_i}$ linear regions.
 
 ```{=latex}
 \begin{center}
