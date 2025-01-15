@@ -17,7 +17,7 @@ title: Syllabus
 <hr style="color: #ffc629">
 
 
-Class meeting times: Mondays and Wednesdays, 15:30-16:45 
+Class meeting times: Mondays and Wednesdays, 15:30-16:45
 
 Modality: Traditional; Location: Engineering Technology Center Room 310
 
@@ -35,7 +35,7 @@ Office Location: Norton Hall Room 330
 
 Office phone: N/A
 
-Office Hours: TBD
+Office Hours: Thursdays, 15:30-17:30 in R2-330 (during January in Room J123)
 
 Preferred method of communication: E-mail
 
@@ -75,13 +75,15 @@ Required Texts:
 Recommended Texts:
 
 
-- DPFC: Deep Learning Foundations and Concepts, by Bishop and Bishop, [https://www.bishopbook.com](https://www.bishopbook.com)
+- DLFC: Deep Learning Foundations and Concepts, by Bishop and Bishop, [https://www.bishopbook.com](https://www.bishopbook.com)
 
 - DDL: Dive into Deep Learning, by Ashton Zhang, et. al., [https://d2l.ai](https://d2l.ai)
 
 - DL: Deep Learning, by Goodfellow, Bengio and Courville, [https://www.deeplearningbook.org](https://www.deeplearningbook.org)
 
 - LDL: Learning Deep Learning, by Ekman, [https://ldlbook.com](https://ldlbook.com)
+
+- NND: Neural Network Design, by Hagan, et. al., [https://hagan.okstate.edu/nnd.html](https://hagan.okstate.edu/nnd.html)
 
 - ITLA: Information Theory, Inference and Learning Algorithms, by David MacKay, [http://www.inference.org.uk/mackay/itila/book.html](http://www.inference.org.uk/mackay/itila/book.html)
 
@@ -123,13 +125,13 @@ At the end of the course, students should be able to:
 <hr style="color: #ffc629">
 
 
-- Problem sets: 30%
+- Problem sets: 20%
 
-- Programming assignments: 30%
+- Programming assignments: 20%
 
-- Research project: 10%
+- Research project: 20%
 
-- Exams: 30%
+- Exams: 40%
 
 
 Each assignment will be graded on a 100 point scale which you may consider a percentage with respect to the grading scale below.  Some assignments may have more than 100 points, in which case the points in excess of 100 are "extra credit."
