@@ -38,6 +38,7 @@
         "DL: Deep Learning, by Goodfellow, Bengio and Courville, [https://www.deeplearningbook.org](https://www.deeplearningbook.org)",
         "LDL: Learning Deep Learning, by Ekman, [https://ldlbook.com](https://ldlbook.com)",
         "NND: Neural Network Design, by Hagan, et. al., [https://hagan.okstate.edu/nnd.html](https://hagan.okstate.edu/nnd.html)",
+        "DLI: Deep Learning Illustrated, by Jon Krohn: [https://www.deeplearningillustrated.com](https://www.deeplearningillustrated.com)",
         "ITLA: Information Theory, Inference and Learning Algorithms, by David MacKay, [http://www.inference.org.uk/mackay/itila/book.html](http://www.inference.org.uk/mackay/itila/book.html)"
     ],
     "technology_requirements": [
@@ -74,7 +75,8 @@
                 "UDL: 3"
             ],
             "exercises": [],
-            "assignments": ["Assigned: [PS1](ps1.pdf)"],
+            "assignments": ["Assigned: [PS1](ps1.pdf)",
+                            "Assigned: [Project](project.html)"],
             "videos": []
         },
         {
@@ -116,7 +118,7 @@
                 "UDL: 5"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": ["Due: [Project Proposal](project.html)"],
             "videos": []
         },
         {
@@ -257,7 +259,7 @@
                 "UDL: 13"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": ["Due: [Project Results](project.html)"],
             "videos": []
         },
         {
@@ -358,6 +360,15 @@
         {
             "topic": "project-presentations2",
             "slides": "Project Presentations",
+            "reading": [
+            ],
+            "exercises": [],
+            "assignments": ["Due: [Final Project Paper](project.html)"],
+            "videos": []
+        },
+        {
+            "topic": "final-review",
+            "slides": "Final Exam Review",
             "reading": [
             ],
             "exercises": [],
