@@ -1,0 +1,248 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{verbatim, multicol, tabularx,hyperref}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, listings, qtree}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Problem Set 1}
+\author{CS 4277: Deep Learning}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+Name (print clearly): \ifprintanswers \underline{  {\bf ANSWER KEY}  } \fi \hrulefill Section: (e.g., 01) \makebox[.5in]{\hrulefill}
+
+\vspace{0.25in}
+\hbox to \textwidth{Signature: \hrulefill}
+
+\vspace{0.25in}
+\hbox to \textwidth{Student account username (e.g., msmith3): \enspace\hrulefill}
+
+Signing signifies that you agree to comply with the {\bf Academic Honor Code} and course policies stated in the syllabus.
+
+Choose one of these two options for turn-in:
+\begin{enumerate}
+\item Print this document, write or answers, scan your finished homework to a PDF, name the PDF {\tt cs4277-ps1-<your-student-account-username>.pdf}, e.g., {\tt cs4277-ps1-msmith3.pdf} and submit the PDF to the assignment on D2L.
+\item While viewing this document in your web browser, in the address bar change {\tt .pdf} to {\tt .tex}, save the \LaTeX\ source as a text file, add your answers in appropriate \LaTeX\ markup in the appropriate spaces, compile to a PDF named as in the instructions above, and submit the PDF file to the assignment on D2L.  (Whether you choose this option or not, LOOK AT THE \LaTeX\ SOURCE!)
+\end{enumerate}
+
+\begin{center}
+  \gradetable[h][questions]
+\end{center}
+
+\begin{questions}
+
+\question According to Tom Mitchell, machine learning is the study of algorithms that
+
+\begin{itemize}
+\item improve their performance {\tt P}
+\item at some task {\tt T}
+\item with experience {\tt E}.
+\end{itemize}
+
+A well-defined learning task is given by {\tt <P, T, E>}.
+
+Formulate the following problems according to Tom Mitchell's machine learning problem specification (see \href{https://drcs.codes/deep-learning/slides/machine-learning.pdf}{Machine Learning Slides}) and the specification our textbook. For each of the following problems specify:
+
+\begin{itemize}
+\item The task {\tt T},
+\item The performance measure {\tt P},
+\item The experience {\tt E},
+\item The target function $f: \mathcal{X} \rightarrow \mathcal{Y}$, that is,
+\begin{itemize}
+\item the input space $\mathcal{X}$, and
+\item the output space $\mathcal{Y}$.
+\end{itemize}
+\end{itemize}
+
+Remember that a function maps a domain to a co-domain, and these domains are sets.
+
+Note: there are many correct solutions.
+
+\newpage
+
+\begin{parts}
+
+\part[10] Medical diagnosis: A patient walks in with a medical history and some symptoms, and you want to identify the problem.
+
+\ifprintanswers
+\begin{solution}
+\begin{itemize}
+\item Task, {\tt T}: diagnose problem
+\item Performance, {\tt P}: diagnosis is correct or incorrect
+\item Experience, {\tt E}: $<medical-history, symptoms>$
+\item Target function $f: \mathcal{X} \rightarrow \mathcal{Y}$:
+\begin{itemize}
+\item $\mathcal{X} = \{\vec{x} \vert x_1 \in \{family-history-heart-disease\}, x_2 \in \mathbb{R} = cholesterol-level \}$ and other such features
+\item $\mathcal{Y} = \{disease_1, disease_2, ..., disease_n \}$
+\end{itemize}
+\end{itemize}
+\end{solution}
+\else
+\vspace{4in}
+\fi
+
+\part[10] Handwritten digit recognition (for example postal zip code recognition for mail sorting).
+
+\ifprintanswers
+\begin{solution}
+You didn't think I would give you all the answers, did you?
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+\newpage
+
+\part[10] Determining if an email is spam or not.
+
+\ifprintanswers
+\begin{solution}
+\begin{itemize}
+Boom!
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+\part[10] Predicting how an electric load varies with price, temperature, and day of week.
+
+\ifprintanswers
+\begin{solution}
+Boom!
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+\end{parts}
+
+\newpage
+
+\question[15] (Problem 2.1 from our textbook) To walk ``downhill'' on the loss function (equation 2.5 -- reproduced here for convenience),
+
+\begin{equation}
+    L(\mathbf{\phi}) = \sum_{i=1}^{I} (\phi_0 + \phi_1 x_i - y_i)^2
+\end{equation}
+
+we measure its gradient with respect to the parameters $\phi_0$ and $\phi_1$. Calculate expressions for the slopes $\frac{\partial{L}}{\partial{\phi_0}}$ and $\frac{\partial{L}}{\partial{\phi_1}}$.  Show your work for partial credit.
+
+Tips:
+\begin{itemize}
+\item See \href{https://d2l.ai/chapter_preliminaries/calculus.html#partial-derivatives-and-gradients}{Partial Derivatives and Gradients} in Dive Into Deep Learning for a refresher on the essential vector calculus needed for this question.
+\end{itemize}
+
+\ifprintanswers
+\begin{solution}
+
+Boom!
+
+\end{solution}
+\else
+\vspace{5in}
+
+\newpage
+
+\question[15] (Problem 3.1 from our textbook) What kind of mapping from input to output would be created if the activation function in Equation 3.1 were linear so that $a(z) = \psi_0 + \psi_1 z$? What kind of mapping would be created if the activation function was removed, so $a(z) = z$?
+
+\ifprintanswers
+\begin{solution}
+Boom!
+\end{solution}
+\else
+\vspace{2.5in}
+\fi
+
+\question[15] (Problem 3.2 from our textbook) For each of the four linear regions in Figure 3.3j, indicate which hidden units are inactive and which are active (i.e., which do and do not clip their inputs).
+
+\ifprintanswers
+\begin{solution}
+Boom!
+\end{solution}
+\else
+\vspace{4in}
+\fi
+
+\question[15] (Problem 3.12 from our textbook) How many parameters does the model in Figure 3.7 have?
+
+\ifprintanswers
+\begin{solution}
+Boom!
+\end{solution}
+\else
+\vspace{2in}
+\fi
+
+\newpage
+
+\question[15] (Problem 3.16 from our textbook) Write out the equations for a network with two inputs, four hidden units, and three outputs. Draw this model in the style of Figure 3.11.
+
+\ifprintanswers
+\begin{solution}
+Boom!
+\end{solution}
+\else
+\vspace{7.5in}
+\fi
+
+\end{questions}
+
+\end{document}
