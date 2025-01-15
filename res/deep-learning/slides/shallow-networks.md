@@ -184,7 +184,7 @@ The plot of $ReLU(z)$ is:
 \end{center}
 ```
 
-## Signal Flow in Shallow Networks
+## Signal Flow in Single Input/Output Shallow Networks
 
 :::: {.columns valign="top"}
 ::: {.column width="50%"}
@@ -194,7 +194,7 @@ The plot of $ReLU(z)$ is:
 :::
 ::: {.column width="55%"}
 
-The flow of signals through network with input $x = 1$.
+The flow of signals through network with input $x \in [0, 2]$.
 
 - Top row: inputs multiplied by weights $\theta_{h_i 1}$ and added to biases $\theta_{h_i 0}$
 - Middle row: summed inputs passed through ReLU
