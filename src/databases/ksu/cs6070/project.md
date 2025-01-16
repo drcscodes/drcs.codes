@@ -3,6 +3,8 @@ template: course
 title: CS 6070 - Project
 ---
 
+Spring 2025 Project: [Trip Planner](trip-planner.html)
+
 # General Project Information
 
 You will design and implement a database portion of an application using the MySQL relational database system. The Project must be done in groups of 3 - 5 students. Groups of more than 5 or less than 3 will not be allowed.  The project will consist of 3 phases (deliverables).

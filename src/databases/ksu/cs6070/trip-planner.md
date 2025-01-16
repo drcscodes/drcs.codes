@@ -147,15 +147,15 @@ You may use your (corrected) EER model from Phase 1, or this sample solution:
 
 Turn in two SQL files: `teamN-data.sql` and `teamN-queries.sql`.
 
-**`teamN-data.sql`**, where `N` is your team number, should contain valid SQL code to insert data into your database tables for at least 3 attractions in each of 3 cities, including Metz, Paris, and one or more cities of your choosing. There should be data for each field for each row in each table, including the descriptions of the attractions (the descriptions should be correct, but don't have to be longer than two sentences). In addition, include insert statements to create a trip in Paris on Saturday, 28 July 2018 with at leat 3 activities, at least one of which requires a reservation and at least two of which requires payment (they can be the same activity).
+**`teamN-data.sql`**, where `N` is your team number, should contain valid SQL code to insert data into your database tables for at least 3 attractions in each of 3 cities, including Marietta, Kennesaw, and Atlanta. There should be data for each field for each row in each table, including the descriptions of the attractions (the descriptions should be correct, but don't have to be longer than two sentences). In addition, include insert statements to create a trip in Marietta on Saturday, May 5, 2025 with at leat 3 activities, at least one of which requires a reservation and at least two of which requires payment (they can be the same activity).
 
 **`teamN-queries.sql`**, where `N` is your team number, should contain valid SQL code for queries that answer the following questions:
 
 - Given a username or email address, is that user in the database?
 - Given a username or email address, is that user an admin user?
-- Which attractions are open right now in Paris?
-- Which attractions in Paris don't require reservations?
-- Which attractions in Metz are free?
+- Which attractions are open right now in Kennesaw?
+- Which attractions in Atlanta don't require reservations?
+- Which attractions in Marietta are free?
 - Show the details for one attraction?
 - List all the reviews for an attraction.
 - List all the reviews written by a particular user.
