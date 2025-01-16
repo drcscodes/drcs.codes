@@ -131,6 +131,16 @@ Midterm Grades: A midterm grade will be assigned by the midterm grade due date i
 ## Course Policies
 <hr style="color: #ffc629">
 
+### Assignment Submission and Make-up Policies
+
+Assignments are due at 23:59 local time on the due date.  Late submissions are not accepted except in exceptional, documented cases beyond the student's control such as illness, death in the family, or natural disasters.
+
+In the case of missed exams, make-ups will be given accoring to the same policy regarding exceptional cases for assignments.
+
+### Academic Honesty
+
+Academic dishonesty cannot be tolerated. You may discuss any of the assignments with your classmates (or anyone else) but all work for all assignments must be entirely your own. Any sharing or copying of assignments will be considered cheating. By the rules of the College of Computing and Sofwate Engineering (CCSE), the instructor is obligated to report any incidents of cheating to the department. The first incident of cheating will result in the student getting a final grade of F for the course. The second incident, by CCSE rules, will result in a semester suspension from the College.
+
 ### Attendance Policy
 
 Class attendance is required and very important for successful completion of the course. Students are expected to attend every class and participate in the discussion of ideas developed by others in the class. Peer feedback is essential and is part of the grade assigned to each of the course assignments stated above. Excused absences must be planned for, when possible, and justified with documentation. The student is responsible for making up missed class sessions. Late arrival that causes disruption, early departure that causes disruption, excessive conversation among students (a disruption in its own right), inappropriate use of electronic devices that cause disruptions and other actions that disrupt the classroom are unacceptable.
