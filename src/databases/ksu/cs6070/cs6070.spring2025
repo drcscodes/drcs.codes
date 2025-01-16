@@ -12,43 +12,43 @@ Week 3
 2025-01-23;eer-models2;
 Week 4
 2025-01-28;conceptual-design-process1;
-2025-01-30;project-kickoff;
-Week 5
-2025-02-04;exam1review;
-2025-02-06;exam1;
+2025-01-30;conceptual-design-process2;
 Relational Model
+Week 5
+2025-02-04;relational-model1;
+2025-02-06;relational-model2;
 Week 6
-2025-02-11;relational-model1;
-2025-02-13;relational-model2;
+2025-02-11;relational-algebra1;
+2025-02-13;relational-algebra2;
 Week 7
-2025-02-18;relational-algebra1;
-2025-02-20;relational-algebra2;
-Week 8
-2025-02-25;exam2review;
-2025-02-27;exam2;
+2025-02-18;midterm-review;
+2025-02-20;midterm-exam;
 Relational Databases and SQL
+Week 8
+2025-02-25;er-relational-mapping;
+2025-02-27;basic-relational-design;
 Week 9
-2025-03-04;er-relational-mapping;**Due: Project Phase 1**
-2025-03-06;basic-relational-design;
+2025-03-04;sql-ddl;
+2025-03-06;sql-crud;
 Week 10
 2025-03-11;Spring Break - No Class;
 2025-03-13;Spring Break - No Class;
 Week 11
-2025-03-18;sql-ddl;
-2025-03-20;sql-crud;Midterm Grades Due (2025-03-21)
+2025-03-18;sql-queries1;
+2025-03-20;sql-queries2;Midterm Grades Due (2025-03-21)
 Week 12
-2025-03-25;sql-queries1;
-2025-03-27;sql-queries2;Withdrawal Deadline (2025-03-28)
-Week 13
-2025-04-01;sql-advanced1;
-2025-04-03;sql-advanced2;**Due: Project Phase 2**
+2025-03-25;sql-advanced1;
+2025-03-27;sql-advanced2;Withdrawal Deadline (2025-03-28)
 Relational Database Design
+Week 13
+2025-04-01;relational-design1;
+2025-04-03;relational-design2;
 Week 14
-2025-04-08;relational-design1;
-2025-04-10;relational-design2;
+2025-04-08;advanced-relational-design1;
+2025-04-10;advanced-relational-design2;
 Week 15
-2025-04-15;advanced-relational-design1;
-2025-04-17;advanced-relational-design2;
+2025-04-15;nosql;
+2025-04-17;storage-structures;
 Week 16
-2025-04-22;nosql;
-2025-04-24;exam3review;**Due: Project Phase 3**
+2025-04-22;final-review;
+2025-04-24;;

@@ -35,7 +35,7 @@ Office Location: Norton Hall Room 330
 
 Office phone: N/A
 
-Office Hours: TBD
+Office Hours: Thursdays, 15:30-17:30 in R2-330 (during January in Room J123)
 
 Preferred method of communication: E-mail
 
@@ -100,7 +100,7 @@ At the end of the course, students should be able to:
 
 - 3 Project Deliverables
 
-- 2 Exams
+- Midterm Exam
 
 - Final Exam
 
@@ -109,11 +109,9 @@ At the end of the course, students should be able to:
 <hr style="color: #ffc629">
 
 
-- Project: 40%
+- Project: 60%
 
 - Exams: 40%
-
-- Final Exam: 20%
 
 
 Each assignment will be graded on a 100 point scale which you may consider a percentage with respect to the grading scale below.  Some assignments may have more than 100 points, in which case the points in excess of 100 are "extra credit."

@@ -16,13 +16,12 @@
         "use a professional relational database management system such as MySQL"
     ],
     "grading": [
-        "Project: 40%",
-        "Exams: 40%",
-        "Final Exam: 20%"
+        "Project: 60%",
+        "Exams: 40%"
     ],
     "assignments": [
         "3 Project Deliverables",
-        "2 Exams",
+        "Midterm Exam",
         "Final Exam"
     ],
     "prerequisites": [
@@ -48,7 +47,7 @@
                 "FoDS 1"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -58,7 +57,7 @@
                 "FoDS 2"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -68,7 +67,7 @@
                 "FoDS 3.1-3.7.3"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -78,7 +77,7 @@
                 "FoDS 3.1-3.7.3"
             ],
             "exercises": ["[Movie Rental ER Exercise](@root/databases/exercises/movie-rental-er.html)"],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -88,7 +87,7 @@
                 "FoDS 4.1-4.3"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -98,7 +97,9 @@
                 "FoDS 4.1-4.3"
             ],
             "exercises": ["[Humane Society EER Exercise](@root/databases/exercises/humane-society-eer.html)"],
-            "projects": [],
+            "assignments": [
+                "Assigned: [Trip Planner](trip-planner.html)"
+            ],
             "videos": []
         },
         {
@@ -108,35 +109,17 @@
                 ""
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
-            "topic": "project-kickoff",
-            "slides": "[Project Kickoff](project.html)",
+            "topic": "conceptual-design-process2",
+            "slides": "[Conceptual Design Process 2](@root/databases/slides/conceptual-design-process.pdf)",
             "reading": [
                 ""
             ],
             "exercises": [],
-            "projects": [
-                "[Trip Planner(trip-planner.html)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "exam1review",
-            "slides": "Exam 1 Review",
-            "reading": ["[Exam 1 Practice](exam1-practice.pdf)", "[Exam 1 Practice Answers](exam1-practice-answers.pdf)"],
-            "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "exam1",
-            "slides": "Exam 1",
-            "reading": [],
-            "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -149,7 +132,7 @@
                 "FoDS 5"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -159,7 +142,7 @@
                 "FoDS 5"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -169,7 +152,7 @@
                 "FoDS 8.1 - 8.3.4, 8.4.4"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -182,7 +165,9 @@
                 "[Relational Algebra Exercises](@root/databases/exercises/relational-algebra-exercises.pdf) - [Answers](@root/databases/exercises/relational-algebra-exercises-answers.pdf)",
                 "[Relational Algebra Masterclass](@root/databases/exercises/relational-algebra-masterclass.pdf)"
             ],
-            "projects": [],
+            "assignments": [
+                "Due: [Project Phase 1](project.html)"
+            ],
             "videos": []
         },
         {
@@ -192,24 +177,24 @@
                 "FoDS 8.5"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": [],
             "include_semester": false
         },
         {
-            "topic": "exam2review",
-            "slides": "Exam 2 Review",
-            "reading": ["[Exam 2 Practice](exam2-practice.pdf)", "[Exam 2 Practice Answers](exam2-practice-answers.pdf)"],
+            "topic": "midterm-review",
+            "slides": "Midterm Review",
+            "reading": ["[Midterm Practice](midterm-practice.pdf)", "[Midterm Practice Answers](midterm-practice-answers.pdf)"],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
-            "topic": "exam2",
-            "slides": "Exam 2",
+            "topic": "midterm-exam",
+            "slides": "Midterm Exam",
             "reading": [],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -222,7 +207,7 @@
                 "FoDS 9"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -232,7 +217,7 @@
                 "FoDS 14.1-14.3"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -242,7 +227,7 @@
                 "FoDS 6"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -252,7 +237,7 @@
                 "FoDS 6"
             ],
             "exercises": ["[Exercise: Registration Database](@root/databases/exercises/registration-database.html)"],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -262,7 +247,7 @@
                 "FoDS 6"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -274,7 +259,9 @@
             "exercises": [
                 "[Exercise: Dorms Queries](@root/databases/exercises/dorms-queries.html)"
             ],
-            "projects": [],
+            "assignments": [
+                "Due: [Project Phase 2](trip-planner.html)"
+            ],
             "videos": []
         },
         {
@@ -284,7 +271,7 @@
                 "FoDS 6,7"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -296,7 +283,7 @@
             "exercises": [
                 "[Exercise: Sakila Queries](@root/databases/exercises/sakila-queries/)"
             ],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -309,7 +296,7 @@
                 "FoDS 14.1-14.5"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -319,7 +306,7 @@
                 "FoDS 14.1-14.5"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -330,7 +317,7 @@
             ],
             "exercises": [
             ],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -342,23 +329,7 @@
             "exercises": [
                 "[BCNF Decomposition Exercise](@root/databases/exercises/bcnf-decomposition.pdf)"
             ],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "exam3review",
-            "slides": "Exam 3 Review",
-            "reading": ["[Exam 3 Practice](exam3-practice.pdf)", "[Exam 3 Practice Answers](exam3-practice-answers.pdf)"],
-            "exercises": [],
-            "projects": [],
-            "videos": []
-        },
-        {
-            "topic": "exam3",
-            "slides": "Exam 3",
-            "reading": [],
-            "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": []
         },
         {
@@ -368,7 +339,7 @@
                 "FoDS 16.1-16.7"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": [],
             "include_semester": true
         },
@@ -379,20 +350,30 @@
                 "FoDS 16.1-16.7"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [
+                "Due: [Project Phase 3](trip-planner.html)"                
+            ],
             "videos": [],
-            "include_semester": false
+            "include_semester": true
         },
         {
             "topic": "index-structures",
-            "slides": "[Indexing Structures](@root/databases/slides/index-structures.pdf)",
+            "slides": "[Index Structures](@root/databases/slides/index-structures.pdf)",
             "reading": [
                 "FoDS 17"
             ],
             "exercises": [],
-            "projects": [],
+            "assignments": [],
             "videos": [],
             "include_semester": false
+        },
+        {
+            "topic": "final-review",
+            "slides": "Final Review",
+            "reading": ["[Final Practice](final-practice.pdf)", "[Final Practice Answers](final-practice-answers.pdf)"],
+            "exercises": [],
+            "assignments": [],
+            "videos": []
         }
     ]
 }
