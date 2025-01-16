@@ -1,7 +1,7 @@
 \documentclass[addpoints]{exam}
 
 \usepackage{verbatim, multicol, tabularx,hyperref}
-\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, listings, qtree}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
 
 \lstset{
   extendedchars=\true,
@@ -180,7 +180,7 @@ Boom!
 \question[15] (Problem 2.1 from our textbook) To walk ``downhill'' on the loss function (equation 2.5 -- reproduced here for convenience),
 
 \begin{equation}
-    L(\mathbf{\phi}) = \sum_{i=1}^{I} (\phi_0 + \phi_1 x_i - y_i)^2
+    L(\bm{\phi}) = \sum_{i=1}^{I} (\phi_0 + \phi_1 x_i - y_i)^2
 \end{equation}
 
 we measure its gradient with respect to the parameters $\phi_0$ and $\phi_1$. Calculate expressions for the slopes $\frac{\partial{L}}{\partial{\phi_0}}$ and $\frac{\partial{L}}{\partial{\phi_1}}$.  Show your work for partial credit.
