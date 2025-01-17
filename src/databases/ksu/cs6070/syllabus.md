@@ -5,7 +5,7 @@ title: Syllabus
 
 
 <center>
-![KSU Logo](@root/images/ksu-letterhead-logo.png)<br/>
+![KSU Logo](@root/images/ksu-letterhead-logo.png){width="50%"}<br/>
 **SYLLABUS**<br/>
 **College of Computing and Software Engineering**<br/>
 **Department of Computer Science**<br/>
@@ -17,7 +17,7 @@ title: Syllabus
 <hr style="color: #ffc629">
 
 
-Class meeting times: Tuesdays (virtual) and Thursdays, 18:30-19:45
+Class meeting times: Tuesdays (virtual, asynchronous) and Thursdays, 18:30-19:45
 
 Modality: Hybrid; Location: Engineering Technology Center Room 310
 
@@ -197,4 +197,77 @@ Federal, BOR, & KSU Required Syllabus Policies and Student Resources: [https://w
 ## Course Schedule
 <hr style="color: #ffc629">
 
-See the detailed course schedule at [https://drcs.codes/databases/ksu/cs6070/schedule.html](https://drcs.codes/databases/ksu/cs6070/schedule.html).
+Detailed course schedule: [https://drcs.codes/databases/ksu/cs6070/schedule.html](https://drcs.codes/databases/ksu/cs6070/schedule.html).
+
+Weekly Summary:
+
+<table class="schedule">
+<tr>
+<th>Week</th><th>Content Covered</th><th>Assignments</th><th>Exams</th>
+</tr>
+
+<tr>
+<td>Week 1: 01-07,01-09</td><td>Introduction to Databases,Database Concepts</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 2: 01-14,01-16</td><td>ER Models</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 3: 01-21,01-23</td><td>EER Models</td><td>Assigned: Project,Second thing</td><td></td>
+</tr>
+
+<tr>
+<td>Week 4: 01-28,01-30</td><td>Conceptual Design Process</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 5: 02-04,02-06</td><td>Relational Model</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 6: 02-11,02-13</td><td>Relational Algebra</td><td>Due: Project Phase 1</td><td></td>
+</tr>
+
+<tr>
+<td>Week 7: 02-18,02-20</td><td>Midterm Review</td><td></td><td>Midterm Exam</td>
+</tr>
+
+<tr>
+<td>Week 8: 02-25,02-27</td><td>ER - Relational Mapping</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 9: 03-04,03-06</td><td>Basic Relational Design,DB Workshop</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 10: 03-11,03-13</td><td>Spring Break - No Class</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 11: 03-18,03-20</td><td>SQL DDL,SQL CRUD</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 12: 03-25,03-27</td><td>SQL Queries</td><td>Due: Project Phase 2</td><td></td>
+</tr>
+
+<tr>
+<td>Week 13: 04-01,04-03</td><td>Advanced SQL</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 14: 04-08,04-10</td><td>Relational Design</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 15: 04-15,04-17</td><td>Advanced Relational Design</td><td>Due: Project Phase 3</td><td></td>
+</tr>
+
+<tr>
+<td>Week 16: 04-22,04-24</td><td>NoSQL Databases,Storage and Indexing</td><td></td><td></td>
+</tr>
+
+</table>

@@ -72,7 +72,7 @@
         },
         {
             "topic": "er-models2",
-            "slides": "[ER Models 2](@root/databases/slides/er-models.pdf)",
+            "slides": "[ER Models](@root/databases/slides/er-models.pdf)",
             "reading": [
                 "FoDS 3.1-3.7.3"
             ],
@@ -82,7 +82,7 @@
         },
         {
             "topic": "eer-models1",
-            "slides": "[EER Models 1](@root/databases/slides/eer-models.pdf)",
+            "slides": "[EER Models](@root/databases/slides/eer-models.pdf)",
             "reading": [
                 "FoDS 4.1-4.3"
             ],
@@ -92,19 +92,20 @@
         },
         {
             "topic": "eer-models2",
-            "slides": "[EER Models 2](@root/databases/slides/eer-models.pdf)",
+            "slides": "[EER Models](@root/databases/slides/eer-models.pdf)",
             "reading": [
                 "FoDS 4.1-4.3"
             ],
             "exercises": ["[Humane Society EER Exercise](@root/databases/exercises/humane-society-eer.html)"],
             "assignments": [
-                "Assigned: [Trip Planner](trip-planner.html)"
+                "Assigned: [Project](trip-planner.html)",
+                "Second thing"
             ],
             "videos": []
         },
         {
             "topic": "conceptual-design-process1",
-            "slides": "[Conceptual Design Process 1](@root/databases/slides/conceptual-design-process.pdf)",
+            "slides": "[Conceptual Design Process](@root/databases/slides/conceptual-design-process.pdf)",
             "reading": [
                 ""
             ],
@@ -114,7 +115,7 @@
         },
         {
             "topic": "conceptual-design-process2",
-            "slides": "[Conceptual Design Process 2](@root/databases/slides/conceptual-design-process.pdf)",
+            "slides": "[Conceptual Design Process](@root/databases/slides/conceptual-design-process.pdf)",
             "reading": [
                 ""
             ],
@@ -127,7 +128,7 @@
         },
         {
             "topic": "relational-model1",
-            "slides": "[Relational Model 1](@root/databases/slides/relational-model.pdf)</a>",
+            "slides": "[Relational Model](@root/databases/slides/relational-model.pdf)</a>",
             "reading": [
                 "FoDS 5"
             ],
@@ -137,7 +138,7 @@
         },
         {
             "topic": "relational-model2",
-            "slides": "[Relational Model 2](@root/databases/slides/relational-model.pdf)</a>",
+            "slides": "[Relational Model](@root/databases/slides/relational-model.pdf)</a>",
             "reading": [
                 "FoDS 5"
             ],
@@ -147,7 +148,7 @@
         },
         {
             "topic": "relational-algebra1",
-            "slides": "[Relational Algebra 1](@root/databases/slides/relational-algebra.pdf)",
+            "slides": "[Relational Algebra](@root/databases/slides/relational-algebra.pdf)",
             "reading": [
                 "FoDS 8.1 - 8.3.4, 8.4.4"
             ],
@@ -157,7 +158,7 @@
         },
         {
             "topic": "relational-algebra2",
-            "slides": "[Relational Algebra 2](@root/databases/slides/relational-algebra.pdf)",
+            "slides": "[Relational Algebra](@root/databases/slides/relational-algebra.pdf)",
             "reading": [
                 "FoDS 8.1 - 8.3.4, 8.4.4"
             ],
@@ -201,7 +202,17 @@
             "part": "Relational Databases and SQL"
         },
         {
-            "topic": "er-relational-mapping",
+            "topic": "er-relational-mapping1",
+            "slides": "[ER - Relational Mapping](@root/databases/slides/er-relational-mapping.pdf)",
+            "reading": [
+                "FoDS 9"
+            ],
+            "exercises": [],
+            "assignments": [],
+            "videos": []
+        },
+        {
+            "topic": "er-relational-mapping2",
             "slides": "[ER - Relational Mapping](@root/databases/slides/er-relational-mapping.pdf)",
             "reading": [
                 "FoDS 9"
@@ -215,6 +226,16 @@
             "slides": "[Basic Relational Design](@root/databases/slides/basic-relational-design.pdf)",
             "reading": [
                 "FoDS 14.1-14.3"
+            ],
+            "exercises": [],
+            "assignments": [],
+            "videos": []
+        },
+        {
+            "topic": "db-workshop",
+            "slides": "DB Workshop",
+            "reading": [
+                "[MySQL](mysql.html)"
             ],
             "exercises": [],
             "assignments": [],
@@ -237,12 +258,13 @@
                 "FoDS 6"
             ],
             "exercises": ["[Exercise: Registration Database](@root/databases/exercises/registration-database.html)"],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
             "topic": "sql-queries1",
-            "slides": "[SQL Queries 1](@root/databases/slides/sql-queries.pdf)",
+            "slides": "[SQL Queries](@root/databases/slides/sql-queries.pdf)",
             "reading": [
                 "FoDS 6"
             ],
@@ -252,7 +274,7 @@
         },
         {
             "topic": "sql-queries2",
-            "slides": "[SQL Queries 2](@root/databases/slides/sql-queries.pdf)",
+            "slides": "[SQL Queries](@root/databases/slides/sql-queries.pdf)",
             "reading": [
                 "FoDS 6"
             ],
@@ -266,7 +288,7 @@
         },
         {
             "topic": "sql-advanced1",
-            "slides": "[Advanced SQL 1](@root/databases/slides/sql-advanced.pdf)",
+            "slides": "[Advanced SQL](@root/databases/slides/sql-advanced.pdf)",
             "reading": [
                 "FoDS 6,7"
             ],
@@ -276,7 +298,7 @@
         },
         {
             "topic": "sql-advanced2",
-            "slides": "[Advanced SQL 2](@root/databases/slides/sql-advanced.pdf)",
+            "slides": "[Advanced SQL](@root/databases/slides/sql-advanced.pdf)",
             "reading": [
                 "FoDS 6,7"
             ],
@@ -291,7 +313,7 @@
         },
         {
             "topic": "relational-design1",
-            "slides": "[Relational Design 1](@root/databases/slides/relational-design.pdf)",
+            "slides": "[Relational Design](@root/databases/slides/relational-design.pdf)",
             "reading": [
                 "FoDS 14.1-14.5"
             ],
@@ -301,7 +323,7 @@
         },
         {
             "topic": "relational-design2",
-            "slides": "[Relational Design 2](@root/databases/slides/relational-design.pdf)",
+            "slides": "[Relational Design](@root/databases/slides/relational-design.pdf)",
             "reading": [
                 "FoDS 14.1-14.5"
             ],
@@ -311,7 +333,7 @@
         },
         {
             "topic": "advanced-relational-design1",
-            "slides": "[Advanced Relational Design 1](@root/databases/slides/advanced-relational-design.pdf)",
+            "slides": "[Advanced Relational Design](@root/databases/slides/advanced-relational-design.pdf)",
             "reading": [
                 "FoDS 15.1-15.3"
             ],
@@ -322,14 +344,16 @@
         },
         {
             "topic": "advanced-relational-design2",
-            "slides": "[Advanced Relational Design 2](@root/databases/slides/advanced-relational-design.pdf)",
+            "slides": "[Advanced Relational Design](@root/databases/slides/advanced-relational-design.pdf)",
             "reading": [
                 "FoDS 15.1-15.3"
             ],
             "exercises": [
                 "[BCNF Decomposition Exercise](@root/databases/exercises/bcnf-decomposition.pdf)"
             ],
-            "assignments": [],
+            "assignments": [
+                "Due: [Project Phase 3](trip-planner.html)"
+            ],
             "videos": []
         },
         {
@@ -340,32 +364,26 @@
             ],
             "exercises": [],
             "assignments": [],
-            "videos": [],
-            "include_semester": true
+            "videos": []
         },
         {
-            "topic": "storage-structures",
-            "slides": "[Storage Structures](@root/databases/slides/storage-structures.pdf)",
+            "topic": "storage-indexing",
+            "slides": "[Storage and Indexing](@root/databases/slides/storage-indexing.pdf)",
             "reading": [
-                "FoDS 16.1-16.7"
+                "FoDS 16.1-16.7, 17"
             ],
             "exercises": [],
             "assignments": [
-                "Due: [Project Phase 3](trip-planner.html)"                
             ],
-            "videos": [],
-            "include_semester": true
+            "videos": []
         },
         {
-            "topic": "index-structures",
-            "slides": "[Index Structures](@root/databases/slides/index-structures.pdf)",
-            "reading": [
-                "FoDS 17"
-            ],
+            "topic": "final-review",
+            "slides": "Final Review",
+            "reading": ["[Final Practice](final-practice.pdf)", "[Final Practice Answers](final-practice-answers.pdf)"],
             "exercises": [],
             "assignments": [],
-            "videos": [],
-            "include_semester": false
+            "videos": []
         },
         {
             "topic": "final-review",
