@@ -98,8 +98,7 @@
             ],
             "exercises": ["[Humane Society EER Exercise](@root/databases/exercises/humane-society-eer.html)"],
             "assignments": [
-                "Assigned: [Project](trip-planner.html)",
-                "Second thing"
+                "Assigned: [Project](trip-planner.html)"
             ],
             "videos": []
         },

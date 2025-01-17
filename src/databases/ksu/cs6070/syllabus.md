@@ -3,7 +3,6 @@ template: course
 title: Syllabus
 ---
 
-
 <center>
 ![KSU Logo](@root/images/ksu-letterhead-logo.png){width="50%"}<br/>
 **SYLLABUS**<br/>
@@ -215,7 +214,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 3: 01-21,01-23</td><td>EER Models</td><td>Assigned: Project,Second thing</td><td></td>
+<td>Week 3: 01-21,01-23</td><td>EER Models</td><td>Assigned: Project</td><td></td>
 </tr>
 
 <tr>
