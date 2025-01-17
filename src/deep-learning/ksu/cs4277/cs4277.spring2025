@@ -1,56 +1,54 @@
-Meeting times;Mondays and Wednesdays, 15:30-16:45 
-Room;Engineering Technology Center Room 310
 Foundations
 Week 1
-2025-01-06;intro-course;
-2025-01-08;machine-learning;Registration Ends (2025-01-10),Payment Deadline (2025-01-10)
+2025-01-06;intro-course;;
+2025-01-08;machine-learning;;Registration Ends (2025-01-10),Payment Deadline (2025-01-10)
 Week 2
-2025-01-13;shallow-networks;
-2025-01-15;deep-networks1;Financial Aid Disbursement (2025-01-17),Graduation Petition Deadline (2025-01-17)
+2025-01-13;shallow-networks;;
+2025-01-15;deep-networks1;Assigned: [PS1](ps1.pdf),Assigned: [Project](project.html);Financial Aid Disbursement (2025-01-17),Graduation Petition Deadline (2025-01-17)
 Week 3
-2025-01-20;MLK Jr Day - No Class;Unpaid Course Deletion (2025-01-21)
-2025-01-22;deep-networks2;
+2025-01-20;MLK Jr Day - No Class;;Unpaid Course Deletion (2025-01-21)
+2025-01-22;deep-networks2;Assigned: [PA1](pa1.html);
 Week 4
-2025-01-27;probability;
-2025-01-29;loss-functions;
+2025-01-27;probability;;
+2025-01-29;loss-functions;Due: [PS1](ps1.pdf),Assigned: [PS2](ps2.pdf);
 Week 5
-2025-02-03;fitting-models;
-2025-02-05;gradients-initialization;
+2025-02-03;fitting-models;;
+2025-02-05;gradients-initialization;Due: [Project Proposal](project.html);
 Week 6
-2025-02-10;measuring-performance;
-2025-02-12;regularization;
+2025-02-10;measuring-performance;;
+2025-02-12;regularization;Due: [PA1](pa1.html);
 Week 7
-2025-02-17;midterm-review;
-2025-02-19;midterm-exam;
+2025-02-17;midterm-review;Due: [PS2](ps2.pdf);
+2025-02-19;midterm-exam;;
 Supervised Deep Learning
 Week 8
-2025-02-24;convolutional-networks1;
-2025-02-26;convolutional-networks2;
+2025-02-24;convolutional-networks1;Assigned: [PS3](ps3.pdf),Assigned: [PA2](pa2.html);
+2025-02-26;convolutional-networks2;;
 Week 9
-2025-03-03;residual-networks;
-2025-03-05;transformers1;
+2025-03-03;residual-networks;;
+2025-03-05;transformers1;;
 Week 10
-2025-03-10;Spring Break - No Class;
-2025-03-12;Spring Break - No Class;
+2025-03-10;Spring Break - No Class;;
+2025-03-12;Spring Break - No Class;;
 Week 11
-2025-03-17;transformers2;
-2025-03-19;graph-nerual-networks;Midterm Grades Due (2025-03-21)
+2025-03-17;transformers2;;
+2025-03-19;graph-nerual-networks;Due: [Project Results](project.html);Midterm Grades Due (2025-03-21)
 Generative Deep Learning
 Week 12
-2025-03-24;generative-adversarial-networks1;
-2025-03-26;generative-adversarial-networks2;Withdrawal Deadline (2025-03-28)
+2025-03-24;generative-adversarial-networks1;;
+2025-03-26;generative-adversarial-networks2;Due: [PS3](ps3.pdf),Assigned: [PS4](ps4.pdf);Withdrawal Deadline (2025-03-28)
 Week 13
-2025-03-31;normalizing-flows;
-2025-04-02;variational-autoencoders;
+2025-03-31;normalizing-flows;;
+2025-04-02;variational-autoencoders;Due: [PA2](pa2.html),Assigned: [PA3](pa3.html);
 Week 14
-2025-04-07;diffusion-models;
+2025-04-07;diffusion-models;;
 Beyond Deep Learning
-2025-04-09;reinforcement-learning;
+2025-04-09;reinforcement-learning;;
 Week 15
-2025-04-14;deep-learning-philosophy;
-2025-04-16;deep-learning-ethics;
+2025-04-14;deep-learning-philosophy;;
+2025-04-16;deep-learning-ethics;Due: [PA3](pa3.html);
 Week 16
-2025-04-21;project-presentations1;
-2025-04-23;project-presentations2;
+2025-04-21;project-presentations1;;
+2025-04-23;project-presentations2;Due: [Final Project Paper](project.html);
 Week 17
-2025-04-28;;
+2025-04-28;final-review;Due: [PS4](ps4.pdf);

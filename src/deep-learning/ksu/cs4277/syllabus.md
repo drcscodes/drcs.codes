@@ -3,9 +3,8 @@ template: course
 title: Syllabus
 ---
 
-
 <center>
-![KSU Logo](@root/images/ksu-letterhead-logo.png)<br/>
+![KSU Logo](@root/images/ksu-letterhead-logo.png){width="50%"}<br/>
 **SYLLABUS**<br/>
 **College of Computing and Software Engineering**<br/>
 **Department of Computer Science**<br/>
@@ -85,6 +84,8 @@ Recommended Texts:
 
 - NND: Neural Network Design, by Hagan, et. al., [https://hagan.okstate.edu/nnd.html](https://hagan.okstate.edu/nnd.html)
 
+- DLI: Deep Learning Illustrated, by Jon Krohn: [https://www.deeplearningillustrated.com](https://www.deeplearningillustrated.com)
+
 - ITLA: Information Theory, Inference and Learning Algorithms, by David MacKay, [http://www.inference.org.uk/mackay/itila/book.html](http://www.inference.org.uk/mackay/itila/book.html)
 
 
@@ -114,11 +115,15 @@ At the end of the course, students should be able to:
 <hr style="color: #ffc629">
 
 
-- 5-10 Problem sets
+- 4-5 Problem sets (PS)
 
-- 3-6 Programming assignments
+- 3-4 Programming assignments (PA)
 
 - Research project
+
+- Midterm Exam
+
+- Final Exam
 
 
 ## Evaluation and Grading Policies
@@ -150,6 +155,16 @@ Midterm Grades: A midterm grade will be assigned by the midterm grade due date i
 
 ## Course Policies
 <hr style="color: #ffc629">
+
+### Assignment Submission and Make-up Policies
+
+Assignments are due at 23:59 local time on the due date.  Late submissions are not accepted except in exceptional, documented cases beyond the student's control such as illness, death in the family, or natural disasters.
+
+In the case of missed exams, make-ups will be given accoring to the same policy regarding exceptional cases for assignments.
+
+### Academic Honesty
+
+Academic dishonesty cannot be tolerated. You may discuss any of the assignments with your classmates (or anyone else) but all work for all assignments must be entirely your own. Any sharing or copying of assignments will be considered cheating. By the rules of the College of Computing and Sofwate Engineering (CCSE), the instructor is obligated to report any incidents of cheating to the department. The first incident of cheating will result in the student getting a final grade of F for the course. The second incident, by CCSE rules, will result in a semester suspension from the College.
 
 ### Attendance Policy
 
@@ -207,4 +222,81 @@ Federal, BOR, & KSU Required Syllabus Policies and Student Resources: [https://w
 ## Course Schedule
 <hr style="color: #ffc629">
 
-See the detailed course schedule at [https://drcs.codes/databases/ksu/cs4277/schedule.html](https://drcs.codes/databases/ksu/cs4277/schedule.html).
+Detailed course schedule: [https://drcs.codes/databases/ksu/cs4277/schedule.html](https://drcs.codes/databases/ksu/cs4277/schedule.html).
+
+Weekly Summary:
+
+<table class="schedule">
+<tr>
+<th>Week</th><th>Content Covered</th><th>Assignments</th><th>Exams</th>
+</tr>
+
+<tr>
+<td>Week 1: 01-06,01-08</td><td>Course Introduction,Machine Learning</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 2: 01-13,01-15</td><td>Shallow Networks,Deep Networks</td><td>Assigned: PS1,Assigned: Project</td><td></td>
+</tr>
+
+<tr>
+<td>Week 3: 01-20,01-22</td><td>MLK Jr Day - No Class,Deep Networks</td><td>Assigned: PA1</td><td></td>
+</tr>
+
+<tr>
+<td>Week 4: 01-27,01-29</td><td>Probability,Loss Functions</td><td>Due: PS1,Assigned: PS2</td><td></td>
+</tr>
+
+<tr>
+<td>Week 5: 02-03,02-05</td><td>Fitting Models,Gradients and Initialization</td><td>Due: Project Proposal</td><td></td>
+</tr>
+
+<tr>
+<td>Week 6: 02-10,02-12</td><td>Measuring Performance,Regularization</td><td>Due: PA1</td><td></td>
+</tr>
+
+<tr>
+<td>Week 7: 02-17,02-19</td><td>Midterm Review</td><td>Due: PS2</td><td>Midterm Exam</td>
+</tr>
+
+<tr>
+<td>Week 8: 02-24,02-26</td><td>Convolutional Networks</td><td>Assigned: PS3,Assigned: PA2</td><td></td>
+</tr>
+
+<tr>
+<td>Week 9: 03-03,03-05</td><td>Residual Networks,Transformers</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 10: 03-10,03-12</td><td>Spring Break - No Class</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 11: 03-17,03-19</td><td>Transformers,Graph Neural Networks</td><td>Due: Project Results</td><td></td>
+</tr>
+
+<tr>
+<td>Week 12: 03-24,03-26</td><td>Generative Adversarial Networks</td><td>Due: PS3,Assigned: PS4</td><td></td>
+</tr>
+
+<tr>
+<td>Week 13: 03-31,04-02</td><td>Normalizing Flows,Variational Autoencoders</td><td>Due: PA2,Assigned: PA3</td><td></td>
+</tr>
+
+<tr>
+<td>Week 14: 04-07,04-09</td><td>Diffusion Models,Reinforcement Learning</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 15: 04-14,04-16</td><td>Deep Learning Philosophy,Deep Learning Ethics</td><td>Due: PA3</td><td></td>
+</tr>
+
+<tr>
+<td>Week 16: 04-21,04-23</td><td>Project Presentations</td><td>Due: Final Project Paper</td><td></td>
+</tr>
+
+<tr>
+<td>Week 17: 04-28</td><td>Final Exam Review</td><td>Due: PS4</td><td></td>
+</tr>
+
+</table>

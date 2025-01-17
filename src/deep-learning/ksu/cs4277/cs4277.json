@@ -19,9 +19,11 @@
         "Exams: 40%"
     ],
     "assignments": [
-        "5-10 Problem sets",
-        "3-6 Programming assignments",
-        "Research project"
+        "4-5 Problem sets (PS)",
+        "3-4 Programming assignments (PA)",
+        "Research project",
+        "Midterm Exam",
+        "Final Exam"
     ],
     "prerequisites": [
         "CS 3642 Artificial Intelligence"
@@ -65,7 +67,9 @@
                 "UDL: 1, 2"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+                "Assigned: [PS1](ps1.pdf)"
+            ],
             "videos": []
         },
         {
@@ -75,8 +79,9 @@
                 "UDL: 3"
             ],
             "exercises": [],
-            "assignments": ["Assigned: [PS1](ps1.pdf)",
-                            "Assigned: [Project](project.html)"],
+            "assignments": [
+                "Assigned: [Project](project.html)"
+            ],
             "videos": []
         },
         {
@@ -86,7 +91,8 @@
                 "UDL: 4"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -96,7 +102,9 @@
                 "UDL: 4"
             ],
             "exercises": [],
-            "assignments": ["Due: [PS1](ps1.pdf)"],
+            "assignments": [
+                "Assigned: [PA1](pa1.html)"
+            ],
             "videos": []
         },
         {
@@ -108,7 +116,8 @@
                 "ITLA 1, 2"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -117,23 +126,13 @@
             "reading": [
                 "UDL: 5"
             ],
-            "exercises": [],
-            "assignments": ["Due: [Project Proposal](project.html)"],
-            "videos": []
-        },
-        {
-            "topic": "matrix-calculus",
-            "slides": "[Matrix Calculus](@root/deep-learning/slides/matrix-calculus.pdf)",
-            "reading": [
-                "UDL: Appendix B.5",
-                "DLFC: Appendix A",
-                "DDL: 2.3-2.4",
-                "[Matrix Cookbook](https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf)"
+            "exercises": [
             ],
-            "exercises": [],
-            "assignments": [],
-            "videos": [],
-            "include_semester": false
+            "assignments": [
+                "Due: [PS1](ps1.pdf)",
+                "Assigned: [PS2](ps2.pdf)"
+            ],
+            "videos": []
         },
         {
             "topic": "fitting-models",
@@ -146,7 +145,8 @@
                 "[Matrix Cookbook](https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf)"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -155,8 +155,11 @@
             "reading": [
                 "UDL: 7"
             ],
-            "exercises": [],
-            "assignments": [],
+            "exercises": [
+            ],
+            "assignments": [
+                "Due: [Project Proposal](project.html)"
+            ],
             "videos": []
         },
         {
@@ -166,7 +169,8 @@
                 "UDL: 8"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -176,7 +180,9 @@
                 "UDL: 9"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+                "Due: [PA1](pa1.html)"
+            ],
             "videos": []
         },
         {
@@ -187,7 +193,9 @@
                 "[Midterm Practice Answers](midterm-practice-answers.pdf)"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+                "Due: [PS2](ps2.pdf)"
+            ],
             "videos": []
         },
         {
@@ -209,7 +217,10 @@
                 "UDL: 10"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+                "Assigned: [PS3](ps3.pdf)",
+                "Assigned: [PA2](pa2.html)"
+            ],
             "videos": []
         },
         {
@@ -229,7 +240,8 @@
                 "UDL: 11"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -239,7 +251,8 @@
                 "UDL: 12"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -249,7 +262,8 @@
                 "UDL: 12"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -258,8 +272,11 @@
             "reading": [
                 "UDL: 13"
             ],
-            "exercises": [],
-            "assignments": ["Due: [Project Results](project.html)"],
+            "exercises": [
+            ],
+            "assignments": [
+                "Due: [Project Results](project.html)"
+            ],
             "videos": []
         },
         {
@@ -272,7 +289,8 @@
                 "UDL: 14,15"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -282,7 +300,10 @@
                 "UDL: 14,15"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+                "Due: [PS3](ps3.pdf)",
+                "Assigned: [PS4](ps4.pdf)"
+            ],
             "videos": []
         },
         {
@@ -292,7 +313,8 @@
                 "UDL: 16"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -302,7 +324,10 @@
                 "UDL: 17"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+                "Due: [PA2](pa2.html)",
+                "Assigned: [PA3](pa3.html)"
+            ],
             "videos": []
         },
         {
@@ -312,7 +337,8 @@
                 "UDL: 18"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -325,7 +351,8 @@
                 "UDL: 19"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -335,7 +362,8 @@
                 "UDL: 20"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+            ],
             "videos": []
         },
         {
@@ -345,7 +373,9 @@
                 "UDL: 21"
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+                "Due: [PA3](pa3.html)"
+            ],
             "videos": []
         },
         {
@@ -372,7 +402,9 @@
             "reading": [
             ],
             "exercises": [],
-            "assignments": [],
+            "assignments": [
+                "Due: [PS4](ps4.pdf)"
+            ],
             "videos": []
         }
     ]
