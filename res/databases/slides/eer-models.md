@@ -48,7 +48,13 @@ Consider this model of a university member:
 
 Here we break the UNIV_MEMBER into two subtypes:
 
+```{=latex}
+\begin{center}
+```
 ![](eer-employee-student.pdf){height="50%"}
+```{=latex}
+\end{center}
+```
 
 Notice that the subclasses are overlapping, as denoted by the O in the circle under UNIV_MEMBER. That means that an entity can be both a STUDENT and an EMPLOYEE.
 
@@ -62,7 +68,13 @@ But there's more:
 :::: {.columns}
 ::: {.column width="50%"}
 
+```{=latex}
+\begin{center}
+```
 ![](eer-faculty-staff.pdf){height="80%"}
+```{=latex}
+\end{center}
+```
 
 :::
 ::: {.column width="50%"}
@@ -81,7 +93,13 @@ The process of going from an entity type that has attributes that don't apply to
 
 Let's consider another model.
 
+```{=latex}
+\begin{center}
+```
 ![](er-car-truck.pdf){height="50%"}
+```{=latex}
+\end{center}
+```
 
 Notice the common attributes. We can factor those into a superclass.
 
@@ -90,7 +108,13 @@ Notice the common attributes. We can factor those into a superclass.
 The common attributes are in the superclass and the specialized attributes are in the subclass.
 
 
+```{=latex}
+\begin{center}
+```
 ![](eer-vehicle.pdf){height="60%"}
+```{=latex}
+\end{center}
+```
 
 The process of factoring the common attributes of two or more entity types and creating superclasses to hold the common attributes is called *generalization* (bottom-up).
 
@@ -98,7 +122,13 @@ The process of factoring the common attributes of two or more entity types and c
 
 Remember our STUDENT - EMPLOYEE hierarchy:
 
+```{=latex}
+\begin{center}
+```
 ![](eer-faculty-staff.pdf){height="65%"}
+```{=latex}
+\end{center}
+```
 
 What about STUDENTS who are also HOURLY employees, like TAs and research assistants?
 
@@ -106,7 +136,13 @@ What about STUDENTS who are also HOURLY employees, like TAs and research assista
 
 Our previous EER models have been inheritance trees -- each subclass had only one superclass. We can create lattices with multiple inheritance:
 
+```{=latex}
+\begin{center}
+```
 ![](eer-faculty-staff-student-employee.pdf){height="70%"}
+```{=latex}
+\end{center}
+```
 
 ## Fin
 
