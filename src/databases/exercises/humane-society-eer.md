@@ -17,7 +17,7 @@ title: CS 4400 - Movie Rental ER Exercise
 
 
 <center>
-<img src="chloe-sit.jpg" width="60%" />
+<img src="@root/images/elsa-puppy-anna-small-bed2.jpg" width="60%" />
 </center>
 
 Sample solution: [humane-society.svg](humane-society.svg) ([dot source](humane-society.dot))
