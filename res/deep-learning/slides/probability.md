@@ -257,6 +257,12 @@ p(Y|X)     &= \frac{p(X|Y)p(Y)}{p(X)}
 \end{align*}
 ```
 
+where the denominator $p(X)$ is a normalizing constant (what's that?):
+
+$$
+p(X) = \sum p(X|Y)p(Y)
+$$
+
 This is called *Bayes' Theorem* or *Bayes' Rule.*
 
 We use Bayes' Theorem to update our beliefs after observing evidence.  For example:
@@ -264,7 +270,7 @@ We use Bayes' Theorem to update our beliefs after observing evidence.  For examp
 - Before we run the test, the *prior probability* that someone has cancer is $p(C)$
 - After we run the test, we use Bayes' Theorem to calculate the *posterior probability* $p(C|T)$
 
-The *posterior probability* (also called a posteriori probability) is our new belief after a Bayesian update.
+The *posterior probability* is our new belief after a Bayesian update.
 
 ## Analysis of Medical Screening Example
 
@@ -375,17 +381,127 @@ $$
 \int_{-\infty}^{\infty} p(x) \, dx = 1
 $$
 
-## Probability Densities
+## Continuous CDF
+
+The probability that $x$ lies in the interval $(-\infty,z)$ is given by the cumulative distribution function (CDF):
+
+$$
+P(z) = \int_{-\infty}^z p(x) \, dx.
+$$
 
 ```{=latex}
 \begin{center}
 ```
-![](bishop-dl-fig2.6.pdf){height="60%"}
+![](bishop-dl-fig2.6.pdf){height="40%"}
 ```{=latex}
 \end{center}
 ```
 
+The continuous CDF satisfies:
+
+$$
+P'(x) = p(x)
+$$
+
+## Joint Probability Densities
+
+Given $\bm{x} = (x_1, \cdots, x_D)$, the probability density $p(\bm{x}) = p(x_1, \cdots, x_D)$ where the probability of $\bm{x}$ falling in an infinitesimal volume $\delta \bm{x}$ is given by $p(\bm{x}) \delta x$, so we have the multivariate density over the whole of $\bm{x}$ space is:
+
+$$
+p(\bm{x}) \ge 0
+$$
+
+$$
+\int p(\bm{x}) d\bm{x} = 1
+$$
+
+## Summary of Discrete and Continuous Probability Rules
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Given discrete random variables $X$ and $Y$:
+
+$$
+\text{Sum rule:  } p(X) = \sum_Y p(X, Y)
+$$
+
+$$
+\text{Product rule:  } p(X, Y) = p(Y|X)p(X)
+$$
+
+Bayes' Theorem
+
+$$
+p(Y|X) = \frac{p(X|Y)p(Y)}{p(X)}
+$$
+
+with normalizing constant:
+
+$$
+p(X) = \sum p(X|Y)p(Y)
+$$
+
+:::
+::: {.column width="50%"}
+
+Given continuous random variables $\bm{x}$ and $\bm{y}$:
+
+$$
+\text{Sum rule:  } p(\bm{x}) = \int p(\bm{x}, \bm{y}) d\bm{y}
+$$
+
+$$
+\text{Product rule:  } p(\bm{x}, \bm{y}) = p(\bm{y}|\bm{x})p(\bm{x})
+$$
+
+Bayes' Theorem:
+
+$$
+p(\bm{y}|\bm{x}) = \frac{p(\bm{x}|\bm{y}) p(\bm{y})}{p(\bm{x})}
+$$
+
+with normalizing constant:
+
+$$
+p(\bm{x}) = \int p(\bm{x}|\bm{y}) p(\bm{y}) d\bm{y}
+$$
+
+:::
+::::
+
 ## Distributions
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Uniform over a finite region (improper over infinite region because can't be normalized):
+
+$$
+p(x) = \frac{1}{(d-c)}, x \in (c, d)
+$$
+
+Exponential:
+
+$$
+p(x|\lambda) = \lambda \exp(-\lambda x), x \ge 0
+$$
+
+Laplace distribution creates a peak at $\mu$:
+
+
+$$
+p(x|\mu, \gamma) = \frac{1}{2 \gamma} \exp(-\frac{|x - \mu|}{\gamma})
+$$
+
+Dirac delta function is defined to be zero everywhere except at $x = \mu$, creating an infinitely tall spike at $x = \mu$:
+
+$$
+p(x|\mu) = \delta(x - \mu)
+$$
+
+:::
+::: {.column width="50%"}
 
 ```{=latex}
 \begin{center}
@@ -399,35 +515,92 @@ $$
 - Blue is exponential with $\lambda = 1$
 - Green is Laplace with $\mu = 1$ and $\gamma = 1$
 
-## Uniform Distribution
-
-2.2.1
-
-## Exponential Distribution
-
-2.2.1
-
-## Lapace Distribution
-
-2.2.1
+:::
+::::
 
 ## Dirac Delta Function
 
-2.2.1
+The Dirac delta function
+
+$$
+p(x|\mu) = \delta (x - \mu)
+$$
+
+is interesting because if you have data ponits $\mathcal{D} = \{x_1, \cdots, x_N\}$ you can put a Dirac Delta function centered at each point to construct the *empirical distribution*:
+
+$$
+p(x | \mathcal{D}) = \frac{1}{N} \sum_{n=1}^N \delta (x - x_n)
+$$
 
 ## Expectations
 
-2.2.2
+The *expected value* or *mean* or *forst moment* of a random variable $X$ is the weighted average of a function $f(x)$ under some probability distribution $p(x)$.
 
-The *expected value* or *mean* or *forst moment* of a random variable $X$ is the weighted average of the
+:::: {.columns}
+::: {.column width="40%"}
 
-## Covariances
+for discrete variables:
 
-2.2.2
+$$
+\mathbb{E}[f] = \sum_x p(x) f(x)
+$$
+
+:::
+::: {.column width="40%"}
+
+for coninuous variables:
+
+$$
+\mathbb{E}[f] = \int p(x) f(x) dx
+$$
+
+:::
+::::
+
+## Variance and Covariance
+
+The *variance* of $f(x)$ is
+
+$$
+var[f] = \mathbb{E}[(f(x) - \mathbb{E}[f(x)])^2]
+$$
+
+*Covariance* measures the extent to which two variables vary together.
+
+$$
+Cov(f(x), g(y)) = \mathbb{E} [(f(x) - \mathbb{E}[f(x)]) (g(y) - \mathbb{E}[g(y)])]
+$$
+
+
 
 ## The Gaussian Distribution
 
-2.3
+:::: {.columns}
+::: {.column width="40%"}
+
+$$
+\mathcal{N}(x|\mu, \sigma^2) = \frac{1}{(2 \pi \sigma^2)^{\frac{1}{2}}} \exp(-\frac{1}{2 \sigma^2} (x - \mu)^2)
+$$
+
+where
+
+- $\mu$ is the mean, and
+- $\sigma$ is the standard deviation, where $\sigma^2$ is the variance.
+
+:::
+::: {.column width="40%"}
+
+```{=latex}
+\begin{center}
+```
+![](bishop-dl-fig2.8.pdf){height="60%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
 
 Why the Gaussian is so widely used:
 
@@ -435,101 +608,9 @@ Why the Gaussian is so widely used:
 - By Central Limit Theorem, sum of independent variables have ~ Gaussian distribution
     - Makes a good choice for modeling noise
 - Given a mean and variance, Gaussian makes least number of assumptions, i.e., has maximum entropy
-- Simple mathematical form -- easily to implement but usually highly effective
-
-## The Gaussian Distribution
-
-2.3
-
-## Mean and Variance
-
-2.3.1
-
-## Likelihood Function
-
-2.3.2
-
-## Maximum Likelihood
-
-2.3.2
-
-Why log:
-
-- Log of a function monotonically increasing and concave -- $\argmax ln(f) = \argmax f$
-- Log easy to work with: $\ln(ab) = \ln(a) + \ln(b)$, $\ln(\frac{a}{b}) = \ln(a) - \ln(b)$
-- Multiplying probabilities can underflow -- summing logs avoids this problem
-
-## Bias of Maximum Likelihood
-
-2.3.3
-
-## Linear Regression
-
-2.3.4
-
-## Transformation of Densities
-
-2.4
-
-Maybe save for the Normalizing Flows lesson
-
-## Multivariate Distributions
-
-2.4.1
-
-Maybe save for the Normalizing Flows lesson
-
-## Information THeory
-
-2.5
-
-## Entropy
-
-2.5.1
-
-## Physics Perspective
-
-2.5.2
-
-## Differential Entropy
-
-2.5.3
-
-## Maximum Entropy
-
-2.5.4
-
-## Kullback-Leibler Divergence
-
-2.5.5
-
-## Conditional Entropy
-
-2.5.6
-
-## Mutual Information
-
-2.5.7
-
-## Bayesian Probabilities
-
-2.6
-
-## Model Parameters
-
-2.6.1
-
-## Regularization
-
-2.6.2
-
-Maximum Aposteriori (MAP) estimate
-
-## Bayesian Machine Learning
-
-2.6.3
+- Simple mathematical form -- easy to implement but usually highly effective
 
 ## Closing Thoughts
 
-Boom!
-
+- Probability is the mathematical foundation of machine learning.
+- Loss functions will extend and build on this foundation, e.g. maximum likelhood estimation (MLE.)

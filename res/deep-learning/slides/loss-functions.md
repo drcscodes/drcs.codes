@@ -25,6 +25,25 @@ header-includes:
 
 Boom!
 
+## Likelihood Functions
+
+DLFC 2.3.2
+
+## Maximum Likelihood
+
+2.3.2
+
+Why log:
+
+- Log of a function monotonically increasing and concave -- $\argmax ln(f) = \argmax f$
+- Log easy to work with: $\ln(ab) = \ln(a) + \ln(b)$, $\ln(\frac{a}{b}) = \ln(a) - \ln(b)$
+- Multiplying probabilities can underflow -- summing logs avoids this problem
+
+## Bias of Maximum Likelihood
+
+2.3.3
+
+
 ## Maximum Likelihood
 
 5.1
