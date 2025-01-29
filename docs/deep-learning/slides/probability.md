@@ -259,12 +259,39 @@ p(Y|X)     &= \frac{p(X|Y)p(Y)}{p(X)}
 
 This is called *Bayes' Theorem* or *Bayes' Rule.*
 
+We use Bayes' Theorem to update our beliefs after observing evidence.  For example:
+
+- Before we run the test, the *prior probability* that someone has cancer is $p(C)$
+- After we run the test, we use Bayes' Theorem to calculate the *posterior probability* $p(C|T)$
+
+The *posterior probability* (also called a posteriori probability) is our new belief after a Bayesian update.
+
+## Analysis of Medical Screening Example
+
+
+With our probabilistic machinery we can now analyze our cancer screening example.  First, we model the problem in the language of Bayesian probability theory:
+
+```{=latex}
+\begin{align*}
+p(C=1)     &= \frac{1}{100}  \tag{Prior probability that someone has cancer}\\
+p(C=0)     &= \frac{99}{100} \tag{Prior probability that someone has no cancer}\\
+p(T=1|C=1) &= \frac{90}{100} \tag{Conditional probability of positive test given cancer}\\
+p(T=0|C=1) &= \frac{10}{100} \tag{Conditional probability of negative test given cancer}\\
+p(T=1|C=0) &= \frac{3}{100}  \tag{Conditional probability of positive test given no cancer}\\
+p(T=0|C=0) &= \frac{97}{100} \tag{Conditional probability of negative test given no cancer}
+\end{align*}
+```
+
+Now we can answer the two questions we posed at the outset:
+
+- If we screen someone, what is the probability that they test positive?
+- If someone tests positive, what is the probability that they have cancer?
+
 ## Analysis of Medical Screening Example
 
 :::: {.columns}
 ::: {.column width="30%"}
 
-With our probabilistic machinery we can now analyze our cancer screening example.
 
 ```{=latex}
 \begin{align*}
@@ -308,14 +335,6 @@ p(C=1|T=1) &= \frac{p(T=1|C=1)p(C=1)p(C=1)}{p(T=1)}\\
 ::::
 
 
-## Prior and Posterior Probabilities
-
-Bayes' Theorem updates our belief about someone's cancer.
-
-- Before we run the test, the *prior probability* that someone has cancer is $p(C)$
-- After we run the test, we use Bayes' Theorem to calculate the *posterior probability* $p(C|T)$
-
-
 ## Independent Variables
 
 If the joint distribution factorizes into the product of the marginals:
@@ -335,4 +354,182 @@ P(X|Y) = p(X)
 $$
 
 Question: in our cancer screening example, is the probability of a positive test independent of whether a person has cancer?
+
+
+## Probability Densities
+
+For continuous valus we need different probability rules, because the probability of any precise real number is effectively zero.
+
+The probability density of a variable $x$ falling in the interval $x +\delta x$ is $p(x)\delta x$ for $\delta x \rightarrow 0$.  So the probability that $x$ will be in the interval $(a, b)$ is:
+
+$$
+p(x \in (a, b)) = \int_a^b p(x) \, dx.
+$$
+
+Just as a discrete probability is non-negative and a distribution must sum to $1$, continuous probability densities must satisfy:
+
+$$
+p(x) \ge 0
+$$
+$$
+\int_{-\infty}^{\infty} p(x) \, dx = 1
+$$
+
+## Probability Densities
+
+```{=latex}
+\begin{center}
+```
+![](bishop-dl-fig2.6.pdf){height="60%"}
+```{=latex}
+\end{center}
+```
+
+## Distributions
+
+```{=latex}
+\begin{center}
+```
+![](bishop-dl-fig2.7.pdf){height="60%"}
+```{=latex}
+\end{center}
+```
+
+- Red is uniform over $(-1, 1)$
+- Blue is exponential with $\lambda = 1$
+- Green is Laplace with $\mu = 1$ and $\gamma = 1$
+
+## Uniform Distribution
+
+2.2.1
+
+## Exponential Distribution
+
+2.2.1
+
+## Lapace Distribution
+
+2.2.1
+
+## Dirac Delta Function
+
+2.2.1
+
+## Expectations
+
+2.2.2
+
+The *expected value* or *mean* or *forst moment* of a random variable $X$ is the weighted average of the
+
+## Covariances
+
+2.2.2
+
+## The Gaussian Distribution
+
+2.3
+
+Why the Gaussian is so widely used:
+
+- Two easily interpretable parameters: mean and variance
+- By Central Limit Theorem, sum of independent variables have ~ Gaussian distribution
+    - Makes a good choice for modeling noise
+- Given a mean and variance, Gaussian makes least number of assumptions, i.e., has maximum entropy
+- Simple mathematical form -- easily to implement but usually highly effective
+
+## The Gaussian Distribution
+
+2.3
+
+## Mean and Variance
+
+2.3.1
+
+## Likelihood Function
+
+2.3.2
+
+## Maximum Likelihood
+
+2.3.2
+
+Why log:
+
+- Log of a function monotonically increasing and concave -- $\argmax ln(f) = \argmax f$
+- Log easy to work with: $\ln(ab) = \ln(a) + \ln(b)$, $\ln(\frac{a}{b}) = \ln(a) - \ln(b)$
+- Multiplying probabilities can underflow -- summing logs avoids this problem
+
+## Bias of Maximum Likelihood
+
+2.3.3
+
+## Linear Regression
+
+2.3.4
+
+## Transformation of Densities
+
+2.4
+
+Maybe save for the Normalizing Flows lesson
+
+## Multivariate Distributions
+
+2.4.1
+
+Maybe save for the Normalizing Flows lesson
+
+## Information THeory
+
+2.5
+
+## Entropy
+
+2.5.1
+
+## Physics Perspective
+
+2.5.2
+
+## Differential Entropy
+
+2.5.3
+
+## Maximum Entropy
+
+2.5.4
+
+## Kullback-Leibler Divergence
+
+2.5.5
+
+## Conditional Entropy
+
+2.5.6
+
+## Mutual Information
+
+2.5.7
+
+## Bayesian Probabilities
+
+2.6
+
+## Model Parameters
+
+2.6.1
+
+## Regularization
+
+2.6.2
+
+Maximum Aposteriori (MAP) estimate
+
+## Bayesian Machine Learning
+
+2.6.3
+
+## Closing Thoughts
+
+Boom!
 

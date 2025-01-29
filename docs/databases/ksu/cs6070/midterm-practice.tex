@@ -1,0 +1,795 @@
+\documentclass[9pt]{exam}
+
+\usepackage{verbatim, multicol, tabularx, graphicx, float, xcolor, colortbl}
+\usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=1mm,
+  belowskip=0mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\ttfamily},
+  numbers=none,
+  frame=single,
+  breaklines=true,
+  breakatwhitespace=true
+}
+
+\textwidth = 6.5 in
+\textheight = 9 in
+\oddsidemargin = 0.0 in
+\evensidemargin = 0.0 in
+\topmargin = -0.25 in
+\headheight = 0.0 in
+\headsep = 0.0 in
+\parskip = 0.0in
+\parindent = 0.0in
+
+\def\ojoin{\setbox0=\hbox{$\bowtie$}%
+  \rule[-.02ex]{.25em}{.4pt}\llap{\rule[\ht0]{.25em}{.4pt}}}
+\def\leftouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie}}
+\def\rightouterjoin{\mathbin{\bowtie\mkern-5.8mu\ojoin}}
+\def\fullouterjoin{\mathbin{\ojoin\mkern-5.8mu\bowtie\mkern-5.8mu\ojoin}}
+
+\def\a{& $\blacksquare\blacksquare\blacksquare$ & [ B ] & [ C ] & [ D ] \\}
+\def\b{& [ A ] & $\blacksquare\blacksquare\blacksquare$ & [ C ] & [ D ] \\}
+\def\c{& [ A ] & [ B ] & $\blacksquare\blacksquare\blacksquare$ & [ D ] \\}
+\def\d{& [ A ] & [ B ] & [ C ] & $\blacksquare\blacksquare\blacksquare$ \\}
+
+
+\title{Databases Midterm Practice}
+\date{}
+\setcounter{page}{0}
+\begin{document}
+
+\maketitle
+\thispagestyle{head}
+%% \firstpageheader{}
+%%               {\tiny Copyright \textcopyright\ 2016 All rights reserved. Duplication and/or usage for purposes of any kind without permission is strictly forbidden.}
+%%               {}
+
+
+\runningheader{}
+              {\tiny Copyright \textcopyright\ 2025 All rights reserved. Duplication and/or usage for purposes of any kind without permission is strictly forbidden.}
+              {}
+
+%% \footer{Page \thepage\ of \numpages}
+%%               {}
+%%               {Points available: \pointsonpage{\thepage} -
+%%                points lost: \makebox[.5in]{\hrulefill} =
+%%                points earned:  \makebox[.5in]{\hrulefill}.
+%%               Graded by: \makebox[.5in]{\hrulefill}}
+
+
+%% \ifprintanswers
+%% \begin{center}
+%% {\LARGE ANSWER KEY}
+%% \end{center}
+%% \else
+
+\vspace{0.1in}
+
+Name (print clearly): \ifprintanswers \underline{  {\bf ANSWER KEY}  } \fi \hrulefill Section: (e.g., B1) \makebox[.5in]{\hrulefill}
+
+\vspace{0.25in}
+\hbox to \textwidth{Signature: \hrulefill}
+
+\vspace{0.25in}
+\hbox to \textwidth{Student account username (e.g., msmith3): \enspace\hrulefill}
+
+% Points Table
+%\begin{center}
+%\addpoints
+%\gradetable[v][pages]
+%\end{center}
+
+\section{Database Concepts and EER Models}
+
+Completely fill in the box corresponding to your answer choice for each question.
+
+\ifprintanswers
+\begin{tabular}{lcccc}\\
+  1. \d
+  2. \a
+  3. \d
+  4. \b
+  5. \d
+  6. \b
+  7. \b
+  8. \a
+  9. \d
+  10. \c
+  11. \d
+  12. \b
+  13. \a
+  14. \a
+  15. \b
+  16. \a
+  17. \d
+  18. \c
+  19. \b
+  20. \a
+  21. \c
+  22. \a
+  23. \c
+  24. \a
+  25. \b
+\end{tabular}
+\else
+\begin{tabular}{lcccc}\\
+  1. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  2. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  3. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  4. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  5. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  6. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  7. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  8. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  9. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  10. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  11. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  12. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  13. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  14. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  15. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  16. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  17. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  18. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  19. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  20. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  21. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  22. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  23. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  24. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  25. & [ A ] & [ B ] & [ C ] & [ D ] \\
+\end{tabular}
+
+\fi
+
+\vspace{.5in}
+
+Number missed: \makebox[.5in]{\hrulefill} Final Score: \makebox[.5in]{\hrulefill}
+
+\vfill
+
+\begin{itemize}
+\item Signing signifies that you agree to comply with the {\bf Academic Honor Code}.
+\item Calculators and cell phones are NOT allowed.
+\end{itemize}
+
+\newpage
+
+%\normalsize
+
+\pointsinmargin
+\bracketedpoints
+
+\marginpointname{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{questions}
+
+
+\question[4] Which of the following is/are example(s) of metadata?
+
+\begin{choices}
+\choice Types of data elements
+\choice Structure of records
+\choice Constraints
+\correctchoice All of the above
+\end{choices}
+
+\question[4] What is the first step in database development?
+
+\begin{choices}
+\correctchoice Requirements analysis
+\choice Conceptual design
+\choice Logical design
+\choice Physical design
+\end{choices}
+
+\question[4] Which of the following are advantages of the database approach?
+
+\begin{choices}
+\choice Storing metadata with the data
+\choice Insulation between data and programs.
+\choice Multiple views of the data for different users.
+\correctchoice All of the above.
+\end{choices}
+
+\question[4] Which database technology is most pervasive and the focus of this course?
+
+\begin{choices}
+\choice Hierarchical databases
+\correctchoice Relational databases
+\choice Object-oriented databases
+\choice Document-oriented databases
+\end{choices}
+
+\question[4] Abstraction is ...
+
+\begin{choices}
+\choice selective ignorance.
+\choice suppression of details.
+\choice for a particular application.
+\correctchoice All of the above
+\end{choices}
+
+\question[4] Data independence is ...
+
+\begin{choices}
+\choice the ability to store data on independent disks.
+\correctchoice isolation of changes at one schema level from levels above it.
+\choice the freedom to change the data without consulting the DBA.
+\choice All of the above
+\end{choices}
+
+\newpage
+
+\question[4] The primary goal of the three-schema database architecture is
+
+\begin{choices}
+\choice data integrity.
+\correctchoice data independence.
+\choice data cohesion.
+\choice data processing.
+\end{choices}
+
+\question[4] External schemas
+
+\begin{choices}
+\correctchoice are views tailored to particular users
+\choice are specified with ER models
+\choice specify the storage structure of the data
+\choice None of the above
+\end{choices}
+
+\question[4] Conceptual models
+
+\begin{choices}
+\choice provide a high-level but concrete view of data understandable by end users and database developers.
+\choice are developed after requirements analysis.
+\choice may influence changes in requirements as developers iterate the design with users.
+\correctchoice All of the above
+\end{choices}
+
+\question[4] Entity-relationship models contain
+
+\begin{choices}
+\choice entities, relationships and SQL code.
+\choice entities, constraints and storage schemas.
+\correctchoice entities, attributes and relationships.
+\choice mappings bewtween levels of the three-schema architecture.
+\end{choices}
+
+\question[4] Structural constraints between entity types and relationships include
+
+\begin{choices}
+\choice participation constraints.
+\choice cardinality ratios.
+\choice data types.
+\correctchoice A and B above.
+\end{choices}
+
+\question[4] A weak entity has a key.
+
+\begin{choices}
+\choice True
+\correctchoice False
+\end{choices}
+
+\newpage
+
+Refer to the following EER diagram for the remaining questions.
+
+\begin{center}
+  \hspace{-.5in}\includegraphics[width=7in]{doctors.pdf}
+\end{center}
+
+\newpage
+
+\question[4] Can there be two OFFICE instances at the same Address?
+
+\begin{choices}
+\correctchoice Yes
+\choice No
+\end{choices}
+
+\question[4] Can there be an OFFICE instance without any DOCTORs who PRACTICE\_AT that OFFICE?
+
+\begin{choices}
+\correctchoice Yes
+\choice No
+\end{choices}
+
+\question[4] Can there be a DOCTOR instance that does not PRACTICE\_AT an OFFICE?
+
+\begin{choices}
+\choice Yes
+\correctchoice No
+\end{choices}
+
+\question[4] How many OFFICEs may a DOCTOR PRACTICE\_AT?
+
+\begin{choices}
+\correctchoice 1
+\choice 0 or more
+\choice 1 or more
+\end{choices}
+
+\question[4] What is the full set of possible values for the Type attribute of DOCTOR?
+
+\begin{choices}
+  \choice \{'Surgeon', 'GP', 'ER', NULL\}
+  \choice \{'Surgeon', 'GP', 'ER'\}
+  \choice \{'Surgeon', 'GP', NULL\}
+  \correctchoice \{'Surgeon', 'GP'\}
+\end{choices}
+
+\question[4] Making no assumptions about the number of instances of any other entity type, the number of SURGEON instances is \makebox[.25in]{\hrulefill} the number of DOCTOR instances.
+
+\begin{choices}
+\choice less than
+\choice equal to
+\correctchoice less than or equal to
+\choice greater than
+\end{choices}
+
+\question[4] Can there be any DOCTOR instances that are not either SURGEON instances or GENERAL\_PRACTITIONER instances?
+
+\begin{choices}
+\choice Yes
+\correctchoice No
+\end{choices}
+
+\question[4] Does the existence of a PATIENT instance imply the existence of an OFFICE instance?
+
+\begin{choices}
+\correctchoice Yes
+\choice No
+\end{choices}
+
+\newpage
+
+\question[4] If there are five SURGERY instances, how many DOCTOR instances are there?
+
+\begin{choices}
+\choice Five or more
+\choice One or more
+\correctchoice Two or more
+\choice Cannot be determined from the information given
+\end{choices}
+
+\question[4] How many HOSPITALs must a SURGEON be AFFILIATED\_WITH?
+
+\begin{choices}
+\correctchoice One or more
+\choice Zero or more
+\choice More than 2
+\end{choices}
+
+\question[4] Which of the following is a valid key for a SURGERY instance?
+
+\begin{choices}
+\choice $<Date, SurgeryType>$
+\choice $<SurgeryType, Specialty>$
+\correctchoice $<LicenseNumber, Date>$
+\choice $<Date, SurgeryType, SSN>$
+\end{choices}
+
+\question[4] Given this EER model, how may SURGERYs may a SURGEON LEAD on a given Date?
+
+\begin{choices}
+\correctchoice 1
+\choice many
+\choice none
+\end{choices}
+
+\question[4] Given this EER model, if we wanted the SurgeryType attribute for each SURGERY instance to have the same value as the Specialty attribute of the SURGEON who LEADs the surgery, we would enforce this correponsdence with a
+
+\begin{choices}
+  \choice data integrity constraint.
+  \correctchoice semantic constraint/business rule.
+  \choice participation constraint.
+  \choice heuristic.
+\end{choices}
+
+\end{questions}
+
+\newpage
+
+\section{Relational Model and Relational Algebra}
+
+Completely fill in the box corresponding to your answer choice for each question.
+
+\ifprintanswers
+\begin{tabular}{lcccc}\\
+  1. \d
+  2. \a
+  3. \d
+  4. \d
+  5. \d
+  6. \b
+  7. \a
+  8. \b
+  9. \b
+  10. \a
+  11. \b
+  12. \b
+  13. \b
+  14. \a
+  15. \d
+  16. \b
+  17. \a
+  18. \b
+  19. \b
+  20. \a
+  21. \c
+  22. \b
+  23. \b
+  24. \b
+  25. \c
+\end{tabular}
+\else
+\begin{tabular}{lcccc}\\
+  1. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  2. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  3. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  4. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  5. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  6. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  7. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  8. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  9. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  10. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  11. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  12. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  13. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  14. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  15. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  16. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  17. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  18. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  19. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  20. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  21. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  22. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  23. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  24. & [ A ] & [ B ] & [ C ] & [ D ] \\
+  25. & [ A ] & [ B ] & [ C ] & [ D ] \\
+\end{tabular}
+
+\fi
+
+\vspace{.5in}
+
+Number missed: \makebox[.5in]{\hrulefill} Final Score: \makebox[.5in]{\hrulefill}
+
+\newpage
+
+
+\begin{figure}[H]
+
+\section*{Pubs Database Schema}
+
+$author(\underline{author\_id}, first\_name, last\_name)$\\
+
+$author\_pub(\underline{author\_id}, \underline{pub\_id}, author\_position)$\\
+
+$book(\underline{book\_id}, book\_title, month, year, editor)$\\
+
+$pub(\underline{pub\_id}, title, book\_id)$
+
+\begin{itemize}
+\item $author\_id$ in $author\_pub$ is a foreign key referencing $author$
+\item $pub\_id$ in $author\_pub$ is a foreign key referencing $pub$
+\item $book\_id$ in $pub$ is a foreign key referencing $book$
+\item $editor$ in $book$ is a foreign key referencing $author(author\_id)$
+\item Primary keys are underlined
+\end{itemize}
+
+\section*{Pubs Database State}
+
+\begin{multicols}{2}
+
+$r(author)$\\
+\begin{tabular}{|l|l|l|}\hline
+\rowcolor{lightgray} author\_id & first\_name & last\_name \\\hline
+1 & John       & McCarthy  \\\hline
+2 & Dennis     & Ritchie   \\\hline
+3 & Ken        & Thompson  \\\hline
+4 & Claude     & Shannon   \\\hline
+5 & Alan       & Turing    \\\hline
+6 & Alonzo     & Church    \\\hline
+7 & Perry      & White     \\\hline
+8 & Moshe      & Vardi     \\\hline
+9 & Roy        & Batty     \\\hline
+\end{tabular}
+
+\columnbreak
+
+$r(author\_pub)$\\
+\begin{tabular}{|l|l|l|}\hline
+\rowcolor{lightgray} author\_id & pub\_id & author\_position \\\hline
+1 &      1 &      1 \\\hline
+2 &      2 &      1 \\\hline
+3 &      2 &      2 \\\hline
+4 &      3 &      1 \\\hline
+5 &      4 &      1 \\\hline
+5 &      5 &      1 \\\hline
+6 &      6 &      1 \\\hline
+\end{tabular}
+\end{multicols}
+
+\begin{multicols}{2}
+
+$r(book)$\\
+\begin{tabular}{|l|l|l|l|l|}\hline
+\rowcolor{lightgray} book\_id & book\_title & month    & year & editor \\\hline
+       1 & CACM       & April    & 1960 &      8 \\\hline
+       2 & CACM       & July     & 1974 &      8 \\\hline
+       3 & BST        & July     & 1948 &      2 \\\hline
+       4 & LMS        & November & 1936 &      7 \\\hline
+       5 & Mind       & October  & 1950 &   NULL \\\hline
+       6 & AMS        & Month    & 1941 &   NULL \\\hline
+       7 & AAAI       & July     & 2012 &      9 \\\hline
+       8 & NIPS       & July     & 2012 &      9 \\\hline
+\end{tabular}
+
+\columnbreak
+
+$r(pub)$\\
+\begin{tabular}{|l|l|l|}\hline
+\rowcolor{lightgray} pub\_id & title           & book\_id \\\hline
+     1 & LISP            &       1 \\\hline
+     2 & Unix            &       2 \\\hline
+     3 & Info Theory     &       3 \\\hline
+     4 & Turing Machines &       4 \\\hline
+     5 & Turing Test     &       5 \\\hline
+     6 & Lambda Calculus &       6 \\\hline
+\end{tabular}
+
+\end{multicols}
+
+
+
+\caption{Relational Database Schema}
+\label{fig:db-schema}
+\end{figure}
+
+\newpage
+
+Scratch page
+
+\newpage
+
+\begin{questions}
+
+\question[4] Which of the following statements is true with regard to the relational data model?
+
+\begin{choices}
+\choice A domain for an attribute is a set of atomic values.
+\choice Several attributes in one relation schema may have the same domain.
+\choice A tuple in a relation consists of one value from each attribute domain of that relation.
+\correctchoice All of the above
+\end{choices}
+
+\question[4] Which of the following is the mathematical definition of a relation, $r(R)$, of degree $n$?
+
+\begin{choices}
+\correctchoice $r(R) \subseteq dom(A_1) \times dom(A_2) \times .... \times dom(A_n)$
+\choice $r(R) \subseteq dom(A_1) \cap dom(A_2) \cap .... \cap dom(A_n)$
+\choice $r(R) \subseteq dom(A_1) \cup dom(A_2) \cup .... \cup dom(A_n)$
+\choice none of the above
+\end{choices}
+
+\question[4] Which of the following are properties of the relational model?
+
+\begin{choices}
+\choice Attribute values in tuples are indivisible.
+\choice Facts not asserted explicitly are assumed to be false.
+\choice Relations are sets.
+\correctchoice All of the above.
+\end{choices}
+
+\question[4] Which of the following is true about a minimal superkey?
+
+\begin{choices}
+\choice There can be only one.
+\choice The default superkey is always a minimal superkey.
+\choice Every minimal superkey is a primary key.
+\correctchoice Every superkey contains a minimal superkey as a subset.
+\end{choices}
+
+\question[4] In a relation schema with 3 attributes, each of which is a candidate key, how many superkeys are there?
+
+\begin{choices}
+\choice 1
+\choice 3
+\choice 6
+\correctchoice 7
+\end{choices}
+
+\question[4] In a relation schema with 3 attributes, each of which is a candidate key, how many choices are there for the primary key?
+
+\begin{choices}
+\choice 1
+\correctchoice 3
+\choice 6
+\choice 7
+\end{choices}
+
+\question[4] May a tuple in a relation have a NULL value for a foreign key attribute?
+
+\begin{choices}
+\correctchoice Yes
+\choice No
+\end{choices}
+
+\question[4] May a tuple in a relation have a NULL value for a primary key attribute?
+
+\begin{choices}
+\choice Yes
+\correctchoice No
+\end{choices}
+
+\question[4] Which kind of constraint cannot be specied in the relational model?
+
+\begin{choices}
+\choice referential integrity constraints
+\correctchoice semantic constraints, a.k.a., business rules
+\choice entity integrity constraints
+\end{choices}
+
+\newpage
+
+Refer to database schema in Figure 1 for the remaining questions.
+
+\question[4] What is the degree of the $author$ relation?
+
+\begin{choices}
+\choice 2
+\correctchoice 3
+\choice 9
+\end{choices}
+
+\question[4] The $author\_pub$ relation has how many superkeys?
+
+\begin{choices}
+\choice 1
+\correctchoice 2
+\choice 3
+\end{choices}
+
+\question[4] Can the tuple {\tt <6, 'Teen', 'Candles'>} be inserted into the $author$ relation without causing an integrity violation?
+
+\begin{choices}
+\choice Yes
+\correctchoice No
+\end{choices}
+
+\question[4] Can the tuple {\tt <10, NULL, 'Pointers'>} be inserted into the $author$ relation without causing an integrity violation?
+
+\begin{choices}
+\correctchoice Yes
+\choice No
+\end{choices}
+
+\question[4] The deletion of the second tuple in the $author$ relation ({\tt <2, 'Dennis', 'Ritchie'>}) causes an integrity violation for which relations?
+
+\begin{choices}
+\choice $author\_pub$
+\choice $book$
+\choice $pub$
+\correctchoice A and B above.
+\end{choices}
+
+
+\question[4] If cascading deletes is in effect for all relations and the tuple {\tt <2, 'Dennis', 'Ritchie'>} is deleted, how many other tuples will be deleted from the database?
+
+\begin{choices}
+\choice 0
+\correctchoice 2
+\choice 3
+\end{choices}
+
+\question[4] How many tuples will be returned by the following relational algebra query?
+
+\[
+\pi_{book\_title}(book)
+\]
+
+\begin{choices}
+\correctchoice 7
+\choice 5
+\choice 2
+\choice 1
+\end{choices}
+
+\newpage
+
+\question[4] What question does the following expression answer?
+
+\[
+|\pi_{author\_id}(author)  -  \pi_{editor}(book)|
+\]
+
+\begin{choices}
+\choice How many authors are book editors.
+\correctchoice How many authors are not book editors.
+\choice What are the names of the authors who are book editors.
+\choice What are the names of the authors who are not book editors.
+\end{choices}
+
+\question[4] Which of the following relational algebra expressions returns the names of all authors who are book editors?
+
+\begin{choices}
+\choice $\pi_{first\_name, last\_name}((\pi_{author\_id}(author)  -  \pi_{editor}(book)) * author)$
+\correctchoice $\pi_{first\_name, last\_name}(author \bowtie_{author\_id = editor} book)$
+\choice $\pi_{first\_name, last\_name}(author * author\_pub)$
+\end{choices}
+
+\question[4] Which of the following relational algebra expressions returns the names of all authors who are {\bf not} book editors?
+
+\begin{choices}
+\correctchoice $\pi_{first\_name, last\_name}((\pi_{author\_id}(author)  -  \pi_{editor}(book)) * author)$
+\choice $\pi_{first\_name, last\_name}(author \bowtie_{author\_id = editor} book)$
+\choice $\pi_{first\_name, last\_name}(author * author\_pub)$
+\end{choices}
+
+
+\question[4] Which of the following relational algebra expressions returns the names of all authors who have at least one publication in the database?
+
+\begin{choices}
+\choice $\pi_{first\_name, last\_name}((\pi_{author\_id}(author)  -  \pi_{editor}(book)) * author)$
+\choice $\pi_{first\_name, last\_name}(author \bowtie_{author\_id = editor} book)$
+\correctchoice $\pi_{first\_name, last\_name}(author * author\_pub)$
+\end{choices}
+
+
+\question[4] Which of the following relational algebra expressions returns books that were published before 1960 or after 2000?
+
+\begin{choices}
+\choice $\sigma_{year < 1960}(book) \land \sigma_{year > 2000}(book)$
+\correctchoice $\sigma_{year < 1960}(book) \cup \sigma_{year > 2000}(book)$
+\choice $\sigma_{year < 1960 \land year > 2000}(book)$
+\end{choices}
+
+\question[4] How many tuples are returned by the following relational algebra expression?
+
+\[
+author \leftouterjoin_{author\_id = editor} book
+\]
+
+\begin{choices}
+\choice 8
+\correctchoice 11
+\choice 13
+\end{choices}
+
+\question[4] What question does the following relational algebra expression answer?
+
+\[
+author * (author\_pub * (\sigma_{month = 'July'}(book) * pub))
+\]
+
+\begin{choices}
+\choice Which authors were born in July?
+\correctchoice Which authors authored a pub that was published in July?
+\choice Which authors edited books that were published in July?
+\end{choices}
+
+\question[4] How many tuples does the previous relational algebra expression return?
+
+\begin{choices}
+\choice 1
+\choice 2
+\correctchoice 3
+\choice 4
+\end{choices}
+
+
+\end{questions}
+
+\end{document}
