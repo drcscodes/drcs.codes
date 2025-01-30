@@ -328,7 +328,7 @@ If someone tests positive, probability they have cancer:
 
 ```{=latex}
 \begin{align*}
-p(C=1|T=1) &= \frac{p(T=1|C=1)p(C=1)p(C=1)}{p(T=1)}\\
+p(C=1|T=1) &= \frac{p(T=1|C=1)p(C=1)}{p(T=1)}\\
            &= \frac{90}{100} \times \frac{1}{100} \times \frac{10,000}{387} \\
            &= \frac{90}{387}\\
            &\approx 0.23
