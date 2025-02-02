@@ -1,0 +1,238 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{verbatim, multicol, tabularx,hyperref}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Problem Set 2}
+\author{CS 4277: Deep Learning}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+Name (print clearly): \ifprintanswers \underline{  {\bf ANSWER KEY}  } \fi \hrulefill Section: (e.g., 01) \makebox[.5in]{\hrulefill}
+
+\vspace{0.25in}
+\hbox to \textwidth{Signature: \hrulefill}
+
+\vspace{0.25in}
+\hbox to \textwidth{Student account username (e.g., msmith3): \enspace\hrulefill}
+
+Signing signifies that you agree to comply with the {\bf Academic Honor Code} and course policies stated in the syllabus.
+
+Choose one of these two options for turn-in:
+\begin{enumerate}
+\item Print this document, write or answers, scan your finished homework to a PDF, name the PDF {\tt cs4277-ps2-<your-student-account-username>.pdf}, e.g., {\tt cs4277-ps2-msmith3.pdf} and submit the PDF to the assignment on D2L.
+\item While viewing this document in your web browser, in the address bar change {\tt .pdf} to {\tt .tex}, save the \LaTeX\ source as a text file, add your answers in appropriate \LaTeX\ markup in the appropriate spaces, compile to a PDF named as in the instructions above, and submit the PDF file to the assignment on D2L.  (Whether you choose this option or not, LOOK AT THE \LaTeX\ SOURCE!)
+\end{enumerate}
+
+\begin{center}
+  \gradetable[h][questions]
+\end{center}
+
+\begin{questions}
+
+\question[15] Problem 4.2 Identify the hyperparameters in figure 4.6 (Hint: there are four!)
+
+\ifprintanswers
+\begin{solution}
+
+Boom!
+
+\end{solution}
+\else
+\vspace{5in}
+\fi
+
+
+\question[15] Problem 4.4 Write out the equations for a deep neural network that takes $D_i = 5$ inputs, $D_o = 4$ outputs and has three hidden layers of sizes $D_1 = 20$, $D_2 = 10$, and $D_3 = 7$, respectively in both the forms of equations 4.15 and 4.16. What are the sizes of each weight matrix $\Omega_{\dot}$ and bias vector $\beta_{\dot}$?
+
+\question[15] Problem 5.1 Show that the logistic sigmoid function $sig(z)$ maps $z = −\infty$ to $0$, $z = 0$ to $0.5$ and $z = \infty$ to $1$ where:
+
+\[
+sig(z) = \frac{1}{1 + exp(−z)}
+\]
+
+\ifprintanswers
+\begin{solution}
+
+Boom!
+
+\end{solution}
+\else
+\vspace{5in}
+\fi
+
+
+\question[15] Problem 5.6 Consider building a model to predict the number of pedestrians $y \in \{0, 1, 2, \dots \}$ that will pass a given point in the city in the next minute, based on data x that contains information about the time of day, the longitude and latitude, and the type of neighborhood. A suitable distribution for modeling counts is the Poisson distribution (figure 5.15 from book). This has a single parameter $\lambda > 0$ called the rate that represents the mean of the distribution. The distribution has probability density function:
+
+\[
+Pr(y = k) = \frac{\lambda^{k} e^{-\lambda}{k!}
+\]
+
+Use the recipe in section 5.2 to design a loss function for this model assuming that we have access to $I$ training pairs $\{\bm{x_i},yi\}$.
+
+\ifprintanswers
+\begin{solution}
+
+Boom!
+
+\end{solution}
+\else
+\vspace{5in}
+\fi
+
+\textbf{More to come ...}
+
+%
+% \question[15] Problem 6.1 Show that the derivatives of the least squares loss function in equation 6.5 are given by the expressions in equation 6.7.
+%
+% \ifprintanswers
+% \begin{solution}
+%
+% Boom!
+%
+% \end{solution}
+% \else
+% \vspace{5in}
+% \fi
+%
+%
+% \question[15] Problem 6.2 A surface is convex if the eigenvalues of the Hessian $H[\bm{\phi}]$ are positive everywhere. In this case, the surface has a unique minimum, and optimization is easy. Find an algebraic expression for the Hessian matrix,
+%
+% $$
+% $H[\bm{\phi}]$
+% $$
+%
+% for the linear regression model (equation 6.5). Prove that this function is convex by showing that the eigenvalues are always positive. This can be done by showing that both the trace and the determinant of the matrix are positive.
+%
+% \ifprintanswers
+% \begin{solution}
+%
+% Boom!
+%
+% \end{solution}
+% \else
+% \vspace{5in}
+% \fi
+%
+%
+% \question[15] Problem 6.6 Which of the functions in figure 6.11 from the book is convex? Justify your
+% answer. Characterize each of the points 1-7 as (i) a local minimum, (ii) the global minimum, or (iii) neither.
+%
+% \ifprintanswers
+% \begin{solution}
+%
+% Boom!
+%
+% \end{solution}
+% \else
+% \vspace{5in}
+% \fi
+%
+%
+% \question[15] Problem 7.1 A two-layer network with two hidden units in each layer can be defined as:
+% y = φ0 + φ1a [ψ01 + ψ11a[θ01 + θ11x] + ψ21a[θ02 + θ12x]] +φ2a[ψ02 + ψ12a[θ01 + θ11x] + ψ22a[θ02 + θ12x]],
+% where the functions a[•] are ReLU functions. Compute the derivatives of the output y with respect to each of the 13 parameters φ•, θ••, and ψ•• directly (i.e., not using the backpropagation algorithm). The derivative of the ReLU function with respect to its input ∂a[z]/∂z is the indicator function I[z > 0], which returns one if the argument is greater than zero and zero otherwise (figure 7.6).
+%
+% \ifprintanswers
+% \begin{solution}
+%
+% Boom!
+%
+% \end{solution}
+% \else
+% \vspace{5in}
+% \fi
+%
+%
+% \question[15] Problem 7.2 Find an expression for the final term in each of the five chains of derivatives in equation 7.12.
+%
+% \ifprintanswers
+% \begin{solution}
+%
+% Boom!
+%
+% \end{solution}
+% \else
+% \vspace{5in}
+% \fi
+%
+%
+% \question[15] Problem 7.5 Calculate the derivative ∂li/∂f[xi,φ] for the binary classification loss function:
+% li =−(1−yi)log[1−sig[f[xi,φ]]]−yilog[sig[f[xi,φ]]], where the function sig[•] is the logistic sigmoid and is defined as:
+%
+% sig[z] = 1 . 1 + exp[−z]
+%
+%
+% \ifprintanswers
+% \begin{solution}
+%
+% Boom!
+%
+% \end{solution}
+% \else
+% \vspace{5in}
+% \fi
+
+\end{questions}
+
+\end{document}
