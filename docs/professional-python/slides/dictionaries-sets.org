@@ -1,0 +1,223 @@
+#+TITLE: Dictionaries and Sets
+#+AUTHOR:
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil ':nil
+#+BEAMER_FRAME_LEVEL: 2
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [smaller, aspectratio=1610]
+#+LaTeX_HEADER: \setbeamertemplate{navigation symbols}{}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx}
+#+LaTeX_HEADER: \usepackage{sourcecodepro}
+#+LaTeX_HEADER: \usepackage[T1]{fontenc}
+#+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+#+LaTeX_HEADER: \lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}, upquote=false, literate={'}{\textquotesingle}1}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
+#+LaTeX_HEADER: \setlength{\parskip}{.25\baselineskip}
+# #+LaTeX_HEADER: \logo{\includegraphics[height=.75cm]{GeorgiaTechLogo-black-gold.png}}
+
+* Dictionaries and Sets
+
+** Dictionaries and Sets
+
+- Dictionaries map keys to values
+- Sets represent mathematical sets
+
+Byt the end of this lesson you will
+
+- know how to use dictionaries
+- know jow to use sets
+
+** Dictionaries
+
+A dictionary is a map from keys to values.
+
+Create dictionaries with ~{}~
+
+#+BEGIN_SRC python
+>>> capitals = {}
+#+END_SRC
+
+Add key-value pairs with assignment operator
+
+#+BEGIN_SRC python
+>>> capitals['Georgia'] = 'Atlanta'
+>>> capitals['Alabama'] = 'Montgomery'
+>>> capitals
+{'Georgia': 'Altanta', 'Alabama': 'Montgomery'}
+#+END_SRC
+
+Keys are unique, so assignment to same key updates mapping
+
+#+BEGIN_SRC python
+>>> capitals['Alabama'] = 'Birmingham'
+>>> capitals
+{'Georgia': 'Altanta', 'Alabama': 'Birmingham'}
+#+END_SRC
+
+** Dictionary Operations
+
+Remove a key-value mapping with ~del~ statement
+
+#+BEGIN_SRC python
+>>> del capitals['Alabama']
+>>> capitals
+{'Georgia': 'Atlanta'}
+#+END_SRC
+
+Use the ~in~ operator to test for existence of key (not value)
+
+#+BEGIN_SRC python
+>>> 'Georgia' in capitals
+True
+>>> 'Atlanta' in capitals
+False
+#+END_SRC
+
+Extend a dictionary with ~update()~ method, get values as a list
+with values method
+
+#+BEGIN_SRC python
+>>> capitals.update({'Tennessee': 'Nashville', 'Mississippi':
+'Jackson'})
+>>> capitals.values()
+dict_values(['Jackson', 'Nashville', 'Atlanta'])
+#+END_SRC
+
+** Conversions to ~dict~
+
+Any sequence of two-element sequences can be converted to a ~dict~
+
+A list of two-element lists:
+
+#+BEGIN_SRC python
+>>> dict([[1, 1], [2, 4], [3, 9], [4, 16]])
+{1: 1, 2: 4, 3: 9, 4: 16}
+#+END_SRC
+
+A list of two-element tuples:
+
+
+#+BEGIN_SRC python
+>>> dict([('Lassie', 'Collie'), ('Rin Tin Tin', 'German
+Shepherd')])
+{'Rin Tin Tin': 'German Shepherd', 'Lassie': 'Collie'}
+#+END_SRC
+
+Even a list of two-character strings:
+
+#+BEGIN_SRC python
+>>> dict(['a1', 'a2', 'b3', 'b4'])
+{'b': '4', 'a': '2'}
+#+END_SRC
+
+Notice that subsequent pairs overwrote previously set keys.
+
+** Sets
+
+Sets have no duplicates, like the keys of a ~dict~. They can be iterated
+over (we'll learn that later) but can't be accessed by index.
+
+- Create an empty set with ~set()~ function, add elements with ~add()~ method
+
+#+BEGIN_SRC python
+>>> names = set()
+>>> names.add('Ally')
+>>> names.add('Sally')
+>>> names.add('Mally')
+>>> names.add('Ally')
+>>> names
+{'Ally', 'Mally', 'Sally'}
+#+END_SRC
+
+- Converting to set a convenient way to remove duplicates
+
+#+BEGIN_SRC python
+>>> set([1,2,3,4,3,2,1])
+{1, 2, 3, 4}
+#+END_SRC
+
+** Set Operations
+
+Intersection (elements in ~a~ *and* ~b~)
+
+#+BEGIN_SRC python
+>>> a = {1, 2}
+>>> b = {2, 3}
+>>> a & b # or a.intersetion(b)
+{2}
+#+END_SRC
+
+Union (elements in ~a~ *or* ~b~)
+
+#+BEGIN_SRC python
+>>> a | b # or a.union(b)
+{1, 2, 3}
+#+END_SRC
+
+** Set Operations
+
+Difference (elements in ~a~ that are not in ~b~)
+
+#+BEGIN_SRC python
+>>> a - b # or a.difference(b)
+{1}
+#+END_SRC
+
+Symmetric difference (elements in ~a~ or ~b~ but not both)
+
+#+BEGIN_SRC python
+>>> a ^ b # or a.symmetric_difference(b)
+{1, 3}
+#+END_SRC
+
+** Set Predicates
+
+A predicate function asks a question with a ~True~ or ~False~ answer.
+
+Subset of:
+
+#+BEGIN_SRC python
+>>>a <= b # or a.issubset(b)
+False
+#+END_SRC
+
+Proper subset of:
+
+#+BEGIN_SRC python
+>>> a < b
+False
+#+END_SRC
+
+** Set Predicates
+
+Superset of:
+
+#+BEGIN_SRC python
+>>> a >= b # or a.issuperset(b)
+False
+#+END_SRC
+
+Proper superset of:
+
+#+BEGIN_SRC python
+>>> a > b
+False
+#+END_SRC
+
+** Closing Thoughts
+
+Typical Python programs make extensive use of built-in data structures and often combine them (lists of lists, dictionaries of lists, etc)
+
+- These are just the basics
+- Explore these data structures on your own
+- Read the books and Python documentation
+
+
+This is a small taste of the expressive power and syntactic
+convenience of Python's data structures.

@@ -1,0 +1,268 @@
+% Created 2022-08-17 Wed 12:45
+% Intended LaTeX compiler: pdflatex
+\documentclass[smaller, aspectratio=1610]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{verbatim, multicol, tabularx}
+\usepackage{sourcecodepro}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+\lstset{extendedchars=\true, inputencoding=utf8, frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=fixed, basicstyle={\footnotesize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true, tabsize=4,  keywordstyle=\color{blue}, identifierstyle=\color{violet}, stringstyle=\color{teal}, commentstyle=\color{darkgray}, upquote=false, literate={'}{\textquotesingle}1}
+\setbeamertemplate{footline}[frame number]
+\hypersetup{colorlinks=true,urlcolor=blue,bookmarks=true}
+\setlength{\parskip}{.25\baselineskip}
+\usetheme{default}
+\date{}
+\title{Dictionaries and Sets}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={Dictionaries and Sets},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 28.1 (Org mode 9.5.2)},
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section{Dictionaries and Sets}
+\label{sec:orgf9963c1}
+
+\begin{frame}[label={sec:org2d343ba}]{Dictionaries and Sets}
+\begin{itemize}
+\item Dictionaries map keys to values
+\item Sets represent mathematical sets
+\end{itemize}
+
+Byt the end of this lesson you will
+
+\begin{itemize}
+\item know how to use dictionaries
+\item know jow to use sets
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org47b10e7},fragile]{Dictionaries}
+ A dictionary is a map from keys to values.
+
+Create dictionaries with \texttt{\{\}}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> capitals = {}
+\end{lstlisting}
+
+Add key-value pairs with assignment operator
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> capitals['Georgia'] = 'Atlanta'
+>>> capitals['Alabama'] = 'Montgomery'
+>>> capitals
+{'Georgia': 'Altanta', 'Alabama': 'Montgomery'}
+\end{lstlisting}
+
+Keys are unique, so assignment to same key updates mapping
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> capitals['Alabama'] = 'Birmingham'
+>>> capitals
+{'Georgia': 'Altanta', 'Alabama': 'Birmingham'}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org64045d8},fragile]{Dictionary Operations}
+ Remove a key-value mapping with \texttt{del} statement
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> del capitals['Alabama']
+>>> capitals
+{'Georgia': 'Atlanta'}
+\end{lstlisting}
+
+Use the \texttt{in} operator to test for existence of key (not value)
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> 'Georgia' in capitals
+True
+>>> 'Atlanta' in capitals
+False
+\end{lstlisting}
+
+Extend a dictionary with \texttt{update()} method, get values as a list
+with values method
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> capitals.update({'Tennessee': 'Nashville', 'Mississippi':
+'Jackson'})
+>>> capitals.values()
+dict_values(['Jackson', 'Nashville', 'Atlanta'])
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org976cb81},fragile]{Conversions to \texttt{dict}}
+ Any sequence of two-element sequences can be converted to a \texttt{dict}
+
+A list of two-element lists:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> dict([[1, 1], [2, 4], [3, 9], [4, 16]])
+{1: 1, 2: 4, 3: 9, 4: 16}
+\end{lstlisting}
+
+A list of two-element tuples:
+
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> dict([('Lassie', 'Collie'), ('Rin Tin Tin', 'German
+Shepherd')])
+{'Rin Tin Tin': 'German Shepherd', 'Lassie': 'Collie'}
+\end{lstlisting}
+
+Even a list of two-character strings:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> dict(['a1', 'a2', 'b3', 'b4'])
+{'b': '4', 'a': '2'}
+\end{lstlisting}
+
+Notice that subsequent pairs overwrote previously set keys.
+\end{frame}
+
+\begin{frame}[label={sec:org3c3fbd3},fragile]{Sets}
+ Sets have no duplicates, like the keys of a \texttt{dict}. They can be iterated
+over (we'll learn that later) but can't be accessed by index.
+
+\begin{itemize}
+\item Create an empty set with \texttt{set()} function, add elements with \texttt{add()} method
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> names = set()
+>>> names.add('Ally')
+>>> names.add('Sally')
+>>> names.add('Mally')
+>>> names.add('Ally')
+>>> names
+{'Ally', 'Mally', 'Sally'}
+\end{lstlisting}
+
+\begin{itemize}
+\item Converting to set a convenient way to remove duplicates
+\end{itemize}
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> set([1,2,3,4,3,2,1])
+{1, 2, 3, 4}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org8796c76},fragile]{Set Operations}
+ Intersection (elements in \texttt{a} \alert{and} \texttt{b})
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a = {1, 2}
+>>> b = {2, 3}
+>>> a & b # or a.intersetion(b)
+{2}
+\end{lstlisting}
+
+Union (elements in \texttt{a} \alert{or} \texttt{b})
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a | b # or a.union(b)
+{1, 2, 3}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org099ab60},fragile]{Set Operations}
+ Difference (elements in \texttt{a} that are not in \texttt{b})
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a - b # or a.difference(b)
+{1}
+\end{lstlisting}
+
+Symmetric difference (elements in \texttt{a} or \texttt{b} but not both)
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a ^ b # or a.symmetric_difference(b)
+{1, 3}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org0dcb91a},fragile]{Set Predicates}
+ A predicate function asks a question with a \texttt{True} or \texttt{False} answer.
+
+Subset of:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>>a <= b # or a.issubset(b)
+False
+\end{lstlisting}
+
+Proper subset of:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a < b
+False
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:org979d049},fragile]{Set Predicates}
+ Superset of:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a >= b # or a.issuperset(b)
+False
+\end{lstlisting}
+
+Proper superset of:
+
+\lstset{language=Python,label= ,caption= ,captionpos=b,numbers=none}
+\begin{lstlisting}
+>>> a > b
+False
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[label={sec:orgdcb136f}]{Closing Thoughts}
+Typical Python programs make extensive use of built-in data structures and often combine them (lists of lists, dictionaries of lists, etc)
+
+\begin{itemize}
+\item These are just the basics
+\item Explore these data structures on your own
+\item Read the books and Python documentation
+\end{itemize}
+
+
+This is a small taste of the expressive power and syntactic
+convenience of Python's data structures.
+\end{frame}
+\end{document}

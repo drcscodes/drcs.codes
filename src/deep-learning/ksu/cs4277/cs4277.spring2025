@@ -9,44 +9,44 @@ Week 3
 2025-01-20;MLK Jr Day - No Class;;Unpaid Course Deletion (2025-01-21)
 2025-01-22;deep-networks2;Assigned: [PA1](pa1.html);
 Week 4
-2025-01-27;probability;;
-2025-01-29;loss-functions;Assigned: [PS2](ps2.pdf);
+2025-01-27;Workshop;;
+2025-01-29;probability;Assigned: [PS2](ps2.pdf);
 Week 5
-2025-02-03;fitting-models;Due 2025-02-04:[PS1](ps1.pdf);
-2025-02-05;gradients-initialization;Due: [Project Proposal](project.html);
+2025-02-03;loss-functions;Due 2025-02-04:[PS1](ps1.pdf);
+2025-02-05;loss-functions;Due: [Project Proposal](project.html);
 Week 6
-2025-02-10;measuring-performance;;
-2025-02-12;regularization;Due: [PA1](pa1.html);
+2025-02-10;fitting-models;;
+2025-02-12;gradients-initialization;Due: [PA1](pa1.html);
 Week 7
 2025-02-17;midterm-review;Due: [PS2](ps2.pdf);
 2025-02-19;midterm-exam;;
 Supervised Deep Learning
 Week 8
-2025-02-24;convolutional-networks1;Assigned: [PS3](ps3.pdf),Assigned: [PA2](pa2.html);
-2025-02-26;convolutional-networks2;;
+2025-02-24;measuring-performance;Assigned: [PS3](ps3.pdf),Assigned: [PA2](pa2.html);
+2025-02-26;regularization;;
 Week 9
-2025-03-03;residual-networks;;
-2025-03-05;transformers1;;
+2025-03-03;convolutional-networks1;;
+2025-03-05;convolutional-networks2;;
 Week 10
 2025-03-10;Spring Break - No Class;;
 2025-03-12;Spring Break - No Class;;
 Week 11
-2025-03-17;transformers2;;
-2025-03-19;graph-nerual-networks;Due: [Project Results](project.html);Midterm Grades Due (2025-03-21)
+2025-03-17;residual-networks;;
+2025-03-19;transformers1;Due: [Project Results](project.html);Midterm Grades Due (2025-03-21)
 Generative Deep Learning
 Week 12
-2025-03-24;generative-adversarial-networks1;;
-2025-03-26;generative-adversarial-networks2;Due: [PS3](ps3.pdf),Assigned: [PS4](ps4.pdf);Withdrawal Deadline (2025-03-28)
+2025-03-24;transformers2;;
+2025-03-26;graph-nerual-networks;Due: [PS3](ps3.pdf),Assigned: [PS4](ps4.pdf);Withdrawal Deadline (2025-03-28)
 Week 13
-2025-03-31;normalizing-flows;;
-2025-04-02;variational-autoencoders;Due: [PA2](pa2.html),Assigned: [PA3](pa3.html);
+2025-03-31;generative-adversarial-networks1;;
+2025-04-02;generative-adversarial-networks2;Due: [PA2](pa2.html),Assigned: [PA3](pa3.html);
 Week 14
-2025-04-07;diffusion-models;;
+2025-04-07;normalizing-flows;;
+2025-04-09;variational-autoencoders;;
 Beyond Deep Learning
-2025-04-09;reinforcement-learning;;
 Week 15
-2025-04-14;deep-learning-philosophy;;
-2025-04-16;deep-learning-ethics;Due: [PA3](pa3.html);
+2025-04-14;diffusion-models;;
+2025-04-16;deep-learning-philosophy;Due: [PA3](pa3.html);
 Week 16
 2025-04-21;project-presentations1;;
 2025-04-23;project-presentations2;Due: [Final Project Paper](project.html);

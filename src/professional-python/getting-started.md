@@ -25,15 +25,15 @@ You may also want to install a [text editor](/shared/text-editors).
 
 macOS is a Unix and already has a decent terminal and command-line shell.  There are two ways to install Python.org Python (as opposed to [Anaconda](https://www.anaconda.com/) Python or some other Python distribution):
 
-1. Download and run the macOS installer from [python.org](https://www.python.org/).
+1. **Recommended:** Download and run the macOS installer from [python.org](https://www.python.org/).
 2. Install [Homebrew](https://brew.sh/) and use the `brew` command to install Python.
 
    If you use macOS, I recommend using Homebrew to manage general Unix tools that aren't provided by Apple.  You may use `brew` to install Python, but if you are new to Homebrew you may find using the Python.org installer easier to manage.  A good general strategy is to use the installation method recommended by a tool's publisher.  For example, Python.org provides a package installer for Python, so use it to install Python.  [git-scm.org](https://git-scm.com/) recommends using Homebrew to install Git on macOS, so use Homebrew for Git.  With either of the installation methods above you don't need to install `pip` and `venv` separately.
-   
+
    ```sh
    brew install python3
    ```
-   
+
 ## Windows
 
 1. Download the Windows installer from [python.org](https://www.python.org/).
@@ -51,7 +51,7 @@ If you are using Windows 10 or 11, install WSL2, the Windows Subsystem for Linux
 
 > If you have trouble installing WSL2, you most likely need to update your Windows installation.  If you still have trouble, perhaps because you are prevented from updating your computer by an IT department, you can install the Windows version of Python and all the other tools used in this course using the instructions for Windows above.  Python is primarily a Linux/Unix technology, and knowledge of Linux is essential for most modern software development, so I recommend installing WSL2 and becoming familiar with Linux, but you will not miss anything in this course by running the Windows versions of Python and the other tools we'll use.
 
-### Installing WSL2 
+### Installing WSL2
 
 > See detailed instructions at https://docs.microsoft.com/en-us/windows/wsl/install-win10#simplified-installation-for-windows-insiders.  Note that Windows 10 with all updates from 2021-07-29 and later should support the simplified install.
 
