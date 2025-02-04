@@ -287,16 +287,22 @@ A general formulation of a network $\boldsymbol{y} = f(\vec{x}, \vec{\phi})$ whe
 - $\boldsymbol{\beta}_{k}$ are the biases in layer $k$ and $\boldsymbol{\Omega}_{k}$ are the weights in layer $k$ (replacing the $\theta$s and $\phi$s from before).
 
 $$
-\boldsymbol{h}_K = a(\boldsymbol{\beta}_{K-1} + \boldsymbol{\Omega}_{K-1} \boldsymbol{h})_{K-1})
+\boldsymbol{h}_K = a \left( \boldsymbol{\beta}_{K-1} + \boldsymbol{\Omega}_{K-1} \boldsymbol{h})_{K-1} \right)
 $$
 $$
-\boldsymbol{y} = \boldsymbol{\beta}_{K} + \boldsymbol{\Omega}_{K} \boldsymbol{h})_{K}
+\boldsymbol{y} = \boldsymbol{\beta}_{K} + \boldsymbol{\Omega}_{K} \boldsymbol{h}_{K} \tag{4.15}
+$$
+
+We can write the whole network as:
+
+$$
+\bm{y} = \bm{\beta}_K + \bm{\Omega}_K a \left( \bm{\beta}_{K-1} + \bm{\Omega}_{K-1} a (... \bm{\beta}_1 + \bm{\Omega}_1 a (\bm{\beta}_0 + \bm{\Omega}_0 a )  )   \right) \tag{4.16}
 $$
 
 ```{=latex}
 \begin{center}
 ```
-![Fig 4.6](DeepKLayer.pdf){height="50%"}
+![](DeepKLayer.pdf){height="30%"}
 ```{=latex}
 \end{center}
 ```
