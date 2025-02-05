@@ -180,10 +180,237 @@ Now that we understand MLE for loss functions, we can create a recipe for constr
 
 1. Choose a suitable probability distribution $P(\bm{y} | \bm{\theta})$ defined over the predictions (output domain) $\bm{y}$ with distributoin parameters $\bm{\theta}$.
 2. Set the machine learning model  $\bm{f}(\bm{x}, \bm{\phi})$ to predict one or more of these parameters, so $\bm{\theta} = \bm{f}(\bm{x}, \bm{\phi})$ and $P(\bm{y} | \bm{\theta}) = P(\bm{y} | \bm{f}(\bm{x}, \bm{\phi}))$.
-3. To train the model, find the network paramters $\bm{\hat{\phi}}$ that minimize the negative log-likelihood loss function over the training data pairs $\{\bm{x}_i, \bm{y}_i\}$:
+3. To train the model, find the network parameters $\bm{\hat{\phi}}$ that minimize the negative log-likelihood loss function over the training data pairs $\{\bm{x}_i, \bm{y}_i\}$:
 
 $$
 \bm{\hat{\phi}} = \argmin_{\bm{\phi}}(L(\bm{\phi})) = \argmin_{\bm{\phi}}(-\sum_{i=1}^I log(p(\bm{y}_i | \bm{f}(\bm{x}, \bm{\phi}))
 $$
 
 4. To perform inference for a new test example $\bm{x}$, return either the full distribution $P(\bm{y} | \bm{f}(\bm{x}, \bm{\phi}))$ or the value where the distribution is maximized.
+
+Now we see this recipen applied to three common problems: univariate regression, binary classification, and multiclass classification.
+
+## Example 1: Univariate Regression
+
+Goal: predict a single output $y \in \mathbb{R}$ from input $\bm{x}$ using model $f(\bm{x}, \bm{\phi})$.
+
+1. Choose a distribution over output $y$.
+
+$$
+p(y|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma*2}}\exp(-\frac{(y-\mu)^2}{2\sigma^2})
+$$
+
+2. Set the machine learning model $f(\bm{x}, \bm{\phi})$ to compute one or more parameters of the distribution.  Here, we choose only the mean $\mu = f(\bm{x}, \bm{\phi})$:
+
+$$
+p(y|f(\bm{x}, \bm{\phi}), \sigma^2) = \frac{1}{\sqrt{2\pi\sigma*2}}\exp(-\frac{(y - f(\bm{x}, \bm{\phi}))^2}{2\sigma^2})
+$$
+
+3. Calculate the negative log-likelihood for our chosen parameter(s) to use as the loss function.  We already did this for the Gaussian earlier; here we substitute $f(\bm{x}, \bm{\phi})$ for $\mu$ and $y_i$ for $x_i$ since we're calculating the distribution parameter over the output:
+
+$$
+L(\bm{\phi}) = \sum_{i=1}^I \ln(1) - \ln(\sqrt{2 \pi}) - \ln(\sigma) - \frac{(y_i - f(\bm{x}, \bm{\phi}))^2}{2 \sigma^2}
+$$
+
+## 3.1: Least-Squares Loss Function
+
+Our negative log-likelihood function is unwieldy, so do some algebraic manipulations.
+
+$$
+L(\bm{\phi}) = \sum_{i=1}^I \ln(1) - \ln(\sqrt{2 \pi}) - \ln(\sigma) - \frac{(y_i - f(\bm{x}, \bm{\phi}))^2}{2 \sigma^2}
+$$
+
+First, remove terms that don't depend on $\bm{\phi}$:
+
+$$
+L(\bm{\phi}) = \sum_{i=1}^I \frac{(y_i - f(\bm{x}, \bm{\phi}))^2}{2 \sigma^2}
+$$
+
+Next, remove denominator since it's a positive scaling factor that doesn't affect the position of the minimum:
+
+$$
+L(\bm{\phi}) = \sum_{i=1}^I (y_i - f(\bm{x}, \bm{\phi}))^2
+$$
+
+And this is the familiar least squares loss function you get when you assume that your outputs $Y$ are i.i.d. and each $y_i \sim \mathcal{N}(y_i|, f(\bm{x}, \bm{\phi}), \sigma^2)$
+
+## 4: Inference
+
+The model doesn't predict $y$ directly, instead it predicts the mean of the Gaussian distributoin assumed to generate $y$.  We turn that into a predicted $y$ with:
+
+$$
+\hat{y} = \argmax_y ( p(y|f(\bm{x}, \hat{\bm{\phi}}), \sigma^2) )
+$$
+
+Since for the univariate Gaussian the mean $\mu$ is the most likely value, inference is simply
+
+$$
+\hat{y} = f(\bm{x}, \hat{\bm{\phi}})
+$$
+
+## Heteroscedatic vs Homoscedatic Regression
+
+:::: {.columns}
+::: {.column width="60%"}
+
+- In *homoscedatic* regression, the variance is constant across all data points.
+- In *heteroscedatic* regression, the variance varies as a function of the input data.
+
+To handle heteroscedatic regression, you can train a network to to compute both mean and variance.
+
+```{=latex}
+\begin{align*}
+\mu &= f_1(\bm{x}, \bm{\phi})\\
+\sigma^2 &= f_2(\bm{x}, \bm{\phi})^2 \tag{Square output to ensure positive}
+\end{align*}
+```
+
+:::
+::: {.column width="40%"}
+
+![](LossHeteroscedastic.pdf)
+
+:::
+::::
+
+The loss function is then:
+
+$$
+\hat{\bm{\phi}} = \argmin_\phi \left( - \sum_{i=1}^I \left( \log(\frac{1}{\sqrt{2 \pi f_2(\bm{x}, \bm{\phi})^2}}) - \frac{(y_i - f_1(\bm{x}, \bm{\phi}))^2}{2 f_2(\bm{x}, \bm{\phi})^2} \right) \right)
+$$
+
+## Example 2: Binary Classification
+
+1. Choose Bernoulli distribution, which is defined over the output space $y \in \{0, 1\}$.  The parameter $\lambda$ represents the probability that $y = 1$.
+
+
+```{=latex}
+\[
+p(y | \lambda) =
+\begin{cases}
+1 - \lambda & y = 0,\\
+\lambda     & y = 1
+\end{cases}
+\]
+```
+
+Or, equivalently:
+
+$$
+p(y | \lambda) = (1 - \lambda)^{1-y} \lambda^y
+$$
+
+```{=latex}
+\begin{center}
+```
+![](LossBern.pdf)
+```{=latex}
+\end{center}
+```
+
+## 2: Predicting $\lambda$
+
+2. Set the network  $f(\bm{x}, \bm{\phi})$ to predict the single parameter $\lambda$.  Since $\lambda$ is a probability, but the network can return a number outside $[0, 1]$, we squash the output to the required range using the *logistic sigmoid* function:
+
+$$
+sig(z) = \frac{1}{1 + \exp(-z)}
+$$
+
+```{=latex}
+\begin{center}
+```
+![](LossLogisticSigmoid.pdf)
+```{=latex}
+\end{center}
+```
+
+## Binary Loss Function and Inference
+
+3. Calculate the negative log-likelihood for our parameter, $\lambda$, to use as the loss function.
+
+The likelihood function is:
+
+$$
+p(y | \bm{x}) = (1 - sig(f(\bm{x}, \bm{\phi})))^{1-y} sig(f(\bm{x}, \bm{\phi}))^y
+$$
+
+and the negative log-likelihood loss function is:
+
+$$
+L(\bm{\phi}) = \sum_{i=1}^I (1-y_i) \log \left( 1 - sig(f(\bm{x}_i, \bm{\phi})) \right) -y_i \log \left( sig(f(\bm{x}_i, \bm{\phi})) \right)
+$$
+
+This is known as *binary cross-entropy loss*.  (More on that later ...)
+
+:::: {.columns}
+::: {.column width="30%"}
+
+
+4. Inference is simply:
+
+```{=latex}
+\[
+\hat{y} =
+\begin{cases}
+1 & \text{if } \lambda > 0.5,\\
+0 & \text{otherwise}
+\end{cases}
+\]
+```
+
+:::
+::: {.column width="70%"}
+
+![](LossBinaryClassification.pdf)
+
+:::
+::::
+
+## Example 3: Multiclass Classification
+
+1.  We choose a *categorical distribution* with $K$ parameters $\lambda_1, \lambda_2, \dots, \lambda_K$ representing the probability of each of the corresponding $K$ categories $y \in \{1, 2, \dots, K\}$.
+
+$$
+p(y = k) = \lambda_k
+$$
+
+2. We set the network $f(\bm{x}, \bm{\phi})$ to predict each of the $K$ parameters for a given input $\bm{x}$.  Since the parameters must sum to 1 to be a valid probability distribution and the network can produce arbitrary values, we pass each output through the *softmax* function:
+
+$$
+softmax_k(z) = \frac{\exp(z_k)}{\sum_{k'=1}^K \exp(z_{k'})}
+$$
+
+```{=latex}
+\begin{center}
+```
+![](LossMultiClassClassification.pdf){height="30%"}
+```{=latex}
+\end{center}
+```
+
+## Multiclass Loss and Inference
+
+3. Calculate the negative log-likelihood for our parameters, $\lambda_k$, to use as the loss function.
+
+The likelihood function is:
+
+$$
+p(y = k | \bm{x}) = softmax_k \left( f(\bm{x}, \bm{\phi}) \right)
+$$
+
+The negative log-likelihood loss function is:
+
+```{=latex}
+\begin{align*}
+L(\bm{\phi}) &= - \sum_{i=1}^I \log \left( softmax_{y_i} \left( f(\bm{x}_i, \bm{\phi}) \right) \right)\\
+             &= - \sum_{i=1}^I \left( f_{y_i}(\bm{x}_i, \bm{\phi}) - \log \left( \sum_{k'=1}^K \exp( f_{k'}(\bm{x}_i, \bm{\phi}) ) \right) \right)
+\end{align*}
+```
+
+where $f_{y_i}(\bm{x}_i, \bm{\phi})$ is the $y_i$th output and $f_{k'}(\bm{x}_i, \bm{\phi})$ is the $k'$th output of the network.
+
+4. Inference is simply the most probable category:
+
+$$
+\hat{y} = \argmax_k \left( p(y = k | \bm{f} ( \bm{x}, \hat{\bm{\phi}})) \right)
+$$
