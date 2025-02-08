@@ -22,7 +22,7 @@ header-includes:
 
 ## Relational Data Model
 
-A *relation schema* $R(A_a, ..., A_n)$ is a relation name $R$ and a list of attributes $A_1, ..., A_n$.
+A *relation schema* $R(A_1, ..., A_n)$ is a relation name $R$ and a list of attributes $A_1, ..., A_n$.
 
 Each attribute $A_i$ is the name of a role played by some domain $D$.
 
@@ -152,18 +152,6 @@ Consider the properties above in the context of the following relation.
 | 6         | Alonzo     | NULL        |Church     |
 +-----------+------------+-------------+-----------+
 
-## Kinds of Constraints
-
-- Inherent model-based (or *implicit*) constraints
-
-    - domain constraints, atomic attribute values
-
-- Schema-based (or *explicit*) contstraints
-
-    - keys, referential integrity
-
-- Application-based (or semantic constraints), a.k.a., business rules
-
 ## Superkeys
 
 A *superkey* $SK$ is a set of attributes of a relation schema $R$ such that
@@ -194,15 +182,20 @@ We underline the primary key in a relation schema.
 
 ## Database Integrity Constraints
 
-- Domain constraints - Attribute values in tuples must be in domain for that attribute
+- Inherent model-based (or *implicit*) constraints
 
-- Key constraints - No two tuples can have the same values for the primary key
+    - Domain constraints: attribute values in tuples must be in domain for that attribute and conform to formats
+    - Atomic attribute values
 
-- Entity Integrity Constraints - No tuple can have a NULL value for its primary key attribute
+- Schema-based (or *explicit*) contstraints
 
-- Referential Integrity Constraints - Tuples in one relation referencing tuples in another relation
+    - Key constraints: no two tuples can have the same values for the primary key
+    - Entity Integrity Constraints: no tuple can have a NULL value for its primary key attribute
+    - Referential Integrity Constraints: tuples in one relation referencing tuples in another relation
 
-- Semantic Integrity Constraints - Constraints on values of attributes that cannot be specified in the databases DDL
+- Application-based (or semantic constraints), a.k.a., business rules
+
+    - Constraints on attribute values that cannot be expressed in the relational model
 
 ## Referential Integrity Constraints
 
@@ -210,10 +203,10 @@ A foreign key value from a tuple in one relation must refer to nothing, or to th
 
 Given relation schemas $R_1$ and $R_2$, a set of attributes $FK$ in $R_1$ is a foreign key referencing $R_2$ if
 
-- the attributes in $FK$ in $R_1$ have same domains as $PK$ in $R_2$
-- Given some $t_1$ in $r_1(R_1)$ and $t_2$ in $r_2(R_2)$, either $t_1[FK]$ = $t_2[PK]$ or $t_1[FK]$ is NULL.
+- the attributes in $FK$ in $R_1$ have same domains as $PK$ in $R_2$, and
+- given some $t_1$ in $r_1(R_1)$ and $t_2$ in $r_2(R_2)$, either $t_1[FK]$ = $t_2[PK]$ or $t_1[FK]$ is NULL.
 
-$R_1$ is the referencing relation, $R_2$ is the referenced relation.
+$R_1$ is the referencing, or child relation, $R_2$ is the referenced, or parent relation.
 
 ## Diagramming FK Relationships
 
@@ -233,56 +226,39 @@ $R_1$ is the referencing relation, $R_2$ is the referenced relation.
 
 Example: salary of an employee cannot exceed the salary of the employee's supervisor.
 
-## Constraint Violations on Insert
+## Constraint Violations on Insert, Update or Delete
 
 - Domain constraints
 
-    - Insert a tuple with an attribute value not in attribute's domain
+    - Insert/update a tuple with an attribute value not in attribute's domain
 
 - Key constraints
 
-    - Insert a tuple with a key that's already in the relation state
+    - Insert/update a tuple with a key that's already in the relation state
 
 - Entity integrity constraints
 
-    - Insert a tuple with a NULL value for any part of the primary key
+    - Insert/update a tuple with a NULL value for any part of the primary key
 
 - Referential integrity constraints
 
-    - Insert a tuple in a referring relation whose FK does not appear as a PK value in any tuple of the referenced relation
-
-## Constraint Violations on Update
-
-- Domain constraints
-
-    - Update a tuple with an attribute value not in attribute's domain
-
-- Key constraints
-
-    - Update a tuple with a key value that already appears in another tuple in the relation
-
-- Entity integrity constraints
-
-    - Update a tuple with a NULL value for any part of the primary key
-
-- Referential integrity constraints
-
-    - Update a tuple in a refferring relation with a FK does not appear as a PK value in any tuple of the referenced relation
+    - Insert/update a tuple in a referring relation whose FK does not appear as a PK value in any tuple of the referenced relation
     - Update the primary key for a tuple in a referenced relation for which there are tuples in referring relationships. The tuples in referring relationships would be orphaned or end up referring to the wrong parent tuple.
+    - Delete a tuple in a referenced relation for which there are tuples in referring relations. The tuples in referring relations would be orphaned.
 
 ## Domain Integrity Violation Examples
 
-+-----------+------------+-----------+
-| author_id | first_name | last_name |
-+===========+============+===========+
-| 1         | John       | McCarthy  |
-+-----------+------------+-----------+
-| 4         | Claude     | Shannon   |
-+-----------+------------+-----------+
-| 5         | Alan       | Turing    |
-+-----------+------------+-----------+
-| 6         | Alonzo     | Church    |
-+-----------+------------+-----------+
++--------------------------+------------+-----------+
+| $\underline{author\_id}$ | first_name | last_name |
++==========================+============+===========+
+| 1                        | John       | McCarthy  |
++--------------------------+------------+-----------+
+| 4                        | Claude     | Shannon   |
++--------------------------+------------+-----------+
+| 5                        | Alan       | Turing    |
++--------------------------+------------+-----------+
+| 6                        | Alonzo     | Church    |
++--------------------------+------------+-----------+
 
 $dom(author\_id)$ = integer, $dom(first\_name)$ = string, $dom(last\_name)$ = string
 
@@ -292,17 +268,17 @@ $dom(author\_id)$ = integer, $dom(first\_name)$ = string, $dom(last\_name)$ = st
 ## Key Integrity Violation Examples
 
 
-+-------------+------------+-----------+
-| _author_id_ | first_name | last_name |
-+=============+============+===========+
-| 1           | John       | McCarthy  |
-+-------------+------------+-----------+
-| 4           | Claude     | Shannon   |
-+-------------+------------+-----------+
-| 5           | Alan       | Turing    |
-+-------------+------------+-----------+
-| 6           | Alonzo     | Church    |
-+-------------+------------+-----------+
++--------------------------+------------+-----------+
+| $\underline{author\_id}$ | first_name | last_name |
++==========================+============+===========+
+| 1                        | John       | McCarthy  |
++--------------------------+------------+-----------+
+| 4                        | Claude     | Shannon   |
++--------------------------+------------+-----------+
+| 5                        | Alan       | Turing    |
++--------------------------+------------+-----------+
+| 6                        | Alonzo     | Church    |
++--------------------------+------------+-----------+
 
 - Insert `<1, "Jenny", "McCarthy">` -- `1` is an existing primary key
 - Update `<1, "John", "McCarthy">` to `<6, "John", "McCarthy">` -- `6` is an existing primary key
@@ -325,38 +301,47 @@ $dom(author\_id)$ = integer, $dom(first\_name)$ = string, $dom(last\_name)$ = st
 - Insert `<NULL, "Jenny", "McCarthy">` -- `NULL` not allowed for primary key
 - Update `<NULL, "John", "McCarthy">` to `<1, "John", 1>`-- `NULL` not allowed for primary key
 
+## Referential Integrity Violation Examples
 
-## Referential Integrity Violations -- Employee - Department Example
+:::: {.columns}
+::: {.column width="40%"}
+
+author
 
 ```{=latex}
-\begin{center}
+\begin{tabular}{|l|l|l|}\hline
+\underline{id} & first\_name & last\_name \\\hline
+1              & John        & McCarthy \\\hline
+4              & Claude      & Shannon \\\hline
+5              & Alan        & Turing \\\hline
+6              & Alonzo      & Church \\\hline
+\end{tabular}
 ```
-![](employee-department.png)
+
+`pub[author_id]` is a foreign key to the `author` relation.
+
+:::
+::: {.column width="60%"}
+
+pub
+
 ```{=latex}
-\end{center}
+\begin{tabular}{|l|p{2in}|l|}\hline
+\underline{id}   & title                                    & author\_id \\ \hline
+1                & Recursive Functions of Symbolic ...      & 1         \\ \hline
+2                & A Mathematical Theory of Communication   & 4         \\ \hline
+4                & Computing machinery and intelligence     & 5         \\ \hline
+5                & The calculi of lambda-conversion         & 6         \\ \hline
+\end{tabular}
 ```
 
+:::
+::::
 
-## Constraint Violations
-
-One last contraint violation on delete:
-
-- Referential integrity: Delete a tuple in a referenced relationship for which there are tuples in referring relationships. The tuples in referring relationships would be orphaned.
-
-Exercise:
-
-1. For the database depicted in the previous slide, write down some reasonable constrints given the data shown.
-
-2. In the context of the database in the previous slide and your constraints, which of the following are permissible?  If an operation is not permissible, why is it not?
-
-- Update `Salary` for `John Smith` to `"100K"`.
-- Update `Bdate` for `Jennifer Wallace` to `February 29, 1980`.
-- Update `SSN` for `Ahmad Jabbar` to `123456789`.
-- Update `Dno` for `Alicia Zelaya` to `2`.
-- Insert into `DEPT_LOCATIONS` the tuple `<3, "Marietta">`.
-- Update `Super_ssn` for `James Borg` to `8675309`.
-- Update `Super_ssn` for `John Smith` to `NULL`.
-- Delete the `Research` depatment from the `DEPARTMENT` relation.
+- Update `<1, "John", "McCarthy">` to `<2, "John", "McCarthy">` --  breaks reference from `pub[id] = 1`.
+- Delete `<5 "Alan", "Turning">` from `author` -- orhpans tuple from `pub`.
+- Update `<5, "The calculi of lambda-conversion", 6>` -- `<5, "The calculi of lambda-conversion", 7>` -- 7 is not a primary key in `pub`.
+- Update `<5, "The calculi of lambda-conversion", 6>` -- `<5, "The calculi of lambda-conversion", NULL>` -- strictly speaking, not a violation, but creates bad data.  We'll see how to prevent that when we learn SQL.
 
 ## Closing Thoughts
 

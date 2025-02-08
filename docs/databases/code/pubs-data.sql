@@ -11,7 +11,7 @@ insert into author values (6, "Alonzo", "Church");
 insert into pub values(1, "Recursive Functions of Symbolic ...",1);
 insert into pub values(2, "The Unix Time-sharing System",2);
 insert into pub values(3, "A Mathematical Theory of Communication", 3);
-insert into pub values(4, "On computable numbers, with an application ro the Entscheidungsproblem", 4);
+insert into pub values(4, "On computable numbers, with an application to the Entscheidungsproblem", 4);
 insert into pub values(5, "Computing machinery and intelligence", 5);
 insert into pub values(6, "The calculi of lambda-conversion", 6);
 
