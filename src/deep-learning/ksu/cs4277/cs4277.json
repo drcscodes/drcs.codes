@@ -151,7 +151,7 @@
         },
         {
             "topic": "gradients-initialization",
-            "slides": "[Gradients and Initialization](@root/deep-learning/slides/gradients-initialization.pdf)",
+            "slides": "[Gradients and Initialization](@root/deep-learning/slides/CM20315_07_Gradients_Initialization.pdf)",
             "reading": [
                 "UDL: 7"
             ],
