@@ -22,21 +22,21 @@ Week 7
 2025-02-19;midterm-exam;;
 Supervised Deep Learning
 Week 8
-2025-02-24;measuring-performance;Assigned: [PS3](ps3.pdf),Assigned: [PA2](pa2.html);
-2025-02-26;regularization;;
+2025-02-24;Workshop and Backprop Review;Assigned: [PS3](ps3.pdf),Assigned: [PA2](pa2.html);
+2025-02-26;measuring-performance;;
 Week 9
-2025-03-03;convolutional-networks1;;
-2025-03-05;convolutional-networks2;;
+2025-03-03;regularization;;
+2025-03-05;convolutional-networks1;;
 Week 10
 2025-03-10;Spring Break - No Class;;
 2025-03-12;Spring Break - No Class;;
 Week 11
-2025-03-17;residual-networks;;
-2025-03-19;transformers1;Due: [Project Results](project.html);Midterm Grades Due (2025-03-21)
+2025-03-17;convolutional-networks2;;
+2025-03-19;residual-networks;Due: [Project Results](project.html);Midterm Grades Due (2025-03-21)
 Generative Deep Learning
 Week 12
-2025-03-24;transformers2;;
-2025-03-26;graph-nerual-networks;Due: [PS3](ps3.pdf),Assigned: [PS4](ps4.pdf);Withdrawal Deadline (2025-03-28)
+2025-03-24;transformers1;;
+2025-03-26;transformers2;Due: [PS3](ps3.pdf),Assigned: [PS4](ps4.pdf);Withdrawal Deadline (2025-03-28)
 Week 13
 2025-03-31;generative-adversarial-networks1;;
 2025-04-02;generative-adversarial-networks2;Due: [PA2](pa2.html),Assigned: [PA3](pa3.html);
