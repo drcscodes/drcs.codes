@@ -344,11 +344,13 @@ Write the squared error loss function for a regression model with a two-dimensio
 
   \ifprintanswers
   \begin{solution}
-    The global minimum is the point at which the function's value is minimal.  Local minima are points at which the function's value is lower than it's neighbors, but not as low as the global minimum.  In this case gradient descent is guaranteed to converge to the global minimum given suitable learning rate.
+    The global minimum is the point at which the function's value is minimal.  Local minima are points at which the function's value is lower than it's neighbors, but not as low as the global minimum.
   \end{solution}
   \else
   \vspace{1.5in}
   \fi
+
+  \newpage
 
   \question What if the learning rate is set too high?
 
@@ -386,7 +388,14 @@ Write the squared error loss function for a regression model with a two-dimensio
 
   \ifprintanswers
   \begin{solution}
+    We update the parameters with a weighted combination of the gradient computed from the current batch and the direction moved in the previous step:
 
+    \begin{align*}
+      \bm{m}_{t+1}   &\leftarrow \beta \bm{m}_t + (1-\beta) \sum_{i \in \mathcal{B}} \frac{\partial \ell_i(\bm{\phi})}{\partial \bm{\phi}}\\
+      \bm{\phi_{t+1}} &\leftarrow \bm{\phi}_t - \alpha \bm{m}_{t+1}
+    \end{align*}
+
+    The overall effect is a smoother trajectory and reduced oscillatory behavior in valleys of the loss function surface.
   \end{solution}
   \else
   \vspace{1.5in}
@@ -396,17 +405,19 @@ Write the squared error loss function for a regression model with a two-dimensio
 
   \ifprintanswers
   \begin{solution}
-
+    Adam stands for {\it adaptive moment estimation}.  The purpose of Adam is to normalize the gradients so that we move a fixed distance (governed by the learning rate) in each direction.  Without this normalization, updates are greater for parameters with the steepest gradients.  Because the magnitude of updates is different for each parameter it is difficult to choose a learning rate that that makes good progress in each direction and is stable.
   \end{solution}
   \else
   \vspace{1.5in}
   \fi
 
+  \newpage
+
   \question What are the components of the Hessian matrix?
 
   \ifprintanswers
   \begin{solution}
-    The second derivatives of the loss function witih respect to the model parameters.
+    The second derivatives of the loss function with respect to the model parameters.
   \end{solution}
   \else
   \vspace{1.5in}
@@ -416,7 +427,7 @@ Write the squared error loss function for a regression model with a two-dimensio
 
   \ifprintanswers
   \begin{solution}
-    If the Hessian matrix is positive definite, that is, all its eigenvalues are positive for any parameter values, then the loss function is convex, meaning it has a single global minimum with no local minima.
+    If the Hessian matrix is positive definite, that is, all its eigenvalues are positive for any parameter values, then the loss function is convex, meaning it has a single global minimum with no local minima.  In this case gradient descent is guaranteed to converge to the global minimum given suitable learning rate.
   \end{solution}
   \else
   \vspace{1.5in}
@@ -446,13 +457,13 @@ Write the squared error loss function for a regression model with a two-dimensio
 
   \ifprintanswers
   \begin{solution}
-    Backpropagation is efficient with respect to time but requires a great deal of storage to store intermediate values.
+    Backpropagation is time efficient but requires a great deal of storage to store intermediate values.
 \end{solution}
 \else
 \vspace{1.5in}
 \fi
 
-\question How are the weights of a network initialized?
+\question How are the weights of a network typically initialized?
 
   \ifprintanswers
   \begin{solution}
@@ -466,6 +477,7 @@ Write the squared error loss function for a regression model with a two-dimensio
 
   \ifprintanswers
   \begin{solution}
+    If the variance $\sigma^2$ of the Gaussian used to initialize the parameters of the network is too small, then the weights may become very low, underflowing floating-point representation capability.
   \end{solution}
 \else
 \vspace{1.5in}
@@ -475,6 +487,7 @@ Write the squared error loss function for a regression model with a two-dimensio
 
   \ifprintanswers
   \begin{solution}
+    If the variance $\sigma^2$ of the Gaussian used to initialize the parameters of the network is too large, then the weights may become very large and training will become unstable.
   \end{solution}
 \else
 \vspace{1.5in}
@@ -484,6 +497,11 @@ Write the squared error loss function for a regression model with a two-dimensio
 
   \ifprintanswers
   \begin{solution}
+    {\it He initialization}: initialize a given layer with:
+    \[
+    \sigma_\Omega^2 = \frac{2}{D_h}
+    \]
+    Where $D_h$ is the dimension of the layer feeding the layer for which we're setting the weights.
   \end{solution}
   \else
   \vspace{1.5in}
