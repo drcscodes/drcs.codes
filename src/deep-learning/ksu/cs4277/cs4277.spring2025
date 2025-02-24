@@ -20,18 +20,18 @@ Week 6
 Week 7
 2025-02-17;midterm-review;Due: [PS2](ps2.pdf);
 2025-02-19;midterm-exam;;
-Supervised Deep Learning
 Week 8
-2025-02-24;Workshop and Backprop Review;Assigned: [PS3](ps3.pdf),Assigned: [PA2](pa2.html);
-2025-02-26;measuring-performance;;
+2025-02-24;Midterm Grades Review;Assigned: [PS3](ps3.pdf),Assigned: [PA2](pa2.html);
+2025-02-26;PyTorch Workshop;;
 Week 9
-2025-03-03;regularization;;
-2025-03-05;convolutional-networks1;;
-Week 10
+2025-03-03;measuring-performance;;
+2025-03-05;regularization;;
+Week 10: Spring Break
 2025-03-10;Spring Break - No Class;;
 2025-03-12;Spring Break - No Class;;
+Supervised Deep Learning
 Week 11
-2025-03-17;convolutional-networks2;;
+2025-03-17;convolutional-networks1;;
 2025-03-19;residual-networks;Due: [Project Results](project.html);Midterm Grades Due (2025-03-21)
 Generative Deep Learning
 Week 12
@@ -43,7 +43,6 @@ Week 13
 Week 14
 2025-04-07;normalizing-flows;;
 2025-04-09;variational-autoencoders;;
-Beyond Deep Learning
 Week 15
 2025-04-14;diffusion-models;;
 2025-04-16;deep-learning-philosophy;Due: [PA3](pa3.html);
