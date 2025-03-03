@@ -24,29 +24,29 @@ Week 7
 Relational Databases and SQL
 Week 8
 2025-02-25;er-relational-mapping1;;
-2025-02-27;er-relational-mapping2;Due: [Project Phase 1](project.html);
+2025-02-27;Midterm Exam Review;;
 Week 9
 2025-03-04;basic-relational-design;;
-2025-03-06;db-workshop;;
+2025-03-06;er-relational-mapping1;Due: [Project Phase 1](project.html);
 Week 10
 2025-03-11;Spring Break - No Class;;
 2025-03-13;Spring Break - No Class;;
 Week 11
 2025-03-18;sql-ddl;;
-2025-03-20;sql-crud;;Midterm Grades Due (2025-03-21)
+2025-03-20;sql-ddl;;Midterm Grades Due (2025-03-21)
 Week 12
-2025-03-25;sql-queries1;;
-2025-03-27;sql-queries2;Due: [Project Phase 2](trip-planner.html);Withdrawal Deadline (2025-03-28)
+2025-03-25;;;
+2025-03-27;sql-ddl;Due: [Project Phase 2](trip-planner.html);Withdrawal Deadline (2025-03-28)
 Week 13
-2025-04-01;sql-advanced1;;
-2025-04-03;sql-advanced2;;
+2025-04-01;sql-queries1;;
+2025-04-03;sql-queries2;;
 Relational Database Design
 Week 14
-2025-04-08;relational-design1;;
-2025-04-10;relational-design2;;
+2025-04-08;sql-advanced1;;
+2025-04-10;sql-advanced2;;
 Week 15
-2025-04-15;advanced-relational-design1;;
-2025-04-17;advanced-relational-design2;;
+2025-04-15;relational-design1;;
+2025-04-17;relational-design2;;
 Week 16
 2025-04-22;nosql;Due: [Project Phase 3](trip-planner.html);
 2025-04-24;storage-indexing;;

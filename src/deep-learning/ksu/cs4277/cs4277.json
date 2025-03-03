@@ -175,7 +175,7 @@
         },
         {
             "topic": "regularization",
-            "slides": "[Regularization](@root/deep-learning/slides/regularization.pdf)",
+            "slides": "[Regularization](@root/deep-learning/slides/CM20315_09_Regularization.pdf)",
             "reading": [
                 "UDL: 9"
             ],
