@@ -1,0 +1,13 @@
+---
+template: course
+title: PyTorch Resources
+---
+
+* PyTorch Resources
+
+** Google Colab Notebooks
+
+- [[https://colab.research.google.com/drive/17cSBNEz9zWtg-g3cjyhlzJMyPwsLTnP8?usp=sharing][Setting up Kaggle Hub]]
+- [[https://colab.research.google.com/drive/1xL4dRf0wowzp_BknHCldC0afdHCYjNie?usp=sharing][Using a pretrained resnet model]]
+  - Will also need [[@root/deep-learning/code/imagenet_classes.txt][imagenet_classes.txt]]
+  - May also use [[@root/deep-learning/code/elsa-platz-garten-2023-09-05.jpeg][elsa-platz-garten-2023-09-05.jpeg]]

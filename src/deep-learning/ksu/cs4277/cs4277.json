@@ -212,7 +212,7 @@
         },
         {
             "topic": "convolutional-networks1",
-            "slides": "[Convolutional Networks](@root/deep-learning/slides/convolutional-networks.pdf)",
+            "slides": "[Convolutional Networks](@root/deep-learning/slides/CM20315_10_Convolutional.pdf)",
             "reading": [
                 "UDL: 10"
             ],

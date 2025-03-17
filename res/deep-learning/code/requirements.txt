@@ -1,0 +1,9 @@
+ipython
+jupyter
+numpy
+scipy
+matplotlib
+pandas
+torch>=2.6.0
+torchvision
+torchaudio

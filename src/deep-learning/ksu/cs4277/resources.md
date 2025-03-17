@@ -5,11 +5,15 @@ title: CS 4277 Resources
 
 Programming Environments
 
+- [Emacs](https://www.gnu.org/software/emacs/) is the most powerful text editor there will ever be.  Its steep learning curve is repaid a thousand-fold over your lifetime.
+     - On macOS: `brew install --cask emacs`, which installs [Emacs for Mac OS X](https://emacsformacosx.com/)
+    - [Beginners Guide to Emacs](https://www.masteringemacs.org/article/beginners-guide-to-emacs)
+    - [Dr. CS's Emacs config](https://github.com/dr-cs/dotfiles) in the `.emacs.d` directory.
 - JetBrains [Educational Licenses](https://www.jetbrains.com/community/education/#students/)
     - [PyCharm](https://www.jetbrains.com/pycharm/) is a good choice for a pythonista, ML engineer or data scientist.
 - [Google Colab](https://colab.research.google.com/)
 
-Libraries and Programming Environments
+Libraries
 
 - Scipy: [NumPy](https://numpy.org), [MatPlotLib](https://matplotlib.org), [Pandas](https://pandas.pydata.org), and more.
 - [PyTorch](https://pytorch.org)
@@ -18,5 +22,13 @@ $\LaTeX$
 
 - [Practical $\LaTeX$](https://link.springer.com/book/10.1007/978-3-319-06425-3) -- all you need to get started and more.
 - [Text and Math into $\LaTeX$](https://link.springer.com/book/10.1007/978-3-031-55281-6) -- if you want to become a $\LaTeX$ expert.
+
+CS 4277 Guides
+
+- [PyTorch](pytorch.html)
+- [UDL Fig 7.8](@root/deep-learning/code/prince_fig7.8.py)
+
+Miscellaneous
+
 - [Heilmeier Catechism](https://www.darpa.mil/about/heilmeier-catechism)
 - [Which GPU(s) to Get for Deep Learning](https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/)
