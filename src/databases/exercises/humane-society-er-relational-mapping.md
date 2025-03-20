@@ -16,7 +16,7 @@ Given this EER model:
 
 ([dot source](humane-society.dot))
 
-Follow the steps in [ER-Relation Mapping](@root/databases/slides/er-relational-mapping.pdf) to create a relational database schema.  Implement the schema in an SQL script named `humane-society-schema.sql`.  See [SQL DDL](@root/databases/slides/sql-ddl.pdf) for details on database schema creation, especially the slide on SQL Scripts.
+Follow the steps in [ER-Relation Mapping](@root/databases/slides/er-relational-mapping.pdf) to create a relational database schema.  Implement the schema in an SQL script named `humane-schema-exercise.sql`.  See [SQL DDL](@root/databases/slides/sql-ddl.pdf) for details on database schema creation, especially the slide on SQL Scripts.
 
 
 Sample soluttion: [humane-schema.sql](@root/databases/exercises/humane-schema.sql), [humane-data.sql](@root/databases/exercises/humane-data.sql)
