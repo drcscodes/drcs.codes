@@ -33,29 +33,134 @@ table{
 <li>course(<u>dept_id</u>, <u>course_id</u>, name, hours), where dept_id is a foreign key referencing the dept(dept_id)</li>
 </ul><ul>
 <li>enrolled(<u>dept_id</u>, <u>course_id</u>, <u>student_id</u>), where (dept_id, course_id) is a foreign key referencing course(dept_id, course_id) and student_id is a foreign key referencing student(student_id)</li>
-</ul><h3>Part 2: Populating the database</h3><p>Write a SQL script that populates the following data:</p><h4>Student</h4><p>|------------+---------+-----|
-| student_id | name    | gpa |
-|------------+---------+-----|
-| 11         | Bush    | 3.0 |
-| 12         | Cruz    | 3.2 |
-| 13         | Clinton | 3.9 |
-| 22         | Sanders | 3.0 |
-| 33         | Trump   | 3.8 |
-|------------+---------+-----|</p><h4>Enrolled</h4><p>| dept_id | coruse_id | student_id |
-|---------+-----------+------------|
-| CS | 101 | 11 |
-| Math | 101 | 11 |
-| CS | 101 | 12 |
-| CS | 201 | 22 |
-| Math | 201 | 33 |
-| EE | 102 | 33 |
-| Math | 301 | 22 |</p><h4>Department</h4><p>| dept_id | name | dean | building | room |
-|---------+------+------+----------+------|
-| CS | Computer Science |Rubio | Ajax | 100 |
-| Math | Mathemagics | Carson | Acme | 300 |
-| EE | Electrical Engineering | Kasich | Ajax | 200 |
-| IE | Industrial Engineering | Cruz |  | 200 |
-| Music | Musicology | Costello | North | 100 |</p><h4>Course</h4><table>
+</ul><h3>Part 2: Populating the database</h3><p>Write a SQL script that populates the following data:</p><h4>Student</h4><table>
+<thead>
+<tr>
+<th>student_id</th>
+<th>name</th>
+<th>gpa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>11</td>
+<td>Bush</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Cruz</td>
+<td>3.2</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Clinton</td>
+<td>3.9</td>
+</tr>
+<tr>
+<td>22</td>
+<td>Sanders</td>
+<td>3.0</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Trump</td>
+<td>3.8</td>
+</tr>
+</tbody>
+</table><h4>Enrolled</h4><table>
+<thead>
+<tr>
+<th>dept_id</th>
+<th>course_id</th>
+<th>student_id</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CS</td>
+<td>101</td>
+<td>11</td>
+</tr>
+<tr>
+<td>Math</td>
+<td>101</td>
+<td>11</td>
+</tr>
+<tr>
+<td>CS</td>
+<td>101</td>
+<td>12</td>
+</tr>
+<tr>
+<td>CS</td>
+<td>201</td>
+<td>22</td>
+</tr>
+<tr>
+<td>Math</td>
+<td>201</td>
+<td>33</td>
+</tr>
+<tr>
+<td>EE</td>
+<td>102</td>
+<td>33</td>
+</tr>
+<tr>
+<td>Math</td>
+<td>301</td>
+<td>22</td>
+</tr>
+</tbody>
+</table><h4>Department</h4><table>
+<thead>
+<tr>
+<th>dept_id</th>
+<th>name</th>
+<th>dean</th>
+<th>building</th>
+<th>room</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CS</td>
+<td>Computer Science</td>
+<td>Rubio</td>
+<td>Ajax</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Math</td>
+<td>Mathemagics</td>
+<td>Carson</td>
+<td>Acme</td>
+<td>300</td>
+</tr>
+<tr>
+<td>EE</td>
+<td>Electrical Engineering</td>
+<td>Kasich</td>
+<td>Ajax</td>
+<td>200</td>
+</tr>
+<tr>
+<td>IE</td>
+<td>Industrial Engineering</td>
+<td>Cruz</td>
+<td></td>
+<td>200</td>
+</tr>
+<tr>
+<td>Music</td>
+<td>Musicology</td>
+<td>Costello</td>
+<td>North</td>
+<td>100</td>
+</tr>
+</tbody>
+</table><h4>Course</h4><table>
 <thead>
 <tr>
 <th>dept_id</th>

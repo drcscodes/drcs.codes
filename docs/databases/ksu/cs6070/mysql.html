@@ -3,6 +3,7 @@
 <head>
     <title>CS 6070 - MySQL Guide</title>
     <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link rel="stylesheet" href="../../../assets/css/codehilite.css">
 </head>
 <body>
     <nav>
@@ -24,16 +25,16 @@
 <ul>
 <li>On a Debian-based distro (like Ubuntu):</li>
 </ul>
-<p><code>bash
-  $ sudo apt-get update
-  $ sudo apt-get install mysql-server</code></p>
-<h3>Mac OS X</h3>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>mysql-server
+</code></pre></div>
+<h2>Mac OS X</h2>
 <ol>
 <li>Install <a href="http://brew.sh/">Homebrew</a></li>
 <li>Use <a href="http://brew.sh/">Homebrew</a> to install MySQL:</li>
 </ol>
-<p><code>bash
-    $ brew install mysql</code></p>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>brew<span class="w"> </span>install<span class="w"> </span>mysql
+</code></pre></div>
 <h3>Windows</h3>
 <ol>
 <li>
@@ -96,69 +97,54 @@
 <p>To be able to run the <code>mysql</code> command line client you'll need to add the MySQL installation binaries directory to your <code>PATH</code>. Copy the following path element to your clipboard:</p>
 </li>
 </ol>
-<p><code>C:\Program Files\MySQL\MySQL Server 8.0\bin</code></p>
+<div class="codehilite"><pre><span></span><code>C:\Program Files\MySQL\MySQL Server 8.0\bin
+</code></pre></div>
 <p>Now open your control panel, search for the "set environment variables" option, click the "Environment Variables" button, select the Path environment variable, and add the text you just copied to the clipboard. Here's a document explaining how to set environment variables in Windows: <a href="http://cs1331.gatech.edu/environment-variables.html">environment variables</a>. After you add the MySQL bin directory to your path, close the Windows command shell and re-open it so it re-reads the environment variables.</p>
 <h2>Running MySQL</h2>
 <p>MySQL is a client-server database system. To "run MySQL" you need both a server and a client.</p>
-<ol>
-<li>Run the MySQL server</li>
-</ol>
-<ul>
-<li>
-<p>Linux:</p>
+<h3>Run the MySQL server</h3>
+<h4>Linux</h4>
 <p>Check that the server is running:</p>
-</li>
-</ul>
-<p><code>bash
-     $ systemctl status mysql.service</code></p>
-<div class="codehilite"><pre><span></span><code><span class="w"> </span><span class="k">If</span><span class="w"> </span><span class="nv">the</span><span class="w"> </span><span class="nv">server</span><span class="w"> </span><span class="nv">isn</span><span class="err">&#39;t running, start it with:</span>
+<div class="codehilite"><pre><span></span><code>systemctl<span class="w"> </span>status<span class="w"> </span>mysql.service
 </code></pre></div>
-<p><code>bash
-     $ sudo systemctl start mysql</code></p>
+<p>If the server isn't running, start it with:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>systemctl<span class="w"> </span>start<span class="w"> </span>mysql
+</code></pre></div>
+<h4>macOS:</h4>
+<div class="codehilite"><pre><span></span><code>brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>mysql
+</code></pre></div>
+<p><strong>Occasional Problem with Homebrew Version of macOS</strong></p>
+<p>Every semester a few students do something that causes <code>mysql.server start</code> to fail with an error message that looks something like:</p>
+<div class="codehilite"><pre><span></span><code>ERROR!<span class="w"> </span>The<span class="w"> </span>server<span class="w"> </span>quit<span class="w"> </span>without<span class="w"> </span>updating<span class="w"> </span>PID<span class="w"> </span>file<span class="w"> </span><span class="o">(</span>/usr/local/var/mysql/username.local.pid<span class="o">)</span>.
+</code></pre></div>
+<p>Here's a brute force fix that seems to work:</p>
+<ol>
+<li>Uninstall mysql.</li>
+<li>Delete the <code>/usr/local/var/mysql</code> directory.</li>
+<li>Install mysql.</li>
+</ol>
+<p>Here's how a shell session executing the steps above might look:</p>
+<div class="codehilite"><pre><span></span><code>brew<span class="w"> </span>uninstall<span class="w"> </span>mysql
+sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/usr/local/var/mysql
+brew<span class="w"> </span>install<span class="w"> </span>mysql
+</code></pre></div>
+<h4>Windows:</h4>
 <ul>
-<li>macOS:</li>
-</ul>
-<p><code>bash
-     $ mysql.server start</code></p>
-<div class="codehilite"><pre><span></span><code> <span class="k">-</span> **Occasional Problem with Homebrew Version of macOS**
-
-   Every semester a few students do something that causes <code>mysql.server start</code> to fail with an error message that looks something like:
-</code></pre></div>
-<p><code>sh
-       ERROR! The server quit without updating PID file (/usr/local/var/mysql/username.local.pid).</code></p>
-<div class="codehilite"><pre><span></span><code>   Here&#39;s a brute force fix that seems to work:
-
-   1. Uninstall mysql.
-   2. Delete the <code>/usr/local/var/mysql</code> directory.
-   3. Install mysql.
-
-   Here&#39;s how a shell session executing the steps above might look:
-</code></pre></div>
-<p><code>sh
-       $ brew uninstall mysql
-       $ sudo rm -rf /usr/local/var/mysql
-       $ brew install mysql</code></p>
-<ul>
-<li>Windows:<ul>
 <li>In Control Panel, search for "Services".</li>
 <li>Find MySQL server. If not running, right-click and select start.</li>
 </ul>
-</li>
-</ul>
-<ol start="2">
-<li>Connect using the MySQL command line client. The general form of the <code>mysql</code> command is:</li>
-</ol>
-<p><code>bash
-    $ mysql -h &lt;host_name&gt; -u &lt;user_name&gt; -p &lt;database_name&gt;</code></p>
+<h3>Connect using the MySQL command line client.</h3>
+<p>The general form of the <code>mysql</code> command is:</p>
+<div class="codehilite"><pre><span></span><code>mysql<span class="w"> </span>-h<span class="w"> </span>&lt;host_name&gt;<span class="w"> </span>-u<span class="w"> </span>&lt;user_name&gt;<span class="w"> </span>-p<span class="w"> </span>&lt;database_name&gt;
+</code></pre></div>
 <ul>
 <li><code>&lt;host_name&gt;</code> is the name of the computer. Leave blank to connect to the MySQL server runnign on your computer (also known as <code>localhost</code>).</li>
-<li><code>&lt;user_name&gt;</code> is the name of a MySQL user. Leave blank to use the user name of the shell account under which you run 'mysql<code>.
--</code>-p<code>tells</code>mysql<code>to prompt for</code><user_name><code>'s password before connecting. If the user specified in</code>-u<code>has an empty password, you can leave off</code>-p<code>.
--</code><database_name><code>is the name of a database to use upon starting the</code>mysql` client.</p>
-<p>So running the MySQL client as the root user would look like this:</p>
-<p>`</li>
+<li><code>&lt;user_name&gt;</code> is the name of a MySQL user. Leave blank to use the user name of the shell account under which you run <code>mysql</code>.</li>
+<li><code>-p</code> tells <code>mysql</code> to prompt for <code>&lt;user_name&gt;</code>'s password before connecting. If the user specified in <code>-u</code> has an empty password, you can leave off <code>-p</code>.  Note that <code>-p</code> doesn't take an argument, so here <code>&lt;database_name&gt;</code> is not an argument to the <code>-p</code> option, it's an argument to the <code>mysql</code> program.</li>
+<li><code>&lt;database_name&gt;</code> is the name of a database to use upon starting the <code>mysql</code> client.</li>
 </ul>
-<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p
+<p>So running the MySQL client as the root user would look like this:</p>
+<div class="codehilite"><pre><span></span><code>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p
 Enter<span class="w"> </span>password:
 Welcome<span class="w"> </span>to<span class="w"> </span>MySQL<span class="w"> </span>...
 ...
@@ -169,47 +155,53 @@ mysql&gt;
 <p>Note: this step is optional. For most students you can skip user creation and root user password creation and simply use the root user with no password, which is fine as long as your operating system doesn't allow connections on port 3306, the port on which the MySQL server listens.</p>
 <h3>Setting a root password</h3>
 <p>MySQL has user accounts similar to operating system shells. If your installer asks you for a password for the MySQL root user, give it one. If your installer does not ask for a root password then the root password is blank. You can set a root password like this (<code>$</code> is the OS shell prompt, <code>mysql&gt;</code> is the <code>mysql</code> client prompt):</p>
-<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>mysql.server<span class="w"> </span>start
-Starting<span class="w"> </span>MySQL
-<span class="w"> </span>SUCCESS!
-$<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p
-Enter<span class="w"> </span>password:<span class="w"> </span><span class="o">(</span>press<span class="w"> </span>ENTER<span class="o">)</span>
-mysql&gt;<span class="w"> </span>alter<span class="w"> </span>user<span class="w"> </span><span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="w"> </span>identified<span class="w"> </span>by<span class="w"> </span><span class="s1">&#39;rootpassword&#39;</span><span class="p">;</span>
+<p>You need to start the MySQL server before you can connect a client.</p>
+<div class="codehilite"><pre><span></span><code>brew<span class="w"> </span>services<span class="w"> </span>start<span class="w"> </span>mysql
+</code></pre></div>
+<p>Now you can connect using the MySQL shell client with:</p>
+<div class="codehilite"><pre><span></span><code>mysql<span class="w"> </span>-u<span class="w"> </span>root
+</code></pre></div>
+<p>Now you're in the MySQL shell.  Set a root user password with (substitute your own password for <code>rootpassword</code>):</p>
+<div class="codehilite"><pre><span></span><code>mysql&gt;<span class="w"> </span>alter<span class="w"> </span>user<span class="w"> </span><span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="w"> </span>identified<span class="w"> </span>by<span class="w"> </span><span class="s1">&#39;rootpassword&#39;</span><span class="p">;</span>
 Query<span class="w"> </span>OK,<span class="w"> </span><span class="m">0</span><span class="w"> </span>rows<span class="w"> </span>affected<span class="w"> </span><span class="o">(</span><span class="m">0</span>.01<span class="w"> </span>sec<span class="o">)</span>
 </code></pre></div>
 <p>In the example above <code>rootpassword</code> is the root user's password. You should choose something other than the literal string <code>rootpassword</code>, or if you set a password during installation and wish to set the password to the empty string to save yourself some typing, you can set the root user's password to nothing like this:</p>
 <div class="codehilite"><pre><span></span><code>mysql&gt;<span class="w"> </span>alter<span class="w"> </span>user<span class="w"> </span><span class="s1">&#39;root&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="w"> </span>identified<span class="w"> </span>by<span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
 </code></pre></div>
+<p>Now you can run the client with:</p>
+<div class="codehilite"><pre><span></span><code>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p
+</code></pre></div>
+<p>The <code>-p</code> option causes the MySQL client to prompt you for a password.</p>
 <h3>Creating a User (Optional)</h3>
 <p>After setting a root password it's a good idea to set up MySQL user accounts for different purposes. For example, you can create a MySQL user account for CS 4400 example databases and another user for your project work. To set up a user (assuming <code>mysql.server</code> has already been started):</p>
 <ol>
 <li>Log into the MySQL client program as root:</li>
 </ol>
-<p><code>bash
-    $ mysql -u root -p
-    Enter password: (enter the password you set above)</code></p>
+<div class="codehilite"><pre><span></span><code>mysql<span class="w"> </span>-u<span class="w"> </span>root<span class="w"> </span>-p
+Enter<span class="w"> </span>password:<span class="w"> </span><span class="o">(</span>enter<span class="w"> </span>the<span class="w"> </span>password<span class="w"> </span>you<span class="w"> </span><span class="nb">set</span><span class="w"> </span>above<span class="o">)</span>
+</code></pre></div>
 <ol start="2">
 <li>Create a user:</li>
 </ol>
-<p><code>bash
-    mysql&gt; create user 'cs4400'@'localhost' identified by 'cs4400password';
-    Query OK, 0 rows affected (0.00 sec)</code></p>
+<div class="codehilite"><pre><span></span><code>mysql&gt;<span class="w"> </span>create<span class="w"> </span>user<span class="w"> </span><span class="s1">&#39;cs4400&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="w"> </span>identified<span class="w"> </span>by<span class="w"> </span><span class="s1">&#39;cs4400password&#39;</span><span class="p">;</span>
+Query<span class="w"> </span>OK,<span class="w"> </span><span class="m">0</span><span class="w"> </span>rows<span class="w"> </span>affected<span class="w"> </span><span class="o">(</span><span class="m">0</span>.00<span class="w"> </span>sec<span class="o">)</span>
+</code></pre></div>
 <ol start="3">
 <li>Grant permissions for each database you want your user to use. (Note: you can grant permissions on a database before the database exists.)</li>
 </ol>
-<p><code>bash
-    mysql&gt; grant all on humanedb.* to 'cs4400'@'localhost';
-    Query OK, 0 rows affected (0.00 sec)</code></p>
+<div class="codehilite"><pre><span></span><code>mysql&gt;<span class="w"> </span>grant<span class="w"> </span>all<span class="w"> </span>on<span class="w"> </span>humanedb.*<span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;cs4400&#39;</span>@<span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+Query<span class="w"> </span>OK,<span class="w"> </span><span class="m">0</span><span class="w"> </span>rows<span class="w"> </span>affected<span class="w"> </span><span class="o">(</span><span class="m">0</span>.00<span class="w"> </span>sec<span class="o">)</span>
+</code></pre></div>
 <h2>Running The MySQL Interactive Command Line Client</h2>
 <p>All SQL commands and queries must be terminated with a semicolon. Some MySQL don't need to be terminated with a semicolon but function with a semicolon as well, so get in the habit of using semicolons.</p>
 <h3>Running SQL Scripts</h3>
 <p>Download the following files for practice:</p>
 <ul>
-<li><a href="../exercises/pubs-schema.sql">pubs-schema.sql</a></li>
-<li><a href="../exercises/pubs-data.sql">pubs-data.sql</a></li>
+<li><a href="../../../databases/code/pubs-schema.sql">pubs-schema.sql</a></li>
+<li><a href="../../../databases/code/pubs-data.sql">pubs-data.sql</a></li>
 </ul>
 <p>Method 1: redirect input when running mysql client from OS command line</p>
-<div class="codehilite"><pre><span></span><code><span class="err">$</span><span class="w"> </span><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pubs</span><span class="o">-</span><span class="k">schema</span><span class="p">.</span><span class="k">sql</span>
+<div class="codehilite"><pre><span></span><code><span class="n">mysql</span><span class="w"> </span><span class="o">-</span><span class="n">u</span><span class="w"> </span><span class="n">root</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">pubs</span><span class="o">-</span><span class="k">schema</span><span class="p">.</span><span class="k">sql</span>
 </code></pre></div>
 <p>Method 2: use the source when already in a mysql shell in the directory containing your SQL script</p>
 <div class="codehilite"><pre><span></span><code><span class="n">mysql</span><span class="o">&gt;</span><span class="w"> </span><span class="k">source</span><span class="w"> </span><span class="n">pubs</span><span class="o">-</span><span class="k">data</span><span class="p">.</span><span class="k">sql</span>

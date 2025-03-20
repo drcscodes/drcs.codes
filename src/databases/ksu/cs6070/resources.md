@@ -8,6 +8,17 @@ title: CS 6070 - Resources
 - [General Project Description](project.html)
 - [Peer Evaluation](peer-eval.html)
 
+## Programming Environments
+
+- [Emacs](https://www.gnu.org/software/emacs/) is the most powerful text editor there will ever be.  Its steep learning curve is repaid a thousand-fold over your lifetime.
+     - On macOS: `brew install --cask emacs`, which installs [Emacs for Mac OS X](https://emacsformacosx.com/)
+    - [Beginners Guide to Emacs](https://www.masteringemacs.org/article/beginners-guide-to-emacs)
+    - [Dr. CS's Emacs config](https://github.com/dr-cs/dotfiles) in the `.emacs.d` directory.
+- JetBrains [Educational Licenses](https://www.jetbrains.com/community/education/#students/)
+    - [DataGrip](https://www.jetbrains.com/datagrip/) is a database IDE.  Probably the easiest choice for this class.
+    - [PyCharm](https://www.jetbrains.com/pycharm/) is a good choice for a pythonista, ML/data engineer or data scientist.  You can install the JetBrains [Database Tools plugin](https://plugins.jetbrains.com/plugin/10925-database-tools-and-sql-for-webstorm) to get the functionality of DataGrip.
+
+
 ## MySQL
 
 - [MySQL Guide](mysql.html)

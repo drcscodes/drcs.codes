@@ -58,22 +58,19 @@ Write a SQL script that populates the following data:
 
 #### Student
 
-|------------+---------+-----|
 | student_id | name    | gpa |
-|------------+---------+-----|
+|------------|---------|-----|
 | 11         | Bush    | 3.0 |
 | 12         | Cruz    | 3.2 |
 | 13         | Clinton | 3.9 |
 | 22         | Sanders | 3.0 |
 | 33         | Trump   | 3.8 |
-|------------+---------+-----|
-
 
 
 #### Enrolled
 
-| dept_id | coruse_id | student_id |
-|---------+-----------+------------|
+| dept_id | course_id | student_id |
+|---------|-----------|------------|
 | CS | 101 | 11 |
 | Math | 101 | 11 |
 | CS | 101 | 12 |
@@ -85,7 +82,7 @@ Write a SQL script that populates the following data:
 #### Department
 
 | dept_id | name | dean | building | room |
-|---------+------+------+----------+------|
+|---------|------|------|----------|------|
 | CS | Computer Science |Rubio | Ajax | 100 |
 | Math | Mathemagics | Carson | Acme | 300 |
 | EE | Electrical Engineering | Kasich | Ajax | 200 |

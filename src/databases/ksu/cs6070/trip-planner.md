@@ -7,7 +7,7 @@ title: CS 6070 Project Details
 
 You will create a database for an application that allows users to explore the attractions in a given city and create a trip plan that lists all the attractions they will see during a trip to that city. The general description below describes the data your database will need to maintain and the constraints your database must enforce, in some cases with application code.
 
-<!-- Phase 1 example EER: [trip-planner.svg](project-details/trip-planner.svg) -->
+Phase 1 example EER: [trip-planner.svg](project-details/trip-planner.svg)
 
 ## General Description
 
