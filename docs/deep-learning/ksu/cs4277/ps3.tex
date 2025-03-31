@@ -1,0 +1,181 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{verbatim, multicol, tabularx, hyperref, graphicx, tikz}
+\usepackage{amsmath,amsthm, amssymb, cancel, stmaryrd, latexsym, bm, listings, qtree}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Problem Set 3}
+\author{CS 4277: Deep Learning}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+Name (print clearly): \ifprintanswers \underline{  {\bf ANSWER KEY}  } \fi \hrulefill Section: (e.g., 01) \makebox[.5in]{\hrulefill}
+
+\ifprintanswers
+
+  \begin{quote}
+These answers have been distributed via private channels to authorized recipients.  They are for the individual educational use of the designated recipients only.  If a copy of any part of this answer key is found in the posession of any unauthorized person, every attempt will be made to discover the source.  If you are found to have distributed any part of this answer key to any other person, you will be considered to be in violation of the academic integrity policy and held accountable.
+\end{quote}
+
+
+\else
+
+\vspace{0.25in}
+\hbox to \textwidth{Signature: \hrulefill}
+
+\vspace{0.25in}
+\hbox to \textwidth{Student account username (e.g., msmith3): \enspace\hrulefill}
+
+Signing signifies that you agree to comply with the {\bf Academic Honor Code} and course policies stated in the syllabus.
+
+Choose one of these two options for turn-in:
+\begin{enumerate}
+\item Print this document, write or answers, scan your finished homework to a PDF, name the PDF {\tt cs4277-ps3-<your-student-account-username>.pdf}, e.g., {\tt cs4277-ps3-msmith3.pdf} and submit the PDF to the assignment on D2L.
+\item While viewing this document in your web browser, in the address bar change {\tt .pdf} to {\tt .tex}, save the \LaTeX\ source as a text file, add your answers in appropriate \LaTeX\ markup in the appropriate spaces, compile to a PDF named as in the instructions above, and submit the PDF file to the assignment on D2L.
+\end{enumerate}
+
+\fi
+
+\begin{center}
+  \gradetable[h][questions]
+\end{center}
+
+\newpage
+
+\begin{questions}
+
+\question[20] Problem 8.1 Will the multi-class cross-entropy training loss in Figure 8.2 (reproduced below) ever reach zero? Explain your reasoning.
+
+\begin{center}
+\includegraphics[scale=.75]{PerfMNIST1DResults.pdf}
+\end{center}
+
+\ifprintanswers
+\begin{solution}
+\input{soln_8_1.tex}
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+\question[20] Problem 8.5 Consider the case where the model capacity exceeds the number of training data points, and the model is flexible enough to reduce the training loss to zero. What are the implications of this for fitting a heteroscedastic model? Propose a method to resolve any problems
+that you identify.
+
+\ifprintanswers
+\begin{solution}
+\input{soln_8_5.tex}
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+\newpage
+
+%% \question[15] Problem 8.6 Show that the angle between two random samples from a 1000-dimensional standard Gaussian distribution is (nearly) orthogonal with high probability.  Hint: use Rule 4 for manipulating expectations in Appendix C.2.1.
+
+
+
+%% \ifprintanswers
+%% \begin{solution}
+%% \input{soln_8_6.tex}
+%% \end{solution}
+%% \else
+%% \vspace{5in}
+%% \fi
+
+\question[30] Problem 9.1 Consider a model where the prior distribution over the parameters is a normal distribution with mean zero and variance $\sigma^2_\phi$ so that
+
+\[
+Pr(\phi) = \prod^J_{i=1} \text{Norm}_{\phi_j} (0, \sigma^2_\phi)
+\]
+
+where $j$ indexes the model parameters.  When we apply a prior, we maximize $\prod^I_{i=1} Pr(\bm{y}_i | \bm{x}_i, \phi) Pr(\phi)$.  Show that the associated loss function of this model is equivalent to L2 regularization (Equation 9.5, shown in the next question below).
+
+\ifprintanswers
+\begin{solution}
+\input{soln_9_1.tex}
+\end{solution}
+\else
+\vspace{5in}
+\fi
+
+\newpage
+
+\question[30] 9.2 How do the gradients of the loss function change when L2 regularization (Equation 9.5, reproduced below for convenience) is added?
+
+\[
+\hat{\phi} = \argmin_\phi \big( \sum^I_{i=1} \ell_i(\bm{x}_i, \bm{y}_i) + \lambda \sum_j \phi^2_j \big) \tag{Equation 9.5}
+\]
+
+\ifprintanswers
+\begin{solution}
+\input{soln_9_2.tex}
+\end{solution}
+\else
+\vspace{4in}
+\fi
+
+
+
+\end{questions}
+
+\end{document}
