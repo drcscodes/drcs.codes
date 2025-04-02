@@ -246,7 +246,7 @@
         },
         {
             "topic": "transformers1",
-            "slides": "[Transformers](@root/deep-learning/slides/transformers.pdf)",
+            "slides": "[Transformers](@root/deep-learning/slides/CM20315_12_Transformers.pdf)",
             "reading": [
                 "UDL: 12"
             ],
@@ -257,7 +257,7 @@
         },
         {
             "topic": "transformers2",
-            "slides": "[Transformers](@root/deep-learning/slides/transformers.pdf)",
+            "slides": "[Transformers](@root/deep-learning/slides/CM20315_12_Transformers.pdf)",
             "reading": [
                 "UDL: 12"
             ],
