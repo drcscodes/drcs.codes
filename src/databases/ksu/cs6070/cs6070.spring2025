@@ -39,14 +39,14 @@ Week 12
 2025-03-27;sql-crud;;
 Week 13
 2025-04-01;sql-queries1;;
-2025-04-03;sql-queries2;Due: [Project Phase 2](trip-planner.html);Withdrawal Deadline (2025-03-28);
+2025-04-03;sql-queries2;;Withdrawal Deadline (2025-03-28);
 Relational Database Design
 Week 14
 2025-04-08;sql-advanced1;;
-2025-04-10;sql-advanced2;;
+2025-04-10;sql-advanced2;Due 2025-04-11: [Project Phase 2](trip-planner.html);
 Week 15
 2025-04-15;relational-design1;;
 2025-04-17;relational-design2;;
 Week 16
 2025-04-22;nosql;;
-2025-04-24;storage-indexing;Due: [Project Phase 3](trip-planner.html);
+2025-04-24;storage-indexing;Due 2025-05-02: [Project Phase 3](trip-planner.html);

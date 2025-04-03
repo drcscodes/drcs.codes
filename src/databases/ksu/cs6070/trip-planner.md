@@ -3,6 +3,8 @@ template: course
 title: CS 6070 Project Details
 ---
 
+> **Be sure to scroll down to see [submission requirements](#requirements) for each project phase.**
+
 # Trip Planner
 
 You will create a database for an application that allows users to explore the attractions in a given city and create a trip plan that lists all the attractions they will see during a trip to that city. The general description below describes the data your database will need to maintain and the constraints your database must enforce, in some cases with application code.
@@ -20,6 +22,7 @@ A trip is a list of activities in a city. A user plans a trip to a city by selec
 Once a user has completed a trip plan, the user can purchase reservations included in the trip. The system should collect and store credit card information from the user, using one of the user's addresses as the billing address. At time of purchase the system should ensure that space is still available for each activity in the user's trip. Once the purchase is completed, spaces for the apporpriate time slots for those attractions should be updated. If a time slot at an attraction becomes sold out before a user completes their purchase of a trip itinerary, the system should remove that activity from the user's trip, exit the trip purchasing process, and allow the user to update their trip plan.
 
 Once a user has completed a trip, which the system knows simply by the fact that the end date of the trip has passed, the user can create a review for attractions included in the completed trip. The system should ensure that users can only add reviews for attractions that were included on trips that they completed.
+
 
 ## User Interface (UI) Mock-up
 
@@ -133,15 +136,29 @@ The city pull-down is populated with cities in which the user has completed trip
 </tr>
 </table>
 
+
+<a name="requirements"/>
+
+---
+
+## Phase 1 Requirements
+
+Given the problem description and UI mock-ups above, create
+
+1. a conceptual EER model of the data,
+2. a list of semantic constraints that cannot be modeled in EER, and
+3. an information flow diagram of a database application suited to the problem.
+
+Submit your Phase 1 deliverables in a single PDF file named `teamN-phase1.pdf`, where N is your team number. For example, if you're Team 3 you'd submit a file named `team3-phase1.pdf`.
+
+
 ## Phase 2 Requirements
 
 Map the EER model you created in Phase 1 to a relational model. Encode the model in SQL in a file called `teamN-schema.sql`. Add constraints, such as NOT NULL constraints and foreign key constraints, and appropriate data types.
 
 **`teamN-schema.sql`**, where `N` is your team number, should contain valid SQL code to create an empty database with all of the necessary tables for your trip planner application.
 
-You may use your (corrected) EER model from Phase 1, or this sample solution:
-
-<!-- - [trip-planner.pdf](trip-planner.pdf) ([dot source](trip-planner.dot)) -->
+You may use your (corrected) EER model from Phase 1, or this sample solution: [trip-planner.svg](project-details/trip-planner.svg)
 
 ## Phase 3 Requirements
 
