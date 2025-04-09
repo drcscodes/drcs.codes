@@ -253,22 +253,65 @@ Approaches to both (i) the combination of the current embedding with the aggrega
 
 ## Combining Current Node and Aggregated Neighbors
 
-```{=latex}
-\[
-\bm{H}_{k+1} &= \bm{a} \big( \bm{\beta}_k \bm{1}^T + \bm{\Omega}_k \bm{H}_k ( \bm{A} + \bm{I} ) \big)
-\]
-```
+In the example GCN layer above, we combined the aggregated neighbors HA with the current nodes H by just summing them:
 
 ```{=latex}
 \[
-\bm{H}_{k+1} &= \bm{a} \big( \bm{\beta}_k \bm{1}^T + \bm{\Omega}_k \bm{H}_k ( \bm{A} + ( 1 + \epsilon_k ) \bm{I} ) \big)
+\bm{H}_{k+1} = \bm{a} \big( \bm{\beta}_k \bm{1}^T + \bm{\Omega}_k \bm{H}_k ( \bm{A} + \bm{I} ) \big) \tag{13.13}
 \]
 ```
+
+Another option is to multiply the current node by a factor of $(1 + \epsilon_k)$, where $\epsilon_k$ is a learned scalar that is different for each layer.  This is called *diagonal enhancement*:
+
+```{=latex}
+\[
+\bm{H}_{k+1} = \bm{a} \big( \bm{\beta}_k \bm{1}^T + \bm{\Omega}_k \bm{H}_k ( \bm{A} + ( 1 + \epsilon_k ) \bm{I} ) \big) \tag{13.14}
+\]
+```
+
+A third option is to apply a different linear transform $\Phi_k$ to the current node:
+
+```{=latex}
+\begin{align*}
+\bm{H}_{k+1} &= \bm{a} ( \bm{\beta}_k \bm{1}^T + \bm{\Omega}_k \bm{H}_k \bm{A} + \bm{\Phi}_k \bm{H}_k )\\
+\bm{H}_{k+1} &= \bm{a} \big( \bm{\beta}_k \bm{1}^T + [ \bm{\Omega}_k \bm{\Phi}_k ] \genfrac{[}{]}{0pt}{}{\bm{H}_k \bm{A} }{ \bm{H}_k } \big)\\
+\bm{H}_{k+1} &= \bm{a} \big( \bm{\beta}_k \bm{1}^T + \bm{\Omega'}_k \genfrac{[}{]}{0pt}{}{\bm{H}_k \bm{A} }{ \bm{H}_k } \big) \tag{13.15}
+\end{align*}
+```
+
+where $\bm{\Omega'}_k = \bm{\Omega}_k \bm{\Phi}_k$.
 
 
 ## Residual Connections
 
+With residual connections, the aggregated representation from the neighbors is transformed and passed through the activation function before summation or concatenation with the current node. For the latter case, the associated network equations are:
+
+```{=latex}
+\[
+\bm{H}_{k+1} =  \genfrac{[}{]}{0pt}{}{ \bm{a} ( \bm{\beta}_k \bm{1}^T + \bm{\Omega}_k \bm{H}_k \bm{A} ) }{ \bm{H}_k } \tag{13.16}
+\]
+```
+
 ## Mean Aggregation
+
+Average of neighbors instead of sum:
+
+```{=latex}
+\[
+\textbf{agg}(n) = \frac{ 1 }{ |\text{ne}(n)| } \sum_{m \in \text{ne}(n)} \bm{h}_m \tag{13.17}
+\]
+```
+
+If we introduct an $N \times N$ matrix $\bm{D}$ in which each non-zero element contains the number of neighbors for the associated node, then each diagonal element in $\bm{D}^{-1}$ contains the denominator from Equation 13.17.  Then the new GCN layer is:
+
+
+```{=latex}
+\[
+\bm{H}_{k+1} = \bm{a} \big( \bm{\beta}_k \bm{1}^T + \bm{\Omega}_k \bm{H}_k ( \bm{A} \bm{D}^{-1} + \bm{I} ) \big) \tag{13.18}
+\]
+```
+
+
 
 ## Kipf Normalization
 
