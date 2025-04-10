@@ -14,7 +14,14 @@ You may work alone or in a team.  If you work in a team, I will expect a little 
 You will produce the following deliverables, due at appropriate points during the semester (see the schedule):
 
 - **Project proposal.**  Describe your data, where it comes from, what you want to get from the data, and why it's interesting.
-- **(Intermediate) Results.**  Based on your stated goals above, report the results (so far) of the deep learning model you developed, using confusion matrices, ROC curves, and any other appropriate performance measures.
+
+- **(Intermediate) Results.**  The purpose of this deliverable is to ensure that you get your deep learning pipeline working end-to-end early enough that you can act on feedback from preliminary results.
+    - Report the results (so far) of the deep learning model you developed, using confusion matrices, ROC curves, and any other appropriate performance measures.
+    - What baseline are you using to conclude that your model has learned something?
+    - Is your test error significantly higher than your training error?  Is it higher than baseline error?
+    - If your model is not performing well, why?
+    - If your model is not performing well, what is your strategy to improve it?
+
 - **Finished research paper.**  A finished research paper ready to submit for publication.  Of course, you may continue to work on it after this class is over.
 - **Presentation.**  A 20-minute conference-style presentation to the class during the last two or three class meetings, depending on how many groups we have.
 
