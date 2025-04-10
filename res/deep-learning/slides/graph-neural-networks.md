@@ -257,7 +257,7 @@ f ( \bm{X}, \bm{A}, \bm{\Phi} ) = \text{sig} \big( \beta_K \bm{1}^T + \bm{\omega
 \]
 ```
 
-## Choosing Bitches
+## Choosing Batches
 
 ```{=latex}
 \begin{center}
