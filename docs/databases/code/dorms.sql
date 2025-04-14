@@ -1,6 +1,6 @@
 drop table if exists dorm;
 create table dorm (
-    dorm_id integer primary key autoincrement,
+    dorm_id integer primary key auto_increment,
     name text,
     spaces integer
 );
@@ -10,7 +10,7 @@ insert into dorm values(3, 'Caldwell', 158);
 
 drop table if exists stud;
 create table stud (
-    stud_id integer primary key autoincrement,
+    stud_id integer primary key auto_increment,
     name text,
     gpa float,
     dorm_id integer references dorm(dorm_id)

@@ -347,8 +347,8 @@
             "part": "Beyond Deep Learning"
         },
         {
-            "topic": "reinforcement-learning",
-            "slides": "[Reinforcement Learning](@root/deep-learning/slides/reinforcement-learning.pdf)",
+            "topic": "deep-reinforcement-learning",
+            "slides": "[Deep Reinforcement Learning](@root/deep-learning/slides/deep-reinforcement-learning.pdf)",
             "reading": [
                 "UDL: 19"
             ],
