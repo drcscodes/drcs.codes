@@ -169,7 +169,7 @@ An optimal policy maximizes the expected return.  Any MDP has a deterministic st
 
 ```{=latex}
 \[
-v^*(s_t ) = \max_{\pi^*} \big( \mathbb{E} [G_t | s_t, \pi] \big)
+v^*(s_t ) = \max_{\pi} \big( \mathbb{E} [G_t | s_t, \pi] \big)
 \]
 ```
 
@@ -177,7 +177,7 @@ The optimal action value function is then:
 
 ```{=latex}
 \[
-q^*(s_t, a_t ) = \max_{\pi^*} \big( \mathbb{E} [G_t | s_t, a_t \pi] \big)
+q^*(s_t, a_t ) = \max_{\pi} \big( \mathbb{E} [G_t | s_t, a_t \pi] \big)
 \]
 ```
 
@@ -266,6 +266,8 @@ In classical tabular RL, we represent the policy function as a table.
 
 ## Dynamic Programming
 
+If we know the MDP, we can find the optimal policy using dynamic programming, where we iteratively update our estimates of state and action values until they converge.
+
 ```{=latex}
 \begin{center}
 ```
@@ -297,7 +299,16 @@ v(s_t ) = \sum_{a_t} \pi(a_t | s_t) \Big( r(s_t, a_t) + \gamma \sum_{s_{t+1}} Pr
 
 ## Monte Carlo Methods
 
-Emprically estimate action values based on observed returns.
+Sample the MDP via episodes -- a trajectory from a start state to a terminal state using the current policy (also called a *rollout*):
+
+- use the returns for a given $(s, a)$ pair to estimate $q(s, a)$
+- use the estimates for each $q(s, a)$ to update the policy:
+
+```{=latex}
+\[
+\pi(s, a) \leftarrow \argmax_{a} \big( q(s, a) \big)
+\]
+```
 
 ```{=latex}
 \begin{center}
@@ -307,7 +318,10 @@ Emprically estimate action values based on observed returns.
 \end{center}
 ```
 
+
 ## Temporal Difference Methods
+
+Combine the ideas of dynamic programming and Monte Carlo methods.  Instead of generating rollouts to estimate values with which to update the policy, we iteratively update the policy while the agent traverses the MDP.
 
 ```{=latex}
 \begin{center}
@@ -338,52 +352,95 @@ Q(s, a) \leftarrow Q(s, a) + \alpha [R(s) + \gamma Q(s', a') - Q(s, a))]
 
 Sarsa is *on-policy* because the temporal difference used in the Q-update is based on the policy being followed by the agent during learning. The standard Q-learning update is *off-policy* because the Q-update is based on the best known next action.
 
+# Deep Reinforcement Learning
 
 ## Fitted Q-Learning
 
+Tabular RL is only practical if the state-action space is small.  Such cases are rare in practice, e.g., there are more than $10^{40}$ legal configurations of a chess board (states).
+
+Solution: *fitted Q-learning* -- replace the q-table with a parameterized machine learning model $q(\bm{s}, a_t, \bm{\phi})$ where the state is now a vector, not an index in to a table of states.
+
+Now we can define a least-squares loss based on consistency of adjacent q-values:
+
 ```{=latex}
 \[
-\pi(a|s)
+L(\bm{\phi}) = \left( r(\bm{s}_t, a_t) + \gamma \max_a \left( q(\bm{s}_{t+1}, a, \bm{\phi})  \right) - q(\bm{s}_{t}, a_t, \bm{\phi}) \right)^2
 \]
 ```
 
+and turn this into the udate rule:
+
+```{=latex}
+\[
+\bm{\phi} \gets \bm{\phi} + \alpha \left( r(\bm{s}_t, a_t) + \gamma \max_a \left( q(\bm{s}_{t+1}, a, \bm{\phi})  \right) - q(\bm{s}_{t}, a_t, \bm{\phi}) \right)
+    \frac{ \partial q(\bm{s}_t, a_t, \bm{\phi})  }{ \partial \bm{\phi}  }
+\]
+```
+
+Problem: convergence is no longer guaranteed as it was in tabular RL because changes to $\bm{\phi}$ can change the target return estimate and the q-value predictions -- convergence is a moving target.
 
 ## Deep Q-Networks for Playing Atari Games
+
+First big breakthough in Deep RL was a system that learned to play Atari 2600 games "from pixels."
 
 ```{=latex}
 \begin{center}
 ```
-![](./ReinforceDQL.pdf)
+![](./ReinforceDQL.pdf){height="50%"}
 ```{=latex}
 \end{center}
 ```
 
 ## DQN Architecture
 
+In practice, the frames were downsized to 84x84, used only pixel brightness instead of colors, and 4 frames as a single state to deal with unobservable properties like ball velocity.
+
 ```{=latex}
 \begin{center}
 ```
-![](./ReinforceDQL2.pdf)
+![](./ReinforceDQL2.pdf){height="60%"}
 ```{=latex}
 \end{center}
 ```
 
+Network takes the sate as input and simultaneously predicts values for all actions.
+
+## DQN Training
+
+Training was modified by:
+
+- Using a constant -1 or +1 to represent score increases or decreases, so that a constant learning rate could be used and the same training procedure for all games, and
+- Using *experience replay*: recent $<\bm{s}_t, a_t, r_{t+1}, \bm{s}_{t+1}>$ tuples stored in a buffer, then randomly sampled at each time step to generate a batch.
+
+
+Fix convergence issue in fitted Q-Networks by fixing target parameters to $\bm{\phi}^-$ and only updading periodically, leading to the updated update rule:
+
+```{=latex}
+\[
+\bm{\phi} \gets \bm{\phi} + \alpha \left( r(\bm{s}_t, a_t) + \gamma \max_a \left( q(\bm{s}_{t+1}, a, \bm{\phi}^-)  \right) - q(\bm{s}_{t}, a_t, \bm{\phi}) \right)
+    \frac{ \partial q(\bm{s}_t, a_t, \bm{\phi})  }{ \partial \bm{\phi}  }
+\]
+```
+
 ## Double Q-Learning and Double Deep Q-Networks
 
+THe update rule in DQN training systematically overestimates action values because the same network selects the target and updates the value.  Double DQN mitigates this problem by training two models simultaneously, randomly assigning updates to one or the other network.
+
+## Double DQN with Target Network
+
+1-9: Initialize learning rate $\alpha$,  $\tau$, number of batches per training step, B number of updates per batch, U, batch size N, experience replay memory with max size K, target network update frequency F, Randomly initialize the network parameters $\theta$, target network parameters $\varphi = \theta$
 
 ```{=latex}
-\[
-\pi(a|s)
-\]
+\begin{center}
 ```
+![](./ddqn-algo-fdrl.pdf){height="80%"}^[DDQN-algo-FDRL]
+```{=latex}
+\end{center}
+```
+
+[DDQN-algo-FDRL]: https://slm-lab.gitbook.io/foundations-of-deep-rl
 
 ## Policy Gradient Methods
-
-```{=latex}
-\[
-\pi(a|s)
-\]
-```
 
 ```{=latex}
 \begin{center}
@@ -393,33 +450,10 @@ Sarsa is *on-policy* because the temporal difference used in the Q-update is bas
 \end{center}
 ```
 
-## REINFORCE Algorithm
-
-```{=latex}
-\[
-\pi(a|s)
-\]
-```
-
-## Baselines
-
-```{=latex}
-\begin{center}
-```
-![](./ReinforcementVariance.pdf)
-```{=latex}
-\end{center}
-```
-
 ## Actor-Critic Methods
 
-```{=latex}
-\begin{center}
-```
-![]()
-```{=latex}
-\end{center}
-```
+- Actor: policy network
+- Critic: value network
 
 ## Offline Reinforcement  Learning
 
@@ -430,8 +464,3 @@ Sarsa is *on-policy* because the temporal difference used in the Q-update is bas
 ```{=latex}
 \end{center}
 ```
-
-
-## Closing Thoughts
-
-Boom!
