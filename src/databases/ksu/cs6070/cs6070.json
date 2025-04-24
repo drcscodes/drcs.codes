@@ -33,6 +33,7 @@
         "FoDS: Fundamentals of Database Systems by Elmasri and Navathe, 7th Ed, [https://www.pearson.com/en-us/subject-catalog/p/fundamentals-of-database-systems/P200000003546/9780137502523](https://www.pearson.com/en-us/subject-catalog/p/fundamentals-of-database-systems/P200000003546/9780137502523)"
     ],
     "recommended_materials": [
+        "[Design Data-Intensive Applications](https://www.scylladb.com/wp-content/uploads/ScyllaDB-Designing-Data-Intensive-Applications.pdf)"
     ],
     "technology_requirements": [
     ],
@@ -369,7 +370,8 @@
             "topic": "storage-indexing",
             "slides": "[Storage and Indexing](@root/databases/slides/storage-indexing.pdf)",
             "reading": [
-                "FoDS 16.1-16.7, 17"
+                "FoDS 16.1-16.7, 17",
+                "[Design Data-Intensive Applications](https://www.scylladb.com/wp-content/uploads/ScyllaDB-Designing-Data-Intensive-Applications.pdf)"
             ],
             "exercises": [],
             "assignments": [
