@@ -1,0 +1,238 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{verbatim, multicol, tabularx, hyperref, graphicx, tikz}
+\usepackage{amsmath,amsthm, amssymb, cancel, stmaryrd, latexsym, bm, listings, qtree}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Problem Set 4}
+\author{CS 4277: Deep Learning}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+Name (print clearly): \ifprintanswers \underline{  {\bf ANSWER KEY}  } \fi \hrulefill Section: (e.g., 01) \makebox[.5in]{\hrulefill}
+
+\ifprintanswers
+
+  \begin{quote}
+These answers have been distributed via private channels to authorized recipients.  They are for the individual educational use of the designated recipients only.  If a copy of any part of this answer key is found in the posession of any unauthorized person, every attempt will be made to discover the source.  If you are found to have distributed any part of this answer key to any other person, you will be considered to be in violation of the academic integrity policy and held accountable.
+\end{quote}
+
+
+\else
+
+\vspace{0.25in}
+\hbox to \textwidth{Signature: \hrulefill}
+
+\vspace{0.25in}
+\hbox to \textwidth{Student account username (e.g., msmith3): \enspace\hrulefill}
+
+Signing signifies that you agree to comply with the {\bf Academic Honor Code} and course policies stated in the syllabus.
+
+Choose one of these two options for turn-in:
+\begin{enumerate}
+\item Print this document, write or answers, scan your finished homework to a PDF, name the PDF {\tt cs4277-ps4-<your-student-account-username>.pdf}, e.g., {\tt cs4277-ps4-msmith3.pdf} and submit the PDF to the assignment on D2L.
+\item While viewing this document in your web browser, in the address bar change {\tt .pdf} to {\tt .tex}, save the \LaTeX\ source as a text file, add your answers in appropriate \LaTeX\ markup in the appropriate spaces, compile to a PDF named as in the instructions above, and submit the PDF file to the assignment on D2L.
+\end{enumerate}
+
+\fi
+
+\begin{center}
+  \gradetable[h][questions]
+\end{center}
+
+\newpage
+
+\begin{questions}
+
+\question[12] Problem 10.1 Show that the operation in Equation 10.3 (reproduced below) is equivariant with respect to translation.
+
+\[
+z_i = \omega_1 x_{i - 1} + \omega_2 x_i + \omega_3 x_{i+1} \tag{10.3}
+\]
+
+\ifprintanswers
+\begin{solution}
+\input{soln_10_1.tex}
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+\question[12] Problem 10.3 Write out the equation for the 1D dilated convolution with a kernel size of three and a dilation rate of two, as pictured in Figure 10.3d (reproduced below).
+
+\begin{center}
+\includegraphics[height=2in]{./Conv1a.pdf}
+\end{center}
+
+\ifprintanswers
+\begin{solution}
+\input{soln_10_3.tex}
+\end{solution}
+\else
+\vspace{2in}
+\fi
+
+\newpage
+
+\question[12] Problem 10.8 Consider a 1D convolutional network where the input has three channels. The first hidden layer is computed using a kernel size of three and has four channels. The second hidden layer
+is computed using a kernel size of five and has ten channels. How many
+biases and how many weights are needed for each of these two convolutional layers?
+
+
+\ifprintanswers
+\begin{solution}
+\input{soln_10_8.tex}
+\end{solution}
+\else
+\vspace{2in}
+\fi
+
+\question[12] Problem 10.9 A network consists of three 1D convolutional layers. At each layer, a zero-padded
+convolution with kernel size three, stride one, and dilation one is applied. What size is the
+receptive field of the hidden units in the third layer?
+
+\ifprintanswers
+\begin{solution}
+\input{soln_10_9.tex}
+\end{solution}
+\else
+\vspace{2in}
+\fi
+
+
+\question[12] Problem 12.1 Consider a self-attention mechanism that processes $N$ inputs of length $D$ to
+produce $N$ outputs of the same size. How many weights and biases are used to compute the
+queries, keys, and values? Assume that all three quantities are also of length $D$. How many
+attention weights $\bm{a}[\bm{\cdot}, \bm{\cdot}]$ will there be? How many weights and biases would there be in a fully
+connected shallow network relating all DN inputs to all DN outputs?
+
+\ifprintanswers
+\begin{solution}
+\input{soln_12_1.tex}
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+\newpage
+
+\question[12] Problem 12.5 Why is implementation more efficient if the values, queries, and keys in each of
+the $H$ heads each have dimension $\frac{D}{H}$ where $D$ is the original dimension of the data?
+
+\ifprintanswers
+\begin{solution}
+\input{soln_12_5.tex}
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+\question[12] Problem 12.7 Consider adding a new token to a precomputed masked self-attention mechanism
+with $N$ tokens. Describe the extra computations that must be done to incorporate this new
+token with their Big-Os assuming embeddings of length $D$.
+
+\ifprintanswers
+\begin{solution}
+\input{soln_12_7.tex}
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+\newpage
+
+\question[12] Problem 19.1 Figure 19.18 (reproduced below) shows a single trajectory through an example Markov reward process.
+Calculate the return for 1st, 2nd, 7th and 8th steps in the trajectory given that the discount factor $\gamma$ is 0.9.
+
+\begin{center}
+\includegraphics[height=1.5in]{./ReinforceProbReturn.pdf}
+\end{center}
+
+\ifprintanswers
+\begin{solution}
+\input{soln_19_1.tex}
+\end{solution}
+\else
+\vspace{4in}
+\fi
+
+\question[12] Problem 19.4 The Boltzmann policy strikes a balance between exploration and exploitation by
+basing the action probabilities $\pi(a | s)$ on the current state-action reward function $q(s,a)$:
+
+
+\[
+\pi(s | a) = \frac{ e^{q(s, a) / \tau} }{ \sum_{a'} e^{q(s, a') / \tau}  }
+\]
+
+Explain how the temperature parameter $\tau$ can be varied to prioritize exploration or exploitation.
+
+\ifprintanswers
+\begin{solution}
+\input{soln_19_4.tex}
+\end{solution}
+\else
+\vspace{2in}
+\fi
+
+\end{questions}
+
+\end{document}
