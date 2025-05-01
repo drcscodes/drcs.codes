@@ -19,9 +19,9 @@ For your research paper, pick one narrow topic and describe what problem(s) it s
 
 References:
 
-- Google Bigtable paper. https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf
-- Architecture of Apache Cassandra. https://cassandra.apache.org/doc/latest/cassandra/architecture/index.html
-- Kinds of NoSQL database. https://aws.amazon.com/nosql/#What_are_the_types_of_NoSQL_databases
+- Google Bigtable paper. [https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf](https://static.googleusercontent.com/media/research.google.com/en//archive/bigtable-osdi06.pdf)
+- Architecture of Apache Cassandra. [https://cassandra.apache.org/doc/latest/cassandra/architecture/index.html](https://cassandra.apache.org/doc/latest/cassandra/architecture/index.html)
+- Kinds of NoSQL database. [https://aws.amazon.com/nosql/#What_are_the_types_of_NoSQL_databases](https://aws.amazon.com/nosql/#What_are_the_types_of_NoSQL_databases)
 
 ## Programming Environments
 
