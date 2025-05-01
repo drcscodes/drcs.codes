@@ -52,7 +52,7 @@
 
 
 \runningheader{}
-{\small Name: \underline{\hspace{2.8in}} Student account (e.g., msmith3): \underline{\hspace{1.4in}} Section: \underline{\hspace{.5in}}}
+{\small Name: \underline{\hspace{2.8in}} NetID (e.g., msmith3): \underline{\hspace{1.4in}}}
 {}
 
 %% \footer{Page \thepage\ of \numpages}
@@ -96,6 +96,7 @@
 Completely fill in the box corresponding to your answer choice for each question.
 
 \ifprintanswers
+DISREGARD THESE ANSWERS.  LOOK AT THE QUESTIONS.
 \begin{tabular}{lcccc}\\
   1. \c
   2. \c
@@ -177,7 +178,7 @@ Refer to the following EER diagram for Questions 1 -- 7
 
 \begin{questions}
 
-\question[4] Which of the following (sets of) relation schemas is a correct mapping of the SHELTER entity type? (Disregard the MANAGES relationship.)
+\question Which of the following (sets of) relation schemas is a correct mapping of the SHELTER entity type? (Disregard the MANAGES relationship.)
 
 \begin{choices}
 \choice SHELTER(\underline{SID}, Number, Street, City, State, Zip, DaysOpen, Phones)
@@ -186,7 +187,7 @@ Refer to the following EER diagram for Questions 1 -- 7
 \choice All of the above.
 \end{choices}
 
-\question[4] Which of the following relation schemas is a correct mapping of the PET entity type?
+\question Which of the following relation schemas is a correct mapping of the PET entity type?
 
 \begin{choices}
 \choice PET(\underline{PID}, Name, Species, BirthDate, Age)
@@ -195,7 +196,7 @@ Refer to the following EER diagram for Questions 1 -- 7
 \choice None of the above
 \end{choices}
 
-\question[4] Which of the following sets of relation schemas is a correct mapping of the WORKS\_FOR relationship (Disregard multivalued attributes of SHELTER.)?
+\question Which of the following sets of relation schemas is a correct mapping of the WORKS\_FOR relationship (Disregard multivalued attributes of SHELTER.)?
 
 \begin{choices}
 \choice WORKER(\underline{SSN}, Name, Phone, SID), SHELTER(\underline{SID}, Number, Street, City, State, Zip)
@@ -204,7 +205,7 @@ Refer to the following EER diagram for Questions 1 -- 7
 \choice WORKER\_SHELTER(\underline{SSN, SID}, Days)
 \end{choices}
 
-\question[4] What's the least number of tables necessary to model the WORKER - VOLUNTEER - EMPLOYEE - MANAGER class hierarchy?
+\question What's the least number of tables necessary to model the WORKER - VOLUNTEER - EMPLOYEE - MANAGER class hierarchy?
 
 \begin{choices}
 \correctchoice 1
@@ -213,7 +214,7 @@ Refer to the following EER diagram for Questions 1 -- 7
 \choice 4
 \end{choices}
 
-\question[4] Which of the following sets of relation schemas acceptably represenents the WORKER - VOLUNTEER - EMPLOYEE - MANAGER class hierarchy?
+\question Which of the following sets of relation schemas acceptably represenents the WORKER - VOLUNTEER - EMPLOYEE - MANAGER class hierarchy?
 
 \begin{choices}
 \choice WORKER(SSN, Name, Phone), VOLUNTEER(SSN), EMPLOYEE(SSN,PayRate), MANAGER(SSN)
@@ -223,7 +224,7 @@ Refer to the following EER diagram for Questions 1 -- 7
 \end{choices}
 
 
-\question[4] Which of the following create table statements creates a PET table that accurately models the PET entity type?
+\question Which of the following create table statements creates a PET table that accurately models the PET entity type?
 
 \begin{choices}
 \choice create table pet(PID int primary key, Name varchar(20), Species varchar(20), Birthdate date)
@@ -232,7 +233,7 @@ Refer to the following EER diagram for Questions 1 -- 7
 \choice None of the above.
 \end{choices}
 
-\question[4] Which of the following create table statements creates a table that accurately models the WORKS\_FOR relationship? (Disregard multivalued attributes.)
+\question Which of the following create table statements creates a table that accurately models the WORKS\_FOR relationship? (Disregard multivalued attributes.)
 
 \begin{choices}
 \choice create table worker\_shelter(SSN int, SID int, days enum (M, Tu, W, Th, F))
@@ -284,7 +285,7 @@ mysql> select * from student;
 
 \end{verbatim}
 
-\question[4] Which of the following insert statements will succeed?
+\question Which of the following insert statements will succeed?
 
 \begin{choices}
 \correctchoice {\tt insert into dorm (name, spaces) values('Caldwell', 158);}
@@ -293,7 +294,7 @@ mysql> select * from student;
 \choice All of the above.
 \end{choices}
 
-\question[4] Which of the following insert statement is certain to succeed?
+\question Which of the following insert statement is certain to succeed?
 
 \begin{choices}
 \choice {\tt insert into student (name, gpa, dorm\_id) values ('Cheng', 3.6, 3);}
@@ -302,7 +303,7 @@ mysql> select * from student;
 \choice All of the above.
 \end{choices}
 
-\question[4] Which of the following delete statements will fail?
+\question Which of the following delete statements will fail?
 
 \begin{choices}
 \choice {\tt delete from student}
@@ -407,238 +408,216 @@ $r(pub)$\\
 
 For the questions on this page, refer to Figure~\ref{fig:pubs-db}.
 
-\question[4] Query giving author first name and last name who have published in CACM.
+\question Query giving author first name and last name who have published in CACM.
 
-\begin{choices}
-\correctchoice
-\choice
-\choice
-\choice
-\end{choices}
+\begin{solution}[1in]
+Download and install the pubs database on your computer to check your answer.
+\end{solution}
 
-\question[4] Query giving all authors and the books they have edited, including authors who are not book editors.
+\question Query giving all authors and the books they have edited, including authors who are not book editors.
 
-\begin{choices}
-\correctchoice
-\choice
-\choice
-\choice
-\end{choices}
+\begin{solution}[1in]
+Download and install the pubs database on your computer to check your answer.
+\end{solution}
 
-\question[4] Query giving all author first names and last names who have published more than one pub.
+\question Query giving all author first names and last names who have published more than one pub.
 
-\begin{choices}
-\correctchoice
-\choice
-\choice
-\choice
-\end{choices}
+\begin{solution}[1in]
+Download and install the pubs database on your computer to check your answer.
+\end{solution}
 
-\question[4] Author of the oldest pub in the database.
+\question Author of the oldest pub in the database.
 
-\begin{choices}
-\correctchoice
-\choice
-\choice
-\choice
-\end{choices}
+\begin{solution}[1in]
+Download and install the pubs database on your computer to check your answer.
+\end{solution}
 
-\question[4] How many rows returned by {\tt select * from book natural join pub}?
+\question How many rows returned by {\tt select * from book natural join pub}?
 
-\begin{choices}
-\correctchoice
-\choice
-\choice
-\choice
-\end{choices}
+\begin{solution}[1in]
+Download and install the pubs database on your computer to check your answer.
+\end{solution}
 
 
 \newpage
 
-For the questions on this page, use this relation schema and set of functional dependencies $F$:\\
+Relational Design
 
-$\text{ATL-TRANSIT}(DriverSsn, EmpName, RouteNum, BusId, RouteDate, ServiceDate)$
-\begin{eqnarray*}
-  DriverSsn          & \rightarrow & RouteNum    \\
-  RouteNum,RouteDate & \rightarrow & BusId       \\
-  BusId              & \rightarrow & ServiceDate \\
-  RouteNum,RouteDate & \rightarrow & DriverSsn   \\
-  DriverSsn          & \rightarrow & EmpName
-\end{eqnarray*}
+\question Given the following relation schemas and functional dependencies:
 
-\question[4] Which one of the following functional dependencies is in $F^+$?
+LOTS1(PropertyiId , CountyName, Lot, Area, Price)\\
+LOTS2(CountyName , TaxRate)
 
-\begin{choices}
-\choice $RouteDate \rightarrow  BusId$
-\choice $ServiceDate \rightarrow BusId$
-\choice $RouteNum \rightarrow BusId$
-\correctchoice $BusId,DriverSsn,EmpName \rightarrow BusId$
-\end{choices}
+\begin{itemize}
+\item FD1: PropertyId $\rightarrow$ CountyName, Lot, Area, Price, TaxRate
+\item FD2: CountyName, Lot $\rightarrow$ PropertyId, Area, Price, TaxRate
+\item FD3: CountyName $\rightarrow$ TaxRate
+\item FD4: Area $\rightarrow$ Price
+\end{itemize}
 
-\question[4] What is $\{RouteNum,RouteDate\}^+$ with respect to $F$?
+What is the highest normal form satified by these schemas?
 
 \begin{choices}
-\choice $\{RouteNum, RouteDate\}$
-\choice $\{RouteNum, RouteDate, BusId, DriverSsn\}$
-\correctchoice $\{RouteNum, RouteDate, BusId, DriverSsn, EmpName, ServiceDate\}$
-\choice the empty set
-\end{choices}
-
-\question[4] Which of the following is a key for the ATL-TRANSIT schema?
-
-\begin{choices}
-\choice $DriverSsn$
-\choice $\{RouteNum,RouteDate\}$
-\choice $\{DriverSsn,RouteDate\}$
-\correctchoice Both B and C
-\end{choices}
-
-\question[4] What is the highest normal form that the ATL-TRANSIT schema satisfies?
-
-\begin{choices}
-\correctchoice 1NF
-\choice 2NF
+\choice 1NF
+\correctchoice 2NF
 \choice 3NF
 \choice BCNF
 \end{choices}
 
+\question Given the following relation schemas and functional dependencies:
 
-\question[4] Suppose we decompose the ATL-TRANSIT schema into
+LOTS1A(PropertyId, CountyName, Lot, Area)\\
+LOTS1B(Area, Price)\\
+LOTS2(CountyName, TaxRate)
 
-$ATL1(DriverSsn, RouteNum, BusId, RouteDate, ServiceDate)$\\
-$ATL2(DriverSsn, EmpName)$
+\begin{itemize}
+\item FD1: PropertyId $\rightarrow$ CountyName, Lot, Area
+\item FD2: CountyName, Lot $\rightarrow$ PropertyId, Area
+\item FD3: CountyName $\rightarrow$ TaxRate
+\item FD4: Area $\rightarrow$ Price
+\end{itemize}
 
-Does that decomposition have the lossless join property?
 
-\begin{choices}
-  \correctchoice Yes
-  \choice No
-\end{choices}
-
-\question[4] Suppose we decompose the ATL-TRANSIT schema into
-
-$ATL1 (RouteNum, RouteDate, BusId)$\\
-$ATL2 (DriverSsn, RouteNum, EmpName, ServiceDate)$
-
-Does that decomposition have the lossless join property?
+What is the highest normal form satified by these schemas?
 
 \begin{choices}
-  \choice Yes
-  \correctchoice No
+\choice 1NF
+\choice 2NF
+\correctchoice 3NF
+\choice BCNF
 \end{choices}
 
-\newpage
 
-For the questions on this page, use this relation schema and set of functional dependencies $F$:\\
+\question Given the following relation schemas and functional dependencies:
 
-$ATL-TRANSIT(DriverSsn, EmpName, RouteNum, BusId, RouteDate, ServiceDate)$
-\begin{eqnarray*}
-  DriverSsn & \rightarrow & RouteNum\\
-  RouteNum,RouteDate & \rightarrow & BusId\\
-  BusId & \rightarrow & ServiceDate\\
-  RouteNum,RouteDate & \rightarrow & DriverSsn\\
-  DriverSsn & \rightarrow & EmpName
-\end{eqnarray*}
+R1(Instructor , Course)\\
+R2(Instructor, Student)
 
+\begin{itemize}
+\item FD1: Student, Course $\rightarrow$ Instructor
+\item FD2: Instructor $\rightarrow$ Course.
+\end{itemize}
 
-\question[4] Which attribute is fully functionally dependent on the set of attributes $\{RouteNum, RouteDate\}$?
+What is the highest normal form satified by these schemas?
 
 \begin{choices}
-\choice $BusId$
-\choice $DriverSsn$
-\choice $EmpName$
-\correctchoice all of the above
+\choice 1NF
+\choice 2NF
+\choice 3NF
+\correctchoice BCNF
 \end{choices}
 
-\question[4] Which of the following attributes are prime attributes?
-
-\begin{choices}
-\choice Only DriverSsn
-\choice Only RouteNum
-\choice RouteNum and RouteDate
-\correctchoice DriverSsn, RouteNum and RouteDate
-\end{choices}
-
-\question[4] Suppose we decompose the ATL-TRANSIT schema into
-
-$ATL1(RouteNum, RouteDate, BusId, DriverSsn)$\\
-$ATL2(DriverSsn, RouteDate, EmpName, ServiceDate)$
-
-Which of those schemas is in 3NF?
-
-\begin{choices}
-\correctchoice ATL1
-\choice ATL2
-\choice Both ATL1 and ATL2
-\choice None of the above
-\end{choices}
-
-\question[4] Consider the current state for our ATL-TRANSIT schema as shown below. What values could be inserted for the two missing column values, RouteNum and ServiceDate,  without violating any of the FDs that have been defined for the ATL-TRANSIT schema. The domain for RouteNum is $\{10, 11, 12, 13, 14\}$ and the domain for ServiceDate is any valid date
-
-\begin{tabular}{|l|l|l|l|l|l|}\hline
-{\bf DriverSsn} & {\bf EmpName} & {\bf RouteNum} & {\bf BusId} & {\bf RouteDate} & {\bf ServiceDate} \\\hline
-111-22-3333 & Brown & 11 & 101 & 07-07-2007 & 06-06-2006 \\\hline
-333-33-4444 & Smith & & 202 & 07-11-2007 & 07-12-2005 \\\hline
-222-44-5555 & Green & 12 & 101 & 07-12-2007 & \\\hline
-333-33-4444 & Smith & 10 & 203 & 07-12-2007 & 08-22-2006 \\\hline
-\end{tabular}
-
-\begin{choices}
-\choice The values 11 for RouteNum and '07-12-2005' for ServiceDate
-\correctchoice The values 10 for RouteNum and '06-06-2006' for ServiceDate
-\choice The values 13 for RouteNum and '09-01-2006' for ServiceDate
-\choice None of the above
-\end{choices}
 
 \newpage
 
 Physical DMBS Design
 
-\question[4] Storage
+\question How is data stored in a log-structured storage engine, e.g., LSM-trees?
 
 \begin{choices}
-\correctchoice
-\choice
-\choice
-\choice
+\correctchoice Files containing append-only sequences of records
+\choice B-trees
+\choice B$^+$-trees
+\choice Hashes
 \end{choices}
 
-\question[4] Indexing
+\question How is data stored in a page-oriented storage engine?
 
 \begin{choices}
-\correctchoice
-\choice
-\choice
-\choice
+\correctchoice A sorted, balanced, tree-structured collection of fixed-size blocks, or pages, such as a B-tree.
+\choice Hash tables
+\choice Inverted splay trees
+\choice File cabinets
 \end{choices}
 
-\question[4] Query processing
+\question What is the primary trade-off of indexes in terms of read vs. write performance?
 
 \begin{choices}
-\correctchoice
-\choice
-\choice
-\choice
+\correctchoice Indexes speed up reads but slow down writes.
+\choice Indexes speed up writes but slow down reads.
+\choice Indexes speed up both reads and writes.
+\choice Indexes slow down both reads and writes.
 \end{choices}
 
-\question[4] Transaction processing
+\question Which of the following techniques limits the size of data files in a database that uses LSM-trees?
 
 \begin{choices}
-\correctchoice
-\choice
-\choice
-\choice
+\correctchoice Compaction
+\choice Coercion
+\choice Conflagration
 \end{choices}
 
-\question[4] ?
+\question Which of the following techniques makes B-trees more reliable (reslient to crashes)?
 
 \begin{choices}
-\correctchoice
-\choice
-\choice
-\choice
+\choice Writing every modification to the database to a {\it write-ahead log (WAL)} before applying changes to the B-tree.
+\choice Using latches (lightweight locks) to control concurrent access to the B-tree.
+\correctchoice All of the above
 \end{choices}
 
+\question Which of the following are advantages of LSM-trees compared to B-trees?
+
+\begin{choices}
+\choice LSM-trees are usually faster for writes.
+\choice LSM-trees usually support higher write throughput.
+\choice LSM-trees usually use less disk space due to better compression and less fragmentation (e.g., unused space in blocks in a B-tree).
+\correctchoice All of the above
+\end{choices}
+
+\question Which of the following are advantages of B-trees compared to LSM-trees?
+
+\begin{choices}
+\choice Reads are usually faster on B-trees.
+\choice More predictable performance.  In LSM-trees compaction processes can lead to unpredictable temprary performance degradation.
+\choice B-trees better support transaction processing because each key exists in only one place in the index, so transaction isolation can be implemented with locks on small ranges of keys that can be directly attached to the tree.
+\correctchoice All of the above
+\end{choices}
+
+\newpage
+
+\question Which of the following acronyms refers to safety guarantees provided by transactions?
+
+\begin{choices}
+\correctchoice ACID
+\choice BASE
+\choice PH
+\end{choices}
+
+\question Which of the following best describes the {\it atomicity} property of database transactions?
+
+\begin{choices}
+\correctchoice The writes in a transaction either all succeed (transaction is {\it committed}) or all fail (transaction is {\it rolled back} or {\it aborted}).
+\choice Invariants, i.e., statements about data, that are true before a transactoin remain true afterwards.
+\choice Concurrently executing transactions are isolated from each other, i.e., they don't interfere with each other.
+\choice The promise that once a transaction has committed successfully, any data it has written will not be forgotten, even if there is a hardware fault or the database crashes.
+\end{choices}
+
+\question Which of the following best describes the {\it consistency} property of database transactions?
+
+\begin{choices}
+\choice The writes in a transaction either all succeed (transaction is {\it committed}) or all fail (transaction is {\it rolled back} or {\it aborted}).
+\correctchoice Invariants, i.e., statements about data, that are true before a transactoin remain true afterwards.
+\choice Concurrently executing transactions are isolated from each other, i.e., they don't interfere with each other.
+\choice The promise that once a transaction has committed successfully, any data it has written will not be forgotten, even if there is a hardware fault or the database crashes.
+\end{choices}
+
+\question Which of the following best describes the {\it isolation} property of database transactions?
+
+\begin{choices}
+\choice The writes in a transaction either all succeed (transaction is {\it committed}) or all fail (transaction is {\it rolled back} or {\it aborted}).
+\choice Invariants, i.e., statements about data, that are true before a transactoin remain true afterwards.
+\correctchoice Concurrently executing transactions are isolated from each other, i.e., they don't interfere with each other.
+\choice The promise that once a transaction has committed successfully, any data it has written will not be forgotten, even if there is a hardware fault or the database crashes.
+\end{choices}
+
+\question Which of the following best describes the {\it durability} property of database transactions?
+
+\begin{choices}
+\choice The writes in a transaction either all succeed (transaction is {\it committed}) or all fail (transaction is {\it rolled back} or {\it aborted}).
+\choice Invariants, i.e., statements about data, that are true before a transactoin remain true afterwards.
+\choice Concurrently executing transactions are isolated from each other, i.e., they don't interfere with each other.
+\correctchoice The promise that once a transaction has committed successfully, any data it has written will not be forgotten, even if there is a hardware fault or the database crashes.
+\end{choices}
 
 \end{questions}
 

@@ -453,142 +453,142 @@ For the questions on this page, refer to Figure~\ref{fig:pubs-db}.
 \end{choices}
 
 
-\newpage
+%% \newpage
 
-For the questions on this page, use this relation schema and set of functional dependencies $F$:\\
+%% For the questions on this page, use this relation schema and set of functional dependencies $F$:\\
 
-$\text{ATL-TRANSIT}(DriverSsn, EmpName, RouteNum, BusId, RouteDate, ServiceDate)$
-\begin{eqnarray*}
-  DriverSsn          & \rightarrow & RouteNum    \\
-  RouteNum,RouteDate & \rightarrow & BusId       \\
-  BusId              & \rightarrow & ServiceDate \\
-  RouteNum,RouteDate & \rightarrow & DriverSsn   \\
-  DriverSsn          & \rightarrow & EmpName
-\end{eqnarray*}
+%% $\text{ATL-TRANSIT}(DriverSsn, EmpName, RouteNum, BusId, RouteDate, ServiceDate)$
+%% \begin{eqnarray*}
+%%   DriverSsn          & \rightarrow & RouteNum    \\
+%%   RouteNum,RouteDate & \rightarrow & BusId       \\
+%%   BusId              & \rightarrow & ServiceDate \\
+%%   RouteNum,RouteDate & \rightarrow & DriverSsn   \\
+%%   DriverSsn          & \rightarrow & EmpName
+%% \end{eqnarray*}
 
-\question[4] Which one of the following functional dependencies is in $F^+$?
+%% \question[4] Which one of the following functional dependencies is in $F^+$?
 
-\begin{choices}
-\choice $RouteDate \rightarrow  BusId$
-\choice $ServiceDate \rightarrow BusId$
-\choice $RouteNum \rightarrow BusId$
-\correctchoice $BusId,DriverSsn,EmpName \rightarrow BusId$
-\end{choices}
+%% \begin{choices}
+%% \choice $RouteDate \rightarrow  BusId$
+%% \choice $ServiceDate \rightarrow BusId$
+%% \choice $RouteNum \rightarrow BusId$
+%% \correctchoice $BusId,DriverSsn,EmpName \rightarrow BusId$
+%% \end{choices}
 
-\question[4] What is $\{RouteNum,RouteDate\}^+$ with respect to $F$?
+%% \question[4] What is $\{RouteNum,RouteDate\}^+$ with respect to $F$?
 
-\begin{choices}
-\choice $\{RouteNum, RouteDate\}$
-\choice $\{RouteNum, RouteDate, BusId, DriverSsn\}$
-\correctchoice $\{RouteNum, RouteDate, BusId, DriverSsn, EmpName, ServiceDate\}$
-\choice the empty set
-\end{choices}
+%% \begin{choices}
+%% \choice $\{RouteNum, RouteDate\}$
+%% \choice $\{RouteNum, RouteDate, BusId, DriverSsn\}$
+%% \correctchoice $\{RouteNum, RouteDate, BusId, DriverSsn, EmpName, ServiceDate\}$
+%% \choice the empty set
+%% \end{choices}
 
-\question[4] Which of the following is a key for the ATL-TRANSIT schema?
+%% \question[4] Which of the following is a key for the ATL-TRANSIT schema?
 
-\begin{choices}
-\choice $DriverSsn$
-\choice $\{RouteNum,RouteDate\}$
-\choice $\{DriverSsn,RouteDate\}$
-\correctchoice Both B and C
-\end{choices}
+%% \begin{choices}
+%% \choice $DriverSsn$
+%% \choice $\{RouteNum,RouteDate\}$
+%% \choice $\{DriverSsn,RouteDate\}$
+%% \correctchoice Both B and C
+%% \end{choices}
 
-\question[4] What is the highest normal form that the ATL-TRANSIT schema satisfies?
+%% \question[4] What is the highest normal form that the ATL-TRANSIT schema satisfies?
 
-\begin{choices}
-\correctchoice 1NF
-\choice 2NF
-\choice 3NF
-\choice BCNF
-\end{choices}
-
-
-\question[4] Suppose we decompose the ATL-TRANSIT schema into
-
-$ATL1(DriverSsn, RouteNum, BusId, RouteDate, ServiceDate)$\\
-$ATL2(DriverSsn, EmpName)$
-
-Does that decomposition have the lossless join property?
-
-\begin{choices}
-  \correctchoice Yes
-  \choice No
-\end{choices}
-
-\question[4] Suppose we decompose the ATL-TRANSIT schema into
-
-$ATL1 (RouteNum, RouteDate, BusId)$\\
-$ATL2 (DriverSsn, RouteNum, EmpName, ServiceDate)$
-
-Does that decomposition have the lossless join property?
-
-\begin{choices}
-  \choice Yes
-  \correctchoice No
-\end{choices}
-
-\newpage
-
-For the questions on this page, use this relation schema and set of functional dependencies $F$:\\
-
-$ATL-TRANSIT(DriverSsn, EmpName, RouteNum, BusId, RouteDate, ServiceDate)$
-\begin{eqnarray*}
-  DriverSsn & \rightarrow & RouteNum\\
-  RouteNum,RouteDate & \rightarrow & BusId\\
-  BusId & \rightarrow & ServiceDate\\
-  RouteNum,RouteDate & \rightarrow & DriverSsn\\
-  DriverSsn & \rightarrow & EmpName
-\end{eqnarray*}
+%% \begin{choices}
+%% \correctchoice 1NF
+%% \choice 2NF
+%% \choice 3NF
+%% \choice BCNF
+%% \end{choices}
 
 
-\question[4] Which attribute is fully functionally dependent on the set of attributes $\{RouteNum, RouteDate\}$?
+%% \question[4] Suppose we decompose the ATL-TRANSIT schema into
 
-\begin{choices}
-\choice $BusId$
-\choice $DriverSsn$
-\choice $EmpName$
-\correctchoice all of the above
-\end{choices}
+%% $ATL1(DriverSsn, RouteNum, BusId, RouteDate, ServiceDate)$\\
+%% $ATL2(DriverSsn, EmpName)$
 
-\question[4] Which of the following attributes are prime attributes?
+%% Does that decomposition have the lossless join property?
 
-\begin{choices}
-\choice Only DriverSsn
-\choice Only RouteNum
-\choice RouteNum and RouteDate
-\correctchoice DriverSsn, RouteNum and RouteDate
-\end{choices}
+%% \begin{choices}
+%%   \correctchoice Yes
+%%   \choice No
+%% \end{choices}
 
-\question[4] Suppose we decompose the ATL-TRANSIT schema into
+%% \question[4] Suppose we decompose the ATL-TRANSIT schema into
 
-$ATL1(RouteNum, RouteDate, BusId, DriverSsn)$\\
-$ATL2(DriverSsn, RouteDate, EmpName, ServiceDate)$
+%% $ATL1 (RouteNum, RouteDate, BusId)$\\
+%% $ATL2 (DriverSsn, RouteNum, EmpName, ServiceDate)$
 
-Which of those schemas is in 3NF?
+%% Does that decomposition have the lossless join property?
 
-\begin{choices}
-\correctchoice ATL1
-\choice ATL2
-\choice Both ATL1 and ATL2
-\choice None of the above
-\end{choices}
+%% \begin{choices}
+%%   \choice Yes
+%%   \correctchoice No
+%% \end{choices}
 
-\question[4] Consider the current state for our ATL-TRANSIT schema as shown below. What values could be inserted for the two missing column values, RouteNum and ServiceDate,  without violating any of the FDs that have been defined for the ATL-TRANSIT schema. The domain for RouteNum is $\{10, 11, 12, 13, 14\}$ and the domain for ServiceDate is any valid date
+%% \newpage
 
-\begin{tabular}{|l|l|l|l|l|l|}\hline
-{\bf DriverSsn} & {\bf EmpName} & {\bf RouteNum} & {\bf BusId} & {\bf RouteDate} & {\bf ServiceDate} \\\hline
-111-22-3333 & Brown & 11 & 101 & 07-07-2007 & 06-06-2006 \\\hline
-333-33-4444 & Smith & & 202 & 07-11-2007 & 07-12-2005 \\\hline
-222-44-5555 & Green & 12 & 101 & 07-12-2007 & \\\hline
-333-33-4444 & Smith & 10 & 203 & 07-12-2007 & 08-22-2006 \\\hline
-\end{tabular}
+%% For the questions on this page, use this relation schema and set of functional dependencies $F$:\\
 
-\begin{choices}
-\choice The values 11 for RouteNum and '07-12-2005' for ServiceDate
-\correctchoice The values 10 for RouteNum and '06-06-2006' for ServiceDate
-\choice The values 13 for RouteNum and '09-01-2006' for ServiceDate
-\choice None of the above
-\end{choices}
+%% $ATL-TRANSIT(DriverSsn, EmpName, RouteNum, BusId, RouteDate, ServiceDate)$
+%% \begin{eqnarray*}
+%%   DriverSsn & \rightarrow & RouteNum\\
+%%   RouteNum,RouteDate & \rightarrow & BusId\\
+%%   BusId & \rightarrow & ServiceDate\\
+%%   RouteNum,RouteDate & \rightarrow & DriverSsn\\
+%%   DriverSsn & \rightarrow & EmpName
+%% \end{eqnarray*}
+
+
+%% \question[4] Which attribute is fully functionally dependent on the set of attributes $\{RouteNum, RouteDate\}$?
+
+%% \begin{choices}
+%% \choice $BusId$
+%% \choice $DriverSsn$
+%% \choice $EmpName$
+%% \correctchoice all of the above
+%% \end{choices}
+
+%% \question[4] Which of the following attributes are prime attributes?
+
+%% \begin{choices}
+%% \choice Only DriverSsn
+%% \choice Only RouteNum
+%% \choice RouteNum and RouteDate
+%% \correctchoice DriverSsn, RouteNum and RouteDate
+%% \end{choices}
+
+%% \question[4] Suppose we decompose the ATL-TRANSIT schema into
+
+%% $ATL1(RouteNum, RouteDate, BusId, DriverSsn)$\\
+%% $ATL2(DriverSsn, RouteDate, EmpName, ServiceDate)$
+
+%% Which of those schemas is in 3NF?
+
+%% \begin{choices}
+%% \correctchoice ATL1
+%% \choice ATL2
+%% \choice Both ATL1 and ATL2
+%% \choice None of the above
+%% \end{choices}
+
+%% \question[4] Consider the current state for our ATL-TRANSIT schema as shown below. What values could be inserted for the two missing column values, RouteNum and ServiceDate,  without violating any of the FDs that have been defined for the ATL-TRANSIT schema. The domain for RouteNum is $\{10, 11, 12, 13, 14\}$ and the domain for ServiceDate is any valid date
+
+%% \begin{tabular}{|l|l|l|l|l|l|}\hline
+%% {\bf DriverSsn} & {\bf EmpName} & {\bf RouteNum} & {\bf BusId} & {\bf RouteDate} & {\bf ServiceDate} \\\hline
+%% 111-22-3333 & Brown & 11 & 101 & 07-07-2007 & 06-06-2006 \\\hline
+%% 333-33-4444 & Smith & & 202 & 07-11-2007 & 07-12-2005 \\\hline
+%% 222-44-5555 & Green & 12 & 101 & 07-12-2007 & \\\hline
+%% 333-33-4444 & Smith & 10 & 203 & 07-12-2007 & 08-22-2006 \\\hline
+%% \end{tabular}
+
+%% \begin{choices}
+%% \choice The values 11 for RouteNum and '07-12-2005' for ServiceDate
+%% \correctchoice The values 10 for RouteNum and '06-06-2006' for ServiceDate
+%% \choice The values 13 for RouteNum and '09-01-2006' for ServiceDate
+%% \choice None of the above
+%% \end{choices}
 
 \newpage
 

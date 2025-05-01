@@ -1,8 +1,6 @@
 ---
-title: "Lessons"
-draft: false
-layout: "course"
-courseName: "Professional Python"
+template: course
+title: Professional Python
 ---
 
-{{< course course="professional-python" >}}
+# Professional Python
