@@ -1,0 +1,423 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Final Review}
+\author{CS 4277: Deep Learning}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+
+\setcounter{section}{7} % So that next \section is 8
+\section{Measuring Performance}
+
+\question * Describe the three principle sources of errors that lead to poor generalization in machine learning and how they can be reduced. (8.2-8.3)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question * Describe the bias-variance tradeoff. (8.3.3)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question * Describe the double-descent phenomenon in deep neural networks. (8.4)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question What is the typical approach to choosing hyperparameters? (8.5)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+
+\newpage
+
+\section{Regularization}
+
+\question * What is the goal of regularization?
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question * What is the standard approach to explicit regularization? (9.1)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question Describe L2 regularization.  (9.1.2)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question How is implicit regularization accomplished by SGD? (9.2.2)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question List 3 heuristic methods of implicit regularization. (9.3)
+
+\begin{solution}[1in]
+early stopping
+ensembling
+dropout
+Adding noise
+\end{solution}
+
+\question How is implicit regularization accomplished by SGD? (9.2.2)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\newpage
+
+\question * Consider a model where the prior distribution over the parameters is a normal distribution with mean zero and variance $\sigma^2_\phi$ so that
+
+\[
+Pr(\phi) = \prod^J_{i=1} \text{Norm}_{\phi_j} (0, \sigma^2_\phi)
+\]
+
+where $j$ indexes the model parameters.  When we apply a prior, we maximize $\prod^I_{i=1} Pr(\bm{y}_i | \bm{x}_i, \phi) Pr(\phi)$.  The associated loss function of this model is equivalent to which regularization technique?
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\newpage
+
+\setcounter{section}{9} % So that next \section is 10
+\section{Convolutional Networks}
+
+\question Invariance (10.1)
+
+\begin{solution}[1in]
+$f(T(x)) = f(x)$, i.e., the output of the function $f(x)$ is the same regardless of the application of tranformaction $t(x)$ to the input.  For example, a CNN should classifiy a picture as containing a dog even if we translate the position of the dog within the image.
+\end{solution}
+
+\question Equivariance (10.1)
+
+\begin{solution}[1in]
+$f(T(x_i)) = T(f(x_i))$, i.e., the output of the tranformation of the function output is the same as applying the function to transformed input.  For example, per-pixel image segmentation should be equivariant to translation.
+\end{solution}
+
+\question * What properties of images make convolutional neural networks well-suited to them?
+
+\begin{solution}[1in]
+\begin{itemize}
+\item Images are high-dimensional, leading to a need to reduce the number of parameters compared to a fully-connected network.
+\item Nearby pixels are statistically related, so weights can be shared.
+\item The interpretation of an image is stable under geometric transformation, e.g., a picture of a dog is a picture of a dog no matter where in the image the dog is located.
+\end{itemize}
+\end{solution}
+
+
+\question * What is the motivation for convolutional layers in a neural network?
+
+\begin{solution}[1in]
+They use fewer parameters than fully connected layers, exploit the spatial relationships between nearby pixels, and don’t have to re-learn the interpretation of the pixels at every position.
+\end{solution}
+
+
+\question * Write out the equation for the 1D dilated convolution with a kernel size of three and a dilation rate of two, as pictured in Figure 10.3d (reproduced below).
+
+\begin{center}
+\includegraphics[height=1.5in]{./Conv1a.pdf}
+\end{center}
+
+
+\begin{solution}[1in]
+\[
+z_i = \omega_1 x_{i - 2} + \omega_2 x_i + \omega_3 x_{i+2}
+\]
+\end{solution}
+
+\newpage
+
+\question * T/F The convolution operation is equivariant to translation.
+
+\begin{solution}[1in]
+True
+\end{solution}
+
+\question T/F The convolution operation is invariant to translation.
+
+\begin{solution}[1in]
+False
+\end{solution}
+
+\question * Consider a 1D convolutional layer computed using a kernel size of three and has four channels.  How many weights and biases are needed for this convolutional layer?
+
+\begin{solution}[1in]
+$3 \times 4 \times 3 = 36$ weights and 4 biases
+\end{solution}
+
+\question Describe three methods of downsampling. (10.4.1)
+
+\begin{solution}[1in]
+\begin{enumerate}
+\item Applying a stride of two effectively downsamples by a factor of 2.
+\item Max pooling retains the maximum of $d \times d$ input values.
+\item Mean or average pooling averages the inputs.
+\end{enumerate}
+\end{solution}
+
+\question Describe four methods of upsampling. (10.4.2)
+
+\begin{solution}[1in]
+\begin{enumerate}
+\item Duplicate channels at each spatial position.  For example, duplicate each channel 4 times to double the size.
+\item Max unpooling.
+\item Bilinear interpolation.
+\item Transposed convolution using the transpose of the weight matrix for the downsampling method.
+\end{enumerate}
+\end{solution}
+
+\newpage
+
+\section{Residual Networks}
+
+\question * Describe the shattered gradients problem in deep networks. (11.1.1)
+
+\begin{solution}[1in]
+Adding more layers beyond a point (> 20ish layers) decreases performance because small changes in the input lead to completely different gradients.  In shallow network nearby gradients are correlated, but the correlatoin of nearby gradients quickly drops to zero for deep networks.
+\end{solution}
+
+\question * What is a residual, a.k.a., skip, connection? (11.2)
+
+\begin{solution}[.75in]
+A branch in the computational path whereby the input to each layer is added back to the output.
+\end{solution}
+
+\question What is the typical order of operations in a residual block? (11.2 - 11.2.1)
+
+\begin{solution}[1in]
+Typically the activation function is applied before the linear transformation, and the residual connection is from before the activation to after the linear transformation.  In practice residual blocks contain several such activation-transofrmation layers with a single residual connection from start to end.
+\end{solution}
+
+\question * Describe the problem of exploding gradients in residual networks. (11.3)
+
+\begin{solution}[1in]
+Recombining the input with the output in a residual connection doubles the variance, growing exponentially with the number of residual blocks.  With enough residual blocks, floating point precision can be exceeeded in the forward and backward passes of the backpropagation algorithm.
+\end{solution}
+
+\question * What is batch normalization and why is it used? (11.4)
+
+\begin{solution}[.75in]
+{\it Batch normalization} or {\it BatchNorm} shifts and rescales each activation $h$ so that its mean and variance across the batch $\mathcal{B}$ become values that are learned during training.  Batch normalization is used to stabilize the forward and backward passes of backpropagation in residual networks -- it counteracts the exploding gradients problem.
+\end{solution}
+
+\question What is the chief drawback of batch normalization? (11.4.1)
+
+\begin{solution}[.75in]
+Batch normalizatoin adds two extra parameters, $\gamma$ and $\sigma$, at each hidden unit and redundancy in the weights and biases, which decreases efficiency.
+\end{solution}
+
+\question What are the advantages of batch normalization? (11.4.1)
+
+\begin{solution}[1in]
+\begin{itemize}
+\item Stabilizes forward propagation.
+\item Enables higher learning rates due to smoother error surfaces.
+\item Implicitly regularizes by injecting noise into the training process.
+\end{itemize}
+\end{solution}
+
+\newpage
+
+\section{Transformers}
+
+\question * What are the two primary design goals acheived by dot-product self-attention in a language model? (12.2)
+
+\begin{solution}[1in]
+\begin{enumerate}
+\item Uses parameter sharing to cope with long input passages of differeing lengths.
+\item Contains connections between word representations that depend on the words themselves.
+\end{enumerate}
+\end{solution}
+
+\question * Why is positional encoding used in language models? (12.3.1)
+
+\begin{solution}[.5in]
+Self-attention by itself is equivariant to permuting word order, but word order is important in language.
+\end{solution}
+
+\question What are the typical internal sub-layers of a transformer layer? (12.4)
+
+\begin{solution}[1in]
+\includegraphics[height=1in]{./TransformerBlock.pdf}
+\end{solution}
+
+\question * Tokenization (12.5.1)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question * Embeddings (12.5.2)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question * Encoders, decoders. (12.6)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question * Pre-training and fine-tuning (12.6.1 - 12.6.2)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question * Auto-regressive language modeling (12.7.1)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question Few-shot learning (12.7.4)
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\newpage
+
+\section{Graph Neural Networks}
+
+\question Graph-level tasks (13.3.1)
+
+\begin{solution}[1in]
+Predict the temperature at which a molecule becomes liquid (a regression task) or whether a molecule is poisonous to human beings or not (a classification task).
+\end{solution}
+
+\question Node-level tasks (13.3.1)
+
+\begin{solution}[1in]
+The network assigns a label (classification) or one or more values (regression) to each node of the graph, using both the graph structure and node embeddings.
+\end{solution}
+
+\question Edge-prediction tasks (13.3.1)
+
+\begin{solution}[1in]
+The network predicts whether or not there should be an edge between nodes n and m. For example, in a social network, the network might predict the probability that two people should be friends.
+\end{solution}
+
+\question * What is the defining feature of graph convolutional neural networks? (13.4)
+
+\begin{solution}[1in]
+Graph convolutional neural networks update each node by aggregating information from nearby nodes.
+\end{solution}
+
+\question * What is meant by {\it relational inductive bias} in graph convolutional netwroks? (13.4)
+
+\begin{solution}[1in]
+They prioritize information from neighbors.
+\end{solution}
+
+\question How is parameter sharing accomplished in graph convolutional networks? (13.4.2)
+
+\begin{solution}[1in]
+By aggregating information from neighboring nodes by summing their node embeddings.
+\end{solution}
+
+\newpage
+
+\setcounter{section}{18}
+\section{Deep Reinforcement Learning}
+
+\question What is meant by {\it temporal credit assignment}?
+
+\begin{solution}[1in]
+In a sequence of actions reward is often received only at the end.  Temporal credit assignment is the problem of assigning value (credit) to intermediate steps that led to the final reward.
+\end{solution}
+
+\question What is the {\it Markov property} with respect to states $s_1, s_2, \dots, s_T$ where $t \in T$ are time steps?
+
+\begin{solution}[1in]
+Transintion probabilities between states are modeled by $Pr(s_{t+1} | s)$.  In other words, the next state depends only on the current state.  More generally, the next state is dependent on a bounded history of states.
+\end{solution}
+
+\question * What is the primary advantage of deep reinforcement learning over tabular reinforcement learning?
+
+\begin{solution}[1in]
+Compact representation of the action value function.  Tabular RL algorithms are only practical if the state-action space is relatively small.
+\end{solution}
+
+\end{questions}
+
+\end{document}
