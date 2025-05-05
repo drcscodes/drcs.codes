@@ -1,6 +1,6 @@
 \documentclass[addpoints]{exam}
 
-\usepackage{verbatim, multicol, tabularx,hyperref, tikz}
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
 \usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
 
 \lstset{
@@ -76,25 +76,32 @@
 \question * Describe the three principle sources of errors that lead to poor generalization in machine learning and how they can be reduced. (8.2-8.3)
 
 \begin{solution}[1in]
-
+\begin{enumerate}
+\item Noise may arise because there is a genuine stochastic element to the data generation process, because some of the data are mislabeled, or because there are further explanatory variables that were not observed.  Noise is usually a fundamental limitation that cannot be mitigated.
+\item Bias occurs when the model is not flexible enough to fit the true function perfectly, e.g., a single line cannot represent a sinusoidal function well.  We can reduce the bias by making the model more flexible, i.e., increasing its capacity.
+\item Variance occurs in the particular sample of the data we have in our training set.  Another training set drawn from the same underlying function may be different.  Variance may also arise from stochastic training algorithms that do not converge to the same model each time they are trained on the same data.  We can reduce variance by increasing the quantity of training data.
+\end{enumerate}
 \end{solution}
 
 \question * Describe the bias-variance tradeoff. (8.3.3)
 
 \begin{solution}[1in]
-
+For a fixed-size training data set, as the model capacity increases the the variance increases and the test error does not decrease, or even increases.  With more flexibility the model is able to fit the noise in the training data, leading to overfitting -- lower training error with plateauing or increasing test error.
 \end{solution}
+
+\newpage
 
 \question * Describe the double-descent phenomenon in deep neural networks. (8.4)
 
-\begin{solution}[1in]
-
+\begin{solution}[3in]
+\includegraphics[width=.5\textwidth]{./PerfDoubleDescent.pdf}
+Panels b, c and d show double descent.  For a fixed training/test data set and training procedure, as the model capacity increases the test error reaches nearly zero.  For some data, the test error also continues to decrease, but more slowly as the model capacity exceeds the training data.  But for may data sets, such as those with label noise, the test error increases as model capacity approaches the point where the capacity equals the number of training examples -- as the bias-variance tradeoff predicts.  But with increasing model capacity the test error begins to decrease again to below the original pre-overfitting test error.
 \end{solution}
 
 \question What is the typical approach to choosing hyperparameters? (8.5)
 
 \begin{solution}[1in]
-
+Empirically, by training with different hyperparameters and testing on a validation set, which is separate from the training and test data.
 \end{solution}
 
 
@@ -105,40 +112,43 @@
 \question * What is the goal of regularization?
 
 \begin{solution}[1in]
-
+To reduce the generalization gap between training and test performance.
 \end{solution}
 
 \question * What is the standard approach to explicit regularization? (9.1)
 
-\begin{solution}[1in]
-
+\begin{solution}[1.5in]
+Introducing terms to the loss function that favor certain parameter choices by penalizing other parameter choices.
 \end{solution}
 
 \question Describe L2 regularization.  (9.1.2)
 
 \begin{solution}[1in]
+The most common regularization term, the {\it L2 norm}, penalizes the sum of the squares of the parameter values:
 
+\[
+\hat{\phi} = \argmin_\phi \big( \sum^I_{i=1} \ell_i(\bm{x}_i, \bm{y}_i) + \lambda \sum_j \phi^2_j \big) \tag{Equation 9.5}
+\]
+
+
+This is also referred to as {\it Tikhonov regularization} or {\it ridge regression}, or (when applied to matrices) {\it Frobenius norm regularization}.
 \end{solution}
 
 \question How is implicit regularization accomplished by SGD? (9.2.2)
 
 \begin{solution}[1in]
-
+SGD adds noise to the gradient descent because the gradient will be different for different batches.  This has the effect of smoothing out the learned function.
 \end{solution}
 
 \question List 3 heuristic methods of implicit regularization. (9.3)
 
 \begin{solution}[1in]
-early stopping
-ensembling
-dropout
-Adding noise
-\end{solution}
-
-\question How is implicit regularization accomplished by SGD? (9.2.2)
-
-\begin{solution}[1in]
-
+\begin{enumerate}
+\item Early stopping: stopping training before reaching convergence.
+\item Ensembling: train several models and average their predictions.
+\item Dropout: drop a random subset of units to 0 at each iteration of SGD, which encourages smaller weights and reduces ``kinks'' in the learned function.
+\item Adding noise to the input data, which smooths out the learned function.  Extreme variant: {\it adversarial training}, which uses an optimization algorithm to find small perturbations in the input data that cause large changes to the output.
+\end{enumerate}
 \end{solution}
 
 \newpage
@@ -152,7 +162,7 @@ Pr(\phi) = \prod^J_{i=1} \text{Norm}_{\phi_j} (0, \sigma^2_\phi)
 where $j$ indexes the model parameters.  When we apply a prior, we maximize $\prod^I_{i=1} Pr(\bm{y}_i | \bm{x}_i, \phi) Pr(\phi)$.  The associated loss function of this model is equivalent to which regularization technique?
 
 \begin{solution}[1in]
-
+L2 norm: $\hat{\phi} = \argmin_\phi \big( \sum^I_{i=1} \ell_i(\bm{x}_i, \bm{y}_i) + \lambda \sum_j \phi^2_j \big)$
 \end{solution}
 
 \newpage
@@ -160,13 +170,13 @@ where $j$ indexes the model parameters.  When we apply a prior, we maximize $\pr
 \setcounter{section}{9} % So that next \section is 10
 \section{Convolutional Networks}
 
-\question Invariance (10.1)
+\question What is invariance? (10.1)
 
 \begin{solution}[1in]
 $f(T(x)) = f(x)$, i.e., the output of the function $f(x)$ is the same regardless of the application of tranformaction $t(x)$ to the input.  For example, a CNN should classifiy a picture as containing a dog even if we translate the position of the dog within the image.
 \end{solution}
 
-\question Equivariance (10.1)
+\question What is equivariance? (10.1)
 
 \begin{solution}[1in]
 $f(T(x_i)) = T(f(x_i))$, i.e., the output of the tranformation of the function output is the same as applying the function to transformed input.  For example, per-pixel image segmentation should be equivariant to translation.
@@ -189,6 +199,7 @@ $f(T(x_i)) = T(f(x_i))$, i.e., the output of the tranformation of the function o
 They use fewer parameters than fully connected layers, exploit the spatial relationships between nearby pixels, and don’t have to re-learn the interpretation of the pixels at every position.
 \end{solution}
 
+\newpage
 
 \question * Write out the equation for the 1D dilated convolution with a kernel size of three and a dilation rate of two, as pictured in Figure 10.3d (reproduced below).
 
@@ -203,17 +214,16 @@ z_i = \omega_1 x_{i - 2} + \omega_2 x_i + \omega_3 x_{i+2}
 \]
 \end{solution}
 
-\newpage
 
 \question * T/F The convolution operation is equivariant to translation.
 
-\begin{solution}[1in]
+\begin{solution}[.5inin]
 True
 \end{solution}
 
 \question T/F The convolution operation is invariant to translation.
 
-\begin{solution}[1in]
+\begin{solution}[.5inin]
 False
 \end{solution}
 
@@ -226,7 +236,7 @@ $3 \times 4 \times 3 = 36$ weights and 4 biases
 \question Describe three methods of downsampling. (10.4.1)
 
 \begin{solution}[1in]
-\begin{enumerate}
+\begin{enumerate}[nosep]
 \item Applying a stride of two effectively downsamples by a factor of 2.
 \item Max pooling retains the maximum of $d \times d$ input values.
 \item Mean or average pooling averages the inputs.
@@ -236,7 +246,7 @@ $3 \times 4 \times 3 = 36$ weights and 4 biases
 \question Describe four methods of upsampling. (10.4.2)
 
 \begin{solution}[1in]
-\begin{enumerate}
+\begin{enumerate}[nosep]
 \item Duplicate channels at each spatial position.  For example, duplicate each channel 4 times to double the size.
 \item Max unpooling.
 \item Bilinear interpolation.
@@ -278,20 +288,16 @@ Recombining the input with the output in a residual connection doubles the varia
 {\it Batch normalization} or {\it BatchNorm} shifts and rescales each activation $h$ so that its mean and variance across the batch $\mathcal{B}$ become values that are learned during training.  Batch normalization is used to stabilize the forward and backward passes of backpropagation in residual networks -- it counteracts the exploding gradients problem.
 \end{solution}
 
-\question What is the chief drawback of batch normalization? (11.4.1)
+\question What is the chief drawback of batch normalization and what are its advantages? (11.4.1)
 
 \begin{solution}[.75in]
-Batch normalizatoin adds two extra parameters, $\gamma$ and $\sigma$, at each hidden unit and redundancy in the weights and biases, which decreases efficiency.
-\end{solution}
-
-\question What are the advantages of batch normalization? (11.4.1)
-
-\begin{solution}[1in]
-\begin{itemize}
+Disadvantages: Batch normalizatoin adds two extra parameters, $\gamma$ and $\sigma$, at each hidden unit and redundancy in the weights and biases, which decreases efficiency.  Advantages:
+\begin{itemize}[nosep]
 \item Stabilizes forward propagation.
 \item Enables higher learning rates due to smoother error surfaces.
 \item Implicitly regularizes by injecting noise into the training process.
 \end{itemize}
+
 \end{solution}
 
 \newpage
@@ -309,49 +315,73 @@ Batch normalizatoin adds two extra parameters, $\gamma$ and $\sigma$, at each hi
 
 \question * Why is positional encoding used in language models? (12.3.1)
 
-\begin{solution}[.5in]
+\begin{solution}[1in]
 Self-attention by itself is equivariant to permuting word order, but word order is important in language.
 \end{solution}
 
 \question What are the typical internal sub-layers of a transformer layer? (12.4)
 
-\begin{solution}[1in]
+\begin{solution}[1.2in]
 \includegraphics[height=1in]{./TransformerBlock.pdf}
 \end{solution}
 
-\question * Tokenization (12.5.1)
+\question * What is Tokenization? (12.5.1)
 
 \begin{solution}[1in]
-
+Turning a sequence of input letters into a sequence of tokens from a vocabulary of possible tokens.  The vocabulary and the tokenization is learned, and tokens are typically {\it sub-word}, such as byte pairs.
 \end{solution}
 
 \question * Embeddings (12.5.2)
 
 \begin{solution}[1in]
-
+Every token in the vocabulary is mapped to a $D$-dimensional vector, typically 1024.  The mapping is learned.
 \end{solution}
 
-\question * Encoders, decoders. (12.6)
+\question * Encoders and decoders. (12.6)
 
 \begin{solution}[1in]
-
+An encoder transforms the text embeddings into a representation that can support a variety of tasks. A decoder predicts the next token in a sequence. Encoder-decoders are used in sequence-to-sequence tasks, where one text string is converted into another (e.g., machine translation).
 \end{solution}
 
-\question * Pre-training and fine-tuning (12.6.1 - 12.6.2)
+\newpage
+
+\question * Pre-training (12.6.1)
 
 \begin{solution}[1in]
+In the pre-training stage, the network is trained using self-supervision. This allows the use of enormous amounts of data without the need for manual labels. Typically the self-supervision task consists of predicting missing words from sentences from a large internet corpus.
+\end{solution}
 
+\question * Fine-tuning (12.6.2)
+
+\begin{solution}[1.2in]
+In the fine-tuning stage, the model parameters are adjusted to specialize the network to a particular task. An extra layer is appended onto the transformer network to convert the output vectors to the desired output format.  Tasks include text classification, word classification, text span prediction.  Fine-tuning is also used to refer to {\it transfer learning}, in which we train a model on a large general-purpose corpus, and then fine-tune it by continuing training with a specialized corpus or a specialized task setting like chat.
 \end{solution}
 
 \question * Auto-regressive language modeling (12.7.1)
 
 \begin{solution}[1in]
-
+The decoder uses its own output as it generates longer output sequences.  Formally, the model indirectly computes the joint probability of all tokens by predicting the conditional distributions $Pr(t_n | t_i, \dots, t_{n-1})$.
 \end{solution}
 
 \question Few-shot learning (12.7.4)
 
 \begin{solution}[1in]
+Few-shot learning is a type of supervised learning for small training sets with a very small example-to-class ratio.  Rather than a traditional training set, few-shot learning algorithms use a {\it support set}, with very few examples per class.  Some people argue that LLMs are capable of few-shot learning by providing a support set in a prompt.  For example:
+
+\begin{quote}
+Poor English input: I eated the purple berries.\\
+Good English output: I ate the purple berries.\\
+Poor English input: Thank you for picking me as your designer. I’d appreciate it.\\
+Good English output: Thank you for choosing me as your designer. I appreciate it.\\
+Poor English input: The mentioned changes have done. or I did the alteration that you\\
+requested. or I changed things you wanted and did the modifications.\\
+Good English output: The requested changes have been made. or I made the alteration that\\
+you requested. or I changed things you wanted and made the modifications.\\
+Poor English input: I’d be more than happy to work with you in another project.\\
+Good English output: {\it I’d be more than happy to work with you on another project.}
+\end{quote}
+
+All text up to the italicized text in the last line is provided in the prompt, and the model generates the italicized text in repsponse after having ``learned'' from the few examples in the prompt.
 
 \end{solution}
 
@@ -383,7 +413,7 @@ The network predicts whether or not there should be an edge between nodes n and 
 Graph convolutional neural networks update each node by aggregating information from nearby nodes.
 \end{solution}
 
-\question * What is meant by {\it relational inductive bias} in graph convolutional netwroks? (13.4)
+\question * What is meant by {\it relational inductive bias} in graph convolutional networks? (13.4)
 
 \begin{solution}[1in]
 They prioritize information from neighbors.
