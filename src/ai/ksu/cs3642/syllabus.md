@@ -8,21 +8,21 @@ title: Syllabus
 **SYLLABUS**<br/>
 **College of Computing and Software Engineering**<br/>
 **Department of Computer Science**<br/>
-**{{course["number"]}}: {{course["title"]}}**<br/>
-**{{semester_info["academic_term"]}}**<br/>
+**CS 3642: Artificial Intelligence**<br/>
+**Fall 2025**<br/>
 </center>
 
 ## Course Information
 <hr style="color: #ffc629">
 
 
-Class meeting times: {{semester_info["meeting_times"]}}
+Class meeting times: Mondays and Wednesdays, Sec 01: 15:30-16:45, Sec 02: 17:00-18:15
 
-Modality: {{semester_info["modality"]}}
+Modality: Traditional
 
-Location: {{semester_info["room"]}}
+Location: Sec 01: Atrium 1031, Sec 02: Engineering Technology Center 104
 
-Syllabus and detailed schedule is posted on course web site: [{{course["url"]}}]({{course["url"]}}).
+Syllabus and detailed schedule is posted on course web site: [https://drcs.codes/ai/ksu/cs3642/schedule.html](https://drcs.codes/ai/ksu/cs3642/schedule.html).
 
 ## Instructor Information
 <hr style="color: #ffc629">
@@ -36,80 +36,82 @@ Office Location: Norton Hall Room 330
 
 Office phone: N/A
 
-Office Hours: {{semester_info["office_hours"]}}
+Office Hours: Thursdays, 15:30-17:30 in R2-330 (during January in Room J123)
 
 Preferred method of communication: E-mail
 
 ## Course Description
 <hr style="color: #ffc629">
 
-{{course["description"]}}
+The primary objective of this course is to provide a introduction to the basic principles and applications of Artificial Intelligence. It covers the basic areas of artificial intelligence including problem solving, knowledge representation, reasoning, decision making, planning, perception and action, and learning – and their applications. Students will design and implement key components of intelligent agents of modern complexity and evaluate their performance. Students are expected to develop familiarity with current research problems, research methods, and the research literature in AI.
 
-{% if course["prerequisites"] %}
+
 Prerequisites:
 
-{% for item in course["prerequisites"] %}
-- {{item}}
-{% endfor %}
-{% endif %}
 
-{% if course["corequisites"] %}
-Corequisites:
+- CS 3305 Data Structures
 
-{% for item in course["corequisites"] %}
-- {{item}}
-{% endfor %}
-{% endif %}
 
-Credit Hours: {{course["credit_hours"]}}
+
+
+
+Credit Hours: 3-0-3
 
 ## Course Materials
 <hr style="color: #ffc629">
 
 Required Texts:
 
-{% for material in course["required_materials"] %}
-- {{material}}
-{% endfor %}
 
-{% if course["recommended_materials"] %}
+- AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
+
+
+
 Recommended Texts:
 
-{% for material in course["recommended_materials"] %}
-- {{material}}
-{% endfor %}
-{% endif %}
 
-{% if course["technology_requirements"] %}
-Technology requirements:
+- AICA: Artificial Intelligence: Foundations of Computational Agents, 3ed, by David Poole and Alan Mackworth, [https://artint.info/3e/html/ArtInt3e.html](https://artint.info/3e/html/ArtInt3e.html)
 
-{% for requirement in course["technology_requirements"] %}
-- {{requirement}}
-{% endfor %}
-{% endif %}
+- AIPP: Artificial Intelligence: Principles and Practice, by George Luger, [https://link.springer.com/book/10.1007/978-3-031-57437-5](https://link.springer.com/book/10.1007/978-3-031-57437-5)
+
+
+
+
 
 ## Course Learning Outcomes
 <hr style="color: #ffc629">
 
 At the end of the course, students should be able to:
 
-{% for outcome in course["learning_outcomes"] %}
-{{loop.index}}. {{outcome}}
-{% endfor %}
+
+1. Demonstrate understanding knowledge of AI knowledge representation
+
+2. Demonstrate understanding of advanced search and reasoning algorithms
+
+3. Design an AI system with Python, Lisp or Prolog for problem solving
+
 
 ## Course Requirements and Assignments
 <hr style="color: #ffc629">
 
-{% for assignment in course["assignments"] %}
-- {{assignment}}
-{% endfor %}
+
+- 3-5 Programming assignments (PA)
+
+- Midterm Exam
+
+- Final Exam
+
 
 ## Evaluation and Grading Policies
 <hr style="color: #ffc629">
 
-{% for item in course["grading"] %}
-- {{item}}
-{% endfor %}
+
+- Programming assignments: 30%
+
+- Research project: 10%
+
+- Exams: 60%
+
 
 Each assignment will be graded on a 100 point scale which you may consider a percentage with respect to the grading scale below.  Some assignments may have more than 100 points, in which case the points in excess of 100 are "extra credit."
 
@@ -144,7 +146,7 @@ Class attendance is required and very important for successful completion of the
 
 ### Email Policy
 
-Students must use their official KSU email address and put the course number, {{course["number"]}}, in the subject line of the email when sending email pertaining to the course.
+Students must use their official KSU email address and put the course number, CS 3642, in the subject line of the email when sending email pertaining to the course.
 
 ### Classroom Behavior
 
@@ -194,17 +196,85 @@ Federal, BOR, & KSU Required Syllabus Policies and Student Resources: [https://w
 ## Course Schedule
 <hr style="color: #ffc629">
 
-Detailed course schedule: [{{course["url"]}}]({{course["url"]}}).
+Detailed course schedule: [https://drcs.codes/ai/ksu/cs3642/schedule.html](https://drcs.codes/ai/ksu/cs3642/schedule.html).
 
 Weekly Summary:
 
 <table class="schedule">
 <tr>
-<th>{{schedule[0][0]}}</th><th>{{schedule[0][1]}}</th><th>{{schedule[0][2]}}</th><th>{{schedule[0][3]}}</th>
+<th>Week</th><th>Content Covered</th><th>Assignments</th><th>Exams</th>
 </tr>
-{% for line in schedule[1:] %}
+
 <tr>
-<td>{{line[0]}}</td><td>{{line[1]}}</td><td>{{line[2]}}</td><td>{{line[3]}}</td>
+<td>Week 1: 08-18,08-20</td><td>Introduction to AI,Intelligent Agents</td><td>Assigned: PA0</td><td></td>
 </tr>
-{% endfor %}
+
+<tr>
+<td>Week 2: 08-25,08-27</td><td>Problem Solving by Searching,Heuristic Search</td><td>Due: PA0,Assigned: PA1</td><td></td>
+</tr>
+
+<tr>
+<td>Week 3: 09-01,09-03</td><td>Labor Day - No Class,Local Search</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 4: 09-08,09-10</td><td>Adversarial Search,Constraint Satisfaction</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 5: 09-15,09-17</td><td>Propositional Logic,Logical Agents</td><td>Due: PA1,Assigned: PA2</td><td></td>
+</tr>
+
+<tr>
+<td>Week 6: 09-22,09-24</td><td>First Order Logic,Knowledge Representation</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 7: 09-29,10-01</td><td>Classical Planning,Planning and Acting</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 8: 10-06,10-08</td><td>Midterm Review</td><td>Due: PA2</td><td>Midterm Exam</td>
+</tr>
+
+<tr>
+<td>Week 9: 10-13,10-15</td><td>Quantifying Uncertainty,Bayesian Networks</td><td>Assigned: PA3</td><td></td>
+</tr>
+
+<tr>
+<td>Week 10: 10-20,10-22</td><td>Bayesian Network Inference,Probabilistic Temporal Models</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 11: 10-27,10-29</td><td>State Estimation,Probabilistic Programming</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 12: 11-03,11-05</td><td>Simple Decisions,Decision Information</td><td>Due: PA3,Assigned: PA4</td><td></td>
+</tr>
+
+<tr>
+<td>Week 13: 11-10,11-12</td><td>Complex Decisions,Bandits POMDPs</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 14: 11-17,11-19</td><td>Multi-Agent Systems,Collective Decisions</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 15: 11-24,11-26</td><td>Thanksgiving - No Class</td><td></td><td></td>
+</tr>
+
+<tr>
+<td>Week 16: 12-01,12-03</td><td>Decision Trees,Linear and Nonparametric Models</td><td>Due: PA4,Assigned: PA5</td><td></td>
+</tr>
+
+<tr>
+<td>Week 17: 12-08,12-10</td><td>Final Review</td><td>Due: PA5,Sec 02: 18:00-20:00</td><td>Final Exam</td>
+</tr>
+
+<tr>
+<td>Week 18: 12-15</td><td></td><td>Sec 01: 15:30-17:30</td><td>Final Exam</td>
+</tr>
+
 </table>
