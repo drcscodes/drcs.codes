@@ -32,11 +32,11 @@ Name: Christopher Simpkins
 
 Email: christoper.simpkins@kennesaw.edu
 
-Office Location: Norton Hall Room 330
+Office Location: Norton Hall Room 328
 
 Office phone: N/A
 
-Office Hours: Thursdays, 15:30-17:30 in R2-330 (during January in Room J123)
+Office Hours: Thursdays, 13:30-15:30 in R2-328 ($3=\log_2 8$)
 
 Preferred method of communication: E-mail
 
