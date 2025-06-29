@@ -1,6 +1,6 @@
 ---
 template: course
-title: CS 3642 Resources
+title: CS 8375 Resources
 ---
 
 Course Materials

@@ -1,0 +1,37 @@
+{
+    "url": "https://drcs.codes/ai/ksu/cs8375/schedule.html",
+    "number": "CS 8375",
+    "title": "Advanced Artificial Intelligence",
+    "description": "This course is about the theory and practice of Artificial Intelligence (AI). We will study modern AI techniques for computers to represent task-relevant information and make intelligent (i.e. satisficing or optimal) decisions towards the achievement of goals. We will investigate questions about AI systems such as how to represent knowledge, how to effectively generate appropriate sequences of actions and how to search among alternatives to find optimal or near-optimal solutions. We expect that by the end of the course students will have a thorough understanding of the algorithmic foundations of AI and how automated agents learn. Other topics will include intelligent agents, natural language processing, computer vision, machine learning including supervised, unsupervised and reinforcement learning, artificial neural networks and nature-inspired algorithms. The course includes literature search of current advances in artificial intelligence and their applications, and reading of research papers and presentation of research findings.",
+    "credit_hours": "3-0-3",
+    "learning_outcomes": [
+        "Demonstrate understanding knowledge of AI knowledge representation",
+        "Demonstrate understanding of advanced search and reasoning algorithms",
+        "Design an AI system with Python, Lisp or Prolog for problem solving"
+    ],
+    "grading": [
+        "Programming assignments: 30%",
+        "Research project: 10%",
+        "Exams: 60%"
+    ],
+    "assignments": [
+        "3-5 Programming assignments (PA)",
+        "Midterm Exam",
+        "Final Exam"
+    ],
+    "prerequisites": [
+        "Admission to Computer Science Ph.D., Computer Science M.S. Program, or Analytics and Data Science Ph.D. Program"
+    ],
+    "corequisites": [
+    ],
+    "required_materials": [
+        "AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)"
+    ],
+    "recommended_materials": [
+        "AICA: Artificial Intelligence: Foundations of Computational Agents, 3ed, by David Poole and Alan Mackworth, [https://artint.info/3e/html/ArtInt3e.html](https://artint.info/3e/html/ArtInt3e.html)",
+        "AIPP: Artificial Intelligence: Principles and Practice, by George Luger, [https://link.springer.com/book/10.1007/978-3-031-57437-5](https://link.springer.com/book/10.1007/978-3-031-57437-5)"
+    ],
+    "technology_requirements": [
+    ],
+    "lessons": "../../lessons.json"
+}

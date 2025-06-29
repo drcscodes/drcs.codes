@@ -1,0 +1,28 @@
+{
+    "academic_term": "Fall 2025",
+    "first_day": "2025-08-18",
+    "last_day": "2025-12-08",
+    "days": "MW",
+    "modality": "Traditional",
+    "meeting_times": "Mondays and Wednesdays, 17:00-18:15",
+    "room": "Atrium 1224",
+    "office_hours": "Thursdays, 13:30-15:30 in R2-328 ($3=\\log_2 8$)",
+    "breaks": {
+        "2025-09-01": "Labor Day",
+        "2025-11-24": "Thanksgiving",
+        "2025-11-25": "Thanksgiving",
+        "2025-11-26": "Thanksgiving",
+        "2025-11-27": "Thanksgiving",
+        "2025-11-28": "Thanksgiving"
+    },
+    "reminders": {
+        "2025-08-22": "Registration Ends,Payment Deadline",
+        "2025-08-29": "Financial Aid Disbursement",
+        "2025-09-02": "Graduation Petition Deadline, Unpaid Course Deletion",
+        "2025-10-24": "Midterm Grades Due",
+        "2025-10-31": "Withdrawal Deadline"
+    },
+    "final_exam": {
+        "2025-12-10": "18:00-20:00"
+    }
+}
