@@ -3,6 +3,8 @@ template: course
 title: CS 8375 Resources
 ---
 
+# Resources
+
 Course Materials
 
 - [AIMA Exercises](https://aimacode.github.io/aima-exercises/)
@@ -37,6 +39,6 @@ Guides
 
 Miscellaneous
 
-- [[Survival Guide for Unix Newbies][https://matt.might.net/articles/basic-unix/]]
+- [Survival Guide for Unix Newbies](https://matt.might.net/articles/basic-unix/)
 - [Heilmeier Catechism](https://www.darpa.mil/about/heilmeier-catechism)
 - [Which GPU(s) to Get for Deep Learning](https://timdettmers.com/2023/01/30/which-gpu-for-deep-learning/)

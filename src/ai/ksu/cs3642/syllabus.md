@@ -16,11 +16,13 @@ title: Syllabus
 <hr style="color: #ffc629">
 
 
-Class meeting times: Mondays and Wednesdays, Sec 01: 15:30-16:45, Sec 02: 17:00-18:15
+CRN: 85264
+
+Class meeting times: Mondays and Wednesdays, Sec 01: 15:30-16:45
 
 Modality: Traditional
 
-Location: Sec 01: Atrium 1031, Sec 02: Engineering Technology Center 104
+Location: Sec 01: Atrium 1031
 
 Syllabus and detailed schedule is posted on course web site: [https://drcs.codes/ai/ksu/cs3642/schedule.html](https://drcs.codes/ai/ksu/cs3642/schedule.html).
 
@@ -270,11 +272,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 17: 12-08,12-10</td><td>Final Review</td><td>Due: PA5,Sec 02: 18:00-20:00</td><td>Final Exam</td>
-</tr>
-
-<tr>
-<td>Week 18: 12-15</td><td></td><td>Sec 01: 15:30-17:30</td><td>Final Exam</td>
+<td>Week 17: 12-08,12-15</td><td>Final Review</td><td>Due: PA5,Sec 01: 15:30-17:30</td><td>Final Exam</td>
 </tr>
 
 </table>
