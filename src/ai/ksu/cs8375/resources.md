@@ -7,6 +7,7 @@ title: CS 8375 Resources
 
 Course Materials
 
+- [Semester Project](project.html)
 - [AIMA Exercises](https://aimacode.github.io/aima-exercises/)
 - [Research Papers](papers.html), [.bib file](ai.bib)
 - [ACM Computing Classification System](https://www.acm.org/publications/class-2012)
