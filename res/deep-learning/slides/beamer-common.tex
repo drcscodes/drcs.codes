@@ -1,8 +1,17 @@
 \usepackage{verbatim, multicol, tabularx,}
 \usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage{framed}
+\usepackage{xcolor}
 
 % Use article math fonts instead of ugly sans-serif math font
 \usefonttheme[onlymath]{serif}
+
+\usepackage{tikz,pgfplots}
+\let\oldquote=\quote
+\let\endoldquote=\endquote
+\colorlet{shadecolor}{cyan!15}
+\renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+
 
 \DeclareMathOperator*{\argmin}{arg\!min}
 \DeclareMathOperator*{\argmax}{arg\!max}

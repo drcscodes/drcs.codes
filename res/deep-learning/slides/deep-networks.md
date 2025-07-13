@@ -10,14 +10,6 @@ header-includes:
 - |
   ```{=latex}
   \input{beamer-common}
-  %\titlegraphic{\includegraphics[width = 1in]{chris-simpkins-headshot-320px}}
-  \usepackage{framed}
-  \usepackage{xcolor}
-  \usepackage{tikz,pgfplots}
-  \let\oldquote=\quote
-  \let\endoldquote=\endquote
-  \colorlet{shadecolor}{cyan!15}
-  \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
   ```
 ---
 
@@ -320,7 +312,7 @@ Deep nets seem to generalize better than shallow nets but require more training.
 
 ## Closing Thoughts
 
-We now have the terminology and knowledge of the feed-forward operation of deep neural networks.  FOr the rest of the course we will
+We now have the terminology and knowledge of the feed-forward operation of deep neural networks.  For the rest of the course we will
 
 - learn how deep networks are trained, and
 - survey the major deep network architectures for a range of applications.
