@@ -214,7 +214,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 2: 08-25,08-27</td><td>Problem Solving,Heuristic Search</td><td>Assigned: PA1</td><td></td>
+<td>Week 2: 08-25,08-27</td><td>Problem Solving,Heuristic Search</td><td>Due: PA0,Assigned: PA1</td><td></td>
 </tr>
 
 <tr>

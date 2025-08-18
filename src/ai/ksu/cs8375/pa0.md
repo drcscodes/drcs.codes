@@ -17,7 +17,7 @@ This assignment gets you started with the basic tools you will need to complete 
 
 ## Problem Description
 
-You are a CS 3642 student who needs to install Python, configure it for command line use, and learn how to use a programmer's text editor to create and edit Python source code.
+You are a CS 8375 student who needs to install Python, configure it for command line use, and learn how to use a programmer's text editor to create and edit Python source code.
 
 ## Solution Description
 
@@ -25,13 +25,13 @@ You are a CS 3642 student who needs to install Python, configure it for command 
 
 - Download and install Python 3 on your computer and configure your sytem so you can run Python from the command line. See the instructions on the class web site's Resources page.
 - Download and install a programmer's text editor.  You may end up trying out several over the course of the semester before you settle on one. See the Text Editors guide on the class web site's Resources page.
-- Create a directory for your CS 3642 coursework somewhere on your hard disk.  We suggest `cs3642`.  Note: avoid putting spaces in file and directory names, since doing so complicates the use of some command line tools.
-- Create a `pa0` subdirectory of your CS 3642 coursework directory for your PA0 solution.
+- Create a directory for your CS 8375 coursework somewhere on your hard disk.  We suggest `cs8375`.  Note: avoid putting spaces in file and directory names, since doing so complicates the use of some command line tools.
+- Create a `pa0` subdirectory of your CS 8375 coursework directory for your PA0 solution.
 
 On Unix/BASH you can create both of these directories at once with
 
 ```sh
-$ mkdir -p cs3642/pa0
+$ mkdir -p cs8375/pa0
 ```
 
 Windows uses the same commands for directory navigation and creation, `cd` and `mkdir`, but Windows's `mkdir` command doesn't have the `-p` option.

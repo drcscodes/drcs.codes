@@ -98,7 +98,10 @@ Artificial
 
 Intelligence
 
-- Problem solving, inference, decision making, learning.
+- Problem solving
+- Inference
+- Decision making
+- Learning
 
 Rationality
 
@@ -123,10 +126,6 @@ Mode & Acting   & Acting humanly & Acting rationally \\
 \end{tabular}
 ```
 
-> Thinking is nothing more than acting in an imagined space.
->
-> -- Konrad Lorenz via Bernhard Schölkopf
-
 ## Acting humanly
 
 Turing test
@@ -143,21 +142,26 @@ Total Turing test
 
 Nobody cares about Turing tests.
 
-## Thinking humanly
+## Rationality
 
-Cognitive modeling
+"Doing the right thing."
 
-## Acting rationally
+- Acting rationally - goal maximizing behavior
 
-Rational agent
+    - Choosing actions which reach goals with minimal cost
+    - Choosing actions which maximize a payoff relative to other agents
+    - Choosing actions which maximize long-term expected reward
 
-## Thinking rationally
+- Thinking rationally - "laws of thought"
 
-"Laws of thought"
+    - Logic
+    - Probabilistic inference
 
-## Beneficial machines
 
-Value alignment
+> Thinking is nothing more than acting in an imagined space.
+>
+> -- Konrad Lorenz via Bernhard Schölkopf
+
 
 ## Foundations of AI
 
@@ -208,24 +212,31 @@ How do brains process information?
 
 How do humans and animals think and act?
 
-- Acting humanly
+- Cognitive modeling
+- Behaviorism
+
+    - Operant conditioning
+    - "Reinforcement learning"
 
 ## Computer Engineering
 
 How can we build an efficient computer?
 
-- HPC
+- High performance computing
+
+    - Today's LLMs take years of compute time to train.
+
 - Quantum computing
 
 ## Control theory and cybernetics
 
 How can artifacts operate under their own control?
 
-## Linguistics
+![](Power-Relay-6.jpg){height="50%"}
 
-How does language relate to thought?
+[DARPA POWER Program](https://www.darpa.mil/research/programs/power)
 
-## History of AI
+## Impact of AI
 
 Turing award winners:
 
@@ -235,134 +246,81 @@ Turing award winners:
 - Ed Feigenbaum and Raj Reddy (1994)
 - Judea Pearl (1994)
 - Yoshua Bengio, Geoffrey Hinton, and Yann LeCun (2019)
+- Rich Sutton and Andrew Barto (2024)
 
-## MucCulloch, Pitts, Hebb (1943-1949)
+AI lament: once an AI problem is solved, it's no longer considered AI.
 
-- Perceptrons
-- Hebbian learning
+## History of AI
 
-## 1956 Dartmouth AI Workshop
+- MucCulloch, Pitts, Hebb (1943-1949)
 
-Organized by John McCarthy, Marvin Minsky, Claude Shannon, Nathaniel Rochester
+    - Perceptrons
+    - Hebbian learning
 
-Attendees:
+- 1956 Dartmouth AI Workshop
 
-Allen Newell and Herbert Simon from Carnegie Tech, Trenchard More from Princeton, Arthur Samuel from IBM, and Ray Solomonoff and Oliver Selfridge from MIT
+    - Organized by John McCarthy, Marvin Minsky, Claude Shannon, Nathaniel Rochester
+    - Attendees: Allen Newell and Herbert Simon from Carnegie Tech, Trenchard More from Princeton, Arthur Samuel from IBM, and Ray Solomonoff and Oliver Selfridge from MIT
+    - Logic Theorist
 
-Logic Theorist
+- Symbolic AI (1952-1969)
 
-## Symbolic AI (1952-1969)
+    - Lisp
 
-- Lisp
+- First AI Winter (1966-1973)
 
-## First AI Winter (1966-1973)
+    - Lighthill report (Lighthill, 1973) -- British government ended most AI funding
 
-Lighthill report (Lighthill, 1973) -- British government ended most AI funding
+- Expert Systems (1969-1986)
 
-## Expert Systems (1969-1986)
+- Second AI Winter (1986)
 
-DENDRAL
-MYCIN
-SHRDLU
-Frames
+    - Experts systems failed to deliver on their inventors' promises.
+    - Knowledge acquisition bottleneck.
+    - Adaptability, brittleness.
 
-## Second AI Winter (1986)
+## Modern AI
 
-Experts systems failed to deliver on their inventors' promises.
+- Return of neural networks (1986-present)
 
-Knowledge acquisition bottleneck.
+    - Symolism vs Connectionism
+    - Geoff Hinton, et. al.
 
-Adaptability, brittleness.
+- Probabilistic reasoning and machine learning (1987-present)
 
-## Return of neural networks (1986-present)
+    - Neats vs scruffies
+    - "Physics envy"
 
-Symolism vs Connectionism
+- Big data (2001-present)
 
-Geoff Hinton, et. al.
+    - Large data sets -- don't fit on a single machine
 
-## Probabilistic reasoning and machine learning (1987-present)
+- Deep learning (2011-present)
 
-Neats vs scruffies
+    - You may have heard of it?
 
-## Big data (2001-present)
+## Future of AI
 
-Large data sets -- don't fit on a single machine
+:::: {.columns}
+::: {.column width="30%" valign="top" halign="center"}
 
-## Deep learning (2011-present)
+![](andrew-barto.jpg){height="30%}
 
-CNN
-DRL (AlphaGo)
+[Andrew Barto](https://people.cs.umass.edu/~barto/)
 
-## The State of the Art
+:::
+::: {.column width="30%" valign="top"}
 
-AI Index Highlights from 2019:
+![](rich-sutton.jpg){height="30%}
+[Rich Sutton](http://incompleteideas.net/)
 
-- Publications: AI papers increased 20-fold between 2010 and 2019 to about 20,000 a
-year. The most popular category was machine learning. (Machine learning papers
-in arXiv.org doubled every year from 2009 to 2017.) Computer vision and natural
-language processing were the next most popular.
-- Sentiment: About 70% of news articles on AI are neutral, but articles with positive tone
-increased from 12% in 2016 to 30% in 2018. The most common issues are ethical: data
-privacy and algorithm bias.
-- Students: Course enrollment increased 5-fold in the U.S. and 16-fold internationally
-from a 2010 baseline. AI is the most popular specialization in Computer Science.
-- Diversity: AI Professors worldwide are about 80% male, 20% female. Similar numbers
-hold for Ph.D. students and industry hires.
-- Conferences: Attendance at NeurIPS increased 800% since 2012 to 13,500 attendees.
-Other conferences are seeing annual growth of about 30%.
-- Industry: AI startups in the U.S. increased 20-fold to over 800.
-- Internationalization: China publishes more papers per year than the U.S. and about
-as many as all of Europe. However, in citation-weighted impact, U.S. authors are 50%
-ahead of Chinese authors. Singapore, Brazil, Australia, Canada, and India are the fastest
-growing countries in terms of the number of AI hires.
-- Vision: Error rates for object detection (as achieved in LSVRC, the Large-Scale Visual
-Recognition Challenge) improved from 28% in 2010 to 2% in 2017, exceeding human
-performance. Accuracy on open-ended visual question answering (VQA) improved
-from 55% to 68% since 2015, but lags behind human performance at 83%.
-- Speed: Training time for the image recognition task dropped by a factor of 100 in just
-the past two years. The amount of computing power used in top AI applications is
-doubling every 3.4 months.
-- Language: Accuracy on question answering, as measured by F1 score on the Stanford
-Question Answering Dataset (SQUAD), increased from 60 to 95 from 2015 to 2019; on
-the SQUAD 2 variant, progress was faster, going from 62 to 90 in just one year. Both
-scores exceed human-level performance.
-- Human benchmarks: By 2019, AI systems had reportedly met or exceeded human-
-level performance in chess, Go, poker, Pac-Man, Jeopardy!, ImageNet object detection,
-speech recognition in a limited domain, Chinese-to-English translation in a restricted
-domain, Quake III, Dota 2, StarCraft II, various Atari games, skin cancer detection,
-prostate cancer detection, protein folding, and diabetic retinopathy diagnosis.
-Unfortunately, the AI Index has been corrupted by LLM hysteria and is mostly slop now.  For example, they use "AI models" to refer to AI systems in general and what they really mean is "LLM."
+:::
+::: {.column width="30%" valign="top"}
 
-See https://hai.stanford.edu/ai-index/2025-ai-index-report
+![](david-silver.jpg){height="30%}
+[David Silver](https://davidstarsilver.wordpress.com/)
 
-## Robotic Vehicles
+:::
+::::
 
-
-## Legged Locomotion
-
-
-
-## Autonomous planning and scheduling
-
-
-
-## Machine Translation
-
-## Speech Recognition
-
-## Recommendations
-
-## Game Playing
-
-## Image Understanding
-
-## Medicine
-
-## Climate Science
-
-
-
-## Cambrian Intelligence
-
-Rodney Brooks
-https://www.amazon.com/Cambrian-Intelligence-Early-History-New/dp/0262522632/
+[The Era of Experience](https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf)

@@ -88,7 +88,7 @@ Just as an operating system command shell searches for executable programs by se
 - Print the contents of `sys.path` again and note the difference.
 - Deactivate your `test` environment.
   - You can delete the scratch directory.
-- In your OS command shell, repeat the steps above, except for the first step of creating an environment, for the `venv` directory created by a PyCharm project.
+- In your OS command shell, repeat the steps above, except for the first step of creating an environment, or the `venv` directory created by a PyCharm project.
 - In PyCharm with a Python project open, open a terminal and note the automatic loading of its `venv` environment.
 
 ## `requirements.txt`
@@ -99,7 +99,7 @@ In your Python projects you should include a `requirements.txt` file in the root
 python3 -m pip freeze > requirements.txt
 ```
 
-Be sure to re-run that command and update in Git whenever you add new dependencies.  When another programmer clones your project's repository, they can create a virtual environment and install all the required dependencies into it with: 
+Be sure to re-run that command and update in Git whenever you add new dependencies.  When another programmer clones your project's repository, they can create a virtual environment and install all the required dependencies into it with:
 
 ```shell
 python3 -m pip install -r requirements.txt
