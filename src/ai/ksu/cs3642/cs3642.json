@@ -10,11 +10,12 @@
         "Design an AI system with Python, Lisp or Prolog for problem solving"
     ],
     "grading": [
-        "Programming assignments: 30%",
-        "Research project: 10%",
+        "Problem Sets: 20%",
+        "Programming assignments: 20%",
         "Exams: 60%"
     ],
     "assignments": [
+        "3-5 Problem sets (PS)",
         "3-5 Programming assignments (PA)",
         "Midterm Exam",
         "Final Exam"
@@ -25,7 +26,7 @@
     "corequisites": [
     ],
     "required_materials": [
-        "AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)"
+        "AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/).  US or Global Edition"
     ],
     "recommended_materials": [
         "AICA: Artificial Intelligence: Foundations of Computational Agents, 3ed, by David Poole and Alan Mackworth, [https://artint.info/3e/html/ArtInt3e.html](https://artint.info/3e/html/ArtInt3e.html)",

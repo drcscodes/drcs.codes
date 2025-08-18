@@ -10,11 +10,13 @@
         "Design an AI system with Python, Lisp or Prolog for problem solving"
     ],
     "grading": [
-        "Programming assignments: 30%",
-        "Research project: 10%",
+        "Problem sets: 10%",
+        "Programming assignments: 10%",
+        "Research project: 20%",
         "Exams: 60%"
     ],
     "assignments": [
+        "3-5 Problem sets (PS)",
         "3-5 Programming assignments (PA)",
         "Midterm Exam",
         "Final Exam"

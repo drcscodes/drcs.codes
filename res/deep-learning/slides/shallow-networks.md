@@ -10,14 +10,6 @@ header-includes:
 - |
   ```{=latex}
   \input{beamer-common}
-  %\titlegraphic{\includegraphics[width = 1in]{chris-simpkins-headshot-320px}}
-  \usepackage{framed}
-  \usepackage{xcolor}
-  \usepackage{tikz,pgfplots}
-  \let\oldquote=\quote
-  \let\endoldquote=\endquote
-  \colorlet{shadecolor}{cyan!15}
-  \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
   ```
 ---
 

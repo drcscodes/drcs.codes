@@ -22,7 +22,7 @@ Class meeting times: Mondays and Wednesdays, Sec 01: 15:30-16:45
 
 Modality: Traditional
 
-Location: Sec 01: Atrium 1031
+Location: Sec 01: Engineering Technology Center 105
 
 Syllabus and detailed schedule is posted on course web site: [https://drcs.codes/ai/ksu/cs3642/schedule.html](https://drcs.codes/ai/ksu/cs3642/schedule.html).
 
@@ -65,7 +65,7 @@ Credit Hours: 3-0-3
 Required Texts:
 
 
-- AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
+- AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/).  US or Global Edition
 
 
 
@@ -97,6 +97,8 @@ At the end of the course, students should be able to:
 <hr style="color: #ffc629">
 
 
+- 3-5 Problem sets (PS)
+
 - 3-5 Programming assignments (PA)
 
 - Midterm Exam
@@ -108,9 +110,9 @@ At the end of the course, students should be able to:
 <hr style="color: #ffc629">
 
 
-- Programming assignments: 30%
+- Problem Sets: 20%
 
-- Research project: 10%
+- Programming assignments: 20%
 
 - Exams: 60%
 
@@ -212,7 +214,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 2: 08-25,08-27</td><td>Problem Solving by Searching,Heuristic Search</td><td>Due: PA0,Assigned: PA1</td><td></td>
+<td>Week 2: 08-25,08-27</td><td>Problem Solving,Heuristic Search</td><td>Assigned: PA1</td><td></td>
 </tr>
 
 <tr>
@@ -224,43 +226,43 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 5: 09-15,09-17</td><td>Propositional Logic,Logical Agents</td><td>Due: PA1,Assigned: PA2</td><td></td>
+<td>Week 5: 09-15,09-17</td><td>Logical Agents,First Order Logic</td><td>Due: PA1,Assigned: PA2</td><td></td>
 </tr>
 
 <tr>
-<td>Week 6: 09-22,09-24</td><td>First Order Logic,Knowledge Representation</td><td></td><td></td>
+<td>Week 6: 09-22,09-24</td><td>Knowledge Representation, Planning</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 7: 09-29,10-01</td><td>Classical Planning,Planning and Acting</td><td></td><td></td>
+<td>Week 7: 09-29,10-01</td><td>Midterm Review</td><td>Due: PA2</td><td>Midterm Exam</td>
 </tr>
 
 <tr>
-<td>Week 8: 10-06,10-08</td><td>Midterm Review</td><td>Due: PA2</td><td>Midterm Exam</td>
+<td>Week 8: 10-06,10-08</td><td>Uncertainty,Bayesian Networks</td><td>Assigned: PA3</td><td></td>
 </tr>
 
 <tr>
-<td>Week 9: 10-13,10-15</td><td>Quantifying Uncertainty,Bayesian Networks</td><td>Assigned: PA3</td><td></td>
+<td>Week 9: 10-13,10-15</td><td>Causality,Probabilistic Temporal Models</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 10: 10-20,10-22</td><td>Bayesian Network Inference,Probabilistic Temporal Models</td><td></td><td></td>
+<td>Week 10: 10-20,10-22</td><td>State Estimation,Probabilistic Programming</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 11: 10-27,10-29</td><td>State Estimation,Probabilistic Programming</td><td></td><td></td>
+<td>Week 11: 10-27,10-29</td><td>Utility Theory,Simple Decisions</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 12: 11-03,11-05</td><td>Simple Decisions,Decision Information</td><td>Due: PA3,Assigned: PA4</td><td></td>
+<td>Week 12: 11-03,11-05</td><td>Complex Decisions,Bandits POMDPs</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 13: 11-10,11-12</td><td>Complex Decisions,Bandits POMDPs</td><td></td><td></td>
+<td>Week 13: 11-10,11-12</td><td>Multi-Agent Systems,Collective Decisions</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 14: 11-17,11-19</td><td>Multi-Agent Systems,Collective Decisions</td><td></td><td></td>
+<td>Week 14: 11-17,11-19</td><td>Supervised Learning,Statistical Learning</td><td>Due: PA3,Assigned: PA4</td><td></td>
 </tr>
 
 <tr>
@@ -268,11 +270,11 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 16: 12-01,12-03</td><td>Decision Trees,Linear and Nonparametric Models</td><td>Due: PA4,Assigned: PA5</td><td></td>
+<td>Week 16: 12-01,12-03</td><td>Neural Networks,Reinforcement Learning</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 17: 12-08,12-15</td><td>Final Review</td><td>Due: PA5,Sec 01: 15:30-17:30</td><td>Final Exam</td>
+<td>Week 17: 12-08,12-15</td><td>Final Review</td><td>Due: PA4,Sec 01: 15:30-17:30</td><td>Final Exam</td>
 </tr>
 
 </table>

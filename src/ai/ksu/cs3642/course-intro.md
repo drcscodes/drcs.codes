@@ -1,0 +1,66 @@
+---
+template: course
+title: CS 3642 Course Introduction
+---
+
+# Course Introduction
+
+## Place In the AI Curriculum
+
+Before CS 3642, need:
+
+- data structures and algorithms at undergraduate level.
+- Above implies discrete math (sets, logic, combinatorics, proofs, graphs).
+
+After CS 3642, ready for:
+
+- CS 4267 Machine Learning
+- CS 4277 Deep Learning
+- AI application courses:
+    - CS 4732 Machine Vision
+    - CS 4742 Natural Language Processing
+
+This course is a gateway to all of AI and machine learning.
+
+## Workload
+
+3-hour course means
+
+- "3" contact hours per week,
+- two hours spent outside class for every hour in class.
+
+So you should spend, on average, 6 hours outside class on reading and assignments each weeks, or 90 hours over the course of the semester.  These numbers are upper bounds.  I will strive to undershoot them.
+
+## Work Breakdown
+
+- 40-50 pages of reading per week, except exam weeks
+- 4 Problem Sets (PS)
+- 4 Programming Assignments (PA)
+- Midterm and Final Exams
+
+Course designed to take 86-90 hours outside of class for the semester.
+
+## Reading
+
+- Best book on AI by a large margin.
+    - Used by all the top schools.
+- Reading should take 1-2 hours per week for 13 weeks, 13-26 hours total.
+- My slides are like lecture notes, i.e., self-contained summaries of the material.
+
+## Problem Sets
+
+- Should take 1-3 hours each, 4-12 hours total.
+- Designed to prepare you for the exam.
+
+## Programming Assignments
+
+- Should take 9-12 hours each, 36-48 hours total.
+- When you build, you understand.
+- Designed to prepare you to build AI systems.
+
+## Exams
+
+- Each exam preceeded by an in-class review.
+- Each exam designed to take 1 hour.
+- Final exam covers the material since the midterm exam, i.e., is not comprehensive.
+- Knowing the material in the problem sets and lecture slides well should get you to the A level.  Doing the reading as well should make an A comfortable.

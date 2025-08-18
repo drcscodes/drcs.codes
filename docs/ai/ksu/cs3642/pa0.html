@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Programming Assignment 0</title>
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link rel="stylesheet" href="../../../assets/css/codehilite.css">
+</head>
+<body>
+    <nav>
+    <ul class="navbar">
+    <li class="navbar-item" style="float: left"><a class="navbar-link" href="../../../index.html">Dr. CS Codes</a></li>
+    <li class="navbar-item"><a class="navbar-link" href="syllabus.html">Syllabus</a></li>
+    <li class="navbar-item"><a class="navbar-link" href="schedule.html">Schedule</a></li>
+    <li class="navbar-item"><a class="navbar-link" href="resources.html">Resources</a></li>
+    <li class="navbar-item" style="float: right"><a class="navbar-link" href="https://chris.simpkins.phd/">Prof. Simpkins</a></li>
+</ul>
+
+    </nav>
+    <div class="main">
+    <h1>Programming Assignment 0</h1>
+<h2>Introduction</h2>
+<p>This assignment gets you started with the basic tools you will need to complete all of your programming assignments.  This project will</p>
+<ul>
+<li>ensure that you have correctly installed Python 3</li>
+<li>give you practice using a text editor to write Python programs, and</li>
+<li>give you practice running Python programs and using command line features.</li>
+</ul>
+<h2>Problem Description</h2>
+<p>You are a CS 3642 student who needs to install Python, configure it for command line use, and learn how to use a programmer's text editor to create and edit Python source code.</p>
+<h2>Solution Description</h2>
+<ul>
+<li>Download and install Python 3 on your computer and configure your sytem so you can run Python from the command line. See the instructions on the class web site's Resources page.</li>
+<li>Download and install a programmer's text editor.  You may end up trying out several over the course of the semester before you settle on one. See the Text Editors guide on the class web site's Resources page.</li>
+<li>Create a directory for your CS 3642 coursework somewhere on your hard disk.  We suggest <code>cs3642</code>.  Note: avoid putting spaces in file and directory names, since doing so complicates the use of some command line tools.</li>
+<li>Create a <code>pa0</code> subdirectory of your CS 3642 coursework directory for your PA0 solution.</li>
+</ul>
+<p>On Unix/BASH you can create both of these directories at once with</p>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>cs3642/pa0
+</code></pre></div>
+<p>Windows uses the same commands for directory navigation and creation, <code>cd</code> and <code>mkdir</code>, but Windows's <code>mkdir</code> command doesn't have the <code>-p</code> option.</p>
+<p>Note: the <code>$</code> is the command prompt on most Unix shells and Windows 10's Ubuntu BASH shell (would be something like <code>C:\&gt;</code> in Windows <code>cmd</code>), the text after it is what you enter.</p>
+<ul>
+<li>On the command line, go to the <code>pa0</code> directory you just created and enter these commands:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>python3<span class="w"> </span>--version<span class="w"> </span>&gt;<span class="w"> </span>pa0-output.txt
+</code></pre></div>
+<p><code>&gt;</code> redirects the output of a program, in this case to the <code>pa0-output.txt</code> file. Important note: if the line above doesn't write your Python version to the <code>pa0-output.txt</code> file then replace the <code>&gt;</code> with <code>2&gt;</code> and try again. Some versions of Python, such as the one installed by Anaconda and miniconda, write the Python version to <code>stderr</code> instead of <code>stdout</code>. <code>&gt;</code> redirects <code>stdout</code> and <code>2&gt;</code> redirects <code>stderr</code>. For more informaiton,  <a href="http://www.jstorimer.com/blogs/workingwithcode/7766119-when-to-use-stderr-instead-of-stdout">this blog post</a> has a nice discussion of the file descriptors <code>stdin</code>, <code>stdout</code> and <code>stderr</code>.</p>
+<ul>
+<li>Open your text editor, create a file in your newly created <code>pa0</code> directory named <code>nimbly_bimbly.py</code> and save the following Python program in the file:</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u004D\u0065\u006F\u0077</span><span class="s2"> &quot;</span> <span class="o">*</span> <span class="mi">9</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;...&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\u004D\u0065\u006F\u0077\u0021</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
+<ul>
+<li>In your OS command shell, <code>cd</code> to your <code>pa0</code> directory and enter <code>python3 nimbly_bimbly.py</code> to run the program and see its output on the command line.</li>
+<li>Add the output of your program to <code>pa0-output.txt</code> by running\
+  <code>python3 nimbly_bimbly.py &gt;&gt; hw0-output.txt</code>. Don't forget the extra <code>&gt;</code> in <code>&gt;&gt;</code>. <code>&gt;&gt;</code> appends to an existing file, a single <code>&gt;</code> overwrites an existing file.</li>
+</ul>
+<h2>Turn-in Procedure</h2>
+<p>Submit your <code>pa0-output.txt</code> file to the assignment on D2L.</p>
+    </div>
+</body>
+</html>

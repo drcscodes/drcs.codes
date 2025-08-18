@@ -5,14 +5,15 @@ title: CS 8375 Resources
 
 # Resources
 
-Course Materials
+## Course Materials
 
+- [Course Introduction](course-intro.html)
 - [Semester Project](project.html)
 - [AIMA Exercises](https://aimacode.github.io/aima-exercises/)
 - [Research Papers](papers.html), [.bib file](ai.bib)
 - [ACM Computing Classification System](https://www.acm.org/publications/class-2012)
 
-Programming Environments
+## Programming Environments
 
 - [Emacs](https://www.gnu.org/software/emacs/) is the most powerful text editor there will ever be.  Its steep learning curve is repaid a thousand-fold over your lifetime.
      - On macOS: `brew install --cask emacs`, which installs [Emacs for Mac OS X](https://emacsformacosx.com/)
@@ -22,23 +23,23 @@ Programming Environments
     - [PyCharm](https://www.jetbrains.com/pycharm/) is a good choice for a pythonista, ML engineer or data scientist.
 - [Google Colab](https://colab.research.google.com/)
 
-Libraries
+# Libraries
 
 - Scipy: [NumPy](https://numpy.org), [MatPlotLib](https://matplotlib.org), [Pandas](https://pandas.pydata.org), and more.
 - [PyTorch](https://pytorch.org)
 - [JAX](https://docs.jax.dev/)
 
-$\LaTeX$
+## $\LaTeX$
 
-- [Practical $\LaTeX$](https://link.springer.com/book/10.1007/978-3-319-06425-3) -- all you need to get started and more.
+$\LaTeX$ is a document preparation system that compiles marked up text to Postscript or, more commonly today, PDF.  All serious mathematical, scientific, and engineering publications are written in $\LaTeX$.
+
+- [Download $\LaTeX$](https://www.latex-project.org/get/)
+- [Practical $\LaTeX$](https://link.springer.com/book/10.1007/978-3-319-06425-3) -- short, inexpensive book containing all you need to get started and more.
 - [Text and Math into $\LaTeX$](https://link.springer.com/book/10.1007/978-3-031-55281-6) -- if you want to become a $\LaTeX$ expert.
+- [Overleaf $\LaTeX$ Tutorials](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes).  Overleaf is a web-based $\LaTeX$ service.  Good way to get started, but I recommend installing it on your machine and editing it locally, especially if you have aspirations of becoming a researcher.
 
-Guides
 
-- [PyTorch](pytorch.html)
-- [UDL Fig 7.8](@root/deep-learning/code/prince_fig7.8.py)
-
-Miscellaneous
+## Miscellaneous
 
 - [Survival Guide for Unix Newbies](https://matt.might.net/articles/basic-unix/)
 - [Heilmeier Catechism](https://www.darpa.mil/about/heilmeier-catechism)
