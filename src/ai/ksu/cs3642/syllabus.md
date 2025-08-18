@@ -270,7 +270,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 16: 12-01,12-03</td><td>Neural Networks,Reinforcement Learning</td><td></td><td></td>
+<td>Week 16: 12-01,12-03</td><td>Reinforcement Learning</td><td></td><td></td>
 </tr>
 
 <tr>

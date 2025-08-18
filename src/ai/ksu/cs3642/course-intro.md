@@ -24,39 +24,43 @@ This course is a gateway to all of AI and machine learning.
 
 ## Workload
 
-3-hour course means
+According to [KSU policy](https://www.kennesaw.edu/research/undergraduate-research/faculty/resources/credit-hours.php), a 3-hour course means
 
-- "3" contact hours per week,
-- two hours spent outside class for every hour in class.
+- 2.5 instructional hours per week,
+- 5 hours of work outside of class.
 
-So you should spend, on average, 6 hours outside class on reading and assignments each weeks, or 90 hours over the course of the semester.  These numbers are upper bounds.  I will strive to undershoot them.
+So you should spend 75 hours outslide of class on this course.  I use these guidelines when I design a course.
+
+> By the way, I've realized that professors at Georgia Tech DO NOT design their courses with these workoad guidelines in mind!
 
 ## Work Breakdown
 
 - 40-50 pages of reading per week, except exam weeks
 - 4 Problem Sets (PS)
 - 4 Programming Assignments (PA)
+- Semester project
 - Midterm and Final Exams
-
-Course designed to take 86-90 hours outside of class for the semester.
 
 ## Reading
 
+- AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/).  US or Global Edition.
 - Best book on AI by a large margin.
     - Used by all the top schools.
-- Reading should take 1-2 hours per week for 13 weeks, 13-26 hours total.
+- Readings should take 1.5 hours per week for 13 weeks, ~20 hours total.
 - My slides are like lecture notes, i.e., self-contained summaries of the material.
 
 ## Problem Sets
 
-- Should take 1-3 hours each, 4-12 hours total.
+- Should take 2 hours each, 8 hours total.
 - Designed to prepare you for the exam.
 
 ## Programming Assignments
 
-- Should take 9-12 hours each, 36-48 hours total.
+- Should take 12 hours each, 48 hours total.
 - When you build, you understand.
 - Designed to prepare you to build AI systems.
+
+If you add up all the time estimates for each work category, you get 76 hours.  This is an average, of course.
 
 ## Exams
 

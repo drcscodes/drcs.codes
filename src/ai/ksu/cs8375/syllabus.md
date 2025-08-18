@@ -65,7 +65,7 @@ Credit Hours: 3-0-3
 Required Texts:
 
 
-- AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/)
+- AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/).  US or Global Edition.
 
 
 
@@ -272,7 +272,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 16: 12-01,12-03</td><td>Neural Networks,Reinforcement Learning</td><td></td><td></td>
+<td>Week 16: 12-01,12-03</td><td>Reinforcement Learning</td><td></td><td></td>
 </tr>
 
 <tr>
