@@ -32,7 +32,7 @@ Syllabus and detailed schedule is posted on course web site: [https://drcs.codes
 
 Name: Christopher Simpkins
 
-Email: christoper.simpkins@kennesaw.edu
+Email: christopher.simpkins@kennesaw.edu
 
 Office Location: Norton Hall Room 328
 
