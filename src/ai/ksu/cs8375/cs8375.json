@@ -10,14 +10,13 @@
         "Design an AI system with Python, Lisp or Prolog for problem solving"
     ],
     "grading": [
-        "Problem sets: 10%",
-        "Programming assignments: 10%",
+        "Programming assignments: 20%",
         "Research project: 20%",
         "Exams: 60%"
     ],
     "assignments": [
-        "3-5 Problem sets (PS)",
         "3-5 Programming assignments (PA)",
+        "Research project",
         "Midterm Exam",
         "Final Exam"
     ],
@@ -34,6 +33,7 @@
         "AIPP: Artificial Intelligence: Principles and Practice, by George Luger, [https://link.springer.com/book/10.1007/978-3-031-57437-5](https://link.springer.com/book/10.1007/978-3-031-57437-5)"
     ],
     "technology_requirements": [
+        "Computer capable of accessing the internet and running compilers, interpreters, and text editors"
     ],
     "lessons": "../../lessons.json"
 }

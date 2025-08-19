@@ -79,6 +79,12 @@ Recommended Texts:
 
 
 
+Technology requirements:
+
+
+- Computer capable of accessing the internet and running compilers, interpreters, and text editors
+
+
 
 ## Course Learning Outcomes
 <hr style="color: #ffc629">
@@ -97,8 +103,6 @@ At the end of the course, students should be able to:
 <hr style="color: #ffc629">
 
 
-- 3-5 Problem sets (PS)
-
 - 3-5 Programming assignments (PA)
 
 - Midterm Exam
@@ -110,11 +114,9 @@ At the end of the course, students should be able to:
 <hr style="color: #ffc629">
 
 
-- Problem Sets: 20%
-
 - Programming assignments: 20%
 
-- Exams: 60%
+- Exams: 80%
 
 
 Each assignment will be graded on a 100 point scale which you may consider a percentage with respect to the grading scale below.  Some assignments may have more than 100 points, in which case the points in excess of 100 are "extra credit."
@@ -150,14 +152,12 @@ Class attendance is required and very important for successful completion of the
 
 ### Email Policy
 
-Students must use their official KSU email address and put the course number, CS 3642, in the subject line of the email when sending email pertaining to the course.
+Students must use their official KSU email address and put "CS 3642 Student" in the subject line of the email when sending email pertaining to the course.
 
 ### Classroom Behavior
 
 All students are reminded to conduct themselves in accordance with the Student Code
-of Conduct, as published in the University Catalog. Every KSU student is responsible for upholding the
-provision. Students who are in violation of KSU policy will be asked to leave the classroom and may be subject
-to disciplinary action by the University.
+of Conduct, as published in the University Catalog. Every KSU student is responsible for upholding the provision. Students who are in violation of KSU policy will be asked to leave the classroom and may be subject to disciplinary action by the University.
 
 ## Instructional Continuity Plan
 <hr style="color: #ffc629">
@@ -168,17 +168,18 @@ The University will announce campus closures, delayed schedules, or remote instr
 
 Our class continuity plan includes:
 
-1.	Communication:  Please check D2l Brightspace or e-mail for necessary instructions.
+1.	Communication:  Please check D2L Brightspace or e-mail for necessary instructions.
 2.	Virtual Classes:  If in-person classes are not possible, we may transition to virtual classes using MS Teams.
 3.	Assignments and Assessments: Deadlines for assignments and assessments may be adjusted to accommodate the emergency situation.
 
 We understand that emergencies create unique challenges.  If you need additional support during an emergency, reach out via Brightspace or e-mail.  The university also offers resources such as counseling and academic support, which can be accessed remotely.
 
-### Policy on the Usage of Artificial Intelligence
+### Policy on the Usage of Large Language Models
 
-AI Use Allowed, but Not Required:
+**Forbidden.**
 
-In this class, you are welcome to use AI for any purpose. However, you should note that all AI generative tools still tend to make up incorrect facts and fake citations, code generation models tend to produce inaccurate outputs, and image/art generation tools can produce copied work or offensive products. You will be responsible for any inaccurate, biased, offensive, or otherwise unethical content you submit regardless of whether it originally comes from you or an AI tool. If you use an AI tool, its contribution must be credited in your submission. The use of an AI tool without acknowledgement is cheating and constitutes a violation of the KSU Code of Academic Integrity.
+You may not use LLM-based applications such as ChatGPT or programming assistants.  Any use of such tools will be considered a violation of academic integrity.
+
 
 ## Department or College Policies
 <hr style="color: #ffc629">
