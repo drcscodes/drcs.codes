@@ -31,8 +31,6 @@ To be fair, there are many, many people who are wrong about AI.  But you probabl
 
 - The emergence of "human-level AI" has been "just a few years away" since 1956.  All of these predictions have been wrong.
 
-*Why does it matter that they're wrong?*
-
 ## We are decades, perhaps centuries away from "solving" AI.
 
 - AI is immature.
@@ -50,6 +48,19 @@ https://rodneybrooks.com/my-dated-predictions/
 \end{center}
 ```
 
+## What does this mean for us?
+
+
+- Many AI courses focus on *the current thing*, e.g.,  statistical machine learning, and neural networks.
+- This course covers the full spectrum of AI so that you're ready to spot and develop promising new directions.
+
+    - We'll spend little time on machine learning, and barely touch on neural networks.
+
+        - We have entire courses for those subjects!
+
+*Why does it matter that the aforementioned hypers are wrong?*
+
+
 - Most of the truly groundbreaking discoveries in AI are yet to be made.
 
 ```{=latex}
@@ -59,21 +70,6 @@ https://rodneybrooks.com/my-dated-predictions/
 \end{center}
 ```
 
-## What does this mean for us?
-
-- If most of the breakthroughs are yet to be made, then
-
-    - *we don't even have the right **paradigm** yet*.
-
-- Many AI courses focus on *the current thing*, focusing on statistical machine learning, and neural networks in particular.
-
-    - This does a disservice to students!
-
-- This course the full spectrum of AI so that you're ready to spot and develop promising new directions.
-
-    - We'll spend little time on machine learning, and barely touch on neural networks.
-
-        - We have entire courses for those subjects!
 
 ## What is AI?
 
@@ -114,7 +110,7 @@ Rationality
 
 ## Four Approaches to AI
 
-Decompose AI into thinking and acting, and define standards of performance as fidelity to humans and quanitative rationality.
+Decompose AI into thinking and acting, and define standards of performance as fidelity to humans and quantitative rationality.
 
 
 ```{=latex}
@@ -228,11 +224,16 @@ How can we build an efficient computer?
 
 - Quantum computing
 
+![](ai-data-center.jpg){height="50%"}
+
 ## Control theory and cybernetics
 
 How can artifacts operate under their own control?
 
-![](Power-Relay-6.jpg){height="50%"}
+![](robot-hand.jpg){height="30%"}
+![](self-driving-car.jpg){height="30%"}
+
+![](Power-Relay-6.jpg){height="30%"}
 
 [DARPA POWER Program](https://www.darpa.mil/research/programs/power)
 
@@ -260,12 +261,9 @@ AI lament: once an AI problem is solved, it's no longer considered AI.
 - 1956 Dartmouth AI Workshop
 
     - Organized by John McCarthy, Marvin Minsky, Claude Shannon, Nathaniel Rochester
-    - Attendees: Allen Newell and Herbert Simon from Carnegie Tech, Trenchard More from Princeton, Arthur Samuel from IBM, and Ray Solomonoff and Oliver Selfridge from MIT
-    - Logic Theorist
+    - Attended by Allen Newell and Herbert Simon from Carnegie Tech, Trenchard More from Princeton, Arthur Samuel from IBM, and Ray Solomonoff and Oliver Selfridge from MIT
 
-- Symbolic AI (1952-1969)
-
-    - Lisp
+- Symbolic AI (1952-1969) -- "clever Lisp programs"
 
 - First AI Winter (1966-1973)
 
@@ -283,7 +281,7 @@ AI lament: once an AI problem is solved, it's no longer considered AI.
 
 - Return of neural networks (1986-present)
 
-    - Symolism vs Connectionism
+    - Symbolism vs Connectionism
     - Geoff Hinton, et. al.
 
 - Probabilistic reasoning and machine learning (1987-present)

@@ -36,7 +36,6 @@ So you should spend 75 hours outslide of class on this course.  I use these guid
 ## Work Breakdown
 
 - 40-50 pages of reading per week, except exam weeks
-- 4 Problem Sets (PS)
 - 4 Programming Assignments (PA)
 - Semester project
 - Midterm and Final Exams
@@ -46,13 +45,9 @@ So you should spend 75 hours outslide of class on this course.  I use these guid
 - AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/).  US or Global Edition.
 - Best book on AI by a large margin.
     - Used by all the top schools.
-- Readings should take 1.5 hours per week for 13 weeks, ~20 hours total.
+- Readings should take 2 hours per week for 13 weeks, 26 hours total.
 - My slides are like lecture notes, i.e., self-contained summaries of the material.
-
-## Problem Sets
-
-- Should take 2 hours each, 8 hours total.
-- Designed to prepare you for the exam.
+- Instead of problem sets, I will provide study guides that you can use while you read.
 
 ## Programming Assignments
 
@@ -60,11 +55,11 @@ So you should spend 75 hours outslide of class on this course.  I use these guid
 - When you build, you understand.
 - Designed to prepare you to build AI systems.
 
-If you add up all the time estimates for each work category, you get 76 hours.  This is an average, of course.
+If you add up all the time estimates for each work category, you get 74 hours.  This is an average, of course.
 
 ## Exams
 
 - Each exam preceeded by an in-class review.
 - Each exam designed to take 1 hour.
 - Final exam covers the material since the midterm exam, i.e., is not comprehensive.
-- Knowing the material in the problem sets and lecture slides well should get you to the A level.  Doing the reading as well should make an A comfortable.
+- Knowing the material in the study guides and lecture slides well should get you to the A level.  Doing the reading as well should make an A comfortable.

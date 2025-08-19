@@ -84,7 +84,7 @@ or in Windows PowerShell:
 venv\bin\activate.ps1
 ```
 
-3. Install essential and popular AI libraries.  First, download this [`requirements.txt`](requirements.txt) file to your `pa0` directory.  Then:
+3. Install essential and popular AI libraries.  First, download this [`requirements.txt`](../../requirements.txt) file to your `pa0` directory.  Then:
 
 ```sh
 python3 -m pip install -r requirements.txt
