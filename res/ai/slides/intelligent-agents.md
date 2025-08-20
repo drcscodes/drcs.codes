@@ -304,4 +304,10 @@ Agents select actions that achieve goals by using **search** and **planning** al
 
 ## Closing Thoughts
 
-This chapter has effectively introduced the entire course, providing a framework for everything else we will learn.
+This lesson has effectively introduced the entire course, providing a framework for everything else we will learn.
+
+- In the next few lessons we'll learn how to search for right action based on goals.
+- Then we'll learn how to construct knowledge-based models and use them to plan sequences of actions that achieve goals.
+- In the second half of the course we'll learn how to reason under uncertainty, which will help us deal with partial observability, and estimate our state.
+- We'll learn how to find optimal actions in multi-agent settings.
+- And we'll learn how to construct the learning elements of agents that improve all of the above with experience.
