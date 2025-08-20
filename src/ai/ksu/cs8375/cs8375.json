@@ -33,7 +33,7 @@
         "AIPP: Artificial Intelligence: Principles and Practice, by George Luger, [https://link.springer.com/book/10.1007/978-3-031-57437-5](https://link.springer.com/book/10.1007/978-3-031-57437-5)"
     ],
     "technology_requirements": [
-        "Computer capable of accessing the internet and running compilers, interpreters, and text editors"
+        "Computer capable of accessing the internet and running modern compilers, interpreters, and text editors"
     ],
     "lessons": "../../lessons.json"
 }
