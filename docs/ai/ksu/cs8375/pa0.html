@@ -80,7 +80,7 @@
 <p>AI software development, like most software development, relies on many packages outside the Python standard library.  In this part you will:</p>
 <ul>
 <li>create a virtual environment to keep project-specific dependencies separated from each other, and</li>
-<li>install a few essential and popular libraries for AI.</li>
+<li>install a few essential and popular libraries for AI using a Python <a href="https://pip.pypa.io/en/stable/reference/requirements-file-format/">requirements file</a>.</li>
 </ul>
 <p>Follow these steps.  If you're not sure what's going on, see the <a href="#background">Background</a> section below.</p>
 <ol>
@@ -131,20 +131,31 @@
 </code></pre></div>
 <h4>Virtual Environments</h4>
 <p>Different Python projects may use different versions of the same package.  To avoid conflicts, use virtual environments.</p>
+<blockquote>
+<p>Python dependency management has been a mess from the beginning, and still is.  You may balk at the redundant package files many project venvs will leave on your hard disk.  In most cases a venv takes a only few hundred kilobytes.  But many common cases, like a typical Keras + JAX venv, take 600MB-700MB.  If you have many such projects, you will have to use your judgment to manage disk space.  One approach is to have a common "playground" venv for machine learning work that you use for all of your learning and scratch projects, and have separate local venvs for official, shared projects -- such projects should always have a <a href="https://pip.pypa.io/en/stable/reference/requirements-file-format/"><code>requirements.txt</code></a> stored in Git.</p>
+</blockquote>
+<p>There are many virtual environment managers in the Python world.  We will use the standard library's <a href="https://docs.python.org/3/library/venv.html">venv</a>.</p>
 <p>In the root directory of your Python project, create your virtual environment with:</p>
 <div class="codehilite"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>venv
 </code></pre></div>
-<p>This creates a virtual environment in the <code>venv</code> subdirectory of your project root directory.  Activate the virtual environment on macOS or Linux with:</p>
+<p>This creates a virtual environment in the <code>venv</code> subdirectory of your project root directory.</p>
+<p>Activate the virtual environment on macOS or Linux with:</p>
 <div class="codehilite"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>venv/bin/activate
 </code></pre></div>
-<p>or in Windows PowerShell (if this doesn't work, try <code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>.  See <a href="https://docs.python.org/3/library/venv.html">venv docs</a> for details.):</p>
+<p>or in Windows PowerShell:  See  for details.):</p>
 <div class="codehilite"><pre><span></span><code>venv<span class="se">\b</span>in<span class="se">\a</span>ctivate.ps1
 </code></pre></div>
+<p>If the command above doesn't work, try
+<code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></p>
+<p>Once your venv is activated, you can install packages into it.  These packages will only be visible to projects using this virtual environment.</p>
 <p>Deactivate  a virtual environment with (macOS, Linux, or Windows):</p>
 <div class="codehilite"><pre><span></span><code>deactivate
 </code></pre></div>
+<p>If your project is tracked in Git, be sure to add <code>venv/</code> to your project's <code>.gitignore</code>, e.g.:</p>
+<div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>venv/<span class="w"> </span>&gt;&gt;<span class="w"> </span>.gitignore
+</code></pre></div>
 <h4>Direnv</h4>
-<p>To make activating and deactivating easier, I recommend using <a href="https://direnv.net/">direnv</a>.</p>
+<p>To make activating and deactivating easier, I recommend using <a href="https://direnv.net/">direnv</a>.  If you use Emacs, there's a nice package that integrates direnv into Emacs: <a href="https://github.com/purcell/envrc">envrc.el</a>.</p>
 <p>Put this content into a file called <code>.envrc</code> in your project root directory.</p>
 <div class="codehilite"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="n">VIRTUAL_ENV</span><span class="o">=</span><span class="n">venv</span>
 <span class="n">layout</span><span class="w"> </span><span class="n">python3</span>
@@ -152,7 +163,7 @@
 <p>Then give direnv permission to use the <code>.envrc</code> file to activate environments by entering the following shell command in your project root directory:</p>
 <div class="codehilite"><pre><span></span><code>direnv<span class="w"> </span>allow<span class="w"> </span>.
 </code></pre></div>
-<p>No whenever you enter this directory, or a subdirectory within it, your Python venv will be activated, and whenever your enter a parent directory, it will be deactivated.</p>
+<p>Now whenever you enter this directory, or a subdirectory within it, your Python venv will be activated, and whenever your enter a parent directory, it will be deactivated.  This is very handy for ensuring you don't forget to activate an environment before installing project-specific packages, or forgetting to deactivate the environment after leaving a project.</p>
 <h2><a id="turn-in">Turn-in Procedure</a></h2>
 <p>Submit your <code>pa0-output.txt</code> file to the assignment on D2L.</p>
     </div>

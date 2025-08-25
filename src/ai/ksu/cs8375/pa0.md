@@ -75,7 +75,7 @@ At this point your `pa0-output.txt` file should contain your Python version and 
 AI software development, like most software development, relies on many packages outside the Python standard library.  In this part you will:
 
 - create a virtual environment to keep project-specific dependencies separated from each other, and
-- install a few essential and popular libraries for AI.
+- install a few essential and popular libraries for AI using a Python [requirements file](https://pip.pypa.io/en/stable/reference/requirements-file-format/).
 
 Follow these steps.  If you're not sure what's going on, see the [Background](#background) section below.
 
@@ -147,23 +147,34 @@ pip3 install ipython
 
 Different Python projects may use different versions of the same package.  To avoid conflicts, use virtual environments.
 
+> Python dependency management has been a mess from the beginning, and still is.  You may balk at the redundant package files many project venvs will leave on your hard disk.  In most cases a venv takes a only few hundred kilobytes.  But many common cases, like a typical Keras + JAX venv, take 600MB-700MB.  If you have many such projects, you will have to use your judgment to manage disk space.  One approach is to have a common "playground" venv for machine learning work that you use for all of your learning and scratch projects, and have separate local venvs for official, shared projects -- such projects should always have a [`requirements.txt`](https://pip.pypa.io/en/stable/reference/requirements-file-format/) stored in Git.
+
+There are many virtual environment managers in the Python world.  We will use the standard library's [venv](https://docs.python.org/3/library/venv.html).
+
 In the root directory of your Python project, create your virtual environment with:
 
 ```shell
 python3 -m venv venv
 ```
 
-This creates a virtual environment in the `venv` subdirectory of your project root directory.  Activate the virtual environment on macOS or Linux with:
+This creates a virtual environment in the `venv` subdirectory of your project root directory.
+
+Activate the virtual environment on macOS or Linux with:
 
 ```shell
 source venv/bin/activate
 ```
 
-or in Windows PowerShell (if this doesn't work, try `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`.  See [venv docs](https://docs.python.org/3/library/venv.html) for details.):
+or in Windows PowerShell:  See  for details.):
 
 ```shell
 venv\bin\activate.ps1
 ```
+
+If the command above doesn't work, try
+`Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
+
+Once your venv is activated, you can install packages into it.  These packages will only be visible to projects using this virtual environment.
 
 Deactivate  a virtual environment with (macOS, Linux, or Windows):
 
@@ -171,9 +182,15 @@ Deactivate  a virtual environment with (macOS, Linux, or Windows):
 deactivate
 ```
 
+If your project is tracked in Git, be sure to add `venv/` to your project's `.gitignore`, e.g.:
+
+```sh
+echo venv/ >> .gitignore
+```
+
 #### Direnv
 
-To make activating and deactivating easier, I recommend using [direnv](https://direnv.net/).
+To make activating and deactivating easier, I recommend using [direnv](https://direnv.net/).  If you use Emacs, there's a nice package that integrates direnv into Emacs: [envrc.el](https://github.com/purcell/envrc).
 
 Put this content into a file called `.envrc` in your project root directory.
 
@@ -188,7 +205,7 @@ Then give direnv permission to use the `.envrc` file to activate environments by
 direnv allow .
 ```
 
-No whenever you enter this directory, or a subdirectory within it, your Python venv will be activated, and whenever your enter a parent directory, it will be deactivated.
+Now whenever you enter this directory, or a subdirectory within it, your Python venv will be activated, and whenever your enter a parent directory, it will be deactivated.  This is very handy for ensuring you don't forget to activate an environment before installing project-specific packages, or forgetting to deactivate the environment after leaving a project.
 
 ## <a id="turn-in">Turn-in Procedure</a>
 
