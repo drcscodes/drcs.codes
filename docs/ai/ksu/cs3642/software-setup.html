@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Software Setup</title>
+    <link rel="stylesheet" href="../../../assets/css/main.css">
+    <link rel="stylesheet" href="../../../assets/css/codehilite.css">
+</head>
+<body>
+    <nav>
+    <ul class="navbar">
+    <li class="navbar-item" style="float: left"><a class="navbar-link" href="../../../index.html">Dr. CS Codes</a></li>
+    <li class="navbar-item"><a class="navbar-link" href="syllabus.html">Syllabus</a></li>
+    <li class="navbar-item"><a class="navbar-link" href="schedule.html">Schedule</a></li>
+    <li class="navbar-item"><a class="navbar-link" href="resources.html">Resources</a></li>
+    <li class="navbar-item" style="float: right"><a class="navbar-link" href="https://chris.simpkins.phd/">Prof. Simpkins</a></li>
+</ul>
+
+    </nav>
+    <div class="main">
+    <h1>Software Setup</h1>
+<p>These instructions are for installing and configuring the software used in this course.  I use and recommend the Python.org distribution of Python, but if you already have another distribution, such as Anaconda, that will work fine as long as it includes Python &gt;= 3.6, <code>pip</code>, and <code>venv</code>.</p>
+<ol>
+<li>Install Python.  Jump to the section matching the operating system you will be using to install Python:</li>
+</ol>
+<ul>
+<li><a href="#macos">macOS</a></li>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#ubuntu-and-wsl2">Ubuntu/WSL</a></li>
+</ul>
+<ol start="2">
+<li>
+<p>Install and configure <a href="/shared/intellij">IntelliJ or PyCharm</a>.</p>
+</li>
+<li>
+<p>(Optional) Install and configure <a href="/shared/git">Git</a>.</p>
+</li>
+</ol>
+<p>You may also want to install a <a href="/shared/text-editors">text editor</a>.</p>
+<h2>macOS</h2>
+<p>macOS is a Unix and already has a decent terminal and command-line shell.  There are two ways to install Python.org Python (as opposed to <a href="https://www.anaconda.com/">Anaconda</a> Python or some other Python distribution):</p>
+<ol>
+<li>(Recommended) Download and run the macOS installer from <a href="https://www.python.org/">python.org</a>.</li>
+<li>
+<p>Install <a href="https://brew.sh/">Homebrew</a> and use the <code>brew</code> command to install Python, <code>brew install python3</code>.</p>
+<blockquote>
+<p>If you use macOS, I recommend using Homebrew to manage general Unix tools that aren't provided by Apple.  You may use <code>brew</code> to install Python, but if you are new to Homebrew you may find using the Python.org installer easier to manage.  A good general strategy is to use the installation method recommended by a tool's publisher.  For example, Python.org provides a package installer for Python, so use it to install Python.  <a href="https://git-scm.com/">git-scm.org</a> recommends using Homebrew to install Git on macOS, so use Homebrew for Git.  With either of the installation methods above you don't need to install <code>pip</code> and <code>venv</code> separately.</p>
+</blockquote>
+</li>
+</ol>
+<h2>Windows</h2>
+<ol>
+<li>Download the Windows installer from <a href="https://www.python.org/">python.org</a>.</li>
+</ol>
+<ul>
+<li><strong>IMPORTANT</strong>:On the first installer screen, be sure to check the box to update your PATH environment variable.</li>
+</ul>
+<p>That's it.  Now you can run <code>python</code> and <code>pip</code> in the <code>cmd</code> shell or Powershell.  I recommend installing <a href="https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701">Windows Terminal</a>, which is a very nice terminal and allows you to run any shell, in separate tabs if you want, including Linux shells.</p>
+<blockquote>
+<p>Since many Unix/Linux distributions use Python 2 and Python 3 on the same system, <code>python</code> runs Python 2 and you must run Python 3 with <code>python3</code>.  On Windows, you run Python 3 with <code>python</code>.  Note that if you use the Linux version of Python 3 in WSL you'll need to run it with <code>python3</code> but use <code>python</code> when you're running Python 3 in a Windows shell like the <code>cmd</code> shell or PowerShell.</p>
+</blockquote>
+<h2>Ubuntu and WSL2</h2>
+<p>If you are using Windows 10 or 11, install WSL2, the Windows Subsystem for Linux, Version 2.  WSL2 provides a very nice Linux environment, including a full Linux kernel and distribution of your choosing (I will use the latest Ubuntu in demonstrations).</p>
+<blockquote>
+<p>If you have trouble installing WSL2, you most likely need to update your Windows installation.  If you still have trouble, perhaps because you are prevented from updating your computer by an IT department, you can install the Windows version of Python and all the other tools used in this course using the instructions for Windows above.  Python is primarily a Linux/Unix technology, and knowledge of Linux is essential for most modern software development, so I recommend installing WSL2 and becoming familiar with Linux, but you will not miss anything in this course by running the Windows versions of Python and the other tools we'll use.</p>
+</blockquote>
+<h3>Installing WSL2</h3>
+<blockquote>
+<p>See detailed instructions in <a href="https://docs.microsoft.com/en-us/windows/wsl/install-win10#simplified-installation-for-windows-insiders">Microsofts docs</a>.  Note that Windows 10 with all updates from 2021-07-29 and later should support the simplified install.</p>
+</blockquote>
+<ol>
+<li>
+<p>Start PowerShell in admin mode by typing Windows+R, typing <code>powershell</code> in the text box, and running it with Ctrl-Enter.</p>
+<ul>
+<li>You can also activate the Windows search menu by pressing the Windows key, typing <code>powershell</code> into the search box, and selecting "Run as admin" on the right.</li>
+</ul>
+</li>
+<li>
+<p>On the PowerShell command line, enter <code>wsl --install</code>.  Accept the defaults to install the latest version of Ubuntu LTS.</p>
+</li>
+<li>
+<p>Install <a href="https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701">Windows Terminal</a></p>
+</li>
+</ol>
+<p>Now you have WSL and a very nice terminal installed.  In a WSL Ubuntu terminal window, install the necessary Python tools with the commands below (each one on its own line):</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>update
+sudo<span class="w"> </span>apt<span class="w"> </span>upgrade
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-pip
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-venv
+</code></pre></div>
+<p>If your system does not have Python 2 installed, you can make Python 3 "the" Python on your system.  You can determine whether Python 2 is installed by trying to run it:</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-V
+</code></pre></div>
+<p>If you get a message like "command not found" then Python 2 is not installed.  Make Python 3 "the" Python with:</p>
+<div class="codehilite"><pre><span></span><code>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python-is-python3
+</code></pre></div>
+<p>Now <code>python</code> and <code>python3</code> are the same and you don't have to remember to append <code>3</code> to Python commands.</p>
+    </div>
+</body>
+</html>

@@ -15,17 +15,23 @@ title: CS 8375 Resources
 
 ## Programming Environments
 
-- [Emacs](https://www.gnu.org/software/emacs/) is the most powerful text editor there will ever be.  Its steep learning curve is repaid a thousand-fold over your lifetime.
+- Essential [Software Setup](software-setup.html) you'll need for this course.
+- (Optional, for the adventurous) [Emacs](https://www.gnu.org/software/emacs/) is the most powerful text editor there will ever be.  Its steep learning curve is repaid a thousand-fold over your lifetime.
      - On macOS: `brew install --cask emacs`, which installs [Emacs for Mac OS X](https://emacsformacosx.com/)
     - [Beginners Guide to Emacs](https://www.masteringemacs.org/article/beginners-guide-to-emacs)
     - [Dr. CS's Emacs config](https://github.com/dr-cs/dotfiles) in the `.emacs.d` directory.
-- JetBrains [Educational Licenses](https://www.jetbrains.com/community/education/#students/)
+- (Recommended) JetBrains [Educational Licenses](https://www.jetbrains.com/community/education/#students/)
     - [PyCharm](https://www.jetbrains.com/pycharm/) is a good choice for a pythonista, ML engineer or data scientist.
-- [Google Colab](https://colab.research.google.com/)
+- [Sublime Text](https://www.sublimetext.com/).  The original modern text editor.  Excellent, but not free.  Written in [C++](https://isocpp.org/).
+- [Zed](https://zed.dev/).  An intriguing new free editor in the Sublime Text tradition.  Written in [Rust](https://www.rust-lang.org/).
+- [VS Code](https://code.visualstudio.com/).  Microsoft's embrace-extend-extinguish Sublime Text clone.  Written in JavaScript/TypeScript using Electron.  Kinda meh, but many people use it.
+- [Google Colab](https://colab.research.google.com/).  Free Jupyter Notebook service with most machine learning libraries installed and ready to use.
+
 
 # Libraries
 
 - Scipy: [NumPy](https://numpy.org), [MatPlotLib](https://matplotlib.org), [Pandas](https://pandas.pydata.org), and more.
+- [Keras](https://keras.io/)
 - [PyTorch](https://pytorch.org)
 - [JAX](https://docs.jax.dev/)
 

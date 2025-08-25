@@ -71,3 +71,12 @@ table.schedule th, tr.internal-header {
 table.schedule tr:hover {
     background: #ffc629;
 }
+
+blockquote {
+  width: 95%;
+  align: center;
+  padding: 10px;
+  border: 1px solid black;
+  background: lightblue;
+  left-margin: 5%;
+}
