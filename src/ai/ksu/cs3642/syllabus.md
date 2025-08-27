@@ -211,19 +211,19 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 1: 08-18,08-20</td><td>Introduction to AI,Intelligent Agents</td><td>Assigned: PA0</td><td></td>
+<td>Week 1: 08-18,08-20</td><td>Introduction to the Course,Introduction to AI</td><td>Assigned: PA0</td><td></td>
 </tr>
 
 <tr>
-<td>Week 2: 08-25,08-27</td><td>Problem Solving,Heuristic Search</td><td>Due: PA0,Assigned: PA1</td><td></td>
+<td>Week 2: 08-25,08-27</td><td>Intelligent Agents,Problem Solving</td><td>Due: PA0,Assigned: PA1</td><td></td>
 </tr>
 
 <tr>
-<td>Week 3: 09-01,09-03</td><td>Labor Day - No Class,Local Search</td><td></td><td></td>
+<td>Week 3: 09-01,09-03</td><td>Labor Day - No Class,Heuristic Search</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 4: 09-08,09-10</td><td>Adversarial Search,Constraint Satisfaction</td><td></td><td></td>
+<td>Week 4: 09-08,09-10</td><td>Local Search,Adversarial Search</td><td></td><td></td>
 </tr>
 
 <tr>

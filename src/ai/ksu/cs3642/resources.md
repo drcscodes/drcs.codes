@@ -15,6 +15,7 @@ title: CS 3642 Resources
 ## Programming Environments
 
 - Essential [Software Setup](software-setup.html) you'll need for this course.
+- [iPython](../../../shared/ipython.html).  The best interactive language interpreter ever.
 - (Optional, for the adventurous) [Emacs](https://www.gnu.org/software/emacs/) is the most powerful text editor there will ever be.  Its steep learning curve is repaid a thousand-fold over your lifetime.
      - On macOS: `brew install --cask emacs`, which installs [Emacs for Mac OS X](https://emacsformacosx.com/)
     - [Beginners Guide to Emacs](https://www.masteringemacs.org/article/beginners-guide-to-emacs)

@@ -1,5 +1,5 @@
 ---
-template: course
+template: shared
 title: iPython
 ---
 

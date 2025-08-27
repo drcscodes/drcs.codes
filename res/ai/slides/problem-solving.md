@@ -89,15 +89,46 @@ A search problem consists of:
 - How many paths are there from `Arad` to `Bucharest`?
 - What is/are the solutions to the `Arad-to-Bucharest` problem (assume perfect information -- fully observable, known dynamics, and deterministic actions)?
 
-## Vacuum State Space Graph
+## Example Problems
+
+- **Standardized problems** use idealized environments designed to illustrate or exercise various problem-solving methods.  See, for example, [Gymnasium](https://gymnasium.farama.org/).
+
+    - A **grid world** is an standardized environment whose states are organized as a grid, and whose actions include moving between adjacent grids.
+
+
+- **Real-world problems** are formulated for specific real-world tasks, like the problem specification used for Rhoombas.
+
+Here's a standardized environment for the vacuum cleaner agent, formulated as a grid world:
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_02-vacuum-state-space-graph.pdf)
+![](aima-fig-03_02-vacuum-state-space-graph.pdf){height="50%"}
 ```{=latex}
 \end{center}
 ```
+
+## Vacuum Cleaner Grid World
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_02-vacuum-state-space-graph.pdf){height="40%"}
+```{=latex}
+\end{center}
+```
+
+- **States** include both the agent's location, and characteristics of the environment.  For the vacuum world, that's $2 \cdot 2^2 = 8$ states.
+- **Initial state** is an arbitrary choice of the possible states.  Sometimes this choice is important.
+- **Actions** for this vacuum world are are `L`, `R`, and `Suck`.
+
+    - For 2D grids we can choose between
+
+        - **absolute** movement, like `Up` and `Right`, a.k.a., cardinal directions, or
+        - **egocentric** movement, like `TurnRight`, `MoveForward`.  How does this affect the state description?
+
+- **Goal states** are those in which every location is clean.
+- **Action cost** (path cost) is 1.
 
 ## Agents
 
@@ -109,21 +140,64 @@ A search problem consists of:
 \end{center}
 ```
 
+## Route Finding
+
+- **States**: a location (e.g., an airport) and the time.
+
+    - If action cost (e.g., a flight segment) depends on previous segments, fares, etc., the state must include these details.
+
+- **Initial state**: The user’s home airport.
+- **Actions**: Take any flight from the current location, in any seat class, leaving after the current time, or for connecting flights, after sufficient in-airport transfer time.
+- **Transition model**: The state resulting from taking a flight will have the flight’s destination as the new location and the flight’s arrival time as the new time.
+
+    - Example $T(s, a, s')$: `T(S(ATL, 10:00), A(DL875), S(LGA, 12:00))` (DL875 has a flight time of 2 hours).
+
+- **Goal state**: A destination city. Sometimes the goal can be more complex, such as arrive at the destination on a nonstop flight.  (Remember, a solution is a path, i.e., sequence of actions.)
+- **Action cost**: A combination of monetary cost, waiting time, flight time, customs and immigration procedures, seat quality, time of day, type of airplane, frequent-flyer reward points, and so on.
+
+## Real-World Problems
+
+- **Touring problems**
+- **VLSI layout** -- minimize area, minimize circuit delays, minimize stray capacitances, and maximize manufacturing yield
+
+    - Cell layout -- place cells on chip so they don't overlap and have room for connections
+    - Channel routing -- find routes for each wire between cells
+
+- **Robot navigation**
+- **Automatic assembly sequencing** -- standard practice in manufacturing since the 1970s.
+
+    - Solving some automatic assembly problems could earn you a [Nobel Prize!](https://deepmind.google/science/alphafold/)
+
 ## Search Algorithms
 
-- Search tree
+A **search algorithm** takes a search problem as input and returns a solution, or an indication of failure.
+
+- In general, the states and actions of a problem create a state space graph.
+- Here we consider algorithms that superimpose a **search tree** over the state-space graph.
+- **Nodes** correspond to states, **edges** correspond to actions
+
+    - May be many nodes for a given state, but each path is unique.
+
+Don't confuse state space with search tree.
+
+- State space describes the set of states and actions that case transitions from one state to another.
+- Search tree describes paths between these states, reaching towards the goal(s).
 
 ## Searching State Space
+
+Root node is initial state.  At each node we can **expand** the node, which grows the tree, by taking actions (adding edges) that lead to successor states (generate successor/child nodes).
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_04-arad-bucharest-partial-trees.pdf){height="90%"}
+![](aima-fig-03_04-arad-bucharest-partial-trees.pdf){height="80%"}
 ```{=latex}
 \end{center}
 ```
 
 ## Search Tree Expansion
+
+Here is a search tree being imposed on the Romania state space graph by a search algorithm.
 
 ```{=latex}
 \begin{center}
@@ -133,7 +207,14 @@ A search problem consists of:
 \end{center}
 ```
 
+Essence of search:
+
+- Choose a child node to consider next.
+- Put aside other nodes for later.
+
 ## Separation Property of Graph Search
+
+The **frontier** separates the interior region of expanded nodes from the exterior region of unexpanded nodes.
 
 ```{=latex}
 \begin{center}
@@ -147,14 +228,32 @@ A search problem consists of:
 - (b) Top frontier node expanded.
 - (c) Remaining successors of root expanded in clockwise order.
 
-## Best-First Search Algorithm
+## The `yield` statement
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-03_07-best-first-search-algorithm.pdf)
-```{=latex}
-\end{center}
+A function containing a `yield` statement is a **generator**.  Use a generator to turn a data generating process into an iterator.
+
+```python
+In [36]: def by_twos(start: int, end: int):
+    ...:     x = start
+    ...:     while x < end:
+    ...:         yield x
+    ...:         x += 2
+    ...:
+
+In [37]: by_twos(1, 9)
+Out[37]: <generator object by_twos at 0x109010ee0>
+
+In [38]: list(Out[37])
+Out[38]: [1, 3, 5, 7]
+
+In [39]: for x in by_twos(1, 10):
+    ...:     print(f"{x=}")
+    ...:
+x=1
+x=3
+x=5
+x=7
+x=9
 ```
 
 ## Search Data Structures
@@ -164,9 +263,9 @@ Node:
 - `node.STATE`: the state to which the node corresponds;
 - `node.PARENT`: the node in the tree that generated this node;
 - `node.ACTION`: the action that was applied to the parent’s state to generate this node;
-- `node.PATH-COST`: the total cost of the path from the initial state to this node. In math- ematical formulas, we use g(node) as a synonym for PATH-COST.
+- `node.PATH-COST`: the total cost of the path from the initial state to this node. In math- ematical formulas, we use $g(node)$ as a synonym for PATH-COST.
 
-Frontier:
+Frontier is a **queue** with operations:
 
 - `IS-EMPTY(frontier)` returns true only if there are no nodes in the frontier.
 - `POP(frontier)` removes the top node from the frontier and returns it.
@@ -178,6 +277,18 @@ Queues used in search algorithms:
 - A **priority queue** first pops the node with the minimum cost according to some evaluation function, f . It is used in best-first search.
 - A **FIFO queue** or first-in-first-out queue first pops the node that was added to the queue first; we shall see it is used in breadth-first search.
 - A **LIFO queue** or last-in-first-out queue (also known as a stack) pops first the most recently added node; we shall see it is used in depth-first search.
+
+## Best-First Search Algorithm
+
+$f(node)$ is an evaluation function, which imposes an ordering on the nodes in the priority queue.
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_07-best-first-search-algorithm.pdf){height="80%"}
+```{=latex}
+\end{center}
+```
 
 ## Redundant Paths
 
@@ -193,10 +304,10 @@ tree-like search
 
 ## Measuring Problem-Solving Performance
 
-- Completeness: Is the algorithm guaranteed to find a solution when there is one, and to correctly report failure when there is not?
-- Cost optimality: Does it find a solution with the lowest path cost of all solutions?
-- Time complexity: How long does it take to find a solution? This can be measured in seconds, or more abstractly by the number of states and actions considered.
-- Space complexity: How much memory is needed to perform the search?
+- **Completeness**: Is the algorithm guaranteed to find a solution when there is one, and to correctly report failure when there is not?
+- **Cost optimality**: Does it find a solution with the lowest path cost of all solutions?
+- **Time complexity**: How long does it take to find a solution? This can be measured in seconds, or more abstractly by the number of states and actions considered.
+- **Space complexity**: How much memory is needed to perform the search?
 
 ## Uninformed Search Strategies
 
