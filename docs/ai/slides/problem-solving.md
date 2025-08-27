@@ -130,16 +130,6 @@ Here's a standardized environment for the vacuum cleaner agent, formulated as a 
 - **Goal states** are those in which every location is clean.
 - **Action cost** (path cost) is 1.
 
-## Agents
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-03_03-eight-puzzle.pdf)
-```{=latex}
-\end{center}
-```
-
 ## Route Finding
 
 - **States**: a location (e.g., an airport) and the time.
@@ -176,26 +166,12 @@ A **search algorithm** takes a search problem as input and returns a solution, o
 - Here we consider algorithms that superimpose a **search tree** over the state-space graph.
 - **Nodes** correspond to states, **edges** correspond to actions
 
-    - May be many nodes for a given state, but each path is unique.
-
 Don't confuse state space with search tree.
 
-- State space describes the set of states and actions that case transitions from one state to another.
+- State space is set of states, and actions that cause transitions between states.
 - Search tree describes paths between these states, reaching towards the goal(s).
 
-## Searching State Space
-
-Root node is initial state.  At each node we can **expand** the node, which grows the tree, by taking actions (adding edges) that lead to successor states (generate successor/child nodes).
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-03_04-arad-bucharest-partial-trees.pdf){height="80%"}
-```{=latex}
-\end{center}
-```
-
-## Search Tree Expansion
+    - May be many nodes for a given state, but each path from root to node is unique.
 
 Here is a search tree being imposed on the Romania state space graph by a search algorithm.
 
@@ -207,10 +183,34 @@ Here is a search tree being imposed on the Romania state space graph by a search
 \end{center}
 ```
 
+## Elements of Search Algorithms
+
 Essence of search:
 
-- Choose a child node to consider next.
-- Put aside other nodes for later.
+- Choose a child node to consider next.  "Who's first?"
+- Put aside other nodes for later. "Who's next?"
+
+Root node is initial state.  At each node we can **expand** the node, which grows the tree, by taking actions (adding edges) that lead to successor states (generate successor/child nodes).  Search algorithms must keep track of:
+
+- *Expanded* nodes.  We test expanded nodes before dealing with frontier.
+- *Frontier* nodes, which are generated but not yet expanded.
+
+    - *Reached* = *Expanded* + *Frontier*
+
+## Search Progression
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_04-arad-bucharest-partial-trees.pdf){height="75%"}
+```{=latex}
+\end{center}
+```
+
+- *Expanded* nodes are lavender with bold letters.
+- *Frontier* nodes are green with normal weight font.
+- Nodes in dashed-line ovals are candidates for expansion.
+
 
 ## Separation Property of Graph Search
 
@@ -224,13 +224,15 @@ The **frontier** separates the interior region of expanded nodes from the exteri
 \end{center}
 ```
 
+Frontier is in green.  Interior is lavender.  Exterior is faint dashed.
+
 - (a) Only root expanded.
 - (b) Top frontier node expanded.
 - (c) Remaining successors of root expanded in clockwise order.
 
-## The `yield` statement
+## Implementation Note: The `yield` statement
 
-A function containing a `yield` statement is a **generator**.  Use a generator to turn a data generating process into an iterator.
+A function containing a `yield` statement is a **generator**.  Use a generator to turn a data generating process into an iterator.  Node expansion is a data generating process.
 
 ```python
 In [36]: def by_twos(start: int, end: int):
@@ -274,47 +276,103 @@ Frontier is a **queue** with operations:
 
 Queues used in search algorithms:
 
-- A **priority queue** first pops the node with the minimum cost according to some evaluation function, f . It is used in best-first search.
+- A **priority queue** first pops the node with the minimum cost according to some evaluation function, $f$ . It is used in best-first search.
 - A **FIFO queue** or first-in-first-out queue first pops the node that was added to the queue first; we shall see it is used in breadth-first search.
 - A **LIFO queue** or last-in-first-out queue (also known as a stack) pops first the most recently added node; we shall see it is used in depth-first search.
 
-## Best-First Search Algorithm
+## Best-First Search
 
-$f(node)$ is an evaluation function, which imposes an ordering on the nodes in the priority queue.
+Best-first search is an abstract search algorithm.  Name can be tricky to understand.
+
+- *Best* way to pick the *first* node to consider next.
+- We use a generalization of queues, called a *priority queue*, to store the *frontier*.
+- An evaluation function, $f(node)$, imposes an ordering on the nodes in the priority queue.
+
+> The evaluation function considers the path to the node, not any property of the node itself.  Remember, a solution to a search problem is characterized by the *path* from the root to the goal, not some characteristic of the goal.
+
+We'll now describe several uninformed search algorithms.  I recommend you also look at their [implementations in Python](https://github.com/aimacode/aima-python/blob/master/search4e.ipynb), which may be easier to follow.
+
+## Best-First Search Algorithm
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_07-best-first-search-algorithm.pdf){height="80%"}
+![](aima-fig-03_07-best-first-search-algorithm.pdf){height="90%"}
 ```{=latex}
 \end{center}
 ```
 
 ## Redundant Paths
 
-Repeated states
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_04-arad-repeated.pdf){height="30%"}
+```{=latex}
+\end{center}
+```
 
-cycles
+In the path from `Arad` to `Sibiu` to `Arad`,
 
-redundant paths
+- `Arad` is a **repeated state** and
+- the path is a **cycle**, or **loopy path**.
 
-graph search
+Cycle special case of **redundant path**: multiple paths to the same state.  Three approaches:
 
-tree-like search
+1. Remember reaches states, like best-first search.  Best when reached states fits in memory.
+2. Don't worry about repeated states.  Works when repeated states rare or impossible.
+
+    - **Graph search** checks for redundant paths, which occur in graphs in general.
+    - **Tree-like search** does not check for redundant paths, since trees are acyclic graphs.
+
+3. Only check for cycles, not other kinds of redundant paths.
+
+    - E.g., search path in reverse
 
 ## Measuring Problem-Solving Performance
 
 - **Completeness**: Is the algorithm guaranteed to find a solution when there is one, and to correctly report failure when there is not?
+
+    - Complete search algorithms must be **systematic**.
+    - Easier to achieve for finite state spaces.
+    - In an infinite state space with no solution, search won't terminate.
+
 - **Cost optimality**: Does it find a solution with the lowest path cost of all solutions?
 - **Time complexity**: How long does it take to find a solution? This can be measured in seconds, or more abstractly by the number of states and actions considered.
 - **Space complexity**: How much memory is needed to perform the search?
 
+For *explicit* graphs, like Romania, time and space complexity typically expressed in terms of number of vertices (state nodes), $|V|$, and number of edges, $|E|$ (state-action pairs, which generate ($(s, a, s')$ triples).
+
+For *implicit* state space graphs we characterize time and space complexity in terms of depth, $d$ (number of actions in an optimal solution), and branching factor, $b$ (number of successor nodes per node).
+
 ## Uninformed Search Strategies
 
-Strategy:
+Uninformed search strategies have no information about which actions are better for reaching a goal.  In these cases we can only do systematic searches of the state space.  We'll discuss
 
+- Breadth-first search
+- Uniform-Cost search (Djikstra's algorithm)
+- Depth-first search
+- Depth-limited searchand
+- Iterative deepening search.
+- Bidirectional search
 
 ## Breadth-First Search
+
+- Good when path costs are uniform.
+- Equivalent to best-first search where $f(node$ is the depth of the node
+- Guaranteed to find minimal number of actions because it evaluates depth $d$ before generating depth $d+1$.
+
+But three optimizations afforded by the BFS algorithm and uniform path costs:
+
+- FIFO queue instead of priority queue
+- *Reached* is a set instead of a mapping $S \rightarrow Node$
+
+    - With uniform path costs, as soon as BFS finds a node, it's the fastest way to it.
+
+- **Early goal test** -- as soon as we expand a node, we can test it.
+
+## BFS Algorithm
+
 
 ```{=latex}
 \begin{center}
@@ -323,6 +381,7 @@ Strategy:
 ```{=latex}
 \end{center}
 ```
+
 ```{=latex}
 \begin{center}
 ```
@@ -331,7 +390,26 @@ Strategy:
 \end{center}
 ```
 
-## Dijkstra's Algorithm
+## Analysis of BFS
+
+- Complete, because it generates all nodes at each depth.
+- Time complexity: at each level, $b$ nodes for  each $b$ predecessors, so
+
+    - $1 + b + b^2 + b^3 + \cdots + b^d = O(b^d)$
+
+- Space complexity: $O(b^d)$ because all nodes are stored while the search proceeds.
+
+Uninformed search is not appropriate for exponential complexity problems except for smallest instances.  Assuming your computer can process 1 million nodes per second and store each node in 1 Kb,
+
+- For a problem with $b = 10$ and $d = 10$, how long will it take search and how much space will be required?
+- Same problem, but with $d = 14$?
+
+## Uniform-Cost Search (Dijkstra's Algorithm)
+
+:::: {.columns}
+::: {.column width="30%"}
+
+BFS where the best-first $f(node)$ is the path cost to the current node.
 
 ```{=latex}
 \begin{center}
@@ -341,12 +419,38 @@ Strategy:
 \end{center}
 ```
 
+:::
+::: {.column width="70%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_07-best-first-search-algorithm.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+## Analysis of Uniform-Cost Search
+
+Let $C^*$ be the cost of the optimal solution and $\epsilon > 0$ be a lower bound on the cost of each action.
+
+- Time and space complexity are $O(b^{1 + \lfloor \frac{C^*}{\epsilon} \rfloor})$.
+
+    - Since lower cost paths are always explored first, even when a higher cost path might be the one to lead to an optimal solution, can be worse than BFS.
+    - If all action costs equal, then it's like BFS, $O(b^{1 + d})$.
+
+- Complete. like BFS
+- Cost-optimal, because a solution will be at least as low cost as any other in the frontier.
+
 ## Depth-First Search
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_11-dfs-progress.pdf)
+![](aima-fig-03_11-dfs-progress.pdf){height="90%"}
 ```{=latex}
 \end{center}
 ```
@@ -366,7 +470,7 @@ Strategy:
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_13-iterative-deepening-progress.pdf)
+![](aima-fig-03_13-iterative-deepening-progress.pdf){height="90%"}
 ```{=latex}
 \end{center}
 ```
@@ -376,7 +480,7 @@ Strategy:
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_14-bidirectional-best-first-search-algorithm.pdf)
+![](aima-fig-03_14-bidirectional-best-first-search-algorithm.pdf){height="90%"}
 ```{=latex}
 \end{center}
 ```
