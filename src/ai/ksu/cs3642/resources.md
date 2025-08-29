@@ -9,6 +9,7 @@ title: CS 3642 Resources
 
 - [Course Introduction](course-intro.html)
 - [AIMA Exercises](https://aimacode.github.io/aima-exercises/)
+- [Berkely AI Textbook](https://inst.eecs.berkeley.edu/~cs188/textbook/).  This is an abbreviated adaptation of the full AIMA textbook, with expanded explanations in some sections.
 - [Research Papers](papers.html), [.bib file](ai.bib)
 - [ACM Computing Classification System](https://www.acm.org/publications/class-2012)
 
