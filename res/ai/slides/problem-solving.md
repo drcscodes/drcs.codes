@@ -426,6 +426,8 @@ BFS where the best-first $f(node)$ is the path cost to the current node.
 \begin{center}
 ```
 ![](aima-fig-03_07-best-first-search-algorithm.pdf)
+
+![](aima-fig-03_09-uniform-cost-search.pdf)
 ```{=latex}
 \end{center}
 ```
@@ -455,17 +457,40 @@ Let $C^*$ be the cost of the optimal solution and $\epsilon > 0$ be a lower boun
 \end{center}
 ```
 
-## Depth-Limited Search and Iterative Deepening Search
+## Analysis of DFS
+
+- Not cost-optimal -- returns first solution it finds
+- For state space that are finite trees:
+
+    - Complete
+    - Time $O(n)$ where $n$ is number of states
+    - Space: $O(bm)$, where $b$ is branching factor and $m$ is max depth of tree.
+
+- For (acyclic) graph state spaces, may expand same state via multiple paths.
+
+    - For cyclic graph state spaces, need to check for cycles to prevent infinite loops.
+
+- For infinite state spaces, not complete -- may get stuck in an infinite subtree.
+
+Why bother with DFS at all? **Memory efficiency**
+
+
+## Depth-Limited Search
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_12-depth-limited-iterative-deepening-algorithms.pdf)
+![](aima-fig-03_12-depth-limited-search-algorithm.pdf)
 ```{=latex}
 \end{center}
 ```
 
-## Progression of Iterative Deepening Search
+- If limit, $\ell$, too small, won't find goal.
+- To guarantee completeness, choose $\ell \ge diameter$
+
+    - Diameter of a state space graph: maximum number of actions necessary to transition from any state to any other state.
+
+## Iterative Deepening Search
 
 ```{=latex}
 \begin{center}
@@ -475,15 +500,38 @@ Let $C^*$ be the cost of the optimal solution and $\epsilon > 0$ be a lower boun
 \end{center}
 ```
 
+## Analysis of Iterative Deepening Search
+
+- Cost-optimal for state spaces where all actions have same cost.
+- For state space that are finite trees, where $b$ is branching factor and $m$ is max depth of tree:
+
+    - Complete for finite acyclic spaces, or finite cyclic spaces with cycle checking
+    - Space: $O(bd)$ if there is a solution, $O(bm)$ if no solution,
+    - Time $O(b^d)$ if there is a solution, $O(b^m)$ if no solution.
+
+        - $N(IDS) = (d)b^1 + (d-1)b^2 + \cdots + b^d$
+
+
+- For (acyclic) graph state spaces, may expand same state via multiple paths.
+
+    - For cyclic graph state spaces, need to check for cycles to prevent infinite loops.
+
+- For infinite state spaces, not complete -- may get stuck in an infinite subtree.
+
+> In general, iterative deepening search is the preferred uninformed search method when the search state space is larger than can fit in memory and deepening from all the nodes in the frontier.
+
+
 ## Bidirectional Best-First Search
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_14-bidirectional-best-first-search-algorithm.pdf){height="90%"}
+![](aima-fig-03_14-bidirectional-best-first-search-algorithm.pdf){height="80%"}
 ```{=latex}
 \end{center}
 ```
+
+Motivation: $b^{\frac{d}{2}} + b^{\frac{d}{2}} \ll b^d$.
 
 ## Comparing Uninformed Search Algorithms
 
@@ -491,6 +539,143 @@ Let $C^*$ be the cost of the optimal solution and $\epsilon > 0$ be a lower boun
 \begin{center}
 ```
 ![](aima-fig-03_15-uninformed-search-comparisons.pdf)
+```{=latex}
+\end{center}
+```
+
+Notes:
+
+- 1: complete if $b$ is finite, and the state space either has a solution or is finite
+- 2: complete if all action costs are $\ge \epsilon > 0$
+- 3: cost-optimal if action costs are all identical
+- 4: if both directions are breadth-first or uniform-cost
+
+## Informed (Heuristic) Search Strategies
+
+- Use domain-specific hints about "distance" from goals
+- Hints encapsulated in a **heuristic function**, $h(node)$:
+
+    - $h(node)$ = estimated cost of cheapest path from $node$ to a goal state
+    - $h$ is really a function of $state$, not $node$.  We use $h(node)$ to be consistent with $f(node)$ in best-first search, and path cost, $g(node)$.
+    - Book uses $f(n)$, $g(n)$ and $h(n)$.  I use $node$ instead of $n$ to clearly distinguish from $n$ as an index in problem size, $N$.
+
+Example Heuristic for Romania, $h_{SLD}$:
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_16-straight-line-distances.pdf)
+```{=latex}
+\end{center}
+```
+
+Straight line distances to Bucharest from each of the cities in Romania.
+
+## Greedy Best-First Search
+
+- Recall that best-first search uses a priority queue for its frontier, ordered by $f(node)$
+- Greedy best-first search uses $f(node) = h(node)$
+- Greediness: get as close to the goal as possible in each step
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_17-greedy-best-first-progress.pdf){height="70%"}
+```{=latex}
+\end{center}
+```
+
+## Optimality of Greedy Best-First Search
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_10-sibiu-bucharest.pdf){height="50%"}
+```{=latex}
+\end{center}
+```
+
+- Greedy best-first search returns the path via Sibiu and Fagaras to Bucharest.
+- The path through Rimnicu Vilcea and Pitesti is 32 miles shorter.
+
+## A* Progress Part 1
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_18-astar-progress-1.pdf){height="90%"}
+```{=latex}
+\end{center}
+```
+
+## A* Progress Part 2
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_18-astar-progress-2.pdf)
+```{=latex}
+\end{center}
+```
+
+## Admissibility and Consistency
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_19-consistency-triangle-inequality.pdf)
+```{=latex}
+\end{center}
+```
+
+## Search Contours
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_20-astar-contours.pdf)
+```{=latex}
+\end{center}
+```
+
+## Satisficing Search: $A^*$ vs Weighted $A^*$
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_21-astar-vs-weighted-astar.pdf)
+```{=latex}
+\end{center}
+```
+
+(a) an A∗search and (b) a weighted A∗search
+with weight W= 2. The gray bars are obstacles, the purple line is the path from the green
+start to red goal, and the small dots are states that were reached by each search. On this
+particular problem, weighted A∗ explores 7 times fewer states and finds a path that is 5%
+more costly.
+
+## Heuristic Functions
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_03-eight-puzzle.pdf)
+```{=latex}
+\end{center}
+```
+
+- Misplaced tiles
+- Manhattan distance
+
+## Heuristic Accuracy and Performance
+
+- Effective branching factor
+- Effective depth
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_26-eight-puzzle-heristics-comparisons.pdf)
 ```{=latex}
 \end{center}
 ```
