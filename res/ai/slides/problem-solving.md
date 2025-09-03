@@ -663,10 +663,6 @@ Heavily dependent on quality of heuristic function.
 
 - Countours represent monotonically increasing path costs.
 
-## Analysis of $A^*$ Search
-
-blerg
-
 ## Satisficing Search: $A^*$ vs Weighted $A^*$
 
 - Detour index: multiplier applied to straight-line distance to account for curvature of roads.  E.g., detour index of 1.3 means a road connecting locations 10 miles apart would be estimated as 13 miles long.
