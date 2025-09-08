@@ -15,6 +15,8 @@ header-includes:
 
 ## Local Search
 
+If you don't care about the path to a goal state, you can use **local search**.
+
 - Search neighbors of current state, moving to best neighbor.
 - Track only current state.
 - Uses very little memory.
@@ -44,17 +46,46 @@ header-includes:
 
 - Also known as **greedy local search**
 
-## Hill-Climbing on 8 Queens Problem
+## The 8 Queens Problem
+
+**Complete-state formulation**: row position for each of 8 columns, e.g., (a) below is `<1, 6, 2, 5, 7, 4, 8, 3>`
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-04_03-8-queens.pdf)
+![](aima-fig-04_03-8-queens.pdf){height="50%"}
 ```{=latex}
 \end{center}
 ```
 
+- Action: move a single queen to new row within column.  Each state has $8 \dot 7 = 56$ successor states.
+- Possible heuristic: number of pairs of attacking queens (even if blocked).  (b) above has $h = 17$.
+
+    - Useful to remember: $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
+
+
 ## Disadvantages of Hill-Climbing
+
+:::: {.columns}
+::: {.column width="60%"}
+Susceptible to getting stuck in:
+
+- local maxima
+- ridges -- sequences of local maxima
+- plateaus, e.g., flat local maxima or shoulders.
+
+![](aima-fig-04_01-state-space-landscape.pdf){height="30$"}
+
+How to fix:
+
+- Allow "sideways" moves
+- Stochastic hill climbing chooses randomly from uphill moves.
+- Random restart hill climbing restarts from multiple initial states.
+
+:::
+::: {.column width="40%"}
+
+Grid of states superimposed on ridge rising from left to right.
 
 ```{=latex}
 \begin{center}
@@ -64,24 +95,15 @@ header-includes:
 \end{center}
 ```
 
-Susceptible to getting stuck in:
-
-- local maxima
-- ridges -- sequences of local maxima
-- plateaus, e.g., flat local maxima or shoulders.
-
-How to fix:
-
-- Allow "sideways" moves
-- Stochastic hill climbing chooses randomly from uphill moves.
-- Random restart hill climbing restarts from multiple initial states.
+:::
+::::
 
 ## Simulated Annealing
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-04_05-simulated-annealing-algorithm.pdf)
+![](aima-fig-04_05-simulated-annealing-algorithm.pdf){height="30%"}
 ```{=latex}
 \end{center}
 ```
@@ -104,6 +126,38 @@ If $T$ decreases sufficiently slowly, then the Boltzman distribution, $e^{\frac{
 
 A kind of **local beam search**: tracking $k$ states instead of just one.
 
+Elements of genetic algorithms:
+
+- Fitness function.
+- Population size.
+- Candidate representation:
+
+    - Typically a string (vector) over a finite alphabet.
+    - **Evolution strategies**: sequence of real numbers.
+    - **Genetic programming**: computer programs.
+
+- Mixing number, $\rho$: number of "parents" from which to generate new candidates.  When $\rho = 1$, stochastic beam search.
+- Selection process for choosing "parents."
+- Recombination procedure.
+- Mutation rate.
+- Composition of next generation.
+
+    - Elitism: choose top-scoring candidates.
+    - Culling: eliminate bottom-scoring candidates.
+
+
+## A Genetic Algorithm
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-04_08-genetic-algorithm.pdf)
+```{=latex}
+\end{center}
+```
+
+## Genetic Algorithm on 8-Queens Problem
+
 ```{=latex}
 \begin{center}
 ```
@@ -118,16 +172,6 @@ A kind of **local beam search**: tracking $k$ states instead of just one.
 \begin{center}
 ```
 ![](aima-fig-04_07-8-queens-crossover-diagrams.pdf)
-```{=latex}
-\end{center}
-```
-
-## An Example Genetic Algorithm
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-04_08-genetic-algorithm.pdf)
 ```{=latex}
 \end{center}
 ```
