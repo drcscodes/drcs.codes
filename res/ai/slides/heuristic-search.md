@@ -109,23 +109,6 @@ Heavily dependent on quality of heuristic function.
 - Admissibility is required to guarantee cost-optimality in $A^*$.
 - Consistency improves performance by guaranteeing that the first time we reach a node, it is on the optimal path -- so we don't re-evaluate multiple paths to the same node.
 
-## Search Contours
-
-- In a topographical map, countours indicate a constant elevation
-- In a search contour of a state space, a contour indicates an upper bound on path cost in a region
-
-    - In the 400 countour, each node has $f(node) = g(node) + h(node) \le 400$.
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-03_20-astar-contours.pdf)
-```{=latex}
-\end{center}
-```
-
-- Countours represent monotonically increasing path costs.
-
 ## Satisficing Search: $A^*$ vs Weighted $A^*$
 
 - Detour index: multiplier applied to straight-line distance to account for curvature of roads.  E.g., detour index of 1.3 means a road connecting locations 10 miles apart would be estimated as 13 miles long.
@@ -169,6 +152,23 @@ $A^*$ is not memory-efficient.  Some approaches to imporoving memory efficiency:
     - $f$ value of discarded path is kept in case alternative doesn't work out.
 
 - **Simplified memory-bounded $A^*$ ($SMA^*$)** is similar to RBFS, but expands best leaf node until memory is full.  Then it discards the worst leaf and continues.
+
+## Search Contours
+
+- In a topographical map, countours indicate a constant elevation
+- In a search contour of a state space, a contour indicates an upper bound on path cost in a region
+
+    - In the 400 countour, each node has $f(node) = g(node) + h(node) \le 400$.
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_20-astar-contours.pdf)
+```{=latex}
+\end{center}
+```
+
+- Countours represent monotonically increasing path costs.
 
 ## Heuristic Functions
 
