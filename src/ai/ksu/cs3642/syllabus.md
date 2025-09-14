@@ -34,11 +34,11 @@ Name: Christopher Simpkins
 
 Email: christopher.simpkins@kennesaw.edu
 
-Office Location: Norton Hall Room 328
+Office Location: Norton Hall R2-058
 
 Office phone: N/A
 
-Office Hours: Thursdays, 13:30-15:30 in R2-328 ($3=\log_2 8$)
+Office Hours: Thursdays, 13:30-15:30 in Norton Hall R2-056
 
 Preferred method of communication: E-mail
 
@@ -227,7 +227,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 5: 09-15,09-17</td><td>Logical Agents,First Order Logic</td><td>Due: PA1,Assigned: PA2</td><td></td>
+<td>Week 5: 09-15,09-17</td><td>Adversarial Search,Logical Agents</td><td>Due: PA1,Assigned: PA2</td><td></td>
 </tr>
 
 <tr>
