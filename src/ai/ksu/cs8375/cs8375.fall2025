@@ -17,7 +17,7 @@ Week 5
 2025-09-15;adversarial-search;;
 2025-09-17;logical-agents;Due: [PA1](pa1.html),Assigned: [PA2](pa2.html);
 Week 6
-2025-09-22;knowledge-representation;;
+2025-09-22;knowledge-representation;Due: [Project Proposal](project.html);
 2025-09-24;planning;;
 Week 7
 2025-09-29;midterm-review;Due: [PA2](pa2.html);
@@ -36,7 +36,7 @@ Week 11
 2025-10-27;utility-theory;;
 2025-10-29;simple-decisions;;Withdrawal Deadline (2025-10-31)
 Week 12
-2025-11-03;complex-decisions;;
+2025-11-03;complex-decisions;Due: [Project Results](project.html);
 2025-11-05;bandits-pomdps;;
 Week 13
 2025-11-10;multiagent-systems;;
@@ -52,5 +52,5 @@ Week 16
 2025-12-01;reinforcement-learning1;;
 2025-12-03;reinforcement-learning2;;
 Week 17
-2025-12-08;final-review;Due: [PA4](pa4.html);
+2025-12-08;final-review;Due: [PA4](pa4.html), Due: [Project Report](project.html);
 2025-12-10;Final Exam;18:00-20:00;

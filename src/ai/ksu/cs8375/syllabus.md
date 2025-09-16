@@ -215,11 +215,11 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 1: 08-18,08-20</td><td>Introduction to the Course,Introduction to AI</td><td>Assigned: PA0</td><td></td>
+<td>Week 1: 08-18,08-20</td><td>Introduction to the Course,Introduction to AI</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 2: 08-25,08-27</td><td>Intelligent Agents,Problem Solving</td><td>Due: PA0,Assigned: PA1</td><td></td>
+<td>Week 2: 08-25,08-27</td><td>Intelligent Agents,Problem Solving</td><td>Due: PA0,</td><td></td>
 </tr>
 
 <tr>
@@ -231,11 +231,11 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 5: 09-15,09-17</td><td>Adversarial Search,Logical Agents</td><td>Due: PA1,Assigned: PA2</td><td></td>
+<td>Week 5: 09-15,09-17</td><td>Adversarial Search,Logical Agents</td><td>Due: PA1</td><td></td>
 </tr>
 
 <tr>
-<td>Week 6: 09-22,09-24</td><td>Knowledge Representation, Planning</td><td></td><td></td>
+<td>Week 6: 09-22,09-24</td><td>Knowledge Representation, Planning</td><td>Due: Project Proposal</td><td></td>
 </tr>
 
 <tr>
@@ -243,7 +243,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 8: 10-06,10-08</td><td>Uncertainty,Bayesian Networks</td><td>Assigned: PA3</td><td></td>
+<td>Week 8: 10-06,10-08</td><td>Uncertainty,Bayesian Networks</td><td></td><td></td>
 </tr>
 
 <tr>
@@ -259,7 +259,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 12: 11-03,11-05</td><td>Complex Decisions,Bandits POMDPs</td><td></td><td></td>
+<td>Week 12: 11-03,11-05</td><td>Complex Decisions,Bandits POMDPs</td><td>Due: Project Results</td><td></td>
 </tr>
 
 <tr>
@@ -267,7 +267,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 14: 11-17,11-19</td><td>Supervised Learning,Statistical Learning</td><td>Due: PA3,Assigned: PA4</td><td></td>
+<td>Week 14: 11-17,11-19</td><td>Supervised Learning,Statistical Learning</td><td>Due: PA3</td><td></td>
 </tr>
 
 <tr>
@@ -279,7 +279,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 17: 12-08,12-10</td><td>Final Review</td><td>Due: PA4,18:00-20:00</td><td>Final Exam</td>
+<td>Week 17: 12-08,12-10</td><td>Final Review</td><td>Due: PA4, Due: Project Report,</td><td>Final Exam</td>
 </tr>
 
 </table>
