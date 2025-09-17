@@ -638,22 +638,26 @@ Many problems cannot be solved without sensing, e.g., sensorless 8-puzzle is imp
 
 We can solve 8-puzzles if we can see just the upper-left corner square by moving each tile in turn into the observable square and keeping track of its location from then on.
 
-For a partially observable problem, the problem specification will specify a PERCEPT(s) function that returns the percept received by the agent in a given state.
+For a partially observable problem, the problem specification will specify a $Percept(s)$ function that returns the percept received by the agent in a given state.
 
-- If sensing is nondeterministic, then we can use a PERCEPTS function that returns a set of possible percepts.
-- For fully observable problems, PERCEPT(s) = s for every state s.
-- For sensorless problems PERCEPT(s) = null.
+- For nondeterministic sensing, $Percepts(s) = \{s\}_{s \in S}$
+- For fully observable problems, $\forall s, Percept(s) = s$
+- For sensorless problems $Percept(s) = \text{null}$.
 
 ## Local-Sensing Vacuum World
 
 :::: {.columns}
 ::: {.column width="60%"}
 
-The agent has a position sensor that yields the percept L in the left square, and R in the right square, and a dirt sensor that yields Dirty when the current square is dirty and Clean when it is clean -- but does not sense the other square.
+The agent has a position sensor that yields the percept L in the left square, and R in the right square, and a dirt sensor that yields Dirty when the current square is dirty and Clean when it is clean -- but does not sense the other square.  This is nondeterministic sensing becuase the same percept can match more than one state:
 
 - The PERCEPT in State 1 is [L,Dirty].
 - State 3 will also produce [L,Dirty].
-- Hence, the initial belief state will be {1,3}.
+- Hence, the initial belief state will be {1,3}:
+
+    - $Percepts(1) = \{1, 3\}$
+
+How do we algorithmically get that belief state ...
 
 :::
 ::: {.column width="40%"}
@@ -672,7 +676,7 @@ The agent has a position sensor that yields the percept L in the left square, an
 
 ## Transition Model in Partially Observable Environments
 
-We can think of the transition model between belief states for partially observable problems as occurring in three stages, as depicted in the next slide:
+After we apply an action in a given belief state, we can think of the transition model between belief states for partially observable problems as occurring in three stages, as depicted in the next slide:
 
 - The **prediction** stage computes the belief state resulting from the action, Result(b,a), exactly as we did with sensorless problems. To emphasize that this is a prediction, we use the notation $\hat{b} = Result(b,a)$, where the hat over the $b$ means "estimated," and we also use Predict(b,a) as a synonym for Result(b,a).
 
@@ -683,7 +687,7 @@ $$
 PossiblePercepts(\hat{b}) = \{o : o = Percept(s) \text{ and } s \in \hat{b}\}
 $$
 
-- The **update** stage computes, for each possible percept, the belief state that would result from the percept. The updated belief state bo is the set of states in b that could have
+- The **update** stage computes, for each possible percept, the belief state that would result from the percept. The updated belief state $b_o$ is the set of states in $b$ that could have
 produced the percept:
 
 $$
@@ -697,7 +701,7 @@ The agent needs to deal with possible percepts at planning time, because it wonâ
 - Nondeterminism in the physical environment can enlarge the belief state in the prediction stage, but each updated belief state $b_o$ can be no larger than the predicted belief state $\hat{b}$; observations can only help reduce uncertainty.
 - For deterministic sensing, the belief states for the different possible percepts will be disjoint, forming a partition of the original predicted belief state.
 
-Putting these three stages together, we obtain the possible belief states resulting from a given action and the subsequent possible percepts:
+Putting the three stages from previous slide together, we obtain the possible belief states resulting from a given action and the subsequent possible percepts:
 
 $$
 Results(b,a) = \{b_o : b_o = Update(Predict(b,a),o) \text{ and }
@@ -719,15 +723,33 @@ $$
 :::
 ::: {.column width="50%"}
 
-Predict, possible percepts, update
+1. Predict $\hat{b} = Result(b, a)$
+```{=latex}
+\begin{multline*}
+\text{2. } PossiblePercepts(\hat{b}) = \\
+\{o : o = Percept(s) \text{ and } s \in \hat{b}\}
+\end{multline*}
+\begin{multline*}
+\text{3. } b_o = Update(\hat{b},o) = \\
+\{s : o = Percept(s) \text{ and } s \in \hat{b}\}
+\end{multline*}
+```
 
-- (a) Deterministic world.  In final column, update step produces a partition of the belief state in the previous step.
-- (b) Slippery world. Update step results in 3 belief states, each of which is no larger than the belief state from which they were produced.
+
+Final column on left shows input to Update step, which will then compute the final $b_o$ based on percept/observation $o$.
+
+- (a) Deterministic world.
+- (b) Slippery world. Input to Update step are 3 belief states, each of which is no larger than the belief state from which they were produced.
 
 :::
 ::::
 
 ## Local Sensing And-Or Trees
+
+Given previous formulation of nondeterministic belief state problems, AND-OR can be used.  With initial percept [L, Dirty]:
+
+:::: {.columns}
+::: {.column width="60%"}
 
 ```{=latex}
 \begin{center}
@@ -737,9 +759,28 @@ Predict, possible percepts, update
 \end{center}
 ```
 
-## Prediction-Update Cycles
+:::
+::: {.column width="40%"}
 
-Section 4.4.4
+```{=latex}
+\begin{center}
+```
+![](aima-fig-04_09-vacuum-states.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+A partially observable problem can be solved by the AND-OR algorithm.
+
+$$
+[Suck, Right, \textbf{ if } state= \{6\} \textbf{ then } Suck \textbf{ else } []]
+$$
+
+
+## Belief State Maintenance in Partially Observable Environments
 
 $$
 b' = UPDATE(PREDICT(b,a),o).
@@ -753,11 +794,12 @@ $$
 \end{center}
 ```
 
-- Vast majority of real-world environments are partially observable.  Belief state prediction is core task.
+- Most real-world environments partially observable.  Belief state maintenance is core task.
 
-- Also known as monitoring, filtering, and state estimation.
+- Also known as **monitoring**, **filtering**, and **state estimation**.
 
-Equation above is called a recursive state estimator because it computes the new belief state from the previous one rather than by examining the entire percept sequence. To avoid "fallign behind," the computation has to happen as fast as percepts are coming in.
+Equation above is called a recursive state estimator because it computes the new belief state from the previous one rather than by examining the entire percept sequence. To avoid "falling behind," the computation has to happen as fast as percepts are coming in.
+
 
 ## Robot Localization
 
@@ -766,11 +808,26 @@ Localization: typical robot state estimation problem in which the robot works ou
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-04_18-robot-localization.pdf)
+![](aima-fig-04_18-robot-localization.pdf){height="60%"}
 ```{=latex}
 \end{center}
 ```
 
+## Online Seach
+
+- Agents we've studied so far use **offline search** algorithms, which compute a complete solution before taking first action.
+- **Online search** agents interleave computation and action.
+
+    - Good in dynamic environments where computation time must be limited so environment doesn't change while the agent computes an action.
+    - Good in nondeterministic environments so agent can focus on contingencies that actually arise.
+    - In unkown environments, agent must act in order to learn about the environment.
+    - Tradeoff: more planning can prevent ending up in dead ends.
+
+Canonical example of online search: mapping problem.  Agent placed in unknown environment and must explore to build a map.
+
+- The problem of doing localization and mapping at the same time is called **SLAM**: Simultaneous Localization and Mapping.
+
+<!--
 ## Maze Problems
 
 ```{=latex}
@@ -830,3 +887,4 @@ Localization: typical robot state estimation problem in which the robot works ou
 ```{=latex}
 \end{center}
 ```
+-->
