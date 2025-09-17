@@ -35,7 +35,7 @@ Evaluation function
 
 - $Utility(s,p)$: A utility function (also called an objective function or payoff function), which defines the final numeric value to player p when the game ends in terminal state s.  In chess, the outcome is a win, loss, or draw, with values 1, 0, or 1/2.2 Some games have a wider range of possible outcomes—for example, the payoffs in backgammon range from 0 to 192.
 
-## title
+## Tic-Tac-Toe Game Tree
 
 ```{=latex}
 \begin{center}
@@ -80,10 +80,20 @@ A two-ply game tree.
 - $\triangledown$ nodes are "MIN nodes."
 - Terminal nodes show the utility values for MAX.
 - Other nodes are labeled with their minimax values.
-- MAX’s best move at the root is $a_1$, because it leads to the state with the highest minimax value.
+- MAX’s best move at the root is $a_1$, because it leads to state with highest minimax value.
 - MIN’s best reply is $b_1$, because it leads to the state with the lowest minimax value.
 
 ## Minimax Algorithm
+
+:::: {.columns}
+::: {.column valign="top" width="30%"}
+
+- Recurse through MIN and MAX plies of the game tree to leaf nodes.
+- Back up minimax values through the tree.
+- Choose branch with highest minimax value.
+
+:::
+::: {.column valign="top" width="70%"}
 
 ```{=latex}
 \begin{center}
@@ -92,6 +102,9 @@ A two-ply game tree.
 ```{=latex}
 \end{center}
 ```
+
+:::
+::::
 
 ## Analysis of Minimax
 
@@ -104,6 +117,8 @@ A two-ply game tree.
 Chess has an average branching factor of 35 and an average game has a depth of 80.
 
 - $O(b^m) = 35^80 \sim 10^123$ states
+
+Clearly, minimax won't work for Chess.  After we briefly consider multiplayer games we'll learn a modification to minimax that makes games like Chess tractable.
 
 ## Multiplayer Games
 
@@ -185,13 +200,26 @@ If $m$ or $m'$ is better than $n$ for Player, we will never get to $n$ in play.
 
 ## Alpha-Beta Search Algorithm
 
+:::: {.columns}
+::: {.column valign="top" width="40%"}
+
+- Updates the values of $\alpha$ and $\beta$ as it goes along
+- Prunes the remaining branches at a node (i.e., terminates the recursive call) as soon as the value of the current node is known to be worse than the current $\alpha$ for MAX, or $\beta$ for MIN.
+
+:::
+::: {.column valign="top" width="60%"}
+
+
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-05_07-alpha-beta-algorithm.pdf){height="90%"}
+![](aima-fig-05_07-alpha-beta-algorithm.pdf)
 ```{=latex}
 \end{center}
 ```
+
+:::
+::::
 
 ## Move Ordering
 
@@ -200,11 +228,11 @@ Section 6.2.4
 ## Heuristic Alpha-Beta Tree Search
 
 $$
-Minimax(s) =
+HMinimax(s, d) =
 \begin{cases}
-Utility(s,MAX)                              & \text{if } IsTerminal(s) \\
-max_{a \in Actions(s)} Minimax(Result(s,a)) & \text{if } ToMove(s) = MAX \\
-min_{a \in Actions(s)} Minimax(Result(s,a)) & \text{if } ToMove(s) = MIN
+Eval(s,MAX)                                        & \text{if } IsCutoff(s, d) \\
+max_{a \in Actions(s)} HMinimax(Result(s,a), d+1) & \text{if } ToMove(s) = MAX \\
+min_{a \in Actions(s)} HMinimax(Result(s,a), d+1) & \text{if } ToMove(s) = MIN
 \end{cases}
 $$
 
@@ -302,7 +330,7 @@ $$
 UCB1(n) = \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }
 $$
 
-## title
+## Stochastic Games
 
 ```{=latex}
 \begin{center}
@@ -312,7 +340,20 @@ $$
 \end{center}
 ```
 
-## title
+## Expectiminimax
+
+$$
+ExpectiMinimax(s) =
+\begin{cases}
+Utility(s,MAX)                           & \text{if } IsTerminal(s) \\
+max_{a} ExpectiMinimax(Result(s,a))      & \text{if } ToMove(s) = MAX \\
+min_{a} ExpectiMinimax(Result(s,a))      & \text{if } ToMove(s) = MIN \\
+\sum_r Pr(r) ExpectiMinimax(Result(s,a)) & \text{if } ToMove(s) = CHANCE
+\end{cases}
+$$
+
+
+## Backgammon Game Tree
 
 ```{=latex}
 \begin{center}
@@ -322,7 +363,7 @@ $$
 \end{center}
 ```
 
-## title
+## Evaluation FUnctions for Games of Chance
 
 ```{=latex}
 \begin{center}
@@ -332,7 +373,7 @@ $$
 \end{center}
 ```
 
-## title
+## Partially Observable Games
 
 ```{=latex}
 \begin{center}
@@ -342,6 +383,37 @@ $$
 \end{center}
 ```
 
-## title
+## Errors in Heuristic Minimax Search
 
-THe end.
+```{=latex}
+\begin{center}
+```
+![](aima-fig-05_16-heuristic-minimax-errors.pdf)
+```{=latex}
+\end{center}
+```
+
+- If evaluation function is 100% correct, right branch is correct.
+- If evaluation function has random error with $\sigma = 5$, left is better 71% of the time because one of the four right-hand leaves will dip below 99.
+- If evaluation function has random error with $\sigma = 2$, left is better 58% of the time.
+
+
+## Closing Thoughts
+
+The game playing algorithms we considered here have limitations that we will address in furture lessons.
+
+- Vulnerability to errors in the heuristic function. (See Previous slide.)
+- Sometimes there is a single clearly best move, but Alpha-beta and MCTS waste computation by calculating values of many legal moves.
+
+    - Better to employ metareasoning about the utility of node expansion -- only expand nodes likely to lead to a better move.
+
+- Alpha-beta and MCTS reason about individual moves.  Humans reason abstractly, selectively forming plausible plans to acheive (intermediate) goals, e.g., trapping the opponent's queen.
+
+    - We will learn about such approaches when we study **planning**.
+
+- Alpha-beta (and MCTS when depth-limited) rely on human-crafted evaluation functions.
+
+    - Programs like AlphaZero[^AlphaZero] need only the rules of the game to learn how to play at superhuman levels.
+
+
+[^AlphaZero]: https://arxiv.org/pdf/1712.01815
