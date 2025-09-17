@@ -15,43 +15,82 @@ header-includes:
 
 ## Games
 
-Economy
+**Competitive environments**, in which two or more agents have conflicting goals, give rise to **adversarial search** problems.
 
-Pruning
+Three approaches to dealing with multiagent environments:
 
-Evaluation function
+1. With a large number of agents, consider aggregates of agents as an **economy**, e.g., supply-demand relationships, without predicting actions of any individual agents.
+
+2. Consider adversarial agents as just a part of the environment—a part that makes the environment nondeterministic. But if we model the adversaries in the same way that, say, rain sometimes falls and sometimes doesn’t, we miss the idea that our adver- saries are actively trying to defeat us, whereas the rain supposedly has no such intention.
+
+3. Explicitly model the adversarial agents with the techniques of adversarial game-tree search.
+
+This lesson deals with the third approach.
+
+## From Game Theory to Adversarial AI
+
+In game theory, games like Chess and Go are deterministic, two-player, turn-taking, perfect information, zero-sum games.
+
+| Game Theory         | AI                   |
+|---------------------|----------------------|
+| Perfect information | Fully observable     |
+| Player              | Agent                |
+| Move                | Action               |
+| Position            | State                |
+| Payoff/Score        | Utility/Reward/Value |
+
+In AI we commonly study two-player zero sum games, in which the "score" for one agent is the negative of the other agent's, i.e., they add to zero.
+
+> Note: in Chess tournaments draws award each player scores of $\frac{1}{2}$, but in an AI chess playing algorithms you can use +1, -1, and 0.  Alternatively, you can model chess as a "constant sum" game with scores of 1, 0, or $\frac{1}{2}$.
 
 ## Two-Player Zero-Sum Games
 
+Two players: MAX and MIN.  MAX moves first.
+
+A game can be formally defined with the following elements:
+
 - $S_0$: The initial state, which specifies how the game is set up at the start.
 
-- $ToMove(s)$: The player whose turn it is to move in state s.
+- $ToMove(s)$: The player whose turn it is to move in state $s$, MAX or MIN.
 
-- $Actions(s)$: The set of legal moves in state s.
+- $Actions(s)$: The set of legal moves in state $s$.
 
-- $Result(s, a)$: The transition model, which defines the state resulting from taking ac- Transition model tion a in state s.
+- $Result(s, a)$: The transition model, which defines the state resulting from taking action $a$ in state $s$.
 
-- $IsTerminal(s)$: A terminal test, which is true when the game is over and false Terminal test otherwise. States where the game has ended are called terminal states. Terminal state
+- $IsTerminal(s)$: A terminal test, which is true when the game is over and false otherwise. States where the game has ended are called terminal states.
 
-- $Utility(s,p)$: A utility function (also called an objective function or payoff function), which defines the final numeric value to player p when the game ends in terminal state s.  In chess, the outcome is a win, loss, or draw, with values 1, 0, or 1/2.2 Some games have a wider range of possible outcomes—for example, the payoffs in backgammon range from 0 to 192.
+- $Utility(s,p)$: A utility function (also called an objective function or payoff function), which defines the final numeric value to player $p$ when the game ends in terminal state $s$.  In chess, the outcome is a win, loss, or draw, with values 1, 0, or 1/2. Some games have a wider range of possible outcomes—for example, the payoffs in backgammon range from 0 to 192.
 
 ## Tic-Tac-Toe Game Tree
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-05_01-tic-tac-toe-game-tree.pdf)
+![](aima-fig-05_01-tic-tac-toe-game-tree.pdf){height="70%"}
 ```{=latex}
 \end{center}
 ```
 
+Tic-tac-toe is relatively small -- fewer than $9!= 362,880$ terminal nodes with only 5,478 distinct states.
+
 ## Optimal Decisions in Games
 
-Minimax search
+- MAX searches for a sequence of actions leading to a win.
+- MIN searches for a sequence of actions leading to a loss for MAX.
+- So MAX's stratregy is a contingfency plan dependent on MIN's responses.
+- We could use AND-OR search, but we'll study a more general approach: **minimax search**.
 
-Ply
+Minimax search generates a game tree with moves for both MAX and MIN
 
-Minimax value
+- At each MAX node, choose from actions $a \in Actions(s)$ with maximum value relative to MAX.
+- At each MIN node, choose from actions $b \in Actions(s)$ with minimum value relative to MAX.
+- One move by one player is called a **ply**.  A ply for MAX plus the response ply for MIN constitute a game move.
+
+## Minimax Decision
+
+- Given a game tree, the optimal strategy can be determined by working out the **minimax value** of each state in the tree, which we write as $Minimax(s)$.
+
+- The minimax value is the utility (for MAX) of being in that state, assuming that both players play optimally from there to the end of the game. The minimax value of a terminal state is just its utility.
 
 $$
 Minimax(s) =
@@ -61,8 +100,6 @@ max_{a \in Actions(s)} Minimax(Result(s,a)) & \text{if } ToMove(s) = MAX \\
 min_{a \in Actions(s)} Minimax(Result(s,a)) & \text{if } ToMove(s) = MIN
 \end{cases}
 $$
-
-Minimax Decision
 
 ## Minimax Game Tree
 
@@ -116,13 +153,16 @@ A two-ply game tree.
 
 Chess has an average branching factor of 35 and an average game has a depth of 80.
 
-- $O(b^m) = 35^80 \sim 10^123$ states
+- $O(b^m) = 35^80 \approx 10^123$ states
 
-Clearly, minimax won't work for Chess.  After we briefly consider multiplayer games we'll learn a modification to minimax that makes games like Chess tractable.
+Clearly, minimax won't work for Chess.  We'll make two modifications to minimax that makes games like Chess tractable.
 
+<!--
 ## Multiplayer Games
 
-Instead of single value, vector of values
+Instead of single value, vector of values.
+
+- For three players $A, B, C$, a vector $<v_A, v_B, v_C>$ at each node.
 
 alliances
 
@@ -137,14 +177,16 @@ alliances
 ```
 
 The first three ply of a game tree with three players (A, B, C). Each node is labeled with values from the viewpoint of each player. The best move is marked at the root.
+-->
 
 ## Alpha-Beta Pruning
 
+Number of game states is exponential in depth of tree, so we have to **prune** branches of the tree to make searching it tractable.
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-05_05-f-alpha-beta-tree.pdf){height="40%"}
+![](aima-fig-05_05-f-alpha-beta-tree.pdf){height="30%"}
 ```{=latex}
 \end{center}
 ```
@@ -158,6 +200,8 @@ Minimax(root) &= max(min(3,12,8),min(2,x,y),min(14,5,2)) \\
 \end{align*}
 ```
 
+In other words, the value of the root and hence the minimax decision are independent of the values of the leaves x and y, and therefore they can be pruned.
+
 ## Alpha-Beta Calculation Stages
 
 ```{=latex}
@@ -167,7 +211,6 @@ Minimax(root) &= max(min(3,12,8),min(2,x,y),min(14,5,2)) \\
 ```{=latex}
 \end{center}
 ```
-
 
 ## Alpha Beta
 
@@ -221,11 +264,12 @@ If $m$ or $m'$ is better than $n$ for Player, we will never get to $n$ in play.
 :::
 ::::
 
-## Move Ordering
-
-Section 6.2.4
-
 ## Heuristic Alpha-Beta Tree Search
+
+Alpha-beta search helps, but it is still highly dependent on move ordering.  So we need more help in limiting search.
+
+- We define a **heuristic evaluation function** that evaluates a static position.
+- We replace the terminal test with a cutoff test and use the heuristic evaluation function to determine the node's value.
 
 $$
 HMinimax(s, d) =
@@ -239,8 +283,12 @@ $$
 
 ## Static Evaluation Functions
 
+A heuristic evaluation function $Eval(s,p)$ returns an estimate of the expected utility of state $s$ to player $p$, just as the heuristic functions of Chapter 3 return an estimate of the distance to the goal.
 
-Weighted linear evaluation functions:
+- For terminal states, $Eval(s,p) = Utility(s,p)$.
+- For nonterminal states, the evaluation must be somewhere between a loss and a win: $Utility(loss,p) \le Eval(s,p)  \le Utility(win,p)$.
+
+A popular form of hueristic evaluation function is a weighted linear evaluation function:
 
 $$
 Eval(s) = w_1 f_1(s) + w_2 f_2(s) + \cdots + w_n f_n(s) = \sum _{i=1}^n w_i f_i(s),
@@ -264,16 +312,15 @@ $$
 
 ## Cutting Off Search
 
-In alpha-beta search algorithm, replace lines with $IsTerminal(state)$ with
+In alpha-beta search algorithm, keep track of depth so you can cut off at a particular depth and replace lines with $IsTerminal(state)$ with
 
 $$
 \textbf{if } game.IsCutoff(state, depth) \textbf{ then return } game.Eval(state, player), null
 $$
 
-quiescent positions
+Best to apply cutoff quiescent positions, that is, positions that don't contain a killer move that would radically change the value of the position.  Adding this to the $IsCutoff$ function is called **quiescence search**.
 
-quiescence
-
+<!--
 ## Horizon Effect
 
 ```{=latex}
@@ -283,6 +330,7 @@ quiescence
 ```{=latex}
 \end{center}
 ```
+
 
 ## Monte Carlo Tree Search (MCTS)
 
@@ -417,3 +465,5 @@ The game playing algorithms we considered here have limitations that we will add
 
 
 [^AlphaZero]: https://arxiv.org/pdf/1712.01815
+
+-->
