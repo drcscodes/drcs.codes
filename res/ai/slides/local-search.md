@@ -782,10 +782,7 @@ $$
 
 ## Belief State Maintenance in Partially Observable Environments
 
-$$
-b' = UPDATE(PREDICT(b,a),o).
-$$
-
+Kindergarten world (square not being actively cleaned can become dirty):
 ```{=latex}
 \begin{center}
 ```
@@ -795,10 +792,13 @@ $$
 ```
 
 - Most real-world environments partially observable.  Belief state maintenance is core task.
-
 - Also known as **monitoring**, **filtering**, and **state estimation**.
 
-Equation above is called a recursive state estimator because it computes the new belief state from the previous one rather than by examining the entire percept sequence. To avoid "falling behind," the computation has to happen as fast as percepts are coming in.
+$$
+b' = Update(Predict(b,a),o).
+$$
+
+Equation above is called a recursive state estimator because it computes the new belief state from the previous one rather than by examining the entire percept sequence.
 
 
 ## Robot Localization
