@@ -9,11 +9,13 @@ Adapted from [Berkeley CS 188](https://inst.eecs.berkeley.edu/~cs188/su25/)
 
 ## Pacman in a maze
 
+<center>
 ![](maze.png)
 
 All those colored walls,
 Mazes give Pacman the blues,
 So teach him to search.
+</center>
 
 ## Introduction
 

@@ -320,7 +320,7 @@ $$
 
 Best to apply cutoff quiescent positions, that is, positions that don't contain a killer move that would radically change the value of the position.  Adding this to the $IsCutoff$ function is called **quiescence search**.
 
-<!--
+
 ## Horizon Effect
 
 ```{=latex}
@@ -344,11 +344,11 @@ Two major weaknesses of heuristic alpha-beta tree search:
 
 ## Exploration/Exploitation Tradoff in MCTS
 
-- Selection: Starting at the root of the search tree, we choose a move (guided by the selection policy), leading to a successor node, and repeat that process, moving down the tree to a leaf. Figure 6.10(a) shows a search tree with the root representing a state where white has just moved, and white has won 37 out of the 100 playouts done so far. The thick arrow shows the selection of a move by black that leads to a node where black has won 60/79 playouts. This is the best win percentage among the three moves, so selecting it is an example of exploitation. But it would also have been reasonable to select the 2/11 node for the sake of exploration—with only 11 playouts, the node still has high uncertainty in its valuation, and might end up being best if we gain more information about it. Selection continues on to the leaf node marked 27/35.
+- Selection: Starting at the root of the search tree, we choose a move (guided by the selection policy), leading to a successor node, and repeat that process, moving down the tree to a leaf.
 
-- Expansion: We grow the search tree by generating a new child of the selected node; Figure 6.10(b) shows the new node marked with 0/0. (Some versions generate more than one child in this step.)
+- Expansion: We grow the search tree by generating a new child of the selected node.
 
-- Simulation: We perform a playout from the newly generated child node, choosing moves for both players according to the playout policy. These moves are not recorded in the search tree. In the figure, the simulation results in a win for black.
+- Simulation: We perform a playout from the newly generated child node, choosing moves for both players according to the playout policy. These moves are not recorded in the search tree. In the next slide, the simulation results in a win for black.
 
 - Back-propagation: We now use the result of the simulation to update all the search tree nodes going up to the root. Since black won the playout, black nodes are incremented in both the number of wins and the number of playouts, so 27/35 becomes 28/36 and 60/79 becomes 61/80. Since white lost, the white nodes are incremented in the number of playouts only, so 16/53 becomes 16/54 and the root 37/100 becomes 37/101.
 
@@ -357,10 +357,14 @@ Two major weaknesses of heuristic alpha-beta tree search:
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-05_10-mcts-iteration.pdf)
+![](aima-fig-05_10-mcts-iteration.pdf){height="50%"}
 ```{=latex}
 \end{center}
 ```
+
+- (a) We select moves, all the way down the tree, ending at the leaf node marked 27/35 (for 27 wins for black out of 35 playouts).
+- (b) We expand the selected node and do a simulation (playout), which ends in a win for black.
+- (c) The results of the simulation are back-propagated up the tree.
 
 ## MCTS Algorithm
 
@@ -372,11 +376,13 @@ Two major weaknesses of heuristic alpha-beta tree search:
 \end{center}
 ```
 
-## MCTS Selectoin Policy
+## MCTS Selection Policy
 
 $$
 UCB1(n) = \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }
 $$
+
+<!--
 
 ## Stochastic Games
 
@@ -411,7 +417,7 @@ $$
 \end{center}
 ```
 
-## Evaluation FUnctions for Games of Chance
+## Evaluation Functions for Games of Chance
 
 ```{=latex}
 \begin{center}
