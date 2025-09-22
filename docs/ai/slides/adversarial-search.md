@@ -153,7 +153,7 @@ A two-ply game tree.
 
 Chess has an average branching factor of 35 and an average game has a depth of 80.
 
-- $O(b^m) = 35^80 \approx 10^123$ states
+- $O(b^m) = 35^{80} \approx 10^{123}$ states
 
 Clearly, minimax won't work for Chess.  We'll make two modifications to minimax that makes games like Chess tractable.
 
@@ -183,6 +183,21 @@ The first three ply of a game tree with three players (A, B, C). Each node is la
 
 Number of game states is exponential in depth of tree, so we have to **prune** branches of the tree to make searching it tractable.
 
+
+- $\alpha$ = the value of the best (i.e., highest-value) choice we have found so far at any choice point along the path for MAX.
+
+    - Think: $\alpha$ = "at least."
+
+- $\beta$ = the value of the best (i.e., lowest-value) choice we have found so far at any choice point along the path for MIN.
+
+    - Think: $\beta$ = "at most."
+
+Alpha-beta pruning cuts off the exploration of nodes if those nodes would not change move selection.
+
+## Alpha-Beta Pruning in Action
+
+Intervals show range of possible values at each node,  $[\alpha, \beta]$.
+
 ```{=latex}
 \begin{center}
 ```
@@ -192,15 +207,19 @@ Number of game states is exponential in depth of tree, so we have to **prune** b
 ```
 
 ```{=latex}
+\vspace{-.1in}
 \begin{align*}
 Minimax(root) &= max(min(3,12,8),min(2,x,y),min(14,5,2)) \\
               &= max(3,min(2,x,y),2) \\
               &= max(3,z,2) \text{ where } z = min(2,x,y) \le 2 \\
               &= 3.
 \end{align*}
+\vspace{-.2in}
 ```
 
 In other words, the value of the root and hence the minimax decision are independent of the values of the leaves x and y, and therefore they can be pruned.
+
+<!--
 
 ## Alpha-Beta Calculation Stages
 
@@ -240,6 +259,8 @@ If $m$ or $m'$ is better than $n$ for Player, we will never get to $n$ in play.
 
 :::
 ::::
+
+-->
 
 ## Alpha-Beta Search Algorithm
 
@@ -323,14 +344,21 @@ Best to apply cutoff quiescent positions, that is, positions that don't contain 
 
 ## Horizon Effect
 
+
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-05_09-chess-horizon-effect.pdf)
+![](aima-fig-05_09-chess-horizon-effect.pdf){height="50%"}
 ```{=latex}
 \end{center}
 ```
 
+With Black to play, if Black only searches to a depth of 4-ply, it will see that
+
+- moving the bishop either leads to its capture on b3, or to attack by the white rook moving to h1, but
+- playing ... e3+; Kxe3, f4+; Kxf4 sacrifices two pawns but "saves" the bishop.
+
+This is an example of the horizon effect -- failing to see that these moves do not, in fact, save the bishop and ultimately result in a worse posiotion for black.
 
 ## Monte Carlo Tree Search (MCTS)
 
@@ -340,47 +368,164 @@ Two major weaknesses of heuristic alpha-beta tree search:
 
 - Can't always define a good static evaluation function.  E.g., in Go material value is not a strong indicator and most positions are in flux until the endgame.
 
-...
+MCTS:
 
-## Exploration/Exploitation Tradoff in MCTS
+Instead of searching to a given depth and applying a heurstic evaluation function to the resulting positions, we
 
-- Selection: Starting at the root of the search tree, we choose a move (guided by the selection policy), leading to a successor node, and repeat that process, moving down the tree to a leaf.
+- simulate complete games (from a given position) to terminal positions, and
+- back-up the win/loss scores up the tree.
 
-- Expansion: We grow the search tree by generating a new child of the selected node.
+Playout policy: bias move selection towards good ones.  Two options:
 
-- Simulation: We perform a playout from the newly generated child node, choosing moves for both players according to the playout policy. These moves are not recorded in the search tree. In the next slide, the simulation results in a win for black.
+- Pure MCTS: do $N$ simulations, track which move leads to highest win percentage.
+- Selection policy: focus computation on important parts of game tree by balancing exploration and exploitation.
 
-- Back-propagation: We now use the result of the simulation to update all the search tree nodes going up to the root. Since black won the playout, black nodes are incremented in both the number of wins and the number of playouts, so 27/35 becomes 28/36 and 60/79 becomes 61/80. Since white lost, the white nodes are incremented in the number of playouts only, so 16/53 becomes 16/54 and the root 37/100 becomes 37/101.
+## Selection-Based MCTS Algorithm
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-05_11-mcts-algorithm.pdf){height="40%"}
+```{=latex}
+\end{center}
+```
+
+- Selection: starting at root, choose a move leading to a successor node, and repeat that process, moving down the tree to a leaf.
+
+- Expansion: grow the search tree by generating a new child of the selected node.
+
+- Simulation: perform a playout from the newly generated child node, choosing moves for both players according to the playout policy. These moves are not recorded in the search tree. In the next slide, the simulation results in a win for black.
+
+- Back-propagation: use the result of the simulation to update all search tree nodes going up to the root.
 
 ## MCTS Iteration
 
+White just played (light purple nodes) -- black to play.
+
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-05_10-mcts-iteration.pdf){height="50%"}
+![](aima-fig-05_10-mcts-iteration.pdf){height="40%"}
 ```{=latex}
 \end{center}
 ```
 
-- (a) We select moves, all the way down the tree, ending at the leaf node marked 27/35 (for 27 wins for black out of 35 playouts).
-- (b) We expand the selected node and do a simulation (playout), which ends in a win for black.
+- (a) Select moves, all the way down the tree, ending at the leaf node marked 27/35 (27 wins for black out of 35 playouts).
+- (b) Expand the selected node and do a simulation (playout), which ends in a win for black.
 - (c) The results of the simulation are back-propagated up the tree.
 
-## MCTS Algorithm
+    - Since black won the playout, black nodes are incremented in both number of wins and number of playouts, so 27/35 $\rightarrow$ 28/36,  60/79 $\rightarrow$ 61/80.
+    - White lost, so white nodes incremented in number of playouts, so 16/53 $\rightarrow$ 16/54, root 37/100 $\rightarrow$  37/101.
+
+
+## Upper Confidence Bound MCTS Selection Policy
+
+$$
+UCB1(n) = \overbrace{\frac{U(n)}{N(n)}}^{\text{Exploitation Term}} + C \times \overbrace{\sqrt{ \frac{\log N (PARENT(n))}{N(n)} }}^{\text{Exploration Term}}
+$$
+
+
+- $U(n)$: total utility of all playouts that went through node $n$,
+- $N(n)$: number of playouts through node $n$, $PARENT(n)$ is parent node of $n$ in tree,
+- $C$: constant that balances exploitation and exploration.
+
+    - Theoretically, $C = \sqrt{2}$ is best.
+    - In practice, programmers try different values.
+    - AlphaZero adds move probability term, calculated by neural network trained on past self-play.
+
+
+Remember that MCTS returns the node with the highest number of playouts, not the node with the highest average utility.  Why?
+
+- A node with 65/100 wins better than one with 2/3 wins, due to lower uncertainty.
+- UCB1 ensures that node with most playouts is almost always node with highest win percentage -- selection process increasingly favors win percentage as number of playouts increases.
+
+
+## UCB1 In Action -- Exploitation
+
+:::: {.columns}
+::: {.column width="30%"}
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-05_11-mcts-algorithm.pdf)
+![](aima-fig-05_10-a-mcts-selection.pdf)
 ```{=latex}
 \end{center}
 ```
 
-## MCTS Selection Policy
+:::
+::: {.column width="70%"}
 
-$$
-UCB1(n) = \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }
-$$
+With $C = 1.4$,
+
+- the 60/79 node:
+
+```{=latex}
+\begin{align*}
+UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }\\
+        &= \frac{60}{79} + 1.4 \times \sqrt{ \frac{\log 100}{79} }\\
+        &= 1.1 \checkmark
+\end{align*}
+```
+
+- and the 2/11 node:
+
+```{=latex}
+\begin{align*}
+UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }\\
+        &= \frac{2}{11} + 1.4 \times \sqrt{ \frac{\log 100}{11} }\\
+        &= 1.09
+\end{align*}
+```
+
+
+:::
+::::
+
+## UCB1 In Action -- Exploration
+
+:::: {.columns}
+::: {.column width="40%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-05_10-a-mcts-selection.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="60%"}
+
+With $C = 1.5$,
+
+- the 60/79 node
+
+```{=latex}
+\begin{align*}
+UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }\\
+        &= \frac{60}{79} + 1.5 \times \sqrt{ \frac{\log 100}{79} }\\
+        &= 1.12
+\end{align*}
+```
+
+- and the 2/11 node:
+
+```{=latex}
+\begin{align*}
+UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }\\
+        &= \frac{2}{11} + 1.5 \times \sqrt{ \frac{\log 100}{11} }\\
+        &= 1.15 \checkmark
+\end{align*}
+```
+
+
+:::
+::::
+
+
+
 
 <!--
 
@@ -437,6 +582,8 @@ $$
 \end{center}
 ```
 
+-->
+
 ## Errors in Heuristic Minimax Search
 
 ```{=latex}
@@ -471,5 +618,3 @@ The game playing algorithms we considered here have limitations that we will add
 
 
 [^AlphaZero]: https://arxiv.org/pdf/1712.01815
-
--->
