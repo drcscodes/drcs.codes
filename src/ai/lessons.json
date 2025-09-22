@@ -103,6 +103,18 @@
         "part": "Knowledge, Reasoning, and Planning"
     },
     {
+        "topic": "knowledge-ai",
+        "slides": "[Knowledge-Based AI](@root/ai/slides/knowledge-ai.pdf)",
+        "reading": [
+            "AIMA: 7-10"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": [],
+        "include_semester": true
+    },
+    {
         "topic": "logical-agents",
         "slides": "[Logical Agents](@root/ai/slides/logical-agents.pdf)",
         "reading": [
@@ -113,7 +125,8 @@
             "Due: [PA1](pa1.html)",
             "Assigned: [PA2](pa2.html)"
         ],
-        "videos": []
+        "videos": [],
+        "include_semester": false
     },
     {
         "topic": "first-order-logic",
@@ -124,7 +137,20 @@
         "exercises": [],
         "assignments": [
         ],
-        "videos": []
+        "videos": [],
+        "include_semester": false
+    },
+    {
+        "topic": "inference-first-order-logic",
+        "slides": "[Inference in First Order Logic](@root/ai/slides/inference-first-order-logic.pdf)",
+        "reading": [
+            "AIMA: 9"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": [],
+        "include_semester": false
     },
     {
         "topic": "knowledge-representation",
@@ -135,11 +161,12 @@
         "exercises": [],
         "assignments": [
         ],
-        "videos": []
+        "videos": [],
+        "include_semester": false
     },
     {
         "topic": "planning",
-        "slides": "[ Planning](@root/ai/slides/planning.pdf)",
+        "slides": "[Planning](@root/ai/slides/planning.pdf)",
         "reading": [
             "AIMA: 11"
         ],
@@ -156,7 +183,6 @@
         ],
         "exercises": [],
         "assignments": [
-            "Due: [PA2](pa2.html)"
         ],
         "videos": []
     },
@@ -182,6 +208,7 @@
         ],
         "exercises": [],
         "assignments": [
+            "Due: [PA2](pa2.html)",
             "Assigned: [PA3](pa3.html)"
         ],
         "videos": []
@@ -312,6 +339,28 @@
         "part": "Machine Learning"
     },
     {
+        "topic": "reinforcement-learning1",
+        "slides": "[Reinforcement Learning](@root/ai/slides/reinforcement-learning.pdf)",
+        "reading": [
+            "AIMA: 22"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "reinforcement-learning2",
+        "slides": "[Reinforcement Learning](@root/ai/slides/reinforcement-learning.pdf)",
+        "reading": [
+            "AIMA: 22"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
         "topic": "supervised-learning",
         "slides": "[Supervised Learning](@root/ai/slides/supervised-learning.pdf)",
         "reading": [
@@ -329,28 +378,6 @@
         "slides": "[Statistical Learning](@root/ai/slides/statistical-learning.pdf)",
         "reading": [
             "AIMA: 20"
-        ],
-        "exercises": [],
-        "assignments": [
-        ],
-        "videos": []
-    },
-    {
-        "topic": "reinforcement-learning1",
-        "slides": "[Reinforcement Learning](@root/ai/slides/reinforcement-learning.pdf)",
-        "reading": [
-            "AIMA: 22"
-        ],
-        "exercises": [],
-        "assignments": [
-        ],
-        "videos": []
-    },
-    {
-        "topic": "reinforcement-learning2",
-        "slides": "[Reinforcement Learning](@root/ai/slides/reinforcement-learning.pdf)",
-        "reading": [
-            "AIMA: 22"
         ],
         "exercises": [],
         "assignments": [

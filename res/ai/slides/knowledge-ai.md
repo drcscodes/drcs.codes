@@ -1,6 +1,6 @@
 ---
 title: Artificial Intelligence
-subtitle: Logical AI
+subtitle: Knowledge-Based AI
 author: Christopher Simpkins
 aspectratio: 1610
 fontsize: 10pt
@@ -13,7 +13,7 @@ header-includes:
     ```
 ---
 
-## Logic and AI
+## Knowledge and AI
 
 In AI, **knowledge-based** agents use a process of **reasoning** over an internal **representation** of knowledge to decide what actions to take.
 
@@ -93,16 +93,6 @@ Percepts encoded as list of five symbols indicating presense or absence (by None
 
 - (a) after percept [None,None,None,None,None]
 - (b) after moving to [2,1] and perceiving [None,Breeze,None,None,None]
-
-## Later Steps Wumpus World
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_04-later-steps-wumpus-world.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
 
 ## Logic
 
@@ -220,7 +210,7 @@ If KB is true in the real world, then any sentence $\alpha$ derived from KB by a
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-07_07-grammar-of-popositional-logic.pdf){height="70%"}
+![](aima-fig-07_07-grammar-of-popositional-logic.pdf){height="60%"}
 ```{=latex}
 \end{center}
 ```
@@ -249,11 +239,9 @@ Some basic concepts:
 
 - **Validity**: A sentence is valid if it is true in all models. For example, the sentence $P \land \neg P$ is valid. Valid sentences are also known as **tautologies**.
 
-**Deduction theorem**:
+- **Deduction theorem**: $\text{For any sentences $\alpha$ and $\beta$ }, \alpha \models \beta \text{ if and only iff the sentence } (\alpha \implies \beta) \text{ is valid.}$
 
-$$
-\text{For any sentences $\alpha$ and $\beta$ }, \alpha \models \beta \text{ if and only iff the sentence } (\alpha \implies \beta) \text{ is valid.}
-$$
+- A sentence is **satisfiable** if it is true in, or satisfied by, *some* model
 
 ## Inference Rules
 
@@ -264,162 +252,50 @@ $$
 $$
 
 
-Modus ponens
+Modus Ponens:
 
+$$
+\frac{\alpha \implies \beta, \alpha}{\beta}
+$$
 
-## Propositional Theorem Proving
+And-Elimination:
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_09-truth-table-knowledge-base.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
+$$
+\frac{\alpha \land \beta}{\alpha}
+$$
 
-## Propositional Theorem Proving
+## Logical Equivalences
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_10-tt-entails-algorithm.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Propositional Theorem Proving
+Functionally equivalent to inference rules.  Left side on top, right side on bottom.
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-07_11-logical-equivalences.pdf){height="70%"}
+![](aima-fig-07_11-logical-equivalences.pdf){height="60%"}
 ```{=latex}
 \end{center}
 ```
 
-## Propositional Theorem Proving
+
+## Knowledge Representation
+
+- Propositional logic assumes that there are facts that either hold or do not hold in the world. Each fact can be in one of two states—true or false—and each model assigns true or false to each proposition symbol.
+- First-order logic assumes that the world consists of objects with certain relations among them that do or do not hold.
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-07_12-grammar-of-cnf.pdf){height="70%"}
+![](aima-fig-08_01-ontological-epistemological-commitments.pdf){height="30%"}
 ```{=latex}
 \end{center}
 ```
 
-## Propositional Theorem Proving
+- **Ontological commitment**: what a language assumes about the nature of reality.
+- **Epistemological commitments**: the possible states of knowledge a language allows with respect to each fact.
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_13-pl-resolution-algorithm.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
+**Sapir-Whorf Hypothesis**: you can only think things you can express in a language you know.
 
-## Propositional Theorem Proving
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_14-pl-resolution-application.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Propositional Theorem Proving
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_15-pl-fc-entails-algorithm.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Propositional Theorem Proving
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_16-horn-clauses-and-or-graph.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Propositional Model Checking
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_17-dpll-algorithm.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Propositional Model Checking
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_18-walksat-algorithm.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Propositional Model Checking
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_19-dpll-vs-walksat.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Agents Based on Propositional Logic
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_20-hybrid-wumpus-agent-algorithm.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Agents Based on Propositional Logic
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_21-1-cnf-belief-state.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Agents Based on Propositional Logic
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-07_22-satplan-algorithm.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-<!--
-
-## Representation
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-08_01-ontological-epistemological-commitments.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Syntax and Semantics of First-Order Logic
+## Representational Power of First-Order Logic
 
 ```{=latex}
 \begin{center}
@@ -429,179 +305,32 @@ Modus ponens
 \end{center}
 ```
 
-## Syntax and Semantics of First-Order Logic
+## First-Order Logic
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-08_03-syntax-of-fol.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
+Also known as first-order predicate logic.
 
-## Syntax and Semantics of First-Order Logic
+- **Constant symbols** stand for objects, e.g., $Richard$, $John$.
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-08_04-simple-example-models.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
+- **Predicate symbols** stand for relations, e.g., $Brother(Richard, John)$.
 
-## Syntax and Semantics of First-Order Logic
+- **Function symbols** stand for functions, e.g., $LeftLeg(John)$
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-08_05-simple-example-models-database-semantics.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
+    - Above is also a **term** -- a logical expression that refers to an object.
 
-## Using First-Order Logic
+Atomic sentences:
 
-Foo
+- $Brother(Richard, John)$, $Married(Father(Richard),Mother(John))$
 
-## Knowledge Engineering in First-Order Logic
+Complex sentences:
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-08_06-digital-circuit.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
+- $Brother(Richard,John) \land Brother(John,Richard)$
 
+Quantifiers:
 
+- $\forall x, King(x) \implies Person(x)$ means "All kings are persons."
+- $\exists x, Crown(x) \land Onhead(x, John)$ means "King John has a crown on his head."
 
-## Propositional vs. First-Order Logc
-
-Foo
-
-## Unification and First-Order Inference
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_01-unification-algorithm.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Unification and First-Order Inference
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_02-subsumption-lattice.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Forward Chaining
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_03-fol-fc-ask-algorithm.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Forward Chaining
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_04-proof-tree-fc-crime.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Forward Chaining
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_05-constraint-graph-australia.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Backward Chaining
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_06-fol-bc-ask-algorithm.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Backward Chaining
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_07-proof-tree-bc-crime.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Logic Programming
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_08-prolog-infinite-loop.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Logic Programming
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_09-infinite-proof-tree.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Resolution
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_10-resolution-proof-criminal.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Resolution
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_11-resolution-proof-curiosity.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Completeness
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-09_12-structure-completeness-proof.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## G{\"o}del's Incompleteness Theorem
-
-Foo
+<!--
 
 ## Ontological Engineering
 

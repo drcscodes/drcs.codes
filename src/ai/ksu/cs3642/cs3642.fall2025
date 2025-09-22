@@ -11,20 +11,20 @@ Week 3
 2025-09-03;heuristic-search;;
 Week 4
 2025-09-08;local-search;;
-2025-09-10;adversarial-search;;
+2025-09-10;local-search;;
 Knowledge, Reasoning, and Planning
 Week 5
 2025-09-15;adversarial-search;;
-2025-09-17;logical-agents;Due: [PA1](pa1.html),Assigned: [PA2](pa2.html);
+2025-09-17;adversarial-search;Due: [PA1](pa1.html),Assigned: [PA2](pa2.html);
 Week 6
-2025-09-22;knowledge-representation;;
+2025-09-22;knowledge-ai;;
 2025-09-24;planning;;
 Week 7
-2025-09-29;midterm-review;Due: [PA2](pa2.html);
+2025-09-29;midterm-review;;
 2025-10-01;midterm-exam;;
 Uncertain Knowledge and Reasoning
 Week 8
-2025-10-06;uncertainty;Assigned: [PA3](pa3.html);
+2025-10-06;uncertainty;Due: [PA2](pa2.html), Assigned: [PA3](pa3.html);
 2025-10-08;bayesian-networks;;
 Week 9
 2025-10-13;causality;;
