@@ -25,7 +25,8 @@ PDDL: Planning Domain Definition Language
 Action schema
 precondition
 effect
-Example:
+
+Action schema:
 ```{=latex}
 \begin{align*}
 & Action(Fly(p,from,to),\\
@@ -34,13 +35,15 @@ Example:
 \end{align*}
 ```
 
+
+
 Ground (variable-free) action:
 
 ```{=latex}
 \begin{align*}
-& Action(Fly(P1,SFO,JFK), \\
-& \hspace{.1in} PRECOND:At(P1,SFO) \land Plane(P1) \land Airport(SFO) \land Airport(JFK) \\
-& \hspace{.1in} EFFECT: \neg At(P1,SFO) \land At(P1,JFK))
+& Action(Fly(P_1,SFO,JFK), \\
+& \hspace{.1in} PRECOND:At(P_1,SFO) \land Plane(P_1) \land Airport(SFO) \land Airport(JFK) \\
+& \hspace{.1in} EFFECT: \neg At(P_1,SFO) \land At(P_1,JFK))
 \end{align*}
 ```
 
@@ -84,6 +87,16 @@ Ground (variable-free) action:
 \end{center}
 ```
 
+## Classical Planning Algorithms
+
+- Forward state space search
+- Backward state space search
+- SATPlan
+- Graphplan
+- Situation calculus
+- Constraint satisfaction
+- Partial-order planning
+
 ## Forward and Backward State Space Planning
 
 ```{=latex}
@@ -106,13 +119,49 @@ Ground (variable-free) action:
 
 ## Hierarchical Planning
 
+:::: {.columns}
+::: {.column width="50%"}
+
+Hierarchical task network plans are built from:
+
+- primitive actions, and
+- high-level actions (HLA).
+
+HLAs have one or more **refinements**.
+
+- Refinements may contain other HLAs.
+- A refinement with only primitive actions is an **implementation**.
+- An HLA achieves a goal if at least one of its implementations achieves the goal.
+
+
+:::
+::: {.column width="50%"}
+
+Here are two goal-achieving implementations for the $Go(Home, SFO)$ HLA:
+
 ```{=latex}
 \begin{center}
+\vspace{.05in}
 ```
-![](aima-fig-11_07-high-level-action-refinements.pdf){height="70%"}
+![](aima-fig-11_07-a-go-home-refinements.pdf){height="20%"}
 ```{=latex}
 \end{center}
 ```
+
+
+Refinements can be produced recursivley, as shown in this vacuum world navigation example:
+
+```{=latex}
+\begin{center}
+\vspace{.05in}
+```
+![](aima-fig-11_07-b-vacuum-navigation-recursion.pdf){height="40%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
 
 ## Hierarchical Planning
 
