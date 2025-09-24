@@ -403,7 +403,10 @@ Categories organize knowledge into **inheritance hierarchies**, or **taxonomies*
 An **event calculus** encodes events, fluents, and time points, and the relationships between them.
 
 - A **fluent** is an aspect of the world that changes, an object that changes over time.
-- An **event** is a temporally fixed object (as opposed to a permanent object).
+- An **event** is a temporal, locational, or relational fixing of object(s).
+
+    - $E_1 \in Flyings \land Flyer(E_1,Shankar) \land Origin(E_1,SF) \land Destination(E_1,DC)$
+
 - A **time predicate**, $T$, fixes a fluent or event in time, e.g.,
 
     - $T(f, t_1, t_2)$ Fluent $f$ is true for all times between $t_1$ and $t_2$
@@ -412,7 +415,7 @@ An **event calculus** encodes events, fluents, and time points, and the relation
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-10_02-predicates-time-intervals.pdf){height="50%"}
+![](aima-fig-10_02-predicates-time-intervals.pdf){height="40%"}
 ```{=latex}
 Predicates on time intervals.
 \end{center}
