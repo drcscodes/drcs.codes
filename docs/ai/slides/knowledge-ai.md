@@ -135,7 +135,7 @@ The presence of pits in squares [1, 2], [2, 2] and [3, 1] gives rise to $2^3 = 8
 \end{center}
 ```
 
-Solid line delineates KB based on percept [None, None, None, None, None] in [1,1].
+Solid line delineates KB based on percept [None, None, None, None, None] in [1, 1] and [None,Breeze,None,None,None] in [2, 1].
 
 - (a). $\alpha_1$ = "There is no pit in [1, 2]."  Here, $KB \models \alpha_1$
 - (b). $\alpha_2$ = "There is no pit in [2, 2]."  Here, $KB \nvDash \alpha_2$
@@ -190,7 +190,7 @@ If KB is true in the real world, then any sentence $\alpha$ derived from KB by a
 - $\neg$ (not) Unary connective.  $\neg W_{1,3}$ is the **negation** of $W_{1,3}$
 
     - A **positive literal** is an atomic sentence.
-    - a ** negative literal** is a negated atomic sentence.
+    - a **negative literal** is a negated atomic sentence.
 
 - $\land$ (and).  Binary connective.  **Conjunction**, e.g., $W_{1,3} \land P_{3,1}$
 
@@ -338,12 +338,43 @@ Quantifiers:
 
 ## Knowledge Representation
 
-Abstract concepts:
+Complex reasoning requires representation of abstract concepts:
 
-Events, Time, Physical Objects, and Beliefs
+- Events
+- Time
+- Physical Objects
+- Beliefs
 
 Representing abstract concepts is sometimes called **ontological engineering**.
 
+## Physical Objects
+
+- Categories vs objects
+
+    - A category is a set which represents some commonality among objects in the set.
+    - Individuation: division into distinct objects
+
+- Part vs whole
+
+    - Composites represent structural relationships between parts
+    - $Biped(a) \implies \exists l_1, l_2, b, Leg(l_1) \land Leg(l_2) \land Body(b) \land PartOf(l_1, b) \dots$
+
+- Measures
+
+    - Kind of quantity, e.g., length, weight, mass
+    - Units, conversions
+
+- Count nouns vs mass nouns
+
+    - Count noun: 2 glass**es** of water -- 1 glass is **FEWER** than 2 glasses
+
+    - Mass noun: a gallon of water -- 1 gallon is **LESS THAN** 2 gallons
+
+- Intrinsic vs extrinsic properties
+
+    - Intrinsic properties part of essence of object
+    - Extrinsic properties are not retained under subdivision
+    - Gold still glitters when split into two equal parts, but each part now has half the mass, weight.
 
 ## Categories and Objects
 
@@ -352,8 +383,7 @@ Two choices for representing a category:
 - use **predicates**, like $Basketball(b)$, or
 - **reify** the category as an object itself and say
 
-    - $Member(b,Basketballs)$, or
-    - $b \in Basketballs$.
+    - $Member(b,Basketballs)$ or $b \in Basketballs$.
 
 Can also have subcategories, e.g., $Subset(Basketballs,Balls)$ or $Basketballs \subset Balls$.
 
@@ -368,13 +398,23 @@ Categories organize knowledge into **inheritance hierarchies**, or **taxonomies*
 ```
 
 
-## Events
+## Events and Time
+
+An **event calculus** encodes events, fluents, and time points, and the relationships between them.
+
+- A **fluent** is an aspect of the world that changes, an object that changes over time.
+- An **event** is a temporally fixed object (as opposed to a permanent object).
+- A **time predicate**, $T$, fixes a fluent or event in time, e.g.,
+
+    - $T(f, t_1, t_2)$ Fluent $f$ is true for all times between $t_1$ and $t_2$
+    - $Happens(e,t1,t2)$ Event $e$ starts at time $t_1$ and ends at $t_2$
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-10_02-predicates-time-intervals.pdf){height="70%"}
+![](aima-fig-10_02-predicates-time-intervals.pdf){height="50%"}
 ```{=latex}
+Predicates on time intervals.
 \end{center}
 ```
 
@@ -383,26 +423,71 @@ Categories organize knowledge into **inheritance hierarchies**, or **taxonomies*
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-10_03-schematic-object-president.pdf){height="70%"}
+![](aima-fig-10_03-schematic-object-president.pdf){height="50%"}
 ```{=latex}
 \end{center}
 ```
 
-<!--
+$$
+T(Equals(President(USA),GeorgeWashington),Begin(AD1789),End(AD1797))
+$$
 
-## Mental Objects and Modal Logic
+Use $Equals$ function instead of logical predicate $=$ because can't have have predicate as argument to $T$.
 
-Foo
 
-## Reasoning Systems for Categories
+## Beliefs and Attitudes
+
+
+Beliefs are mental objects. Consider
+
+$$
+Knows(Lois,CanFly(Superman))
+$$
+
+What if Lois knows that Clark Kent is Superman?
+
+```{=latex}
+\begin{align*}
+& (Superman = Clark) \land Knows(Lois,CanFly(Superman)) \\
+& \hspace{.2in} \models Knows(Lois,CanFly(Clark))
+\end{align*}
+```
+
+This gets out of hand quickly.  Need **modal logic**, which includes modal operators that take sentences as arguments instead of terms.  $A$ knows $P$ becomes:
+
+$$
+\bm{K}_A P
+$$
+
+Where $\bm{K}$ is the modal operator for knowledge.  First argument $A$ is the agent and written as subscript.  Second argument, $P$, is the proposition that $A$ "knows."
+
+## Semantic Networks
+
+Originally called **existential graphs**.
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-10_04-semantic-network-4-objects.pdf){height="70%"}
+![](aima-fig-10_04-semantic-network-4-objects.pdf){height="60%"}
 ```{=latex}
 \end{center}
 ```
+
+## Closing Thoughts
+
+- **Much** more to knowledge-based AI than presented here
+- This overview enough to feel confident discussing knowledge-based AI at cocktail parties
+- Knowledge-based AI heart of *expert systems*, failure of which led to an AI winter
+
+    - Knowledge-acquisition bottleneck hindered completeness
+
+        - Practically impossible for a physician to encode his/her medical knowledge in rules.
+
+    - Knowledge AI fell out of favor, has never really recovered the mantle of AI
+
+        - Didn't stop Doug Lennat and his team at [Cycorp](https://cyc.com/) from trying.
+
+<!--
 
 ## Reasoning Systems for Categories
 
