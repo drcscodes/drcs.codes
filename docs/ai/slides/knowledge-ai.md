@@ -277,7 +277,7 @@ Functionally equivalent to inference rules.  Left side on top, right side on bot
 ```
 
 
-## Knowledge Representation
+## Representational Power of Formal Languages
 
 - Propositional logic assumes that there are facts that either hold or do not hold in the world. Each fact can be in one of two states—true or false—and each model assigns true or false to each proposition symbol.
 - First-order logic assumes that the world consists of objects with certain relations among them that do or do not hold.
@@ -327,24 +327,46 @@ Complex sentences:
 
 Quantifiers:
 
-- $\forall x, King(x) \implies Person(x)$ means "All kings are persons."
-- $\exists x, Crown(x) \land Onhead(x, John)$ means "King John has a crown on his head."
+- $\forall x, King(x) \implies Person(x)$
 
-<!--
+    - For all objects $x$, if $x$ is a $King$, then $x$ is a $Person$.
+    - In English:"All kings are persons."
+- $\exists x, Crown(x) \land Onhead(x, John)$
 
-## Ontological Engineering
+    - There exists an $x$ such that $x$ is a $Crown$ and $x$ is on the head of $John$.
+    - In English: "John has a crown on his head."
+
+## Knowledge Representation
+
+Abstract concepts:
+
+Events, Time, Physical Objects, and Beliefs
+
+Representing abstract concepts is sometimes called **ontological engineering**.
+
+
+## Categories and Objects
+
+Two choices for representing a category:
+
+- use **predicates**, like $Basketball(b)$, or
+- **reify** the category as an object itself and say
+
+    - $Member(b,Basketballs)$, or
+    - $b \in Basketballs$.
+
+Can also have subcategories, e.g., $Subset(Basketballs,Balls)$ or $Basketballs \subset Balls$.
+
+Categories organize knowledge into **inheritance hierarchies**, or **taxonomies**, like this upper ontology of the world:
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-10_01-upper-ontology-world.pdf){height="70%"}
+![](aima-fig-10_01-upper-ontology-world.pdf){height="50%"}
 ```{=latex}
 \end{center}
 ```
 
-## Categories and Objects
-
-Foo
 
 ## Events
 
@@ -365,6 +387,8 @@ Foo
 ```{=latex}
 \end{center}
 ```
+
+<!--
 
 ## Mental Objects and Modal Logic
 

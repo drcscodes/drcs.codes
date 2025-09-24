@@ -57,6 +57,8 @@ Ground (variable-free) action:
 \end{center}
 ```
 
+<!--
+
 ## Spare Tire
 
 ```{=latex}
@@ -66,6 +68,7 @@ Ground (variable-free) action:
 ```{=latex}
 \end{center}
 ```
+-->
 
 ## Blocks World
 
@@ -77,7 +80,7 @@ Ground (variable-free) action:
 \end{center}
 ```
 
-## Blocks World
+## Blocks World PDDL
 
 ```{=latex}
 \begin{center}
@@ -163,7 +166,9 @@ Refinements can be produced recursivley, as shown in this vacuum world navigatio
 :::
 ::::
 
-## Hierarchical Planning
+## Hierarchical Forward Planning Search
+
+A breadth-first implementation of hierarchical forward planning search. The initial plan supplied to the algorithm is *[Act]*. The REFINEMENTS function returns a set of action sequences, one for each refinement of the HLA whose preconditions are satisfied by the specified state, *outcome*.
 
 ```{=latex}
 \begin{center}
