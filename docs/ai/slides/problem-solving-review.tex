@@ -1,7 +1,8 @@
-\documentclass[addpoints]{exam}
+\documentclass[]{exam}
 
-\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
-\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, tikz-qtree, enumitem}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings}
+\usepackage[margin=1in]{geometry}
 
 \lstset{
   extendedchars=\true,
@@ -72,11 +73,85 @@
 
 \setcounter{section}{0} % So that next \section is 1
 
-\section{}
-
-\question
+\question What is a planning problem?
 
 \begin{solution}[1in]
+\end{solution}
+
+\question Describe open-loop and closed-loop control.
+
+\begin{solution}[1in]
+\end{solution}
+
+\question Write a problem formulation for a world with three unmarked pitchers -- an 8L pitcher full of water, an empty 5L pitcher, and an empty 3L pitcher -- where an agent must reallocate the water so that one of the pitchers contains exactly 4L of water.
+
+\begin{solution}[1in]
+\begin{itemize}
+\item States: $\bm{p} = <p_1, p_2, p_3>$, $p_i \in \mathbb{N}$,  $\sum_{i = 1}^3 p_i = 8$,  $c_1 = 8, c_2 = 5, c_3 = 3$, $r_i = c_i - p_i$
+\item Initial state:$<8, 0, 0>$
+\item Actions: $Actions(\bm{p}) = pour(f, t)$ for all $f, t$ where $f, t \in {1,2,3}$ and $f \ne t$ and $p_f > 0$ and $r_t > 0$.  Examples:
+
+\begin{itemize}
+\item $actions(<8, 0, 0>) = \{pour(1, 2), pour(1, 3)\}$
+\item $actions(<3, 5, 0>) = \{pour(1, 3), pour(2, 1), pour(2, 3)\}$
+\end{itemize}
+
+\item Transition model:
+
+$$
+RESULT(pour(f, t)) =
+\begin{cases}
+p_t \gets c_t, p_f \gets p_f -  r_t &\text{if } r_t \le p_f \\
+p_t \gets p_t + p_f, p_f \gets 0 &\text{if } r_t \ge p_f
+\end{cases}
+$$
+
+\item Goal states: $p_i = 4$ for some $i \in \{1, 2, 3\}$
+\item Action cost: 1
+\end{itemize}
+\end{solution}
+
+\newpage
+
+\question Consider the first two levels of a BFS search tree with a start state of $<8, 0, 0>$ where the $expand(node)$ function always enumerates actions from ``left to right'', that is, choose the leftmost source pictcher to pour from, and the leftmost target pitcher to pour to.
+
+
+\begin{tikzpicture}[every tree node/.style={draw},
+   level distance=2cm,sibling distance=1cm,
+   edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}]
+\Tree
+[.{$<8, 0, 0>$}
+    \edge node[auto=right] {$pour(1, 2)$};
+    [.{$<3, 5, 0>$}
+       \edge node[left,pos=.3] {$pour(1, 3)$};
+       {$<0, 5, 3>$}
+       \edge node[right,pos=.7] {$pour(2, 1)$};
+       {$<8, 0, 0>$}
+       \edge node[right,pos=.2] {$pour(2, 3)$};
+       {$<3, 2, 3>$}
+    ]
+    \edge node[auto=left] {$pour(1, 3)$};
+    [.{$<5, 0, 3>$}
+        \edge node[left,pos=.3] {$pour(1, 2)$};
+        {$<0, 5, 3>$}
+        \edge node[right,pos=.7] {$pour(3, 1)$};
+        {$<8, 0, 0>$}
+        \edge node[right,pos=.2] {$pour(3, 2)$};
+        {$<5, 3, 0>$}
+    ]
+]
+\end{tikzpicture}
+
+Discuss the implications of this node expansion order for Depth-First Search.
+
+\begin{solution}[1.5in]
+
+\end{solution}
+
+\question TODO: more questions to be added ...
+
+\begin{solution}[1.5in]
+
 \end{solution}
 
 
