@@ -67,14 +67,14 @@
         "videos": []
     },
     {
-        "topic": "planning",
-        "slides": "[Planning](@root/ai/slides/planning.pdf)",
+        "topic": "heuristic-search",
+        "slides": "[Heuristic Search](@root/ai/slides/heuristic-search.pdf)",
         "reading": [
             "AIMA: 3.5-3.6"
         ],
         "exercises": [
-            "[Planning Questions](@root/ai/slides/planning-questions.pdf)",
-            "[Planning Answers](@root/ai/slides/planning-answers.pdf)"
+            "[Heuristic Search Questions](@root/ai/slides/heuristic-search-questions.pdf)",
+            "[Heuristic Search Answers](@root/ai/slides/heuristic-search-answers.pdf)"
         ],
         "assignments": [
         ],
