@@ -67,14 +67,14 @@
         "videos": []
     },
     {
-        "topic": "heuristic-search",
-        "slides": "[Heuristic Search](@root/ai/slides/heuristic-search.pdf)",
+        "topic": "planning",
+        "slides": "[Planning](@root/ai/slides/planning.pdf)",
         "reading": [
             "AIMA: 3.5-3.6"
         ],
         "exercises": [
-            "[Heuristic Search Review](@root/ai/slides/heuristic-search-review.pdf)",
-            "[Heuristic Search Review Answers](@root/ai/slides/heuristic-search-review-answers.pdf)"
+            "[Planning Review](@root/ai/slides/planning-review.pdf)",
+            "[Planning Review Answers](@root/ai/slides/planning-review-answers.pdf)"
         ],
         "assignments": [
         ],
@@ -86,7 +86,10 @@
         "reading": [
             "AIMA: 4"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Local Search Review](@root/ai/slides/local-search-review.pdf)",
+            "[Local Search Answers](@root/ai/slides/local-search-review-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": []
@@ -97,7 +100,10 @@
         "reading": [
             "AIMA: 5"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Adversarial Search Review](@root/ai/slides/adversarial-search-review.pdf)",
+            "[Adversarial Search Review Answers](@root/ai/slides/adversarial-search-review-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": []
@@ -108,7 +114,10 @@
         "reading": [
             "AIMA: 6"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Constraint Satisfaction Review](@root/ai/slides/constraint-satisfaction-review.pdf)",
+            "[Constraint Satisfaction Review Answers](@root/ai/slides/constraint-satisfaction-review-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": [],
@@ -123,7 +132,10 @@
         "reading": [
             "AIMA: 7-10"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Knowledge-Based AI Review](@root/ai/slides/knowledge-ai-review.pdf)",
+            "[Knowledge-Based AI Review Answers](@root/ai/slides/knowledge-ai-review-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": [],
@@ -185,7 +197,10 @@
         "reading": [
             "AIMA: 11"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Planning Review](@root/ai/slides/planning-review.pdf)",
+            "[Planning Review Answers](@root/ai/slides/planning-review-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": []
