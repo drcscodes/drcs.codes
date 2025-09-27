@@ -83,7 +83,7 @@
 \begin{solution}[1in]
 \end{solution}
 
-\question Write a problem formulation for a world with three unmarked pitchers -- an 8L pitcher full of water, an empty 5L pitcher, and an empty 3L pitcher -- where an agent must reallocate the water so that one of the pitchers contains exactly 4L of water.
+\question Write a problem formulation for a world with three unmarked pitchers -- an 8 L pitcher full of water, an empty 5 L pitcher, and an empty 3 L pitcher -- where an agent must reallocate the water so that one of the pitchers contains exactly 4 L of water.
 
 \begin{solution}[1in]
 \begin{itemize}
@@ -113,7 +113,7 @@ $$
 
 \newpage
 
-\question Consider the first two levels of a BFS search tree with a start state of $<8, 0, 0>$ where the $expand(node)$ function always enumerates actions from ``left to right'', that is, choose the leftmost source pictcher to pour from, and the leftmost target pitcher to pour to.
+\question Consider the first two levels of a BFS search tree with a start state of $<8, 0, 0>$ where the $expand(problem, node)$ function always enumerates child nodes by choosing actions from ``left to right'', that is, choosing the leftmost source pitcher to pour from, and the leftmost target pitcher to pour to.
 
 
 \begin{tikzpicture}[every tree node/.style={draw},
@@ -142,18 +142,55 @@ $$
 ]
 \end{tikzpicture}
 
-Discuss the implications of this node expansion order for Depth-First Search.
+Discuss the implications of this child node expansion order for Depth-First Search.
 
-\begin{solution}[1.5in]
-
-\end{solution}
-
-\question TODO: more questions to be added ...
-
-\begin{solution}[1.5in]
+\begin{solution}[5in]
 
 \end{solution}
 
+\question Is Breadth-First Search subject to the same problems discussed in the previous question?  Why, or why not?
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\newpage
+
+\question Is Breadth-First Search complete?  Why, or why not?
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question Is Depth-First Search complete?  Why, or why not?
+
+\begin{solution}[1in]
+
+\end{solution}
+
+\question What is the simplest way to modify Depth-First Search so that it does not descend an infinite path?
+
+\begin{solution}[1.25in]
+
+\end{solution}
+
+\question Discuss the most important implication of modifying Depth-First Search so that it does not descend an infinite path.
+
+\begin{solution}[1.25in]
+
+\end{solution}
+
+\question Describe an algorithm that uses Depth-First Search but is complete.
+
+\begin{solution}[1.75in]
+
+\end{solution}
+
+\question What is the primary tradeoff between Bread-First Search and Depth-First Search?
+
+\begin{solution}[1in]
+
+\end{solution}
 
 \end{questions}
 
