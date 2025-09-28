@@ -2,6 +2,7 @@
 
 \usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
 \usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage[margin=1in]{geometry}
 
 \lstset{
   extendedchars=\true,
@@ -72,11 +73,46 @@
 
 \setcounter{section}{0} % So that next \section is 1
 
-\section{}
+\question What is the closed world assumption?
 
-\question
+\begin{solution}[.5in]
+\end{solution}
+
+\question What are the two main limitations of atomic state-space search for planning?
 
 \begin{solution}[1in]
+\end{solution}
+
+\question How does Planning Domain Definition Language (PDDL) planning address the limitations of atomic state-space search?
+
+\begin{solution}[1in]
+\end{solution}
+
+
+\question Is $At(Truck_1,Melbourne)$ a ground atomic fluent?  Why, or why not?
+
+\begin{solution}[.5in]
+\end{solution}
+
+\question Is $At(t_1, from)$ a ground atomic fluent? Why, or why not?
+
+\begin{solution}[.5in]
+\end{solution}
+
+
+
+\question Assuming the following action schema:
+
+\begin{align*}
+& Action(Fly(p,from,to),\\
+& \hspace{.1in} PRECOND:At(p,from) \land Plane(p) \land Airport(from) \land Airport(to)\\
+& \hspace{.1in} EFFECT: \neg At(p,from) \land At(p,to))
+\end{align*}
+
+after $Fly(P_1,SFO,JFK)$, what is true about $P_1$?
+
+\begin{solution}[1in]
+
 \end{solution}
 
 
