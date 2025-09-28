@@ -431,7 +431,7 @@ Predicates on time intervals.
 \end{center}
 ```
 
-$$
+$
 T(Equals(President(USA),GeorgeWashington),Begin(AD1789),End(AD1797))
 $$
 

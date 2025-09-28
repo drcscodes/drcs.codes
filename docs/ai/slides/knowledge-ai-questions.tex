@@ -1,0 +1,154 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage[margin=1in]{geometry}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Knowledge-Based AI Review}
+\author{Artificial Intelligence}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+
+\setcounter{section}{0} % So that next \section is 1
+
+\question In the context of propositional logic, define sentence.
+
+\begin{solution}[.5in]
+An assertion about the world expressed in a **knowledge represeantation language**, like propositional logic.
+\end{solution}
+
+\question In the context of propositional logic, define knowledge base.
+
+\begin{solution}[.5in]
+A set of sentences.
+\end{solution}
+
+\question In the context of propositional logic, define axiom.
+
+\begin{solution}[.5in]
+Sentences taken as given -- not derived from other sentences, assumptions.
+\end{solution}
+
+\question In the context of propositional logic, define inference.
+
+\begin{solution}[.5in]
+Deriving new sentences from old sentences.
+\end{solution}
+
+\question Define grounding.
+
+\begin{solution}[.5in]
+Connection between logical reasoning and the real environment.  How do we know that KB is true in the real world.
+\end{solution}
+
+\question Define entailment.
+
+\begin{solution}[1in]
+\end{solution}
+
+\question In the context of logical reasoning, define model.
+
+\begin{solution}[1in]
+\end{solution}
+
+\question In the context of logical reasoning, define model checking.
+
+\begin{solution}[1in]
+\end{solution}
+
+\question List two methods of establishing the truth of a logical sentence.
+
+\begin{solution}[1in]
+\end{solution}
+
+\question Define satisfiability.
+
+\begin{solution}[1in]
+A sentence is **satisfiable** if it is true in, or satisfied by, *some* model
+\end{solution}
+
+\question How does logical theorem proving work?
+
+\begin{solution}[1in]
+\end{solution}
+
+\question Translate the following English sentence into first-order logic: ``All that glitter is not gold.''
+
+\begin{solution}[1in]
+\end{solution}
+
+\question Translate the following English sentence into first-order logic: ``There's someone for everyone.''
+
+\begin{solution}[1in]
+\end{solution}
+
+\question Express the following Engilsh sentence in a formal ontological knowledge representation language: ``A hot dog is a sandwich.''
+
+\begin{solution}[1in]
+\end{solution}
+
+\end{questions}
+
+\end{document}
