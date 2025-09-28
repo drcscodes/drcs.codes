@@ -1,4 +1,4 @@
-\documentclass[addpoints]{exam}
+\documentclass[]{exam}
 
 \usepackage{verbatim, multicol, tabularx,hyperref, tikz, tikz-qtree, enumitem}
 \usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings}
@@ -78,41 +78,54 @@
 \question What is a zero-sum game?
 
 \begin{solution}[1in]
+A game in which the "score" for one agent is the negative of the other agent's, i.e., they add to zero.
 \end{solution}
 
 \question What is another,perhaps better, term for zero-sum?  Why?
 
 \begin{solution}[1in]
+Equivalently, in a {\it constant sum} game the scores add to a constant value.  For example, in chess each player gets a score of 1 or 0 in the case of a win, or each player gets $\frac{1}{2}$ in the case of a draw.  These scores always add to 1.
 \end{solution}
 
 \question What is a ply?
 
 \begin{solution}[1in]
+One move by one player is called a ply.  A ply for MAX plus the response ply for MIN constitute a game move.
 \end{solution}
 
 \question In the following 2-ply minimax game tree, what are the minimax values of nodes A, B, C, and D, and which move is selected by MAX?
+
+\ifprintanswers
+
+Move $a_1$ is selected.
 
 \begin{tikzpicture}[]
   \tikzstyle{max}=[regular polygon,regular polygon sides=3, draw, minimum size=.25cm]
   \tikzstyle{min}=[regular polygon,regular polygon sides=3, draw, shape border rotate=180]
 
 \node[max](A) at (6, 5){A};
+\node[] at (5, 5){\underline{3}};
 
 \node[min](B) at (3, 3){B};
+\node[] at (2, 3){\underline{3}};
+
 \node[min](C) at (6, 3){C};
+\node[] at (5, 3){\underline{2}};
+
 \node[min](D) at (9, 3){D};
+\node[] at (8, 3){\underline{2}};
 
-\node[min](B1) at (2, 1){};
-\node[min](B2) at (3, 1){};
-\node[min](B3) at (4, 1){};
+\node[max](B1) at (2, 1){};
+\node[max](B2) at (3, 1){};
+\node[max](B3) at (4, 1){};
 
-\node[min](C1) at (5, 1){};
-\node[min](C2) at (6, 1){};
-\node[min](C3) at (7, 1){};
+\node[max](C1) at (5, 1){};
+\node[max](C2) at (6, 1){};
+\node[max](C3) at (7, 1){};
 
-\node[min](D1) at (8, 1){};
-\node[min](D2) at (9, 1){};
-\node[min](D3) at (10, 1){};
+\node[max](D1) at (8, 1){};
+\node[max](D2) at (9, 1){};
+\node[max](D3) at (10, 1){};
 
 \node[](B1val) at (2,0.5){3};
 \node[](B2val) at (3,0.5){12};
@@ -145,11 +158,132 @@
 \end{tikzpicture}
 
 
-\begin{solution}[1in]
-\end{solution}
+\else
+
+\begin{tikzpicture}[]
+  \tikzstyle{max}=[regular polygon,regular polygon sides=3, draw, minimum size=.25cm]
+  \tikzstyle{min}=[regular polygon,regular polygon sides=3, draw, shape border rotate=180]
+
+\node[max](A) at (6, 5){A};
+\node[] at (5, 5){\underline{\hspace{.1in}}};
+
+\node[min](B) at (3, 3){B};
+\node[] at (2, 3){\underline{\hspace{.1in}}};
+
+\node[min](C) at (6, 3){C};
+\node[] at (5, 3){\underline{\hspace{.1in}}};
+
+\node[min](D) at (9, 3){D};
+\node[] at (8, 3){\underline{\hspace{.1in}}};
+
+\node[max](B1) at (2, 1){};
+\node[max](B2) at (3, 1){};
+\node[max](B3) at (4, 1){};
+
+\node[max](C1) at (5, 1){};
+\node[max](C2) at (6, 1){};
+\node[max](C3) at (7, 1){};
+
+\node[max](D1) at (8, 1){};
+\node[max](D2) at (9, 1){};
+\node[max](D3) at (10, 1){};
+
+\node[](B1val) at (2,0.5){3};
+\node[](B2val) at (3,0.5){12};
+\node[](B3val) at (4,0.5){8};
+
+\node[](C1val) at (5,0.5){2};
+\node[](C2val) at (6,0.5){4};
+\node[](C3val) at (7,0.5){6};
+
+\node[](D1val) at (8,0.5){14};
+\node[](D2val) at (9,0.5){5};
+\node[](D3val) at (10,0.5){2};
+
+\draw (A) to node [left,pos=0.5]{$a_1$} (B);
+\draw (A) to node [left,pos=0.5]{$a_2$} (C);
+\draw (A) to node [right,pos=0.5]{$a_3$} (D);
+
+\draw (B) to node [left,pos=0.5]{$b_1$} (B1);
+\draw (B) to node [left,pos=0.5]{$b_2$} (B2);
+\draw (B) to node [right,pos=0.5]{$b_3$} (B3);
+
+\draw (C) to node [left,pos=0.5]{$c_1$} (C1);
+\draw (C) to node [left,pos=0.5]{$c_2$} (C2);
+\draw (C) to node [right,pos=0.5]{$c_3$} (C3);
+
+\draw (D) to node [left,pos=0.5]{$d_1$} (D1);
+\draw (D) to node [left,pos=0.5]{$d_2$} (D2);
+\draw (D) to node [right,pos=0.5]{$d_3$} (D3);
+
+\end{tikzpicture}
+
+\fi
+
+\newpage
 
 \question In the following game tree, what are the $\alpha$ and $\beta$ values in the intervals and which branches would be pruned from the tree with Alpha-Beta pruning?
 
+\ifprintanswers
+\begin{tikzpicture}[]
+  \tikzstyle{max}=[regular polygon,regular polygon sides=3, draw, minimum size=.25cm]
+  \tikzstyle{min}=[regular polygon,regular polygon sides=3, draw, shape border rotate=180]
+
+\node[max](A) at (6, 5){A};
+\node[] at (4.5, 5){[\underline{3}, \underline{3}]};
+
+\node[min](B) at (3, 3){B};
+\node[] at (1.5, 3){[\underline{3}, \underline{3}]};
+
+\node[min](C) at (6, 3){C};
+\node[] at (4.5, 3){[\underline{$-\infty$}, \underline{2}]};
+
+\node[min](D) at (9, 3){D};
+\node[] at (7.5, 3){[\underline{2}, \underline{2}]};
+
+\node[max](B1) at (2, 1){};
+\node[max](B2) at (3, 1){};
+\node[max](B3) at (4, 1){};
+
+\node[max](C1) at (5, 1){};
+\node[max,dashed](C2) at (6, 1){};
+\node[max,dashed](C3) at (7, 1){};
+
+\node[max](D1) at (8, 1){};
+\node[max](D2) at (9, 1){};
+\node[max](D3) at (10, 1){};
+
+\node[](B1val) at (2,0.5){3};
+\node[](B2val) at (3,0.5){12};
+\node[](B3val) at (4,0.5){8};
+
+\node[](C1val) at (5,0.5){2};
+\node[](C2val) at (6,0.5){4};
+\node[](C3val) at (7,0.5){6};
+
+\node[](D1val) at (8,0.5){14};
+\node[](D2val) at (9,0.5){5};
+\node[](D3val) at (10,0.5){2};
+
+\draw (A) to node [left,pos=0.5]{$a_1$} (B);
+\draw (A) to node [left,pos=0.5]{$a_2$} (C);
+\draw (A) to node [right,pos=0.5]{$a_3$} (D);
+
+\draw (B) to node [left,pos=0.5]{$b_1$} (B1);
+\draw (B) to node [left,pos=0.5]{$b_2$} (B2);
+\draw (B) to node [right,pos=0.5]{$b_3$} (B3);
+
+\draw (C) to node [left,pos=0.5]{$c_1$} (C1);
+\draw[dashed] (C) to node [left,pos=0.5]{$c_2$} (C2);
+\draw[dashed] (C) to node [right,pos=0.5]{$c_3$} (C3);
+
+\draw (D) to node [left,pos=0.5]{$d_1$} (D1);
+\draw (D) to node [left,pos=0.5]{$d_2$} (D2);
+\draw (D) to node [right,pos=0.5]{$d_3$} (D3);
+
+\end{tikzpicture}
+
+\else
 
 \begin{tikzpicture}[]
   \tikzstyle{max}=[regular polygon,regular polygon sides=3, draw, minimum size=.25cm]
@@ -167,17 +301,17 @@
 \node[min](D) at (9, 3){D};
 \node[] at (7.5, 3){[\underline{\hspace{.15in}}, \underline{\hspace{.15in}}]};
 
-\node[min](B1) at (2, 1){};
-\node[min](B2) at (3, 1){};
-\node[min](B3) at (4, 1){};
+\node[max](B1) at (2, 1){};
+\node[max](B2) at (3, 1){};
+\node[max](B3) at (4, 1){};
 
-\node[min](C1) at (5, 1){};
-\node[min](C2) at (6, 1){};
-\node[min](C3) at (7, 1){};
+\node[max](C1) at (5, 1){};
+\node[max](C2) at (6, 1){};
+\node[max](C3) at (7, 1){};
 
-\node[min](D1) at (8, 1){};
-\node[min](D2) at (9, 1){};
-\node[min](D3) at (10, 1){};
+\node[max](D1) at (8, 1){};
+\node[max](D2) at (9, 1){};
+\node[max](D3) at (10, 1){};
 
 \node[](B1val) at (2,0.5){3};
 \node[](B2val) at (3,0.5){12};
@@ -209,10 +343,7 @@
 
 \end{tikzpicture}
 
-
-\begin{solution}[2.5in]
-
-\end{solution}
+\fi
 
 \question In basic minimax search, the $Minimax$ value function is defined by:
 
@@ -243,9 +374,11 @@ $$
 
 \question In terminal states, what is the value of the $Eval(s, MAX)$ function?
 
-\begin{solution}[1in]
+\begin{solution}[.5in]
 In terminal states, $Eval(state, player) = Utility(state, player)$, which is defined by the game rules.
 \end{solution}
+
+\newpage
 
 \question How does Monte-Carlo Tree Search differ from Heuristic Alph-Beta Search?
 
@@ -268,9 +401,21 @@ Two major weaknesses of heuristic alpha-beta tree search:
 \end{itemize}
 \end{solution}
 
-\question Using
+\question Using the $UCB1$ upper confidence bound selection policy with a low $C$ value, which path, $a$ or $b$, would MCTS expand?
 
-\begin{solution}[1in]
+\begin{tikzpicture}
+
+\node[draw, shape=circle, fill=red!50!blue!10!white](root) at (2, 2){$\frac{50}{100}$};
+\node[draw, shape=circle, fill=white!20!brown!50!yellow](a) at (1, 0){$\frac{74}{100}$};
+\node[draw, shape=circle, fill=white!20!brown!50!yellow](b) at (3, 0){$\frac{3}{4}$};
+
+\draw (root) to node[left,pos=.5]{$a$} (a);
+\draw (root) to node[right,pos=.5]{$b$} (b);
+
+\end{tikzpicture}
+
+\begin{solution}[.5in]
+a
 \end{solution}
 
 
