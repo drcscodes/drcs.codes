@@ -1,4 +1,4 @@
-\documentclass[addpoints]{exam}
+\documentclass[]{exam}
 
 \usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
 \usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
@@ -75,78 +75,94 @@
 
 \question In the context of propositional logic, define sentence.
 
-\begin{solution}[.5in]
+\begin{solution}[.75in]
 An assertion about the world expressed in a **knowledge represeantation language**, like propositional logic.
 \end{solution}
 
 \question In the context of propositional logic, define knowledge base.
 
-\begin{solution}[.5in]
+\begin{solution}[.75in]
 A set of sentences.
 \end{solution}
 
 \question In the context of propositional logic, define axiom.
 
-\begin{solution}[.5in]
+\begin{solution}[.75in]
 Sentences taken as given -- not derived from other sentences, assumptions.
 \end{solution}
 
 \question In the context of propositional logic, define inference.
 
-\begin{solution}[.5in]
+\begin{solution}[.75in]
 Deriving new sentences from old sentences.
 \end{solution}
 
 \question Define grounding.
 
-\begin{solution}[.5in]
+\begin{solution}[.75in]
 Connection between logical reasoning and the real environment.  How do we know that KB is true in the real world.
 \end{solution}
 
 \question Define entailment.
 
 \begin{solution}[1in]
+Entailment: $\alpha \models \beta$: $\beta$ follows logically from $\alpha$.  Formally:
+
+$$
+\alpha \models \beta \text{ if and only if } M(\alpha) \subseteq M(\beta)
+$$
+
 \end{solution}
+
+\newpage
 
 \question In the context of logical reasoning, define model.
 
-\begin{solution}[1in]
+\begin{solution}[.75in]
+A model is a formal specification of a possible world, that is, a set of assignments of values to the variables in the sentences of a knowledge base.
 \end{solution}
+
 
 \question In the context of logical reasoning, define model checking.
 
-\begin{solution}[1in]
+\begin{solution}[.75in]
+Model checking is enumerating all models and showing that a sentence is valid, that is, the sentence holds in all models.
 \end{solution}
 
 \question List two methods of establishing the truth of a logical sentence.
 
-\begin{solution}[1in]
+\begin{solution}[.75in]
+Model checking and theorem proving.
 \end{solution}
 
 \question Define satisfiability.
 
-\begin{solution}[1in]
+\begin{solution}[.75in]
 A sentence is **satisfiable** if it is true in, or satisfied by, *some* model
 \end{solution}
 
 \question How does logical theorem proving work?
 
-\begin{solution}[1in]
+\begin{solution}[.75in]
+Applying rules of inference directly to the sentences in our knowledge base to construct a proof of the desired sentence without consulting models.
 \end{solution}
 
 \question Translate the following English sentence into first-order logic: ``All that glitter is not gold.''
 
-\begin{solution}[1in]
+\begin{solution}[.75in]
+$\forall x, Glitters(x) \implies \neg Gold(x)$
 \end{solution}
 
 \question Translate the following English sentence into first-order logic: ``There's someone for everyone.''
 
-\begin{solution}[1in]
+\begin{solution}[.75in]
+$\forall x, \exists y, IsFor(y, x)$
 \end{solution}
 
 \question Express the following Engilsh sentence in a formal ontological knowledge representation language: ``A hot dog is a sandwich.''
 
-\begin{solution}[1in]
+\begin{solution}[.75in]
+$Sandwich(HotDog)$, or $HotDog \in Sandwiches$.
 \end{solution}
 
 \end{questions}
