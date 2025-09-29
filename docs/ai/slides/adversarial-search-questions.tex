@@ -225,6 +225,18 @@ Move $a_1$ is selected.
 \question In the following game tree, what are the $\alpha$ and $\beta$ values in the intervals and which branches would be pruned from the tree with Alpha-Beta pruning?
 
 \ifprintanswers
+Remember,
+\begin{itemize}
+\item $\alpha$ = the value of the best (i.e., highest-value) choice we have found so far at any choice point along the path for MAX.  Think: $\alpha$ = "at least."
+
+\item $\beta$ = the value of the best (i.e., lowest-value) choice we have found so far at any choice point along the path for MIN.  Think: $\beta$ = "at most."
+\end{itemize}
+
+At a MIN node, once we exapnd a child node that sets $\beta$ to a value less than the highest $\alpha$ value for a sibling node, we can stop expanding child nodes because they won't change the choice taken at the parent MAX node.
+
+At a MAX node, once we exapnd a child node that sets $\alpha$ to a value greater than the lowest $\beta$ value for a sibling node, we can stop expanding child nodes because they won't change the choice taken at the parent MIN node.
+
+
 \begin{tikzpicture}[]
   \tikzstyle{max}=[regular polygon,regular polygon sides=3, draw, minimum size=.25cm]
   \tikzstyle{min}=[regular polygon,regular polygon sides=3, draw, shape border rotate=180]
