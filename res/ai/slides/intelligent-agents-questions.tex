@@ -1,4 +1,4 @@
-\documentclass[addpoints]{exam}
+\documentclass[]{exam}
 
 \usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
 \usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
@@ -76,51 +76,94 @@
 \question Define agent.
 
 \begin{solution}[1in]
+An agent senses its environment through sensors and affects the environment though actuators.
 \end{solution}
 
 \question Define environment in the context of (intelligent) agents.
 
 \begin{solution}[1in]
+The part of the universe whose state we care about when designing an agent -- the part that affects what the agent perceives and what is affected by the agent's actions.  An environment is typically represented as a set of states and a transition function, or result function, that specifies the result -- next state -- of executing  an action in a state.
 \end{solution}
 
 \question Define rational agent.
 
 \begin{solution}[1in]
+  For each possible percept sequence, a rational agent should select an action that is expected to maximize its performance measure, given the evidence provided by the percept sequence and whatever built-in knowledge the agent has.
 \end{solution}
 
 \question Draw a general block diagram of an agent and its environment.
 
 \begin{solution}[2in]
-  \includegraphics[height=2in]{aima-fig-02_01-agent-environment.pdf}
+  \includegraphics[height=1.75in]{aima-fig-02_01-agent-environment.pdf}
 \end{solution}
 
 \newpage
 
 \question Describe the PEAS model of task environments.
 
-\begin{solution}[4in]
+\begin{solution}[3in]
+\begin{itemize}
+\item {\bf P}erformance measure
+\item {\bf E}nvironment dynamics -- what is the result of applying an action
+\item {\bf A}ctuators to modify the environment
+\item {\bf S}ensors to perceive the environment
+\end{itemize}
 \end{solution}
 
 \question Describe the seven essential properties of task environments.
 
 \begin{solution}[4in]
+
+\begin{itemize}
+\item  Fully vs. partially observable
+\item  Single agent vs. multi-agent.  Competitive vs. cooperative
+\item  Deterministic vs. nondeterministic.  Stochastic is a specific kind of nondeterminism in which we assign probabilities to outcomes
+\item  Episodic vs. sequential
+    \begin{itemize}
+    \item  Episodic: current action independent of previous decisions and future decisions
+    \item  Sequential: current action may affect all future actions
+    \end{itemize}
+\item  Static vs. dynamic.  Can the environment change while agent is deliberating?
+\item  Discrete vs. continuous
+\item  Known vs. unknown.  Does the agent know the "physics" of the environment?
+\end{itemize}
+
 \end{solution}
 
 \newpage
 
 \question Describe the four basic kinds of agent programs.
 
-\begin{solution}[2.5in]
+\begin{solution}[2.75in]
+\begin{itemize}
+\item Simple reflex agents choose actions based only on the current percept.
+\item Model-based reflex agents maintains a model of the environment and a sensor model. The environment model is typically a state transition model, built from a combination of prior knowledge and past percepts.  A sensor model maps percepts to world states.  Action selection is based on the current state estimation and the environment model.
+\item Goal-based agents maintain a current state description and a goal state description, selecting actions that should move the einvornment towards a goal state.
+\item Utility-based agents select agents to maximize an internal utility function that maps states to a ``usefulness'' value.
+\end{itemize}
 \end{solution}
 
 \question Discuss the relationships between goals, performance measures and utilities.
 
-\begin{solution}[2.25in]
+\begin{solution}[2.75in]
+Goals are states in the environment that the agent tries to achieve, that is, tries to execute actions that coerce the environment into a goal state.
+
+Performance measures also come from the environment but represent the cost or payoff of taking particular actions in particular states.  There can be many paths to a goal state.  The performance measure tells us which path is best.
+
+A utility function represents the ``desirability'' of states from the agent's perspective.  If the utility function aligns with the performance measure, then the agent will be rational with repect to the external performance measure if it acts to maximize its expected utility.  Utility functions allow the agent to prioritize goal attainment when there are multiple goals, and choose between goals when they are in conflict.
 \end{solution}
 
 \question Describe the three main kinds of environment state representation and give an example of each.
 
-\begin{solution}[3.5in]
+\begin{solution}[2.5in]
+\begin{itemize}
+\item Atomic, e.g., $InArad$, $InBucharest$.
+
+\item Factored, e.g., {\tt rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2} (This is a chess position in \href{https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation}{FEN notation}.)
+
+\item Structured, e.g., $At(P_1, SFO)$
+\end{itemize}
+
 \end{solution}
 
 
