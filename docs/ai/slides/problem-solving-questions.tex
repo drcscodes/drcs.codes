@@ -76,16 +76,22 @@
 \question What is a planning problem?
 
 \begin{solution}[1in]
+A problem whose solutions are sequences of actions from some initial or current state to a goal state.
 \end{solution}
 
 \question Describe open-loop and closed-loop control.
 
-\begin{solution}[1in]
+\begin{solution}[1.5in]
+In an open-loop control system the agent gets no feedback, i.e., sensor input, after executing an action.  If the agent's model is perfect and actions are deterministic, then the agent can operate in an open-loop fashion, simply executing the actions in the solution one after the other.
+
+In a closed-loop control system the agent gets sensory feedback after every action, so it can check whether the action had the expected effect.  If the environment is partially observable or actions are nondeterministic, closed-loop control is necessary.
+
 \end{solution}
 
 \question Write a problem formulation for a world with three unmarked pitchers -- an 8 L pitcher full of water, an empty 5 L pitcher, and an empty 3 L pitcher -- where an agent must reallocate the water so that one of the pitchers contains exactly 4 L of water.
 
 \begin{solution}[1in]
+One of many possibilities:
 \begin{itemize}
 \item States: $\bm{p} = <p_1, p_2, p_3>$, $p_i \in \mathbb{N}$,  $\sum_{i = 1}^3 p_i = 8$,  $c_1 = 8, c_2 = 5, c_3 = 3$, $r_i = c_i - p_i$
 \item Initial state:$<8, 0, 0>$
@@ -145,13 +151,39 @@ $$
 Discuss the implications of this child node expansion order for Depth-First Search.
 
 \begin{solution}[5in]
+In basic Depth-First Search without repeated state-avoidance, the algorithm will get stuck decending an infinite path down the left side of the search tree, as shown in the first four levels of the search tree.
+
+\begin{tikzpicture}[every tree node/.style={draw},
+   level distance=2cm,sibling distance=1cm,
+   edge from parent path={(\tikzparentnode) -- (\tikzchildnode)}]
+\Tree
+[.{$<8, 0, 0>$}
+    \edge node[auto=right] {$pour(1, 2)$};
+    [.{$<3, 5, 0>$}
+       \edge node[left,pos=.3] {$pour(1, 3)$};
+       [.{$<0, 5, 3>$}
+         \edge node[left,pos=.3] {$pour(2, 1)$};
+         [.{$<5, 0, 3>$}
+           \edge node[left,pos=.3] {$pour(1, 2)$};
+           {$<0, 5, 3>$}
+         ]
+       ]
+       \edge node[right,pos=.7] {$pour(2, 1)$};
+       {$<8, 0, 0>$}
+       \edge node[right,pos=.2] {$pour(2, 3)$};
+       {$<3, 2, 3>$}
+    ]
+    \edge node[auto=left] {$pour(1, 3)$};
+    {$<5, 0, 3>$}
+]
+\end{tikzpicture}
 
 \end{solution}
 
 \question Is Breadth-First Search subject to the same problems discussed in the previous question?  Why, or why not?
 
 \begin{solution}[1in]
-
+No, because Breadth-First Search expands all the nodes at a particular level in the search tree before moving to the next level.
 \end{solution}
 
 \newpage
@@ -159,37 +191,37 @@ Discuss the implications of this child node expansion order for Depth-First Sear
 \question Is Breadth-First Search complete?  Why, or why not?
 
 \begin{solution}[1in]
-
+Yes, because it exands all nodes at each level successively, guaranteeing it will not miss a goal state as the depth of the search tree increases.
 \end{solution}
 
 \question Is Depth-First Search complete?  Why, or why not?
 
 \begin{solution}[1in]
-
+No, because even if cycles are avoided, DFS could get stuck searching an infinite in inifinite state spaces.
 \end{solution}
 
 \question What is the simplest way to modify Depth-First Search so that it does not descend an infinite path?
 
 \begin{solution}[1.25in]
-
+Depth-Limited Depth-First Search limits the depth to which Depth-First Search expands nodes.  This modification can lead to a complete expansion of the tree to the specified depth-limit.
 \end{solution}
 
 \question Discuss the most important implication of modifying Depth-First Search so that it does not descend an infinite path.
 
 \begin{solution}[1.25in]
-
+If there is no goal state within the depth limit for Depth-Limited Depth-First Search, then the algorithm will not find a goal state.
 \end{solution}
 
 \question Describe an algorithm that uses Depth-First Search but is complete.
 
 \begin{solution}[1.75in]
-
+Iterative-Deepening Depth-First Search simply runs Depth-Limited Depth-First Search for iteratively increasing depth limits until a goal state is found.
 \end{solution}
 
 \question What is the primary tradeoff between Bread-First Search and Depth-First Search?
 
 \begin{solution}[1in]
-
+Depth-First Search uses less memory, $O(bm)$ where $b$ is branching factor and $m$ is max depth of tree vs Breadth-First Seaarch, which uses $O(b^d)$ memory because it stores all the nodes in each level as it expands the search tree.
 \end{solution}
 
 \end{questions}
