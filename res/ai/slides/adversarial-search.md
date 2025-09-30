@@ -219,17 +219,40 @@ Minimax(root) &= max(min(3,12,8),min(2,x,y),min(14,5,2)) \\
 
 In other words, the value of the root and hence the minimax decision are independent of the values of the leaves x and y, and therefore they can be pruned.
 
-<!--
+
 
 ## Alpha-Beta Calculation Stages
+
+:::: {.columns}
+::: {.column width="45%"}
+
+- (a) 1st child of B has value 3. So B, a MIN node, has value $\le$ 3.
+
+- (b) 2nd child of B has value 12; MIN would avoid, so B still $\le$ 3.
+
+- (c) 3rd child of B has value 8; that's all B's children, so value of B exactly 3. Now infer value of root $\ge$ 3 -- MAX picks max child value.
+
+- (d) 1st child of C has value 2. So C, a MIN node, value $\le$ 2. But B is worth 3, so MAX won't choose C. No point looking at other children of C. **This is alpha–beta pruning**.
+
+- (e) 1st child of D value 14, so D worth $\le$ 14. 14 still > 3, so need to keep exploring D's children. Now also back up 14 to root, which is new "at most", or $\beta$, of root.
+
+- (f) 2nd child of D worth 5, so need to keep exploring for a value < 3. 3rd child is worth 2, so now D is worth exactly 2. So MAX's move is to B, giving a value of 3.
+
+:::
+::: {.column width="65%"}
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-05_05-game-tree-calculation-stages.pdf){height="90%"}
+![](aima-fig-05_05-game-tree-calculation-stages.pdf)
 ```{=latex}
 \end{center}
 ```
+
+:::
+::::
+
+<!--
 
 ## Alpha Beta
 
