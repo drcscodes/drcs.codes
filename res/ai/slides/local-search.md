@@ -79,7 +79,7 @@ Susceptible to getting stuck in:
 How to fix:
 
 - Allow "sideways" moves
-- Stochastic hill climbing chooses randomly from uphill moves.
+- Stochastic hill climbing chooses randomly from uphill moves. Stochastic beam search does this with $k$ states in parallel.
 - Random restart hill climbing restarts from multiple initial states.
 
 :::
