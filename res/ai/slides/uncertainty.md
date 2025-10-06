@@ -104,11 +104,12 @@ Utility theory associates a utility value with each possible outcome, which indu
 
 ## Decision-Theoretic Agents
 
+> Decision theory = probability theory + utility theory
+
 ```{=latex}
 \begin{center}
-Decision theory = probability theory + utility theory
 ```
-![](aima-fig-12_01-dt-agent-algorithm.pdf)
+![](aima-fig-12_01-dt-agent-algorithm.pdf){height="30%"}
 ```{=latex}
 \end{center}
 ```
@@ -133,8 +134,7 @@ $$
 
 In logic we have satisfiabilty: $M(\alpha)$ is the set of all possible worlds in which sentence $\alpha$ is true.
 
-In probability theory the set of possible worlds is a **sample space**, which must be mutually exclusive and exhaustive.
-
+In probability theory the set of possible worlds is a **sample space**, $\Omega$, which must be mutually exclusive and exhaustive (one and only one possible world must be the case).
 
 ```{=latex}
 $$
@@ -144,7 +144,7 @@ $$
 
 An **event** is a set of possible worlds, e.g., "probability two dice sum to 6."
 
-A **proposition** is an event expressed in a formal language; specifically, for each proposition, the corresponding set contains just those possible worlds in which the proposi- tion holds.
+A **proposition** is an event expressed in a formal language; specifically, for each proposition, the corresponding set contains just those possible worlds in which the proposition holds.
 
 The probability associated with a proposition is defined to be the sum of the probabilities of the worlds in which it holds:
 
@@ -152,42 +152,174 @@ $$
 \text{For any proposition } \phi, Pr(\phi) = \sum_{\omega \in \phi} Pr(\omega)
 $$
 
+Example: $Pr(Total = 11) = Pr((5, 6)) + Pr((6, 5)) = \frac{1}{36} + \frac{1}{36} = \frac{1}{18}$
+
 ## Prior and Conditional Probabilities
 
-Unconditional or Prior probabilities
+An **unconditional** or **prior** probability is a degree of belief in a proposition with no other information.
 
-Conditional or posterior probabilities
+A **conditional** or **posterior** probability is a degree of belief in a proposition given some relevant information.
+
+Definition of conditional probability:
 
 $$
 Pr(a | b) = \frac{Pr(a \land b)}{Pr(b)}
 $$
 
-Product rule
+From that definition we get the **product rule**:
 
 $$
 Pr(a \land b) = Pr(a | b) Pr(b)
 $$
 
+## Conditional probability is not implication.
+
+The assertion $Pr(cavity|toothache) = 0.6$ does not mean "Whenever toothache is true, conclude that cavity is true with probability 0.6"
+
+It means "Whenever toothache is true *and we have no further information*, conclude that cavity is true with probability 0.6."
+
+If we had the further information that the dentist found no cavities, certainly not the case that cavity is true with probability 0.6; instead we have $Pr(cavity|toothache land \neg cavity) = 0$.
+
+<!--
+
+## Probability Examples
+
+:::: {.columns}
+::: {.column width="40%"}
+```{=latex}
+\footnotesize
+\begin{tabular}{cccccc}
+\boxed{(1, 1)} & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
+(1, 2) & (2, 2) & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
+(1, 3) & (2, 3) & (3, 3) & (4, 3) & (5, 3) & (6, 3)\\
+(1, 4) & (2, 4) & (3, 4) & (4, 4) & (5, 4) & (6, 4)\\
+(1, 5) & (2, 5) & (3, 5) & (4, 5) & (5, 5) & (6, 5)\\
+(1, 6) & (2, 6) & (3, 6) & (4, 6) & (5, 6) & (6, 6)\\
+\end{tabular}
+\normalsize
+```
+:::
+::: {.column width="60%"}
+
+
+$$
+Pr(a | b) = \frac{Pr(a \land b)}{Pr(b)}
+$$
+
+:::
+::::
+
+$\hrulefill$
+
+:::: {.columns}
+::: {.column width="40%"}
+```{=latex}
+\footnotesize
+\begin{tabular}{cccccc}
+(1, 1) & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
+(1, 2) & (2, 2) & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
+(1, 3) & (2, 3) & (3, 3) & (4, 3) & (5, 3) & (6, 3)\\
+(1, 4) & (2, 4) & (3, 4) & (4, 4) & (5, 4) & (6, 4)\\
+(1, 5) & (2, 5) & (3, 5) & (4, 5) & (5, 5) & (6, 5)\\
+(1, 6) & (2, 6) & (3, 6) & (4, 6) & (5, 6) & (6, 6)\\
+\end{tabular}
+\normalsize
+```
+:::
+::: {.column width="60%"}
+
+
+$$
+Pr(a | b) = \frac{Pr(a \land b)}{Pr(b)}
+$$
+
+:::
+::::
+
+$\hrulefill$
+
+:::: {.columns}
+::: {.column width="40%"}
+```{=latex}
+\footnotesize
+\begin{tabular}{cccccc}
+(1, 1) & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
+(1, 2) & (2, 2) & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
+(1, 3) & (2, 3) & (3, 3) & (4, 3) & (5, 3) & (6, 3)\\
+(1, 4) & (2, 4) & (3, 4) & (4, 4) & (5, 4) & (6, 4)\\
+(1, 5) & (2, 5) & (3, 5) & (4, 5) & (5, 5) & (6, 5)\\
+(1, 6) & (2, 6) & (3, 6) & (4, 6) & (5, 6) & (6, 6)\\
+\end{tabular}
+\normalsize
+```
+:::
+::: {.column width="60%"}
+
+
+$$
+Pr(a | b) = \frac{Pr(a \land b)}{Pr(b)}
+$$
+
+:::
+::::
+
+-->
+
 ## Probability Assertions
 
-Factored representaiton
 
-Random variables
+A **random variable**, which begins with capital letter, is a function mapping from possible worlds $\Omega$ to a set of possible values the variable can take.
 
-Probability distribution
+- $Die_1: \{1, \dots, 6\} \to \{1, \dots, 6\}$
+- $Doubles: \{1, \dots, 6\} \times \{1, \dots, 6\} \to \{true, false\}$
+- $Weather: \{sun,rain,cloud,snow\} \to \{sun,rain,cloud,snow\}$
 
-probability density function
+Individual values are written in lowercase and often abbreviated.
 
+- $Pr(sun)$ stands for $Pr(Weather=sun)$.
 
+A **probability distribution** is an assignment of probabilities to all values of a rendom variable, e.g.:
+
+```{=latex}
+\begin{align*}
+Pr(Weather=sun)   &= 0.6 \\
+Pr(Weather=rain)  &= 0.1 \\
+Pr(Weather=cloud) &= 0.29 \\
+Pr(Weather=snow)  &= 0.01
+\end{align*}
+```
 
 ## Joint Probability Distributions
 
+$Pr(Weather, Cavity)$ denotes the probabilities of all combinations of $Weather$ and $Cavity$, which is called a **joint probability distribution**.
+
+
+
 ## Probability Axioms
 
+All of probability theory can be built from **Kolmogorov's axioms**.
+
+Law of total probability:
+
+$$
+0 \le Pr(\omega) \le 1 \text{ for every } \omega \text{ and } \sum_{\omega \in \Omega} Pr(\omega) = 1
+$$
 
 
-## Agent Beliefs Bets
+Probability of a disjunction, **inclusion-exlusion principle**:
 
+$$
+Pr(a \lor b) = Pr(a) + Pr(b) - Pr(a \land b)
+$$
+
+
+## Why is probability theory a valid basis for rational behavior?
+
+De Finetti's Theorem:
+
+> If Agent 1 expresses a set of degrees of belief that violate the axioms of probability theory then there is a combination of bets by Agent 2 that guarantees that Agent 1 will lose money every time.
+
+Example:
 
 ```{=latex}
 \begin{center}
@@ -199,6 +331,7 @@ probability density function
 
 ## Inference Using Full Joint Distributions
 
+Knowledge base is full joint distribution of boolean random variables $Toothache, Cavity, Catch$.
 
 ```{=latex}
 \begin{center}
@@ -208,19 +341,242 @@ probability density function
 \end{center}
 ```
 
-## Factoring Joint Distibutions Using Independence
+- All probabilities above sum to 1.
+- $Pr(cavity \lor toothache) = 0.108 + 0.012 + 0.072 + 0.008 + 0.016 + 0.064= 0.28$.
 
+
+Unconditional or **marginal probability** of cavity:
+
+$$
+Pr(cavity) = 0.108 + 0.012 + 0.072 + 0.008= 0.2
+$$
+
+
+## Marginalization
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-12_04-factoring-independence.pdf)
+![](aima-fig-12_03-full-joint-toothache.pdf){height="30%"}
 ```{=latex}
 \end{center}
 ```
 
+General rule: $Pr(Y) = \sum_z Pr(Y, Z=z)$ where $Z$ is set of all possible values of variables other than $Y$.  Example, let $Y = Cavity$
 
-## Uncertain Reaasoning in the Wumpus World
+```{=latex}
+\begin{align*}
+Pr(Cavity) &= Pr(Cavity, toothache, catch) + Pr(Cavity, toothache, \neg catch) \\
+           &+ Pr(Cavity, \neg toothache, catch) + Pr(Cavity, \neg toothache, \neg catch) \\
+           &= <0.108, 0.016> + <0.012, 0.064> + <0.072, 0.144> + <0.008, 0.576>\\
+           &= <0.2, 0.8>
+\end{align*}
+```
+
+## Conditioning
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-12_03-full-joint-toothache.pdf){height="20%"}
+```{=latex}
+\end{center}
+```
+
+Using the product rule in $Pr(Y) = \sum_z Pr(Y, Z=z)$ we obtain the **conditioning** rule: $Pr(Y) = \sum_z Pr(Y|z) Pr(z)$
+
+To get the conditional probabilites, we use the definition:
+
+```{=latex}
+\begin{align*}
+Pr(cavity | toothache) &= \frac{Pr(cavity \land toothache)}{Pr(toothache)}\\
+                       &= \frac{0.108 + 0.012}{0.108 + 0.012 + 0.016 + 0.064} = 0.6
+\end{align*}
+```
+
+```{=latex}
+\begin{align*}
+Pr(\neg cavity | toothache) &= \frac{Pr(\neg cavity \land toothache)}{Pr(toothache)}\\
+                            &= \frac{0.016 + 0.064}{0.108 + 0.012 + 0.016 + 0.064} = 0.4
+\end{align*}
+```
+
+## Normalization
+
+Notice that $Pr(toothache)$ appears in denominator in both equations in the preceding conditional probability calculations.  We can vew it as a **normalization constant**, denoted $\alpha$, that ensures that the conditional probability distribution $Pr(Cavity | toothache)$ sums to 1.  Then we can write:
+
+```{=latex}
+\vspace{-.25in}
+\begin{align*}
+Pr(Cavity | toothache) &= \alpha Pr(Cavity, toothache) \\
+                       &= \alpha [ Pr(Cavity, toothache, catch) + Pr(Cavity, toothache, \neg catch)] \\
+                       &= \alpha [<0.108, 0.16> + <0.012, 0.064>\\
+                       &= \alpha <0.12, 0.08> = <0.6, 0.4>
+\end{align*}
+```
+
+All of the preceding can be summarized in a general inference procedure using full joint probability distributions.  Let $E$ be a list of evidence variables, $e$ be a list of observed values for the evidence variables, and $Y$ be the remaining unobserved variables.  Then:
+
+$$
+Pr(X | \bm{e}) = \alpha Pr(X, \bm{e}) = \alpha \sum_y Pr(X, \bm{e}, \bm{y})
+$$
+
+Great, so we're done!  All we need is a full joint parobability distribution and we can answer any query.  Unfortunately, not practical.
+
+- For a domain of $n$ boolean variables, we have a table of size $O(2^n)$
+
+So we need different approaches, which we cover next.
+
+## Independence
+
+Weather is not affecteed by teeth.  So we can assert:
+
+$$
+Pr(cloud |toothache,catch,cavity) = Pr(cloud)
+$$
+
+In general, if $a$ and $b$ are independent:
+
+$$
+P(a|b) = P(a) \text{ or } P(b|a) = P(b) \text{ or } P(a \land b) = P(a)P(b)
+$$
+
+Can be a big help.  For example, if you have $n$ independent coin flips, then instead of $2^n$ full joint table, you have a product of $n$ distributions $Pr(C_i)$.
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-12_04-factoring-independence.pdf){height="30%"}
+```{=latex}
+\end{center}
+```
+
+Unfortunately, independence rarely holds in the real world.
+
+## A Medical Screening Example
+
+A cancer with occurence rate of 1% (.01) has a "90% accurate" test, and:
+
+```{=latex}
+\begin{center}
+```
+![](../../deep-learning/slides/bishop-dl-fig2.3.pdf){height="45%"}
+```{=latex}
+\end{center}
+```
+```{=latex}
+\begin{center}
+```
+False positive rate: .03, False negative rate: 0.10
+```{=latex}
+\end{center}
+```
+
+Questions:
+
+- If we screen someone, what is the probability that they test positive?
+- If someone tests positive, what is the probability that they have cancer?
+
+
+## Bayes' Theorem
+
+Using the symmetry $p(X, Y) = p(Y, X)$ and the product rule:
+
+```{=latex}
+\begin{align*}
+p(X, Y)    &= p(Y, X)\\
+p(Y|X)p(X) &= p(X|Y)p(Y)\\
+p(Y|X)     &= \frac{p(X|Y)p(Y)}{p(X)}
+\end{align*}
+```
+
+where the denominator $p(X)$ is a normalizing constant:
+
+$$
+p(X) = \sum p(X|Y)p(Y)
+$$
+
+This is called *Bayes' Theorem* or *Bayes' Rule.*
+
+We use Bayes' Theorem to update our beliefs after observing evidence.  For example:
+
+- Before we run the test, the *prior probability* that someone has cancer is $p(C)$
+- After we run the test, we use Bayes' Theorem to calculate the *posterior probability* $p(C|T)$
+
+The *posterior probability* is our new belief after a Bayesian update.
+
+## Analysis of Medical Screening Example
+
+
+With our probabilistic machinery we can now analyze our cancer screening example.  First, we model the problem in the language of Bayesian probability theory:
+
+```{=latex}
+\begin{align*}
+p(C=1)     &= \frac{1}{100}  \tag{Prior probability that someone has cancer}\\
+p(C=0)     &= \frac{99}{100} \tag{Prior probability that someone has no cancer}\\
+p(T=1|C=1) &= \frac{90}{100} \tag{Conditional probability of positive test given cancer}\\
+p(T=0|C=1) &= \frac{10}{100} \tag{Conditional probability of negative test given cancer}\\
+p(T=1|C=0) &= \frac{3}{100}  \tag{Conditional probability of positive test given no cancer}\\
+p(T=0|C=0) &= \frac{97}{100} \tag{Conditional probability of negative test given no cancer}
+\end{align*}
+```
+
+Now we can answer the two questions we posed at the outset:
+
+- If we screen someone, what is the probability that they test positive?
+- If someone tests positive, what is the probability that they have cancer?
+
+## Analysis of Medical Screening Example
+
+:::: {.columns}
+::: {.column width="30%"}
+
+
+```{=latex}
+\begin{align*}
+p(C=1)     &= \frac{1}{100} \\
+p(C=0)     &= \frac{99}{100}\\
+p(T=1|C=1) &= \frac{90}{100}\\
+p(T=0|C=1) &= \frac{10}{100}\\
+p(T=1|C=0) &= \frac{3}{100} \\
+p(T=0|C=0) &= \frac{97}{100}
+\end{align*}
+```
+
+:::
+::: {.column width="70%"}
+
+If we screen someone, probability that they test positive:
+
+```{=latex}
+\begin{align*}
+p(T=1) &= p(T=1|C=0)p(C=0) + p(T=1|C=1)p(C=1)\\
+       &= \frac{3}{100} \times \frac{99}{100} + \frac{90}{100} \times \frac{1}{100}\\
+       &= \frac{387}{10,000}\\
+       &= .0387
+\end{align*}
+```
+
+If someone tests positive, probability they have cancer:
+
+```{=latex}
+\begin{align*}
+p(C=1|T=1) &= \frac{p(T=1|C=1)p(C=1)}{p(T=1)}\\
+           &= \frac{90}{100} \times \frac{1}{100} \times \frac{10,000}{387} \\
+           &= \frac{90}{387}\\
+           &\approx 0.23
+\end{align*}
+```
+
+
+
+:::
+::::
+
+
+<!--
+
+## Uncertain Reasoning in the Wumpus World
 
 
 ```{=latex}
@@ -231,7 +587,7 @@ probability density function
 \end{center}
 ```
 
-## MOdel Checking in the Uncertain WUmpus WOrld
+## Model Checking in the Uncertain WUmpus World
 
 
 ```{=latex}
@@ -241,3 +597,5 @@ probability density function
 ```{=latex}
 \end{center}
 ```
+
+-->
