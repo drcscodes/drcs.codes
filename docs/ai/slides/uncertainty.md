@@ -687,7 +687,7 @@ $$
 Pr(Cavity | toothache \land catch) = \alpha Pr(toothache \land catch | Cavity) PR(Cavity)
 $$
 
-But, again, we have $O(2^n)$ combinations of observed evidence.  We need some additional domain knowledge.  We've seen that independence assertions, when available, can be very helpful, but rare.
+But, again, we have $O(2^n)$ combinations of observed evidence.  We need some additional domain knowledge.
 
 ## Conditional Independence
 
@@ -743,7 +743,13 @@ $$
 This is called a **naive Bayes** model -- "naive" because it is often
 used as a simplifying assumption in cases where the "effect" variables are not strictly independent given the cause variable. In practice, naive Bayes systems often work very well, even when the conditional independence assumption is not strictly true.
 
+With some algebraic manipulation using previous results we get, for effects $\bm{e}$:
 
+$$
+Pr(Cause | e) = \alpha Pr(Cause) \prod_J Pr(e_j | Cause)
+$$
+
+This model is useful in text classification, for example, in early spam filters.  For the spam filtering problem the causes are Spam and Not-Spam, and the effects are keywords.
 
 <!--
 
