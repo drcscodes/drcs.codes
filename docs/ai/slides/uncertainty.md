@@ -20,28 +20,28 @@ Logical agents maintain a belief state and generate contingency plans that accou
 
 - Exhaustivity of belief state, which must contain all possible states, even unlikely states.
 - Exhaustivity of contingency plan, which must account for every possible, however unlikely, action outcome.
-- Unsatisfiabilty.  There may be no guranteed plan to achieve the goal.  If we must actu anyway, how do we choose the best plan?
+- Unsatisfiabilty.  There may be no guaranteed plan to achieve the goal.  If we must act anyway, how do we choose the best plan?
 - Qualification problem.  The closed-world assumption allows us to simplify logical environment specifications for simple domains, but real-world domains contain far more detail which must be accounted for.
-
-Rational decision under uncertainty depends on:
-
-- relative importance of goals,
-- likelihood of achieving goals, and
-- degree to which goals can be achieved.
 
 ## From Logic to Probability Theory
 
 Consider:
 
-$Toothacke \implies Cavity$
+$$
+Toothacke \implies Cavity
+$$
 
 Not all patients with toothaches have cavities.  How about:
 
-$Toothache \implies Cavity \lor GumProblem \lor Abscess \dots$
+$$
+Toothache \implies Cavity \lor GumProblem \lor Abscess \dots
+$$
 
 We'd need large list after the dots.  Try causal direction:
 
-$Cavity \implies Toothache$
+$$
+Cavity \implies Toothache
+$$
 
 But not all cavities hurt.  Logic fails to deal with complex domains like medical diagonosis due to:
 
@@ -70,7 +70,6 @@ Probability theory solves the qualification problem by summarizing the uncertain
 
 ## Probabilities are about our uncertain knowledge.
 
-
 "80% chance (probability 0.8) patient with a toothache has a cavity."
 
 - Out of all the situations that are indistinguishable from the current situation *as far as our knowledge goes*, the patient will have a cavity in 80% of them.
@@ -92,11 +91,12 @@ How do we choose between different plans that acheive the goal?
 
 - Each plan may lead to goal states with different outcomes, each of which is a goal state.
 
-    - An **outcome** is a completely specified state.
+    - An **outcome** of an action is a completely specified state, which includes elements that are not part of the goal.
 
-Elements of outcomes are more or less desirable -- more or less *useful* -- to a given agent:
+Elements of outcomes can be more or less desirable -- more or less *useful* -- to a given agent.
 
-- utility: the quality of being useful.
+- Utility is the quality of being useful.
+- That "usefulness" may simply be pleasure, or even altruism.
 
 Utility theory associates a utility value with each possible outcome, which induces a preference ordering over outcomes.
 
@@ -142,7 +142,40 @@ $$
 $$
 ```
 
-An **event** is a set of possible worlds, e.g., "probability two dice sum to 6."
+Each $\omega$ is a possible world.  Probability textbooks typically call these outcomes.  For example, each of these pairs is a $\omega \in \Omega$ for the roll of two dice:
+
+```{=latex}
+\footnotesize
+\begin{tabular}{cccccc}
+(1, 1) & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
+(1, 2) & (2, 2) & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
+(1, 3) & (2, 3) & (3, 3) & (4, 3) & (5, 3) & (6, 3)\\
+(1, 4) & (2, 4) & (3, 4) & (4, 4) & (5, 4) & (6, 4)\\
+(1, 5) & (2, 5) & (3, 5) & (4, 5) & (5, 5) & (6, 5)\\
+(1, 6) & (2, 6) & (3, 6) & (4, 6) & (5, 6) & (6, 6)\\
+\end{tabular}
+\normalsize
+```
+
+In probability textbooks, an **experiment** leads to a sample space.  Here, the set of possible worlds comes from the task environment.
+
+## Propositions and Events
+
+An **event**, which we denote with $\phi$ here, is a set of possible worlds, some subset of $\Omega$, or set of $\omega$, e.g., the event "doubles" contains the 6 boxed elements $\omega$:
+
+```{=latex}
+\footnotesize
+\begin{tabular}{cccccc}
+\boxed{(1, 1)} & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
+(1, 2) & \boxed{(2, 2)} & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
+(1, 3) & (2, 3) & \boxed{(3, 3)} & (4, 3) & (5, 3) & (6, 3)\\
+(1, 4) & (2, 4) & (3, 4) & \boxed{(4, 4)} & (5, 4) & (6, 4)\\
+(1, 5) & (2, 5) & (3, 5) & (4, 5) & \boxed{(5, 5)} & (6, 5)\\
+(1, 6) & (2, 6) & (3, 6) & (4, 6) & (5, 6) & \boxed{(6, 6)}\\
+\end{tabular}
+\normalsize
+```
+
 
 A **proposition** is an event expressed in a formal language; specifically, for each proposition, the corresponding set contains just those possible worlds in which the proposition holds.
 
@@ -152,7 +185,7 @@ $$
 \text{For any proposition } \phi, Pr(\phi) = \sum_{\omega \in \phi} Pr(\omega)
 $$
 
-Example: $Pr(Total = 11) = Pr((5, 6)) + Pr((6, 5)) = \frac{1}{36} + \frac{1}{36} = \frac{1}{18}$
+Example: $Pr(Doubles) = Pr((1, 1)) + \cdots + Pr((6, 6)) = \frac{1}{36} + \cdots + \frac{1}{36} = \frac{1}{6}$
 
 ## Prior and Conditional Probabilities
 
@@ -172,13 +205,25 @@ $$
 Pr(a \land b) = Pr(a | b) Pr(b)
 $$
 
+Note that $Pr(a \land b)$ can also be written $Pr(a,b)$ or $Pr(ab)$.
+
 ## Conditional probability is not implication.
 
-The assertion $Pr(cavity|toothache) = 0.6$ does not mean "Whenever toothache is true, conclude that cavity is true with probability 0.6"
+The assertion
+
+$$
+Pr(cavity|toothache) = 0.6
+$$
+
+does not mean "Whenever toothache is true, conclude that cavity is true with probability 0.6"
 
 It means "Whenever toothache is true *and we have no further information*, conclude that cavity is true with probability 0.6."
 
-If we had the further information that the dentist found no cavities, certainly not the case that cavity is true with probability 0.6; instead we have $Pr(cavity|toothache land \neg cavity) = 0$.
+If we had the further information that the dentist found no cavities, certainly not the case that cavity is true with probability 0.6; instead we have
+
+$$
+Pr(cavity|toothache \land \neg cavity) = 0
+$$
 
 <!--
 
@@ -291,15 +336,32 @@ Pr(Weather=snow)  &= 0.01
 
 ## Joint Probability Distributions
 
-$Pr(Weather, Cavity)$ denotes the probabilities of all combinations of $Weather$ and $Cavity$, which is called a **joint probability distribution**.
+$Pr(Weather, Cavity)$ denotes the probabilities of all combinations of $Weather$ and $Cavity$.  This notation is a compact representation of a **joint probability distribution**.  The notation
 
+$$
+Pr(Weather, Cavity) = Pr(Weather | Cavity) Pr(Cavity)
+$$
 
+stands for the $4 \times 2 = 8$ equations:
+
+```{=latex}
+\begin{align*}
+Pr(W = sun \land C = true)    &= Pr(W = sun | C = true) Pr(C = true) \\
+Pr(W = rain \land C = true)   &= Pr(W = rain | C = true) Pr(C = true) \\
+Pr(W = cloud \land C = true)  &= Pr(W = cloud | C = true) Pr(C = true) \\
+Pr(W = snow \land C = true)   &= Pr(W = snow | C = true) Pr(C = true) \\
+Pr(W = sun \land C = false)   &= Pr(W = sun | C = false) Pr(C = false) \\
+Pr(W = rain \land C = false)  &= Pr(W = rain | C = false) Pr(C = false) \\
+Pr(W = cloud \land C = false) &= Pr(W = cloud | C = false) Pr(C = false) \\
+Pr(W = snow \land C = false)  &= Pr(W = snow | C = false) Pr(C = false)
+\end{align*}
+```
 
 ## Probability Axioms
 
 All of probability theory can be built from **Kolmogorov's axioms**.
 
-Law of total probability:
+Law of normalization:
 
 $$
 0 \le Pr(\omega) \le 1 \text{ for every } \omega \text{ and } \sum_{\omega \in \Omega} Pr(\omega) = 1
@@ -453,6 +515,29 @@ Can be a big help.  For example, if you have $n$ independent coin flips, then in
 
 Unfortunately, independence rarely holds in the real world.
 
+## Bayes' Rule
+
+Using the symmetry $Pr(X, Y) = Pr(Y, X)$ and the product rule we can derive **Bayes' rule**:
+
+```{=latex}
+\begin{align*}
+Pr(X, Y)     &= Pr(Y, X)\\
+Pr(Y|X)Pr(X) &= Pr(X|Y)Pr(Y)\\
+Pr(Y|X)      &= \frac{Pr(X|Y)Pr(Y)}{Pr(X)}
+\end{align*}
+```
+
+The usefulness of Bayes' rule becomes apparent if we consider $X$ as an effect and $Y$ as a cause and we want to determine the cause of some effect (evidence) we observe:
+
+$$
+Pr(cause|effect) = \frac{Pr(effect|cause) Pr(cause)}{Pr(effect)}
+$$
+
+- $Pr(effect|cause)$ quantifies the **causal** direction.
+- $Pr(cause|effect)$ quantifies the **diagnostic** direction.
+
+Reasoning from effects to causes is also called **abductive reasoning**.  (Is Sherlock Holmes truly employing deduction?)
+
 ## A Medical Screening Example
 
 A cancer with occurence rate of 1% (.01) has a "90% accurate" test, and:
@@ -477,7 +562,9 @@ Questions:
 - If we screen someone, what is the probability that they test positive?
 - If someone tests positive, what is the probability that they have cancer?
 
+The test is an effect.  Cancer is the cause.
 
+<!--
 ## Bayes' Theorem
 
 Using the symmetry $p(X, Y) = p(Y, X)$ and the product rule:
@@ -505,10 +592,12 @@ We use Bayes' Theorem to update our beliefs after observing evidence.  For examp
 
 The *posterior probability* is our new belief after a Bayesian update.
 
+-->
+
 ## Analysis of Medical Screening Example
 
 
-With our probabilistic machinery we can now analyze our cancer screening example.  First, we model the problem in the language of Bayesian probability theory:
+With our probabilistic machinery we can analyze this cancer screening example.  First, we model the problem in the language of Bayesian probability theory:
 
 ```{=latex}
 \begin{align*}
@@ -568,10 +657,92 @@ p(C=1|T=1) &= \frac{p(T=1|C=1)p(C=1)}{p(T=1)}\\
 \end{align*}
 ```
 
-
-
 :::
 ::::
+
+## Bayes' Rule and Combining Evidence
+
+If dentist's probe catches and patient has a toothache, then using the full joint:
+
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-12_03-full-joint-toothache.pdf)
+```{=latex}
+\end{center}
+```
+
+we can simply read off the answer:
+
+$$
+P(Cavity|toothache \land catch) = \alpha <0.108,0.016> \equiv <0.871,0.129>
+$$
+
+But we know this approach doesn't scale.  With $n$ evidence variables we have $O(2^n)$ possible combinations of observed values.
+
+We could reformulate the problem using Bayes' rule:
+
+$$
+Pr(Cavity | toothache \land catch) = \alpha Pr(toothache \land catch | Cavity) PR(Cavity)
+$$
+
+But, again, we have $O(2^n)$ combinations of observed evidence.  We need some additional domain knowledge.  We've seen that independence assertions, when available, can be very helpful, but rare.
+
+## Conditional Independence
+
+Toothache and Catch are not independent: if the probe catches in the tooth, then it is likely that the tooth has a cavity and that the cavity causes a toothache.
+
+However, Toothache and Catch are independent given the presence or the absence of a cavity. Each is directly caused by the cavity, but neither has a direct effect on the other.  Mathematically, we write this fact as:
+
+$$
+Pr(toothache \land catch | Cavity) = Pr(toothache | Cavity) Pr(catch|Cavity)
+$$
+
+In general, the **conditional independence** of two variables $X$ and $Y$ , given a
+third variable $Z$, is defined as:
+
+$$
+Pr(X,Y |Z) = Pr(X |Z) Pr(Y |Z)
+$$
+
+Given these independence assertions we can say $Pr(X |Y,Z) = Pr(X |Z)$ and $Pr(Y |X,Z) = Pr(Y |Z)$.
+
+## Factoring a Joint Distribution using Conditional Independence
+
+Given the conditional independence assertion
+
+$$
+Pr(Toothache,Catch|Cavity) = Pr(Toothache|Cavity) Pr(Catch|Cavity)
+$$
+
+We can decompose the full joint for $Toothache, Catch, Cavity$:
+
+```{=latex}
+\begin{align*}
+Pr(Toothache,Catch,Cavity) &= Pr(Toothache,Catch|Cavity) Pr(Cavity) \tag{product rule} \\
+                           &= Pr(Toothache|Cavity) Pr(Catch|Cavity) Pr(Cavity) \tag{cond. ind. assertion above}
+\end{align*}
+```
+
+This decomposes the large table smaller tables.  In general, this technique turns representation that grows as $O(2^n)$ to one that grows as $O(n)$.  Conditional independence assertions:
+
+- allow probabilistic systems to scale, and
+- are much more commonly available than absolute independcence assertions.
+
+Conceptually, we say that $Cavity$ **separates** $Toothache$ and $Catch$ because it is a direct cause of both of them.
+
+## Naive Bayes Model
+
+If a single cause influences $n$ effects each of which is independent given the cause, then the full joint can be written:
+
+$$
+Pr(Cause,Effect_1, \dots ,Effect_n) = Pr(Cause) \prod_i Pr(Effect_i |Cause)
+$$
+
+This is called a **naive Bayes** model -- "naive" because it is often
+used as a simplifying assumption in cases where the "effect" variables are not strictly independent given the cause variable. In practice, naive Bayes systems often work very well, even when the conditional independence assumption is not strictly true.
+
 
 
 <!--
