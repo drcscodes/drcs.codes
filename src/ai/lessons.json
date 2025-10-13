@@ -206,8 +206,8 @@
         "videos": []
     },
     {
-        "topic": "midterm-questions",
-        "slides": "Midterm Questions",
+        "topic": "midterm-review",
+        "slides": "Midterm Review",
         "reading": [
             "AIMA: 1-11"
         ],
@@ -247,7 +247,18 @@
         "topic": "bayesian-networks",
         "slides": "[Bayesian Networks](@root/ai/slides/bayesian-networks.pdf)",
         "reading": [
-            "AIMA: 13.1-13.4"
+            "AIMA: 13.1-13.2"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "probabilistic-inference",
+        "slides": "[Probabilistic Inference](@root/ai/slides/probabilistic-inference.pdf)",
+        "reading": [
+            "AIMA: 13.3-13.4"
         ],
         "exercises": [],
         "assignments": [
@@ -297,7 +308,8 @@
         "exercises": [],
         "assignments": [
         ],
-        "videos": []
+        "videos": [],
+        "include_semester": false
     },
     {
         "topic": "utility-theory",
@@ -308,13 +320,14 @@
         "exercises": [],
         "assignments": [
         ],
-        "videos": []
+        "videos": [],
+        "include_semester": false
     },
     {
         "topic": "simple-decisions",
         "slides": "[Simple Decisions](@root/ai/slides/simple-decisions.pdf)",
         "reading": [
-            "AIMA: 16.5-16.7"
+            "AIMA: 16"
         ],
         "exercises": [],
         "assignments": [
@@ -334,7 +347,7 @@
     },
     {
         "topic": "bandits-pomdps",
-        "slides": "[Bandits POMDPs](@root/ai/slides/bandits-pomdps.pdf)",
+        "slides": "[Bandits and POMDPs](@root/ai/slides/bandits-pomdps.pdf)",
         "reading": [
             "AIMA: 17.3-17.5"
         ],
@@ -369,6 +382,19 @@
         "part": "Machine Learning"
     },
     {
+        "topic": "supervised-learning",
+        "slides": "[Supervised Learning](@root/ai/slides/supervised-learning.pdf)",
+        "reading": [
+            "AIMA: 19.1-19.6, 21.1-21.3"
+        ],
+        "exercises": [],
+        "assignments": [
+            "Due: [PA3](pa3.html)",
+            "Assigned: [PA4](pa4.html)"
+        ],
+        "videos": []
+    },
+    {
         "topic": "reinforcement-learning1",
         "slides": "[Reinforcement Learning](@root/ai/slides/reinforcement-learning.pdf)",
         "reading": [
@@ -391,19 +417,6 @@
         "videos": []
     },
     {
-        "topic": "supervised-learning",
-        "slides": "[Supervised Learning](@root/ai/slides/supervised-learning.pdf)",
-        "reading": [
-            "AIMA: 19.1-19.8, 21.1-21.2"
-        ],
-        "exercises": [],
-        "assignments": [
-            "Due: [PA3](pa3.html)",
-            "Assigned: [PA4](pa4.html)"
-        ],
-        "videos": []
-    },
-    {
         "topic": "statistical-learning",
         "slides": "[Statistical Learning](@root/ai/slides/statistical-learning.pdf)",
         "reading": [
@@ -415,8 +428,8 @@
         "videos": []
     },
     {
-        "topic": "final-questions",
-        "slides": "Final Questions",
+        "topic": "final-review",
+        "slides": "Final Review",
         "reading": [
             "AIMA: 12-21.2,22"
         ],

@@ -24,16 +24,16 @@ Week 7
 2025-10-01;midterm-exam;;
 Uncertain Knowledge and Reasoning
 Week 8
-2025-10-06;uncertainty;Due: [PA2](pa2.html), Assigned: [PA3](pa3.html);
-2025-10-08;bayesian-networks;;
+2025-10-06;uncertainty;;
+2025-10-08;uncertainty;Due: [PA2](pa2.html), Assigned: [PA3](pa3.html);
 Week 9
-2025-10-13;causality;;
-2025-10-15;probabilistic-temporal-models;;
+2025-10-13;bayesian-networks;;
+2025-10-15;probabilistic-inference;;
 Week 10
-2025-10-20;state-estimation;;
-2025-10-22;probabilistic-programming;;Midterm Grades Due (2025-10-24)
+2025-10-20;causality;;
+2025-10-22;probabilistic-temporal-models;;Midterm Grades Due (2025-10-24)
 Week 11
-2025-10-27;utility-theory;;
+2025-10-27;state-estimation;;
 2025-10-29;simple-decisions;;Withdrawal Deadline (2025-10-31)
 Week 12
 2025-11-03;complex-decisions;Due: [Project Results](project.html);
@@ -44,13 +44,13 @@ Week 13
 Machine Learning
 Week 14
 2025-11-17;supervised-learning;Due: [PA3](pa3.html),Assigned: [PA4](pa4.html);
-2025-11-19;statistical-learning;;
+2025-11-19;reinforcement-learning1;;
 Week 15
 2025-11-24;Thanksgiving - No Class;;
 2025-11-26;Thanksgiving - No Class;;
 Week 16
-2025-12-01;reinforcement-learning1;;
-2025-12-03;reinforcement-learning2;;
+2025-12-01;reinforcement-learning2;;
+2025-12-03;statistical-learning;;
 Week 17
 2025-12-08;final-review;Due: [PA4](pa4.html), Due: [Project Report](project.html);
 2025-12-10;Final Exam;18:00-20:00;
