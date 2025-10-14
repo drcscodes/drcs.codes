@@ -243,37 +243,110 @@ Because
 
 there is no chance for inconsistency: it is impossible for the knowledge engineer or domain expert to create a Bayesian network that violates the axioms of probability.
 
+## Compactness of Bayesian Network Models
+
+Bayes nets are complete and nonredundant, but their *compactness* is their "secret sauce."
+
+- Bayes nets are a kind of **locally structured**, or **sparse** system.
+
+    - In locally structured systems, each component interacts only with a bounded number, $k$, of other components, where $k \ll n$, the total number of components.
+    - Local structure typically results in linear rather than exponential complexity.
+
+Example: assume boolean variables.
+
+- With $n$ variables, the full joint distribution is $2^n$ numbers.
+
+    - With 30 variables that's $2^{30} = 1,073,741,824$ numbers.
+
+- With $n$ variables, each of which is influenced by $k$ parents, each CPT is $2^k$ numbers and a full Bayesian network has $n \cdot 2^k$ numbers.
+
+    - With 30 variables that's $30 \cdot 2^5$ = 960 numbers.
+
 ## Effects of Node Ordering
+
+:::: {.columns}
+::: {.column width="65%"}
+
+We saw earlier that $B, E, A, J, M$ is a good node ordering because causes come before effects.  With this node ordering we get 10 conditional probabilities.  What if we choose a different ordering, like $M, J, A, B, E$?
+
+- Add $MaryCalls$: No parents.
+
+- Add $JohnCalls$: If Mary calls, alarm probably sounded, which increases prob that John calls.  So $JohnCalls$ needs $MaryCalls$ as a parent.
+
+- Add $Alarm$: The more calls, the more likely alarm sounded, so $Alarm$ needs $MaryCalls$ and $JohnCalls$ as parents.
+
+- Add $Burglary$: Given knowledge of alarm, calls irrelevant: $Pr(Burglary \mid Alarm,JohnCalls,MaryCalls) = Pr(Burglary \mid Alarm)$.  So just $Alarm$ as parent.
+
+- Add $Earthquake$: With alarm, earthquake more likely.  But burglary explains alarm, and probability of an earthquake only slightly higher than normal. So need both $Alarm$ and $Burglary$ as parents.
+
+We end up with 13 conditional probabilities.
+
+:::
+::: {.column width="40%"}
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-13_03-bayes-net-structures.pdf)
+![](aima-fig-13_03_a-bayes-net-mjabe-ordering.pdf)
 ```{=latex}
 \end{center}
 ```
+
+:::
+::::
+
+## Knowledge Engineering in Probabilistic Systems
+
+
+:::: {.columns}
+::: {.column width="75%"}
+
+There is still knowledge engineering involved, which includes design choices.
+
+- You may choose to trade a small amount of accuracy for the improved performance of leaving out an influence variable.
+
+    - If there's a large earthquake, John and Mary probably won't call even if they hear the alarm.  Could choose to include links from $EarthQuake$ to $JohnCalls$ and $MaryCalls$.  This would increase accuracy slightly, but probably bnot worth the extra complexity.
+
+- And as we just saw, node ordering matters, potentially quite a bit.
+
+    - With node ordering $M, J, E, B, A$ the resulting Bayes net requires 31 probabilities -- same as the full joint distribution.
+
+:::
+::: {.column width="30%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_03_b-bayes-net-mjeba-ordering.pdf){height="50%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+Any Bayes net represents the same joint distibution, but some are far more efficient.
+
+> Key takeaway: stick to causal models.  They are easier to specify, easier to get right, and they lead to more efficient Bayes nets.
 
 ## Conditional Independence Relations
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-13_04-markov-blankets.pdf)
+![](aima-fig-13_04-markov-blankets.pdf){height="40%"}
 ```{=latex}
 \end{center}
 ```
 
-## CPTs Under Noisy-or Model
+- (a) Each variable is conditionally independent of its non-descendants, given its parents.
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-13_05-prob-table-fever.pdf)
-```{=latex}
-\end{center}
-```
+- (b) A variable is conditionally independent of all other nodes in the network, given its parents, children, and children's parents -- that is, given its **Markov blanket**.
 
-## Bybrid Bayesian Networks
+For example, the variable $Burglary$ is independent of $JohnCalls$ and $MaryCalls$, given $Alarm$ and $Earthquake$.
+
+
+## Hybrid Bayesian Networks
 
 Bayesian Networks with Discrete and Continuous Variables
 
@@ -305,6 +378,8 @@ Bayesian Networks with Discrete and Continuous Variables
 \end{center}
 ```
 
+<!--
+
 ## Case Study: Car Insurance
 
 ```{=latex}
@@ -314,3 +389,15 @@ Bayesian Networks with Discrete and Continuous Variables
 ```{=latex}
 \end{center}
 ```
+
+-->
+
+## Closing Thoughts
+
+- A Bayesian network is a directed acyclic graph whose nodes correspond to random variables; each node has a conditional distribution for the node, given its parents.
+
+- Bayesian networks provide a concise way to represent conditional independence rela- tionships in the domain.
+
+- A Bayesian network specifies a joint probability distribution over its variables. The probability of any given assignment to all the variables is defined as the product of the corresponding entries in the local conditional distributions. A Bayesian network is often exponentially smaller than an explicitly enumerated joint distribution.
+
+- Many conditional distributions can be represented compactly by canonical families of distributions. Hybrid Bayesian networks, which include both discrete and continuous variables, use a variety of canonical distributions.
