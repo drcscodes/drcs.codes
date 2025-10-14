@@ -223,39 +223,39 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 4: 09-08,09-10</td><td>Local Search,Adversarial Search</td><td></td><td></td>
+<td>Week 4: 09-08,09-10</td><td>Local Search</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 5: 09-15,09-17</td><td>Adversarial Search,Logical Agents</td><td>Due: PA1</td><td></td>
+<td>Week 5: 09-15,09-17</td><td>Adversarial Search</td><td>Due: PA1</td><td></td>
 </tr>
 
 <tr>
-<td>Week 6: 09-22,09-24</td><td>Knowledge Representation, Planning</td><td></td><td></td>
+<td>Week 6: 09-22,09-24</td><td>Knowledge-Based AI,Planning</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 7: 09-29,10-01</td><td>Midterm Review</td><td>Due: PA2</td><td>Midterm Exam</td>
+<td>Week 7: 09-29,10-01</td><td>Midterm Review</td><td></td><td>Midterm Exam</td>
 </tr>
 
 <tr>
-<td>Week 8: 10-06,10-08</td><td>Uncertainty,Bayesian Networks</td><td></td><td></td>
+<td>Week 8: 10-06,10-08</td><td>Uncertainty</td><td>Due: PA2</td><td></td>
 </tr>
 
 <tr>
-<td>Week 9: 10-13,10-15</td><td>Causality,Probabilistic Temporal Models</td><td></td><td></td>
+<td>Week 9: 10-13,10-15</td><td>Bayesian Networks,Probabilistic Inference</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 10: 10-20,10-22</td><td>State Estimation,Probabilistic Programming</td><td></td><td></td>
+<td>Week 10: 10-20,10-22</td><td>Causality,Probabilistic Temporal Models</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 11: 10-27,10-29</td><td>Utility Theory,Simple Decisions</td><td></td><td></td>
+<td>Week 11: 10-27,10-29</td><td>State Estimation,Simple Decisions</td><td></td><td></td>
 </tr>
 
 <tr>
-<td>Week 12: 11-03,11-05</td><td>Complex Decisions,Bandits POMDPs</td><td></td><td></td>
+<td>Week 12: 11-03,11-05</td><td>Complex Decisions,Bandits and POMDPs</td><td></td><td></td>
 </tr>
 
 <tr>
@@ -263,7 +263,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 14: 11-17,11-19</td><td>Supervised Learning,Statistical Learning</td><td>Due: PA3</td><td></td>
+<td>Week 14: 11-17,11-19</td><td>Supervised Learning,Reinforcement Learning</td><td>Due: PA3</td><td></td>
 </tr>
 
 <tr>
@@ -271,7 +271,7 @@ Weekly Summary:
 </tr>
 
 <tr>
-<td>Week 16: 12-01,12-03</td><td>Reinforcement Learning</td><td></td><td></td>
+<td>Week 16: 12-01,12-03</td><td>Reinforcement Learning,Statistical Learning</td><td></td><td></td>
 </tr>
 
 <tr>

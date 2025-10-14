@@ -16,7 +16,13 @@ header-includes:
 
 ## Representation of Uncertain Knowledge
 
-AIMA
+A Bayesian network is a directed graph in which each node is annotated with quantitative probability information. The full specification is as follows:
+
+1. Each node corresponds to a random variable, which may be discrete or continuous.
+
+2. Directed links or arrows connect pairs of nodes. If there is an arrow from node $X$ to node $Y$, then $X$ is said to be a parent of $Y$. The graph has no directed cycles and hence is a directed acyclic graph, or DAG.
+
+3. Each node $X_i$ has associated probability information $\theta(X_i | Parents(X_i))$ that quantifies the effect of the parents on the node using a finite number of parameters.
 
 ## Bayesian Network Topology
 
@@ -28,7 +34,25 @@ AIMA
 \end{center}
 ```
 
-## Conditional Probability Tables
+- The topology of the network -- the set of nodes and links -- specifies the conditional independence relationships that hold in the domain.
+
+    - $Toothache$ and $Catch$ are conditionally independent given $Cavity$.
+
+- Intuitiveley, and arrow $X \rightarrow Y$ means $X$ has a direct influence on $Y$ -- so parents should be *causes* of effects.
+
+It is usually easy for a domain expert to decide what direct influences exist in the domain -- much easier, in fact, than actually specifying the probabilities themselves.
+
+## Example: Earthquake vs. Burglary
+
+You have a burglar alarm fairly reliable at detecting a burglary, but is occasionally set off by minor earthquakes.
+
+- Two neighbors, John and Mary, who promise to call when they hear the alarm.
+- John nearly always calls when he hears the alarm, but sometimes confuses the telephone ringing with the alarm and calls then, too.
+- Mary, on the other hand, likes rather loud music and often misses the alarm altogether.
+
+Given the evidence of who has or has not called, we would like to estimate the probability of a burglary.
+
+## Bayes Net for Earthquake vs. Burglary Reasoning
 
 The *syntax* of a Bayes net consists of a directed acyclic graph (DAG) with some local probability information attached to each node.
 
@@ -39,6 +63,64 @@ The *syntax* of a Bayes net consists of a directed acyclic graph (DAG) with some
 ```{=latex}
 \end{center}
 ```
+
+The full joint distribution for all the variables is defined by the topology and the
+local probability information recorded in conditional probability tables (CPTs).
+
+## Conditional Probability Tables
+
+Each row in a CPT contains the conditional probability of each node value for a conditioning case.  A conditioning case is a possible combination of values for the parent nodes -- a miniature possible world.
+
+:::: {.columns}
+::: {.column width="50%"}
+
+- Each row must sum to 1, because the entries represent an exhaustive set of cases for the variable.
+
+- For Boolean variables, once you know the probability of $true$ is $p$, the probability of $false$ must be $1 - p$, so we often omit the second number.
+
+- In general, a table for a Boolean variable with $k$ Boolean parents contains $2^k$ independently specifiable probabilities.
+
+- A node with no parents has only one row, representing the prior probabilities of each possible value of the variable.
+
+:::
+::: {.column width="50%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_02-bayes-net-alarm.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+## Many Possibilities, Few Variables of Interest
+
+Network does not explicitly represent Mary currently listening to loud music or telephone ringing and confusing John.
+
+- These factors are summarized in the uncertainty associated with the links from $Alarm$ to $JohnCalls$ and $MaryCalls$.
+
+- This shows both laziness and ignorance in operation: a lot of work to find out the likelihood of those factors, and we have no reasonable way to obtain the relevant information anyway.
+
+The probabilities actually summarize a potentially infinite set of circumstances:
+
+:::: {.columns}
+::: {.column  width="70%"}
+
+- The alarm might fail to sound (humidity, power failure, dead battery, cut wires, a dead mouse stuck in the bell, etc.) or
+- John or Mary might fail to call and report it (out to lunch, on vacation, temporarily deaf, passing helicopter, etc.).
+
+:::
+::: {.column width="30%"}
+
+![](deadmau5.jpg){height="30%"}
+
+:::
+::::
+
+In this way, a small agent can cope with a very large world, at least approximately.
 
 ## Semantics of Bayesian Networks
 
@@ -55,23 +137,111 @@ $$
 Pr(x_1, \dots, x_n) = \prod_{i=1}^n \theta ( x_i | parents(X_i))
 $$
 
-where $parents(X_i)$ denotes the values of $Parents(X_i)$ that appear in $x_1, dots, x_n$.  So each entry in the joint distribution is the rpoduct of appropirate elements of the local CPTs in the Bayes net.
+where $parents(X_i)$ denotes the values of $Parents(X_i)$ that appear in $x_1, dots, x_n$.
 
+So each entry in the joint distribution is the product of appropriate elements of the local CPTs in the Bayes net.
+
+## Example: An Alarm, Two Calls, but No Events of Interest
+
+:::: {.columns}
+::: {.column width="45%"}
+
+What is the probability that John and Mary call, but no earthquake or burglary occur?
+
+- Take each entry $i$ in each CPT $\theta$ to mean $Pr(x_1 | parents(X_i)$
+
+    - The entries in the CPTs must be accurate conditional probabilities for the variables given their parents for the Bayes net to be useful in performing probabilistic inference.
+
+- Use those values in the calculation of the joint probability using
+Using the abbreviations $j, m, a, b$ and $e$:
+
+:::
+::: {.column width="60%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_02-bayes-net-alarm.pdf){height="50%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+```{=latex}
+\begin{align*}
+Pr(x_1, \dots, x_n)         &= \prod_{i=1}^n \theta ( x_i | parents(X_i))\\
+Pr(j, m, a, \neg b, \neg e) &= Pr(j | a) Pr(m | a) Pr(a | \neg b, \neg e) Pr(\neg b) Pr (\neg e)\\
+                            &= 0.90 \times 0.70 \times 0.001 \times 0.99 \times 0.98\\
+                            &= 0.000628
+\end{align*}
+```
 
 ## Constructing Bayesian Networks
 
-First, meet conditions:
+A Bayesian network is a correct representation of the domain only if each node is conditionally independent of its other predecessors in the node ordering, given its parents.  Mathematically, if $Parents(X_i) \subseteq \{X_{i-1}, \dots, X_1\}$, then:
 
-TODO: conditions
+$$
+Pr(X_i \mid X_{i-1}, \dots, X_i) = Pr(X_i \vert Parents(X_i)) \tag{13.3}
+$$
 
+We can construct a valid Bayes net with this methodology:
 
 1. Nodes: First determine the set of variables that are required to model the domain. Now order them, $\{X_1, \dots ,X_n\}$. Any order will work, but the resulting network will be more compact if the variables are ordered such that causes precede effects.
 
+    - For the Burglary-Earthquake domain, $B,E,A,J,M$ or $E,B,A,M,J$ work.
+
 2. Links: For $i = 1$ to $n$ do:
 
-- Choose a minimal set of parents for $X_i$ from $X_1, \dots ,X_{i-1}$, such that Equation (13.3) is satisfied.
-- For each parent insert a link from the parent to $X_i$.
-- CPTs: Write down the conditional probability table, $P(X_i|Parents(X_i))$.
+    - Choose a minimal set of parents for $X_i$ from $X_1, \dots ,X_{i-1}$, such that Equation (13.3) is satisfied.
+    - For each parent insert a link from the parent to $X_i$.
+    - CPTs: Write down the conditional probability table, $P(X_i|Parents(X_i))$.
+
+Intuitively, the parents of node $X_i$ should contain all those nodes in $\{X_1,\dots,X_{i-1}\}$ that directly influence $X_i$.
+
+## Knowledge Engineering Considerations in Bayes Nets
+
+:::: {.columns}
+::: {.column width="70%"}
+
+Suppose we have completed the network except for the choice of parents for $MaryCalls$. We know:
+
+- $MaryCalls$ is influenced by  Burglary or Earthquake, but not directly. Our domain knowledge tells us that these events influence Mary’s calling behavior only through their effect on the alarm.
+- Also, given the state of the alarm, whether John calls has no influence on Mary’s calling.
+
+:::
+::: {.column width="30%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_02-bayes-net-alarm.pdf){height="40%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+Formally, we believe that the following conditional independence statement holds:
+
+```{=latex}
+\vspace{-.2in}
+\[
+Pr(MaryCalls \mid JohnCalls,Alarm,Earthquake,Burglary) = Pr(MaryCalls \mid Alarm).
+\]
+\vspace{-.2in}
+```
+
+Thus, Alarm will be the only parent node for MaryCalls.
+
+Because
+
+- each node is connected only to earlier nodes, this construction method guarantees that the network is acyclic, and
+- there are no redundant probability values,
+
+there is no chance for inconsistency: it is impossible for the knowledge engineer or domain expert to create a Bayesian network that violates the axioms of probability.
 
 ## Effects of Node Ordering
 
