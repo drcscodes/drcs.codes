@@ -14,7 +14,7 @@ header-includes:
     ```
 ---
 
-## Representation of Uncertain Knowledge
+## Representation of Uncertain Knowledge (AIMA 13.1--13.2)
 
 A Bayesian network is a directed graph in which each node is annotated with quantitative probability information. The full specification is as follows:
 

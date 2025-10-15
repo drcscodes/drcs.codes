@@ -14,7 +14,7 @@ header-includes:
     ```
 ---
 
-## Exact Inference in Bayesian Networks
+## Exact Inference in Bayesian Networks (AIMA 13.3)
 
 Most common task in probabilistic inference: compute the *posterior probability* of a set of **query variables** given some **event** represented as a set of **evidence variables**.
 
@@ -375,30 +375,86 @@ Now we are ready to evaluate the expression ...
 First, sum out A from the pointwise product of $\bm{f}_3(A,B,E)$, $\bm{f}_4(A)$, and $\bm{f}_5(A)$ yielding a new $2 \times 2$ factor, $\bm{f}_6(B,E)$:
 
 ```{=latex}
+\vspace{-.2in}
 \begin{align*}
 \bm{f}_6(B,E) &= \sum_a \bm{f}_3(A,B,E) \times \bm{f}_4(A) \times \bm{f}_5(A) \\
               &= (\bm{f}_3(a,B,E) \times \bm{f}_4(a) \times \bm{f}_5(a)) + (\bm{f}_3(\neg a,B,E) \times \bm{f}_4(\neg a) \times \bm{f}_5(\neg a))
 \end{align*}
+\vspace{-.2in}
 ```
 
-Now the query expression is
+Now the query expression is $Pr(B \mid j, m) =
+\alpha \bm{f}_1(B) \times \sum_e \bm{f}_2(E) \times \bm{f}_6 (B, E)$
 
-$$
-Pr(B \mid j, m) =
-\alpha \bm{f}_1(B) \times \sum_e \bm{f}_2(E) \times \bm{f}_6 (B, E)
-$$
-
-## Pointwise Products
+Next, sum out $E$ from the product of $\bm{f}_2 (E)$ and $\bm{f}_6 (B, E)$, yielding a new factor $\bm{f}_7 (B)$:
 
 ```{=latex}
+\vspace{-.2in}
+\begin{align*}
+\bm{f}_7(B) &= \sum_e \bm{f}_2(E) \times \bm{f}_6(B, E) \\
+            &= \bm{f}_2(e) \times \bm{f}_6(B, e) + \bm{f}_2(\neg e) \times \bm{f}_6(B, \neg e)
+\end{align*}
+\vspace{-.1in}
+```
+
+Which leaves our final form of the query: $Pr(B \mid j, m) =\alpha \bm{f}_1(B) \times \bm{f}_7(B)$
+
+This expression can be evaluated by taking the pointwise product and normalizing the result.
+
+## Operations on Factors
+
+Two basic operations in variable elimination:
+
+1. the pointwise product operation, and
+3. summing out hidden variables from products of factors.
+
+
+## Pointwise Product Example
+
+The pointwise product of two factors $\bm{f}$ and $\bm{g}$ yields a new factor $\bm{h}$ whose variables are the union of the variables in $\bm{f}$ and $\bm{g}$ and whose elements are given by the product of the corresponding elements in the two factors.
+
+If we have $X, Y, Z$ boolean variables, then here's the result of pointwise product $\bm{f}(X, Y) \times \bm{g}(Y, Z) = \bm{h}(X, Y, Z)$:
+
+```{=latex}
+\vspace{-.2in}
 \begin{center}
 ```
-![](aima-fig-13_12-pointwise-multiplication.pdf)
+![](aima-fig-13_12-pointwise-multiplication.pdf){height="50%"}
 ```{=latex}
 \end{center}
 ```
 
+## Summing out Variables
+
+Summing out a variable from a product of factors is done by adding up the submatrices
+formed by fixing the variable to each of its values in turn. For example, to sum out $X$ from
+$h(X,Y,Z)$, we write
+
+```{=latex}
+\begin{align*}
+\bm{h}_2 (Y, Z) &= \sum_x \bm{h}(X, Y, Z)\\
+                &= \bm{h}(x, Y, Z) + \bm{h}(\neg x, Y, Z) \\
+&=
+\begin{bmatrix}
+.06 & .24 \\
+.42 & .28
+\end{bmatrix}
++
+\begin{bmatrix}
+.18 & .72 \\
+.06 & .04
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+.24 & .96 \\
+.48 & .32
+\end{bmatrix}
+\end{align*}
+```
+
 ## Variable Elimination Algorithm
+
+With these two basic operations, we can implement the variable elimination algorithm:
 
 ```{=latex}
 \begin{center}
@@ -407,6 +463,15 @@ $$
 ```{=latex}
 \end{center}
 ```
+
+Notes about the `order` function:
+
+- Any ordering works, some orderings lead to more efficient algorithms.
+- No tractable algorithm for determining optimal ordering.
+- One heuristic: eliminate whichever variable minimizes the size of the next factor to be contructed.
+- General rule: every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query.
+
+<!--
 
 ## Complexity of Exact Inference
 
@@ -420,7 +485,7 @@ $$
 
 ## Clustering Algorithms
 
-aka joint trees.
+aka join trees.
 
 ```{=latex}
 \begin{center}
@@ -430,7 +495,6 @@ aka joint trees.
 \end{center}
 ```
 
-<!--
 
 ## Direct Sampling Methods
 
