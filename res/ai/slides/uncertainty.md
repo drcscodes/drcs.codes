@@ -480,7 +480,7 @@ Pr(Cavity | toothache) &= \alpha Pr(Cavity, toothache) \\
 All of the preceding can be summarized in a general inference procedure using full joint probability distributions.  Let $E$ be a list of evidence variables, $e$ be a list of observed values for the evidence variables, and $Y$ be the remaining unobserved variables.  Then:
 
 $$
-Pr(X | \bm{e}) = \alpha Pr(X, \bm{e}) = \alpha \sum_y Pr(X, \bm{e}, \bm{y})
+Pr(X | \bm{e}) = \alpha Pr(X, \bm{e}) = \alpha \sum_y Pr(X, \bm{e}, \bm{y}) \tag{12.9}
 $$
 
 Great, so we're done!  All we need is a full joint parobability distribution and we can answer any query.  Unfortunately, not practical.
