@@ -345,6 +345,7 @@ Any Bayes net represents the same joint distibution, but some are far more effic
 
 For example, the variable $Burglary$ is independent of $JohnCalls$ and $MaryCalls$, given $Alarm$ and $Earthquake$.
 
+<!--
 
 ## Hybrid Bayesian Networks
 
@@ -378,8 +379,6 @@ Bayesian Networks with Discrete and Continuous Variables
 \end{center}
 ```
 
-<!--
-
 ## Case Study: Car Insurance
 
 ```{=latex}
@@ -390,7 +389,6 @@ Bayesian Networks with Discrete and Continuous Variables
 \end{center}
 ```
 
--->
 
 ## Closing Thoughts
 
@@ -401,3 +399,5 @@ Bayesian Networks with Discrete and Continuous Variables
 - A Bayesian network specifies a joint probability distribution over its variables. The probability of any given assignment to all the variables is defined as the product of the corresponding entries in the local conditional distributions. A Bayesian network is often exponentially smaller than an explicitly enumerated joint distribution.
 
 - Many conditional distributions can be represented compactly by canonical families of distributions. Hybrid Bayesian networks, which include both discrete and continuous variables, use a variety of canonical distributions.
+
+-->

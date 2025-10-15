@@ -16,7 +16,31 @@ header-includes:
 
 ## Exact Inference in Bayesian Networks
 
-AIMA
+Most common task in probabilistic inference: compute the *posterior probability* of a set of **query variables** given some **event** represented as a set of **evidence variables**.
+
+Notation:
+
+- Query variable: $X$
+- Set of evidence variables: $\bm{E} = \{E_1, \dots, \E_m$
+- Particular observed event: $\bm{e}$
+- Hidden (nonevidence, nonquery variables) $\bm{Y} = \{Y_1, \dots, Y_l\}$
+- Typical query: $Pr(X \mid e)$
+
+Example:
+
+$$
+Pr(Buglary \mid JohnCalls = true, MaryCalls = true) = <0.284, 0.716>.
+$$
+
+- $X$ is the boolean random variable $Burglary$
+- $\bm{E} = \{JohnCalls, MaryCalls\}$
+- $\bm{e} = \{JohnCalls = true, MaryCalls = true\}$
+- $\bm{Y} = \{EarthQuake, Alarm\}$
+
+
+## Inference by Enumeration
+
+
 
 ## Enumeration Algorithm
 
