@@ -84,7 +84,31 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 
 ## Value Alignment
 
-foo
+:::: {.columns}
+::: {.column width="50%"}
+
+```{=latex}
+\begin{center}
+```
+![](human-compatible-book.jpg){height="75%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="50%"}
+
+```{=latex}
+\begin{center}
+```
+![](superintelligence-book.jpg){height="75%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
 
 ## Rational Decisions
 
