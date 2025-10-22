@@ -81,6 +81,15 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 :::
 ::::
 
+## Palantir
+
+```{=latex}
+\begin{center}
+```
+![](palantir-saruman.png){height="75%"}
+```{=latex}
+\end{center}
+```
 
 ## Value Alignment
 
