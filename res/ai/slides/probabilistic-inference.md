@@ -471,9 +471,44 @@ Notes about the `order` function:
 - One heuristic: eliminate whichever variable minimizes the size of the next factor to be contructed.
 - General rule: every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query.
 
+## Complexity of Exact Inference in Polytrees
+
+Notice that the Alarm Bayes net is **singly connected**, a.k.a., a **polytree**:
+
+- there is at mose one undirected path between any two nodes in the network.
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_02-bayes-net-alarm.pdf){height="40%"}
+```{=latex}
+\end{center}
+```
+
+The time and space complexity of polytrees is linear in the size of the network.
+
+- Size of network is defined as number of CPT entries.
+- If $|parents(X_i)| \le c, \forall i \in n$ for some constant $c$ and number of nodes $n$, then complexity is also linear in number of nodes.
+
+
+## Complexity of Exact Inference in Multiply-connected Networks
+
+Now consider **multiply-connected** networks such as the car insurance network:
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_09-bayes-net-car-insurance.pdf){height="50%"}
+```{=latex}
+\end{center}
+```
+
+- Variable elimination can have exponential worst-case time and space complexity in multiply-connected networks.
+- *Since inference in Bayes nets includes inference in propositional logic as a special case, Bayes net inference is **NP-hard***.
+
 <!--
 
-## Complexity of Exact Inference
+## Reducing SAT Problems to Bayes Nets
 
 ```{=latex}
 \begin{center}
@@ -495,12 +530,13 @@ aka join trees.
 \end{center}
 ```
 
+-->
+
+## Approximate Inference for Bayesian Networks
 
 ## Direct Sampling Methods
 
-
-
-## Prior Sampling
+## Prior Sampling Algorithm
 
 ```{=latex}
 \begin{center}
@@ -573,5 +609,3 @@ Instead of generating each sample from scratch, MCMC algorithms generate a sampl
 ```{=latex}
 \end{center}
 ```
-
--->
