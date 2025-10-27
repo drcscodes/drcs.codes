@@ -1,6 +1,6 @@
 ---
 title: Artificial Intelligence
-subtitle: Probabilistic Temporal Reasoning
+subtitle: Probabilistic Temporal Reasoning (AIMA 14.1-14.2)
 author: Christopher Simpkins
 institute: Kennesaw State University
 aspectratio: 1610
@@ -14,7 +14,7 @@ header-includes:
     ```
 ---
 
-## Probabilistic Temporal Reasoning (AIMA 14.1-14.3)
+## Probabilistic Temporal Reasoning
 
 Recall belief state maintenance from the Kindergarten vacuum world (square not being actively cleaned can become dirty):
 
@@ -174,15 +174,21 @@ $$
 
     - Inference goes in other direction: given sensor values, what are the state values.
 
-## Full Joint Over All Variables in a Temporal Model
+## Full Joint Distribution Over All Variables in a Temporal Model
 
-For the initial state of the system at time $0$ we specify a prior $Pr(\bm{x}_0)$.  Now we can use Equation 13.2 ($Pr(x_1, \dots, x_n) = \prod_{i=1}^n Pr( x_i | parents(X_i))$):
+For the initial state of the system at time $0$ we specify a prior $Pr(\bm{x}_0)$.  Now we can use Equation 13.2
 
 $$
-Pr(\bm{X}_{0:t}, \bm{E}_{1:t}) = \underbrace{Pr(\bm{X}_0)}_{\text{Initial state model}} \prod_{i=1}^t \underbrace{Pr(\bm{X}_i \mid \bm{X}_{i-1})}_{\text{Transition model}} \underbrace{Pr(\bm{E}_i \mid \bm{X}_i)}_{\text{Sensor model}}
+Pr(x_1, \dots, x_n) = \prod_{i=1}^n Pr( x_i | parents(X_i)) \tag{13.2}
 $$
 
-Standard Bayes nets can only represent a finite set of variables.  Dynamic bayesian networks overcome this limitation by:
+applied to the temporal variables in the dynamic version:
+
+$$
+Pr(\bm{X}_{0:t}, \bm{E}_{1:t}) = \underbrace{Pr(\bm{X}_0)}_{\text{Initial state model}} \prod_{i=1}^t \underbrace{Pr(\bm{X}_i \mid \bm{X}_{i-1})}_{\text{Transition model}} \underbrace{Pr(\bm{E}_i \mid \bm{X}_i)}_{\text{Sensor model}} \tag{14.3}
+$$
+
+Standard Bayes nets can only represent a finite set of variables.  Dynamic Bayes nets overcome this limitation by:
 
 - defining infinite sets by integer indices, and
 - using implicit universal quantification to define sensor and transition models for every time step.
@@ -193,16 +199,33 @@ Sometimes Markov assumption is valid, sometimes it's only an approximation.  Two
 
 1. Increase the order of the Markov process model.  E.g., In Palo Alto, CA, rarely rains more than two days in a row.  A 2nd-order Markov model could express this fact: $Pr(r_t \mid r_{t-1}, r_{t-2}) \ll Pr(r_t \mid r_{t-1}, \neg r_{t-2})$.
 
-2. Increase the set of state variables.  E.g., add $Season_t$ for hisotircal records, or $Temperature_t$, $Humidity_t$, and $Pressure_t$ to use a physical model of rainy conditions.
+2. Add additional state variables.  E.g., add $Season_t$ for hisotircal records, or $Temperature_t$, $Humidity_t$, and $Pressure_t$ to use a physical model of rainy conditions.
 
-Battery example (p. 483)
+**Example: Battery drainage in mobile robot.**  Two state variables: velocity and position.  Use Newton's laws of motion to calculate new positions.  Add probabilistic error (e.g., Gaussian noise) to account for uncertainty in velocity due to terrain, wind, etc.
+
+Problems:
+
+- Battery level affects velocity as it drains.
+- Battery level depends on power used in all previous movements, violating the Markov assumption.
+
+Solution: Add a state variable for battery level.  Track level in one of two ways:
+
+1. Decrease level at each time step in response to movement executed in previous step.
+2. Better: add a new sensor for battery level.
+
 
 ## Inference in Temporal Models
 
-- **Filtering**, a.k.a., **state estimation** is
-- **Prediction**:
-- **Smoothing**:
-- **Most likely explanation**:
+Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
+
+- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+
+- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{Xt+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+
+- **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+
+- **Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+
 
 ## Learning Temporal Models
 
@@ -216,11 +239,171 @@ Unknown transition and sensor models can be learned from observations.
 
 We'll return to these ideas in our lesson on [statistical learning](statistical-learning.pdf).
 
-## Filtering and Prediction
+## Filtering
+
+**Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+
+- Umbrella example: compute probability of rain today given all umbrella observations so far.
+- Rational agent estimates its current state to enable rational decisions.
+- Nearly identical calculation provides likelihood of evidence sequence $Pr(\bm{e}_{1:t})$
+- The term "filtering" comes from signal processing, which sees the problem of state estimation as "filtering out the noise" in a signla to estimate its underlying properties.
+
+A useful filtering algorithm needs to maintain a current state estimate and update it, rather than going back over the entire history of percepts for each update.
+
+- Otherwise, the cost of each update increases as time goes by.
+
+In other words, given the result of filtering up to time $t$, the agent needs to compute the result for $t + 1$ from the new evidence $\bm{e}_{t+1}$.  For some function $f$:
+
+$$
+Pr(\bm{X}_{t+1} \mid f \left( \bm{e}_{t+1}, Pr(\bm{X}_t \mid \bm{e}_{1:t}) \right)
+$$
+
+## Recursive State Estimation
+
+We can view the calculation as being composed of two parts: first, the current state distribution is projected forward from $t$ to $t + 1$; then it is updated using the new evidence $\bm{e}_{t+1}$. This two-part process emerges quite simply when the formula is rearranged:
+
+```{=latex}
+\vspace{-.25in}
+\begin{align*}
+Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) &= Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t}, \bm{e}_{t+1}) \tag{Divide the evidence}\\
+                                     &= \alpha Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1}, e_{1:t}) Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t}) \tag{Bayes rule, given $\bm{e}_{1:t}$}\\
+                                     &= \alpha \underbrace{Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{update}} \underbrace{Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t})}_{\text{prediction}} \tag{Sensor Markov assumption}
+\end{align*}
+```
+
+Now plug in an expression for one-step prediction $Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t})$ conditioned on the current state $\bm{X}_t$ to obtain the central result in probabilistic temoral reasoning:
+
+```{=latex}
+\vspace{-.25in}
+\begin{align*}
+Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) &= \alpha Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1}) \sum_{\bm{X}_t} Pr(\bm{X}_{t+1} \mid \bm{x}_t, \bm{e}_{1:t}) Pr(\bm{x}_t \mid \bm{e}_{1:t}) \\
+                                     &= \alpha \underbrace{Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{Pr(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{Pr(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
+\end{align*}
+```
+
+The last step applies the Markov assumption in the transition model.  All the terms come either from the model or from the previous state estimate.
+Hence, we have the desired recursive formulation.
+
+## Forward Message Propagation
+
+```{=latex}
+\vspace{-.2in}
+\[
+Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{Pr(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{Pr(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
+\]
+```
+
+We can think of the filtered estimate $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ as a "message" $\bm{f}_{1:t}$ that is propagated forward along the sequence, modified by each transition and updated by each new observation. The process is given by
+
+$$
+\bm{f}_{1:t+1} = \text{FORWARD}(\bm{f}_{1:t}, \bm{e}_{t+1})
+$$
+
+where
+
+- FORWARD implements the update in Equation 14.5 and
+- the process begins with $\bm{f}_{1:0} = Pr(\bm{X}_0)$.
+
+When all the state variables are discrete, the time for each update is constant (i.e., independent of $t$), and the space required is also constant. (The constants depend, of course, on the size of the state space and the specific type of the temporal model in question.)
+
+- *The time and space requirements for updating must be constant if a finite agent is to keep track of the current state distribution indefinitely*.
+
+## Example: Filtering in the Umbrella World
+
+
+:::: {.columns}
+::: {.column width="45%"}
+
+Compute $Pr(R_2 \mid u_{1:2})$:
+
+- Day 0: no observations, only prior beliefs: $Pr(R_0) = \langle 0.5, 0.5 \rangle$
+- Day 1: umbrealla appears, $U_1 = true$.  Prediction from $t=0:1$:
+
+    ```{=latex}
+    \vspace{-.2in}
+    \begin{align*}
+    Pr(R_1) &= \sum_{r_0} Pr(R_1 \mid r_0) Pr(r_0) \\
+            &= \langle 0.7, 0.3 \rangle \cdot 0.5 + \langle 0.3, 0.7 \rangle \cdot 0.5 \\
+            &= \langle 0.5, 0.5 \rangle
+    \end{align*}
+    ```
+
+    Then update step incorporates evidence for $t=1$ and normalizes:
+
+    ```{=latex}
+    \vspace{-.2in}
+    \begin{align*}
+    Pr(R_1 \mid u_1) &= \alpha Pr(u_1 \mid R_1) Pr(R_1) \\
+                     &= \alpha \langle 0.9, 0.2 \rangle \langle 0.5, 0.5 \rangle \\
+                     &= \alpha \langle 0.45, 0.1 \rangle \\
+                     &\approx \langle 0.818, 0.182 \rangle
+    \end{align*}
+    ```
+
+:::
+::: {.column width="55%"}
+
+```{=latex}
+\vspace{-.2in}
+\begin{center}
+```
+![](aima-fig-14_02-bayes-net-umbrella-world.pdf){height="25%"}
+```{=latex}
+\end{center}
+```
+
+- Day 2: umbrella appears, $U_2 = true$.  Prediction from $t=1:2$:
+
+    ```{=latex}
+    \vspace{-.2in}
+    \begin{align*}
+    Pr(R_2 \mid u_1) &= \sum_{r_1} Pr(R_2 \mid r_1) Pr(r_1 \mid u_1) \\
+                     &= \langle 0.7, 0.3 \rangle \cdot 0.818 + \langle 0.3, 0.7 \rangle \cdot 0.182 \\
+                     &\approx \langle 0.627, 0.373 \rangle
+    \end{align*}
+    ```
+
+    Then update step incorporates evidence for $t=2$:
+
+    ```{=latex}
+    \vspace{-.2in}
+    \begin{align*}
+    Pr(R_2 \mid u_1, u_2) &= \alpha Pr(u_2 \mid R_2) Pr(R_2 \mid u_1) \\
+                          &= \alpha \langle 0.9, 0.2 \rangle \langle 0.627, 0.373 \rangle \\
+                          &= \alpha \langle 0.565, 0.075 \rangle \\
+                          &\approx \langle 0.883, 0.117 \rangle
+    \end{align*}
+    ```
+
+
+:::
+::::
+
+
+<!--
+
+## Prediction
+
+**Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{Xt+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+
+- Umbrella example: compute probability of rain three days from now, given all the observations to date.
+- Prediction is useful for evaluating possible courses of action based on their expected outcomes.
+
+
+Prediction can be seen simply as filtering without the addition of new evidence.
 
 
 
 ## Smoothing
+
+**Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+
+- Umbrella example: compute the probability that it rained last Wednesday, given all the observations of the umbrella carrier made up to today.
+- Smoothing provides a better estimate of the state at time $k$ than was available at that time, because it incorporates more evidence.
+
+    - When tracking a moving object with inaccurate position observations, smoothing gives a smoother
+estimated trajectory than filtering -- hence the name
+
 
 ```{=latex}
 \begin{center}
@@ -242,6 +425,12 @@ We'll return to these ideas in our lesson on [statistical learning](statistical-
 
 ## Finding the Most Likely Sequence
 
+**Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+
+- Umbrella example: if umbrella appears on each of the first three days and is absent on the fourth, then the most likely explanation is that it rained on the first three days and did not rain on the fourth.
+- MLE algorithms are useful for speech recognition -- where the aim is to find the most likely sequence of words, given a series of sounds, reconstruction of bit strings transmitted over a noisy channel, and many others.
+
+
 ```{=latex}
 \begin{center}
 ```
@@ -249,6 +438,12 @@ We'll return to these ideas in our lesson on [statistical learning](statistical-
 ```{=latex}
 \end{center}
 ```
+
+## Viterbi Algorithm
+
+
+
+<!--
 
 ## Hidden Markov Models (HMMs)
 
@@ -282,8 +477,6 @@ An HMM is a temporal probabilis- tic model in which the state of the process is 
 ```
 
 
-
-
 ## Fixed Lag Smoothing Algorithm
 
 ```{=latex}
@@ -313,3 +506,5 @@ An HMM is a temporal probabilis- tic model in which the state of the process is 
 ```{=latex}
 \end{center}
 ```
+
+-->
