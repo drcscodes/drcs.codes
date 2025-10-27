@@ -59,16 +59,16 @@ Example: Diabetes.
 
 - Task is to assess current state of the patient -- blood sugar and insulin levels -- in order to choose patient's food intake and insulin dose.
 
-- Blood sugar levels and measurements thereof can change rapidly over time, depending on recent food intake and insulin doses, metabolic activity, the time of day, and so on.
+- Blood sugar levels and their measurements can change rapidly over time, depending on recent food intake, insulin doses, metabolic activity, the time of day, and so on.
 
-- To assess the current state from the history of evidence and to predict the outcomes of treatment actions, we must model these changes.
+- To assess the current state from the history of evidence and predict the outcomes of treatment actions, we must model these changes.
 
 
 Other examples:
 
 - Robot location tracking
 - Tracking national economic activity
-- Interpreting written or spoken sequences of words.
+- Interpreting written or spoken sequences of words
 
 ## Discrete-Time Models
 
