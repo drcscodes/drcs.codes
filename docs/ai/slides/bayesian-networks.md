@@ -171,7 +171,7 @@ Using the abbreviations $j, m, a, b$ and $e$:
 
 ```{=latex}
 \begin{align*}
-Pr(x_1, \dots, x_n)         &= \prod_{i=1}^n \theta ( x_i | parents(X_i))\\
+Pr(x_1, \dots, x_n)         &= \prod_{i=1}^n Pr( x_i | parents(X_i)) \tag{13.2}\\
 Pr(j, m, a, \neg b, \neg e) &= Pr(j | a) Pr(m | a) Pr(a | \neg b, \neg e) Pr(\neg b) Pr (\neg e)\\
                             &= 0.90 \times 0.70 \times 0.001 \times 0.99 \times 0.98\\
                             &= 0.000628
