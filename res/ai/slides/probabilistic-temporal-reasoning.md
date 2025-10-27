@@ -17,6 +17,11 @@ header-includes:
 ## Probabilistic Temporal Reasoning
 
 
+
+## Time and Uncertainty
+
+
+
 ## First- and Second-Order Markov Processes
 
 ```{=latex}
@@ -60,7 +65,7 @@ We'll return to these ideas in our lesson on [statistical learning](statistical-
 
 
 
-## Probabilistic Temporal Reasoning
+## Smoothing
 
 ```{=latex}
 \begin{center}
@@ -70,52 +75,86 @@ We'll return to these ideas in our lesson on [statistical learning](statistical-
 \end{center}
 ```
 
-## Probabilistic Temporal Reasoning
+## Forward-Backward Smoothing Algorithm
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-14_)
+![](aima-fig-14_04-forward-backward-algorithm.pdf)
 ```{=latex}
 \end{center}
 ```
 
-## Probabilistic Temporal Reasoning
+## Finding the Most Likely Sequence
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-14_)
+![](aima-fig-14_05-rain-state-sequences.pdf)
 ```{=latex}
 \end{center}
 ```
 
-## Probabilistic Temporal Reasoning
+## Hidden Markov Models (HMMs)
+
+An HMM is a temporal probabilis- tic model in which the state of the process is described by a single, discrete random variable.
+
+## HMM Matrix Formulation
+
+```{=latex}
+\[
+\bm{T}_{ij} = Pr(X_t = j \mid X_{t-1} = i)
+\]
+```
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-14_)
+![](aima-fig-14_02-bayes-net-umbrella-world.pdf)
 ```{=latex}
 \end{center}
 ```
 
-## Probabilistic Temporal Reasoning
+
+```{=latex}
+\[
+\bm{T}_{ij} = Pr(X_t \mid X_{t-1}) =
+\begin{bmatrix}
+0.7 & 0.3 \\
+0.3 & 0.7
+\end{bmatrix}
+\]
+```
+
+
+
+
+## Fixed Lag Smoothing Algorithm
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-14_)
+![](aima-fig-14_06-fixed-lag-smoothing-algorithm.pdf)
 ```{=latex}
 \end{center}
 ```
 
-## Probabilistic Temporal Reasoning
+## Localization with HMMs
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-14_)
+![](aima-fig-14_07-posterior-robot-location.pdf)
+```{=latex}
+\end{center}
+```
+
+## HMM Performance
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-14_08-hmm-localization-performance-plots.pdf)
 ```{=latex}
 \end{center}
 ```
