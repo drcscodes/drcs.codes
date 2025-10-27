@@ -292,8 +292,8 @@
         "videos": []
     },
     {
-        "topic": "probabilistic-temporal-models",
-        "slides": "[Probabilistic Temporal Models](@root/ai/slides/probabilistic-temporal-models.pdf)",
+        "topic": "probabilistic-temporal-reasoning",
+        "slides": "[Probabilistic Temporal Reasoning](@root/ai/slides/probabilistic-temporal-reasoning.pdf)",
         "reading": [
             "AIMA: 14.1-14.3"
         ],

@@ -11,7 +11,7 @@ Week 3
 2025-09-03;heuristic-search;;
 Week 4
 2025-09-08;local-search;;
-2025-09-10;local-search;;
+2025-09-10;nondeterministic-search;;
 Knowledge, Reasoning, and Planning
 Week 5
 2025-09-15;adversarial-search;;
@@ -29,28 +29,30 @@ Week 8
 Week 9
 2025-10-13;bayesian-networks;;
 2025-10-15;probabilistic-inference;;
+Interlude: AI and Society
 Week 10
-2025-10-20;causality;;
-2025-10-22;probabilistic-temporal-models;;Midterm Grades Due (2025-10-24)
+2025-10-20;AI Ethics;;
+2025-10-22;Value Alignment;;Midterm Grades Due (2025-10-24)
+Agents in Uncertain Environments
 Week 11
-2025-10-27;state-estimation;;
-2025-10-29;simple-decisions;;Withdrawal Deadline (2025-10-31)
+2025-10-27;probabilistic-temporal-reasoning;;
+2025-10-29;state-estimation;;Withdrawal Deadline (2025-10-31)
 Week 12
-2025-11-03;complex-decisions;Due: [Project Results](project.html);
-2025-11-05;bandits-pomdps;;
+2025-11-03;simple-decisions;Due: [Project Results](project.html);
+2025-11-05;complex-decisions;;
 Week 13
 2025-11-10;multiagent-systems;;
 2025-11-12;collective-decisions;;
 Machine Learning
 Week 14
-2025-11-17;supervised-learning;Due: [PA3](pa3.html),Assigned: [PA4](pa4.html);
-2025-11-19;reinforcement-learning1;;
+2025-11-17;reinforcement-learning1;Due: [PA3](pa3.html),Assigned: [PA4](pa4.html);
+2025-11-19;reinforcement-learning2;;
 Week 15
 2025-11-24;Thanksgiving - No Class;;
 2025-11-26;Thanksgiving - No Class;;
 Week 16
-2025-12-01;reinforcement-learning2;;
+2025-12-01;supervised-learning;;
 2025-12-03;statistical-learning;;
 Week 17
-2025-12-08;final-review;Due: [PA4](pa4.html), Due: [Project Report](project.html);
+2025-12-08;final-review;Due: [PA4](pa4.html), [Project Report](project.html);
 2025-12-10;Final Exam;18:00-20:00;
