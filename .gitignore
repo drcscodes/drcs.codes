@@ -305,3 +305,6 @@ TSWLatexianTemp*
 #*Notes.bibpd-images
 pd-images/
 .idea/
+venv/
+.DS_Store
+.envrc
