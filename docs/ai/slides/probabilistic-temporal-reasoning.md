@@ -379,6 +379,25 @@ Compute $Pr(R_2 \mid u_{1:2})$:
 :::
 ::::
 
+## Inference in Temporal Models
+
+Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
+
+- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+
+```{=latex}
+\fbox{
+\begin{minipage}{\textwidth}
+\begin{itemize}
+\item {\bf Prediction} is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+\end{itemize}
+\end{minipage}
+}
+```
+- **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+
+- **Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+
 
 ## Prediction
 
@@ -417,6 +436,27 @@ As we try to predict further and further into the future, the predicted distribu
 - Prediction usually only effective for $k \ll$ mixing time.
 
 The more the uncertainty in the transition model, the shorter will be the mixing time and the more the future is obscured.
+
+## Inference in Temporal Models
+
+Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
+
+- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+
+- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+
+```{=latex}
+\framebox{
+\begin{minipage}{\textwidth}
+\begin{itemize}
+\item {\bf Smoothing} is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+\end{itemize}
+\end{minipage}
+}
+```
+
+- **Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+
 
 ## Smoothing
 
@@ -577,6 +617,25 @@ $\text{BACKWARD}(\bm{b}_{k+2:t}, \bm{e}_{k+1}) = Pr(\bm{e}_{k+1:t} \mid \bm{X}_k
 
 - initialize backward phase with $\bm{b}_{t+1:t} = Pr(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}$, where $\bm{1} =$ vector of 1s.
 
+## Inference in Temporal Models
+
+Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
+
+- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+
+- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+
+- **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+
+```{=latex}
+\fbox{
+\begin{minipage}{\textwidth}
+\begin{itemize}
+\item {\bf Most likely explanation}: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+\end{itemize}
+\end{minipage}
+}
+```
 
 ## Finding the Most Likely Sequence
 
@@ -597,7 +656,7 @@ $\text{BACKWARD}(\bm{b}_{k+2:t}, \bm{e}_{k+1}) = Pr(\bm{e}_{k+1:t} \mid \bm{X}_k
 ## Viterbi Algorithm
 
 
-
+<!--
 
 ## Hidden Markov Models (HMMs)
 
