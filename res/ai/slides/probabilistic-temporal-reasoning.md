@@ -641,20 +641,90 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 
 **Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
 
-- Umbrella example: if umbrella appears on each of the first three days and is absent on the fourth, then the most likely explanation is that it rained on the first three days and did not rain on the fourth.
+- Umbrella example: if umbrella appears on each of the first three days and is absent on the fourth, then the most likely explanation is that it rained on the first three days and did not rain on the fourth.  On the other hand, perhaps the director forgot an umbrella on a rainy day, or took an umbrella on a sunny day out of caution.
 - MLE algorithms are useful for speech recognition -- where the aim is to find the most likely sequence of words, given a series of sounds, reconstruction of bit strings transmitted over a noisy channel, and many others.
 
+We can represent the possible states in a system with a **state trellis**:
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-14_05-rain-state-sequences.pdf)
+![](aima-fig-14_05_a-rain-state-trellis.pdf)
 ```{=latex}
 \end{center}
 ```
 
+Most likely sequence estimation is finding the most likely path through this graph, where the likelihood of any path is the product of the transition probabilities along the path and the probabilities of the given observations at each state.
+
+## Most Likely Paths Through A State Trellis
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-14_05_a-rain-state-trellis.pdf)
+```{=latex}
+\end{center}
+```
+
+Say we want to estimate the most likely path that reaches $Rain_5 = true$.
+
+- By the Markov property, the most likely path to $Rain_5 = true$ consists of a path to a state at $t=4$ followed by a transition to $Rain_5 = true$.
+
+- The state at $t = 4$ that becomes part of the path to $Rain_5 = true$ is whichever state maximizes the likelihood of that path.
+
+So there is a recursive relationship between most likely paths to each state $\bm{x}_{t+1}$ and most likely paths to each state $\bm{x}_{t}$.  We can use this property to construct a recursive algorithm for for computing the most likely path given the evidence.
+
 ## Viterbi Algorithm
 
+We will use a recursively computed message $\bm{m}_{1:t}$, like the forward message $\bm{f}_{1:t}$ in the filtering algorithm:
+
+$$
+\bm{m}_{1:t} = \max_{\bm{x}_{1:t}} Pr(\bm{x}_{1:t-1}, \bm{X}_t, \bm{e}_{1:t})
+$$
+
+By applying a similar derivation to the one we used for the filtering equation (14.5), we get:
+
+$$
+\bm{m}_{1:t+1} = Pr(e_{t+1} \mid \bm{X}_{t+1}) \max_{\bm{x}_{t}} Pr(\bm{X}_{t+1} \mid \bm{x}_t) \max_{\bm{x}_{1:t-1}} Pr(\bm{x}_{1:t-1}, \bm{x}_{t}, \bm{e}_{1:t}) \tag{14.11}
+$$
+
+- The final term $Pr(\bm{x}_{1:t-1}, \bm{x}_{t}, \bm{e}_{1:t})$ is exactly the entry for the particular state $\bm{x}_t$ in the message vector $\bm{m}_{1:t}$.
+
+- Equation 14.11 is essentially identical to the filtering equation (14.5) except that the summation over $\bm{x}_t$ in Equation (14.5) is replaced by the maximization over $\bm{x}_t$ in Equation (14.11).
+
+- there is no normalization constant $\alpha$ in Equation (14.11).
+
+Thus, the algorithm for computing the most likely sequence is similar to filtering: it starts at time 0 with the prior $\bm{m}_{1:0} = Pr(\bm{X}_0)$ and then runs forward along the sequence, computing the $\bm{m}$ message at each time step using Equation (14.11).
+
+## Operation of Viterbi Algorithm in Umbrella World
+
+Operation of the Viterbi algorithm for the umbrella observation sequence $[true,true,false,true,true]$, where the evidence starts at time 1.
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-14_05_b-viterbi-rain-state-probabilities.pdf)
+```{=latex}
+\end{center}
+```
+
+
+- For each $t$, we show the values of the message $\bm{m}_{1:t}$ , which gives the probability of the best sequence reaching each state at time t.
+
+- For each state, the bold arrow leading into it indicates its best predecessor as measured by the product of the preceding sequence probability and the transition probability.
+
+- Following the bold arrows back from the most likely state in $\bm{m}_{1:5}$ gives the most likely sequence, shown by the bold outlines and darker shading.
+
+## Practical computational considerations
+
+For longer sequences, likely to get floating point underflow.  Two solutions:
+
+- Normalilze $\bm{m}$ at each step.  Doesn't affect correctness because $max(cx,cy) = c \cdot max(x,y)$.
+- Use log probabilities with addition in place of multiplication.  Correctness is
+unaffected because the log function is monotonic, so $max(\log x, \log y) = \log max(x,y)$
+
+
+Fun homework: [Markov Chains Recognition](../../python/projects/markov-chains-recognition/markov-chains-recognition.html)
 
 <!--
 
