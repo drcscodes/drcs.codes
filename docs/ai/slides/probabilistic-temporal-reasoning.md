@@ -120,7 +120,7 @@ A few assumptions about $t$:
 
 The transition model specifies the probability distribution over the latest state variables, given previous values: $Pr(\bm{X}_t \mid \bm{X}_{0:t-1})$
 
-- Problem: $\bm{X}_{0:t-1})$ is unbounded -- size increases as $t$ increases.
+- Problem: $\bm{X}_{0:t-1}$ is unbounded -- size increases as $t$ increases.
 - Solution: **Markov assumption** -- current state depends on a finite fixed number of previous states.
 
     - First studied by Andrei Markov (1856-1922), now called **Markov processes** or **Markov chains**.
@@ -220,7 +220,7 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 
 - **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
 
-- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{Xt+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
 
 - **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
 
@@ -380,29 +380,47 @@ Compute $Pr(R_2 \mid u_{1:2})$:
 ::::
 
 
-<!--
-
 ## Prediction
 
-**Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{Xt+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+**Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
 
 - Umbrella example: compute probability of rain three days from now, given all the observations to date.
 - Prediction is useful for evaluating possible courses of action based on their expected outcomes.
 
 
-Prediction can be seen simply as filtering without the addition of new evidence.
+Prediction can be seen simply as filtering without the addition of new evidence.  Filtering already includes a one-step prediciton.  So we can take Equation 14.5:
 
+```{=latex}
+\vspace{-.1in}
+\[
+Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{Pr(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{Pr(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
+\]
+```
 
+remove the sensor model and extend the prediction to $t + k + 1$:
+
+```{=latex}
+\vspace{-.1in}
+\[
+Pr(\bm{X}_{t+k+1} \mid \bm{e}_{1:t}) =  \sum_{\bm{X}_{t+k}} \underbrace{Pr(\bm{X}_{t+k+1} \mid \bm{x}_{t+k})}_{\text{transition model}} \underbrace{Pr(\bm{x}_{t+k} \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.6}
+\]
+```
+
+## Stationary Distributions
+
+As we try to predict further and further into the future, the predicted distribution for rain converges to a fixed point $\langle 0.5,0.5 \rangle$, after which it remains constant for all time.
+
+- This is the **stationary distribution** of the Markov process defined by the transition model.
+
+- The **mixing time** is the time it takes to reach the fixed point.
+
+- Prediction usually only effective for $k \ll$ mixing time.
+
+The more the uncertainty in the transition model, the shorter will be the mixing time and the more the future is obscured.
 
 ## Smoothing
 
 **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
-
-- Umbrella example: compute the probability that it rained last Wednesday, given all the observations of the umbrella carrier made up to today.
-- Smoothing provides a better estimate of the state at time $k$ than was available at that time, because it incorporates more evidence.
-
-    - When tracking a moving object with inaccurate position observations, smoothing gives a smoother
-estimated trajectory than filtering -- hence the name
 
 
 ```{=latex}
@@ -413,15 +431,152 @@ estimated trajectory than filtering -- hence the name
 \end{center}
 ```
 
+
+- Umbrella example: compute the probability that it rained last Wednesday, given all the observations of the umbrella carrier made up to today.
+- Smoothing provides a better estimate of the state at time $k$ than was available at that time, because it incorporates more evidence.
+
+    - When tracking a moving object with inaccurate position observations, smoothing gives a smoother
+estimated trajectory than filtering -- hence the name
+
+## Recursive Message Passing for Smoothing
+
+Split the computation into two parts -- the evidence up to $k$ and the evidence from $k + 1$ to $t$:
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+Pr(\bm{X}_{k} \mid \bm{e}_{1:t}) &= Pr(\bm{X}_{k} \mid \bm{e}_{1:k}, \bm{e}_{k+1:t}) \\
+                                 &= \alpha Pr(\bm{X}_k \mid \bm{e}_{1:k}) Pr(\bm{e}_{k+1:t} \mid \bm{X}_k, \bm{e}_{1:k}) \tag{using Bayes' Rule, given $\bm{e}_{1:k}$} \\
+                                 &= \alpha Pr(\bm{X}_k \mid \bm{e}_{1:k}) Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) \tag{using conditional indepenence} \\
+                                 &= \alpha \bm{f}_{1:k} \odot \bm{b}_{k+1:t} \tag{14.8}
+\end{align*}
+```
+
+$\odot$ is elementwise multiplication, a.k.a. Hadamard product.
+
+The "forward" message, $\bm{f}_{1:k}$ can be computed by filtering forward using Equation 14.5.
+
+## Backward Message for Smoothing
+
+The backward message, $\bm{b}_{k+1:t}$ can be computed by a recursive process running backward from $t$:
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) &= \sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1:t} \mid \bm{X}_k, \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k) \tag{conditioning on $\bm{X}_{k+1}$} \\
+                                 &= \sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1:t} \mid \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k) \tag{by conditional independence} \\
+                                 &= \sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1}, \bm{e}_{k+2:t} \mid \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k) \\
+                                 &= \sum_{\bm{x}_{k+1}} \underbrace{Pr(\bm{e}_{k+1} \mid \bm{x}_{k+1})}_{sensor model} \underbrace{Pr(\bm{e}_{k+2:t} \mid \bm{x}_{k+1})}_{recursion} \underbrace{Pr(\bm{x}_{k+1} \mid \bm{X}_k)}_{transition model} \tag{14.9}
+\end{align*}
+```
+
+The last step follows by the conditional independence of $\bm{e}_{k+1}$ and $\bm{e}_{k+2:t}$, given $\bm{x}_{k+1}$.
+
+Equation 14.9 in message form is
+
+$$
+\bm{b}_{k+1:t} = \text{BACKWARD}(\bm{b}_{k+2:t}, \bm{e}_{k+1}).
+$$
+
+$\bm{e}_{t+1:t}$ is an empty sequence, so we initialize the backward phase with $\bm{b}_{t+1:t} = Pr(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}$, where $\bm{1}$ is a vector of 1s.
+
+
+## Example: Smoothed Umbrella World State Estimate
+
+:::: {.columns}
+::: {.column width="65%"}
+
+Let's compute the smoothed estimate for the probability of rain at time $k = 1$, given the umbrella observations on days 1 and 2.
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+Pr(\bm{X}_{k} \mid \bm{e}_{1:t}) &= \alpha Pr(\bm{X}_k \mid \bm{e}_{1:k}) Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) \tag{14.8}\\
+Pr(R_1 \mid u_1, u_2)            &= \alpha Pr(R_1 \mid u_1) Pr(u_2 \mid R_1) \tag{14.10}
+\end{align*}
+```
+
+:::
+::: {.column width="40%"}
+
+```{=latex}
+\vspace{-.1in}
+\begin{center}
+```
+![](aima-fig-14_02-bayes-net-umbrella-world.pdf){height="30%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+
+From filtering for Day 1 we already know $Pr(R_1 \mid u_1) = \alpha Pr(u_1 \mid R_1) Pr(R_1) = \langle 0.818, 0.182 \rangle$.
+
+So then we need to compute $Pr(u_2 \mid R_1)$ by applying the backward recursion in Equation 14.9:
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) &= \sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1} \mid \bm{x}_{k+1}) Pr(\bm{e}_{k+2:t} \mid \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k) \tag{14.9}\\
+Pr(u_2 \mid R_1)                 &= \sum_{\bm{r}_{2}} Pr(u_2 \mid r_2) P( \mid r_2) Pr(r_2 \mid R_1) \\
+                                 &= \left( 0.9 \cdot 1 \cdot \langle 0.7, 0.3 \rangle \right) + \left( 0.2 \cdot 1 \cdot \langle 0.3, 0.7 \rangle \right) = \langle 0.69, 0.41 \rangle
+\end{align*}
+```
+
+Then plug both terms into Equation 14.10:
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+Pr(R_1 \mid u_1, u_2) &= \alpha Pr(R_1 \mid u_1) Pr(u_2 \mid R_1) \tag{14.10} \\
+                      &= \alpha \langle 0.818, 0.182 \rangle \odot \langle 0.69, 0.41 \rangle \approx \langle 0.883, 0.117 \rangle
+\end{align*}
+```
+
+Knowing it rained on Day 2 makes it more likely that it rained on Day 1.
+
+## Complexity of Smoothing
+
+The forward and backward recursions each take constant time per step.  So:
+
+- The time complexity of smoothing with respect to evidence $\bm{e}_{1:t}$ is $O(t)$ -- the complexity for smoothing at a particular time step $k$.
+
+- If we want to smooth the whole sequence, we could run the whole smoothing process once for each time step -- a time complexity of $O(t^2)$.
+
+However, we can apply dynamic programming to reduce the complexity to $O(t)$.
+
+- Recall that we reused the results of the forward-filtering phase in our smoothing calculations.
+
+- The key to the linear-time algorithm is to record the results of forward filtering over the whole sequence.
+
+- Then we run the backward recursion from $t$ down to 1, computing the smoothed estimate at each step $k$ from the computed backward message $\bm{b}_{k+1:t}$ and the stored forward message $\bm{f}_{1:k}$.
+
+This is the essence of the forward–backward smoothing algorithm ...
+
 ## Forward-Backward Smoothing Algorithm
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-14_04-forward-backward-algorithm.pdf)
+![](aima-fig-14_04-forward-backward-algorithm.pdf){height="50%"}
 ```{=latex}
 \end{center}
 ```
+
+$\text{FORWARD}(\bm{f}_{1:t}, \bm{e}_{t+1}) = Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) =$
+
+- $Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1}) \sum_{\bm{X}_t} Pr(\bm{X}_{t+1} \mid \bm{x}_t) Pr(\bm{x}_t \mid \bm{e}_{1:t})$ (14.5) and
+
+- the process begins with $\bm{f}_{1:0} = Pr(\bm{X}_0)$.
+
+$\text{BACKWARD}(\bm{b}_{k+2:t}, \bm{e}_{k+1}) = Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) =$
+
+- $\sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1} \mid \bm{x}_{k+1}) Pr(\bm{e}_{k+2:t} \mid \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k)$ (14.9) and
+
+- initialize backward phase with $\bm{b}_{t+1:t} = Pr(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}$, where $\bm{1} =$ vector of 1s.
+
 
 ## Finding the Most Likely Sequence
 
@@ -443,7 +598,6 @@ estimated trajectory than filtering -- hence the name
 
 
 
-<!--
 
 ## Hidden Markov Models (HMMs)
 

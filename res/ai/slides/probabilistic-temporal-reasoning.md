@@ -458,7 +458,7 @@ The "forward" message, $\bm{f}_{1:k}$ can be computed by filtering forward using
 
 ## Backward Message for Smoothing
 
-The backward message, $\bm{b}_{k+1:t}$ can be computed by a recursive process that runs backward from $t$:
+The backward message, $\bm{b}_{k+1:t}$ can be computed by a recursive process running backward from $t$:
 
 ```{=latex}
 \vspace{-.2in}
@@ -481,19 +481,102 @@ $$
 $\bm{e}_{t+1:t}$ is an empty sequence, so we initialize the backward phase with $\bm{b}_{t+1:t} = Pr(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}$, where $\bm{1}$ is a vector of 1s.
 
 
-## Example: Smoothing Umbrella World State Estimates
+## Example: Smoothed Umbrella World State Estimate
 
-Beginning on Page 487
+:::: {.columns}
+::: {.column width="65%"}
+
+Let's compute the smoothed estimate for the probability of rain at time $k = 1$, given the umbrella observations on days 1 and 2.
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+Pr(\bm{X}_{k} \mid \bm{e}_{1:t}) &= \alpha Pr(\bm{X}_k \mid \bm{e}_{1:k}) Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) \tag{14.8}\\
+Pr(R_1 \mid u_1, u_2)            &= \alpha Pr(R_1 \mid u_1) Pr(u_2 \mid R_1) \tag{14.10}
+\end{align*}
+```
+
+:::
+::: {.column width="40%"}
+
+```{=latex}
+\vspace{-.1in}
+\begin{center}
+```
+![](aima-fig-14_02-bayes-net-umbrella-world.pdf){height="30%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+
+From filtering for Day 1 we already know $Pr(R_1 \mid u_1) = \alpha Pr(u_1 \mid R_1) Pr(R_1) = \langle 0.818, 0.182 \rangle$.
+
+So then we need to compute $Pr(u_2 \mid R_1)$ by applying the backward recursion in Equation 14.9:
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) &= \sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1} \mid \bm{x}_{k+1}) Pr(\bm{e}_{k+2:t} \mid \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k) \tag{14.9}\\
+Pr(u_2 \mid R_1)                 &= \sum_{\bm{r}_{2}} Pr(u_2 \mid r_2) P( \mid r_2) Pr(r_2 \mid R_1) \\
+                                 &= \left( 0.9 \cdot 1 \cdot \langle 0.7, 0.3 \rangle \right) + \left( 0.2 \cdot 1 \cdot \langle 0.3, 0.7 \rangle \right) = \langle 0.69, 0.41 \rangle
+\end{align*}
+```
+
+Then plug both terms into Equation 14.10:
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+Pr(R_1 \mid u_1, u_2) &= \alpha Pr(R_1 \mid u_1) Pr(u_2 \mid R_1) \tag{14.10} \\
+                      &= \alpha \langle 0.818, 0.182 \rangle \odot \langle 0.69, 0.41 \rangle \approx \langle 0.883, 0.117 \rangle
+\end{align*}
+```
+
+Knowing it rained on Day 2 makes it more likely that it rained on Day 1.
+
+## Complexity of Smoothing
+
+The forward and backward recursions each take constant time per step.  So:
+
+- The time complexity of smoothing with respect to evidence $\bm{e}_{1:t}$ is $O(t)$ -- the complexity for smoothing at a particular time step $k$.
+
+- If we want to smooth the whole sequence, we could run the whole smoothing process once for each time step -- a time complexity of $O(t^2)$.
+
+However, we can apply dynamic programming to reduce the complexity to $O(t)$.
+
+- Recall that we reused the results of the forward-filtering phase in our smoothing calculations.
+
+- The key to the linear-time algorithm is to record the results of forward filtering over the whole sequence.
+
+- Then we run the backward recursion from $t$ down to 1, computing the smoothed estimate at each step $k$ from the computed backward message $\bm{b}_{k+1:t}$ and the stored forward message $\bm{f}_{1:k}$.
+
+This is the essence of the forward–backward smoothing algorithm ...
 
 ## Forward-Backward Smoothing Algorithm
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-14_04-forward-backward-algorithm.pdf)
+![](aima-fig-14_04-forward-backward-algorithm.pdf){height="50%"}
 ```{=latex}
 \end{center}
 ```
+
+$\text{FORWARD}(\bm{f}_{1:t}, \bm{e}_{t+1}) = Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) =$
+
+- $Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1}) \sum_{\bm{X}_t} Pr(\bm{X}_{t+1} \mid \bm{x}_t) Pr(\bm{x}_t \mid \bm{e}_{1:t})$ (14.5) and
+
+- the process begins with $\bm{f}_{1:0} = Pr(\bm{X}_0)$.
+
+$\text{BACKWARD}(\bm{b}_{k+2:t}, \bm{e}_{k+1}) = Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) =$
+
+- $\sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1} \mid \bm{x}_{k+1}) Pr(\bm{e}_{k+2:t} \mid \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k)$ (14.9) and
+
+- initialize backward phase with $\bm{b}_{t+1:t} = Pr(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}$, where $\bm{1} =$ vector of 1s.
+
 
 ## Finding the Most Likely Sequence
 
