@@ -668,11 +668,72 @@ That is, $\hat{Pr}(x_1, \dots, x_m)$ is an approximation of $Pr(x_1, \dots, x_m)
 
 ## Importance Sampling
 
-The general statistical technique of **importance sampling** aims to emulate the effect of sampling from a distribution $P$ using samples from another distribution $Q$.
+The general statistical technique of **importance sampling** aims to emulate the effect of sampling from a distribution $P$[^Notation] using samples from another distribution $Q$ whose samples are easier to obtain.
 
-We ensure that the answers are correct in the limit by applying a correction factor $P(\bm{x})/Q(\bm{x})$, also known as a weight, to each sample $x\bm{x}$ when counting up the samples.
+We ensure that the answers are correct in the limit by applying a correction factor $\frac{P(\bm{x})}{Q(\bm{x})}$, also known as a **weight**, to each sample $\bm{x}$ when counting up the samples.
+
+Our query variable will always be one of the nonevidence variables, $Z$.  The idea of importance sampling is to sample from $P(\bm{z} \mid \bm{e})$:
+
+```{=latex}
+\vspace{-.1in}
+\[
+\hat{P} (\bm{z} \mid \bm{e}) = \frac{ N_P (\bm{z}) }{ N } \approx P(\bm{z} \mid \bm{e})
+\]
+```
+
+but using an arbitrary distribution $Q(\bm{z})$:
+
+```{=latex}
+\[
+\hat{P} (\bm{z} \mid \bm{e}) =
+\frac{ N_Q (\bm{z}) }{ N } \frac{ P(\bm{z} \mid \bm{e}) }{ Q(\bm{z}) }  \approx
+Q(\bm{z}) \frac{ P(\bm{z} \mid \bm{e}) }{ Q(\bm{z}) } =
+P(\bm{z} \mid \bm{e})
+\]
+```
+
+The question is: which $Q$ to use?  We want $Q$ as close as possible to $P(\bm{z} \mid \bm{e})$ with $Q(\bm{z}) \ne 0$ whenever $P(\bm{z} \mid \bm{e}) \ne 0$.  The most common approach is **likelihood weighting** ...
+
+
+[^Notation]: Using $P$ instead of $Pr$ to align with the book so we can distinguish probabilities under different distributions, e.g., $P$ and $Q$.
 
 ## Likelihood Weighting
+
+Fix the values for the evidence variables $\bm{E}$ and sample all the nonevidence variables in topological order, each conditioned on its parents -- guarantees each sample consistent with evidence.
+
+Let the sampling distribution be $Q_{WS}$ and nonevidence variables be $\bm{Z} = \{ Z_1, \dots, Z_l \}$. Then:
+
+```{=latex}
+\vspace{-.2in}
+\[
+Q_{WS}(\bm{z}) = \prod_{i = 1}^l P(z_i \mid parents(Z_i))
+\]
+```
+
+Now we need to know the weight for each sample.  By general scheme for importance sampling:
+
+```{=latex}
+\vspace{-.1in}
+\[
+w(\bm{z}) = \frac{ P(\bm{z}\mid \bm{e}) }{ Q_{WS}(\bm{z}) } = \alpha \frac{ P(\bm{z},\bm{e}) }{ Q_{WS}(\bm{z}) }
+\]
+```
+
+where the normalizing factor $\alpha = \frac{1}{P(e)}$ is the same for all samples.  Since $\bm{z}$ and $\bm{e}$ cover all the variables in the Bayes net, $P(\bm{z}, \bm{e})$ is the product of the conditional probabilities for the nonevidence variables times the product of the conditional probabilities for the evidence variables:
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+w(\bm{z}) &= \alpha \frac{ P(\bm{z},\bm{e}) }{ Q_{WS}(\bm{z}) }
+          = \alpha \frac{ \prod_{i = 1}^l P(z_i \mid parents(Z_i)) \prod_{i = 1}^m P(e_i \mid parents(E_i))  }
+          { \prod_{i = 1}^l P(z_i \mid parents(Z_i))  }\\
+          &= \alpha \prod_{i = 1}^m P(e_i \mid parents(E_i)) \tag{14.9}
+\end{align*}
+```
+
+The name of this method comes from the fact that probabilities of evidence are generally called likelihoods.
+
+## Likelihood Weighting Algorithm
 
 ```{=latex}
 \begin{center}
@@ -684,25 +745,58 @@ We ensure that the answers are correct in the limit by applying a correction fac
 
 ## Likelihood Weighting Example
 
-With the query $Pr(Rain \mid Cloudy= true, WetGrass= true)$ and the ordering $Cloudy, Sprinkler, Rain, WetGrass$, process proceeds as follows:
+:::: {.columns}
+::: {.column width="70%"}
+
+Given the query
+
+- $Pr(Rain \mid Cloudy= true, WetGrass= true)$
+
+and the ordering
+
+- $Cloudy, Sprinkler, Rain, WetGrass$,
+
+we initialize $w = 1.0$ and proceed as follows:
 
 1. $Cloudy$ is an evidence variable with value true. Therefore, we set
 
-    $$
-    w \gets w \times Pr(Cloudy= true) = 0.5.
-    $$
+    ```{=latex}
+    \vspace{-.1in}
+    \[
+    w \gets w \cdot Pr(c) = 0.5.
+    \]
+    ```
 
 
-2. $Sprinkler$ is not an evidence variable, so sample from $Pr(Sprinkler \mod Cloudy= true) =
+2. $Sprinkler$ is not an evidence variable, so sample from $Pr(Sprinkler \mid Cloudy= true) =
 \langle 0.1,0.9 \rangle$; suppose this returns false.
 
 3. $Rain$ is not an evidence variable, so sample from $Pr(Rain \mid Cloudy = true) = \langle 0.8,0.2 \rangle$; suppose this returns true.
 
 4. $WetGrass$ is an evidence variable with value true. Therefore, we set
 
-    $$
-    w \gets w \times Pr(WetGrass= true \mid Sprinkler= false, Rain= true) = 0.5 \times 0.9= 0.45.
-    $$
+    ```{=latex}
+    \vspace{-.2in}
+    \[
+    w \gets w \times Pr(WetGrass=true \mid \neg s, r) = 0.5 \cdot 0.9= 0.45.
+    \]
+    ```
+
+Here WEIGHTED-SAMPLE returns the event $[true,false,true,true]$ with weight 0.45, which we tally under $Rain = true$.
+
+:::
+::: {.column width="35%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_15_a-sprinkler-bayes-net.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
 
 
 ## Rejection vs. Importance Sampling
@@ -717,9 +811,137 @@ With the query $Pr(Rain \mid Cloudy= true, WetGrass= true)$ and the ordering $Cl
 
 ## Markov Chain Monte Carlo (MCMC) Algorithms
 
-Instead of generating each sample from scratch, MCMC algorithms generate a sample by making a random change to the preceding sample. Think of an MCMC algorithm as being in a particular current state that specifies a value for every variable and generating a next state by making random changes to the current state.
+Instead of generating each sample from scratch, MCMC algorithms generate a sample by making a random change to the preceding sample.
+
+Think of an MCMC algorithm as being in a particular current state that specifies a value for every variable and generating a next state by making random changes to the current state.
+
+We'll learn two MCMC algorithms:
+
+- Gibbs sampling, and
+- Metropolis-Hastings
+
+## Gibbs Sampling and Markov Blankets
+
+```{=latex}
+\begin{center}
+```
+![](bee-gees-blanket.jpg){height="80%"}
+```{=latex}
+\end{center}
+```
 
 ## Gibbs Sampling
+
+:::: {.columns}
+::: {.column width="70%"}
+
+- Fix the evidence variables.
+- Start in a arbitrary state sampled from the nonevidence variables.
+
+    - Each $X_i$ is sampled from the values in its Markov blanket, $mb(X_i)$
+
+    ```{=latex}
+    \[
+    P(x_i \mid mb(X_i)) = \alpha P(x_i \mid parents(X_i)) \prod_{Y_j \in Children(X_i)} P(y_i \mid parents(Y_j)) \tag{13.10}
+    \]
+    \vspace{.1in}
+    ```
+
+- Wander the state space randomly, keeping the evidence variables fixed and flipping one nonevidence variable by sampling from a distributoin calculated Equation 14.10.
+
+:::
+::: {.column width="35%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_04-markov-blankets.pdf){height="80%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+Gibbs sampling for $X_i$ means sampling conditioned on the current values of the variables in its Markov blanket.
+
+
+## Gibbs Sampling Example: Step 1
+
+:::: {.columns}
+::: {.column width="70%"}
+
+Consider the query $P(Rain \mid Sprinkler = true,WetGrass= true)$.
+
+- Evidence variables $Sprinkler$ and $WetGrass$ fixed to observed values (true), nonevidence variables $Cloudy$ and $Rain$  initialized randomly to, say, true and false respectively.
+
+    - Initial state is $[true, \textbf{true}, false, \textbf{true}]$. Fixed evidence variables marked in bold.
+
+Now the nonevidence variables $Z_i$ are sampled repeatedly in some random order according to a probability distribution $\rho(i)$ for choosing variables. For example:
+
+
+:::
+::: {.column width="35%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_15_a-sprinkler-bayes-net.pdf){height="30%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+
+1. $Cloudy$ is chosen and then sampled, given the current values of its Markov blanket: in this case, we sample from $P(Cloudy|Sprinkler= true,Rain= false)$ whose distribution is calculated using Equation 13.10:
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+P(x_i \mid mb(X_i))      &= \alpha P(x_i \mid parents(X_i)) \prod_{Y_j \in Children(X_i)} P(y_i \mid parents(Y_j)) \tag{13.10}\\
+P(c \mid s, \neg r)      &= \alpha P(c) P(s \mid c) P(\neg r \mid c) = \alpha 0.5 \cdot 0.1 \cdot 0.2\\
+P(\neg c \mid s, \neg r) &= \alpha P(\neg c) P(s \mid \neg c) P(\neg r \mid \neg c) = \alpha 0.5 \cdot 0.5 \cdot 0.8
+\end{align*}
+```
+
+yielding $\alpha \langle 0.001, 0.020 \rangle \approx \langle 0.048, 0.952 \rangle$
+
+- Suppose the result is $Cloudy= false$. Then the new current state is $[false, \textbf{true}, false, \textbf{true}]$.
+
+
+## Gibbs Sampling Example: Step 2
+
+:::: {.columns}
+::: {.column width="60%"}
+
+2. Sampling $\rho(i)$ then chooses $Rain$ as next variable.  We sample from $P(Rain \mid Cloudy= false,Sprinkler= true,WetGrass= true)$ using Equation 13.10 (just like Step 1, not shown here).
+
+- Suppose this yields $Rain= true$. The new current state is $[false, \textbf{true}, true, \textbf{true}]$.
+
+Figure on the right shows the complete Markov chain for the case where variables are chosen
+uniformly, i.e., $\rho (Cloudy) = \rho (Rain) = 0.5$.
+
+- The algorithm wanders around in this graph, following links with stated probabilities.
+- Each state visited during this process is a sample that contributes to the estimate for the query variable Rain. - If the process visits 20 states where Rain is true and 60 states where Rain is false, then the answer to the query is $NORMALIZE(\langle 20,60 \rangle) = \langle 0.25,0.75 \rangle$.
+
+:::
+::: {.column width="45%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_21_a-markov-chain-gibbs-sampling-example.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+
+## Gibbs Sampling Algorithm
 
 ```{=latex}
 \begin{center}
@@ -728,6 +950,25 @@ Instead of generating each sample from scratch, MCMC algorithms generate a sampl
 ```{=latex}
 \end{center}
 ```
+
+
+## Gibbs Sampling vs. Importance Sampling
+
+Performance of Gibbs sampling compared to likelihood weighting on the car
+insurance network.
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_22-performance-plots-gibbs-sampling-likelihood-weighting.pdf)
+```{=latex}
+\end{center}
+```
+
+- (a) for the standard query on $PropertyCost$, and
+- (b) for the case where the output variables are observed and $Age$ is the query variable.
+
+Gibbs sampling typically outperforms likelihood weighting when evidence is mostly downstream.
 
 ## Markov Chains
 
@@ -739,14 +980,40 @@ Instead of generating each sample from scratch, MCMC algorithms generate a sampl
 \end{center}
 ```
 
-## Gibbs Sampling vs. Importance Sampling
+- (a) The states and transition probabilities of the Markov chain for the query $P(Rain|Sprinkler= true,WetGrass= true)$. Note the self-loops: the state stays the same when either variable is chosen and then resamples the same value it already has.
+
+- (b) The transition probabilities when the CPT for $Rain$ constrains it to have the same value as $Cloudy$.
+
+## Metropolis
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-13_22-performance-plots-gibbs-sampling-likelihood-weighting.pdf)
+![](metropolis.jpg){height="80%"}
 ```{=latex}
 \end{center}
 ```
 
 ## Metropolis-Hastings Sampling
+
+Like simulated annealing, MH has two stages in each iteration of the sampling process:
+
+1. Sample a new state $x'$ from a **proposal distribution** $q(x'|x)$, given the current state $x$.
+
+2. Probabilistically accept or reject $x'$ according to the **acceptance probability**
+
+```{=latex}
+\[
+a(x'|x) = \min \left( 1, \frac{ \pi(x') q(x|x') } {\pi(x) q(x'|x)} \right)
+\]
+```
+
+If the proposal is rejected, the state remains at $x$.
+
+$q(x'|x)$ could be defined as follows:
+
+- With probability 0.95, perform a Gibbs sampling step to generate $x'$.
+
+- Otherwise, generate $x'$ by running WEIGHTED-SAMPLE using likelihood weighting.
+
+This has the effect of getting MH "unstuck."
