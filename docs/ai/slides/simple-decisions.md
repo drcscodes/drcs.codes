@@ -314,24 +314,90 @@ Common errors in thinking:
 :::
 ::::
 
-<!--
+## Multiattribute Utility Functions
 
-## Deterministic Dominace
+Let the attributes be $\bm{X} = X_1, \dots, X_n$ and the vector $\bm{x} = \langle x_1, \dots, x_n \rangle$ be a complete set of variable values.
+
+- Each $x_i$, whether continuous or discrete, must be from a totally ordered set.
+- Not required, but better if higher values mean higher utilities, i.e., each $x_i$ monotonically increases.
+
+    - $-d$ deaths better than $d$, assuming you prefer fewer deaths.
+    - Measures with a peak that falls off in either direction could be split.  E.g., instead of temperature $t$ with peak at 70, have:
+
+        - Warmth, $w = \min (0, t - 70)$ with max value of 0.
+        - Coolness, $c = \min (0, 70 - t)$ with max value of 0.
+
+Two ways to deal with multiattribute utility funcitons:
+
+- Keep attributes separate.
+- Combine attributes into a single utility value.
+
+<!--
+#+begin_src python :results file :file temp_utilities.png
+ts = np.arange(65, 76)
+warmth = np.array([min(0, t - 70) for t in ts])
+coolness = np.array([min(0, 70 - t) for t in ts])
+
+fig, axs = plt.subplots(1, 2, sharey=True)
+
+axs[0].plot(ts, warmth)
+axs[0].set_ylabel("Utility")
+axs[0].set_xlabel("Warmth")
+
+axs[1].plot(ts, coolness)
+axs[1].set_xlabel("Coolness")
+
+fig.tight_layout()
+fig.savefig("temp_utilities.png")
+#+end_src
+
+#+RESULTS: temp_utilities
+[[file:temp_utilities.png]]
+-->
+
+## Airport Siting Problem
+
+Attributes of airport siting problem (where to locate an aiport):
+
+- $X_1$: Throughput, measured by the number of flights per day;
+- $X_2$: Safety, measured by minus the expected number of deaths per year;
+- $X_3$: Quietness, measured by minus the number of people living under the flight paths;
+- $X_4$: Frugality, measured by the negative cost of construction.
+
+
+## Strict Dominance
+
+:::: {.columns}
+::: {.column width="65%"}
+
+Given two airport sites $S_1 = \langle x_1^{(1)}, x_2^{(1)}, x_3^{(1)}, x_4^{(1)} \rangle$ and $S_2 = \langle x_1^{(2)}, x_2^{(2)}, x_3^{(2)}, x_4^{(2)} \rangle$:
+
+
+- If $x_i^2 < x_i^1, \forall i$, then $S_1$ **strictly dominates** $S_2$.
+- Helpful for eliminating choices, rarely sufficient to find a unique best choice.
+
+:::
+::: {.column width="50%"}
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-16_04_a-dominance-deterministic.pdf
+![](aima-fig-16_04_a-dominance-deterministic.pdf)
 ```{=latex}
 \end{center}
 ```
+
+:::
+::::
+
+<!--
 
 ## Dominance under Uncertainty
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-16_04_b-dominace-uncertain.pdf
+![](aima-fig-16_04_b-dominace-uncertain.pdf)
 ```{=latex}
 \end{center}
 ```
@@ -341,35 +407,174 @@ Common errors in thinking:
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-16_05-stochastic-dominance.pdf
+![](aima-fig-16_05-stochastic-dominance.pdf)
 ```{=latex}
 \end{center}
 ```
 
-## Decision Networks
+-->
 
-- Chance nodes (ovals) represent random variables, just as they do in Bayesian networks. The agent could be uncertain about the construction cost, the level of air traffic and the potential for litigation, and the Safety, Quietness, and total Frugality variables, each of which also depends on the site chosen. Each chance node has associated with it a conditional distribution that is indexed by the state of the parent nodes. In decision networks, the parent nodes can include decision nodes as well as chance nodes. Note that each of the current-state chance nodes could be part of a large Bayesian network for assessing construction costs, air traffic levels, or litigation potentials.
 
-- Decision nodes (rectangles) represent points where the decision maker has a choice of actions. In this case, the AirportSite action can take on a different value for each site under consideration. The choice influences the safety, quietness, and frugality of the solution. In this chapter, we assume that we are dealing with a single decision node.  Chapter 16 deals with cases in which more than one decision must be made.
+## Preference Structure
 
-- Utility nodes (diamonds) represent the agent’s utility function. The utility node has as parents all variables describing the outcomes that directly affect utility. Associated with the utility node is a description of the agent’s utility as a function of the parent attributes. The description could be just a tabulation of the function, or it might be a parameterized additive or linear function of the attribute values. For now, we will assume that the function is deterministic; that is, given the values of its parent variables, the value of the utility node is fully determined.
+Specifying complete utility function $U(x_1, \dots, x_n)$ requires $d^n$ values in the worst case.  Avoid this complexity by encoding some structure of preferences into **representation theorems**:
 
-## Decision Network for Airport Siting
+$$
+U(x_1, \dots, x_n) = F\left[f_1(x_1), \dots, f_n(x_n) \right]
+$$
+
+Where
+
+- $F$ is a simple function (like addition), and
+- each $f_i$ converts utility attributes into a common measure.
+
+Example: Each $x_i$ is an amount of money in an abitrary currency like Euros or Rupees, and each $f_i$ converts the amount into USD.
+
+## Deterministic Preferences
+
+Most common regularity in deterministic preferences is **preference independence**:
+
+- Two attributes $X_1$ and $X_2$ are preferentially independent of a third attribute $X_3$ if the preference between outcomes $\langle x_1,x_2,x_3 \rangle$ and $\langle x'_1,x'_2,x_3 \rangle$
+does not depend on the particular value $x_3$ for attribute $X_3$.
+
+Airport siting example: let $X_1 = Quietness$, $X_2 = Frugality$, $X_1 = Safety$, with
+
+- $x_1$ = 70,000 people living under flight path,
+- $X_2$ = $3.7 Billion constuction cost, and
+- $x_3$ = 0.006 deaths per billion passenger miles.
+
+If we prefer $\langle 20,000, 4B, 0.006 \rangle$, then this preference would hold for any $x_3$.
+
+## Mutial Preference Independence
+
+**Mutual prefence independence** (MPI) means that preference for each attribute has no effect on preference for other attributes.  When this holds, the agent's preferences can be represnented by a value function of the form:
+
+$$
+V(x_1,, \dots, x_n) = \sum_i V_i(x_i)
+$$
+
+For example, we could assume MPI for the airport siting problem and use the value funciton:
+
+$$
+V(quietness, frugality, safety) = quietness \times 10^4 + frugality + safety \times 10^{12}
+$$
+
+This is an example of an **additive value function**.  Even when MPI doesn't hold, can be a useful simplifying assumption.
+
+## Non-MPI Example
+
+:::: {.columns}
+::: {.column width="60%"}
+
+You're purchasing some hunting dogs, some chickens, and some cages for the chickens.
+
+- The hunting dogs are very valuable, but will eat uncaged chickens.
+- So you need enough cages for the chickens.
+
+Hence, the tradeoff between dogs and chickens depends strongly on the number of cages, and MPI is violated.
+
+:::
+::: {.column width="40%"}
+
+![](shepherd-chickens.jpg){height="75%"}[^ShepherdChickens]
+
+:::
+::::
+
+[^ShepherdChickens]: https://www.reddit.com/r/germanshepherds/comments/p4sou1/our_girl_reyna_watches_her_flock_8_of_backyard/
+
+## Syntax of Decision Networks
+
+:::: {.columns}
+::: {.column width="70%"}
+
+- Chance nodes (ovals) represent random variables, like in Bayesian networks.
+
+    - Agent could be uncertain about the construction cost, level of air traffic, potential for litigation, and Safety, Quietness, Frugality variables, each of which also depends on the site chosen.
+    - Each chance node has a conditional distribution indexed by state of its parent nodes.
+    - Parent nodes can include decision nodes and chance nodes.
+    - Each current-state chance node could be part of a large Bayesian network for assessing construction costs, air traffic levels, or litigation potentials.
+
+```{=latex}
+\vspace{.1in}
+```
+
+:::
+::: {.column width="35%"}
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-16_06-decision-network-airport-siting.pdf
+![](aima-fig-16_06-decision-network-airport-siting.pdf)
 ```{=latex}
 \end{center}
 ```
+
+:::
+::::
+
+<!-- Single column so left-aligns with content above -->
+
+:::: {.columns}
+::: {.column width="95%"}
+
+- Decision nodes (rectangles) represent action choice points.
+
+    - $AirportSite$ action can take a different value for each candidate site.
+    - The choice influences the safety, quietness, and frugality of the solution.
+    - For simple decisions, we have a single decision node.
+
+- Utility nodes, .a.k.a. value nodes, (diamonds) represent the agent's utility function.
+
+    - Utility node's parents are all variables describing outcomes directly affecting utility.
+    - Utility node has description of the agent's utility as a function of parent attributes.
+    - Description could be a tabulation of the function, or a parameterized additive or linear function of the attribute values.
+    - For now, assume function is deterministic -- given values of its parent variables, value of utility node is fully determined.
+
+:::
+::: {.column width="10%"}
+
+:::
+::::
+
+## Semantics of Decision Networks
+
+:::: {.columns}
+::: {.column width="60%"}
+
+1. Set the evidence variables for the current state.
+
+2. For each possible value of the decision node:
+
+    - (a) Set the decision node to that value.
+    - (b) Calculate the posterior probabilities for the parent nodes of the utility node, using a standard probabilistic inference algorithm.
+    - (c) Calculate the resulting utility for the action.
+
+3. Return the action with the highest utility.
+
+:::
+::: {.column width="45%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-16_06-decision-network-airport-siting.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+
+<!--
 
 ## Simplified Decision Network for Airport Siting
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-16_07-decision-network-airport-siting-simplified.pdf
+![](aima-fig-16_07-decision-network-airport-siting-simplified.pdf)
 ```{=latex}
 \end{center}
 ```
@@ -379,7 +584,7 @@ Common errors in thinking:
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-16_08-value-of-information.pdf
+![](aima-fig-16_08-value-of-information.pdf)
 ```{=latex}
 \end{center}
 ```
@@ -389,7 +594,7 @@ Common errors in thinking:
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-16_09-information-gathering-agent-algorithm.pdf
+![](aima-fig-16_09-information-gathering-agent-algorithm.pdf)
 ```{=latex}
 \end{center}
 ```
@@ -399,7 +604,7 @@ Common errors in thinking:
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-16_10-decision-networks-ice-cream.pdf
+![](aima-fig-16_10-decision-networks-ice-cream.pdf)
 ```{=latex}
 \end{center}
 ```
@@ -409,7 +614,7 @@ Common errors in thinking:
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-16_11-off-switch-game.pdf
+![](aima-fig-16_11-off-switch-game.pdf)
 ```{=latex}
 \end{center}
 ```
