@@ -63,13 +63,13 @@ The policy can also be stochastic, $\pi(s \mid a)$, but for now we'll assume det
 
 By the maximum expected utility principle, for a policy to be optimal the action it recommends for each state must have the highest **value** among all the action choices in that state.
 
-> The book uses state/action *utility* instead state/action *value*, but this is inconsistent with the book's previous definition of utility and its relationsip to preformance measure, and it's inconsistent with the terminology used by the reinforcement learning community, which is where this is headed.  So we'll use *value* instead of *utility*.
+> The book uses state/action *utility* instead state/action *value*, but this is inconsistent with the book's previous definition of utility and its relationsip to preformance measures, and it's inconsistent with the terminology used by the reinforcement learning community, which is where this is headed.  So we'll use *value* instead of *utility*.
 
 ## Values
 
 Since we're in the realm of sequential decisions, the value of an action depends on the *trajectory* -- the sequence of states and actions -- to which it leads.
 
-> Here again, we depart from the book's terminology.  The book uses *history*, but this is confusing -- history implies *past* to most people -- and the reinforcement learning community uses the term *trajectory*, $\tau$, so we'll use $\tau$.  We'll also add reward to the trajectories, in line with reinforcement learning literature.
+> Here again, we depart from the book's terminology.  The book uses *history*, but the reinforcement learning community uses the term *trajectory*, $\tau$, so we'll use $\tau$.  We'll also add reward to the trajectories, in line with reinforcement learning literature.
 
 An experience sequence through an MDP is called a *trajectory*:
 
