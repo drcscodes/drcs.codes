@@ -36,23 +36,23 @@ Week 10
 Agents in Uncertain Environments
 Week 11
 2025-10-27;probabilistic-temporal-reasoning;;
-2025-10-29;state-estimation;;Withdrawal Deadline (2025-10-31)
+2025-10-29;probabilistic-temporal-reasoning;;Withdrawal Deadline (2025-10-31)
 Week 12
 2025-11-03;simple-decisions;;
-2025-11-05;complex-decisions;;
+2025-11-05;simple-decisions;;
 Week 13
-2025-11-10;multiagent-systems;;
-2025-11-12;collective-decisions;;
-Machine Learning
+2025-11-10;markov-decision-processes;;
+2025-11-12;markov-decision-processes;;
 Week 14
-2025-11-17;reinforcement-learning1;Due: [PA3](pa3.html),Assigned: [PA4](pa4.html);
-2025-11-19;reinforcement-learning2;;
+2025-11-17;multiagent-systems;Due: [PA3](pa3.html),Assigned: [PA4](pa4.html);
+2025-11-19;collective-decisions;;
 Week 15
 2025-11-24;Thanksgiving - No Class;;
 2025-11-26;Thanksgiving - No Class;;
+Machine Learning
 Week 16
 2025-12-01;supervised-learning;;
-2025-12-03;statistical-learning;;
+2025-12-03;reinforcement-learning;;
 Week 17
 2025-12-08;final-review;Due: [PA4](pa4.html);
 2025-12-15;Final Exam;Sec 01: 15:30-17:30;
