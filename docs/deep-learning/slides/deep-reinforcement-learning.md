@@ -97,7 +97,7 @@ G_t = \sum_{k = 0}^\infty \gamma^k r_{t+k+1}
 \]
 ```
 
-$\gamma$ is the *discount factor* which says how much we discount future rewards.  With $\gamma < 0$ it decays to zero.
+$\gamma$ is the *discount factor* which says how much we discount future rewards.  With $\gamma < 1$ it decays to zero.
 
 ```{=latex}
 \begin{center}
