@@ -1,0 +1,520 @@
+\begin{frame}{Sequential Decisions}
+\phantomsection\label{sequential-decisions}
+In \textbf{sequential decision problems}, the agent's utility depends on
+a sequence of decisions.
+
+Sequential decision problems incorporate utilities, uncertainty, and
+sensing, and include search and planning problems as special cases.
+
+\begin{itemize}
+\tightlist
+\item
+  Markov decision processes (MDPs)
+\item
+  \(k\)-Armed bandits
+\item
+  Partially observable MPDs (POMDPs)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Worlds}
+\phantomsection\label{worlds}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_01-4x3-grid-world-stochastic-actions.pdf}}
+
+\end{center}
+\end{frame}
+
+\begin{frame}{Markov Decision Processes (MDPs)}
+\phantomsection\label{markov-decision-processes-mdps}
+A Markov decision process (MDP) is a 4-tuple
+\(\left( S, A, Pr(s' \mid s, a), R(s) \right)\), where
+
+\begin{itemize}
+\item
+  \(S\) is a set of states,
+\item
+  \(A\), or \(Action(s)\) is a set of actions, and
+\item
+  \(Pr(s' \mid s, a)\) is a transition function giving the probability
+  that executing action \(a\) in state \(s\) will result in \(s'\).
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Many authors use \(T(s, a, s')\)
+  \end{itemize}
+\item
+  \(R(s, a, s')\) is the reward the world provides to an agent for
+  arriving in state \(s'\) after executing action \(a\) in state \(s\),
+  bounded by \(\pm R_{max}\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Many authors use \(R(s')\), which is easier to think about -- the
+    reward for arriving in state \(s'\) regardless of the \(s, a\) pair
+    in the previous time step.
+  \end{itemize}
+\end{itemize}
+
+Some definitions of MDPs include an initialization function, \(I(s)\),
+which specifies the probability the the agent will start in some state
+\(s \in S\), others specify a particular state \(s_0\) from \(S\) as the
+start state.
+\end{frame}
+
+\begin{frame}{MDP Solutions: Policies}
+\phantomsection\label{mdp-solutions-policies}
+Due to stochastic action results, fixed plans don't work. We need a
+function that returns a recommended action for every state. Such a
+function is called a \textbf{policy}:
+
+\[
+\pi(s)
+\]
+
+The policy can also be stochastic, \(\pi(s \mid a)\), but for now we'll
+assume deterministic policies.
+
+By the maximum expected utility principle, for a policy to be optimal
+the action it recommends for each state must have the highest
+\textbf{value} among all the action choices in that state.
+
+\begin{quote}
+The book uses state/action \emph{utility} instead state/action
+\emph{value}, but this is inconsistent with the book's previous
+definition of utility and its relationsip to preformance measures, and
+it's inconsistent with the terminology used by the reinforcement
+learning community, which is where this is headed. So we'll use
+\emph{value} instead of \emph{utility}.
+\end{quote}
+\end{frame}
+
+\begin{frame}{Values and Trajectories}
+\phantomsection\label{values-and-trajectories}
+Since we're in the realm of sequential decisions, the value of an action
+depends on the \emph{trajectory} -- the sequence of states and actions
+-- to which it leads.
+
+\begin{quote}
+Here again, we depart from the book's terminology. The book uses
+\emph{history}, but the reinforcement learning community uses the term
+\emph{trajectory}, \(\tau\), so we'll use \(\tau\). We'll also add
+reward to the trajectories, in line with reinforcement learning
+literature.
+\end{quote}
+
+An experience sequence through an MDP is called a \emph{trajectory}:
+
+\[
+\tau = s_0, a_0, r_1, s_1, a_1, r_2, s_2, a_2, r_3, \dots
+\]
+
+And the values in an MDP are defined in terms of a trajectory:
+
+\[
+V_{\tau}(s_0, a_0, r_1, s_1, a_1, r_2, \dots, s_{t-1}, a_{t-1}, r_t)
+\]
+
+We'll define these values after we learn about rewards.
+\end{frame}
+
+\begin{frame}{Goals and Rewards}
+\phantomsection\label{goals-and-rewards}
+The purpose or goal of the agent is formalized in terms of a special
+signal, called the reward, passing from the environment to the agent.
+
+\begin{itemize}
+\item
+  At each time step, the reward is a simple number,
+  \(R_t \in \mathbb{R}\).
+\item
+  The agent's goal is to maximize the total amount of reward it
+  receives.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This means maximizing not immediate reward, but cumulative reward in
+    the long run.
+  \end{itemize}
+\end{itemize}
+
+We can clearly state this informal idea as the reward hypothesis:
+
+\begin{quote}
+All of what we mean by goals and purposes can be well thought of as the
+maximization of the expected value of the cumulative sum of a received
+scalar signal (called reward).
+\end{quote}
+
+So we represent goal states as the states giving the highest reward,
+with other states giving less reward according to some structure, which
+we'll discuss later. First, how do we use these rewards to determine
+values, which is what we need to derive policies \ldots{}
+\end{frame}
+
+\begin{frame}{Returns and Finite Time Horizons}
+\phantomsection\label{returns-and-finite-time-horizons}
+As the agent traverses an MDP along some trajectory, it collects reward
+on each state transition. The total reward collected in a trajectory is
+called the \textbf{return}, \(G\). The simplest way to calculate return
+is simple addition. For a trajectory of length \(T\):
+
+\[
+G_t \doteq r_{t+1} + r_{t+2} + \cdots + r_T
+\]
+
+With a finite horizon, there is an end time after which nothing happens,
+so if the end is time \(N\):
+
+\[
+V_{\tau}(s_0, a_0, r_1, s_1, a_1, \dots, r_{N+k}, s_{N+k}) = V_{\tau}(s_0, a_0, r_1, s_1, a_1, \dots,  r_N, s_{N})
+\]
+
+Finite time horizons lead to \textbf{nonstationary} policies, i.e.,
+policies that differ based on time. Consider that happens if \(N=3\) vs
+\(N > 6\) in our \(4 \times 3\) grid world:
+
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_01_a-4x3-grid-world.pdf}}
+
+\end{center}
+
+The shorter time horizon forces the agent to risk ending up in state (4,
+2), whereas the longer horizon allows the agent to take the long way
+around to the goal state.
+\end{frame}
+
+\begin{frame}{Infinite Horizon Return}
+\phantomsection\label{infinite-horizon-return}
+An infinite horizon gives us a \textbf{stationary} policy, because there
+is no time limit influencing the decision. From the current time step
+\(t\):
+
+\[
+G_t = r_{t+1} + r_{t+2} + \cdots + r_{t+k+1} =  \sum_{k = 0}^\infty \gamma^k r_{t+k+1}
+\]
+
+\(\gamma\) is the \emph{discount factor} which says how much we discount
+future rewards. With \(\gamma < 1\) it decays toward zero.
+
+If rewards are bounded by \(\pm R_{max}\) and \(0 \le \gamma < 1\),
+then, using the standard sum of an infinite geometric series.
+
+\[
+V_{\tau}(s_0, a_0, r_1, s_1, a_1, r_2, \dots, s_{t-1}, a_{t-1}, r_t, s_t) = \sum_{t=0}^{\infty} \gamma^t R(s_t, a_t, s_{t+1}) \le \sum_{t=0}^{\infty} \gamma^t R_{max} = \frac{R_{max}}{1-\gamma} \tag{17.1}
+\]
+
+So the values of infinite trajectories are finite.
+
+\begin{itemize}
+\tightlist
+\item
+  We will use inifinite horizon models.
+\item
+  We can convert any finite horizon model into a infinite one by making
+  terminal states \emph{absorbing states}, which include a single action
+  that loops to the absorbing state and gives zero reward.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{State Values and Optimal Policies}
+\phantomsection\label{state-values-and-optimal-policies}
+The expected value of executing \(\pi\) in starting in state \(s\) is:
+
+\[
+V^{\pi}(s) = \mathbb{E} \left[ \sum_{t=0}^{\infty} \gamma^t R(s_t, \pi(s_t), s_{t+1}) \right]
+\]
+
+The expectation \(\mathbb{E}\) is with respect to the probability
+distribution over state sequences determined by \(s\) and \(\pi\).
+Remember that \(\pi(s_t)\) returns an action \(a_t\). One or more
+policies, \(\pi^*\), will have the highest of all utilities.
+
+\[
+\pi^*(s) = \argmax_{a \in A(s)} \sum_{s'} Pr(s' \mid s, a) \left[ R(s, a, s') + \gamma V(s') \right] \tag{17.4}
+\]
+
+The utility of a state is the expected reward for the next transition
+plus the discounted utility of the next state, assuming that the agent
+chooses the optimal action. That is, the utility of a state is given by
+
+\[
+V(s) = \max_{a \in A(s)} \sum_{s'} Pr(s' \mid s, a) \left[ R(s, a, s') + \gamma V(s') \right] \tag{17.5}
+\]
+
+This is the \textbf{Bellman equation}, which is the basis of the value
+iteration algorithm we'll see soon.
+\end{frame}
+
+\begin{frame}{Bellman Equation Example}
+\phantomsection\label{bellman-equation-example}
+\begin{columns}[T]
+\begin{column}{0.3\linewidth}
+What is the optimal action in state (1, 1) given the following state
+values?
+\end{column}
+
+\begin{column}{0.7\linewidth}
+\begin{center}
+
+\includegraphics[width=\linewidth,height=0.4\textheight,keepaspectratio]{aima-fig-17_03-state-values.pdf}
+
+\end{center}
+\end{column}
+\end{columns}
+
+We plug the state values above and \(\gamma = 1\) into:
+
+\vspace{-.2in}
+\begin{align*}
+\max left( &[0.8(-0.04 + \gamma V(1,2)) + 0.1(-0.04 + \gamma V(2,1)) + 0.1(-0.04 + \gamma V(1,1))], \tag{Up} \\
+           &[0.9(-0.04 + \gamma V(1,1)) + 0.1(-0.04 + \gamma V(1,2))], \tag{Left} \\
+           &[0.9(-0.04 + \gamma V(1,1)) + 0.1(-0.04 + \gamma V(2,1))], \tag{Down} \\
+           &[0.8(-0.04 + \gamma V(2,1)) + 0.1(-0.04 + \gamma V(1,2)) + 0.1(-0.04 + \gamma V(1,1))] \right) \tag{Right}
+\end{align*}
+
+which yields \(Up\) as the optimal action because \(Up\) is the action
+that maximizes \(V((1, 1))\).
+\end{frame}
+
+\begin{frame}{Action Values and Optimal Policies}
+\phantomsection\label{action-values-and-optimal-policies}
+\[
+V(s) = \max_{a} Q(s, a)
+\]
+
+The optimal action value function is:
+
+\[
+Q^*(s_t, a_t ) = \max_{\pi} \big( \mathbb{E} [G_t | s_t, a_t^{\pi}] \big)
+\]
+
+If we know \(Q^*\) we can use it to derive an optimal policy, \(\pi^*\):
+
+\[
+\pi^*(a_t | s_t ) \leftarrow \argmax_{a_t} \left( q^*(s_t, a_t ) \right)
+\]
+
+We'll see this idea when we solve MDPs using dynamic programming.
+\end{frame}
+
+\begin{frame}{Optimal Policies}
+\phantomsection\label{optimal-policies}
+Notice that in State (3, 1) there are two optimal actions:
+
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_02_a-optimal-policies.pdf}}
+
+\end{center}
+
+This results from the successor states having equal values, giving rise
+to multiple optimal policies.
+\end{frame}
+
+\begin{frame}{Reward Structures}
+\phantomsection\label{reward-structures}
+Notice how different reward structures for non-goal states influences
+the optimal policy:
+
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_02_b-optimal-policies-different-rewards.pdf}}
+
+\end{center}
+
+In general, negative rewards ``motivate'' the agent to seek the goal
+quickly.
+\end{frame}
+
+\begin{frame}{Representing MDPs}
+\phantomsection\label{representing-mdps}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_04-decision-network-robot-mdp.pdf}}
+
+\end{center}
+\end{frame}
+
+\begin{frame}{Bellman Value Update Rule}
+\phantomsection\label{bellman-value-update-rule}
+The value iteration algorithm initializes each state's value to a random
+value, then iteratively update these values by turning the Bellman
+equation into an update rule (the Bellman update):
+
+\begin{equation}\label{eqn:bellman-update}
+V_{i+1}(s) \leftarrow R(s) + \max_{a \in A} \sum_{s'} T(s, a, s') V_i(s')
+\end{equation}
+
+These updates are applied at the same time for all states, i.e., the
+values in iteration \(i+1\) are calculated from the values in iteration
+\(i\). The value iteration algorithm is shown in Algorithm
+\ref{alg:value-iteration}.
+
+\begin{algorithm}[H]
+  \caption{Value Iteration}\label{alg:value-iteration}
+  \begin{algorithmic}
+    \State $V \gets$ random initial values
+    \Repeat
+      \State $V' \gets V$
+      \For{each $s \in S$}
+        \State $V'(s) \gets R(s) + \max_{a \in A} \sum_{s'} T(s, a, s') V(s')$
+      \EndFor
+      \State $V \gets V'$
+    \Until $V$ changes by a sufficiently small amount
+  \end{algorithmic}
+\end{algorithm}
+\end{frame}
+
+\begin{frame}{Value Iteration Algorithm}
+\phantomsection\label{value-iteration-algorithm}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_06-value-iteration-algorithm.pdf}}
+
+\end{center}
+\end{frame}
+
+\begin{frame}{Value Iteration Converges Quickly}
+\phantomsection\label{value-iteration-converges-quickly}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_07_a-value-estimates-vs-iterations-plot.pdf}}
+
+\end{center}
+\end{frame}
+
+\begin{frame}{Policy Iteration}
+\phantomsection\label{policy-iteration}
+In policy iteration \cite{howard1960dynamic} we start with a random
+initial values and policy and alternate between two steps for each
+iteration \(i\):
+
+\begin{itemize}
+\item
+  \textbf{Policy evaluation.} Use policy \(\pi_i\) to calculate the
+  values of each state using the discounted current values of their
+  successor states. Since we are calculating the values under a
+  particular policy, we drop the \(\max\) operator:
+
+  \begin{equation}
+    V_{i+1}(s) = R(s) + \gamma \sum_{s'} T(s, a, s') V(s')
+    \end{equation}
+\item
+  \textbf{Policy improvement.} Calculate policy \(p_{i+1}\) using the
+  values calculated in the previous step.
+\end{itemize}
+
+When policy improvement does not change the policy, an optimal policy
+has been found and policy iteration terminates.
+
+Note that since the update equation used in policy evaluation is linear,
+we can use linear algebra to solve the set of simultaneous linear
+equations in \(O(n^3)\). This method works fine for smaller state spaces
+but may be too expensive for large state spaces. A solution to this
+problem is known as modified policy iteration
+\cite{van-nunen1976set,puterman1978modified}, which combines policy
+iteration with value iteration by using a bounded number of Bellman
+updates to perform the policy evaluation step.
+\end{frame}
+
+\begin{frame}{Policy Iteration Algorithm}
+\phantomsection\label{policy-iteration-algorithm}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_09-policy-iteration-algorithm.pdf}}
+
+\end{center}
+\end{frame}
+
+\begin{frame}{\(k\)-Armed Bandits}
+\phantomsection\label{k-armed-bandits}
+In Las Vegas, a \emph{one-armed bandit} is a slot machine with one. A
+\(k\)-armed bandit is \(k\) levers, each of which gives a sequence of
+rewards according to an unknown probability distribution. Problem: which
+arm should agent pull next?
+
+\begin{columns}[T]
+\begin{column}{0.5\linewidth}
+Many practical applications:
+
+\begin{itemize}
+\tightlist
+\item
+  deciding between \(k\) treatments to cure a disease,
+\item
+  deciding between \(k\) investments,
+\item
+  deciding between \(k\) research projects to fund,
+\item
+  deciding between \(k\) advertisements to show a web page visitor,
+\item
+  A/B testing.
+\end{itemize}
+\end{column}
+
+\begin{column}{0.5\linewidth}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_12_a-simple-bandit.pdf}}
+
+\end{center}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Optimal Bandit Policy via Gittins Index}
+\phantomsection\label{optimal-bandit-policy-via-gittins-index}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_12_b-general-bandit.pdf}}
+
+\end{center}
+
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_13-switch-mdp-restart-mdp.pdf}}
+
+\end{center}
+\end{frame}
+
+\begin{frame}{Bernoulli Bandit}
+\phantomsection\label{bernoulli-bandit}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_14-bernoulli-bandit.pdf}}
+
+\end{center}
+\end{frame}
+
+\begin{frame}{POMDP Value Iteration Algorithm}
+\phantomsection\label{pomdp-value-iteration-algorithm}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_16-pomdp-value-iteration-algorithm.pdf}}
+
+\end{center}
+\end{frame}
+
+\begin{frame}{Online POMDP Algorithms}
+\phantomsection\label{online-pomdp-algorithms}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_17-pomdp-expectimax-tree.pdf}}
+
+\end{center}
+\end{frame}
+
+\begin{frame}{POMDP Belief Updates}
+\phantomsection\label{pomdp-belief-updates}
+\begin{center}
+
+\pandocbounded{\includegraphics[keepaspectratio]{aima-fig-17_18-pomdp-belief-state-sequence.pdf}}
+
+\end{center}
+\end{frame}

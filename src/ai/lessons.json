@@ -383,19 +383,46 @@
         "exercises": [],
         "assignments": [
         ],
-        "videos": []
+        "videos": [],
+        "include_semester": false
     },
     {
-        "topic": "bandits-pomdps",
-        "slides": "[Bandits and POMDPs](@root/ai/slides/bandits-pomdps.pdf)",
+        "topic": "bandits",
+        "slides": "[Multi-Armed Bandits](@root/ai/slides/bandits.pdf)",
         "reading": [
-            "AIMA: 17.3-17.5"
+            "AIMA: 17.3",
+            "RLbook: 2"
         ],
         "exercises": [],
         "assignments": [
         ],
         "videos": []
     },
+    {
+        "topic": "mdps",
+        "slides": "[Markov Decision Processes](@root/ai/slides/mdps.pdf)",
+        "reading": [
+            "AIMA: 17.1-17.2, 17.4-17.5",
+            "RLbook: 3-4"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "model-free-rl",
+        "slides": "[Model-Free Reinforcement Learning](@root/ai/slides/model-free-rl.pdf)",
+        "reading": [
+            "AIMA: 22",
+            "RLbook: 6"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+
     {
         "topic": "multiagent-systems",
         "slides": "[Multi-Agent Systems](@root/ai/slides/multiagent-systems.pdf)",

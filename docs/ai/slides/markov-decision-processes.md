@@ -59,13 +59,13 @@ $$
 \pi(s)
 $$
 
-The policy can also be stochastic, $\pi(s \mid a)$, but for now we'll assume deterministic policies.
+The policy can also be stochastic, $\pi(a \mid s)$, but for now we'll assume deterministic policies.
 
 By the maximum expected utility principle, for a policy to be optimal the action it recommends for each state must have the highest **value** among all the action choices in that state.
 
 > The book uses state/action *utility* instead state/action *value*, but this is inconsistent with the book's previous definition of utility and its relationsip to preformance measures, and it's inconsistent with the terminology used by the reinforcement learning community, which is where this is headed.  So we'll use *value* instead of *utility*.
 
-## Values
+## Values and Trajectories
 
 Since we're in the realm of sequential decisions, the value of an action depends on the *trajectory* -- the sequence of states and actions -- to which it leads.
 
@@ -129,7 +129,7 @@ The shorter time horizon forces the agent to risk ending up in state (4, 2), whe
 
 ## Infinite Horizon Return
 
-An infinite horizon gives us a **stationary** policy, because there is no time limit influencing the decision.  For $k$ steps from the current time step:
+An infinite horizon gives us a **stationary** policy, because there is no time limit influencing the decision.  From the current time step $t$:
 
 ```{=latex}
 \[
@@ -142,7 +142,7 @@ $\gamma$ is the *discount factor* which says how much we discount future rewards
 If rewards are bounded by $\pm R_{max}$ and $0 \le \gamma < 1$, then, using the standard sum of an infinite geometric series.
 
 $$
-V_{\tau}(s_0, a_0, r_1, s_1, a_1, r_2, \dots, s_{t-1}, a_{t-1}, r_t) = \sum_{t=0}^{\infty} \gamma^t R(s_t, a_t, s_{t+1}) \le \sum_{t=0}^{\infty} \gamma^t R_{max} = \frac{R_{max}}{1-\gamma} \tag{17.1}
+V_{\tau}(s_0, a_0, r_1, s_1, a_1, r_2, \dots, s_{t-1}, a_{t-1}, r_t, s_t) = \sum_{t=0}^{\infty} \gamma^t R(s_t, a_t, s_{t+1}) \le \sum_{t=0}^{\infty} \gamma^t R_{max} = \frac{R_{max}}{1-\gamma} \tag{17.1}
 $$
 
 So the values of infinite trajectories are finite.
@@ -159,19 +159,20 @@ V^{\pi}(s) = \mathbb{E} \left[ \sum_{t=0}^{\infty} \gamma^t R(s_t, \pi(s_t), s_{
 $$
 
 The expectation $\mathbb{E}$ is with respect to the probability distribution over state sequences
-determined by $s$ and $\pi$.  Remember that $\pi(s_t)$ returns an action $a_t$.  One or more policies, $\pi^*$, will have the highest of all utilities.
+determined by $s$ and $\pi$.  Remember that $\pi(s_t)$ returns an action $a_t$.  One or more policies, $\pi^*$, will have the highest of all values.
 
 $$
 \pi^*(s) = \argmax_{a \in A(s)} \sum_{s'} Pr(s' \mid s, a) \left[ R(s, a, s') + \gamma V(s') \right] \tag{17.4}
 $$
 
-The utility of a state is the expected reward for the next transition plus the discounted utility of the next state, assuming that the agent chooses the optimal action. That is, the utility of a state is given by
+The value of a state is the expected reward for the next transition plus the discounted utility of the next state, assuming that the agent chooses the optimal action. That is, the utility of a state is given by
 
 $$
 V(s) = \max_{a \in A(s)} \sum_{s'} Pr(s' \mid s, a) \left[ R(s, a, s') + \gamma V(s') \right] \tag{17.5}
 $$
 
 This is the **Bellman equation**, which is the basis of the value iteration algorithm we'll see soon.
+
 
 ## Bellman Equation Example
 
@@ -199,15 +200,14 @@ We plug the state values above and $\gamma = 1$ into:
 ```{=latex}
 \vspace{-.2in}
 \begin{align*}
-\max ( &[0.8(-0.04 + \gamma V(1,2)) + 0.1(-0.04 + \gamma V(2,1)) + 0.1(-0.04 + \gamma V(1,1))], \tag{Up} \\
-       &[0.9(-0.04 + \gamma V(1,1)) + 0.1(-0.04 + \gamma V(1,2))], \tag{Left} \\
-       &[0.9(-0.04 + \gamma V(1,1)) + 0.1(-0.04 + \gamma V(2,1))], \tag{Down} \\
-       &[0.8(-0.04 + \gamma V(2,1)) + 0.1(-0.04 + \gamma V(1,2)) + 0.1(-0.04 + \gamma V(1,1))] \tag{Right})
+\max \Big( &[0.8(-0.04 + \gamma V(1,2)) + 0.1(-0.04 + \gamma V(2,1)) + 0.1(-0.04 + \gamma V(1,1))], \tag{Up} \\
+            &[0.9(-0.04 + \gamma V(1,1)) + 0.1(-0.04 + \gamma V(1,2))], \tag{Left} \\
+            &[0.9(-0.04 + \gamma V(1,1)) + 0.1(-0.04 + \gamma V(2,1))], \tag{Down} \\
+            &[0.8(-0.04 + \gamma V(2,1)) + 0.1(-0.04 + \gamma V(1,2)) + 0.1(-0.04 + \gamma V(1,1))] \Big) \tag{Right}
 \end{align*}
 ```
 
 which yields $Up$ as the optimal action because $Up$ is the action that maximizes $V((1, 1))$.
-
 
 ## Action Values and Optimal Policies
 
@@ -219,15 +219,15 @@ The optimal action value function is:
 
 ```{=latex}
 \[
-q^*(s_t, a_t ) = \max_{\pi} \big( \mathbb{E} [G_t | s_t, a_t \pi] \big)
+Q^*(s_t, a_t ) = \max_{\pi} \big( \mathbb{E} [G_t | s_t, a_t^{\pi}] \big)
 \]
 ```
 
-If we know $q^*$ we can use it to derive $\pi^*$:
+If we know $Q^*$ we can use it to derive an optimal policy, $\pi^*$:
 
 ```{=latex}
 \[
-\pi^*(a_t | s_t ) \leftarrow \argmax_{a_t} \big( q^*(s_t, a_t ) \big)
+\pi^*(a_t | s_t ) \leftarrow \argmax_{a_t} \left( Q^*(s_t, a_t ) \right)
 \]
 ```
 
@@ -388,7 +388,7 @@ In policy iteration \cite{howard1960dynamic} we start with a random initial valu
     V_{i+1}(s) = R(s) + \gamma \sum_{s'} T(s, a, s') V(s')
     \end{equation}
 
-- **Policy improvement.** Calculate policy $p_{i+1}$ using the values calculated in the previous step.
+- **Policy improvement.** Calculate policy $\pi_{i+1}$ using the values calculated in the previous step.
 
 When policy improvement does not change the policy, an optimal policy has been found and policy iteration terminates.
 
@@ -431,15 +431,45 @@ Note that since the update equation used in policy evaluation is linear, we can 
 
 ## $k$-Armed Bandits
 
+In Las Vegas, a *one-armed bandit* is a slot machine with one.  A $k$-armed bandit is $k$ levers, each of which gives a sequence of rewards according to an unknown probability distribution. Problem: which arm should agent pull next?
+
+:::: {.columns}
+::: {.column width="60%"}
+
+Many practical applications:
+
+- deciding between $k$ treatments to cure a disease,
+- deciding between $k$ investments,
+- deciding between $k$ research projects to fund,
+- deciding between $k$ advertisements to show a web page visitor,
+- A/B testing.
+
+:::
+::: {.column width="45%"}
+
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-17_12-bandits.pdf)
+![](aima-fig-17_12_a-simple-bandit.pdf)
 ```{=latex}
 \end{center}
 ```
 
-## Markov Decision Processes
+:::
+::::
+
+## Optimal Bandit Policy via Gittins Index
+
+
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-17_12_b-general-bandit.pdf)
+```{=latex}
+\end{center}
+```
+
 
 ```{=latex}
 \begin{center}
@@ -451,13 +481,27 @@ Note that since the update equation used in policy evaluation is linear, we can 
 
 ## Bernoulli Bandit
 
+:::: {.columns}
+::: {.column width="50%"}
+
+
+:::
+::: {.column width="50%"}
+
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-17_14-bernoulli-bandit.pdf)
+![](aima-fig-17_14_a-bernoulli-bandit-reward-process.pdf)
 ```{=latex}
 \end{center}
 ```
+
+:::
+::::
+
+## Approximately Optimal Bandit Policies
+
+
 
 <!--
 
