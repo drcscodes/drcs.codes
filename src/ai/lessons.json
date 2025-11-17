@@ -326,6 +326,9 @@
         "include_semester": false
     },
     {
+        "part": "Decision Making and Reinforcement Learning"
+    },
+    {
         "topic": "utility-theory",
         "slides": "[Utility Theory](@root/ai/slides/utility-theory.pdf)",
         "reading": [
@@ -334,8 +337,7 @@
         "exercises": [],
         "assignments": [
         ],
-        "videos": [],
-        "include_semester": false
+        "videos": []
     },
     {
         "topic": "decision-theory",
@@ -346,8 +348,29 @@
         "exercises": [],
         "assignments": [
         ],
-        "videos": [],
-        "include_semester": false
+        "videos": []
+    },
+    {
+        "topic": "multiagent-systems",
+        "slides": "[Multi-Agent Systems](@root/ai/slides/multiagent-systems.pdf)",
+        "reading": [
+            "AIMA: 18.1-18.2"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "collective-decisions",
+        "slides": "[Collective Decisions](@root/ai/slides/collective-decisions.pdf)",
+        "reading": [
+            "AIMA: 18.3-18.4"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
     },
     {
         "topic": "simple-decisions",
@@ -358,7 +381,8 @@
         "exercises": [],
         "assignments": [
         ],
-        "videos": []
+        "videos": [],
+        "include_semester": false
     },
     {
         "topic": "complex-decisions",
@@ -391,7 +415,7 @@
         "slides": "[Multi-Armed Bandits](@root/ai/slides/bandits.pdf)",
         "reading": [
             "AIMA: 17.3",
-            "RLbook: 2"
+            "RLAI: 2"
         ],
         "exercises": [],
         "assignments": [
@@ -400,10 +424,10 @@
     },
     {
         "topic": "mdps",
-        "slides": "[Markov Decision Processes](@root/ai/slides/mdps.pdf)",
+        "slides": "[Markov Decision Processes](@root/rl/slides/mdps.pdf)",
         "reading": [
-            "AIMA: 17.1-17.2, 17.4-17.5",
-            "RLbook: 3-4"
+            "AIMA: 17.1, 17.4-17.5",
+            "RLAI: 3-4"
         ],
         "exercises": [],
         "assignments": [
@@ -411,34 +435,23 @@
         "videos": []
     },
     {
-        "topic": "model-free-rl",
-        "slides": "[Model-Free Reinforcement Learning](@root/ai/slides/model-free-rl.pdf)",
+        "topic": "dp",
+        "slides": "[Dynamic Programming](@root/rl/slides/dp.pdf)",
+        "reading": [
+            "AIMA: 17.2",
+            "RLAI: 4"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "td-learning",
+        "slides": "[Temporal-Difference Learning](@root/rl/slides/td-learning.pdf)",
         "reading": [
             "AIMA: 22",
-            "RLbook: 6"
-        ],
-        "exercises": [],
-        "assignments": [
-        ],
-        "videos": []
-    },
-
-    {
-        "topic": "multiagent-systems",
-        "slides": "[Multi-Agent Systems](@root/ai/slides/multiagent-systems.pdf)",
-        "reading": [
-            "AIMA: 18.1-18.2"
-        ],
-        "exercises": [],
-        "assignments": [
-        ],
-        "videos": []
-    },
-    {
-        "topic": "collective-decisions",
-        "slides": "[Collective Decisions](@root/ai/slides/collective-decisions.pdf)",
-        "reading": [
-            "AIMA: 18.3-18.4"
+            "RLAI: 6"
         ],
         "exercises": [],
         "assignments": [
@@ -447,6 +460,20 @@
     },
     {
         "part": "Machine Learning"
+    },
+    {
+        "topic": "machine-learning",
+        "slides": "[Machine Learning](@root/ai/slides/machine-learning.pdf)",
+        "reading": [
+            "AIMA: 19.1-19.6"
+        ],
+        "exercises": [],
+        "assignments": [
+            "Due: [PA3](pa3.html)",
+            "Assigned: [PA4](pa4.html)"
+        ],
+        "videos": [],
+        "include_semester": false
     },
     {
         "topic": "supervised-learning",
@@ -462,7 +489,7 @@
         "videos": []
     },
     {
-        "topic": "reinforcement-learning1",
+        "topic": "reinforcement-learning",
         "slides": "[Reinforcement Learning](@root/ai/slides/reinforcement-learning.pdf)",
         "reading": [
             "AIMA: 22"
@@ -470,18 +497,8 @@
         "exercises": [],
         "assignments": [
         ],
-        "videos": []
-    },
-    {
-        "topic": "reinforcement-learning2",
-        "slides": "[Reinforcement Learning](@root/ai/slides/reinforcement-learning.pdf)",
-        "reading": [
-            "AIMA: 22"
-        ],
-        "exercises": [],
-        "assignments": [
-        ],
-        "videos": []
+        "videos": [],
+        "include_semester": false
     },
     {
         "topic": "statistical-learning",
