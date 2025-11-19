@@ -14,17 +14,111 @@ header-includes:
     ```
 ---
 
+## Temporal-Difference Learning
+
+- DP Review
+
+    - Dynamic programming
+    - Generalized policy iteration (GPI)
+
+- Model-free control
+
+    - Monte Carlo control
+    - Temporal-difference learning
+
+## Dynamic Programming
+
+Dynamic programming algorithms, as well as RL algorithms in general, contain two phases (combined in value iteration):
+
+- Prediction: estimate the value function
+- Control: computing or approximating optimal policies
+
+
+```{=latex}
+\begin{center}
+```
+![](rlbook-04-09-value-policy-evaluation-improvement-loop.pdf)
+```{=latex}
+\end{center}
+```
+
+## Generalized Policy Iteration
+
+In policy iteration we sweep entire state space in each step.
+
+```{=latex}
+\begin{center}
+```
+![](rlbook-04-10-value-policy-convergence-diagram.pdf)
+```{=latex}
+\end{center}
+```
+
+In generalized policy iteration (GPI) we interleave prediction and control at arbitrary granularity.
+
+- As long as we visit every state, still assured of convergence.
+
+## Monte Carlo Control
+
+:::: {.columns}
+::: {.column width="60%"}
+
+```{=latex}
+\begin{center}
+```
+![](rlbook-05-05-evaluation-improvement-loop.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="40%"}
+
+```{=latex}
+\begin{center}
+```
+![](rlbook-05-03-monte-carlo-full-trajectory-backup.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+## Temporal-Difference Learning
+
+Combination of dynamic programming and Monte Carlo ideas.
+
+- Like Monte Carlo, learn directly from experience without a model of the environment.
+- Like dynamic programming, update estimates based in part on other learned estimates, without waiting for a final outcome (bootstrap).
+
+
 ## TD Prediction
+
+Use experience following a policy to update estimate of $V$, namely $v_{pi}$.
+
+Monte Carlo methods wait until the return following the visit is known, then use that return as a target for $V(S_t)$:
 
 $$
 V (S_t) \gets V (S_t) + \alpha \left[ G_t - V(S_t) \right] \tag{6.1}
 $$
 
+TD methods only until the next time step. At time $t + 1$ they immediately form a target and make a useful update using the observed reward $R_{t+1}$ and the estimate $V(S_{t+1})$
+
+A simple TD method makes the update:
+
 $$
-V (S_t) \gets V (S_t) + \alpha \left[ T_{t+1} + V(S_{t+1}) - \gamma V(S_t) \right]
+V (S_t) \gets V (S_t) + \alpha \left[ R_{t+1} + V(S_{t+1}) - \gamma V(S_t) \right]
 $$
 
+immediate on transition to $S_{t+1}$ and receiving $R_{t+1}$.
+
+- Target for Monte Carlo update is $G_t$.
+- Target for TD update is $R_{t+1} + \gamma V(S_{t+1})$
+
 ## Tabular TD(0) Algorithm
+
+One-step TD is called $TD(0)$, which is a special case of $TD(\lambda)$ and $n$-step methods.
 
 ```{=latex}
 \begin{center}
@@ -34,7 +128,25 @@ $$
 \end{center}
 ```
 
-## TD(0) Backup
+## TD Error
+
+:::: {.columns}
+::: {.column width="70%"}
+
+Recall TD update:
+
+$$
+V (S_t) \gets V (S_t) + \alpha \left[ R_{t+1} + V(S_{t+1}) - \gamma V(S_t) \right]
+$$
+
+The quantity in brackets is called *TD error* -- the difference in the estimate value of $S$ at time $t$ and $t+1$:
+
+$$
+\delta \doteq R_{t+1} + V(S_{t+1}) - \gamma V(S_t)
+$$
+
+:::
+::: {.column width="30%"}
 
 ```{=latex}
 \begin{center}
@@ -43,6 +155,11 @@ $$
 ```{=latex}
 \end{center}
 ```
+
+:::
+::::
+
+<!--
 
 ## Example: Driving Home
 
@@ -110,6 +227,8 @@ What are the value estimates for $A$ and $B$?
 \end{center}
 ```
 
+-->
+
 ## Sarsa: On-policy TD Control
 
 ```{=latex}
@@ -168,6 +287,8 @@ $$
 Q(s_t, a_t) \gets Q(s_t, a_t) + \alpha \left[ R_{t+1} + \gamma \max_{a} Q(s_{t+1}, a) - Q(S_t, A_t) \right]
 $$
 
+Q-learning is off-policy because the value update is made using $\max_a$ rather than the $a$ recommended by the policy being followed.
+
 ## Q-Learning Algorithm
 
 ```{=latex}
@@ -177,6 +298,8 @@ $$
 ```{=latex}
 \end{center}
 ```
+
+<!--
 
 ## Example: Cliff Walking
 
@@ -265,3 +388,5 @@ Q(S_t, A_t) &\gets Q(s_t, A_t) + \alpha \left[ R_{t+1} + \gamma \mathbb{E}_{\pi}
 ```{=latex}
 \end{center}
 ```
+
+-->
