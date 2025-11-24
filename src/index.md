@@ -6,6 +6,8 @@ title: Dr. CS Codes
 - [Artificial Intelligence](@root/ai/lessons.html)
     - [KSU CS 3642](@root/ai/ksu/cs3642/syllabus.html)
     - [KSU CS 8375](@root/ai/ksu/cs8375/syllabus.html)
+- [Machine Learning](@root/ml/lessons.html)
+- [Reinforcement Learning](@root/rl/lessons.html)
 - [Deep Learning](@root/deep-learning/lessons.html)
     - [KSU CS 4277](@root/deep-learning/ksu/cs4277/syllabus.html)
 - [Databases](@root/databases/lessons.html)

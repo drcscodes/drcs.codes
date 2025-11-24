@@ -1,0 +1,304 @@
+[
+    {
+        "part": "Tabular Solution Methods"
+    },
+    {
+        "topic": "intro-course",
+        "slides": "Introduction to the Course",
+        "reading": [
+            "[Syllabus](syllabus.html)",
+            "[Resources](resources.html)",
+            "[Meet Prof. Simpkins](https://cs1331.github.io/slides/meet-simpkins.html)"
+        ],
+        "exercises": [
+
+        ],
+        "assignments": [
+            "Assigned: [PA0](pa0.html)"
+        ],
+        "videos": []
+    },
+    {
+        "topic": "intro-rl",
+        "slides": "[Introduction to RL](@root/rl/slides/intro-rl.pdf)",
+        "reading": [
+            "RLAI: 1",
+            "MARL: 1"
+        ],
+        "exercises": [
+        ],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "bandits",
+        "slides": "[Multi-Armed Bandits](@root/rl/slides/bandits.pdf)",
+        "reading": [
+            "RLAI: 2"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "mdps",
+        "slides": "[Markov Decision Processes](@root/rl/slides/mdps.pdf)",
+        "reading": [
+            "RLAI: 3"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "dp",
+        "slides": "[Dynamic Programming](@root/rl/slides/dp.pdf)",
+        "reading": [
+            "RLAI: 4"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "monte-carlo-control",
+        "slides": "[Monte Carlo Control](@root/rl/slides/monte-carlo-control.pdf)",
+        "reading": [
+            "RLAI: 6"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "td-learning",
+        "slides": "[Temporal-Difference Learning](@root/rl/slides/td-learning.pdf)",
+        "reading": [
+            "RLAI: 6"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "n-step-bootstrapping",
+        "slides": "[n-step Bootstrapping](@root/rl/slides/n-step-bootstrapping.pdf)",
+        "reading": [
+            "RLAI: 7"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "tabular-planning-learning",
+        "slides": "[Tabular Planning and Learning](@root/rl/slides/tabular-planning-learning.pdf)",
+        "reading": [
+            "RLAI: 8"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "part": "Function Approximation and Deep Reinforcement Learning"
+    },
+    {
+        "topic": "on-policy-prediction",
+        "slides": "[On-policy Prediction](@root/rl/slides/on-policy-prediction.pdf)",
+        "reading": [
+            "RLAI: 9"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "on-policy-control",
+        "slides": "[On-policy Control](@root/rl/slides/on-policy-control.pdf)",
+        "reading": [
+            "RLAI: 10"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "off-policy-methods",
+        "slides": "[Off Policy Methods](@root/rl/slides/off-policy-methods.pdf)",
+        "reading": [
+            "RLAI: 11"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "eligibility-traces",
+        "slides": "[Eligibility Traces](@root/rl/slides/eligibility-traces.pdf)",
+        "reading": [
+            "RLAI: 12"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "policy-gradient-methods",
+        "slides": "[Policy Gradient Methods](@root/rl/slides/policy-gradient-methods.pdf)",
+        "reading": [
+            "RLAI: 13"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "deep-learning",
+        "slides": "[Deep Learning](@root/rl/slides/deep-learning.pdf)",
+        "reading": [
+            "MARL: 7"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "deep-reinforcement-learning",
+        "slides": "[Deep Reinforcement Learning](@root/rl/slides/deep-reinforcement-learning.pdf)",
+        "reading": [
+            "MARL: 8"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "part": "Multi-Agent Reinforcement Learning"
+    },
+    {
+        "topic": "games",
+        "slides": "[Games](@root/rl/slides/games.pdf)",
+        "reading": [
+            "MARL: 3"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "game-solutoins",
+        "slides": "[Game Solutions](@root/rl/slides/game-solutions.pdf)",
+        "reading": [
+            "MARL: 4"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "marl-games",
+        "slides": "[MARL in Games](@root/rl/slides/marl-games.pdf)",
+        "reading": [
+            "MARL: 5"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "marl-algorithms",
+        "slides": "[MARL Algorithms](@root/rl/slides/marl-algorithms.pdf)",
+        "reading": [
+            "MARL: 6"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "deep-marl1",
+        "slides": "[Deep MARL](@root/rl/slides/deep-marl.pdf)",
+        "reading": [
+            "MARL: 9"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "deep-marl2",
+        "slides": "[Deep MARL](@root/rl/slides/deep-marl.pdf)",
+        "reading": [
+            "MARL: 9"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "deep-marl3",
+        "slides": "[Deep MARL](@root/rl/slides/deep-marl.pdf)",
+        "reading": [
+            "MARL: 9"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "deep-marl4",
+        "slides": "[Deep MARL](@root/rl/slides/deep-marl.pdf)",
+        "reading": [
+            "MARL: 9"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "practical-deep-marl",
+        "slides": "[Practical Deep MARL](@root/rl/slides/practical-deep-marl.pdf)",
+        "reading": [
+            "MARL: 10"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "marl-envs",
+        "slides": "[MARL Environments](@root/rl/slides/marl-envs.pdf)",
+        "reading": [
+            "MARL: 11"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    }
+]

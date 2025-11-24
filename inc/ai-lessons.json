@@ -284,9 +284,7 @@
         "slides": "[Causality](@root/ai/slides/causality.pdf)",
         "reading": [
             "AIMA: 13.5",
-            "[Causality](https://bayes.cs.ucla.edu/BOOK-2K/)",
-            "[Elements of Causal Inference](https://mitp-content-server.mit.edu/books/content/sectbyfn?collid=books_pres_0&id=11283&fn=11283.pdf)",
-            "[Causal ML Book](https://causalml-book.org/)"
+            "[Causality]()"
         ],
         "exercises": [],
         "assignments": [
@@ -326,48 +324,6 @@
         ],
         "videos": [],
         "include_semester": false
-    },
-    {
-        "part": "Machine Learning"
-    },
-    {
-        "topic": "machine-learning",
-        "slides": "[Machine Learning](@root/ml/slides/machine-learning.pdf)",
-        "reading": [
-            "PMLAI: 1",
-            "AIMA: 19.1-19.6"
-        ],
-        "exercises": [],
-        "assignments": [
-            "Due: [PA3](pa3.html)",
-            "Assigned: [PA4](pa4.html)"
-        ],
-        "videos": [],
-        "include_semester": false
-    },
-    {
-        "topic": "supervised-learning",
-        "slides": "[Supervised Learning](@root/ai/slides/supervised-learning.pdf)",
-        "reading": [
-            "AIMA: 19.1-19.6, 21.1-21.3"
-        ],
-        "exercises": [],
-        "assignments": [
-            "Due: [PA3](pa3.html)",
-            "Assigned: [PA4](pa4.html)"
-        ],
-        "videos": []
-    },
-    {
-        "topic": "statistical-learning",
-        "slides": "[Statistical Learning](@root/ai/slides/statistical-learning.pdf)",
-        "reading": [
-            "AIMA: 20"
-        ],
-        "exercises": [],
-        "assignments": [
-        ],
-        "videos": []
     },
     {
         "part": "Decision Making and Reinforcement Learning"
@@ -417,11 +373,49 @@
         "videos": []
     },
     {
+        "topic": "simple-decisions",
+        "slides": "[Simple Decisions](@root/ai/slides/simple-decisions.pdf)",
+        "reading": [
+            "AIMA: 16"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": [],
+        "include_semester": false
+    },
+    {
+        "topic": "complex-decisions",
+        "slides": "[Complex Decisions](@root/ai/slides/complex-decisions.pdf)",
+        "reading": [
+            "AIMA: 17",
+            "[AIMA Ch 17 Slides](@root/ai/slides/aima_4e_chapter17_slides.pdf)"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": [],
+        "include_semester": false
+    },
+    {
+        "topic": "markov-decision-processes",
+        "slides": "[Markov Decision Processes](@root/ai/slides/markov-decision-processes.pdf)",
+        "reading": [
+            "AIMA: 17",
+            "[AIMA Ch 17 Slides](@root/ai/slides/aima_4e_chapter17_slides.pdf)"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": [],
+        "include_semester": false
+    },
+    {
         "topic": "bandits",
         "slides": "[Multi-Armed Bandits](@root/ai/slides/bandits.pdf)",
         "reading": [
-            "RLAI: 2",
-            "AIMA: 17.3"
+            "AIMA: 17.3",
+            "RLAI: 2"
         ],
         "exercises": [],
         "assignments": [
@@ -432,8 +426,8 @@
         "topic": "mdps",
         "slides": "[Markov Decision Processes](@root/rl/slides/mdps.pdf)",
         "reading": [
-            "RLAI: 3",
-            "AIMA: 17.1, 17.4-17.5"
+            "AIMA: 17.1, 17.4-17.5",
+            "RLAI: 3-4"
         ],
         "exercises": [],
         "assignments": [
@@ -458,6 +452,59 @@
         "reading": [
             "AIMA: 22",
             "RLAI: 6"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "part": "Machine Learning"
+    },
+    {
+        "topic": "machine-learning",
+        "slides": "[Machine Learning](@root/ai/slides/machine-learning.pdf)",
+        "reading": [
+            "AIMA: 19.1-19.6"
+        ],
+        "exercises": [],
+        "assignments": [
+            "Due: [PA3](pa3.html)",
+            "Assigned: [PA4](pa4.html)"
+        ],
+        "videos": [],
+        "include_semester": false
+    },
+    {
+        "topic": "supervised-learning",
+        "slides": "[Supervised Learning](@root/ai/slides/supervised-learning.pdf)",
+        "reading": [
+            "AIMA: 19.1-19.6, 21.1-21.3"
+        ],
+        "exercises": [],
+        "assignments": [
+            "Due: [PA3](pa3.html)",
+            "Assigned: [PA4](pa4.html)"
+        ],
+        "videos": []
+    },
+    {
+        "topic": "reinforcement-learning",
+        "slides": "[Reinforcement Learning](@root/ai/slides/reinforcement-learning.pdf)",
+        "reading": [
+            "AIMA: 22"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": [],
+        "include_semester": false
+    },
+    {
+        "topic": "statistical-learning",
+        "slides": "[Statistical Learning](@root/ai/slides/statistical-learning.pdf)",
+        "reading": [
+            "AIMA: 20"
         ],
         "exercises": [],
         "assignments": [

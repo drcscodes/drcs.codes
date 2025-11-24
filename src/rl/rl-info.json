@@ -1,0 +1,33 @@
+{
+    "url": "https://drcs.codes/ai/ksu/cs3642/schedule.html",
+    "number": "CS XXXX",
+    "title": "Reinforcement Learning",
+    "description": "",
+    "credit_hours": "3-0-3",
+    "learning_outcomes": [
+    ],
+    "grading": [
+        "Programming assignments: 20%",
+        "Exams: 80%"
+    ],
+    "assignments": [
+        "3-5 Programming assignments (PA)",
+        "Midterm Exam",
+        "Final Exam"
+    ],
+    "prerequisites": [
+        "CS 3642 Artificial Intelligence"
+    ],
+    "corequisites": [
+    ],
+    "required_materials": [
+        "RLAI: Reinforcement Learning: An Introduction [http://incompleteideas.net/book/the-book.html](http://incompleteideas.net/book/the-book.html)"
+    ],
+    "recommended_materials": [
+        "AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/).  US or Global Edition",
+        "PMLAI: Probabilistic Machine Learning: An Introduction [https://probml.github.io/pml-book/book1.html](https://probml.github.io/pml-book/book1.html)"
+    ],
+    "technology_requirements": [
+        "Computer capable of accessing the internet and running compilers, interpreters, and text editors"
+    ]
+}
