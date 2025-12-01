@@ -16,8 +16,30 @@ header-includes:
 
 ## Multiagent Systems
 
-- Multiagent environments
-- (Noncooperative) game theory
+:::: {.columns}
+::: {.column width="50%"}
+
+```{=latex}
+\begin{center}
+```
+![](mas-book.jpg){height="80%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="50%"}
+
+```{=latex}
+\begin{center}
+```
+![](marl-book.jpg){height="80%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
 
 ## Multiagent Environments
 
@@ -266,11 +288,13 @@ All players take action that are chosen simultaneously with no knowledge of othe
 
 **Normal form game** defined by:
 
-- **Players** or agents who will be making decisions. Two-player games have received the most attention, although n-player games for $n > 2$ are also common. We give players capitalized names, like $Ali$ and $Bo$ or $O$ and $E$.
+- **Players** (agents) making decisions. Two-player games most studied, but games for $n > 2$ also common. Players have capitalized names, like $Ali$ and $Bo$ or $O$ and $E$.
 
-- **Actions** that the players can choose. We will give actions lowercase names, like one or testify. The players may or may not have the same set of actions available.
+- **Actions** the players choose. Actions have lowercase names, like $one$ or $testify$. Players may have same or different sets of actions.
 
-- **Payoff function** that gives the utility to each player for each combination of actions by all the players. For two-player games, the payoff function for a player can be represented by a matrix in which there is a row for each possible action of one player, and a column for each possible choice of the other player: a chosen row and a chosen column define a matrix cell, which is labeled with the payoff for the relevant player. In the two- player case, it is conventional to combine the two matrices into a single **payoff matrix**, in which each cell is labeled with payoffs for both players.
+- **Payoff function** that gives the utility to each player for each combination of actions by all the players.
+
+    - For two-player games, payoff function can be represented by a matrix in which there is a row for each possible action of one player, and a column for each possible choice of the other player: a chosen row and a chosen column define a matrix cell, which is labeled with the payoff for the relevant player. In the two- player case, it is conventional to combine the two matrices into a single **payoff matrix**, in which each cell is labeled with payoffs for both players.
 
 
 ## Example: Two-Finger Morra
@@ -307,6 +331,311 @@ A **solution concept** is a way of choosing actions that take other players' act
 - **Outcome**: a numeric value for each player.  For mixed strategies, this is expected utility.
 
 Solution concepts define rationality in games.
+
+## The Prisoner's Dilemma[^PD]
+
+Two prisoners, $A$ and $B$, suspected of committing a crime together are taken to separate interrogation rooms, and each can either "confess" to the crime (a.k.a. "cooperate") or "deny" it (a.k.a. "defect").
+
+- If both prisoners confess, each gets a 1-year sentence.
+- If both prisoners deny, each gets a 3-year sentence
+- If one player denies and the other confesses, the denier (or "sucker") gets 5 years and the confessors gets 0 years.
+
+The game can be summarized in the following payoff matrix (row player's payoff is listed first):
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+       & B: c         & B: d         \\\hline
+A: c & -1, -1 & -5, 0 \\\hline
+A: d & 0, -5  & -3, -3 \\\hline
+\end{tabular}
+\end{center}
+```
+
+The dillemma: should they confess or deny?
+
+[^PD]: We adopt the more common notation found, e.g., in https://www.marl-book.com/, https://www.masfoundations.org/, and https://www.amazon.com/Evolution-Cooperation-Robert-Axelrod/dp/1541606841/
+
+## The TCP Game[^TCP]
+
+Internet traffic is governed by the TCP protocol. One feature of TCP is the *backoff* mechanism; if your data rates cause congestion, back off until congestion subsides.
+
+Consider a world of two TCP users, $A$ and $B$.
+
+- If both users use a corect TCP implementation, $c$, each gets a 1 ms packet delays.
+- If both users use a defective TCP implementation, $d$, each gets a 3 ms packet delays.
+- If one user uses a correct implmentation and the other a defective one, the correct user (or "sucker") gets 5 ms packet delays and the other gets 0 ms delays.
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+       & B: c         & B: d         \\\hline
+A: c & -1, -1 & -5, 0 \\\hline
+A: d & 0, -5  & -3, -3 \\\hline
+\end{tabular}
+\end{center}
+```
+
+The Prisoner's dilemma is widely applicable.  In general:
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+       & C         & D        \\\hline
+C & a, a & b, c \\\hline
+D & c, b & d, d  \\\hline
+\end{tabular}
+\end{center}
+```
+
+with $a > \frac{b+c}{2}$ to guarantee that $(C, C)$ maximizes the sum of the agents' utilities/payoffs.
+
+[^TCP]: https://www.masfoundations.org/ Section 3.2.1-3.2.3
+
+## Dominant Strategies and Equilibria
+
+:::: {.columns}
+::: {.column width="50%"}
+
+Consider $A$'s response when $B$'s strategy is $c$:
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+       & B: c         & B: d                 \\\hline
+A: c & \cellcolor{lightgray} -1, -1 &  -5, 0 \\\hline
+A: d & \cellcolor{lightgray} 0, -5   & -3, -3 \\\hline
+\end{tabular}
+\end{center}
+```
+
+$A$'s highest payoff is with $d$.
+
+How about when $B$'s strategy is $d$:
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+       & B: c         & B: d                 \\\hline
+A: c & -1, -1  & \cellcolor{lightgray} -5, 0  \\\hline
+A: d & 0, -5   & \cellcolor{lightgray} -3, -3 \\\hline
+\end{tabular}
+\end{center}
+```
+
+Again, $A$'s highest payoff is with $d$.  No matter what $B$ does, $A$'s **best response** is $d$.  So $d$ is a **dominant strategy** for $A$ -- $d$ acheives the highest payoff in response to every possible action of $B$.
+
+:::
+::: {.column width="50%"}
+
+Consider $B$'s response when $A$'s strategy is $c$:
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+       & B: c         & B: d                                      \\\hline
+A: c & \cellcolor{lightgray} -1, -1  & \cellcolor{lightgray} -5, 0 \\\hline
+A: d & 0, -5                         & -3, -3                      \\\hline
+\end{tabular}
+\end{center}
+```
+
+$B$'s highest payoff is with $d$.
+
+How about when $A$'s strategy is $d$:
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+       & B: c         & B: d                                      \\\hline
+A: c & -1, -1                      & -5, 0                         \\\hline
+A: d & \cellcolor{lightgray} 0, -5 & \cellcolor{lightgray}-3, -3   \\\hline
+\end{tabular}
+\end{center}
+```
+
+Again, $B$'s highest payoff is with $d$.  No matter what $A$ does, $B$'s **best response** is $d$.  So the **dominant strategy** for $B$ is also $d$.
+
+:::
+::::
+
+When all players choose a dominant strategy, the result is a **dominant strategy equilibrium**.
+
+- An **equilibrium** is a state where no player has an incentive to change their action.
+
+Choosing a dominant strategy is *rational*.  But notice that the payoff under strategy profile $(d, d)$ is $[-3, -3]$ whereas the payoff for strategy profile $(c, c)$ is $[-1, -1]$.
+
+## Social Welfare
+
+An outcome is **Pareto optimal** if there is no other outcome that would make one player better off without making someone else worse off. If you choose an outcome that is not Pareto optimal, then it wastes utility in the sense that you could have given more utility to at least one agent, without taking any from other agents.
+
+Utilitarian social welfare is a measure of how good an outcome is in the aggregate.  Two difficulties:
+
+- Considers the sum but not the distribution of utilities among players, so it could lead to a very unequal distribution if that happens to maximize the sum.
+- Assumes a common scale for utilities.
+
+## Tragedy of the Commons
+
+Classic formulation:
+
+```{=latex}
+\begin{center}
+```
+![](tragedy-of-commons-classic.jpg){height="40%"}
+```{=latex}
+\end{center}
+```
+
+Modern instantiation: air pollution.
+
+- Air is a common good.
+- Each country affects every other country's air.
+- A country can reduce polution at a cost of -10 (to implement reduction technology, reduced economic output, etc.).
+- A country can continue to polute at a cost of -5 (added health costs, etc), but this also adds a -1 cost to all other countries.
+
+So, if there are 100 countries and each continues to pollute, the total utility for each country is -104 -- far greater than the -10 for reducing pollution.  This is a version of The Prisoner's Dilemma.
+
+
+## Iterated Prisoner's Dilemma (IPD)
+
+The simplest kind of multiple-move game is the repeated game (also called an **iterated game**), in which players repeatedly play rounds of a single-move game, called the **stage game**.
+
+- A strategy in a repeated game specifies an action choice for each player at each time step for every possible history of previous choices of players.
+- In a finite game you essentially end up with a single game repeated $n$ times, because if you know the last game is the last, then you simply play the single-game dominant strategy.  This leads to playing the same for the $n-1$st game, and so on.
+- In an infinite game you don't know when it ends, so strategy changes.  We can represent infinite strategies with finite state machines:
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-18_03-ipd-fsms.pdf){height="40%"}
+```{=latex}
+\end{center}
+```
+
+Note that AIMA uses $refuse$ for $confess/cooperate$ and $testify$ for $deny/defect$.
+
+
+## Axelrod's IPD Tournaments
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{=latex}
+\begin{center}
+```
+![](axelrod-evolution-of-cooperation-book.jpg){height="80%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="50%"}
+
+In the 1980s, Robert Axelrod organized a series of computer tournaments in which computer programs submitted by contestants implemented any strategy of their choosing.  Suprising key findings:
+
+- Tit for tat was the winning strategy.
+- Starting out cooperate is better.
+- Adding forgiveness helps.
+
+Knight, et. al. [^knight2025reviving] recently reproduced these results, confirming that "TFT prevails, and successful play tends to be cooperative, responsive to defection, and willing to forgive."
+
+[^knight2025reviving]: https://arxiv.org/abs/2510.15438
+
+:::
+::::
+
+## Closing Thoughts: Rational Altruism
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{=latex}
+\begin{center}
+```
+![](kimmel-science-of-revenge-book.jpg){height="80%"}[^kimmel2025science]
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="50%"}
+
+The lesson of The Prisoner's Dilemma is that individually rational action often leads not just to lower total *social* utility, but lower *indivdual* utility over the long run.
+
+- Previously we saw that if an agent's utility function aligns with the external performance measure of its task environment, then maximizing its utility maximizes its performance.
+- How do we get global utility into local utility functions?
+
+There is exciting research in neuroscience that suggests that social good and individual utility are aligned.
+
+- Revenge triggers the same dopamine reponse as addiction.
+- Forgiveness cuts this cycle.
+
+Perhaps there is a link between the results of Axelrod's IPD tournaments and neurobiology.
+
+:::
+::::
+
+[^kimmel2025science]: https://www.amazon.com/Science-Revenge-Understanding-Deadliest-Addiction/dp/0593796519
+
+
+## Lessons from Animals
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{=latex}
+\begin{center}
+```
+![](rise-of-wolf-8-book.jpg){height="70%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="50%"}
+
+```{=latex}
+\begin{center}
+```
+![](wolf-pack.png){height="40%"}
+```{=latex}
+\end{center}
+\vspace{.25in}
+```
+
+```{=latex}
+\begin{center}
+```
+![](Safari_ants.jpg){height="30%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+
+<!--
+
+## Nash Equilibria
+
+A strategy profile is a **Nash equilibrium** if no player could unilaterally change their strategy and as a consequence receive a higher payoff, under the assumption that the other players
+stayed with their strategy choices.
+
+- In a Nash equilibrium, every player is simultaneously playing a best response to the choices of their counterparts.
+- A Nash equilibrium represents a stable point in a game: stable in the sense that there is no rational incentive for any player to deviate.
+- However, Nash equilibria are local stable points: as we will see, a game may contain
+multiple Nash equilibria.
+
+
+
+
+
+
+
+## Mixed Strategies
+
+
 
 ## Morra Minimax Trees with Pure Strategies
 
@@ -451,3 +780,5 @@ Solution concepts define rationality in games.
 ```{=latex}
 \end{center}
 ```
+
+-->
