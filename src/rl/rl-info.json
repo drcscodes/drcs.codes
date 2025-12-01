@@ -21,7 +21,8 @@
     "corequisites": [
     ],
     "required_materials": [
-        "RLAI: Reinforcement Learning: An Introduction [http://incompleteideas.net/book/the-book.html](http://incompleteideas.net/book/the-book.html)"
+        "RLAI: Reinforcement Learning: An Introduction [http://incompleteideas.net/book/the-book.html](http://incompleteideas.net/book/the-book.html)",
+        "MARL: Multi-Agent Reinforcement Learning [https://www.marl-book.com/](https://www.marl-book.com/)"
     ],
     "recommended_materials": [
         "AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/).  US or Global Edition",

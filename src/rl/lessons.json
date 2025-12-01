@@ -3,27 +3,14 @@
         "part": "Tabular Solution Methods"
     },
     {
-        "topic": "intro-course",
-        "slides": "Introduction to the Course",
-        "reading": [
-            "[Syllabus](syllabus.html)",
-            "[Resources](resources.html)",
-            "[Meet Prof. Simpkins](https://cs1331.github.io/slides/meet-simpkins.html)"
-        ],
-        "exercises": [
-
-        ],
-        "assignments": [
-            "Assigned: [PA0](pa0.html)"
-        ],
-        "videos": []
-    },
-    {
         "topic": "intro-rl",
         "slides": "[Introduction to RL](@root/rl/slides/intro-rl.pdf)",
         "reading": [
             "RLAI: 1",
-            "MARL: 1"
+            "MARL: 1",
+            "[Syllabus](syllabus.html)",
+            "[Resources](resources.html)",
+            "[Meet Prof. Simpkins](https://cs1331.github.io/slides/meet-simpkins.html)"
         ],
         "exercises": [
         ],
@@ -68,7 +55,7 @@
         "topic": "monte-carlo-control",
         "slides": "[Monte Carlo Control](@root/rl/slides/monte-carlo-control.pdf)",
         "reading": [
-            "RLAI: 6"
+            "RLAI: 5"
         ],
         "exercises": [],
         "assignments": [
@@ -236,10 +223,10 @@
         "videos": []
     },
     {
-        "topic": "deep-marl1",
+        "topic": "deep-marl",
         "slides": "[Deep MARL](@root/rl/slides/deep-marl.pdf)",
         "reading": [
-            "MARL: 9"
+            "MARL: 91-9.4"
         ],
         "exercises": [],
         "assignments": [
@@ -247,10 +234,10 @@
         "videos": []
     },
     {
-        "topic": "deep-marl2",
-        "slides": "[Deep MARL](@root/rl/slides/deep-marl.pdf)",
+        "topic": "deep-marl-value-decomposition",
+        "slides": "[Deep MARL Value Decomposition](@root/rl/slides/deep-marl-value-decomposition.pdf)",
         "reading": [
-            "MARL: 9"
+            "MARL: 9.5"
         ],
         "exercises": [],
         "assignments": [
@@ -258,10 +245,10 @@
         "videos": []
     },
     {
-        "topic": "deep-marl3",
-        "slides": "[Deep MARL](@root/rl/slides/deep-marl.pdf)",
+        "topic": "deep-marl-agent-modeling",
+        "slides": "[Deep MARL Agent Modeling](@root/rl/slides/deep-marl-agent-modeling.pdf)",
         "reading": [
-            "MARL: 9"
+            "MARL: 9.6-9.7"
         ],
         "exercises": [],
         "assignments": [
@@ -269,10 +256,10 @@
         "videos": []
     },
     {
-        "topic": "deep-marl4",
-        "slides": "[Deep MARL](@root/rl/slides/deep-marl.pdf)",
+        "topic": "deep-marl-self-play",
+        "slides": "[Deep MARL Self-Play](@root/rl/slides/deep-marl-self-play.pdf)",
         "reading": [
-            "MARL: 9"
+            "MARL: 9.8-9.9"
         ],
         "exercises": [],
         "assignments": [
