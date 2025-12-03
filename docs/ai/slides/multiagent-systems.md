@@ -16,16 +16,26 @@ header-includes:
 
 ## Multiagent Systems
 
+
+Dealing with multiagent environments:
+
+- Single agent with other agents considered part of the environment
+- Multiple actors, but one decision maker controlling all actors
+- Multiple actors, each of which makes its own decisions
+
+
 :::: {.columns}
 ::: {.column width="50%"}
 
 ```{=latex}
 \begin{center}
 ```
-![](mas-book.jpg){height="80%"}
+![](mas-book.jpg){height="50%"}
 ```{=latex}
 \end{center}
 ```
+
+MAS: https://www.masfoundations.org/
 
 :::
 ::: {.column width="50%"}
@@ -33,10 +43,12 @@ header-includes:
 ```{=latex}
 \begin{center}
 ```
-![](marl-book.jpg){height="80%"}
+![](marl-book.jpg){height="50%"}
 ```{=latex}
 \end{center}
 ```
+
+MARL: https://www.marl-book.com/
 
 :::
 ::::
@@ -288,11 +300,11 @@ All players take action that are chosen simultaneously with no knowledge of othe
 
 **Normal form game** defined by:
 
-- **Players** (agents) making decisions. Two-player games most studied, but games for $n > 2$ also common. Players have capitalized names, like $Ali$ and $Bo$ or $O$ and $E$.
+- A finite set $N$ of $n$ **players** (agents) making decisions. Two-player games most studied, but games for $n > 2$ also common.
 
-- **Actions** the players choose. Actions have lowercase names, like $one$ or $testify$. Players may have same or different sets of actions.
+- **Actions** $A = A_i \times \cdots \times A_n$, where $A_i$ is a finite set of actions available to player $i$.  Each vector $a = (a_i, \dots, a_n)$ is called an **action profile** or a **strategy**.
 
-- **Payoff function** that gives the utility to each player for each combination of actions by all the players.
+- **Payoff function** $u = (u_i, \dots, u_n)$ where $u_i \colon A \mapsto \mathbb{R}$ is the utility/payoff function for player $i$. Here we assume outcomes $O$ are completely determined by $A$.
 
     - For two-player games, payoff function can be represented by a matrix in which there is a row for each possible action of one player, and a column for each possible choice of the other player: a chosen row and a chosen column define a matrix cell, which is labeled with the payoff for the relevant player. In the two- player case, it is conventional to combine the two matrices into a single **payoff matrix**, in which each cell is labeled with payoffs for both players.
 
@@ -336,9 +348,9 @@ Solution concepts define rationality in games.
 
 Two prisoners, $A$ and $B$, suspected of committing a crime together are taken to separate interrogation rooms, and each can either "confess" to the crime (a.k.a. "cooperate") or "deny" it (a.k.a. "defect").
 
-- If both prisoners confess, each gets a 1-year sentence.
-- If both prisoners deny, each gets a 3-year sentence
-- If one player denies and the other confesses, the denier (or "sucker") gets 5 years and the confessors gets 0 years.
+- If both prisoners confess/cooperate, each gets a 1-year sentence.
+- If both prisoners deny/defect, each gets a 3-year sentence
+- If one player denies and the other confesses, the the confessor ("sucker"/cooperator) gets 5 years and the denier (defector) gets 0 years.
 
 The game can be summarized in the following payoff matrix (row player's payoff is listed first):
 
@@ -388,7 +400,7 @@ D & c, b & d, d  \\\hline
 \end{center}
 ```
 
-with $a > \frac{b+c}{2}$ to guarantee that $(C, C)$ maximizes the sum of the agents' utilities/payoffs.
+with $c > a > d > b$.  Adding $a > \frac{b+c}{2}$ guarantees that $(C, C)$ maximizes the sum of the agents' utilities/payoffs.
 
 [^TCP]: https://www.masfoundations.org/ Section 3.2.1-3.2.3
 
@@ -465,13 +477,21 @@ When all players choose a dominant strategy, the result is a **dominant strategy
 
 Choosing a dominant strategy is *rational*.  But notice that the payoff under strategy profile $(d, d)$ is $[-3, -3]$ whereas the payoff for strategy profile $(c, c)$ is $[-1, -1]$.
 
-## Social Welfare
+## Optimal Strategies and Social Welfare
 
-An outcome is **Pareto optimal** if there is no other outcome that would make one player better off without making someone else worse off. If you choose an outcome that is not Pareto optimal, then it wastes utility in the sense that you could have given more utility to at least one agent, without taking any from other agents.
+An **optimal strategy** for an agent optimizes the payoff/utility for that agent.  From the standpoint of **social welfare** we want to optimize the utility of all agents.
+
+- Strategy profile $s$ **Pareto dominates** strategy profile $s'$ if for all $i \in N$, $u_i(s) \ge u_i(s')$, and there exists some $j \in N$ for which $u_j(s) > u_j(s')$.
+\end{definition}
+
+- Strategy profile $s$ is **Pareto optimal**, or **strictly Pareto efficient**, if there does not exist another strategy profile $s' \in S$ that Pareto dominates $s$.
+
+- An outcome is **Pareto optimal** if there is no other outcome that would make one player better off without making someone else worse off. If you choose an outcome that is not Pareto optimal, then it wastes utility in the sense that you could have given more utility to at least one agent, without taking any from other agents.
 
 Utilitarian social welfare is a measure of how good an outcome is in the aggregate.  Two difficulties:
 
 - Considers the sum but not the distribution of utilities among players, so it could lead to a very unequal distribution if that happens to maximize the sum.
+
 - Assumes a common scale for utilities.
 
 ## Tragedy of the Commons
@@ -495,6 +515,157 @@ Modern instantiation: air pollution.
 
 So, if there are 100 countries and each continues to pollute, the total utility for each country is -104 -- far greater than the -10 for reducing pollution.  This is a version of The Prisoner's Dilemma.
 
+
+<!--
+
+## Mixed Strategies in Normal-Form Games (MAS 3.2.4)
+
+Recall that a mixed strategy randomizes action choices according to some probability distribution.  Formally:
+
+- Let $(N, A, u)$ be a normal-form game, and for any set $X$ let $\Pi(X)$ be the set of all probability distributions over $X$.  Then the set of **mixed strategies** for player $s_i$ is $S_i = \Pi(A_i)$.
+
+- The set of **mixed-strategy profiles** is the Cartesian product of the mixed strategy sets, $S_1 \times \cdots \times S_n$.
+
+$s_i(a_i)$ is the probability that action $a_i$ will be played under mixed strategy $s_i$.
+
+The subset of actions that are assigned positive probability by mixed strategy $s_i$ is called the *support* of $s_i$:
+
+- The **support** of mixed strategy $s_i$ for player $i$ is the set of pure strategies $\{a_i \mid s_i(a_i) > 0 \}$.
+
+A pure strategy is a special case of a mixed strategy in which the support is a single action.  A strategy is *fully mixed* (has *full support*) if it assigns nonzero probability to every action.
+
+## Payoffs for Mixed Strategies
+
+To define the payoff of a mixed strategy we turn again to decision theory:
+
+- calculate the probability of reaching an outcome given the strategy profile, and
+- calculate the average of the payoffs of the outcomes, weighted by the probabilities of each outcome.
+
+Formally:
+
+- Given a normal-form game $(N, A, u)$, the expected utility $u_i$ for player $i$ of the mixed strategy profile $s = (s_1, \dots, s_n)$ is defined as
+
+$$
+u_i(s) = \sum_{a \in A} u_i(a) \prod_{j=1}^n s_j(a_j)
+$$
+
+-->
+
+## Nash Equilibria
+
+```{=latex}
+\begin{center}
+```
+![](beautiful-mind-bar-scene.jpg){height="40%"}
+
+[https://www.youtube.com/watch?v=QzwcGkfEra4](https://www.youtube.com/watch?v=QzwcGkfEra4)
+```{=latex}
+\end{center}
+```
+
+
+
+A strategy profile is a **Nash equilibrium** if no player could unilaterally change their strategy and as a consequence receive a higher payoff, under the assumption that the other players
+stayed with their strategy choices.
+
+- In a Nash equilibrium, every player is simultaneously playing a best response to the choices of their counterparts.
+- A Nash equilibrium represents a stable point in a game: stable in the sense that there is no rational incentive for any player to deviate.
+- However, Nash equilibria are local stable points: as we will see, a game may contain
+multiple Nash equilibria.
+
+## Finding Nash Equilibria
+
+Let's find the Nash equlibria in the Prisoner's Dilemma.
+
+- First, find the best reponses of the row player to each strategy of the column player (boxed):
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+  & C              & D         \\\hline
+C & -1, -1         & -5, 0 \\\hline
+D & \boxed{0}, -5  & \boxed{-3}, -3 \\\hline
+\end{tabular}
+\end{center}
+```
+
+- Then find the best responses of the column player to each strategy of the column player (circled):
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+  & C              & D         \\\hline
+C & -1, -1         & -5, \circled{0} \\\hline
+D & \boxed{0}, -5  & \boxed{-3}, \circled{-3} \\\hline
+\end{tabular}
+\end{center}
+```
+
+The Nash equilibria are the cases where both players' best responses coincide, here $(D, D)$.
+
+This is sometimes called a "no regret" decision -- couldn't have done better given what other players did.
+
+## Coordination and Competition: Battle of the Sexes (MAS 3.2.3)
+
+A husband and wife wish to go to the movies, and they can select among two movies:
+"Lethal Weapon (LW)" and "Wondrous Love (WL)."
+
+- They much prefer to go together rather than to separate movies, but
+- the wife (player 1) prefers LW, the husband (player 2) prefers WL.
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+   & LW     & WL         \\\hline
+LW & 2, 1  & 0, 0 \\\hline
+WL & 0, 0  & 1, 2 \\\hline
+\end{tabular}
+\end{center}
+```
+
+This is like a common-payoff game where both players get the same reward when they do the same thing, but each player has different payoffs when they coordinate.
+
+## Multiple Nash Equilibria
+
+Now lets find the Nash equilibria for the Battle of t he Sexes game.
+
+- First, find the best reponses of the row player to each strategy of the column player (boxed):
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+   & LW     & WL         \\\hline
+LW & \boxed{2}, 1  & 0, 0 \\\hline
+WL & 0, 0  & \boxed{1}, 2 \\\hline
+\end{tabular}
+\end{center}
+```
+
+- Then find the best responses of the column player to each strategy of the column player (circled):
+
+```{=latex}
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+   & LW     & WL         \\\hline
+LW & \boxed{2}, \circled{1}  & 0, 0 \\\hline
+WL & 0, 0  & \boxed{1}, \circled{2} \\\hline
+\end{tabular}
+\end{center}
+```
+
+Here we see that the only best responses for both players are also both Nash equilibria.
+
+<!--
+
+## Maximin
+
+## Extensive Form Games (AIMA 17.2.4)
+
+## Cooperative Games (AIMA 17.3)
+
+## Coalitions (AIMA 17.3.1)
+
+-->
 
 ## Iterated Prisoner's Dilemma (IPD)
 
@@ -544,6 +715,8 @@ Knight, et. al. [^knight2025reviving] recently reproduced these results, confirm
 :::
 ::::
 
+
+
 ## Closing Thoughts: Rational Altruism
 
 :::: {.columns}
@@ -581,18 +754,8 @@ Perhaps there is a link between the results of Axelrod's IPD tournaments and neu
 ## Lessons from Animals
 
 :::: {.columns}
-::: {.column width="50%"}
+::: {.column width="45%"}
 
-```{=latex}
-\begin{center}
-```
-![](rise-of-wolf-8-book.jpg){height="70%"}
-```{=latex}
-\end{center}
-```
-
-:::
-::: {.column width="50%"}
 
 ```{=latex}
 \begin{center}
@@ -600,13 +763,35 @@ Perhaps there is a link between the results of Axelrod's IPD tournaments and neu
 ![](wolf-pack.png){height="40%"}
 ```{=latex}
 \end{center}
-\vspace{.25in}
+\vspace{.1in}
 ```
 
 ```{=latex}
 \begin{center}
 ```
+![](rise-of-wolf-8-book.jpg){height="50%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="60%"}
+
+```{=latex}
+\begin{center}
+```
 ![](Safari_ants.jpg){height="30%"}
+```{=latex}
+\end{center}
+\vspace{.1in}
+```
+
+```{=latex}
+\begin{center}
+```
+![](bees-honeycomb.jpg){height="30%"}
+
+[https://www.youtube.com/watch?v=F5rWmGe0HBI](https://www.youtube.com/watch?v=F5rWmGe0HBI)
 ```{=latex}
 \end{center}
 ```
@@ -615,23 +800,22 @@ Perhaps there is a link between the results of Axelrod's IPD tournaments and neu
 ::::
 
 
+## Humans are Complicated Animals
+
+Humans are complicated -- and often amusing -- animals.  The Prisoner's Dilemma often occurs naturally, and sometimes artificially:
+
+```{=latex}
+\begin{center}
+```
+![](bachelor-pad-prisoners-dilemma.jpeg){height="50%"}
+
+[https://www.youtube.com/watch?v=p1oyuqLFiXg](https://www.youtube.com/watch?v=p1oyuqLFiXg) -- 1:06:30
+```{=latex}
+\end{center}
+```
+
+
 <!--
-
-## Nash Equilibria
-
-A strategy profile is a **Nash equilibrium** if no player could unilaterally change their strategy and as a consequence receive a higher payoff, under the assumption that the other players
-stayed with their strategy choices.
-
-- In a Nash equilibrium, every player is simultaneously playing a best response to the choices of their counterparts.
-- A Nash equilibrium represents a stable point in a game: stable in the sense that there is no rational incentive for any player to deviate.
-- However, Nash equilibria are local stable points: as we will see, a game may contain
-multiple Nash equilibria.
-
-
-
-
-
-
 
 ## Mixed Strategies
 

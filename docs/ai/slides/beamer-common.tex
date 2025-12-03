@@ -18,6 +18,9 @@
 \colorlet{shadecolor}{cyan!15}
 \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
 
+% From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
 
 \DeclareMathOperator*{\argmin}{arg\!min}
 \DeclareMathOperator*{\argmax}{arg\!max}
