@@ -1,0 +1,40 @@
+{
+    "url": "https://drcs.codes/ai/",
+    "number": "CS 3642",
+    "title": "Artificial Intelligence",
+    "description": "The primary objective of this course is to provide a introduction to the basic principles and applications of Artificial Intelligence. It covers the basic areas of artificial intelligence including problem solving, knowledge representation, reasoning, decision making, planning, perception and action, and learning – and their applications. Students will design and implement key components of intelligent agents of modern complexity and evaluate their performance. Students are expected to develop familiarity with current research problems, research methods, and the research literature in AI.",
+    "credit_hours": "3-0-3",
+    "learning_outcomes": [
+        "Demonstrate understanding knowledge of AI knowledge representation",
+        "Demonstrate understanding of advanced search and reasoning algorithms",
+        "Design an AI system with Python, Lisp or Prolog for problem solving"
+    ],
+    "grading": [
+        "Programming assignments: 20%",
+        "Exams: 80%"
+    ],
+    "assignments": [
+        "3-5 Programming assignments (PA)",
+        "Midterm Exam",
+        "Final Exam"
+    ],
+    "prerequisites": [
+        "CS 3305 Data Structures"
+    ],
+    "corequisites": [
+    ],
+    "required_materials": [
+        "AIMA: Artificial Intelligence: A Modern Approach, 4ed, by Stuart Russell and Peter Norvig, [https://aima.cs.berkeley.edu/](https://aima.cs.berkeley.edu/).  US or Global Edition",
+        "PMLAI: Probabilistic Machine Learning: An Introduction [https://probml.github.io/pml-book/book1.html](https://probml.github.io/pml-book/book1.html)",
+        "RLAI: Reinforcement Learning: An Introduction [http://incompleteideas.net/book/the-book.html](http://incompleteideas.net/book/the-book.html)",
+        "MAS: Multiagent Systems [https://www.masfoundations.org/](https://www.masfoundations.org/)"
+    ],
+    "recommended_materials": [
+        "AICA: Artificial Intelligence: Foundations of Computational Agents, 3ed, by David Poole and Alan Mackworth, [https://artint.info/3e/html/ArtInt3e.html](https://artint.info/3e/html/ArtInt3e.html)",
+        "AIPP: Artificial Intelligence: Principles and Practice, by George Luger, [https://link.springer.com/book/10.1007/978-3-031-57437-5](https://link.springer.com/book/10.1007/978-3-031-57437-5)"
+    ],
+    "technology_requirements": [
+        "Computer capable of accessing the internet and running compilers, interpreters, and text editors"
+    ],
+    "lessons": "../../lessons.json"
+}
