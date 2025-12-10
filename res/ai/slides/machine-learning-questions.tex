@@ -1,0 +1,142 @@
+\documentclass[]{exam}
+
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage[margin=1in]{geometry}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Machine Learning Review (AIMA 19.1-19.6)}
+\author{Artificial Intelligence}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+
+\setcounter{section}{0} % So that next \section is 1
+
+According to Tom Mitchell, machine learning is the study of algorithms that
+
+\begin{itemize}
+\item improve their performance {\tt P}
+\item at some task {\tt T}
+\item with experience {\tt E}.
+\end{itemize}
+
+A well-defined learning task is given by {\tt <P, T, E>}.
+
+Formulate the following problems according to Tom Mitchell's machine learning problem specification (see \href{https://drcs.codes/deep-learning/slides/machine-learning.pdf}{Machine Learning Slides}) and the specification our textbook. For each of the following problems specify:
+
+\begin{itemize}
+\item The task {\tt T},
+\item The performance measure {\tt P},
+\item The experience {\tt E},
+\item The target function $f: \mathcal{X} \rightarrow \mathcal{Y}$, that is,
+\begin{itemize}
+\item the input space $\mathcal{X}$, and
+\item the output space $\mathcal{Y}$.
+\end{itemize}
+\end{itemize}
+
+Remember that a function maps a domain to a co-domain, and these domains are sets.
+
+\question Medical diagnosis: A patient walks in with a medical history and some symptoms, and you want to identify the problem.
+
+\ifprintanswers
+\begin{solution}
+\begin{itemize}
+\item Task, {\tt T}: diagnose problem
+\item Performance, {\tt P}: diagnosis is correct or incorrect
+\item Experience, {\tt E}: $<medical-history, symptoms>$
+\item Target function $f: \mathcal{X} \rightarrow \mathcal{Y}$:
+\begin{itemize}
+\item $\mathcal{X} = \{\vec{x} \vert x_1 \in \{family-history-heart-disease\}, x_2 \in \mathbb{R} = cholesterol-level \}$ and other such features
+\item $\mathcal{Y} = \{disease_1, disease_2, ..., disease_n \}$
+\end{itemize}
+\end{itemize}
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+
+\question
+
+\begin{solution}[.5in]
+
+\end{solution}
+
+\question
+
+\begin{solution}[.5in]
+
+\end{solution}
+
+\question
+
+\begin{solution}[.5in]
+
+\end{solution}
+
+
+\end{questions}
+
+\end{document}

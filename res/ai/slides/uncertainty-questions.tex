@@ -98,8 +98,8 @@ P(D < 4) = 0.5
 
 \begin{align*}
 P(X)\\
-P(x=T) &= 0.2\\
-P(x=F) &= 0.8\\
+P(x=T) &= 0.8\\
+P(x=F) &= 0.2\\
 \end{align*}
 
 \columnbreak
@@ -148,7 +148,13 @@ We want to know the posterior probability that you have The Mondays given that y
 P(m \mid t) = \frac{P(t \mid m) P(m)}{P(t)}\\
 \]
 
-We know $P(t \mid m)$ and $P(m)$ from the problem statement.  We need to calculate $P(t)$, the probability that the temp tells you that you have The Mondays whether you have it or not.  That's the sum of both cases:
+We know $P(t \mid m)$ and $P(m)$ from the problem statement.  We need to calculate $P(t)$, the probability that the temp tells you that you have The Mondays whether you have it or not.  We can sum out $m$ using the conditioning rule (12.8):
+
+\[
+P(T) = \sum_m P(T | M) P(M)
+\]
+
+Here we only care about the $T=True$ case:
 
 \begin{align*}
 P(t) &= P(t \mid m) P(m) + P(t \mid \neg m) P(\neg m)\\
@@ -164,7 +170,7 @@ P(m \mid t) &= \frac{P(t \mid m) P(m)}{P(t)}\\
             &= 0.89
 \end{align*}
 
-Thinking intuitively, the temp reporting a case of The Mondays gives better than 50/50 odds of having The Mondays, so the posterior probability that you have The Mondays should be higher than the prior probability, given a positive ``test.''
+Thinking intuitively, the temp's accuracy in assessing cases of The Mondays is a little better than 50/50, so the posterior probability that you have The Mondays should be a little higher than the prior probability, given a positive ``test.''
 \end{solution}
 
 \end{questions}
