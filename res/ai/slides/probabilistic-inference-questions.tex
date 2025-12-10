@@ -73,36 +73,85 @@
 
 \setcounter{section}{0} % So that next \section is 1
 
-\question You observe that the grass is wet and it is cloudy.  Given the following Bayes' net:
+% \question You observe that the grass is wet and it is cloudy.  Given the following Bayes' net:
 
-\includegraphics[height=2in]{aima-fig-13_15_a-sprinkler-bayes-net.pdf}
+% \includegraphics[height=2in]{aima-fig-13_15_a-sprinkler-bayes-net.pdf}
 
-What is the probability that it rained recently?
+% What is the probability that it rained recently?
 
-\begin{solution}[.5in]
-\begin{align*}
+% \begin{solution}[.5in]
+% In general, we can answer any probabilistic query using the full joint distribution:
 
-\end{align*}
+% \[
+% Pr(X | \bm{e}) = \alpha Pr(X, \bm{e}) = \alpha \sum_y Pr(X, \bm{e}, \bm{y}) \tag{12.9}
+% \]
+
+
+% And that a Bayes net completely represents the full joint distribution, so we can reduce the computation of a joint to:
+
+% \[
+% Pr(x_1, \dots, x_n) = \prod_{i=1}^n Pr( x_i | parents(X_i)) \tag{13.2}
+% \]
+
+% Rain, $r$, is our query variable, $w, c$ are our evidence variables, and $S$, is hidden.
+
+% \begin{align*}
+% Pr(r \mid w, c) &= \alpha  \sum_s Pr(w \mid S, r)  \tag{1}\\
+%                 &= \alpha Pr(c)  \sum_a Pr(e) Pr(a \mid b, e) Pr(j \mid a) Pr(m \mid a) \tag{2}\\
+%                 &= \alpha Pr(b) Pr(e) \sum_a Pr(a \mid b, e) Pr(j \mid a) Pr(m \mid a) \tag{3}
+% \end{align*}
+
+% 1. Substitute Eq 13.2 for $Pr(r, w, c, s)$
+% 2. Pull out $Pr(b)$ from summations because it doesn't depend on the other variable and is thus a constant in all the summation terms.
+% 3. Pull out $Pr(e)$ from the summation over the $a$ values because each value of $e$ doesn't depend on the other variables in the summation over the $a$ values and is thus a constant in the summation terms over the values of $a$.
+
+% \end{solution}
+
+
+\question  Given the network:
+
+\includegraphics[height=1.5in]{aima-fig-13_02-bayes-net-alarm.pdf}
+
+\[
+Pr(b \mid j, m) = \alpha Pr(b) \sum_e Pr(e) \sum_a Pr(a \mid b, e) Pr(j \mid a) Pr(m \mid a) \tag{13.5}
+\]
+
+Annotate the factors in the expression for the network.
+
+\begin{solution}[1.25in]
+\vspace{-.1in}
+\[
+Pr(B \mid j, m) =
+\alpha \underbrace{Pr(B)}_{\bm{f}_1(B)}
+\sum_e
+\underbrace{Pr(e)}_{\bm{f}_2(E)}
+\sum_a
+\underbrace{Pr(a \mid B, e)}_{\bm{f}_3(A,B,E)}
+\underbrace{Pr(j \mid a)}_{\bm{f}_4(A)}
+\underbrace{Pr(m \mid a)}_{\bm{f}_5(A)}
+\]
 
 \end{solution}
 
+\question What is the difference between direct sampling and Markov chain Monte Carlo sampling?
 
-\question
+\begin{solution}[1in]
+Direct sampling methods generate events based on the probabilities in the Bayes net by sampling all the nodes in the network.
 
-\begin{solution}[.5in]
-
+Markov chain Monte Carlo methods generate one sample, then generates each additional sample by making a random change to the preceding sample.
 \end{solution}
 
-\question
+\question  What is the idea behind importance sampling?
 
-\begin{solution}[.5in]
-
+\begin{solution}[.75in]
+The general statistical technique of importance sampling aims to emulate the effect of sampling
+from a distribution $P$ using samples from another distribution $Q$ whose samples are easier to obtain.
 \end{solution}
 
-\question
+\question The Metropolis-Hastings sampling algorithm is similar in structure to which local search algorithm?
 
-\begin{solution}[.5in]
-
+\begin{solution}[.25in]
+Simulated annealing.
 \end{solution}
 
 
