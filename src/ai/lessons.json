@@ -250,7 +250,10 @@
         "reading": [
             "AIMA: 12"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Uncertainty Questions](@root/ai/slides/uncertainty-questions.pdf)",
+            "[Uncertainty Answers](@root/ai/slides/uncertainty-answers.pdf)"
+        ],
         "assignments": [
             "Due: [PA2](pa2.html)",
             "Assigned: [PA3](pa3.html)"

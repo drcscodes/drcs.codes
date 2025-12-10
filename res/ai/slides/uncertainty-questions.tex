@@ -1,0 +1,172 @@
+\documentclass[]{exam}
+
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage[margin=1in]{geometry}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Uncertainty Review (AIMA 12)}
+\author{Artificial Intelligence}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+
+
+\setcounter{section}{0} % So that next \section is 1
+
+\question You have a fair 6-sided die whose outcome is given by the random variable $D$.  What is the probability of the event $D < 4$?
+
+\begin{solution}[.5in]
+\[
+P(D < 4) = 0.5
+\]
+\end{solution}
+
+
+\question You roll a weighted 4-sided die 20 times.  Representing the number of times $i$ is rolled by the number in the $i$th position of a vector of results, we have $\langle 10, 5, 3, 2 \rangle$.  Using a similarly structured vector, what is the probability distribution over the number of times each number is rolled?
+
+\begin{solution}[.5in]
+\[
+\langle 0.5, 0.25, 0.15, 0.1 \rangle
+\]
+\end{solution}
+
+\question Given the following discrete probability distributions:
+
+\vspace{-.25in}
+
+\begin{multicols}{3}
+
+\begin{align*}
+P(X)\\
+P(x=T) &= 0.2\\
+P(x=F) &= 0.8\\
+\end{align*}
+
+\columnbreak
+
+\begin{align*}
+P(Y)\\
+P(y=A) &= 0.6\\
+P(y=B) &= 0.4\\
+\end{align*}
+
+\columnbreak
+
+\begin{align*}
+P(X \mid Y)\\
+P(x=T \mid y = A) &= .8\\
+P(x=F \mid y = A) &= .2\\
+P(x=T \mid y = B) &= .8\\
+P(x=F \mid y = B) &= .2\\
+\end{align*}
+
+\end{multicols}
+
+What can you say about $X$ and $Y$?
+
+\begin{choices}
+\correctchoice $X$ and $Y$ are independent.
+\choice $X$ and $Y$ are not independent.
+\end{choices}
+
+\begin{solution}[.5in]
+By definition (AIMA 12.4), if $P(X) = P(X \mid Y)$, then $X$ and $Y$ are independent.  In plain language, if the probabilities for each value of $X$ are the same no matter the value of $Y$, then $X$ and $Y$ are independent.
+\end{solution}
+
+\newpage
+
+\question Most people don't like Mondays.  It's so bad that the probability that a randomly chosen person has a full-blown case of The Mondays is $P(M=True) = 0.8$.  The new temp is very concerned with cases of The Mondays, so she's constantly on the lookout.  She is better than a coin flip at detecting The Mondays, so if you have The Mondays, she tells you so 60\% of the time, $P(T=True \mid M=True) = 0.6$. Given the prevalence of The Mondays and the temp's penchant for reporting cases of The Mondays, what is the probability that you have The Mondays if the temp sees you and declares:
+
+\begin{center}
+\includegraphics[height=1.5in]{case-of-the-mondays.jpg}
+\end{center}
+
+\begin{solution}[.5in]
+We want to know the posterior probability that you have The Mondays given that you got a positive test from the temp.  Using abbreviated notation, we need to calculate:
+
+\[
+P(m \mid t) = \frac{P(t \mid m) P(m)}{P(t)}\\
+\]
+
+We know $P(t \mid m)$ and $P(m)$ from the problem statement.  We need to calculate $P(t)$, the probability that the temp tells you that you have The Mondays whether you have it or not.  That's the sum of both cases:
+
+\begin{align*}
+P(t) &= P(t \mid m) P(m) + P(t \mid \neg m) P(\neg m)\\
+     &= (0.6) (0.8) + (0.4) (0.2)\\
+     &= 0.54
+\end{align*}
+
+Now we have all the quantities we need to plug into Bayes' Rule:
+
+\begin{align*}
+P(m \mid t) &= \frac{P(t \mid m) P(m)}{P(t)}\\
+            &= \frac{(0.6) (0.8)}{0.54}\\
+            &= 0.89
+\end{align*}
+
+Thinking intuitively, the temp reporting a case of The Mondays gives better than 50/50 odds of having The Mondays, so the posterior probability that you have The Mondays should be higher than the prior probability, given a positive ``test.''
+\end{solution}
+
+\end{questions}
+
+\end{document}
