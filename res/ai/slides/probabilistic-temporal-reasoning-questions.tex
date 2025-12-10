@@ -73,22 +73,52 @@
 
 \setcounter{section}{0} % So that next \section is 1
 
-\question
+\question You are creating discrete-time model for a system that changes approximately every minute.  What is a good value for the time interval, $\Delta$, between time slices?
 
-\begin{solution}[.5in]
-
+\begin{solution}[1in]
+Any value less than 1 minute would work.  You usually don't want the system to change more than once since the last measurement.  Consider the case of a sinusoidal function where the time slices and $\Delta$ are set such that each time you measure, you get 0.  You would get an incorrect view of the system.
 \end{solution}
 
-\question
+\question What is the general equation for the Markov assumption in a first-order Markov transition model over the variables $\bm{X}$
 
-\begin{solution}[.5in]
-
+\begin{solution}[.75in]
+$Pr(\bm{X}_t \mid \bm{X}_{0:t-1}) = Pr(\bm{X}_t \mid \bm{X}_{t-1})$
 \end{solution}
 
-\question
+\question What is the general equation for for the Markov assumption in a second-order Markov transition model over the variables $\bm{X}$
 
-\begin{solution}[.5in]
+\begin{solution}[.75in]
+$Pr(\bm{X}_t \mid \bm{X}_{0:t-1}) = Pr(\bm{X}_t \mid \bm{X}_{t-2}, \bm{X}_{t-1})$
+\end{solution}
 
+\question Describe the four basic inference tasks in probabilistic temporal models.
+
+\begin{solution}[2.5in]
+\begin{itemize}
+\item Filtering, a.k.a., state estimation is the task of computing the belief state $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+
+\item Prediction is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+
+\item Smoothing is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+
+\item Most likely explanation: Given a sequence of observations, find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+\end{itemize}
+\end{solution}
+
+\newpage
+
+\question Give an example of each kind of basic probabilistic temporal inference task.
+
+\begin{solution}[2in]
+\begin{itemize}
+\item Filtering: Umbrella example: compute probability of rain today given all umbrella observations so far.
+\item Prediction: Umbrella example: compute probability of rain three days from now, given all the observations
+to date.
+\item Smoothing: Umbrella example: compute the probability that it rained last Wednesday, given all the observations of the umbrella carrier made up to today.
+
+\item Most likely explanation:  Umbrella example: if umbrella appears on each of the first three days and is absent on the fourth, then the most likely explanation is that it rained on the first three days and did not rain on the fourth.  On the other hand, perhaps the director forgot an umbrella on a rainy day, or took an umbrella on a sunny day out of caution.  Other examples: speech recognition.
+
+\end{itemize}
 \end{solution}
 
 
