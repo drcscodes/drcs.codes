@@ -73,33 +73,33 @@
 
 \setcounter{section}{0} % So that next \section is 1
 
-\question You observe that the grass is wet and it is cloudy.  Given the following Bayes' net:
+\question Given the following Bayes' net: \includegraphics[height=2in]{aima-fig-13_15_a-sprinkler-bayes-net.pdf}
 
-\includegraphics[height=2in]{aima-fig-13_15_a-sprinkler-bayes-net.pdf}
+What is the probability that the grass is wet, the sprinkler didn't run, it rained recently, and it is cloudy?
 
-What is the probability that it rained recently?
-
-\begin{solution}[.5in]
+\begin{solution}[2.5in]
 \begin{align*}
-Pr(x_1, \dots, x_n)         &= \prod_{i=1}^n Pr( x_i | parents(X_i)) \tag{13.2}\\
-Pr(j, m, a, \neg b, \neg e) &= Pr(j | a) Pr(m | a) Pr(a | \neg b, \neg e) Pr(\neg b) Pr (\neg e)\\
-                            &= 0.90 \times 0.70 \times 0.001 \times 0.99 \times 0.98\\
-                            &= 0.000628
+Pr(x_1, \dots, x_n) &= \prod_{i=1}^n Pr( x_i | parents(X_i)) \tag{13.2}\\
+Pr(w, \neg s, r, c) &= Pr(w \mid \neg s, r) Pr(\neg s \mid c) Pr(r \mid c) Pr(c)\\
+                    &= (0.90) (0.90) (0.80) (0.5) \\
+                    &= (0.81) (0.45) \\
+                    &= 0.324
 \end{align*}
 
 \end{solution}
 
-\question Elsa is unlikely to chew up your slippers,
+\question Elsa is unlikely to chew up slippers, $P(ElsaChews) = 0.1$, Anna is more likely, $P(AnnaChews) = 0.3$.  If the slippers are chewed, whether she or her sister did it, Elsa is likely to go into her crate and look concerned, $P(ElsaConcerned \mid SlippersChewed) = 0.8$.  If you were constructing a Bayesian network, in which topological order would you include the variables $ElsaConcerned, SlippersChewed, ElsaChews, AnnaChews$?
 
-\begin{solution}[.5in]
+\begin{center}
+\includegraphics[height=1.25in]{elsa-concerned.jpg}
+\end{center}
 
-\end{solution}
+\begin{solution}[.25in]
+\[
+ElsaChews, AnnaChews, SlippersChewed, ElsaConcerned
+\]
 
-
-\question
-
-\begin{solution}[.5in]
-
+You could reverse the order of $ElsaChews$ and $AnnaChews$.
 \end{solution}
 
 

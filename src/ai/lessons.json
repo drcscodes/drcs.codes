@@ -266,7 +266,10 @@
         "reading": [
             "AIMA: 13.1-13.2"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Bayesian Networks Questions](@root/ai/slides/bayesian-networks-questions.pdf)",
+            "[Bayesian Networks Answers](@root/ai/slides/bayesian-networks-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": []
@@ -277,7 +280,10 @@
         "reading": [
             "AIMA: 13.3-13.4"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Probabilistic Inference Questions](@root/ai/slides/probabilistic-inference-questions.pdf)",
+            "[Probabilistic Inference Answers](@root/ai/slides/probabilistic-inference-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": []
@@ -302,7 +308,10 @@
         "reading": [
             "AIMA: 14.1-14.3"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Probabilistic Temporal Reasoning Questions](@root/ai/slides/probabilistic-temporal-reasoning-questions.pdf)",
+            "[Probabilistic Temporal Reasoning Answers](@root/ai/slides/probabilistic-temporal-reasoning-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": []
@@ -340,7 +349,10 @@
             "PMLAI: 1",
             "AIMA: 19.1-19.6"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Machine Learning Questions](@root/ai/slides/machine-learning-questions.pdf)",
+            "[Machine Learning Answers](@root/ai/slides/machine-learning-answers.pdf)"
+        ],
         "assignments": [
             "Due: [PA3](pa3.html)",
             "Assigned: [PA4](pa4.html)"
@@ -376,6 +388,20 @@
         "part": "Decision Making and Reinforcement Learning"
     },
     {
+        "topic": "simple-decisions",
+        "slides": "[Simple Decisions](@root/ai/slides/simple-decisions.pdf)",
+        "reading": [
+            "AIMA: 16"
+        ],
+        "exercises": [
+            "[Simple Decisions Questions](@root/ai/slides/simple-decisions-questions.pdf)",
+            "[Simple Decisions Answers](@root/ai/slides/simple-decisions-answers.pdf)"
+        ],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
         "topic": "utility-theory",
         "slides": "[Utility Theory](@root/ai/slides/utility-theory.pdf)",
         "reading": [
@@ -399,11 +425,14 @@
     },
     {
         "topic": "multiagent-systems",
-        "slides": "[Multi-Agent Systems](@root/ai/slides/multiagent-systems.pdf)",
+        "slides": "[Multiagent Systems](@root/ai/slides/multiagent-systems.pdf)",
         "reading": [
             "AIMA: 18.1-18.2"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Multiagent Systems Questions](@root/ai/slides/multiagent-systems-questions.pdf)",
+            "[Multiagent Systems Answers](@root/ai/slides/multiagent-systems-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": []
@@ -438,7 +467,10 @@
             "RLAI: 3",
             "AIMA: 17.1, 17.4-17.5"
         ],
-        "exercises": [],
+        "exercises": [
+            "[MDP Questions](@root/ai/slides/mdp-questions.pdf)",
+            "[MDP Answers](@root/ai/slides/mdp-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": []
@@ -462,7 +494,10 @@
             "AIMA: 22",
             "RLAI: 6"
         ],
-        "exercises": [],
+        "exercises": [
+            "[TD Learning Questions](@root/ai/slides/td-learning-questions.pdf)",
+            "[TD Learning Answers](@root/ai/slides/td-learning-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": []
