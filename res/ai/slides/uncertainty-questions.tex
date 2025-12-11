@@ -135,7 +135,7 @@ By definition (AIMA 12.4), if $P(X) = P(X \mid Y)$, then $X$ and $Y$ are indepen
 
 \newpage
 
-\question Most people don't like Mondays.  It's so bad that the probability that a randomly chosen person has a full-blown case of The Mondays is $P(M=True) = 0.8$.  The new temp is very concerned with cases of The Mondays, so she's constantly on the lookout.  She is better than a coin flip at detecting The Mondays, so if you have The Mondays, she tells you so 60\% of the time, $P(T=True \mid M=True) = 0.6$. Given the prevalence of The Mondays and the temp's penchant for reporting cases of The Mondays, what is the probability that you have The Mondays if the temp sees you and declares:
+\question Most people don't like Mondays.  It's so bad that the probability that a randomly chosen person has a full-blown case of The Mondays is $P(M=True) = 0.8$.  The new temp is very concerned with cases of The Mondays, so she's constantly on the lookout.  She is better than a coin flip at detecting The Mondays, so if you have The Mondays, she tells you so 60\% of the time, $P(T=True \mid M=True) = 0.6$. She's very concerned about The Mondays, so gives many false positives, $P(T=True \mid M=False) = 0.3$.  Given the prevalence of The Mondays and the temp's penchant for reporting cases of The Mondays, what is the probability that you have The Mondays if the temp sees you and declares:
 
 \begin{center}
 \includegraphics[height=1.5in]{case-of-the-mondays.jpg}
@@ -158,7 +158,7 @@ Here we only care about the $T=True$ case:
 
 \begin{align*}
 P(t) &= P(t \mid m) P(m) + P(t \mid \neg m) P(\neg m)\\
-     &= (0.6) (0.8) + (0.4) (0.2)\\
+     &= (0.6) (0.8) + (0.3) (0.2)\\
      &= 0.54
 \end{align*}
 
