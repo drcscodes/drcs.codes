@@ -1,0 +1,38 @@
+{
+    "CRN": "11726",
+    "academic_term": "Spring 2026",
+    "first_day": "2026-01-12",
+    "last_day": "2026-05-04",
+    "days": "MW",
+    "modality": "Traditional",
+    "meeting_times": "Mondays and Wednesdays, Sec 01: 17:00-18:15",
+    "room": "Sec 01: Mathematics 249",
+    "instructor": "Christopher Simpkins",
+    "email": "christopher.simpkins@kennesaw.edu",
+    "phone": "",
+    "preferred_communication": "Email",
+    "office": "Norton Hall, R2-056",
+    "office_hours": "Thursdays, 13:30-15:30 in Norton Hall R2-056",
+    "breaks": {
+        "2026-01-19": "MLK Day",
+        "2026-03-09": "Spring Break",
+        "2026-03-10": "Spring Break",
+        "2026-03-11": "Spring Break",
+        "2026-03-12": "Spring Break",
+        "2026-03-13": "Spring Break"
+    },
+    "reminders": {
+        "2026-01-16": "Registration Ends,Payment Deadline",
+        "2026-01-18": "Graduation Petition Deadline, Unpaid Course Deletion",
+        "2026-01-26": "Financial Aid Disbursement",
+        "2026-01-27": "Unpaid Course Deletion",
+        "2026-03-27": "Midterm Grades Due",
+        "2026-04-03": "Withdrawal Deadline",
+        "2026-04-07": "AAAI Spring Symposia",
+        "2026-04-08": "AAAI Spring Symposia",
+        "2026-04-09": "AAAI Spring Symposia"
+    },
+    "final_exam": {
+        "2026-05-06": "Sec 01: 18:00-20:00"
+    }
+}

@@ -340,51 +340,6 @@
         "include_semester": false
     },
     {
-        "part": "Machine Learning"
-    },
-    {
-        "topic": "machine-learning",
-        "slides": "[Machine Learning](@root/ml/slides/machine-learning.pdf)",
-        "reading": [
-            "PMLAI: 1",
-            "AIMA: 19.1-19.6"
-        ],
-        "exercises": [
-            "[Machine Learning Questions](@root/ai/slides/machine-learning-questions.pdf)",
-            "[Machine Learning Answers](@root/ai/slides/machine-learning-answers.pdf)"
-        ],
-        "assignments": [
-            "Due: [PA3](pa3.html)",
-            "Assigned: [PA4](pa4.html)"
-        ],
-        "videos": [],
-        "include_semester": false
-    },
-    {
-        "topic": "supervised-learning",
-        "slides": "[Supervised Learning](@root/ai/slides/supervised-learning.pdf)",
-        "reading": [
-            "AIMA: 19.1-19.6, 21.1-21.3"
-        ],
-        "exercises": [],
-        "assignments": [
-            "Due: [PA3](pa3.html)",
-            "Assigned: [PA4](pa4.html)"
-        ],
-        "videos": []
-    },
-    {
-        "topic": "statistical-learning",
-        "slides": "[Statistical Learning](@root/ai/slides/statistical-learning.pdf)",
-        "reading": [
-            "AIMA: 20"
-        ],
-        "exercises": [],
-        "assignments": [
-        ],
-        "videos": []
-    },
-    {
         "part": "Decision Making and Reinforcement Learning"
     },
     {
@@ -399,7 +354,8 @@
         ],
         "assignments": [
         ],
-        "videos": []
+        "videos": [],
+        "include_semester": false
     },
     {
         "topic": "utility-theory",
@@ -457,6 +413,8 @@
         ],
         "exercises": [],
         "assignments": [
+            "Due: [PA3](pa3.html)",
+            "Assigned: [PA4](pa4.html)"
         ],
         "videos": []
     },
@@ -498,6 +456,49 @@
             "[TD Learning Questions](@root/ai/slides/td-learning-questions.pdf)",
             "[TD Learning Answers](@root/ai/slides/td-learning-answers.pdf)"
         ],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "part": "Machine Learning"
+    },
+    {
+        "topic": "machine-learning",
+        "slides": "[Machine Learning](@root/ml/slides/machine-learning.pdf)",
+        "reading": [
+            "PMLAI: 1",
+            "AIMA: 19.1-19.6"
+        ],
+        "exercises": [
+            "[Machine Learning Questions](@root/ai/slides/machine-learning-questions.pdf)",
+            "[Machine Learning Answers](@root/ai/slides/machine-learning-answers.pdf)"
+        ],
+        "assignments": [
+        ],
+        "videos": [],
+        "include_semester": false
+    },
+    {
+        "topic": "supervised-learning",
+        "slides": "[Supervised Learning](@root/ai/slides/supervised-learning.pdf)",
+        "reading": [
+            "AIMA: 19.1-19.6, 21.1-21.3"
+        ],
+        "exercises": [],
+        "assignments": [
+            "Due: [PA3](pa3.html)",
+            "Assigned: [PA4](pa4.html)"
+        ],
+        "videos": []
+    },
+    {
+        "topic": "statistical-learning",
+        "slides": "[Statistical Learning](@root/ai/slides/statistical-learning.pdf)",
+        "reading": [
+            "AIMA: 20"
+        ],
+        "exercises": [],
         "assignments": [
         ],
         "videos": []
