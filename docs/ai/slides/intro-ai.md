@@ -48,8 +48,16 @@ https://rodneybrooks.com/my-dated-predictions/
 \end{center}
 ```
 
-## What does this mean for us?
+## Why does it matter that the aforementioned hypers are wrong?
 
+Most of the truly groundbreaking discoveries in AI are yet to be made.
+
+```{=latex}
+\vspace{.25in}
+\begin{center}
+\LARGE{This makes AI exciting!}
+\end{center}
+```
 
 - Many AI courses focus on *the current thing*, e.g.,  statistical machine learning, and neural networks.
 - This course covers the full spectrum of AI so that you're ready to spot and develop promising new directions.
@@ -58,17 +66,7 @@ https://rodneybrooks.com/my-dated-predictions/
 
         - We have entire courses for those subjects!
 
-*Why does it matter that the aforementioned hypers are wrong?*
 
-
-- Most of the truly groundbreaking discoveries in AI are yet to be made.
-
-```{=latex}
-\vspace{.25in}
-\begin{center}
-\LARGE{This makes AI exciting!}
-\end{center}
-```
 
 
 ## What is AI?
