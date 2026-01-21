@@ -119,6 +119,8 @@
             "[Adversarial Search Answers](@root/ai/slides/adversarial-search-answers.pdf)"
         ],
         "assignments": [
+            "Due: [PA1](pa1.html)",
+            "Assigned: [PA2](pa2.html)"
         ],
         "videos": []
     },
@@ -163,8 +165,6 @@
         ],
         "exercises": [],
         "assignments": [
-            "Due: [PA1](pa1.html)",
-            "Assigned: [PA2](pa2.html)"
         ],
         "videos": [],
         "include_semester": false
@@ -343,36 +343,10 @@
         "part": "Decision Making and Reinforcement Learning"
     },
     {
-        "topic": "simple-decisions",
-        "slides": "[Simple Decisions](@root/ai/slides/simple-decisions.pdf)",
-        "reading": [
-            "AIMA: 16"
-        ],
-        "exercises": [
-            "[Simple Decisions Questions](@root/ai/slides/simple-decisions-questions.pdf)",
-            "[Simple Decisions Answers](@root/ai/slides/simple-decisions-answers.pdf)"
-        ],
-        "assignments": [
-        ],
-        "videos": [],
-        "include_semester": false
-    },
-    {
-        "topic": "utility-theory",
-        "slides": "[Utility Theory](@root/ai/slides/utility-theory.pdf)",
-        "reading": [
-            "AIMA: 16.1-16.4"
-        ],
-        "exercises": [],
-        "assignments": [
-        ],
-        "videos": []
-    },
-    {
         "topic": "decision-theory",
         "slides": "[Decision Theory](@root/ai/slides/decision-theory.pdf)",
         "reading": [
-            "AIMA: 16.5-16.7"
+            "AIMA: 16"
         ],
         "exercises": [],
         "assignments": [
@@ -383,7 +357,8 @@
         "topic": "multiagent-systems",
         "slides": "[Multiagent Systems](@root/ai/slides/multiagent-systems.pdf)",
         "reading": [
-            "AIMA: 18.1-18.2"
+            "AIMA: 18.1",
+            "MAS: 1-2"
         ],
         "exercises": [
             "[Multiagent Systems Questions](@root/ai/slides/multiagent-systems-questions.pdf)",
@@ -394,10 +369,23 @@
         "videos": []
     },
     {
-        "topic": "collective-decisions",
-        "slides": "[Collective Decisions](@root/ai/slides/collective-decisions.pdf)",
+        "topic": "noncooperative-game-theory",
+        "slides": "[Noncooperative Game Theory](@root/ai/slides/noncooperative-game-theory.pdf)",
         "reading": [
-            "AIMA: 18.3-18.4"
+            "AIMA: 18.2",
+            "MAS: 3-4"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": []
+    },
+    {
+        "topic": "cooperative-game-theory",
+        "slides": "[Cooperative Game Theory](@root/ai/slides/cooperative-game-theory.pdf)",
+        "reading": [
+            "AIMA: 18.3-18.4",
+            "MAS: 9, 10"
         ],
         "exercises": [],
         "assignments": [
@@ -487,8 +475,6 @@
         ],
         "exercises": [],
         "assignments": [
-            "Due: [PA3](pa3.html)",
-            "Assigned: [PA4](pa4.html)"
         ],
         "videos": []
     },

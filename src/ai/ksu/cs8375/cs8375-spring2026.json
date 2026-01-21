@@ -30,7 +30,13 @@
         "2026-04-03": "Withdrawal Deadline",
         "2026-04-07": "AAAI Spring Symposia",
         "2026-04-08": "AAAI Spring Symposia",
-        "2026-04-09": "AAAI Spring Symposia"
+        "2026-04-09": "AAAI Spring Symposia",
+        "2026-04-23": "ICLR",
+        "2026-04-24": "ICLR",
+        "2026-04-25": "ICLR",
+        "2026-04-26": "ICLR",
+        "2026-04-27": "ICLR",
+        "2026-05-09": "CognoCon"
     },
     "final_exam": {
         "2026-05-06": "Sec 01: 18:00-20:00"
