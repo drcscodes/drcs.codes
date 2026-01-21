@@ -13,6 +13,19 @@ header-includes:
     ```
 ---
 
+## What is an agent?
+
+```{=latex}
+\begin{center}
+```
+![](agent-smith-subway-fight.jpg){height="80%"}
+```{=latex}
+\end{center}
+```
+
+
+[https://x.com/aist_digital/status/1954905895025942918](https://x.com/aist_digital/status/1954905895025942918)
+
 ## Agents
 
 ```{=latex}
@@ -38,13 +51,19 @@ An *agent function* is an external tabulation of the agent's behavior.
 
 An *agent program* is an implementation of an agent function inside the agent.
 
-## Intelligent Agents Rationality
+## Intelligent Agents
 
-- Consequentialist: we judge behavior as rational if it leads to desirable consequences.
-- Need an external *performance measure* to make this judgment.
-- Genie effect: be careful what you wish for.
+An intelligent agent is *rational*.  Rationality ...
 
-Example: what if our performance measure is "amount of dirt sucked up?"
+- is consequentialist.
+
+    - We judge behavior as rational if it leads to desirable consequences.
+
+- needs an external *performance measure* to make this judgment.
+
+Beware of the Genie effect.
+
+- Example: what if our performance measure is "amount of dirt sucked up?"
 
 > Performance measures should specify desired states of the environment, not preconceived notions of what the agent's behavior should be.
 
@@ -57,7 +76,7 @@ Judgment of rationality depends on:
 - The actions that the agent can perform.
 - The agent’s percept sequence to date.
 
-Definition of rational agent:
+Now we can define *rational agent*:
 
 > For each possible percept sequence, a rational agent should select an action that is expected to maximize its performance measure, given the evidence provided by the percept sequence and whatever built-in knowledge the agent has.
 
@@ -65,16 +84,16 @@ Note that the performance measure is external to the agent, representing a gener
 
 ## Omniscience, Rationality, Learning and Autonomy
 
-- Omniscience: for a given state and action, agent knows the result state exactly.
-- Omniscience is impossible in practice
+Omniscience: for a given state and action, agent knows the result state exactly.
 
-> Rationality means choosing the best action given what you know, i.e., the percept sequence to date.
+- Omniscience is impossible in practice
+- Rationality means choosing the best action given what you know, i.e., the percept sequence to date.
 
 Key idea: how to maximize the usefulness of the agent's percept sequence.
 
 - Information gathering, exploration.
-- Learning
-- Prior knowledge
+- Learning makes use of exploration.
+- Prior knowledge.
 
 The more an agent is able to learn, the more autonomy it has.
 
@@ -89,6 +108,7 @@ Task environment specification: PEAS
 - **A**ctuators to modify the environment
 - **S**ensors to perceive the environment
 
+Notice that there is a blurring of the line between what we intuitively consider an *agent* versus the *environment* in which it acts.
 
 ## Taxi Task Environment
 
@@ -147,6 +167,8 @@ Task environment specification: PEAS
 $$
 agent = architecture + program
 $$
+
+This entire course, indeed all of AI, is about designing intelligent agents.
 
 ## Table-driven Agent
 
@@ -233,7 +255,7 @@ A transition model typically contains
 Note that the state transition function can be deterministic or nondeterministic.  In most of AI, we consider it to be stochastic.
 
 $$
-Pr(s, a, s') \text{ or } Pr(s_t | s_{t-1}, a_{t-1})
+P(s, a, s') \text{ or } P(s_t \mid s_{t-1}, a_{t-1})
 $$
 
 
@@ -278,6 +300,8 @@ Agents select actions that achieve goals by using **search** and **planning** al
 \end{center}
 ```
 
+A utility-driven agent seeks states that are more desirable, which is a "soft" way of describing goals.
+
 ## Learning Agents
 
 ```{=latex}
@@ -308,6 +332,6 @@ This lesson has effectively introduced the entire course, providing a framework 
 
 - In the next few lessons we'll learn how to search for right action based on goals.
 - Then we'll learn how to construct knowledge-based models and use them to plan sequences of actions that achieve goals.
-- In the second half of the course we'll learn how to reason under uncertainty, which will help us deal with partial observability, and estimate our state.
+- In the second half of the course we'll learn how to reason under uncertainty, which will help us deal with partial observability.
 - We'll learn how to find optimal actions in multi-agent settings.
 - And we'll learn how to construct the learning elements of agents that improve all of the above with experience.
