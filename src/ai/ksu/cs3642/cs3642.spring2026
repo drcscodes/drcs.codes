@@ -7,10 +7,10 @@ Week 2
 2026-01-21;intelligent-agents;;
 Problem Solving
 Week 3
-2026-01-26;problem-solving;Due: [PA0](pa0.html),Assigned: [PA1](pa1.html);Financial Aid Disbursement (2026-01-26),Unpaid Course Deletion (2026-01-27)
-2026-01-28;heuristic-search;;
+2026-01-26;Weather Cancellation;;Financial Aid Disbursement (2026-01-26),Unpaid Course Deletion (2026-01-27)
+2026-01-28;problem-solving;Due: [PA0](pa0.html),Assigned: [PA1](pa1.html);
 Week 4
-2026-02-02;local-search;;
+2026-02-02;heuristic-search,local-search;;
 2026-02-04;nondeterministic-search;;
 Week 5
 2026-02-09;adversarial-search;Due: [PA1](pa1.html),Assigned: [PA2](pa2.html);
@@ -54,4 +54,4 @@ Week 16
 2026-04-29;statistical-learning;;
 Week 17
 2026-05-04;final-review;Due: [PA4](pa4.html);
-2026-05-11;Final Exam;Sec 01: 15:30-17:30;
+2026-05-11;Final Exam;;Sec 01: 15:30-17:30

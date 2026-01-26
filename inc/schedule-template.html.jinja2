@@ -30,7 +30,12 @@ template: course
       {% else %}
       <tr>
         <td style="width: 10ch">{{row["date"]}}</td>
-        <td>{{(row["slides"]|markdown).replace("<p>","").replace("</p>","")}}</td>
+        <td>
+          {% for item in row["slides"][:-1] %}
+          {{(item|markdown).replace("<p>","").replace("</p>","")}}<br/>
+          {% endfor %}
+          {{(row["slides"][-1]|markdown).replace("<p>","").replace("</p>","")}}
+        </td>
         <td>
           {% for item in row["reading"][:-1] %}
           {{(item|markdown).replace("<p>","").replace("</p>","")}}<br/>
