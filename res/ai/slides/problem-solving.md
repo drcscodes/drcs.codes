@@ -389,7 +389,7 @@ But three optimizations afforded by the BFS algorithm and uniform path costs:
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_08-bfs-binary-tree.pdf)
+![](aima-fig-03_08-bfs-binary-tree.pdf){height="20%"}
 ```{=latex}
 \end{center}
 ```
@@ -397,7 +397,7 @@ But three optimizations afforded by the BFS algorithm and uniform path costs:
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_09-bfs-algorithm.pdf)
+![](aima-fig-03_09-bfs-algorithm.pdf){height="60%"}
 ```{=latex}
 \end{center}
 ```
@@ -417,9 +417,6 @@ Uninformed search is not appropriate for exponential complexity problems except 
 - Same problem, but with $d = 14$?
 
 ## Uniform-Cost Search (Dijkstra's Algorithm)
-
-:::: {.columns}
-::: {.column width="30%"}
 
 BFS where the best-first $f(node)$ is the path cost to the current node.
 
@@ -442,22 +439,6 @@ BFS where the best-first $f(node)$ is the path cost to the current node.
     - 278 < 310, so this is not at head of priority queue.
 
 - Apply goal test to Bucharest node before explansion, finding it to be the goal.
-
-:::
-::: {.column width="70%"}
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-03_07-best-first-search-algorithm.pdf)
-
-![](aima-fig-03_09-uniform-cost-search.pdf)
-```{=latex}
-\end{center}
-```
-
-:::
-::::
 
 ## Analysis of Uniform-Cost Search
 
