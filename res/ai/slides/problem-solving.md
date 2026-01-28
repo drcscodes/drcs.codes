@@ -15,6 +15,12 @@ header-includes:
 
 ## Planning Agents
 
+- Problem Solving Agents
+- Search Problems and Solutions
+- Search Algorithms
+- Elements of Search Algorithm Implementations
+- Uninformed Search
+
 
 # Problem Solving Agents
 
@@ -423,7 +429,7 @@ BFS where the best-first $f(node)$ is the path cost to the current node.
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_10-sibiu-bucharest.pdf)
+![](aima-fig-03_10-sibiu-bucharest.pdf){height="30%"}
 ```{=latex}
 \end{center}
 ```
@@ -438,7 +444,7 @@ BFS where the best-first $f(node)$ is the path cost to the current node.
 
     - 278 < 310, so this is not at head of priority queue.
 
-- Apply goal test to Bucharest node before explansion, finding it to be the goal.
+- Apply goal test to Bucharest node before expansion, finding it to be the goal.
 
 ## Analysis of Uniform-Cost Search
 
