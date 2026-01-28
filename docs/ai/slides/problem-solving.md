@@ -13,6 +13,11 @@ header-includes:
     ```
 ---
 
+## Planning Agents
+
+
+# Problem Solving Agents
+
 ## Problem-Solving Agents
 
 ```{=latex}
@@ -43,7 +48,7 @@ To solve a problem, we
 - **Search** the possible sequences of action in our problem model that transforms our state from the current state to the goal state.  A sequence of actions that gets us to the goal state is called a *solution*.  May be many; pick one.
 - **Execute** the actions in the solution.
 
-## Open-Loop vs. Closed-Loop
+## Open-Loop vs. Closed-Loop Control
 
 - In an **open-loop** system the agent gets no feedback, i.e., sensor input, after executing an action.
 
@@ -54,7 +59,9 @@ To solve a problem, we
     - If the environment is partially observable or actions are nondeterministic, closed-loop control is necessary.
     - Say the agent executes to `ToSibiu` action but ends up in `Zerind`.  Closed-loop feedback will alert the agent to this fact so it can re-plan.
 
-## Search Problems and Solutions
+# Problems
+
+## Search Problems
 
 A search problem consists of:
 
@@ -158,6 +165,8 @@ Here's a standardized environment for the vacuum cleaner agent, formulated as a 
 
     - Solving some automatic assembly problems could earn you a [Nobel Prize!](https://deepmind.google/science/alphafold/)
 
+# Search Algorithms in General
+
 ## Search Algorithms
 
 A **search algorithm** takes a search problem as input and returns a solution, or an indication of failure.
@@ -230,6 +239,51 @@ Frontier is in green.  Interior is lavender.  Exterior is faint dashed.
 - (b) Top frontier node expanded.
 - (c) Remaining successors of root expanded in clockwise order.
 
+## Redundant Paths
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-03_04-arad-repeated.pdf){height="30%"}
+```{=latex}
+\end{center}
+```
+
+In the path from `Arad` to `Sibiu` to `Arad`,
+
+- `Arad` is a **repeated state** and
+- the path is a **cycle**, or **loopy path**.
+
+Cycle special case of **redundant path**: multiple paths to the same state.  Three approaches:
+
+1. Remember reached states, like best-first search.  Best when reached states fits in memory.
+2. Don't worry about repeated states.  Works when repeated states rare or impossible.
+
+    - **Graph search** checks for redundant paths, which occur in graphs in general.
+    - **Tree-like search** does not check for redundant paths, since trees are acyclic graphs.
+
+3. Only check for cycles, not other kinds of redundant paths.
+
+    - E.g., search path in reverse
+
+## Measuring Problem-Solving Performance
+
+- **Completeness**: Is the algorithm guaranteed to find a solution when there is one, and to correctly report failure when there is not?
+
+    - Complete search algorithms must be **systematic**.
+    - Easier to achieve for finite state spaces.
+    - In an infinite state space with no solution, search won't terminate.
+
+- **Cost optimality**: Does it find a solution with the lowest path cost of all solutions?
+- **Time complexity**: How long does it take to find a solution? This can be measured in seconds, or more abstractly by the number of states and actions considered.
+- **Space complexity**: How much memory is needed to perform the search?
+
+For *explicit* graphs, like Romania, time and space complexity typically expressed in terms of number of vertices (state nodes), $|V|$, and number of edges, $|E|$ (state-action pairs, which generate ($(s, a, s')$ triples).
+
+For *implicit* state space graphs we characterize time and space complexity in terms of depth, $d$ (number of actions in an optimal solution), and branching factor, $b$ (number of successor nodes per node).  For most of our discussions, we'll use this characterization.
+
+# Common Search Algorithm Implementation Elements
+
 ## Implementation Note: The `yield` statement
 
 A function containing a `yield` statement is a **generator**.  Use a generator to turn a data generating process into an iterator.  Node expansion is a data generating process.
@@ -290,60 +344,19 @@ Best-first search is an abstract search algorithm.  Name can be tricky to unders
 
 > The evaluation function considers the path to the node, not any property of the node itself.  Remember, a solution to a search problem is characterized by the *path* from the root to the goal, not some characteristic of the goal.
 
-We'll now describe several uninformed search algorithms.  I recommend you also look at their [implementations in Python](https://github.com/aimacode/aima-python/blob/master/search4e.ipynb), which may be easier to follow.
-
 ## Best-First Search Algorithm
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-03_07-best-first-search-algorithm.pdf){height="90%"}
+![](aima-fig-03_07-best-first-search-algorithm.pdf){height="80%"}
 ```{=latex}
 \end{center}
 ```
 
-## Redundant Paths
+We'll now describe several uninformed search algorithms.  I recommend you also look at their [implementations in Python](https://github.com/aimacode/aima-python/blob/master/search4e.ipynb), which may be easier to follow.
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-03_04-arad-repeated.pdf){height="30%"}
-```{=latex}
-\end{center}
-```
-
-In the path from `Arad` to `Sibiu` to `Arad`,
-
-- `Arad` is a **repeated state** and
-- the path is a **cycle**, or **loopy path**.
-
-Cycle special case of **redundant path**: multiple paths to the same state.  Three approaches:
-
-1. Remember reaches states, like best-first search.  Best when reached states fits in memory.
-2. Don't worry about repeated states.  Works when repeated states rare or impossible.
-
-    - **Graph search** checks for redundant paths, which occur in graphs in general.
-    - **Tree-like search** does not check for redundant paths, since trees are acyclic graphs.
-
-3. Only check for cycles, not other kinds of redundant paths.
-
-    - E.g., search path in reverse
-
-## Measuring Problem-Solving Performance
-
-- **Completeness**: Is the algorithm guaranteed to find a solution when there is one, and to correctly report failure when there is not?
-
-    - Complete search algorithms must be **systematic**.
-    - Easier to achieve for finite state spaces.
-    - In an infinite state space with no solution, search won't terminate.
-
-- **Cost optimality**: Does it find a solution with the lowest path cost of all solutions?
-- **Time complexity**: How long does it take to find a solution? This can be measured in seconds, or more abstractly by the number of states and actions considered.
-- **Space complexity**: How much memory is needed to perform the search?
-
-For *explicit* graphs, like Romania, time and space complexity typically expressed in terms of number of vertices (state nodes), $|V|$, and number of edges, $|E|$ (state-action pairs, which generate ($(s, a, s')$ triples).
-
-For *implicit* state space graphs we characterize time and space complexity in terms of depth, $d$ (number of actions in an optimal solution), and branching factor, $b$ (number of successor nodes per node).  For most of our discussions, we'll use this characterization.
+# Uninformed Search
 
 ## Uninformed Search Strategies
 
@@ -372,7 +385,6 @@ But three optimizations afforded by the BFS algorithm and uniform path costs:
 - **Early goal test** -- as soon as we expand a node, we can test it.
 
 ## BFS Algorithm
-
 
 ```{=latex}
 \begin{center}
@@ -418,6 +430,18 @@ BFS where the best-first $f(node)$ is the path cost to the current node.
 ```{=latex}
 \end{center}
 ```
+
+- From Sibiu, exand Faragas and RV.
+- Path cost to RV is less, so it's expanded next, adding Pitesti to frontier.
+- Path cost to Pitesti is 80 + 97 = 177, so Faragas is expanded next, adding Bucharest, the goal to the frontier with a total path cost of 99 + 211 = 310.
+
+    - Goal test not applied to a node until it's expanded, so ...
+
+- Expand Pitesti, which adds Bucharest, the goal, to the frontier with a path cost of 177 + 101 = 278
+
+    - 278 < 310, so this is not at head of priority queue.
+
+- Apply goal test to Bucharest node before explansion, finding it to be the goal.
 
 :::
 ::: {.column width="70%"}
