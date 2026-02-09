@@ -10,15 +10,15 @@ Week 3
 2026-01-26;Weather Cancellation;;Financial Aid Disbursement (2026-01-26),Unpaid Course Deletion (2026-01-27)
 2026-01-28;problem-solving;Due: [PA0](pa0.html),Assigned: [PA1](pa1.html);
 Week 4
-2026-02-02;heuristic-search,local-search;;
-2026-02-04;nondeterministic-search;;
+2026-02-02;Super Flu Cancellation;;
+2026-02-04;heuristic-search;;
 Week 5
-2026-02-09;adversarial-search;Due: [PA1](pa1.html),Assigned: [PA2](pa2.html);
-2026-02-11;constraint-satisfaction;;
+2026-02-09;adversarial-search;;
+2026-02-11;local-search;Due: [PA1](pa1.html),Assigned: [PA2](pa2.html);
 Knowledge, Reasoning, and Planning
 Week 6
-2026-02-16;knowledge-ai;;
-2026-02-18;planning;;
+2026-02-16;nondeterministic-search;;
+2026-02-18;knowledge-ai,planning;;
 Week 7
 2026-02-23;midterm-review;;
 2026-02-25;midterm-exam;;

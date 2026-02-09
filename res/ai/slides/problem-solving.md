@@ -325,7 +325,7 @@ Node:
 - `node.STATE`: the state to which the node corresponds;
 - `node.PARENT`: the node in the tree that generated this node;
 - `node.ACTION`: the action that was applied to the parent’s state to generate this node;
-- `node.PATH-COST`: the total cost of the path from the initial state to this node. In math- ematical formulas, we use $g(node)$ as a synonym for PATH-COST.
+- `node.PATH-COST`: the total cost of the path from the initial state to this node. In mathematical formulas, we use $g(node)$ as a synonym for PATH-COST.
 
 Frontier is a **queue** with operations:
 
