@@ -44,11 +44,13 @@ If you don't care about the path to a goal state, you can use **local search**.
 \end{center}
 ```
 
-- Also known as **greedy local search**
+Also known as **greedy local search**.
 
 ## The 8 Queens Problem
 
-**Complete-state formulation**: row position for each of 8 columns, e.g., (a) below is `<1, 6, 2, 5, 7, 4, 8, 3>`
+**Complete-state formulation**: each state has all components of a solution.
+
+- 8 Queens state: row position for each of 8 columns, e.g., (a) below is `<1, 6, 2, 5, 7, 4, 8, 3>`
 
 ```{=latex}
 \begin{center}
@@ -74,7 +76,7 @@ Susceptible to getting stuck in:
 - ridges -- sequences of local maxima
 - plateaus, e.g., flat local maxima or shoulders.
 
-![](aima-fig-04_01-state-space-landscape.pdf){height="30$"}
+![](aima-fig-04_01-state-space-landscape.pdf){height="40%"}
 
 How to fix:
 
