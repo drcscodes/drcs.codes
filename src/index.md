@@ -3,7 +3,7 @@ title: Dr. CS Codes
 ---
 
 - [Professional Python](@root/professional-python/lessons.html)
-- [Artificial Intelligence](@root/ai/lessons.html)
+- [Artificial Intelligence](@root/ai/)
     - [KSU CS 3642](@root/ai/ksu/cs3642/syllabus.html)
     - [KSU CS 8375](@root/ai/ksu/cs8375/syllabus.html)
 - [Machine Learning](@root/ml/lessons.html)

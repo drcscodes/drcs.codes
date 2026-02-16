@@ -21,19 +21,12 @@ So far we've learned about search in fully observable, deterministic, known envi
 - partially observable environments, and
 - unknown environments.
 
-## States in the Vacuum World
-
-Let's return to the vacuum world, whose states are:
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-04_09-vacuum-states.pdf)
-```{=latex}
-\end{center}
-```
+# Search with Nondeterministic Actions
 
 ## Nondeterministic Actions: The Erratic Vacuum World
+
+:::: {.columns}
+::: {.column width="60%"}
 
 In the erratic vacuum world, the Suck action works as follows:
 
@@ -47,6 +40,20 @@ $$
 $$
 
 That set of states that the agent believes is possible, {5, 7}, is called a **belief state**.
+
+:::
+::: {.column width="40%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-04_09-vacuum-states.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
 
 ## A Factored Representation
 
@@ -158,19 +165,13 @@ Trace this conditional plan through the tree on the right.
 :::
 ::::
 
-## States in the Vacuum World
-
-Recall the states of the vacuum world:
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-04_09-vacuum-states.pdf)
-```{=latex}
-\end{center}
-```
+# Search in Partially Observable Environments
 
 ## Search in Sensorless Environments
+
+
+:::: {.columns}
+::: {.column width="60%"}
 
 Now let's turn to uncertainty in the state observations, first with a sensorless world.
 
@@ -189,7 +190,21 @@ Given an initial belief state is {1,2,3,4,5,6,7,8}.
 
 We say that the agent can **coerce** the world into state 7.
 
-## States in Sensorless Environments
+:::
+::: {.column width="40%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-04_09-vacuum-states.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+## Search Algorithms for Sensorless Environments
 
 Instead of creating new algorithms, we transform the original problem into a belief state problem.
 
@@ -197,7 +212,19 @@ The original problem, $P$, has components $Actions_P$, $Result_P$ etc., and the 
 
 - **States**: The belief-state space contains every possible subset of the physical states. If $P$ has $N$ states, then the belief-state problem has $2^N$ belief states, although many of those may be unreachable from the initial state (see next slide).
 
-- **Initial state**: Typically the belief state consisting of all states in P, although in some cases the agent will have more knowledge than this.
+- **Initial state**: Typically the belief state consisting of all states in $P$, although in some cases the agent will have more knowledge than this.
+
+- **Actions**: $Actions(b) = \bigcup_{s \in b} Actions_P(s)$ or $Actions(b) = \bigcap_{s \in b} Actions_P(s)$
+
+- **Transition model**: For deterministic actions, the new belief state has one result state
+for each of the current possible states.  With nondeterminism, the new belief state consists of all the possible results of applying the action to any of the states in the current belief state.
+
+- **Goal test**.  We aim to *necessarily* achieve the goal.
+
+    - The agent *possibly* achieves the goal if $\exists s \in b : IsGoal_P(s)$.
+    - The agent *necessarily* achieves the goal if $\forall s \in b : IsGoal_P(s)$.
+
+- **Action cost**: If the same action can have different costs in different states, then the cost of taking an action in a given belief state could be one of several values. For now we assume that the cost of an action is the same in all states and so can be transferred directly from the underlying physical problem.
 
 ## Reachable States in Sensorless Vacuum World
 
@@ -209,7 +236,7 @@ Only 12 reachable belief states out of $2^8 = 256$ possible belief states.
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-04_14-reachable-sensorless-vacuum-belief-states.pdf)
+![](aima-fig-04_14-reachable-sensorless-vacuum-belief-states.pdf){height="80%"}
 ```{=latex}
 \end{center}
 ```
@@ -258,30 +285,48 @@ b'= Results(b,a) &= \{s': s' \in Results_P(s,a) and s \in b\}\\
 The size of $b'$ will be the same or smaller than b for deterministic actions, but may be larger than $b$ with nondeterministic actions.
 
 
-## Predicting Belief States in Sensorless Vacuum World
+## Predicting Belief States in Sensorless Deterministic Vacuum World
+
+Apply the deterministic action to all states in $b$ to get $b'$.
 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-04_13-sensorless-vacuum-belief-states.pdf)
+![](aima-fig-04_13_a-sensorless-vacuum-belief-state-deterministic-actions.pdf)
 ```{=latex}
 \end{center}
 ```
 
-Apply the action to all states in $b$ to get $b'$.
 
-- (a) Predicting the next belief state with the deterministic action, Right.
-- (b) Prediction for the same belief state and action in the slippery sensorless vacuum world.
+```{=latex}
+\begin{align*}
+b' = Result(b,a)             &= \{s': s' = Result_P(s,a) \text{ and } s \in b\}\\
+b' = Result(\{1, 3\}, Right) &= \{ Result_P(1,Right), Result_P(3,Right) \}\\
+                             &= \{2, 4\}
+\end{align*}
+```
 
-## Goals and Action Costs in Sensorless Environments
+## Predicting Belief States in Sensorless Slippery Vacuum World
 
-- **Goal test**:
+Apply the nondeterministic action to all states in $b$ to get $b'$.
 
-    - The agent possibly achieves the goal if $\exists s \in b : IsGoal_P(s)$.
-    - The agent necessarily achieves the goal if $\forall s \in b : IsGoal_P(s)$.
-    - We aim to necessarily achieve the goal.
+```{=latex}
+\begin{center}
+```
+![](aima-fig-04_13_b-sensorless-vacuum-belief-state-nondeterministic-actions.pdf)
+```{=latex}
+\end{center}
+```
 
-- **Action cost**: If the same action can have different costs in different states, then the cost of taking an action in a given belief state could be one of several values. For now we assume that the cost of an action is the same in all states and so can be transferred directly from the underlying physical problem.
+```{=latex}
+\begin{align*}
+b'= Results(b,a)             &= \bigcup_{s \in b} Results_P(s,a)\\
+b' = Result(\{1, 3\}, Right) &= \bigcup_{s \in \{1, 3\}} Results_P(s,Right)\\
+b' = Result(\{1, 3\}, Right) &= Result_P(1,Right) \cup Result_P(3,Right)\\
+                             &= \{1, 2\} \cup \{4, 3\}\\
+                             &= \{1, 2, 4, 3\}
+\end{align*}
+```
 
 ## Search in Partially Observable Environments
 
@@ -338,28 +383,14 @@ $$
 PossiblePercepts(\hat{b}) = \{o : o = Percept(s) \text{ and } s \in \hat{b}\}
 $$
 
-- The **update** stage computes, for each possible percept, the belief state that would result from the percept. The updated belief state $b_o$ is the set of states in $b$ that could have
+- The **update** stage computes, for each possible percept, the belief state that would result from the percept. The updated belief state $b_o$ is the set of states in $\hat{b}$ that could have
 produced the percept:
 
 $$
 b_o = Update(\hat{b},o) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}
 $$
 
-## Planning Time State Estimation
-
-The agent needs to deal with possible percepts at planning time, because it won’t know the actual percepts until it executes the plan.
-
-- Nondeterminism in the physical environment can enlarge the belief state in the prediction stage, but each updated belief state $b_o$ can be no larger than the predicted belief state $\hat{b}$; observations can only help reduce uncertainty.
-- For deterministic sensing, the belief states for the different possible percepts will be disjoint, forming a partition of the original predicted belief state.
-
-Putting the three stages from previous slide together, we obtain the possible belief states resulting from a given action and the subsequent possible percepts:
-
-$$
-Results(b,a) = \{b_o : b_o = Update(Predict(b,a),o) \text{ and }
-    o \in PossiblePercepts(Predict(b,a))\}.
-$$
-
-## State Transitions with Local Sensing
+## State Transitions with Local Sensing (Summary)
 
 ::: {.columns}
 ::: {.column width="50%"}
@@ -394,6 +425,133 @@ Final column on left shows input to Update step, which will then compute the fin
 
 :::
 ::::
+
+
+## State Transitions with Local Sensing and Deterministic Actions
+
+:::: {.columns}
+::: {.column width="60%"}
+
+1. Predict:
+```{=latex}
+\vspace{-.25in}
+\begin{align*}
+\hat{b} &= Result(b, a)\\
+        &= Result(\{1, 3\}, Right)\\
+        &= \{2, 4\}
+\end{align*}
+```
+
+2. Possible percepts:
+```{=latex}
+\vspace{-.25in}
+\begin{align*}
+PossiblePercepts(\hat{b})  &= \{o : o = Percept(s) \text{ and } s \in \hat{b}\}\\
+PossiblePercepts(\{2, 4\}) &= \{o : o = Percept(s) \text{ and } s \in \{2, 4\}\}\\
+                           &= \{[R, Dirty], [R, Clean]\}
+\end{align*}
+```
+
+:::
+::: {.column width="40%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-04_15_a-local-sensing-vacuum-deterministic-state-transitions.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+Then the two belief states on the right are then fed to the final step once the agent gets a percept.  If the percept is $[R, Dirty]$, then:
+
+3. Update:
+```{=latex}
+\vspace{-.25in}
+\begin{align*}
+b_o &= Update(\hat{b},o) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}\\
+    &= Update(\{[R, Dirty], [R, Clean]\}) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}\\
+    &= \{2\}
+\end{align*}
+```
+
+## State Transitions with Local Sensing in Slippery Vacuum World
+
+:::: {.columns}
+::: {.column width="60%"}
+
+1. Predict:
+```{=latex}
+\vspace{-.25in}
+\begin{align*}
+\hat{b} &= Result(b, a)\\
+        &= Result(\{1, 3\}, Right)\\
+        &= \{2, 1, 3, 4\}
+\end{align*}
+```
+
+2. Possible percepts:
+```{=latex}
+\vspace{-.25in}
+\[
+PossiblePercepts(\hat{b}) = \{o : o = Percept(s) \text{ and } s \in \hat{b}\}
+\]
+\vspace{-.4in}
+\begin{multline*}
+PossiblePercepts(\{2, 1, 3, 4\}) = \\
+    \{o : o = Percept(s) \text{ and } s \in \{2, 1, 3, 4\}\} =\\
+    \{[R, Dirty], [L, Dirty], [L, Dirty], [R, Clean]\}
+\end{multline*}
+```
+
+
+:::
+::: {.column width="40%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-04_15_b-local-sensing-vacuum-nondeterministic-state-transitions.pdf){height="50%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+Then the three belief states on the right are then fed to the final step once the agent gets a percept.  If the percept is $[L, Dirty]$, then:
+
+3. Update:
+```{=latex}
+\vspace{-.25in}
+\begin{align*}
+b_o &= Update(\hat{b},o) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}\\
+    &= Update(\{[R, Dirty], [L, Dirty], [L, Dirty], [R, Clean]\}) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}\\
+    &= \{1, 3\}
+\end{align*}
+```
+
+
+
+## Planning Time State Estimation
+
+The agent needs to deal with possible percepts at planning time, because it won’t know the actual percepts until it executes the plan.
+
+- Nondeterminism in the physical environment can enlarge the belief state in the prediction stage, but each updated belief state $b_o$ can be no larger than the predicted belief state $\hat{b}$; observations can only help reduce uncertainty.
+- For deterministic sensing, the belief states for the different possible percepts will be disjoint, forming a partition of the original predicted belief state.
+
+Putting the three stages from previous slide together, we obtain the possible belief states resulting from a given action and the subsequent possible percepts:
+
+$$
+Results(b,a) = \{b_o : b_o = Update(Predict(b,a),o) \text{ and }
+    o \in PossiblePercepts(Predict(b,a))\}.
+$$
+
+
+<!--
 
 ## Local Sensing And-Or Trees
 
@@ -430,6 +588,7 @@ $$
 [Suck, Right, \textbf{ if } state= \{6\} \textbf{ then } Suck \textbf{ else } []]
 $$
 
+-->
 
 ## Belief State Maintenance in Partially Observable Environments
 
