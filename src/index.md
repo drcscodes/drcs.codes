@@ -5,6 +5,7 @@ title: Dr. CS Codes
 - [Professional Python](@root/professional-python/lessons.html)
 - [Artificial Intelligence](@root/ai/)
     - [KSU CS 3642](@root/ai/ksu/cs3642/schedule.html)
+    - [KSU CS 7375](@root/ai/ksu/cs7375/schedule.html)
     - [KSU CS 8375](@root/ai/ksu/cs8375/schedule.html)
 - [Machine Learning](@root/ml/lessons.html)
 - [Reinforcement Learning](@root/rl/lessons.html)
