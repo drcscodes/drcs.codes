@@ -118,7 +118,7 @@ Each action, $a$, leads to a probability distribution over outcomes, or "result 
 
 ```{=latex}
 $$
-\sum_{s \in S} Pr(s) = 1
+P(\text{RESULT}(a) = s') = \sum_{s \in S} P(s) P(s' \mid s, a)
 $$
 ```
 
@@ -126,7 +126,7 @@ And each outcome state has a utility.  A rational decision-theoretic agent choos
 
 ```{=latex}
 $$
-\argmax_{a} \sum_{s \in S} Pr(s) U(s)
+\argmax_{a} \sum_{s' \in S} P(\text{RESULT}(a) = s') U(s')
 $$
 ```
 
@@ -138,7 +138,7 @@ In probability theory the set of possible worlds is a **sample space**, $\Omega$
 
 ```{=latex}
 $$
-0 \le Pr(\omega) \le 1 \text{ for every } \omega \text{ and } \sum_{\omega \in \Omega} Pr(\omega) = 1
+0 \le P(\omega) \le 1 \text{ for every } \omega \text{ and } \sum_{\omega \in \Omega} P(\omega) = 1
 $$
 ```
 
@@ -182,10 +182,10 @@ A **proposition** is an event expressed in a formal language; specifically, for 
 The probability associated with a proposition is defined to be the sum of the probabilities of the worlds in which it holds:
 
 $$
-\text{For any proposition } \phi, Pr(\phi) = \sum_{\omega \in \phi} Pr(\omega)
+\text{For any proposition } \phi, P(\phi) = \sum_{\omega \in \phi} P(\omega)
 $$
 
-Example: $Pr(Doubles) = Pr((1, 1)) + \cdots + Pr((6, 6)) = \frac{1}{36} + \cdots + \frac{1}{36} = \frac{1}{6}$
+Example: $P(Doubles) = P((1, 1)) + \cdots + P((6, 6)) = \frac{1}{36} + \cdots + \frac{1}{36} = \frac{1}{6}$
 
 ## Prior and Conditional Probabilities
 
@@ -196,23 +196,23 @@ A **conditional** or **posterior** probability is a degree of belief in a propos
 Definition of conditional probability:
 
 $$
-Pr(a | b) = \frac{Pr(a \land b)}{Pr(b)}
+P(a  \mid  b) = \frac{P(a \land b)}{P(b)}
 $$
 
 From that definition we get the **product rule**:
 
 $$
-Pr(a \land b) = Pr(a | b) Pr(b)
+P(a \land b) = P(a  \mid  b) P(b)
 $$
 
-Note that $Pr(a \land b)$ can also be written $Pr(a,b)$ or $Pr(ab)$.
+Note that $P(a \land b)$ can also be written $P(a,b)$ or $P(ab)$.
 
 ## Conditional probability is not implication.
 
 The assertion
 
 $$
-Pr(cavity|toothache) = 0.6
+P(cavity \mid toothache) = 0.6
 $$
 
 does not mean "Whenever toothache is true, conclude that cavity is true with probability 0.6"
@@ -222,7 +222,7 @@ It means "Whenever toothache is true *and we have no further information*, concl
 If we had the further information that the dentist found no cavities, certainly not the case that cavity is true with probability 0.6; instead we have
 
 $$
-Pr(cavity|toothache \land \neg cavity) = 0
+P(cavity \mid toothache \land \neg cavity) = 0
 $$
 
 <!--
@@ -248,7 +248,7 @@ $$
 
 
 $$
-Pr(a | b) = \frac{Pr(a \land b)}{Pr(b)}
+P(a  \mid  b) = \frac{P(a \land b)}{P(b)}
 $$
 
 :::
@@ -275,7 +275,7 @@ $\hrulefill$
 
 
 $$
-Pr(a | b) = \frac{Pr(a \land b)}{Pr(b)}
+P(a  \mid  b) = \frac{P(a \land b)}{P(b)}
 $$
 
 :::
@@ -302,7 +302,7 @@ $\hrulefill$
 
 
 $$
-Pr(a | b) = \frac{Pr(a \land b)}{Pr(b)}
+P(a  \mid  b) = \frac{P(a \land b)}{P(b)}
 $$
 
 :::
@@ -321,39 +321,41 @@ A **random variable**, which begins with capital letter, is a function mapping f
 
 Individual values are written in lowercase and often abbreviated.
 
-- $Pr(sun)$ stands for $Pr(Weather=sun)$.
+- $P(sun)$ stands for $P(Weather=sun)$.
 
 A **probability distribution** is an assignment of probabilities to all values of a rendom variable, e.g.:
 
 ```{=latex}
 \begin{align*}
-Pr(Weather=sun)   &= 0.6 \\
-Pr(Weather=rain)  &= 0.1 \\
-Pr(Weather=cloud) &= 0.29 \\
-Pr(Weather=snow)  &= 0.01
+P(Weather=sun)   &= 0.6 \\
+P(Weather=rain)  &= 0.1 \\
+P(Weather=cloud) &= 0.29 \\
+P(Weather=snow)  &= 0.01
 \end{align*}
 ```
 
+Which can also be written $P(Weather) = \langle 0.6, 0.1, 0.29. 0.01 \rangle$.
+
 ## Joint Probability Distributions
 
-$Pr(Weather, Cavity)$ denotes the probabilities of all combinations of $Weather$ and $Cavity$.  This notation is a compact representation of a **joint probability distribution**.  The notation
+$P(Weather, Cavity)$ denotes the probabilities of all combinations of $Weather$ and $Cavity$.  This notation is a compact representation of a **joint probability distribution**.  The notation
 
 $$
-Pr(Weather, Cavity) = Pr(Weather | Cavity) Pr(Cavity)
+P(Weather, Cavity) = P(Weather  \mid  Cavity) P(Cavity)
 $$
 
 stands for the $4 \times 2 = 8$ equations:
 
 ```{=latex}
 \begin{align*}
-Pr(W = sun \land C = true)    &= Pr(W = sun | C = true) Pr(C = true) \\
-Pr(W = rain \land C = true)   &= Pr(W = rain | C = true) Pr(C = true) \\
-Pr(W = cloud \land C = true)  &= Pr(W = cloud | C = true) Pr(C = true) \\
-Pr(W = snow \land C = true)   &= Pr(W = snow | C = true) Pr(C = true) \\
-Pr(W = sun \land C = false)   &= Pr(W = sun | C = false) Pr(C = false) \\
-Pr(W = rain \land C = false)  &= Pr(W = rain | C = false) Pr(C = false) \\
-Pr(W = cloud \land C = false) &= Pr(W = cloud | C = false) Pr(C = false) \\
-Pr(W = snow \land C = false)  &= Pr(W = snow | C = false) Pr(C = false)
+P(W = sun \land C = true)    &= P(W = sun  \mid  C = true) P(C = true) \\
+P(W = rain \land C = true)   &= P(W = rain  \mid  C = true) P(C = true) \\
+P(W = cloud \land C = true)  &= P(W = cloud  \mid  C = true) P(C = true) \\
+P(W = snow \land C = true)   &= P(W = snow  \mid  C = true) P(C = true) \\
+P(W = sun \land C = false)   &= P(W = sun  \mid  C = false) P(C = false) \\
+P(W = rain \land C = false)  &= P(W = rain  \mid  C = false) P(C = false) \\
+P(W = cloud \land C = false) &= P(W = cloud  \mid  C = false) P(C = false) \\
+P(W = snow \land C = false)  &= P(W = snow  \mid  C = false) P(C = false)
 \end{align*}
 ```
 
@@ -364,14 +366,14 @@ All of probability theory can be built from **Kolmogorov's axioms**.
 Law of normalization:
 
 $$
-0 \le Pr(\omega) \le 1 \text{ for every } \omega \text{ and } \sum_{\omega \in \Omega} Pr(\omega) = 1
+0 \le P(\omega) \le 1 \text{ for every } \omega \text{ and } \sum_{\omega \in \Omega} P(\omega) = 1
 $$
 
 
 Probability of a disjunction, **inclusion-exlusion principle**:
 
 $$
-Pr(a \lor b) = Pr(a) + Pr(b) - Pr(a \land b)
+P(a \lor b) = P(a) + P(b) - P(a \land b)
 $$
 
 
@@ -404,13 +406,13 @@ Knowledge base is full joint distribution of boolean random variables $Toothache
 ```
 
 - All probabilities above sum to 1.
-- $Pr(cavity \lor toothache) = 0.108 + 0.012 + 0.072 + 0.008 + 0.016 + 0.064= 0.28$.
+- $P(cavity \lor toothache) = 0.108 + 0.012 + 0.072 + 0.008 + 0.016 + 0.064= 0.28$.
 
 
 Unconditional or **marginal probability** of cavity:
 
 $$
-Pr(cavity) = 0.108 + 0.012 + 0.072 + 0.008= 0.2
+P(cavity) = 0.108 + 0.012 + 0.072 + 0.008= 0.2
 $$
 
 
@@ -424,12 +426,12 @@ $$
 \end{center}
 ```
 
-General rule: $Pr(Y) = \sum_z Pr(Y, Z=z)$ where $Z$ is set of all possible values of variables other than $Y$.  Example, let $Y = Cavity$
+General rule: $P(Y) = \sum_z P(Y, Z=z)$ where $Z$ is set of all possible values of variables other than $Y$.  Example, let $Y = Cavity$
 
 ```{=latex}
 \begin{align*}
-Pr(Cavity) &= Pr(Cavity, toothache, catch) + Pr(Cavity, toothache, \neg catch) \\
-           &+ Pr(Cavity, \neg toothache, catch) + Pr(Cavity, \neg toothache, \neg catch) \\
+P(Cavity) &= P(Cavity, toothache, catch) + P(Cavity, toothache, \neg catch) \\
+           &+ P(Cavity, \neg toothache, catch) + P(Cavity, \neg toothache, \neg catch) \\
            &= <0.108, 0.016> + <0.012, 0.064> + <0.072, 0.144> + <0.008, 0.576>\\
            &= <0.2, 0.8>
 \end{align*}
@@ -445,33 +447,33 @@ Pr(Cavity) &= Pr(Cavity, toothache, catch) + Pr(Cavity, toothache, \neg catch) \
 \end{center}
 ```
 
-Using the product rule in $Pr(Y) = \sum_z Pr(Y, Z=z)$ we obtain the **conditioning** rule: $Pr(Y) = \sum_z Pr(Y|z) Pr(z)$
+Using the product rule in $P(Y) = \sum_z P(Y, Z=z)$ we obtain the **conditioning** rule: $P(Y) = \sum_z P(Y \mid z) P(z)$
 
 To get the conditional probabilites, we use the definition:
 
 ```{=latex}
 \begin{align*}
-Pr(cavity | toothache) &= \frac{Pr(cavity \land toothache)}{Pr(toothache)}\\
+P(cavity  \mid  toothache) &= \frac{P(cavity \land toothache)}{P(toothache)}\\
                        &= \frac{0.108 + 0.012}{0.108 + 0.012 + 0.016 + 0.064} = 0.6
 \end{align*}
 ```
 
 ```{=latex}
 \begin{align*}
-Pr(\neg cavity | toothache) &= \frac{Pr(\neg cavity \land toothache)}{Pr(toothache)}\\
+P(\neg cavity  \mid  toothache) &= \frac{P(\neg cavity \land toothache)}{P(toothache)}\\
                             &= \frac{0.016 + 0.064}{0.108 + 0.012 + 0.016 + 0.064} = 0.4
 \end{align*}
 ```
 
 ## Normalization
 
-Notice that $Pr(toothache)$ appears in denominator in both equations in the preceding conditional probability calculations.  We can vew it as a **normalization constant**, denoted $\alpha$, that ensures that the conditional probability distribution $Pr(Cavity | toothache)$ sums to 1.  Then we can write:
+Notice that $P(toothache)$ appears in denominator in both equations in the preceding conditional probability calculations.  We can vew it as a **normalization constant**, denoted $\alpha$, that ensures that the conditional probability distribution $P(Cavity  \mid  toothache)$ sums to 1.  Then we can write:
 
 ```{=latex}
 \vspace{-.25in}
 \begin{align*}
-Pr(Cavity | toothache) &= \alpha Pr(Cavity, toothache) \\
-                       &= \alpha [ Pr(Cavity, toothache, catch) + Pr(Cavity, toothache, \neg catch)] \\
+P(Cavity  \mid  toothache) &= \alpha P(Cavity, toothache) \\
+                       &= \alpha [ P(Cavity, toothache, catch) + P(Cavity, toothache, \neg catch)] \\
                        &= \alpha [<0.108, 0.16> + <0.012, 0.064>\\
                        &= \alpha <0.12, 0.08> = <0.6, 0.4>
 \end{align*}
@@ -480,7 +482,7 @@ Pr(Cavity | toothache) &= \alpha Pr(Cavity, toothache) \\
 All of the preceding can be summarized in a general inference procedure using full joint probability distributions.  Let $E$ be a list of evidence variables, $e$ be a list of observed values for the evidence variables, and $Y$ be the remaining unobserved variables.  Then:
 
 $$
-Pr(X | \bm{e}) = \alpha Pr(X, \bm{e}) = \alpha \sum_y Pr(X, \bm{e}, \bm{y}) \tag{12.9}
+P(X  \mid  \bm{e}) = \alpha P(X, \bm{e}) = \alpha \sum_y P(X, \bm{e}, \bm{y}) \tag{12.9}
 $$
 
 Great, so we're done!  All we need is a full joint parobability distribution and we can answer any query.  Unfortunately, not practical.
@@ -494,16 +496,16 @@ So we need different approaches, which we cover next.
 Weather is not affecteed by teeth.  So we can assert:
 
 $$
-Pr(cloud |toothache,catch,cavity) = Pr(cloud)
+P(cloud  \mid toothache,catch,cavity) = P(cloud)
 $$
 
 In general, if $a$ and $b$ are independent:
 
 $$
-P(a|b) = P(a) \text{ or } P(b|a) = P(b) \text{ or } P(a \land b) = P(a)P(b)
+P(a \mid b) = P(a) \text{ or } P(b \mid a) = P(b) \text{ or } P(a \land b) = P(a)P(b)
 $$
 
-Can be a big help.  For example, if you have $n$ independent coin flips, then instead of $2^n$ full joint table, you have a product of $n$ distributions $Pr(C_i)$.
+Can be a big help.  For example, if you have $n$ independent coin flips, then instead of $2^n$ full joint table, you have a product of $n$ distributions $P(C_i)$.
 
 ```{=latex}
 \begin{center}
@@ -517,24 +519,24 @@ Unfortunately, independence rarely holds in the real world.
 
 ## Bayes' Rule
 
-Using the symmetry $Pr(X, Y) = Pr(Y, X)$ and the product rule we can derive **Bayes' rule**:
+Using the symmetry $P(X, Y) = P(Y, X)$ and the product rule we can derive **Bayes' rule**:
 
 ```{=latex}
 \begin{align*}
-Pr(X, Y)     &= Pr(Y, X)\\
-Pr(Y|X)Pr(X) &= Pr(X|Y)Pr(Y)\\
-Pr(Y|X)      &= \frac{Pr(X|Y)Pr(Y)}{Pr(X)}
+P(X, Y)     &= P(Y, X)\\
+P(Y \mid X)P(X) &= P(X \mid Y)P(Y)\\
+P(Y \mid X)      &= \frac{P(X \mid Y)P(Y)}{P(X)}
 \end{align*}
 ```
 
 The usefulness of Bayes' rule becomes apparent if we consider $X$ as an effect and $Y$ as a cause and we want to determine the cause of some effect (evidence) we observe:
 
 $$
-Pr(cause|effect) = \frac{Pr(effect|cause) Pr(cause)}{Pr(effect)}
+P(cause \mid effect) = \frac{P(effect \mid cause) P(cause)}{P(effect)}
 $$
 
-- $Pr(effect|cause)$ quantifies the **causal** direction.
-- $Pr(cause|effect)$ quantifies the **diagnostic** direction.
+- $P(effect \mid cause)$ quantifies the **causal** direction.
+- $P(cause \mid effect)$ quantifies the **diagnostic** direction.
 
 Reasoning from effects to causes is also called **abductive reasoning**.  (Is Sherlock Holmes truly employing deduction?)
 
@@ -572,15 +574,15 @@ Using the symmetry $p(X, Y) = p(Y, X)$ and the product rule:
 ```{=latex}
 \begin{align*}
 p(X, Y)    &= p(Y, X)\\
-p(Y|X)p(X) &= p(X|Y)p(Y)\\
-p(Y|X)     &= \frac{p(X|Y)p(Y)}{p(X)}
+p(Y \mid X)p(X) &= p(X \mid Y)p(Y)\\
+p(Y \mid X)     &= \frac{p(X \mid Y)p(Y)}{p(X)}
 \end{align*}
 ```
 
 where the denominator $p(X)$ is a normalizing constant:
 
 $$
-p(X) = \sum p(X|Y)p(Y)
+p(X) = \sum p(X \mid Y)p(Y)
 $$
 
 This is called *Bayes' Theorem* or *Bayes' Rule.*
@@ -588,7 +590,7 @@ This is called *Bayes' Theorem* or *Bayes' Rule.*
 We use Bayes' Theorem to update our beliefs after observing evidence.  For example:
 
 - Before we run the test, the *prior probability* that someone has cancer is $p(C)$
-- After we run the test, we use Bayes' Theorem to calculate the *posterior probability* $p(C|T)$
+- After we run the test, we use Bayes' Theorem to calculate the *posterior probability* $p(C \mid T)$
 
 The *posterior probability* is our new belief after a Bayesian update.
 
@@ -603,10 +605,10 @@ With our probabilistic machinery we can analyze this cancer screening example.  
 \begin{align*}
 p(C=1)     &= \frac{1}{100}  \tag{Prior probability that someone has cancer}\\
 p(C=0)     &= \frac{99}{100} \tag{Prior probability that someone has no cancer}\\
-p(T=1|C=1) &= \frac{90}{100} \tag{Conditional probability of positive test given cancer}\\
-p(T=0|C=1) &= \frac{10}{100} \tag{Conditional probability of negative test given cancer}\\
-p(T=1|C=0) &= \frac{3}{100}  \tag{Conditional probability of positive test given no cancer}\\
-p(T=0|C=0) &= \frac{97}{100} \tag{Conditional probability of negative test given no cancer}
+p(T=1 \mid C=1) &= \frac{90}{100} \tag{Conditional probability of positive test given cancer}\\
+p(T=0 \mid C=1) &= \frac{10}{100} \tag{Conditional probability of negative test given cancer}\\
+p(T=1 \mid C=0) &= \frac{3}{100}  \tag{Conditional probability of positive test given no cancer}\\
+p(T=0 \mid C=0) &= \frac{97}{100} \tag{Conditional probability of negative test given no cancer}
 \end{align*}
 ```
 
@@ -625,10 +627,10 @@ Now we can answer the two questions we posed at the outset:
 \begin{align*}
 p(C=1)     &= \frac{1}{100} \\
 p(C=0)     &= \frac{99}{100}\\
-p(T=1|C=1) &= \frac{90}{100}\\
-p(T=0|C=1) &= \frac{10}{100}\\
-p(T=1|C=0) &= \frac{3}{100} \\
-p(T=0|C=0) &= \frac{97}{100}
+p(T=1 \mid C=1) &= \frac{90}{100}\\
+p(T=0 \mid C=1) &= \frac{10}{100}\\
+p(T=1 \mid C=0) &= \frac{3}{100} \\
+p(T=0 \mid C=0) &= \frac{97}{100}
 \end{align*}
 ```
 
@@ -639,7 +641,7 @@ If we screen someone, probability that they test positive:
 
 ```{=latex}
 \begin{align*}
-p(T=1) &= p(T=1|C=0)p(C=0) + p(T=1|C=1)p(C=1)\\
+p(T=1) &= p(T=1 \mid C=0)p(C=0) + p(T=1 \mid C=1)p(C=1)\\
        &= \frac{3}{100} \times \frac{99}{100} + \frac{90}{100} \times \frac{1}{100}\\
        &= \frac{387}{10,000}\\
        &= .0387
@@ -650,7 +652,7 @@ If someone tests positive, probability they have cancer:
 
 ```{=latex}
 \begin{align*}
-p(C=1|T=1) &= \frac{p(T=1|C=1)p(C=1)}{p(T=1)}\\
+p(C=1 \mid T=1) &= \frac{p(T=1 \mid C=1)p(C=1)}{p(T=1)}\\
            &= \frac{90}{100} \times \frac{1}{100} \times \frac{10,000}{387} \\
            &= \frac{90}{387}\\
            &\approx 0.23
@@ -676,7 +678,7 @@ If dentist's probe catches and patient has a toothache, then using the full join
 we can simply read off the answer:
 
 $$
-P(Cavity|toothache \land catch) = \alpha <0.108,0.016> \equiv <0.871,0.129>
+P(Cavity \mid toothache \land catch) = \alpha <0.108,0.016> \equiv <0.871,0.129>
 $$
 
 But we know this approach doesn't scale.  With $n$ evidence variables we have $O(2^n)$ possible combinations of observed values.
@@ -684,7 +686,7 @@ But we know this approach doesn't scale.  With $n$ evidence variables we have $O
 We could reformulate the problem using Bayes' rule:
 
 $$
-Pr(Cavity | toothache \land catch) = \alpha Pr(toothache \land catch | Cavity) PR(Cavity)
+P(Cavity  \mid  toothache \land catch) = \alpha P(toothache \land catch  \mid  Cavity) PR(Cavity)
 $$
 
 But, again, we have $O(2^n)$ combinations of observed evidence.  We need some additional domain knowledge.
@@ -696,32 +698,32 @@ Toothache and Catch are not independent: if the probe catches in the tooth, then
 However, Toothache and Catch are independent given the presence or the absence of a cavity. Each is directly caused by the cavity, but neither has a direct effect on the other.  Mathematically, we write this fact as:
 
 $$
-Pr(toothache \land catch | Cavity) = Pr(toothache | Cavity) Pr(catch|Cavity)
+P(toothache \land catch  \mid  Cavity) = P(toothache  \mid  Cavity) P(catch \mid Cavity)
 $$
 
 In general, the **conditional independence** of two variables $X$ and $Y$ , given a
 third variable $Z$, is defined as:
 
 $$
-Pr(X,Y |Z) = Pr(X |Z) Pr(Y |Z)
+P(X,Y  \mid Z) = P(X  \mid Z) P(Y  \mid Z)
 $$
 
-Given these independence assertions we can say $Pr(X |Y,Z) = Pr(X |Z)$ and $Pr(Y |X,Z) = Pr(Y |Z)$.
+Given these independence assertions we can say $P(X  \mid Y,Z) = P(X  \mid Z)$ and $P(Y  \mid X,Z) = P(Y  \mid Z)$.
 
 ## Factoring a Joint Distribution using Conditional Independence
 
 Given the conditional independence assertion
 
 $$
-Pr(Toothache,Catch|Cavity) = Pr(Toothache|Cavity) Pr(Catch|Cavity)
+P(Toothache,Catch \mid Cavity) = P(Toothache \mid Cavity) P(Catch \mid Cavity)
 $$
 
 We can decompose the full joint for $Toothache, Catch, Cavity$:
 
 ```{=latex}
 \begin{align*}
-Pr(Toothache,Catch,Cavity) &= Pr(Toothache,Catch|Cavity) Pr(Cavity) \tag{product rule} \\
-                           &= Pr(Toothache|Cavity) Pr(Catch|Cavity) Pr(Cavity) \tag{cond. ind. assertion above}
+P(Toothache,Catch,Cavity) &= P(Toothache,Catch \mid Cavity) P(Cavity) \tag{product rule} \\
+                           &= P(Toothache \mid Cavity) P(Catch \mid Cavity) P(Cavity) \tag{cond. ind. assertion above}
 \end{align*}
 ```
 
@@ -737,7 +739,7 @@ Conceptually, we say that $Cavity$ **separates** $Toothache$ and $Catch$ because
 If a single cause influences $n$ effects each of which is independent given the cause, then the full joint can be written:
 
 $$
-Pr(Cause,Effect_1, \dots ,Effect_n) = Pr(Cause) \prod_i Pr(Effect_i |Cause)
+P(Cause,Effect_1, \dots ,Effect_n) = P(Cause) \prod_i P(Effect_i  \mid Cause)
 $$
 
 This is called a **naive Bayes** model -- "naive" because it is often
@@ -746,7 +748,7 @@ used as a simplifying assumption in cases where the "effect" variables are not s
 With some algebraic manipulation using previous results we get, for effects $\bm{e}$:
 
 $$
-Pr(Cause | e) = \alpha Pr(Cause) \prod_J Pr(e_j | Cause)
+P(Cause  \mid  e) = \alpha P(Cause) \prod_J P(e_j  \mid  Cause)
 $$
 
 This model is useful in text classification, for example, in early spam filters.  For the spam filtering problem the causes are Spam and Not-Spam, and the effects are keywords.
