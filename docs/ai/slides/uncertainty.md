@@ -416,28 +416,7 @@ P(cavity) = 0.108 + 0.012 + 0.072 + 0.008= 0.2
 $$
 
 
-## Marginalization
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-12_03-full-joint-toothache.pdf){height="30%"}
-```{=latex}
-\end{center}
-```
-
-General rule: $P(Y) = \sum_z P(Y, Z=z)$ where $Z$ is set of all possible values of variables other than $Y$.  Example, let $Y = Cavity$
-
-```{=latex}
-\begin{align*}
-P(Cavity) &= P(Cavity, toothache, catch) + P(Cavity, toothache, \neg catch) \\
-           &+ P(Cavity, \neg toothache, catch) + P(Cavity, \neg toothache, \neg catch) \\
-           &= <0.108, 0.016> + <0.012, 0.064> + <0.072, 0.144> + <0.008, 0.576>\\
-           &= <0.2, 0.8>
-\end{align*}
-```
-
-## Conditioning
+## Marginalization and Conditioning
 
 ```{=latex}
 \begin{center}
@@ -447,9 +426,44 @@ P(Cavity) &= P(Cavity, toothache, catch) + P(Cavity, toothache, \neg catch) \\
 \end{center}
 ```
 
-Using the product rule in $P(Y) = \sum_z P(Y, Z=z)$ we obtain the **conditioning** rule: $P(Y) = \sum_z P(Y \mid z) P(z)$
+**Marginalization** means "summing out" the non-query variables, which we usually denote with $Z$:
 
-To get the conditional probabilites, we use the definition:
+```{=latex}
+\vspace{-.1in}
+\[
+P(Y) = \sum_z P(Y, Z=z)
+\]
+\vspace{-.1in}
+```
+
+For example, let $Y = Cavity$:
+
+```{=latex}
+\vspace{-.2in}
+\begin{align*}
+P(Cavity) &= P(Cavity, toothache, catch) + P(Cavity, toothache, \neg catch) \\
+           &+ P(Cavity, \neg toothache, catch) + P(Cavity, \neg toothache, \neg catch) \\
+           &= <0.108, 0.016> + <0.012, 0.064> + <0.072, 0.144> + <0.008, 0.576>\\
+           &= <0.2, 0.8>
+\end{align*}
+\vspace{-.1in}
+```
+
+Using the product rule in $P(Y) = \sum_z P(Y, Z=z)$ we obtain the **conditioning** rule:
+
+```{=latex}
+\vspace{-.1in}
+\[
+P(Y) = \sum_z P(Y \mid z) P(z)
+\]
+\vspace{-.1in}
+```
+
+These two rules are used widely in probabilistic reasoning.
+
+## Condional Probability Distributions
+
+We're usually interested in conditional probabilities.  To get the conditional probabilites, we use the definition:
 
 ```{=latex}
 \begin{align*}
@@ -475,17 +489,28 @@ Notice that $P(toothache)$ appears in denominator in both equations in the prece
 P(Cavity  \mid  toothache) &= \alpha P(Cavity, toothache) \\
                        &= \alpha [ P(Cavity, toothache, catch) + P(Cavity, toothache, \neg catch)] \\
                        &= \alpha [<0.108, 0.16> + <0.012, 0.064>\\
-                       &= \alpha <0.12, 0.08> = <0.6, 0.4>
+                       &= \alpha <0.12, 0.08> \\
+                       &= <0.6, 0.4>
 \end{align*}
 ```
 
-All of the preceding can be summarized in a general inference procedure using full joint probability distributions.  Let $E$ be a list of evidence variables, $e$ be a list of observed values for the evidence variables, and $Y$ be the remaining unobserved variables.  Then:
+The cool thing is that we don't even have to know $P(toothache)$ to calculate the conditional probability distribution $P(Cavity \mid toothache)$.  To make this point clearer, imagine the penultimate line above is:
+
+$$
+P(Cavity  \mid  toothache) = \alpha <0.3, 0.2>
+$$
+
+What's $\alpha$?
+
+## Inference Using the Full Joint Distribution
+
+All of the preceding can be summarized in a general inference procedure using full joint probability distributions.  Let $E$ be a list of evidence variables, $\bm{e}$ be a list of observed values for the evidence variables, and $Y$ be the remaining unobserved variables.  Then:
 
 $$
 P(X  \mid  \bm{e}) = \alpha P(X, \bm{e}) = \alpha \sum_y P(X, \bm{e}, \bm{y}) \tag{12.9}
 $$
 
-Great, so we're done!  All we need is a full joint parobability distribution and we can answer any query.  Unfortunately, not practical.
+Great, so we're done!  All we need is a full joint probability distribution and we can answer any query.  Unfortunately, not practical.
 
 - For a domain of $n$ boolean variables, we have a table of size $O(2^n)$
 
@@ -532,11 +557,11 @@ P(Y \mid X)      &= \frac{P(X \mid Y)P(Y)}{P(X)}
 The usefulness of Bayes' rule becomes apparent if we consider $X$ as an effect and $Y$ as a cause and we want to determine the cause of some effect (evidence) we observe:
 
 $$
-P(cause \mid effect) = \frac{P(effect \mid cause) P(cause)}{P(effect)}
+P(\text{cause} \mid \text{effect}) = \frac{P(\text{effect} \mid \text{cause}) P(\text{cause})}{P(\text{effect})}
 $$
 
-- $P(effect \mid cause)$ quantifies the **causal** direction.
-- $P(cause \mid effect)$ quantifies the **diagnostic** direction.
+- $P(\text{effect} \mid \text{cause})$ quantifies the **causal** direction.
+- $P(\text{cause} \mid \text{effect})$ quantifies the **diagnostic** direction.
 
 Reasoning from effects to causes is also called **abductive reasoning**.  (Is Sherlock Holmes truly employing deduction?)
 
@@ -603,12 +628,12 @@ With our probabilistic machinery we can analyze this cancer screening example.  
 
 ```{=latex}
 \begin{align*}
-p(C=1)     &= \frac{1}{100}  \tag{Prior probability that someone has cancer}\\
-p(C=0)     &= \frac{99}{100} \tag{Prior probability that someone has no cancer}\\
-p(T=1 \mid C=1) &= \frac{90}{100} \tag{Conditional probability of positive test given cancer}\\
-p(T=0 \mid C=1) &= \frac{10}{100} \tag{Conditional probability of negative test given cancer}\\
-p(T=1 \mid C=0) &= \frac{3}{100}  \tag{Conditional probability of positive test given no cancer}\\
-p(T=0 \mid C=0) &= \frac{97}{100} \tag{Conditional probability of negative test given no cancer}
+P(C=1)     &= \frac{1}{100}  \tag{Prior probability that someone has cancer}\\
+P(C=0)     &= \frac{99}{100} \tag{Prior probability that someone has no cancer}\\
+P(T=1 \mid C=1) &= \frac{90}{100} \tag{Conditional probability of positive test given cancer}\\
+P(T=0 \mid C=1) &= \frac{10}{100} \tag{Conditional probability of negative test given cancer}\\
+P(T=1 \mid C=0) &= \frac{3}{100}  \tag{Conditional probability of positive test given no cancer}\\
+P(T=0 \mid C=0) &= \frac{97}{100} \tag{Conditional probability of negative test given no cancer}
 \end{align*}
 ```
 
@@ -625,34 +650,36 @@ Now we can answer the two questions we posed at the outset:
 
 ```{=latex}
 \begin{align*}
-p(C=1)     &= \frac{1}{100} \\
-p(C=0)     &= \frac{99}{100}\\
-p(T=1 \mid C=1) &= \frac{90}{100}\\
-p(T=0 \mid C=1) &= \frac{10}{100}\\
-p(T=1 \mid C=0) &= \frac{3}{100} \\
-p(T=0 \mid C=0) &= \frac{97}{100}
+P(C=1)     &= \frac{1}{100} \\
+P(C=0)     &= \frac{99}{100}\\
+P(T=1 \mid C=1) &= \frac{90}{100}\\
+P(T=0 \mid C=1) &= \frac{10}{100}\\
+P(T=1 \mid C=0) &= \frac{3}{100} \\
+P(T=0 \mid C=0) &= \frac{97}{100}
 \end{align*}
 ```
 
 :::
 ::: {.column width="70%"}
 
-If we screen someone, probability that they test positive:
+If we screen someone, probability that they test positive (notice use of product rule: $P(a, b) = P(a \mid b) P(b)$ and rule 2nd Kolmogorov axiom $P(x \lor y) = P(x) + P(y) - P(x \land y)$):
 
 ```{=latex}
+\vspace{-.1in}
 \begin{align*}
-p(T=1) &= p(T=1 \mid C=0)p(C=0) + p(T=1 \mid C=1)p(C=1)\\
+P(T=1) &= P(T=1 \mid C=0)P(C=0) + P(T=1 \mid C=1)P(C=1)\\
        &= \frac{3}{100} \times \frac{99}{100} + \frac{90}{100} \times \frac{1}{100}\\
        &= \frac{387}{10,000}\\
        &= .0387
 \end{align*}
 ```
 
-If someone tests positive, probability they have cancer:
+If someone tests positive, probability they have cancer :
 
 ```{=latex}
+\vspace{-.1in}
 \begin{align*}
-p(C=1 \mid T=1) &= \frac{p(T=1 \mid C=1)p(C=1)}{p(T=1)}\\
+P(C=1 \mid T=1) &= \frac{P(T=1 \mid C=1)P(C=1)}{P(T=1)}\\
            &= \frac{90}{100} \times \frac{1}{100} \times \frac{10,000}{387} \\
            &= \frac{90}{387}\\
            &\approx 0.23
@@ -686,7 +713,7 @@ But we know this approach doesn't scale.  With $n$ evidence variables we have $O
 We could reformulate the problem using Bayes' rule:
 
 $$
-P(Cavity  \mid  toothache \land catch) = \alpha P(toothache \land catch  \mid  Cavity) PR(Cavity)
+P(Cavity  \mid  toothache \land catch) = \alpha P(toothache \land catch  \mid  Cavity) P(Cavity)
 $$
 
 But, again, we have $O(2^n)$ combinations of observed evidence.  We need some additional domain knowledge.
@@ -734,6 +761,8 @@ This decomposes the large table smaller tables.  In general, this technique turn
 
 Conceptually, we say that $Cavity$ **separates** $Toothache$ and $Catch$ because it is a direct cause of both of them.
 
+<!--
+
 ## Naive Bayes Model
 
 If a single cause influences $n$ effects each of which is independent given the cause, then the full joint can be written:
@@ -752,6 +781,7 @@ P(Cause  \mid  e) = \alpha P(Cause) \prod_J P(e_j  \mid  Cause)
 $$
 
 This model is useful in text classification, for example, in early spam filters.  For the spam filtering problem the causes are Spam and Not-Spam, and the effects are keywords.
+-->
 
 <!--
 
@@ -778,3 +808,12 @@ This model is useful in text classification, for example, in early spam filters.
 ```
 
 -->
+
+## Closing Thoughts
+
+The world is uncertain, more precisely, our *knowledge* of the world is uncertain.
+
+- Probability gives us a language for expressing degrees of belief.
+- Probability theory gives us the analytic tools to construct probabilistic reasoning systems.
+
+In the next lecture we'll begin using these tools to build our first probabilistic reasoning system: **Bayesian (Belief) Networks**.
