@@ -422,7 +422,12 @@ $$
 Recall that we can use the full joint distribution to answer any query:
 
 $$
-P(X | \bm{e}) = \alpha P(X, \bm{e}) = \alpha \sum_y P(X, \bm{e}, \bm{y}) \tag{12.9}
+P(X \mid \bm{e})
+= \frac{P(\bm{e} \mid X) P(X)}{P(\bm{e})}
+= \frac{P(\bm{e}, X)}{P(\bm{e})}
+= \frac{P(X, \bm{e})}{P(\bm{e})}
+= \alpha P(X, \bm{e})
+= \alpha \sum_y P(X, \bm{e}, \bm{y}) \tag{12.9}
 $$
 
 
@@ -446,7 +451,7 @@ P(B \mid j, m) = \alpha P(B, j, m) = \alpha \sum_e \sum_a P(B, j, m, e, a)
 \]
 ```
 
-Then we substitute Eq 13.2 for $P(B, j, m, e, a)$ to get (only showing Burglary=true):
+Then we substitute Eq 13.2 for $P(B, j, m, e, a)$ to get (only showing Burglary=true by the notation $b$):
 
 ```{=latex}
 \vspace{-.1in}

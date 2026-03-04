@@ -38,7 +38,7 @@ We'll learn two families of Monte carlo algorithms:
 
 The primitive element in any sampling algorithm is the generation of samples from a known probability distribution.
 
-Feed a sample from U(1, 1) to the inverse CDF of a distribution to sample the distribution.
+Feed a sample from U(1, 1) to the inverse CDF of a distribution to sample the distribution.  TODO: example.
 
 ## Prior Sampling
 
