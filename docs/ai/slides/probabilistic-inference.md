@@ -64,19 +64,19 @@ To sample from a Bayes net with no associated evidence, sample each node in topo
 :::: {.columns}
 ::: {.column width="60%"}
 
-1. Sample from $Pr(Cloudy) = \langle 0.5,0.5\rangle$
+1. Sample from $P(Cloudy) = \langle 0.5,0.5\rangle$
 
     - Get value of true.
 
-2. Sample from $Pr(Sprinkler \mid c) = \langle 0.1,0.9 \rangle$
+2. Sample from $P(Sprinkler \mid c) = \langle 0.1,0.9 \rangle$
 
     - Get value of false.
 
-3. Sample from $Pr(Rain \mid c) = \langle 0.8,0.2 \rangle$
+3. Sample from $P(Rain \mid c) = \langle 0.8,0.2 \rangle$
 
     - Get value of true.
 
-4. Sample from $Pr(WetGrass \mid \neg s, r) = \langle 0.9,0.1 \rangle$
+4. Sample from $P(WetGrass \mid \neg s, r) = \langle 0.9,0.1 \rangle$
 
     - Get value of true.
 
@@ -103,7 +103,7 @@ A Bayes net represents a full joint distribution, so a sample generated from a B
 ```{=latex}
 \vspace{-.1in}
 \[
-S_{PS}(x_1, \dots, x_n) = \prod_{i=1}^n Pr \left( x_i \mid parents(X_i) \right) = Pr(x_1, \dots, x_n)
+S_{PS}(x_1, \dots, x_n) = \prod_{i=1}^n Pr \left( x_i \mid parents(X_i) \right) = P(x_1, \dots, x_n)
 \]
 ```
 
@@ -112,7 +112,7 @@ To estimate these probabilities using samples, we simply generate $N$ samples, c
 ```{=latex}
 \vspace{-.1in}
 \[
-\lim_{N \to \infty} \frac{N_{PS}(x_1, \dots, x_n)}{N} = S_{PS}(x_1, \dots, x_n) = Pr(x_1, \dots, x_n)
+\lim_{N \to \infty} \frac{N_{PS}(x_1, \dots, x_n)}{N} = S_{PS}(x_1, \dots, x_n) = P(x_1, \dots, x_n)
 \]
 ```
 
@@ -133,11 +133,11 @@ An estimate that becomes exact in the large-sample limit is called **consistent*
 
 ```{=latex}
 \[
-Pr(x_1, \dots, x_m) \approx \frac{N_{PS}(x_1, \dots, x_m)}{N} = \hat{Pr}(x_1, \dots, x_m)
+P(x_1, \dots, x_m) \approx \frac{N_{PS}(x_1, \dots, x_m)}{N} = \hat{P}(x_1, \dots, x_m)
 \]
 ```
 
-That is, $\hat{Pr}(x_1, \dots, x_m)$ is an approximation of $Pr(x_1, \dots, x_m)$ that converges to the true probability as $N$ approaches $\infty$
+That is, $\hat{P}(x_1, \dots, x_m)$ is an approximation of $P(x_1, \dots, x_m)$ that converges to the true probability as $N$ approaches $\infty$
 
 
 ## Rejection Sampling
@@ -231,7 +231,7 @@ The name of this method comes from the fact that probabilities of evidence are g
 
 Given the query
 
-- $Pr(Rain \mid Cloudy= true, WetGrass= true)$
+- $P(Rain \mid Cloudy= true, WetGrass= true)$
 
 and the ordering
 
@@ -244,22 +244,22 @@ we initialize $w = 1.0$ and proceed as follows:
     ```{=latex}
     \vspace{-.1in}
     \[
-    w \gets w \cdot Pr(c) = 0.5.
+    w \gets w \cdot P(c) = 0.5.
     \]
     ```
 
 
-2. $Sprinkler$ is not an evidence variable, so sample from $Pr(Sprinkler \mid Cloudy= true) =
+2. $Sprinkler$ is not an evidence variable, so sample from $P(Sprinkler \mid Cloudy= true) =
 \langle 0.1,0.9 \rangle$; suppose this returns false.
 
-3. $Rain$ is not an evidence variable, so sample from $Pr(Rain \mid Cloudy = true) = \langle 0.8,0.2 \rangle$; suppose this returns true.
+3. $Rain$ is not an evidence variable, so sample from $P(Rain \mid Cloudy = true) = \langle 0.8,0.2 \rangle$; suppose this returns true.
 
 4. $WetGrass$ is an evidence variable with value true. Therefore, we set
 
     ```{=latex}
     \vspace{-.2in}
     \[
-    w \gets w \times Pr(WetGrass=true \mid \neg s, r) = 0.5 \cdot 0.9= 0.45.
+    w \gets w \times P(WetGrass=true \mid \neg s, r) = 0.5 \cdot 0.9= 0.45.
     \]
     ```
 
