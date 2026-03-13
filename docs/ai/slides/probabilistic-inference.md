@@ -133,7 +133,7 @@ An estimate that becomes exact in the large-sample limit is called **consistent*
 
 ```{=latex}
 \[
-P(x_1, \dots, x_m) \approx \frac{N_{PS}(x_1, \dots, x_m)}{N} = \hat{P}(x_1, \dots, x_m)
+P(x_1, \dots, x_m) \approx \frac{N_{PS}(x_1, \dots, x_m)}{N} = \hat{P}(x_1, \dots, x_m) \tag{13.6}
 \]
 ```
 
@@ -142,13 +142,83 @@ That is, $\hat{P}(x_1, \dots, x_m)$ is an approximation of $P(x_1, \dots, x_m)$ 
 
 ## Rejection Sampling
 
+
+Rejection sampling is a general method for producing samples from a hard-to-sample distribution given an easy-to-sample distribution. In its simplest form, it can be used to compute conditional probabilities, that is, to determine $P(X \mid \bm{e})$.
+
+:::: {.columns}
+::: {.column width="40%"}
+
+Let
+
+- $\hat{\bm{P}}(X \mid \bm{e})$ be a vector of the probabilities for each value of $x \in X$ and
+- $\bm{N}_{PS}(X, \bm{e})$ be a vector of sample counts for each $x \in X$ where the sample is consistent with the evidence $\bm{e}$ (the variable **C** in the algorithm).
+
+Then:
+
+```{=latex}
+\[
+\hat{\bm{P}}(X \mid \bm{e})
+= \alpha \bm{N}_{PS}(X, \bm{e})
+= \frac{\bm{N}_{PS}(X, \bm{e})}{\bm{N}_{PS}(\bm{e})}
+\]
+```
+
+
+:::
+::: {.column width="60%"}
+
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-13_17-bayes-net-rejection-sampling-algorithm.pdf)
+![](aima-fig-13_17-bayes-net-rejection-sampling-algorithm.pdf){height="70%"}
 ```{=latex}
 \end{center}
 ```
+
+:::
+::::
+
+
+## Rejection Sampling Example
+
+
+:::: {.columns}
+::: {.column width="60%"}
+
+Say we use prior sampling to generate 100 samples and we want to estimate $\bm{P}(Rain \mid Sprinkler = true)$.
+
+- 73 samples have $Sprinkler = false$, so are *rejected*.
+- Of the 27 *accepted* samples:
+
+    - 8 samples have $Rain = true$
+    - 19 samples have $Rain = false$.
+
+Then:
+
+```{=latex}
+\begin{align*}
+\hat{\bm{P}}(Rain \mid Sprinkler = true) &= \frac{\bm{N}_{PS}(X, \bm{e})}{\bm{N}_{PS}(\bm{e})}\\
+                                         &= \frac{\langle 8, 19 \rangle}{27}\\
+                                         &= \langle 0.296, 0.704 \rangle
+\end{align*}
+```
+
+Calculating directly from the CPTs in the Bayes net would give us $\langle 0.3, 0.7 \rangle$.
+
+:::
+::: {.column width="45%"}
+
+```{=latex}
+\begin{center}
+```
+![](aima-fig-13_15_a-sprinkler-bayes-net.pdf)
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
 
 ## Importance Sampling
 
