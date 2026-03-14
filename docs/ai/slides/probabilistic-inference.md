@@ -17,7 +17,7 @@ header-includes:
 
 ## Approximate Inference for Bayesian Networks
 
-Exact inference in large Bayesian networks is intractable, so we need approximate inference methods.  The mothods we'll learn are randomized sampling agorithms, a.k.a., **Monte Carlo** algorithms.  They work by
+Exact inference in large Bayesian networks is intractable, so we need approximate inference methods.  The methods we'll learn are randomized sampling agorithms, a.k.a., **Monte Carlo** algorithms, a.k.a., **stochastic simulation**.  They work by
 
 - generating random events based on the probabilities in the Bayes net and
 - counting up the different answers found in those random events.
@@ -40,7 +40,9 @@ The primitive element in any sampling algorithm is the generation of samples fro
 
 Feed a sample from U(1, 1) to the inverse CDF of a distribution to sample the distribution.  TODO: example.
 
-## Prior Sampling
+This procedure works for a single variable.  If we have multiple variables and a Bayes net to represent the joint distribution over them, there are several algorithms
+
+## Prior Sampling, a.k.a., Forward Sampling
 
 To sample from a Bayes net with no associated evidence, sample each node in topological order.
 
@@ -139,9 +141,12 @@ P(x_1, \dots, x_m) \approx \frac{N_{PS}(x_1, \dots, x_m)}{N} = \hat{P}(x_1, \dot
 
 That is, $\hat{P}(x_1, \dots, x_m)$ is an approximation of $P(x_1, \dots, x_m)$ that converges to the true probability as $N$ approaches $\infty$
 
+- Forward sampling generates *prior* probabilities, that is, probabilities of events prior to observing evidence.
+- What we usually want is *posterior* probabilities, $P(X \mid \bm{e})$ -- probability of $X$ given that we have observed evidence $\bm{e}$.
+
+We now turn to algorithms for computing posteriors, which use prior sampling as a subroutine.
 
 ## Rejection Sampling
-
 
 Rejection sampling is a general method for producing samples from a hard-to-sample distribution given an easy-to-sample distribution. In its simplest form, it can be used to compute conditional probabilities, that is, to determine $P(X \mid \bm{e})$.
 
