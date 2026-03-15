@@ -307,6 +307,7 @@
         "slides": "[Causality](@root/ai/slides/causality.pdf)",
         "reading": [
             "AIMA: 13.5",
+            "[AICA: 11](https://artint.info/3e/html/ArtInt3e.Ch11.html)",
             "[Causality](https://bayes.cs.ucla.edu/BOOK-2K/)",
             "[Elements of Causal Inference](https://mitp-content-server.mit.edu/books/content/sectbyfn?collid=books_pres_0&id=11283&fn=11283.pdf)",
             "[Causal ML Book](https://causalml-book.org/)"
