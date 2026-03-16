@@ -1,0 +1,8 @@
+#+property: header-args:python :results output :session sampling :async
+
+#+name: imports
+#+begin_src python
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+import numpy as np
+#+end_src
