@@ -59,20 +59,19 @@ The primitive element in any sampling algorithm is the generation of samples fro
 :::: {.columns}
 ::: {.column width="70%"}
 
-To generate samples from a single discrete or real-valued variable, $X$, first totally order the values in the domain of $X$.
+To generate samples from a single discrete or real-valued variable, $X$,
 
-- For discrete variables, if there is no natural order, just create an arbitrary ordering. Given this ordering, the cumulative probability distribution is a function of $x$ defined by
+- First totally order the values in the domain of $X$.
+
+    - For discrete variables, if there is no natural order, just create an arbitrary ordering. Given this ordering, the cumulative probability distribution is a function of $x$ defined by
 $f(x)=P(X \le x)$.
-
-To generate a random sample for
-$X$:
 
 - Select a uniform random number $y$ in the domain $[0, 1]$.
 - Let $v$ be the value of $X$ that maps to $y$ in the cumulative probability distribution. That is, $v$ is the element of $domain(X)$ such that
 
     - $f(v) = y$ or, equivalently, $v = f^{-1}(y)$
 
-Then, $X = v$ is a random sample of $X$, chosen according to the distribution of $X$.
+- $X = v$ is a random sample of $X$, chosen according to the distribution of $X$.
 
 :::
 ::: {.column width="30%"}
@@ -86,7 +85,7 @@ Then, $X = v$ is a random sample of $X$, chosen according to the distribution of
 :::
 ::::
 
-This procedure works for a single variable.  If we have multiple variables and a Bayes net to represent the joint distribution over them, there are several algorithms
+This procedure works for a single variable.  If we have multiple variables and a Bayes net to represent the joint distribution over them, there are several algorithms we can use, a few of which we will see today.
 
 ## Prior Sampling, a.k.a., Forward Sampling
 
@@ -273,7 +272,7 @@ Calculating directly from the CPTs in the Bayes net would give us $\langle 0.3, 
 
 ## Importance Sampling
 
-The general statistical technique of **importance sampling** aims to emulate the effect of sampling from a distribution $P$ using samples from another distribution $Q$ whose samples are easier to obtain.
+The general statistical technique of **importance sampling** aims to emulate the effect of sampling from a distribution $P$ using samples from another distribution $Q$, called a **proposal distribution**, whose samples are easier to obtain.
 
 We ensure that the answers are correct in the limit by applying a correction factor $\frac{P(\bm{x})}{Q(\bm{x})}$, also known as a **weight**, to each sample $\bm{x}$ when counting up the samples.
 
