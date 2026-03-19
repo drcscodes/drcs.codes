@@ -1,7 +1,7 @@
 body {
   min-height: 75rem;
   padding-top: 4.5rem;
-  font-family: -apple-system, "Helvetica Neue";
+  font-family: Arial;
   font-size: 14pt;
   line-height: 1.25;
 }
@@ -22,7 +22,7 @@ body {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  font-size: 16px;
+  font-size: inherit;
 }
 
 ul.navbar {
@@ -35,7 +35,7 @@ ul.navbar {
   text-align: center;
   overflow: hidden;
   /* Legacy Black --  https://styleguide.kennesaw.edu/logo-guidelines/colors.php */
-  Background-color: #2D2926;
+  background-color: #2D2926;
 }
 
 li.navbar-item {
@@ -56,6 +56,85 @@ li.navbar-item a {
 li.navbar-item a:hover {
   /* Slap Rock Gray -- https://styleguide.kennesaw.edu/logo-guidelines/colors.php */
   background-color: #B2B4B2;
+}
+
+/* New Navbar https://www.w3schools.com/howto/howto_css_dropdown_navbar.asp */
+
+/* Navbar container */
+.navbar {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  /* overflow: hidden; */
+  /* Legacy Black --  https://styleguide.kennesaw.edu/logo-guidelines/colors.php */
+  background-color: #2D2926;
+  font-family: inherit;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: inherit;
+  /* Hooty Hoo Gold --  https://styleguide.kennesaw.edu/logo-guidelines/colors.php */
+  color: #ffc629;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: inherit;
+  border: none;
+  outline: none;
+  /* Hooty Hoo Gold --  https://styleguide.kennesaw.edu/logo-guidelines/colors.php */
+  color: #ffc629;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  /* Slap Rock Gray -- https://styleguide.kennesaw.edu/logo-guidelines/colors.php */
+  background-color: #B2B4B2;
+}
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 table.member-list {

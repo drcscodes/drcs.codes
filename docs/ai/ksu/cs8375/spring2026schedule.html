@@ -8,17 +8,37 @@
 </head>
 <body>
     <nav>
-    <ul class="navbar">
-    <li class="navbar-item" style="float: left"><a class="navbar-link" href="../../../index.html">Dr. CS Codes</a></li>
-    <li class="navbar-item"><a class="navbar-link" href="syllabus.html">Syllabus</a></li>
-    <li class="navbar-item"><a class="navbar-link" href="schedule.html">Schedule</a></li>
-    <li class="navbar-item"><a class="navbar-link" href="resources.html">Resources</a></li>
-    <li class="navbar-item" style="float: right"><a class="navbar-link" href="https://chris.simpkins.phd/">Prof. Simpkins</a></li>
-</ul>
+    <div class="navbar">
+  <a style="float: left" href="../../../index.html">Dr. CS Codes</a>
+  <div class="dropdown">
+    <p class="dropbtn">
+      Syllabus
+      <i class="fa fa-caret-down"></i>
+    </p>
+    <div class="dropdown-content">
+      <a href="syllabus.html">Current Syllabus</a>
+      <a href="all-syllabi.html">All Syllabi</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <p class="dropbtn">
+      Schedule
+      <i class="fa fa-caret-down"></i>
+    </p>
+    <div class="dropdown-content">
+      <a href="schedule.html">Current Schedule</a>
+      <a href="all-schedules.html">All Schedules</a>
+    </div>
+  </div>
+  <a href="resources.html">Resources</a>
+  <a style="float: right" href="https://chris.simpkins.phd/">Prof. Simpkins</a>
+</div>
 
     </nav>
     <div class="main">
-        <h2>Important Information</h2>
+        <h1 align="center">Advanced Artificial Intelligence</h1>
+    <h2 align="center">CS 8375 - Spring 2026</h2>
+    <h2>Important Information</h2>
     <ul>
         
             <li><b>Meeting times</b>: Mondays and Wednesdays, Sec 01: 17:00-18:15</li>
@@ -96,6 +116,12 @@
           <a href="../../../ai/slides/intro-ai.pdf">Introduction to AI</a>
         </td>
         <td>
+          
+          <a href="syllabus.html">Syllabus</a><br/>
+          
+          <a href="resources.html">Resources</a><br/>
+          
+          <a href="https://cs1331.github.io/slides/meet-simpkins.html">Meet Prof. Simpkins</a><br/>
           
           AIMA: 1
         </td>
@@ -635,6 +661,32 @@
         <td style="width: 10ch">2026-03-16</td>
         <td>
           
+          Midterm Review
+        </td>
+        <td>
+          
+          
+        </td>
+        <td>
+          
+          
+        </td>
+        <td>
+          
+          
+        </td>
+        <td>
+          
+          
+        </td>
+      </tr>
+      
+      
+      
+      <tr>
+        <td style="width: 10ch">2026-03-18</td>
+        <td>
+          
           <a href="../../../ai/slides/probabilistic-inference.pdf">Probabilistic Inference</a>
         </td>
         <td>
@@ -659,8 +711,12 @@
       
       
       
+      <tr><th colspan="6">Week 11</th></tr>
+      
+      
+      
       <tr>
-        <td style="width: 10ch">2026-03-18</td>
+        <td style="width: 10ch">2026-03-23</td>
         <td>
           
           <a href="../../../ai/slides/causality.pdf">Causality</a>
@@ -668,6 +724,8 @@
         <td>
           
           AIMA: 13.5<br/>
+          
+          <a href="https://artint.info/3e/html/ArtInt3e.Ch11.html">AICA: 11</a><br/>
           
           <a href="https://bayes.cs.ucla.edu/BOOK-2K/">Causality</a><br/>
           
@@ -691,12 +749,8 @@
       
       
       
-      <tr><th colspan="6">Week 11</th></tr>
-      
-      
-      
       <tr>
-        <td style="width: 10ch">2026-03-23</td>
+        <td style="width: 10ch">2026-03-25</td>
         <td>
           
           <a href="../../../ai/slides/probabilistic-temporal-reasoning.pdf">Probabilistic Temporal Reasoning</a>
@@ -710,32 +764,6 @@
           <a href="../../../ai/slides/probabilistic-temporal-reasoning-questions.pdf">Probabilistic Temporal Reasoning Questions</a><br/>
           
           <a href="../../../ai/slides/probabilistic-temporal-reasoning-answers.pdf">Probabilistic Temporal Reasoning Answers</a>
-        </td>
-        <td>
-          
-          
-        </td>
-        <td>
-          
-          
-        </td>
-      </tr>
-      
-      
-      
-      <tr>
-        <td style="width: 10ch">2026-03-25</td>
-        <td>
-          
-          <a href="../../../ai/slides/state-estimation.pdf">State Estimation</a>
-        </td>
-        <td>
-          
-          AIMA: 14.4-14.5
-        </td>
-        <td>
-          
-          
         </td>
         <td>
           
@@ -821,13 +849,13 @@
         <td style="width: 10ch">2026-04-06</td>
         <td>
           
-          <a href="../../../ai/slides/noncooperative-game-theory.pdf">Noncooperative Game Theory</a>
+          <a href="../../../ai/slides/bandits.pdf">Multi-Armed Bandits</a>
         </td>
         <td>
           
-          AIMA: 18.2<br/>
+          RLAI: 2<br/>
           
-          MAS: 3-4
+          AIMA: 17.3
         </td>
         <td>
           
@@ -849,17 +877,19 @@
         <td style="width: 10ch">2026-04-08</td>
         <td>
           
-          <a href="../../../ai/slides/cooperative-game-theory.pdf">Cooperative Game Theory</a>
+          <a href="../../../rl/slides/mdps.pdf">Markov Decision Processes</a>
         </td>
         <td>
           
-          AIMA: 18.3-18.4<br/>
+          RLAI: 3<br/>
           
-          MAS: 9, 10
+          AIMA: 17.1, 17.4-17.5
         </td>
         <td>
           
+          <a href="../../../ai/slides/mdp-questions.pdf">MDP Questions</a><br/>
           
+          <a href="../../../ai/slides/mdp-answers.pdf">MDP Answers</a>
         </td>
         <td>
           
@@ -883,13 +913,7 @@
         <td style="width: 10ch">2026-04-13</td>
         <td>
           
-          <a href="../../../ai/slides/bandits.pdf">Multi-Armed Bandits</a>
-        </td>
-        <td>
-          
-          RLAI: 2<br/>
-          
-          AIMA: 17.3
+          Silicon Valley AI "Ethics" (Class at 16:00)
         </td>
         <td>
           
@@ -897,9 +921,11 @@
         </td>
         <td>
           
-          Due: <a href="pa3.html">PA3</a><br/>
           
-          Assigned: <a href="pa4.html">PA4</a>
+        </td>
+        <td>
+          
+          
         </td>
         <td>
           
@@ -913,19 +939,15 @@
         <td style="width: 10ch">2026-04-15</td>
         <td>
           
-          <a href="../../../rl/slides/mdps.pdf">Markov Decision Processes</a>
+          Value Alignment (Class at 16:00)
         </td>
         <td>
           
-          RLAI: 3<br/>
           
-          AIMA: 17.1, 17.4-17.5
         </td>
         <td>
           
-          <a href="../../../ai/slides/mdp-questions.pdf">MDP Questions</a><br/>
           
-          <a href="../../../ai/slides/mdp-answers.pdf">MDP Answers</a>
         </td>
         <td>
           
@@ -1007,7 +1029,7 @@
       
       
       
-      <tr><th colspan="6">Machine Learning</th></tr>
+      <tr><th colspan="6">Supervised Machine Learning</th></tr>
       
       
       
@@ -1079,7 +1101,7 @@
         </td>
         <td>
           
-          AIMA: 12-21.2,22
+          
         </td>
         <td>
           

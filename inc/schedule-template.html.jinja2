@@ -1,7 +1,8 @@
 ---
 template: course
 ---
-    <h1 align="center">{{course_name}}</h1>
+    <h1 align="center">{{course["title"]}}</h1>
+    <h2 align="center">{{course["number"]}} - {{semester_info["academic_term"]}}</h2>
     <h2>Important Information</h2>
     <ul>
         {% for item in frontmatter %}
