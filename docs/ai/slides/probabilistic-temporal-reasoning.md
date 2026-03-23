@@ -35,7 +35,7 @@ $$
 
 - Equation above is called a recursive state estimator because it computes the new belief state from the previous one rather than by examining the entire percept sequence.
 
-Previous methods allowed us to represent belief states as sets of possible worlds, but could not compute or represent how likely each state were.  In this lesson we use the tools of probability theory to quantify our degree of belief in elements of the belief state.
+Previous methods allowed us to represent belief states as sets of possible worlds, but could not compute or represent how likely these states were.  In this lesson we use the tools of probability theory to quantify our degree of belief in elements of the belief state.
 
 ## Elements of Stochastic Temporal Models
 
@@ -118,7 +118,7 @@ A few assumptions about $t$:
 
 ## Transition Models
 
-The transition model specifies the probability distribution over the latest state variables, given previous values: $Pr(\bm{X}_t \mid \bm{X}_{0:t-1})$
+The transition model specifies the probability distribution over the latest state variables, given previous values: $P(\bm{X}_t \mid \bm{X}_{0:t-1})$
 
 - Problem: $\bm{X}_{0:t-1}$ is unbounded -- size increases as $t$ increases.
 - Solution: **Markov assumption** -- current state depends on a finite fixed number of previous states.
@@ -135,8 +135,8 @@ In these Bayes nets:
 \end{center}
 ```
 
-- (a) First-order Markov process: $Pr(\bm{X}_t \mid \bm{X}_{0:t-1}) = Pr(\bm{X}_t \mid \bm{X}_{t-1})$
-- (b) Second-order Markov process: $Pr(\bm{X}_t \mid \bm{X}_{0:t-1}) = Pr(\bm{X}_t \mid \bm{X}_{t-2}, \bm{X}_{t-1})$
+- (a) First-order Markov process: $P(\bm{X}_t \mid \bm{X}_{0:t-1}) = P(\bm{X}_t \mid \bm{X}_{t-1})$
+- (b) Second-order Markov process: $P(\bm{X}_t \mid \bm{X}_{0:t-1}) = P(\bm{X}_t \mid \bm{X}_{t-2}, \bm{X}_{t-1})$
 
 ## Time-Homogeneous Processes
 
@@ -149,7 +149,7 @@ Solution: assume **time homogeneity**, i.e., state changes caused by laws that d
 
 Example: Umbrella world
 
-- $Pr(R_t \mid R_{t-1})$ is the same for all $t$
+- $P(R_t \mid R_{t-1})$ is the same for all $t$
 - Only need one conditional probability table.
 
 ## Sensor Models
@@ -157,7 +157,7 @@ Example: Umbrella world
 **Sensor Markov assumption**: state alone is sufficient to generate current sensor values.
 
 $$
-Pr(\bm{E}_t \mid \bm{X}_{0:t}, \bm{E}_{1:t-1}) = Pr(\bm{E}_t \mid \bm{X}_t) \tag{14.2}
+P(\bm{E}_t \mid \bm{X}_{0:t}, \bm{E}_{1:t-1}) = P(\bm{E}_t \mid \bm{X}_t) \tag{14.2}
 $$
 
 ```{=latex}
@@ -168,24 +168,24 @@ $$
 \end{center}
 ```
 
-- Transition model is $Pr(Rain_t \mid Rain_{t-1})$.
-- Sensor model is $Pr(Umbrella_t \mid Rain_t)$.
+- Transition model is $P(Rain_t \mid Rain_{t-1})$.
+- Sensor model is $P(Umbrella_t \mid Rain_t)$.
 - Arrows go from actual state to sensor values: states *cause* sensor values.
 
     - Inference goes in other direction: given sensor values, what are the state values.
 
 ## Full Joint Distribution Over All Variables in a Temporal Model
 
-For the initial state of the system at time $0$ we specify a prior $Pr(\bm{x}_0)$.  Now we can use Equation 13.2
+For the initial state of the system at time $0$ we specify a prior $P(\bm{x}_0)$.  Now we can use Equation 13.2
 
 $$
-Pr(x_1, \dots, x_n) = \prod_{i=1}^n Pr( x_i | parents(X_i)) \tag{13.2}
+P(x_1, \dots, x_n) = \prod_{i=1}^n P( x_i | parents(X_i)) \tag{13.2}
 $$
 
 applied to the temporal variables in the dynamic version:
 
 $$
-Pr(\bm{X}_{0:t}, \bm{E}_{1:t}) = \underbrace{Pr(\bm{X}_0)}_{\text{Initial state model}} \prod_{i=1}^t \underbrace{Pr(\bm{X}_i \mid \bm{X}_{i-1})}_{\text{Transition model}} \underbrace{Pr(\bm{E}_i \mid \bm{X}_i)}_{\text{Sensor model}} \tag{14.3}
+P(\bm{X}_{0:t}, \bm{E}_{1:t}) = \underbrace{P(\bm{X}_0)}_{\text{Initial state model}} \prod_{i=1}^t \underbrace{P(\bm{X}_i \mid \bm{X}_{i-1})}_{\text{Transition model}} \underbrace{P(\bm{E}_i \mid \bm{X}_i)}_{\text{Sensor model}} \tag{14.3}
 $$
 
 Standard Bayes nets can only represent a finite set of variables.  Dynamic Bayes nets overcome this limitation by:
@@ -197,11 +197,15 @@ Standard Bayes nets can only represent a finite set of variables.  Dynamic Bayes
 
 Sometimes Markov assumption is valid, sometimes it's only an approximation.  Two ways to improve the approximation:
 
-1. Increase the order of the Markov process model.  E.g., In Palo Alto, CA, rarely rains more than two days in a row.  A 2nd-order Markov model could express this fact: $Pr(r_t \mid r_{t-1}, r_{t-2}) \ll Pr(r_t \mid r_{t-1}, \neg r_{t-2})$.
+1. Increase the order of the Markov process model.  E.g., In Palo Alto, CA, rarely rains more than two days in a row.  A 2nd-order Markov model could express this fact:
+
+- $P(r_t \mid r_{t-1}, r_{t-2}) \ll P(r_t \mid r_{t-1}, \neg r_{t-2})$.
 
 2. Add additional state variables.  E.g., add $Season_t$ for hisotircal records, or $Temperature_t$, $Humidity_t$, and $Pressure_t$ to use a physical model of rainy conditions.
 
-**Example: Battery drainage in mobile robot.**  Two state variables: velocity and position.  Use Newton's laws of motion to calculate new positions.  Add probabilistic error (e.g., Gaussian noise) to account for uncertainty in velocity due to terrain, wind, etc.
+## Example: Battery Drainage in a Mobile Robot
+
+Two state variables: velocity and position.  Use Newton's laws of motion to calculate new positions.  Add probabilistic error (e.g., Gaussian noise) to account for uncertainty in velocity due to terrain, wind, etc.
 
 Problems:
 
@@ -218,13 +222,13 @@ Solution: Add a state variable for battery level.  Track level in one of two way
 
 Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
 
-- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $P(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
 
-- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $P(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
 
-- **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+- **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $P(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
 
-- **Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+- **Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
 
 
 ## Learning Temporal Models
@@ -241,21 +245,21 @@ We'll return to these ideas in our lesson on [statistical learning](statistical-
 
 ## Filtering
 
-**Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+**Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $P(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
 
 - Umbrella example: compute probability of rain today given all umbrella observations so far.
 - Rational agent estimates its current state to enable rational decisions.
-- Nearly identical calculation provides likelihood of evidence sequence $Pr(\bm{e}_{1:t})$
-- The term "filtering" comes from signal processing, which sees the problem of state estimation as "filtering out the noise" in a signla to estimate its underlying properties.
+- Nearly identical calculation provides likelihood of evidence sequence $P(\bm{e}_{1:t})$
+- The term "filtering" comes from signal processing, which sees the problem of state estimation as "filtering out the noise" in a signal to estimate its underlying properties.
 
-A useful filtering algorithm needs to maintain a current state estimate and update it, rather than going back over the entire history of percepts for each update.
+**Need for efficiency.** A useful filtering algorithm needs to maintain a current state estimate and update it, rather than going back over the entire history of percepts for each update.
 
 - Otherwise, the cost of each update increases as time goes by.
 
 In other words, given the result of filtering up to time $t$, the agent needs to compute the result for $t + 1$ from the new evidence $\bm{e}_{t+1}$.  For some function $f$:
 
 $$
-Pr(\bm{X}_{t+1} \mid f \left( \bm{e}_{t+1}, Pr(\bm{X}_t \mid \bm{e}_{1:t}) \right)
+P(\bm{X}_{t+1} \mid f \left( \bm{e}_{t+1}, P(\bm{X}_t \mid \bm{e}_{1:t}) \right)
 $$
 
 ## Recursive State Estimation
@@ -265,19 +269,19 @@ We can view the calculation as being composed of two parts: first, the current s
 ```{=latex}
 \vspace{-.25in}
 \begin{align*}
-Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) &= Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t}, \bm{e}_{t+1}) \tag{Divide the evidence}\\
-                                     &= \alpha Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1}, e_{1:t}) Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t}) \tag{Bayes rule, given $\bm{e}_{1:t}$}\\
-                                     &= \alpha \underbrace{Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{update}} \underbrace{Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t})}_{\text{prediction}} \tag{Sensor Markov assumption}
+P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) &= P(\bm{X}_{t+1} \mid \bm{e}_{1:t}, \bm{e}_{t+1}) \tag{Divide the evidence}\\
+                                     &= \alpha P(\bm{e}_{t+1} \mid \bm{X}_{t+1}, e_{1:t}) P(\bm{X}_{t+1} \mid \bm{e}_{1:t}) \tag{Bayes rule, given $\bm{e}_{1:t}$}\\
+                                     &= \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{update}} \underbrace{P(\bm{X}_{t+1} \mid \bm{e}_{1:t})}_{\text{prediction}} \tag{Sensor Markov assumption}
 \end{align*}
 ```
 
-Now plug in an expression for one-step prediction $Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t})$ conditioned on the current state $\bm{X}_t$ to obtain the central result in probabilistic temoral reasoning:
+Now plug in an expression for one-step prediction $P(\bm{X}_{t+1} \mid \bm{e}_{1:t})$ conditioned on the current state $\bm{X}_t$ to obtain the central result in probabilistic temoral reasoning:
 
 ```{=latex}
 \vspace{-.25in}
 \begin{align*}
-Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) &= \alpha Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1}) \sum_{\bm{X}_t} Pr(\bm{X}_{t+1} \mid \bm{x}_t, \bm{e}_{1:t}) Pr(\bm{x}_t \mid \bm{e}_{1:t}) \\
-                                     &= \alpha \underbrace{Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{Pr(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{Pr(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
+P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) &= \alpha P(\bm{e}_{t+1} \mid \bm{X}_{t+1}) \sum_{\bm{X}_t} P(\bm{X}_{t+1} \mid \bm{x}_t, \bm{e}_{1:t}) P(\bm{x}_t \mid \bm{e}_{1:t}) \\
+                                     &= \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{P(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{P(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
 \end{align*}
 ```
 
@@ -289,11 +293,11 @@ Hence, we have the desired recursive formulation.
 ```{=latex}
 \vspace{-.2in}
 \[
-Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{Pr(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{Pr(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
+P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{P(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{P(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
 \]
 ```
 
-We can think of the filtered estimate $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ as a "message" $\bm{f}_{1:t}$ that is propagated forward along the sequence, modified by each transition and updated by each new observation. The process is given by
+We can think of the filtered estimate $P(\bm{X}_t \mid \bm{e}_{1:t})$ as a "message" $\bm{f}_{1:t}$ that is propagated forward along the sequence, modified by each transition and updated by each new observation. The process is given by
 
 $$
 \bm{f}_{1:t+1} = \text{FORWARD}(\bm{f}_{1:t}, \bm{e}_{t+1})
@@ -302,7 +306,7 @@ $$
 where
 
 - FORWARD implements the update in Equation 14.5 and
-- the process begins with $\bm{f}_{1:0} = Pr(\bm{X}_0)$.
+- the process begins with $\bm{f}_{1:0} = P(\bm{X}_0)$.
 
 When all the state variables are discrete, the time for each update is constant (i.e., independent of $t$), and the space required is also constant. (The constants depend, of course, on the size of the state space and the specific type of the temporal model in question.)
 
@@ -314,15 +318,15 @@ When all the state variables are discrete, the time for each update is constant 
 :::: {.columns}
 ::: {.column width="45%"}
 
-Compute $Pr(R_2 \mid u_{1:2})$:
+Compute $P(R_2 \mid u_{1:2})$:
 
-- Day 0: no observations, only prior beliefs: $Pr(R_0) = \langle 0.5, 0.5 \rangle$
+- Day 0: no observations, only prior beliefs: $P(R_0) = \langle 0.5, 0.5 \rangle$
 - Day 1: umbrealla appears, $U_1 = true$.  Prediction from $t=0:1$:
 
     ```{=latex}
     \vspace{-.2in}
     \begin{align*}
-    Pr(R_1) &= \sum_{r_0} Pr(R_1 \mid r_0) Pr(r_0) \\
+    P(R_1) &= \sum_{r_0} P(R_1 \mid r_0) P(r_0) \\
             &= \langle 0.7, 0.3 \rangle \cdot 0.5 + \langle 0.3, 0.7 \rangle \cdot 0.5 \\
             &= \langle 0.5, 0.5 \rangle
     \end{align*}
@@ -333,7 +337,7 @@ Compute $Pr(R_2 \mid u_{1:2})$:
     ```{=latex}
     \vspace{-.2in}
     \begin{align*}
-    Pr(R_1 \mid u_1) &= \alpha Pr(u_1 \mid R_1) Pr(R_1) \\
+    P(R_1 \mid u_1) &= \alpha P(u_1 \mid R_1) P(R_1) \\
                      &= \alpha \langle 0.9, 0.2 \rangle \langle 0.5, 0.5 \rangle \\
                      &= \alpha \langle 0.45, 0.1 \rangle \\
                      &\approx \langle 0.818, 0.182 \rangle
@@ -357,7 +361,7 @@ Compute $Pr(R_2 \mid u_{1:2})$:
     ```{=latex}
     \vspace{-.2in}
     \begin{align*}
-    Pr(R_2 \mid u_1) &= \sum_{r_1} Pr(R_2 \mid r_1) Pr(r_1 \mid u_1) \\
+    P(R_2 \mid u_1) &= \sum_{r_1} P(R_2 \mid r_1) P(r_1 \mid u_1) \\
                      &= \langle 0.7, 0.3 \rangle \cdot 0.818 + \langle 0.3, 0.7 \rangle \cdot 0.182 \\
                      &\approx \langle 0.627, 0.373 \rangle
     \end{align*}
@@ -368,7 +372,7 @@ Compute $Pr(R_2 \mid u_{1:2})$:
     ```{=latex}
     \vspace{-.2in}
     \begin{align*}
-    Pr(R_2 \mid u_1, u_2) &= \alpha Pr(u_2 \mid R_2) Pr(R_2 \mid u_1) \\
+    P(R_2 \mid u_1, u_2) &= \alpha P(u_2 \mid R_2) P(R_2 \mid u_1) \\
                           &= \alpha \langle 0.9, 0.2 \rangle \langle 0.627, 0.373 \rangle \\
                           &= \alpha \langle 0.565, 0.075 \rangle \\
                           &\approx \langle 0.883, 0.117 \rangle
@@ -383,25 +387,25 @@ Compute $Pr(R_2 \mid u_{1:2})$:
 
 Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
 
-- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $P(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
 
 ```{=latex}
 \fbox{
 \begin{minipage}{\textwidth}
 \begin{itemize}
-\item {\bf Prediction} is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+\item {\bf Prediction} is the task of computing the posterior distribution over the future state, given all evidence to date: $P(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
 \end{itemize}
 \end{minipage}
 }
 ```
-- **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+- **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $P(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
 
-- **Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+- **Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
 
 
 ## Prediction
 
-**Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+**Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $P(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
 
 - Umbrella example: compute probability of rain three days from now, given all the observations to date.
 - Prediction is useful for evaluating possible courses of action based on their expected outcomes.
@@ -412,7 +416,7 @@ Prediction can be seen simply as filtering without the addition of new evidence.
 ```{=latex}
 \vspace{-.1in}
 \[
-Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{Pr(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{Pr(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
+P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{P(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{P(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
 \]
 ```
 
@@ -421,11 +425,11 @@ remove the sensor model and extend the prediction to $t + k + 1$:
 ```{=latex}
 \vspace{-.1in}
 \[
-Pr(\bm{X}_{t+k+1} \mid \bm{e}_{1:t}) =  \sum_{\bm{X}_{t+k}} \underbrace{Pr(\bm{X}_{t+k+1} \mid \bm{x}_{t+k})}_{\text{transition model}} \underbrace{Pr(\bm{x}_{t+k} \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.6}
+P(\bm{X}_{t+k+1} \mid \bm{e}_{1:t}) =  \sum_{\bm{X}_{t+k}} \underbrace{P(\bm{X}_{t+k+1} \mid \bm{x}_{t+k})}_{\text{transition model}} \underbrace{P(\bm{x}_{t+k} \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.6}
 \]
 ```
 
-## Stationary Distributions
+## Making predictions is hard, especially about the future.
 
 As we try to predict further and further into the future, the predicted distribution for rain converges to a fixed point $\langle 0.5,0.5 \rangle$, after which it remains constant for all time.
 
@@ -441,26 +445,26 @@ The more the uncertainty in the transition model, the shorter will be the mixing
 
 Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
 
-- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $P(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
 
-- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $P(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
 
 ```{=latex}
 \framebox{
 \begin{minipage}{\textwidth}
 \begin{itemize}
-\item {\bf Smoothing} is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+\item {\bf Smoothing} is the task of computing the posterior distribution over a past state, given all evidence up to the present: $P(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
 \end{itemize}
 \end{minipage}
 }
 ```
 
-- **Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+- **Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
 
 
 ## Smoothing
 
-**Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+**Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $P(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
 
 
 ```{=latex}
@@ -485,9 +489,9 @@ Split the computation into two parts -- the evidence up to $k$ and the evidence 
 ```{=latex}
 \vspace{-.2in}
 \begin{align*}
-Pr(\bm{X}_{k} \mid \bm{e}_{1:t}) &= Pr(\bm{X}_{k} \mid \bm{e}_{1:k}, \bm{e}_{k+1:t}) \\
-                                 &= \alpha Pr(\bm{X}_k \mid \bm{e}_{1:k}) Pr(\bm{e}_{k+1:t} \mid \bm{X}_k, \bm{e}_{1:k}) \tag{using Bayes' Rule, given $\bm{e}_{1:k}$} \\
-                                 &= \alpha Pr(\bm{X}_k \mid \bm{e}_{1:k}) Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) \tag{using conditional indepenence} \\
+P(\bm{X}_{k} \mid \bm{e}_{1:t}) &= P(\bm{X}_{k} \mid \bm{e}_{1:k}, \bm{e}_{k+1:t}) \\
+                                 &= \alpha P(\bm{X}_k \mid \bm{e}_{1:k}) P(\bm{e}_{k+1:t} \mid \bm{X}_k, \bm{e}_{1:k}) \tag{using Bayes' Rule, given $\bm{e}_{1:k}$} \\
+                                 &= \alpha P(\bm{X}_k \mid \bm{e}_{1:k}) P(\bm{e}_{k+1:t} \mid \bm{X}_k) \tag{using conditional indepenence} \\
                                  &= \alpha \bm{f}_{1:k} \odot \bm{b}_{k+1:t} \tag{14.8}
 \end{align*}
 ```
@@ -496,6 +500,13 @@ $\odot$ is elementwise multiplication, a.k.a. Hadamard product.
 
 The "forward" message, $\bm{f}_{1:k}$ can be computed by filtering forward using Equation 14.5.
 
+```{=latex}
+\[
+P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{P(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{P(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
+\]
+```
+
+
 ## Backward Message for Smoothing
 
 The backward message, $\bm{b}_{k+1:t}$ can be computed by a recursive process running backward from $t$:
@@ -503,10 +514,10 @@ The backward message, $\bm{b}_{k+1:t}$ can be computed by a recursive process ru
 ```{=latex}
 \vspace{-.2in}
 \begin{align*}
-Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) &= \sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1:t} \mid \bm{X}_k, \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k) \tag{conditioning on $\bm{X}_{k+1}$} \\
-                                 &= \sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1:t} \mid \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k) \tag{by conditional independence} \\
-                                 &= \sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1}, \bm{e}_{k+2:t} \mid \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k) \\
-                                 &= \sum_{\bm{x}_{k+1}} \underbrace{Pr(\bm{e}_{k+1} \mid \bm{x}_{k+1})}_{sensor model} \underbrace{Pr(\bm{e}_{k+2:t} \mid \bm{x}_{k+1})}_{recursion} \underbrace{Pr(\bm{x}_{k+1} \mid \bm{X}_k)}_{transition model} \tag{14.9}
+P(\bm{e}_{k+1:t} \mid \bm{X}_k) &= \sum_{\bm{x}_{k+1}} P(\bm{e}_{k+1:t} \mid \bm{X}_k, \bm{x}_{k+1}) P(\bm{x}_{k+1} \mid \bm{X}_k) \tag{conditioning on $\bm{X}_{k+1}$} \\
+                                 &= \sum_{\bm{x}_{k+1}} P(\bm{e}_{k+1:t} \mid \bm{x}_{k+1}) P(\bm{x}_{k+1} \mid \bm{X}_k) \tag{by conditional independence} \\
+                                 &= \sum_{\bm{x}_{k+1}} P(\bm{e}_{k+1}, \bm{e}_{k+2:t} \mid \bm{x}_{k+1}) P(\bm{x}_{k+1} \mid \bm{X}_k) \\
+                                 &= \sum_{\bm{x}_{k+1}} \underbrace{P(\bm{e}_{k+1} \mid \bm{x}_{k+1})}_{\text{sensor model}} \underbrace{P(\bm{e}_{k+2:t} \mid \bm{x}_{k+1})}_{\text{recursion}} \underbrace{P(\bm{x}_{k+1} \mid \bm{X}_k)}_{\text{transition model}} \tag{14.9}
 \end{align*}
 ```
 
@@ -518,7 +529,7 @@ $$
 \bm{b}_{k+1:t} = \text{BACKWARD}(\bm{b}_{k+2:t}, \bm{e}_{k+1}).
 $$
 
-$\bm{e}_{t+1:t}$ is an empty sequence, so we initialize the backward phase with $\bm{b}_{t+1:t} = Pr(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}$, where $\bm{1}$ is a vector of 1s.
+$\bm{e}_{t+1:t}$ is an empty sequence, so we initialize the backward phase with $\bm{b}_{t+1:t} = P(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}$, where $\bm{1}$ is a vector of 1s.
 
 
 ## Example: Smoothed Umbrella World State Estimate
@@ -531,8 +542,8 @@ Let's compute the smoothed estimate for the probability of rain at time $k = 1$,
 ```{=latex}
 \vspace{-.2in}
 \begin{align*}
-Pr(\bm{X}_{k} \mid \bm{e}_{1:t}) &= \alpha Pr(\bm{X}_k \mid \bm{e}_{1:k}) Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) \tag{14.8}\\
-Pr(R_1 \mid u_1, u_2)            &= \alpha Pr(R_1 \mid u_1) Pr(u_2 \mid R_1) \tag{14.10}
+P(\bm{X}_{k} \mid \bm{e}_{1:t}) &= \alpha P(\bm{X}_k \mid \bm{e}_{1:k}) P(\bm{e}_{k+1:t} \mid \bm{X}_k) \tag{14.8}\\
+P(R_1 \mid u_1, u_2)            &= \alpha P(R_1 \mid u_1) P(u_2 \mid R_1) \tag{14.10}
 \end{align*}
 ```
 
@@ -552,15 +563,15 @@ Pr(R_1 \mid u_1, u_2)            &= \alpha Pr(R_1 \mid u_1) Pr(u_2 \mid R_1) \ta
 ::::
 
 
-From filtering for Day 1 we already know $Pr(R_1 \mid u_1) = \alpha Pr(u_1 \mid R_1) Pr(R_1) = \langle 0.818, 0.182 \rangle$.
+From filtering for Day 1 we already know $P(R_1 \mid u_1) = \alpha P(u_1 \mid R_1) P(R_1) = \langle 0.818, 0.182 \rangle$.
 
-So then we need to compute $Pr(u_2 \mid R_1)$ by applying the backward recursion in Equation 14.9:
+So then we need to compute $P(u_2 \mid R_1)$ by applying the backward recursion in Equation 14.9:
 
 ```{=latex}
 \vspace{-.2in}
 \begin{align*}
-Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) &= \sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1} \mid \bm{x}_{k+1}) Pr(\bm{e}_{k+2:t} \mid \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k) \tag{14.9}\\
-Pr(u_2 \mid R_1)                 &= \sum_{\bm{r}_{2}} Pr(u_2 \mid r_2) P( \mid r_2) Pr(r_2 \mid R_1) \\
+P(\bm{e}_{k+1:t} \mid \bm{X}_k) &= \sum_{\bm{x}_{k+1}} P(\bm{e}_{k+1} \mid \bm{x}_{k+1}) P(\bm{e}_{k+2:t} \mid \bm{x}_{k+1}) P(\bm{x}_{k+1} \mid \bm{X}_k) \tag{14.9}\\
+P(u_2 \mid R_1)                 &= \sum_{\bm{r}_{2}} P(u_2 \mid r_2) P( \mid r_2) P(r_2 \mid R_1) \\
                                  &= \left( 0.9 \cdot 1 \cdot \langle 0.7, 0.3 \rangle \right) + \left( 0.2 \cdot 1 \cdot \langle 0.3, 0.7 \rangle \right) = \langle 0.69, 0.41 \rangle
 \end{align*}
 ```
@@ -570,7 +581,7 @@ Then plug both terms into Equation 14.10:
 ```{=latex}
 \vspace{-.2in}
 \begin{align*}
-Pr(R_1 \mid u_1, u_2) &= \alpha Pr(R_1 \mid u_1) Pr(u_2 \mid R_1) \tag{14.10} \\
+P(R_1 \mid u_1, u_2) &= \alpha P(R_1 \mid u_1) P(u_2 \mid R_1) \tag{14.10} \\
                       &= \alpha \langle 0.818, 0.182 \rangle \odot \langle 0.69, 0.41 \rangle \approx \langle 0.883, 0.117 \rangle
 \end{align*}
 ```
@@ -595,6 +606,8 @@ However, we can apply dynamic programming to reduce the complexity to $O(t)$.
 
 This is the essence of the forward–backward smoothing algorithm ...
 
+- BTW, you'll see this algorithmic structure again when you learn about deep neural networks.
+
 ## Forward-Backward Smoothing Algorithm
 
 ```{=latex}
@@ -605,33 +618,33 @@ This is the essence of the forward–backward smoothing algorithm ...
 \end{center}
 ```
 
-$\text{FORWARD}(\bm{f}_{1:t}, \bm{e}_{t+1}) = Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) =$
+$\text{FORWARD}(\bm{f}_{1:t}, \bm{e}_{t+1}) = P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) =$
 
-- $Pr(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha Pr(\bm{e}_{t+1} \mid \bm{X}_{t+1}) \sum_{\bm{X}_t} Pr(\bm{X}_{t+1} \mid \bm{x}_t) Pr(\bm{x}_t \mid \bm{e}_{1:t})$ (14.5) and
+- $P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha P(\bm{e}_{t+1} \mid \bm{X}_{t+1}) \sum_{\bm{X}_t} P(\bm{X}_{t+1} \mid \bm{x}_t) P(\bm{x}_t \mid \bm{e}_{1:t})$ (14.5) and
 
-- the process begins with $\bm{f}_{1:0} = Pr(\bm{X}_0)$.
+- the process begins with $\bm{f}_{1:0} = P(\bm{X}_0)$.
 
-$\text{BACKWARD}(\bm{b}_{k+2:t}, \bm{e}_{k+1}) = Pr(\bm{e}_{k+1:t} \mid \bm{X}_k) =$
+$\text{BACKWARD}(\bm{b}_{k+2:t}, \bm{e}_{k+1}) = P(\bm{e}_{k+1:t} \mid \bm{X}_k) =$
 
-- $\sum_{\bm{x}_{k+1}} Pr(\bm{e}_{k+1} \mid \bm{x}_{k+1}) Pr(\bm{e}_{k+2:t} \mid \bm{x}_{k+1}) Pr(\bm{x}_{k+1} \mid \bm{X}_k)$ (14.9) and
+- $\sum_{\bm{x}_{k+1}} P(\bm{e}_{k+1} \mid \bm{x}_{k+1}) P(\bm{e}_{k+2:t} \mid \bm{x}_{k+1}) P(\bm{x}_{k+1} \mid \bm{X}_k)$ (14.9) and
 
-- initialize backward phase with $\bm{b}_{t+1:t} = Pr(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}$, where $\bm{1} =$ vector of 1s.
+- initialize backward phase with $\bm{b}_{t+1:t} = P(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}$, where $\bm{1} =$ vector of 1s.
 
 ## Inference in Temporal Models
 
 Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
 
-- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $Pr(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
+- **Filtering**, a.k.a., **state estimation** is the task of computing the **belief state** $P(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
 
-- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $Pr(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
+- **Prediction** is the task of computing the posterior distribution over the future state, given all evidence to date: $P(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
 
-- **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $Pr(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
+- **Smoothing** is the task of computing the posterior distribution over a past state, given all evidence up to the present: $P(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
 
 ```{=latex}
 \fbox{
 \begin{minipage}{\textwidth}
 \begin{itemize}
-\item {\bf Most likely explanation}: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+\item {\bf Most likely explanation}: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
 \end{itemize}
 \end{minipage}
 }
@@ -639,7 +652,7 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 
 ## Finding the Most Likely Sequence
 
-**Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} Pr(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
+**Most likely explanation**: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
 
 - Umbrella example: if umbrella appears on each of the first three days and is absent on the fourth, then the most likely explanation is that it rained on the first three days and did not rain on the fourth.  On the other hand, perhaps the director forgot an umbrella on a rainy day, or took an umbrella on a sunny day out of caution.
 - MLE algorithms are useful for speech recognition -- where the aim is to find the most likely sequence of words, given a series of sounds, reconstruction of bit strings transmitted over a noisy channel, and many others.
@@ -679,35 +692,34 @@ So there is a recursive relationship between most likely paths to each state $\b
 We will use a recursively computed message $\bm{m}_{1:t}$, like the forward message $\bm{f}_{1:t}$ in the filtering algorithm:
 
 $$
-\bm{m}_{1:t} = \max_{\bm{x}_{1:t}} Pr(\bm{x}_{1:t-1}, \bm{X}_t, \bm{e}_{1:t})
+\bm{m}_{1:t} = \max_{\bm{x}_{1:t}} P(\bm{x}_{1:t-1}, \bm{X}_t, \bm{e}_{1:t})
 $$
 
 By applying a similar derivation to the one we used for the filtering equation (14.5), we get:
 
 $$
-\bm{m}_{1:t+1} = Pr(e_{t+1} \mid \bm{X}_{t+1}) \max_{\bm{x}_{t}} Pr(\bm{X}_{t+1} \mid \bm{x}_t) \max_{\bm{x}_{1:t-1}} Pr(\bm{x}_{1:t-1}, \bm{x}_{t}, \bm{e}_{1:t}) \tag{14.11}
+\bm{m}_{1:t+1} = P(e_{t+1} \mid \bm{X}_{t+1}) \max_{\bm{x}_{t}} P(\bm{X}_{t+1} \mid \bm{x}_t) \max_{\bm{x}_{1:t-1}} P(\bm{x}_{1:t-1}, \bm{x}_{t}, \bm{e}_{1:t}) \tag{14.11}
 $$
 
-- The final term $Pr(\bm{x}_{1:t-1}, \bm{x}_{t}, \bm{e}_{1:t})$ is exactly the entry for the particular state $\bm{x}_t$ in the message vector $\bm{m}_{1:t}$.
+- The final term $P(\bm{x}_{1:t-1}, \bm{x}_{t}, \bm{e}_{1:t})$ is exactly the entry for the particular state $\bm{x}_t$ in the message vector $\bm{m}_{1:t}$.
 
 - Equation 14.11 is essentially identical to the filtering equation (14.5) except that the summation over $\bm{x}_t$ in Equation (14.5) is replaced by the maximization over $\bm{x}_t$ in Equation (14.11).
 
 - there is no normalization constant $\alpha$ in Equation (14.11).
 
-Thus, the algorithm for computing the most likely sequence is similar to filtering: it starts at time 0 with the prior $\bm{m}_{1:0} = Pr(\bm{X}_0)$ and then runs forward along the sequence, computing the $\bm{m}$ message at each time step using Equation (14.11).
+Thus, the algorithm for computing the most likely sequence is similar to filtering: it starts at time 0 with the prior $\bm{m}_{1:0} = P(\bm{X}_0)$ and then runs forward along the sequence, computing the $\bm{m}$ message at each time step using Equation (14.11).
 
 ## Operation of Viterbi Algorithm in Umbrella World
 
 Operation of the Viterbi algorithm for the umbrella observation sequence $[true,true,false,true,true]$, where the evidence starts at time 1.
 
 ```{=latex}
-\begin{center}
+\centering
+\includegraphics[
+    height=.4\textheight,
+    alt={}]
+    {aima-fig-14_05_b-viterbi-rain-state-probabilities.pdf}
 ```
-![](aima-fig-14_05_b-viterbi-rain-state-probabilities.pdf)
-```{=latex}
-\end{center}
-```
-
 
 - For each $t$, we show the values of the message $\bm{m}_{1:t}$ , which gives the probability of the best sequence reaching each state at time t.
 
@@ -730,13 +742,13 @@ Fun homework: [Markov Chains Recognition](../../python/projects/markov-chains-re
 
 ## Hidden Markov Models (HMMs)
 
-An HMM is a temporal probabilis- tic model in which the state of the process is described by a single, discrete random variable.
+An HMM is a temporal probabilistic model in which the state of the process is described by a single, discrete random variable.
 
 ## HMM Matrix Formulation
 
 ```{=latex}
 \[
-\bm{T}_{ij} = Pr(X_t = j \mid X_{t-1} = i)
+\bm{T}_{ij} = P(X_t = j \mid X_{t-1} = i)
 \]
 ```
 
@@ -751,7 +763,7 @@ An HMM is a temporal probabilis- tic model in which the state of the process is 
 
 ```{=latex}
 \[
-\bm{T}_{ij} = Pr(X_t \mid X_{t-1}) =
+\bm{T}_{ij} = P(X_t \mid X_{t-1}) =
 \begin{bmatrix}
 0.7 & 0.3 \\
 0.3 & 0.7
