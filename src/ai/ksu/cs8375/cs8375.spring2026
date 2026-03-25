@@ -43,11 +43,11 @@ Week 13
 2026-04-06;multiagent-systems;;AAAI Spring Symposia (2026-04-07)
 2026-04-08;mdps;;AAAI Spring Symposia (2026-04-08),AAAI Spring Symposia (2026-04-09)
 Week 14
-2026-04-13;Silicon Valley AI "Ethics", (Class at 16:00);Due: [PA3](pa3.html),Assigned: [PA4](pa4.html);
-2026-04-15;Value Alignment, (Class at 16:00);;
+2026-04-13;dp;Due: [PA3](pa3.html),Assigned: [PA4](pa4.html);
+2026-04-15;td-learning;;
 Week 15
-2026-04-20;dp;;
-2026-04-22;td-learning;;ICLR (2026-04-23),ICLR (2026-04-24),ICLR (2026-04-25),ICLR (2026-04-26)
+2026-04-20;Silicon Valley AI "Ethics";;
+2026-04-22;Value Alignment;;
 Supervised Machine Learning
 Week 16
 2026-04-27;supervised-learning;;ICLR (2026-04-27)
