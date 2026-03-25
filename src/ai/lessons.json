@@ -458,7 +458,10 @@
         ],
         "assignments": [
         ],
-        "videos": []
+        "videos": [
+            "Video: [David Silver MDP Lecture](https://www.youtube.com/watch?v=lfHX2hHRMVQ&list=PLzuuYNsE1EZAXYR4FJ75jcJseBmo4KQ9-&index=2)",
+            "Video: [UCB MDPs Lecture](https://www.youtube.com/watch?v=0CDpYf1KpOc)"
+        ]
     },
     {
         "topic": "dp",
@@ -470,7 +473,23 @@
         "exercises": [],
         "assignments": [
         ],
-        "videos": []
+        "videos": [
+            "[David Silver DP Lecture](https://www.youtube.com/watch?v=Nd1-UUMVfz4&list=PLzuuYNsE1EZAXYR4FJ75jcJseBmo4KQ9-&index=3)",
+            "[UCB MPD DP Lecture](https://www.youtube.com/watch?v=u3gKqWwUzqY)"
+        ]
+    },
+    {
+        "topic": "monte-carlo-control",
+        "slides": "[Monte Carlo Control](@root/rl/slides/monte-carlo-control.pdf)",
+        "reading": [
+            "RLAI: 5"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": [
+            "[David Silver MC Lecture](https://www.youtube.com/watch?v=PnHCvfgC_ZA&list=PLzuuYNsE1EZAXYR4FJ75jcJseBmo4KQ9-&index=4)"
+        ]
     },
     {
         "topic": "td-learning",
@@ -485,7 +504,9 @@
         ],
         "assignments": [
         ],
-        "videos": []
+        "videos": [
+            "[David Silver TD-Learning Lectures](https://www.youtube.com/watch?v=0g4j2k_Ggc4&list=PLzuuYNsE1EZAXYR4FJ75jcJseBmo4KQ9-&index=5)"
+        ]
     },
     {
         "part": "Machine Learning"
