@@ -21,13 +21,22 @@ In ethical theory, how "good" something is.
 - Value of a goal
 - Value of an action
 
-Values lead to hierarchies
+Values lead to hierarchies.
 
 - Cookies vs. health
 
 https://plato.stanford.edu/entries/value-theory/
 
-## Amazon's Sexist Hiring Tool
+## Value Alignment in AI
+
+Today we'll focus on two broad areas of value alignment in AI:
+
+- **supervised statistical machine learning**, in which harmful biases in arise in pattern learning, and
+- **autonomous agents**, which we want to have human-aligned goals and *behavior*.
+
+## Good Goals, Harmful Outcomes
+
+Amazon's Sexist Hiring Tool
 
 - Resume evaluator trained on 10 yers of hiring data
 - Most software engineers are male
@@ -81,7 +90,7 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 :::
 ::::
 
-## Palantir
+## At least some AI companies are honest aobut their goals.
 
 ```{=latex}
 \begin{center}
@@ -91,7 +100,7 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 \end{center}
 ```
 
-## Value Alignment
+## Value Alignment as a Focus of AI Research
 
 :::: {.columns}
 ::: {.column width="50%"}
@@ -118,8 +127,164 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 :::
 ::::
 
+## Value Alignment in Autonomous Agents
 
-## Rational Decisions
+:::: {.columns}
+::: {.column width="49%"}
+
+
+```{=latex}
+\begin{center}
+\textbf{Bad advice can be dangerous.}\\
+\vspace{.1in}
+```
+![](chatcheapt-pineapple-pizza-advice.pdf){height="25%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="2%"}
+\rule{0.5pt}{.35\textheight}
+:::
+::: {.column width="49%"}
+
+```{=latex}
+\begin{center}
+\textbf{Bad action is worse.}\\
+\vspace{.1in}
+```
+![](robot-serving-pineapple-pizza.pdf){height="30%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+```{=latex}
+\begin{center}\rule{\textwidth}{0.5pt}\end{center}
+```
+
+:::: {.columns}
+::: {.column width="49%"}
+
+
+```{=latex}
+\begin{center}
+```
+![](christopher-simpkins-headshot-600px.jpg){height="25%"}
+![](chris.simpkins.phd-qr.png){height="25%"}
+```{=latex}
+\textbf{Christopher Simpkins}\\
+\small{Kennesaw State University}\\
+\small{\url{https://chris.simpkins.phd/}}
+\end{center}
+```
+
+:::
+::: {.column width="2%"}
+\rule{0.5pt}{.4\textheight}
+:::
+::: {.column width="49%"}
+
+**General Interests**
+
+- Multiagent systems
+- Reinforcement learning
+- Deep learning
+- Causality
+- ...
+
+**Current thrust**: MARL approaches to value alignment
+
+:::
+::::
+
+
+## Value Alignment as a Theory of Mind Problem
+
+
+:::: {.columns}
+::: {.column width="49%"}
+
+```{=latex}
+\begin{center}
+```
+![](angel-demon.pdf){height="35%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="2%"}
+\rule{0.5pt}{.4\textheight}
+:::
+::: {.column width="49%"}
+
+
+
+```{=latex}
+\begin{center}
+```
+![](robot-mtom.pdf){height="35%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::::
+
+
+```{=latex}
+\begin{center}\rule{\textwidth}{0.5pt}\end{center}
+```
+
+:::: {.columns}
+::: {.column width="49%"}
+
+**Goal: learn values from behavior.**
+
+- Not just "don't run over pedestrians" but "don't harm humans."
+- Start with action restrictions
+- Learning approach
+
+    - Don't replace the Genie Problem with the knowledge acquisition bottleneck/bitter lesson.
+
+:::
+::: {.column width="2%"}
+\rule{0.5pt}{.4\textheight}
+:::
+::: {.column width="49%"}
+
+
+**Advances needed:**
+
+- Machine theory of mind
+- Imitation/apprenticeship learning
+- Offline reinforcement learning
+- World models -- causality
+
+**Impacts:**
+
+- Autonomous multi-agent systems
+- Human-AI teaming
+- Safe autonomy
+
+:::
+::::
+
+::: notes
+
+This is my note.
+
+- It can contain Markdown
+- like this list
+
+:::
+
+
+## Choosing Actions
 
 Elements of outcomes can be more or less desirable -- more or less *useful* -- to a given agent.
 
@@ -155,7 +320,7 @@ $$
 
 Coconut cupcakes.
 
-## Reinforcement Learning
+## Reinforcement Learning in a Few Slides
 
 An intelligent agent learns how to behave from experience interacting with the world.
 
@@ -228,6 +393,8 @@ A *Markov decision process* (MDP) adds a set of *actions* at each time step.  No
 \end{center}
 ```
 
+<!--
+
 ## Parially-Observable MDP (POMDP)
 
 In a *partially observable Markov decision process* (POMDP) the state is not fully observable.  The agent receives an observation drawn from a probability distribution $Pr(o_t | s_t)$.  Now a trajectory is $\tau = (s_1, o_1, a_1, r_2, s_2, o_2, r_3...)$
@@ -239,6 +406,8 @@ In a *partially observable Markov decision process* (POMDP) the state is not ful
 ```{=latex}
 \end{center}
 ```
+
+-->
 
 ## Policy
 
@@ -296,6 +465,8 @@ If we know $q^*$ we can use it to derive $\pi^*$:
 
 We'll see this idea when we solve MDPs using dynamic programming.
 
+<!--
+
 ## Consistent State Values
 
 Whatever the values of the states or actions for a given policy, they must be consistent.
@@ -333,6 +504,8 @@ q(s_t, a_t) = r(s_t, a_t) + \gamma \sum_{s_{t+1}} Pr(s_{t+1} | s_t, a_t) v(s_{t+
 \end{center}
 ```
 
+-->
+
 ## Bellman Equations
 
 If we substitute the action value function into the state value function we get:
@@ -351,7 +524,7 @@ q(s_t, a_t) = r(s_t, a_t) + \gamma \sum_{s_{t+1}} Pr(s_{t+1} | s_t, a_t) \Huge( 
 \]
 ```
 
-Thesej two relations are called the *Bellman equations*.  They say that state and action values mult be self-consistent, so when we update the estimated value of a state or actoin, we have to update all the others that depend on the updated value.
+These two relations are called the *Bellman equations*.  They say that state and action values mult be self-consistent, so when we update the estimated value of a state or actoin, we have to update all the others that depend on the updated value.
 
 ## Tabular RL
 
@@ -364,11 +537,22 @@ In classical tabular RL, we represent the policy function as a table.
 
 - Model-free: estimate from observed trajectories
 
-    - Tabular Q-Learning and SARSA
-    - Function approximation (including deep RL)
+    Q-Learning
 
-*Monte Carlo* methods simulate trajectories (called *rollouts*) under some policy and use the information from the rollouts to improve the policy.
+    \begin{equation}
+    Q(s, a) \gets Q(s, a) + \alpha [R(s) + \gamma \max_{a'} Q(s', a') - Q(s, a)]
+    \end{equation}
 
+    SARSA
+
+    \begin{equation}
+    Q(s, a) \leftarrow Q(s, a) + \alpha [R(s) + \gamma Q(s', a') - Q(s, a))]
+    \end{equation}
+
+In modern RL we approximate the various functions -- $V(s)$, $Q(s, a)$, $\pi(s)$ -- using supervisd machine elarning, most notably deep neural networks ("deep RL").
+
+
+<!--
 ## Dynamic Programming
 
 If we know the MDP, we can find the optimal policy using dynamic programming, where we iteratively update our estimates of state and action values until they converge.
@@ -457,6 +641,10 @@ Q(s, a) \leftarrow Q(s, a) + \alpha [R(s) + \gamma Q(s', a') - Q(s, a))]
 
 Sarsa is *on-policy* because the temporal difference used in the Q-update is based on the policy being followed by the agent during learning. The standard Q-learning update is *off-policy* because the Q-update is based on the best known next action.
 
+-->
+
+
+
 ## Machine Theory of Mind
 
 An agent develops a model of how another agent thinks.  For RL, can model other agent's:
@@ -464,9 +652,3 @@ An agent develops a model of how another agent thinks.  For RL, can model other 
 - Value function
 - Reward function
 - Policy
-
-Our idea: action restrictions
-
-## Learning Action Restriction from a Teacher
-
-In general imitation learning, we call the agent learning from the other the student and the agent providing the example to learn from the teacher.
