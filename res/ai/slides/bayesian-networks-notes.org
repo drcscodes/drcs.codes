@@ -1,0 +1,706 @@
+#+TITLE: Artificial Intelligence
+#+SUBTITLE: Bayesian Networks
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION: Artificial Intelligence Bayesian Networks
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_CLASS_OPTIONS: [smaller]
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx, multicol}
+#+LaTeX_HEADER: \usepackage{amsmath,amsthm, amssymb, latexsym, listings, qtree}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+
+** Representation of Uncertain Knowledge (AIMA 13.1--13.2)
+
+A Bayesian network is a directed graph in which each node is annotated with quantitative probability information. The full specification is as follows:
+
+1. Each node corresponds to a random variable, which may be discrete or continuous.
+
+2. Directed links or arrows connect pairs of nodes. If there is an arrow from node $X$ to node $Y$, then $X$ is said to be a parent of $Y$. The graph has no directed cycles and hence is a directed acyclic graph, or DAG.
+
+3. Each node $X_i$ has associated probability information $\theta(X_i | Parents(X_i))$ that quantifies the effect of the parents on the node using a finite number of parameters.
+
+** Bayesian Network Topology
+
+#+attr_html: :alt Bayes Net Weather Cavity
+#+attr_latex: :alt Bayes Net Weather Cavity
+[[file:aima-fig-13_01-bayes-net-weather-cavity.pdf]]
+
+- The topology of the network -- the set of nodes and links -- specifies the conditional independence relationships that hold in the domain.
+
+    - $Toothache$ and $Catch$ are conditionally independent given $Cavity$.
+
+- Intuitiveley, and arrow $X \rightarrow Y$ means $X$ has a direct influence on $Y$ -- so parents should be *causes* of effects.
+
+It is usually easy for a domain expert to decide what direct influences exist in the domain -- much easier, in fact, than actually specifying the probabilities themselves.
+
+** Example: Earthquake vs. Burglary
+
+You have a burglar alarm fairly reliable at detecting a burglary, but is occasionally set off by minor earthquakes.
+
+- Two neighbors, John and Mary, who promise to call when they hear the alarm.
+- John nearly always calls when he hears the alarm, but somb
+
+#+attr_html: :alt Bayes Net Alarm
+#+attr_latex: :alt Bayes Net Alarm
+[[file:aima-fig-13_02-bayes-net-alarm.pdf]]
+
+The full joint distribution for all the variables is defined by the topology and the
+local probability information recorded in conditional probability tables (CPTs).
+
+** Conditional Probability Tables
+
+Each row in a CPT contains the conditional probability of each node value for a conditioning case.  A conditioning case is a possible combination of values for the parent nodes -- a miniature possible world.
+
+#+attr_html: :alt Bayes Net Alarm
+#+attr_latex: :alt Bayes Net Alarm
+[[file:aima-fig-13_02-bayes-net-alarm.pdf]]
+
+- Each row must sum to 1, because the entries represent an exhaustive set of cases for the variable.
+
+- For Boolean variables, once you know the probability of $true$ is $p$, the probability of $false$ must be $1 - p$, so we often omit the second number.
+
+- In general, a table for a Boolean variable with $k$ Boolean parents contains $2^k$ independently specifiable probabilities.
+
+- A node with no parents has only one row, representing the prior probabilities of each possible value of the variable.
+
+
+** Many Possibilities, Few Variables of Interest
+
+Network does not explicitly represent Mary currently listening to loud music or telephone ringing and confusing John.
+
+- These factors are summarized in the uncertainty associated with the links from $Alarm$ to $JohnCalls$ and $MaryCalls$.
+
+- This shows both laziness and ignorance in operation: a lot of work to find out the likelihood of those factors, and we have no reasonable way to obtain the relevant information anyway.
+
+The probabilities actually summarize a potentially infinite set of circumstances:
+
+#+attr_html: :alt Deadmau5
+#+attr_latex: :alt Deadmau5
+[[file:deadmau5.jpg]]
+
+- The alarm might fail to sound (humidity, power failure, dead battery, cut wires, a dead mouse stuck in the bell, etc.) or
+- John or Mary might fail to call and report it (out to lunch, on vacation, temporarily deaf, passing helicopter, etc.).
+
+
+In this way, a small agent can cope with a very large world, at least approximately.
+
+** Semantics of Bayesian Networks
+
+The *semantics* defines how the syntax -- a DAG with local probabilities -- corresponds to a joint distribution over the variables of the network.
+
+A Bayes net contains:
+
+- $n$ variables, $X_1, \dots , X_n$, and
+- (implicit) joint distributions $P(X_1 = x_1 \land \dots \land X_n = x_n)$, or $P(x_1, \dots, x_n)$.
+
+Each entry in the joint distribution is defined by:
+
+\begin{equation*}
+P(x_1, \dots, x_n) = \prod_{i=1}^n \theta ( x_i | parents(X_i))
+\end{equation*}
+
+where $parents(X_i)$ denotes the values of $Parents(X_i)$ that appear in $x_1, dots, x_n$.
+
+So each entry in the joint distribution is the product of appropriate elements of the local CPTs in the Bayes net.
+
+** Example: An Alarm, Two Calls, but No Events of Interest
+
+
+What is the probability that John and Mary call, but no earthquake or burglary occur?
+
+#+attr_html: :alt Bayes Net Alarm
+#+attr_latex: :alt Bayes Net Alarm
+[[file:aima-fig-13_02-bayes-net-alarm.pdf]]
+
+- Take each entry $i$ in each CPT $\theta$ to mean $P(x_1 | parents(X_i)$
+
+    - The entries in the CPTs must be accurate conditional probabilities for the variables given their parents for the Bayes net to be useful in performing probabilistic inference.
+
+- Use those values in the calculation of the joint probability using
+Using the abbreviations $j, m, a, b$ and $e$:
+
+
+
+\begin{align*}
+P(x_1, \dots, x_n)         &= \prod_{i=1}^n P( x_i | parents(X_i)) \tag{13.2}\\
+P(j, m, a, \neg b, \neg e) &= P(j | a) P(m | a) P(a | \neg b, \neg e) P(\neg b) Pr (\neg e)\\
+                            &= 0.90 \times 0.70 \times 0.001 \times 0.99 \times 0.98\\
+                            &= 0.000628
+\end{align*}
+
+
+** Constructing Bayesian Networks
+
+A Bayesian network is a correct representation of the domain only if each node is conditionally independent of its other predecessors in the node ordering, given its parents.  Mathematically, if $Parents(X_i) \subseteq \{X_{i-1}, \dots, X_1\}$, then:
+
+\begin{equation*}
+P(X_i \mid X_{i-1}, \dots, X_i) = P(X_i \vert Parents(X_i)) \tag{13.3}
+\end{equation*}
+
+We can construct a valid Bayes net with this methodology:
+
+1. Nodes: First determine the set of variables that are required to model the domain. Now order them, $\{X_1, \dots ,X_n\}$. Any order will work, but the resulting network will be more compact if the variables are ordered such that causes precede effects.
+
+    - For the Burglary-Earthquake domain, $B,E,A,J,M$ or $E,B,A,M,J$ work.
+
+2. Links: For $i = 1$ to $n$ do:
+
+    - Choose a minimal set of parents for $X_i$ from $X_1, \dots ,X_{i-1}$, such that Equation (13.3) is satisfied.
+    - For each parent insert a link from the parent to $X_i$.
+    - CPTs: Write down the conditional probability table, $P(X_i|Parents(X_i))$.
+
+Intuitively, the parents of node $X_i$ should contain all those nodes in $\{X_1,\dots,X_{i-1}\}$ that directly influence $X_i$.
+
+** Knowledge Engineering Considerations in Bayes Nets
+
+
+Suppose we have completed the network except for the choice of parents for $MaryCalls$. We know:
+
+- $MaryCalls$ is influenced by  Burglary or Earthquake, but not directly. Our domain knowledge tells us that these events influence Mary’s calling behavior only through their effect on the alarm.
+- Also, given the state of the alarm, whether John calls has no influence on Mary’s calling.
+
+#+attr_html: :alt Bayes Net Alarm
+#+attr_latex: :alt Bayes Net Alarm
+[[file:aima-fig-13_02-bayes-net-alarm.pdf]]
+
+Formally, we believe that the following conditional independence statement holds:
+
+
+\vspace{-.2in}
+\begin{equation*}
+P(MaryCalls \mid JohnCalls,Alarm,Earthquake,Burglary) = P(MaryCalls \mid Alarm).
+\end{equation*}
+\vspace{-.2in}
+
+
+Thus, Alarm will be the only parent node for MaryCalls.
+
+Because
+
+- each node is connected only to earlier nodes, this construction method guarantees that the network is acyclic, and
+- there are no redundant probability values,
+
+there is no chance for inconsistency: it is impossible for the knowledge engineer or domain expert to create a Bayesian network that violates the axioms of probability.
+
+** Compactness of Bayesian Network Models
+
+Bayes nets are complete and nonredundant, but their *compactness* is their "secret sauce."
+
+- Bayes nets are a kind of *locally structured*, or *sparse* system.
+
+    - In locally structured systems, each component interacts only with a bounded number, $k$, of other components, where $k \ll n$, the total number of components.
+    - Local structure typically results in linear rather than exponential complexity.
+
+Example: assume boolean variables.
+
+- With $n$ variables, the full joint distribution is $2^n$ numbers.
+
+    - With 30 variables that's $2^{30} = 1,073,741,824$ numbers.
+
+- With $n$ variables, each of which is influenced by $k$ parents, each CPT is $2^k$ numbers and a full Bayesian network has $n \cdot 2^k$ numbers.
+
+    - With 30 variables that's $30 \cdot 2^5$ = 960 numbers.
+
+** Effects of Node Ordering
+
+We saw earlier that $B, E, A, J, M$ is a good node ordering because causes come before effects.  With this node ordering we get 10 conditional probabilities.  What if we choose a different ordering, like $M, J, A, B, E$?
+
+- Add $MaryCalls$: No parents.
+
+- Add $JohnCalls$: If Mary calls, alarm probably sounded, which increases prob that John calls.  So $JohnCalls$ needs $MaryCalls$ as a parent.
+
+- Add $Alarm$: The more calls, the more likely alarm sounded, so $Alarm$ needs $MaryCalls$ and $JohnCalls$ as parents.
+
+- Add $Burglary$: Given knowledge of alarm, calls irrelevant: $P(Burglary \mid Alarm,JohnCalls,MaryCalls) = P(Burglary \mid Alarm)$.  So just $Alarm$ as parent.
+
+- Add $Earthquake$: With alarm, earthquake more likely.  But burglary explains alarm, and probability of an earthquake only slightly higher than normal. So need both $Alarm$ and $Burglary$ as parents.
+
+We end up with 13 conditional probabilities.
+
+#+attr_html: :alt Bayes Net Mjabe Ordering
+#+attr_latex: :alt Bayes Net Mjabe Ordering
+[[file:aima-fig-13_03_a-bayes-net-mjabe-ordering.pdf]]
+
+
+** Knowledge Engineering in Probabilistic Systems
+
+There is still knowledge engineering involved, which includes design choices.
+
+- You may choose to trade a small amount of accuracy for the improved performance of leaving out an influence variable.
+
+    - If there's a large earthquake, John and Mary probably won't call even if they hear the alarm.  Could choose to include links from $EarthQuake$ to $JohnCalls$ and $MaryCalls$.  This would increase accuracy slightly, but probably not worth the extra complexity.
+
+- And as we just saw, node ordering matters, potentially quite a bit.
+
+    - With node ordering $M, J, E, B, A$ the resulting Bayes net requires 31 probabilities -- same as the full joint distribution.
+
+#+attr_html: :alt Bayes Net Mjeba Ordering
+#+attr_latex: :alt Bayes Net Mjeba Ordering
+[[file:aima-fig-13_03_b-bayes-net-mjeba-ordering.pdf]]
+
+
+Any Bayes net represents the same joint distibution, but some are far more efficient.
+
+> Key takeaway: stick to causal models.  They are easier to specify, easier to get right, and they lead to more efficient Bayes nets.
+
+
+** Exact Inference in Bayesian Networks (AIMA 13.3)
+
+Most common task in probabilistic inference: compute the *posterior probability* of a set of *query variables* given some *event* represented as a set of *evidence variables*.
+
+
+Notation:
+
+- Query variable: $X$
+- Set of evidence variables: $\bm{E} = \{E_1, \dots, E_m\}$
+- Particular observed event: $\bm{e}$
+- Hidden (nonevidence, nonquery) variables: $\bm{Y} = \{Y_1, \dots, Y_l\}$
+- Typical query: $P(X \mid e)$
+
+Example:
+
+- $X$ is the boolean random variable $Burglary$
+- $\bm{E} = \{JohnCalls, MaryCalls\}$
+- $\bm{e} = \{JohnCalls = true, MaryCalls = true\}$
+- $\bm{Y} = \{EarthQuake, Alarm\}$
+
+
+#+attr_html: :alt Bayes Net Alarm
+#+attr_latex: :alt Bayes Net Alarm
+[[file:aima-fig-13_02-bayes-net-alarm.pdf]]
+
+
+\begin{equation*}
+P(Buglary \mid JohnCalls = true, MaryCalls = true) = <0.284, 0.716>.
+\end{equation*}
+
+
+** Inference by Enumeration
+
+Recall that we can use the full joint distribution to answer any query:
+
+\begin{equation*}
+P(X \mid \bm{e})
+= \frac{P(\bm{e} \mid X) P(X)}{P(\bm{e})}
+= \frac{P(\bm{e}, X)}{P(\bm{e})}
+= \frac{P(X, \bm{e})}{P(\bm{e})}
+= \alpha P(X, \bm{e})
+= \alpha \sum_y P(X, \bm{e}, \bm{y}) \tag{12.9}
+\end{equation*}
+
+
+And that a Bayes net completely represents the full joint distribution, so we can reduce the computation of a joint to:
+
+\begin{equation*}
+P(x_1, \dots, x_n) = \prod_{i=1}^n P( x_i | parents(X_i)) \tag{13.2}
+\end{equation*}
+
+Using these two equations we can enumerate the appropriate probabilities to calculate the answer to any probabilistic query.
+
+- In particular, we can get the answer by computing sums of products of conditional probabilities from a Bayes net.
+
+** Example: $P(Burglary \mid JohnCalls=true, MaryCalls=true)$.
+
+Using abbreviations and substituting into Eq 12.9 above ($e$ and $a$ are hidden):
+
+
+\begin{equation*}
+P(B \mid j, m) = \alpha P(B, j, m) = \alpha \sum_e \sum_a P(B, j, m, e, a)
+\end{equation*}
+
+
+Then we substitute Eq 13.2 for $P(B, j, m, e, a)$ to get (only showing Burglary=true by the notation $b$):
+
+
+\vspace{-.1in}
+\begin{align*}
+P(b \mid j, m) &= \alpha \sum_e \sum_a P(b) P(e) P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{1}\\
+                &= \alpha P(b) \sum_e \sum_a P(e) P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{2}\\
+                &= \alpha P(b) \sum_e P(e) \sum_a P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{3}
+\end{align*}
+\vspace{-.1in}
+
+
+1. Substitute Eq 13.2 for $P(B, j, m, e, a)$
+2. Pull out $P(b)$ from summations because it doesn't depend on the other variable and is thus a constant in all the summation terms.
+3. Pull out $P(e)$ from the summation over the $a$ values because each value of $e$ doesn't depend on the other variables in the summation over the $a$ values and is thus a constant in the summation terms over the values of $a$.
+
+Steps 2 and 3 above reduce the complexity of the computation from $O(n2^n)$ to $O(2^n)$.
+
+** Caclulation of $P(b \mid j, m)$
+
+
+#+attr_html: :alt Bayes Net Alarm
+#+attr_latex: :alt Bayes Net Alarm
+[[file:aima-fig-13_02-bayes-net-alarm.pdf]]
+
+Substiting the values from the CPTs in the Bayes net into
+\begin{equation*}
+\alpha P(b) \sum_e P(e) \sum_a P(a \mid b, e) P(j \mid a) P(m \mid a)
+\end{equation*}
+
+we get the expression tree:
+
+#+attr_html: :alt Prob Expression Tree
+#+attr_latex: :alt Prob Expression Tree
+[[file:aima-fig-13_10-prob-expression-tree.pdf]]
+
+
+** Enumeration Algorithm
+
+The ENUMERATION-ASK algorithm evaluates these expression trees using depth-first, left-to-right recursion.
+
+#+attr_html: :alt Bayes Net Enumeration Algorithm
+#+attr_latex: :alt Bayes Net Enumeration Algorithm
+[[file:aima-fig-13_11-bayes-net-enumeration-algorithm.pdf]]
+
+Unfortunately, its time complexity is $O(s^n)$.  But we can improve it ...
+
+** Repeated Calculations
+
+Notice that the subexpressions for the products $P(j \mid a) P(m \mid a)$ and $P(j \mid \neg a) P(m \mid \neg a)$ are computed twice, once for each value of $E$.
+
+#+attr_html: :alt Prob Expression Tree
+#+attr_latex: :alt Prob Expression Tree
+[[file:aima-fig-13_10-prob-expression-tree.pdf]]
+
+** Variable Elimination
+
+The enumeration algorithm can be improved substantially by eliminating repeated calculations.
+
+- Idea:  do the calculation once and save the results for later use.
+- This is a form of dynamic programming.
+- Several versions of this approach; variable elimination algorithm is simplest.
+
+Variable elimination works by evaluating expressions such as
+
+\begin{equation*}
+P(b \mid j, m) = \alpha P(b) \sum_e P(e) \sum_a P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{13.5}
+\end{equation*}
+
+in right-to-left order (that is, bottom up in the expression tree), storing intermediate results, and only doing summations for portions of the expression that depend on the variable.
+
+** Example: Variable Elimination in Burglary Network
+
+First, annotate the *factor*s in the expression for the network:
+
+\begin{equation*}
+P(B \mid j, m) =
+\alpha \underbrace{P(B)}_{\bm{f}_1(B)}
+\sum_e
+\underbrace{P(e)}_{\bm{f}_2(E)}
+\sum_a
+\underbrace{P(a \mid B, e)}_{\bm{f}_3(A,B,E)}
+\underbrace{P(j \mid a)}_{\bm{f}_4(A)}
+\underbrace{P(m \mid a)}_{\bm{f}_5(A)}
+\end{equation*}
+
+- Each factor is a matrix indexed by the values of its argument variables.
+- Notice that the factors for $P(j \mid a)$ and $P(m | a)$ do not include $j$ and $m$.  This is because the values of $j$ and $m$ ($JohnCalls=true$ and $MaryCalls-true$) are fixed by the query.
+
+So the factors are:
+
+\begin{equation*}
+\bm{f}_1(B) =
+\begin{bmatrix}
+P(b) \\
+P(\neg b)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.001 \\
+0.999
+\end{bmatrix}
+\end{equation*}
+
+
+\begin{equation*}
+\bm{f}_2(E) =
+\begin{bmatrix}
+P(e) \\
+P(\neg e)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.002 \\
+0.998
+\end{bmatrix}
+\end{equation*}
+
+
+\vspace{.2in}
+
+
+
+\begin{equation*}
+\bm{f}_4(A) =
+\begin{bmatrix}
+P(j \mid a) \\
+P(j \mid \neg a)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.090 \\
+0.05
+\end{bmatrix}
+\end{equation*}
+
+
+
+\begin{equation*}
+\bm{f}_5(A) =
+\begin{bmatrix}
+P(m \mid a) \\
+P(m \mid \neg a)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.070 \\
+0.01
+\end{bmatrix}
+\end{equation*}
+
+\vspace{.2in}
+
+
+$\bm{f}_3(A, B, E)$ is a little more complicated ...
+
+** $\bm{f}_3(A, B, E)$
+
+\begin{equation*}
+P(B \mid j, m) =
+\alpha \underbrace{P(B)}_{\bm{f}_1(B)}
+\sum_e
+\underbrace{P(e)}_{\bm{f}_2(E)}
+\sum_a
+\underbrace{P(a \mid B, e)}_{\bm{f}_3(A,B,E)}
+\underbrace{P(j \mid a)}_{\bm{f}_4(A)}
+\underbrace{P(m \mid a)}_{\bm{f}_5(A)}
+\end{equation*}
+
+$\bm{f}_3(A, B, E)$ is a $2 \times 2 \times 2$ matrix (or a rank-3 tensor).  Here's one way to think about it:
+
+- First index with $A$, yielding two $2 \times 2$ submatrices (one for each of the two values of $A$).
+- Rows of each submatrix is indexed by $B$ and columns by $E$.
+- The entries in the submatrices are the values of $P(A \mid B, E)$
+
+\begin{equation*}
+\bm{f}_{3}^{(a)} (B, E) =
+\begin{bmatrix}
+P(a \mid b,e) & P(a \mid b, \neg e) \\
+P(a \mid \neg b, e) & P(a \mid \neg b, \neg e)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.95 & 0.94\\
+0.29 & 0.001
+\end{bmatrix}
+\end{equation*}
+
+\begin{equation*}
+\bm{f}_{3}^{(\neg a)} (B, E) =
+\begin{bmatrix}
+P(\neg a \mid b,e) & P(\neg a \mid b, \neg e) \\
+P(\neg a \mid \neg b, e) & P(\neg a \mid \neg b, \neg e)
+\end{bmatrix}
+=
+\begin{bmatrix}
+0.05 & 0.06\\
+0.71 & 0.999
+\end{bmatrix}
+\end{equation*}
+
+
+#+attr_html: :alt Bayes Net Alarm
+#+attr_latex: :alt Bayes Net Alarm
+[[file:aima-fig-13_02-bayes-net-alarm.pdf]]
+
+
+
+** Factorized Query
+
+From our original query:
+
+\begin{equation*}
+P(b \mid j, m) = \alpha P(b) \sum_e P(e) \sum_a P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{13.5}
+\end{equation*}
+
+We annotated the factors:
+
+
+\begin{equation*}
+P(B \mid j, m) =
+\alpha \underbrace{P(B)}_{\bm{f}_1(B)}
+\sum_e
+\underbrace{P(e)}_{\bm{f}_2(E)}
+\sum_a
+\underbrace{P(a \mid B, e)}_{\bm{f}_3(A,B,E)}
+\underbrace{P(j \mid a)}_{\bm{f}_4(A)}
+\underbrace{P(m \mid a)}_{\bm{f}_5(A)}
+\end{equation*}
+
+And now we substitute the factor expressions for the original expresions so we can manipulate the factors using the *pointwise product* operation, denoted with $\times$ here:
+
+\begin{equation*}
+P(B \mid j, m) =
+\alpha \bm{f}_1(B) \times \sum_e \bm{f}_2(E) \times \sum_a \bm{f}_3(A,B,E) \times \bm{f}_4(A) \times \bm{f}_5(A)
+\end{equation*}
+
+Now we are ready to evaluate the expression ...
+
+** Expression Evaluation
+
+Given our factorized query:
+
+
+\vspace{-.1in}
+\begin{equation*}
+P(B \mid j, m) =
+\alpha \bm{f}_1(B) \times \sum_e \bm{f}_2(E) \times \sum_a \bm{f}_3(A,B,E) \times \bm{f}_4(A) \times \bm{f}_5(A)
+\end{equation*}
+
+
+First, sum out A from the pointwise product of $\bm{f}_3(A,B,E)$, $\bm{f}_4(A)$, and $\bm{f}_5(A)$ yielding a new $2 \times 2$ factor, $\bm{f}_6(B,E)$:
+
+
+\vspace{-.2in}
+\begin{align*}
+\bm{f}_6(B,E) &= \sum_a \bm{f}_3(A,B,E) \times \bm{f}_4(A) \times \bm{f}_5(A) \\
+              &= (\bm{f}_3(a,B,E) \times \bm{f}_4(a) \times \bm{f}_5(a)) + (\bm{f}_3(\neg a,B,E) \times \bm{f}_4(\neg a) \times \bm{f}_5(\neg a))
+\end{align*}
+\vspace{-.2in}
+
+
+Now the query expression is $P(B \mid j, m) =
+\alpha \bm{f}_1(B) \times \sum_e \bm{f}_2(E) \times \bm{f}_6 (B, E)$
+
+Next, sum out $E$ from the product of $\bm{f}_2 (E)$ and $\bm{f}_6 (B, E)$, yielding a new factor $\bm{f}_7 (B)$:
+
+
+\vspace{-.2in}
+\begin{align*}
+\bm{f}_7(B) &= \sum_e \bm{f}_2(E) \times \bm{f}_6(B, E) \\
+            &= \bm{f}_2(e) \times \bm{f}_6(B, e) + \bm{f}_2(\neg e) \times \bm{f}_6(B, \neg e)
+\end{align*}
+\vspace{-.1in}
+
+
+Which leaves our final form of the query: $P(B \mid j, m) =\alpha \bm{f}_1(B) \times \bm{f}_7(B)$
+
+This expression can be evaluated by taking the pointwise product and normalizing the result.
+
+** Operations on Factors
+
+In the preceding manipulations we saw the two basic operations in variable elimination:
+
+1. the pointwise product operation, and
+3. summing out hidden variables from products of factors.
+
+Now let's see how we calculate them.
+
+** Pointwise Product Example
+
+The pointwise product of two factors $\bm{f}$ and $\bm{g}$ yields a new factor $\bm{h}$ whose variables are the union of the variables in $\bm{f}$ and $\bm{g}$ and whose elements are given by the product of the corresponding elements in the two factors.
+
+Given $X, Y, Z$ boolean variables, result of pointwise product $\bm{f}(X, Y) \times \bm{g}(Y, Z) = \bm{h}(X, Y, Z)$ is:
+
+#+attr_html: :alt Pointwise Multiplication
+#+attr_latex: :alt Pointwise Multiplication
+[[file:aima-fig-13_12-pointwise-multiplication.pdf]]
+
+** Summing out Variables
+
+
+#+attr_html: :alt Pointwise Multiplication
+#+attr_latex: :alt Pointwise Multiplication
+[[file:aima-fig-13_12-pointwise-multiplication.pdf]]
+
+
+Summing out a variable from a product of factors is done by adding up the submatrices
+formed by fixing the variable to each of its values in turn. For example, to sum out $X$ from
+$h(X,Y,Z)$, we write
+
+
+\vspace{-.25in}
+\begin{align*}
+\bm{h}_2 (Y, Z) &= \sum_x \bm{h}(X, Y, Z)\\
+                &= \bm{h}(x, Y, Z) + \bm{h}(\neg x, Y, Z) \\
+&=
+\begin{bmatrix}
+.06 & .24 \\
+.42 & .28
+\end{bmatrix}
++
+\begin{bmatrix}
+.18 & .72 \\
+.06 & .04
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+.24 & .96 \\
+.48 & .32
+\end{bmatrix}
+\end{align*}
+
+
+** Variable Elimination Algorithm
+
+With these two basic operations, we can implement the variable elimination algorithm:
+
+#+attr_html: :alt Bayes Net Variable Elimination Algorithm
+#+attr_latex: :alt Bayes Net Variable Elimination Algorithm
+[[file:aima-fig-13_13-bayes-net-variable-elimination-algorithm.pdf]]
+
+Notes about the `order` function:
+
+- Any ordering works, some orderings lead to more efficient algorithms.
+- No tractable algorithm for determining optimal ordering.
+- One heuristic: eliminate whichever variable minimizes the size of the next factor to be contructed.
+- General rule: every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query.
+
+** Complexity of Exact Inference in Polytrees
+
+Notice that the Alarm Bayes net is *singly connected*, a.k.a., a *polytree*:
+
+- there is at mose one undirected path between any two nodes in the network.
+
+#+attr_html: :alt Bayes Net Alarm
+#+attr_latex: :alt Bayes Net Alarm
+[[file:aima-fig-13_02-bayes-net-alarm.pdf]]
+
+The time and space complexity of polytrees is linear in the size of the network.
+
+- Size of network is defined as number of CPT entries.
+- If $|parents(X_i)| \le c, \forall i \in n$ for some constant $c$ and number of nodes $n$, then complexity is also linear in number of nodes.
+
+
+** Complexity of Exact Inference in Multiply-connected Networks
+
+Now consider *multiply-connected* networks such as the car insurance network:
+
+#+attr_html: :alt Bayes Net Car Insurance
+#+attr_latex: :alt Bayes Net Car Insurance
+[[file:aima-fig-13_09-bayes-net-car-insurance.pdf]]
+
+- Variable elimination can have exponential worst-case time and space complexity in multiply-connected networks.
+- Since inference in Bayes nets includes inference in propositional logic as a special case, Bayes net inference is *NP-hard*.
+
+** Closing Thoughts
+
+- A Bayesian network is a directed acyclic graph whose nodes correspond to random variables; each node has a conditional distribution for the node, given its parents.
+
+- Bayesian networks provide a concise way to represent conditional independence rela- tionships in the domain.
+
+- A Bayesian network specifies a joint probability distribution over its variables. The probability of any given assignment to all the variables is defined as the product of the corresponding entries in the local conditional distributions. A Bayesian network is often exponentially smaller than an explicitly enumerated joint distribution.
+
+- Many conditional distributions can be represented compactly by canonical families of distributions. Hybrid Bayesian networks, which include both discrete and continuous variables, use a variety of canonical distributions.
