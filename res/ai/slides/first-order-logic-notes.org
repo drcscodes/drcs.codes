@@ -1,0 +1,99 @@
+#+TITLE: Artificial Intelligence
+#+SUBTITLE: First-Order Logic
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE: Kennesaw State University
+#+DESCRIPTION: Artificial Intelligence First-Order Logic
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+#+LaTeX_HEADER: \usepackage{framed}
+#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
+#+LaTeX_HEADER: \usepackage{media9}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+#+LaTeX_HEADER: \usepackage{algorithm}
+#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
+#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
+#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
+#+LaTeX_HEADER: \let\oldquote=\quote
+#+LaTeX_HEADER: \let\endoldquote=\endquote
+#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
+#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+
+** Representation
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 08_01 ontological epistemological commitments},height=1in]{aima-fig-08_01-ontological-epistemological-commitments.pdf}
+
+\end{center}
+
+
+** Syntax and Semantics of First-Order Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 08_02 person king model},height=1in]{aima-fig-08_02-person-king-model.pdf}
+
+\end{center}
+
+
+** Syntax and Semantics of First-Order Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 08_03 syntax of fol},height=1in]{aima-fig-08_03-syntax-of-fol.pdf}
+
+\end{center}
+
+
+** Syntax and Semantics of First-Order Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 08_04 simple example models},height=1in]{aima-fig-08_04-simple-example-models.pdf}
+
+\end{center}
+
+
+** Syntax and Semantics of First-Order Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 08_05 simple example models database semantics},height=1in]{aima-fig-08_05-simple-example-models-database-semantics.pdf}
+
+\end{center}
+
+
+** Using First-Order Logic
+
+Foo
+
+** Knowledge Engineering in First-Order Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 08_06 digital circuit},height=1in]{aima-fig-08_06-digital-circuit.pdf}
+
+\end{center}
+

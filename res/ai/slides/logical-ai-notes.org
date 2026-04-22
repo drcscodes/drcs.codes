@@ -1,0 +1,430 @@
+#+TITLE: Artificial Intelligence
+#+SUBTITLE: Logical AI
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE: Kennesaw State University
+#+DESCRIPTION: Artificial Intelligence Logical AI
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+#+LaTeX_HEADER: \usepackage{framed}
+#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
+#+LaTeX_HEADER: \usepackage{media9}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+#+LaTeX_HEADER: \usepackage{algorithm}
+#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
+#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
+#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
+#+LaTeX_HEADER: \let\oldquote=\quote
+#+LaTeX_HEADER: \let\endoldquote=\endquote
+#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
+#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+
+** Logic and AI
+
+In AI, *knowledge-based* agents use a process of *reasoning* over an internal *representation* of knowledge to decide what actions to take.
+
+- *Knowledge base*: a set of sentences.
+- *Sentence*: an assertion about the world expressed in a *knowledge represeantation language*, like propositional logic.
+- *Axioms*:  sentences taken as given -- not derived from other sentences, assumptions.
+- *Inference*: deriving new sentences from old sentences.
+- *Background knowledge*: sentences present in an agent's knowledge base before it starts perceiving and acting.
+
+** Knowledge-Based Agents
+
+- MAKE-PERCEPT-SENTENCE constructs sentence asserting that agent perceived the given percept at the given time.
+- MAKE-ACTION-QUERY constructs sentence that asks what action  to take at current time.
+- MAKE-ACTION-SENTENCE constructs sentence asserting chosen action was executed.
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_01 kb agent},height=1in]{aima-fig-07_01-kb-agent.pdf}
+
+\end{center}
+
+
+- Logical agents are described at the *knowledge level* using *declarative* statements of knowledge and goals.
+- At the *implemetation level* we use a *procedureal* approach, encoding behaviors directly in program code.
+
+
+** The Wumpus World
+
+
+
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_02 wumpus world},height=1in]{aima-fig-07_02-wumpus-world.pdf}
+
+\end{center}
+
+
+
+
+
+
+
+A cave that you can drop into or climb out of at square [1, 1].
+
+- *Performance measure*: +1000 for climbing out of the cave with the gold, –1000 for falling into a pit or being eaten by the wumpus, –1 for each action taken, –10 for using the arrow. The game ends either when the agent dies or when the agent climbs out of the cave.
+
+
+
+
+- *Environment*: A 4×4 grid of rooms, agent always starts at [1,1], facing east. Gold and the wumpus placed uniformly randomly from the squares other than the start square. Each non-start square can be a pit with probability 0.2.
+
+- *Actuators*: Forward, TurnLeft by $90^\circ$, or TurnRight by $90^\circ$. The agent dies if it enters pit or a live wumpus square.  Moves into walls have no effect.  Grab picks up gold if agent in gold square. Shoot can fires arrow in direction agent is facing. The arrow continues until it either hits (and hence kills) the wumpus or hits a wall. The agent has only one arrow, so only the first Shoot action has any effect. Climb climbs out of the cave if at [1,1].
+
+** First Steps Wumpus World
+
+- *Sensors*: The agent has five sensors, each of which gives a single bit of information:
+
+    - In squares directly (not diagonally) adjacent to wumpus, agent perceives a Stench.
+    - In squares directly adjacent to a pit, the agent perceives a Breeze.
+    - In the square with gold, agent perceives a Glitter.
+    - When an agent walks into a wall, it perceives a Bump.
+    - When the wumpus is killed, it emits a Scream perceivable anywhere in the cave.
+
+Percepts encoded as list of five symbols indicating presense or absence (by None) of: [Stench,Breeze,Glitter,Bump,Scream] (a bit vector).
+
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_03 first step wumpus world},height=1in]{aima-fig-07_03-first-step-wumpus-world.pdf}
+
+\end{center}
+
+
+- (a) after percept [None,None,None,None,None]
+- (b) after moving to [2,1] and perceiving [None,Breeze,None,None,None]
+
+** Later Steps Wumpus World
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_04 later steps wumpus world},height=1in]{aima-fig-07_04-later-steps-wumpus-world.pdf}
+
+\end{center}
+
+
+** Logic
+
+Basics:
+
+- *Syntax* specifies the form of sentences.
+
+    - $x + y = 4$ is *well-formed*, but $x4y+=$ is not.
+
+- *Semantics* specifies the meaning of sentences.
+
+    - $x + y = 4$ is *true* in a world where $x = 1$ and $y = 3$.
+
+- *Model*: a formal specification of a *possible world*, that is, a set of assignments of values to the variables in the sentences of a knowledge base.
+
+    - Given a model {$x = 3$, $y = 2$}, the sentence $x + y = 4$ is false.
+
+Satisfaction:
+
+- "$m$ satisfies $\alpha$": sentence $\alpha$ is true in model $m$, also "$m$ is a model of $\alpha$."
+- $M(\alpha)$ the set of all models of $\alpha$, i.e., the set of all models in which $\alpha$ is true.
+
+Entailment: $\alpha \models \beta$: $\beta$ *follows logically* from $\alpha$
+
+Formal definition of entailment:
+
+\begin{equation*}
+\alpha \models \beta \text{ if and only if } M(\alpha) \subseteq M(\beta)
+\end{equation*}
+
+** Possible Models of Pits in Wumpus World
+
+The presence of pits in squares [1, 2], [2, 2] and [3, 1] gives rise to $2^3 = 8$ possible models.
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_05 possible models pits},height=1in]{aima-fig-07_05-possible-models-pits.pdf}
+
+\end{center}
+
+
+Solid line delineates KB based on percept [None, None, None, None, None] in [1,1].
+
+- (a). $\alpha_1$ = "There is no pit in [1, 2]."  Here, $KB \models \alpha_1$
+- (b). $\alpha_2$ = "There is no pit in [2, 2]."  Here, $KB \nvDash \alpha_2$
+
+Logical inference via model checking: because of (b), cannot conclude $\alpha_2$ (or $\neg \alpha_2$).
+
+- $M(KB) \models \alpha_1$ but  $M(KB) \nvDash \alpha_2$
+
+** Inference Algorithms
+
+If an inference algorithm $i$ can derive $\alpha$ from $KB$, we write
+
+\begin{equation*}
+KB \vdash_i \alpha
+\end{equation*}
+
+which is pronounced "$\alpha$ is derived from $KB$ by $i$" or "$i$ derives $\alpha$ from $KB$."
+
+*Important properties of inference algorithms*:
+
+- An inference algorithm that derives only entailed sentences is called *sound* or *truth-preserving*.
+
+- An inference algorithm is *complete* if it can derive any sentence that is entailed.
+
+** Representation vs World
+
+If KB is true in the real world, then any sentence $\alpha$ derived from KB by a sound inference procedure is also true in the real world?
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_06 representation vs world},height=1in]{aima-fig-07_06-representation-vs-world.pdf}
+
+\end{center}
+
+
+*Grounding*: connection between logical reasoning and the real environment.  How do we know that KB is true in the real world.
+
+- Subject of volumes of philosophical investigation.
+- For us: if agent perceives it, it is true.
+
+** Propositional Logic
+
+- *Atomic* sentences consist of a single proposition symbol.
+- Proposition symbol stands for a proposition that can be true or false.
+
+    - We use symbols that start with uppercase letter and may contain other letters or subscripts, e.g., : P, Q, R, $W_{1,3}$ and FacingEast
+    - True and False have fixed meanings
+
+- *Complex sentence*: one or more atomic sentences constructed from *logical connectives*.
+
+- $\neg$ (not) Unary connective.  $\neg W_{1,3}$ is the *negation* of $W_{1,3}$
+
+    - A *positive literal* is an atomic sentence.
+    - a * negative literal* is a negated atomic sentence.
+
+- $\land$ (and).  Binary connective.  *Conjunction*, e.g., $W_{1,3} \land P_{3,1}$
+
+- $\lor$ (or).  Binary connective.  *Disjunction*, e.g., $(W_{1,3} \land P_{3,1}) \lor W_{2,2}$
+
+- $\implies$ (implies).  Binary connective.  *Implication*, e.g., $(W_{1,3} \land P_{3,1}) \implies \neg W_{2,2}$
+
+    - $(W_{1,3} \land P_{3,1})$ is the *premise* or *antecedent*.
+    - $\neg W_{2,2}$ is the *conclusion* or *consequent*.
+    - Also known as rules or if-then statements.
+    - Some authors use $\supset$ or $\rightarrow$
+
+- $\iff$ (if and only if).  Binary connective. $W_{1,3} \iff \neg W_{2,2}$ is a *biconditional*
+
+** Grammar of Propositional Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_07 grammar of popositional logic},height=1in]{aima-fig-07_07-grammar-of-popositional-logic.pdf}
+
+\end{center}
+
+
+** Semantics of Propositional Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_08 truth tables logical connectives},height=1in]{aima-fig-07_08-truth-tables-logical-connectives.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+So far we've done *model checking*: enumerating models and showing that the sentence must hold in all models.
+
+Now we turn to *theorem proving*: applying rules of inference directly to the sentences in our knowledge base to construct a proof of the desired sentence without consulting models.
+
+Some basic concepts:
+
+- *Logical equivalence*: two sentences $\alpha$ and $\beta$ are logically equivalent if they are true in the same set of models.  $\alpha \equiv \beta$
+
+    - $\alpha \equiv \beta$ if and only if $\alpha \models \beta$ and $\beta \models \alpha$
+
+- *Validity*: A sentence is valid if it is true in all models. For example, the sentence $P \land \neg P$ is valid. Valid sentences are also known as *tautologies*.
+
+*Deduction theorem*:
+
+\begin{equation*}
+\text{For any sentences $\alpha$ and $\beta$ }, \alpha \models \beta \text{ if and only iff the sentence } (\alpha \implies \beta) \text{ is valid.}
+\end{equation*}
+
+** Inference Rules
+
+General form:
+
+\begin{equation*}
+\frac{Givens}{Conclusions}
+\end{equation*}
+
+
+Modus ponens
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_09 truth table knowledge base},height=1in]{aima-fig-07_09-truth-table-knowledge-base.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_10 tt entails algorithm},height=1in]{aima-fig-07_10-tt-entails-algorithm.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_11 logical equivalences},height=1in]{aima-fig-07_11-logical-equivalences.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_12 grammar of cnf},height=1in]{aima-fig-07_12-grammar-of-cnf.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_13 pl resolution algorithm},height=1in]{aima-fig-07_13-pl-resolution-algorithm.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_14 pl resolution application},height=1in]{aima-fig-07_14-pl-resolution-application.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_15 pl fc entails algorithm},height=1in]{aima-fig-07_15-pl-fc-entails-algorithm.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_16 horn clauses and or graph},height=1in]{aima-fig-07_16-horn-clauses-and-or-graph.pdf}
+
+\end{center}
+
+
+** Propositional Model Checking
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_17 dpll algorithm},height=1in]{aima-fig-07_17-dpll-algorithm.pdf}
+
+\end{center}
+
+
+** Propositional Model Checking
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_18 walksat algorithm},height=1in]{aima-fig-07_18-walksat-algorithm.pdf}
+
+\end{center}
+
+
+** Propositional Model Checking
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_19 dpll vs walksat},height=1in]{aima-fig-07_19-dpll-vs-walksat.pdf}
+
+\end{center}
+
+
+** Agents Based on Propositional Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_20 hybrid wumpus agent algorithm},height=1in]{aima-fig-07_20-hybrid-wumpus-agent-algorithm.pdf}
+
+\end{center}
+
+
+** Agents Based on Propositional Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_21 1 cnf belief state},height=1in]{aima-fig-07_21-1-cnf-belief-state.pdf}
+
+\end{center}
+
+
+** Agents Based on Propositional Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_22 satplan algorithm},height=1in]{aima-fig-07_22-satplan-algorithm.pdf}
+
+\end{center}
+
+

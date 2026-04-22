@@ -1,0 +1,220 @@
+#+TITLE: Artlificial Intelligence
+#+SUBTITLE: Planning
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE: Kennesaw State University
+#+DESCRIPTION: Artlificial Intelligence Planning
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+#+LaTeX_HEADER: \usepackage{framed}
+#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
+#+LaTeX_HEADER: \usepackage{media9}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+#+LaTeX_HEADER: \usepackage{algorithm}
+#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
+#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
+#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
+#+LaTeX_HEADER: \let\oldquote=\quote
+#+LaTeX_HEADER: \let\endoldquote=\endquote
+#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
+#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+
+** Classical Planning
+
+Classical planning is the task of finding a sequence of actions to accomplish a goal in a discrete, deterministic, static, fully observable environment.  Two previous approaches:
+
+- Graph search, e.g., $A^*$
+- Hybrid propositional logical agent
+
+Two limitations:
+
+- Require ad-hoc heuristics
+- Require explicit representation of exponentially large state space.
+
+Planning Domain Definition Language solves these problems using a factored representation based on first-order logic.
+
+- A *state* is a conjunction of ground atomic fluents -- single predicates containing no variables.
+
+    - $At(Truck_1,Melbourne)$ is a ground atomic fluent, $At(t_1, from)$ is not.
+
+- PDDL uses *database semantics*, or the *closed-world assumption*: any fluents not mentioned are false, and unique names represent distinct objects.
+
+
+** Planning Domain Definition Language (PDDL)
+
+Action schema is a family of ground actions.
+
+- Action name and list of variables
+- Precondition: conjunction of literals
+
+    - Action $a$ is *applicable* in state $s$ if $s \models a.precondition$
+
+- Effect: conjunction of literals
+
+    - *Result* of executing action $a$ in state $s$ is $s'$ is applying delete list and add list to $s$:
+
+        - $DEL(a)$, delete list: remove negative literals in action's effects.
+        - $ADD(a)$, add list: add positive literals in action's effects.
+
+
+Action schema:
+
+\vspace{-.25in}
+\begin{align*}
+& Action(Fly(p,from,to),\\
+& \hspace{.1in} PRECOND:At(p,from) \land Plane(p) \land Airport(from) \land Airport(to)\\
+& \hspace{.1in} EFFECT: \neg At(p,from) \land At(p,to))
+\end{align*}
+\vspace{-.25in}
+
+
+Ground (variable-free) action:
+
+
+\vspace{-.25in}
+\begin{align*}
+& Action(Fly(P_1,SFO,JFK), \\
+& \hspace{.1in} PRECOND:At(P_1,SFO) \land Plane(P_1) \land Airport(SFO) \land Airport(JFK) \\
+& \hspace{.1in} EFFECT: \neg At(P_1,SFO) \land At(P_1,JFK))
+\end{align*}
+\vspace{-.25in}
+
+
+** Air Cargo Transport
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 11_01 pddl air cargo},height=1in]{aima-fig-11_01-pddl-air-cargo.pdf}
+
+\end{center}
+
+
+
+** Blocks World
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 11_03 blocks world diagram},height=1in]{aima-fig-11_03-blocks-world-diagram.pdf}
+
+\end{center}
+
+
+** Blocks World PDDL
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 11_04 pddl blocks world},height=1in]{aima-fig-11_04-pddl-blocks-world.pdf}
+
+\end{center}
+
+
+** Classical Planning Algorithms
+
+- Forward state space search
+- Backward state space search
+- SATPlan -- boolean satisfiability planning
+
+    - Translate PDDL into propositional form, use a SAT solver
+
+- Graphplan
+
+    - Encode constraints related to preconditions and effects in a *planning graph*.
+
+- Situation calculus
+- Constraint satisfaction
+- Partial-order planning
+
+    - $Remove(Spare,Trunk)$ and $Remove(Flat,Axle)$ must come before $PutOn(Spare,Axle)$, but removals can happen in any order.
+
+
+** Forward and Backward State Space Planning
+
+- Forward search: unify current state against preconditions of each action schema -- *applicable* actions.
+
+- Backward search: unify goal states against effects of action schemas -- *relevant* actions.
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 11_05 forward backward search},height=1in]{aima-fig-11_05-forward-backward-search.pdf}
+
+\end{center}
+
+
+
+** Hierarchical Planning
+
+
+
+
+Hierarchical task network plans are built from:
+
+- primitive actions, and
+- high-level actions (HLA).
+
+HLAs have one or more *refinements*.
+
+- Refinements may contain other HLAs.
+- A refinement with only primitive actions is an *implementation*.
+- An HLA achieves a goal if at least one of its implementations achieves the goal.
+
+
+
+
+
+Here are two goal-achieving implementations for the $Go(Home, SFO)$ HLA:
+
+
+\begin{center}
+\vspace{.05in}
+
+#+latex: \includegraphics[alt={aima fig 11_07 a go home refinements},height=1in]{aima-fig-11_07-a-go-home-refinements.pdf}
+
+\end{center}
+
+
+
+Refinements can be produced recursivley, as shown in this vacuum world navigation example:
+
+
+\begin{center}
+\vspace{.05in}
+
+#+latex: \includegraphics[alt={aima fig 11_07 b vacuum navigation recursion},height=1in]{aima-fig-11_07-b-vacuum-navigation-recursion.pdf}
+
+\end{center}
+
+
+
+
+
+
+** Closing Thoughts
+
+- Fun to create toy worlds and solve them.
+
+    - Look up "Monkey and bananas" problem.
+
+- Still have knowledge-acquisition bottleneck.
+- Still have problem of specifying large number of rules and facts for non-trivial problems.
+- Still have problem of uncertainty -- nondeterministic actions and partial observability.
+
+In rest of course, we address these issues with uncertain reasoning and machine learning.

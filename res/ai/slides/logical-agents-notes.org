@@ -1,0 +1,260 @@
+#+TITLE: Artificial Intelligence
+#+SUBTITLE: Logical Agents
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE: Kennesaw State University
+#+DESCRIPTION: Artificial Intelligence Logical Agents
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+#+LaTeX_HEADER: \usepackage{framed}
+#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
+#+LaTeX_HEADER: \usepackage{media9}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+#+LaTeX_HEADER: \usepackage{algorithm}
+#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
+#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
+#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
+#+LaTeX_HEADER: \let\oldquote=\quote
+#+LaTeX_HEADER: \let\endoldquote=\endquote
+#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
+#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+
+** Logic and AI
+
+In AI, *knowledge-based* agents use a process of *reasoning* over an internal *representation* of knowledge to decide what actions to take.
+
+** Knowledge-Based Agents
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_01 kb agent},height=1in]{aima-fig-07_01-kb-agent.pdf}
+
+\end{center}
+
+
+** The Wumpus World
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_02 wumpus world},height=1in]{aima-fig-07_02-wumpus-world.pdf}
+
+\end{center}
+
+
+** First Steps Wumpus WOrld
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_03 first step wumpus world},height=1in]{aima-fig-07_03-first-step-wumpus-world.pdf}
+
+\end{center}
+
+
+** Later Steps Wumpus World
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_04 later steps wumpus world},height=1in]{aima-fig-07_04-later-steps-wumpus-world.pdf}
+
+\end{center}
+
+
+** Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_05 possible models pits},height=1in]{aima-fig-07_05-possible-models-pits.pdf}
+
+\end{center}
+
+
+** Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_06 representation vs world},height=1in]{aima-fig-07_06-representation-vs-world.pdf}
+
+\end{center}
+
+
+
+** Propositional Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_07 grammar of popositional logic},height=1in]{aima-fig-07_07-grammar-of-popositional-logic.pdf}
+
+\end{center}
+
+
+** Propositional Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_08 truth tables logical connectives},height=1in]{aima-fig-07_08-truth-tables-logical-connectives.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_09 truth table knowledge base},height=1in]{aima-fig-07_09-truth-table-knowledge-base.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_10 tt entails algorithm},height=1in]{aima-fig-07_10-tt-entails-algorithm.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_11 logical equivalences},height=1in]{aima-fig-07_11-logical-equivalences.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_12 grammar of cnf},height=1in]{aima-fig-07_12-grammar-of-cnf.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_13 pl resolution algorithm},height=1in]{aima-fig-07_13-pl-resolution-algorithm.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_14 pl resolution application},height=1in]{aima-fig-07_14-pl-resolution-application.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_15 pl fc entails algorithm},height=1in]{aima-fig-07_15-pl-fc-entails-algorithm.pdf}
+
+\end{center}
+
+
+** Propositional Theorem Proving
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_16 horn clauses and or graph},height=1in]{aima-fig-07_16-horn-clauses-and-or-graph.pdf}
+
+\end{center}
+
+
+** Propositional Model Checking
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_17 dpll algorithm},height=1in]{aima-fig-07_17-dpll-algorithm.pdf}
+
+\end{center}
+
+
+** Propositional Model Checking
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_18 walksat algorithm},height=1in]{aima-fig-07_18-walksat-algorithm.pdf}
+
+\end{center}
+
+
+** Propositional Model Checking
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_19 dpll vs walksat},height=1in]{aima-fig-07_19-dpll-vs-walksat.pdf}
+
+\end{center}
+
+
+** Agents Based on Propositional Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_20 hybrid wumpus agent algorithm},height=1in]{aima-fig-07_20-hybrid-wumpus-agent-algorithm.pdf}
+
+\end{center}
+
+
+** Agents Based on Propositional Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_21 1 cnf belief state},height=1in]{aima-fig-07_21-1-cnf-belief-state.pdf}
+
+\end{center}
+
+
+** Agents Based on Propositional Logic
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={aima fig 07_22 satplan algorithm},height=1in]{aima-fig-07_22-satplan-algorithm.pdf}
+
+\end{center}
+

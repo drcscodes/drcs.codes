@@ -1,0 +1,535 @@
+#+TITLE: Artificial Intelligence
+#+SUBTITLE: Value Alignment
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE: Kennesaw State University
+#+DESCRIPTION: Artificial Intelligence Value Alignment
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+#+LaTeX_HEADER: \usepackage{framed}
+#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
+#+LaTeX_HEADER: \usepackage{media9}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+#+LaTeX_HEADER: \usepackage{algorithm}
+#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
+#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
+#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
+#+LaTeX_HEADER: \let\oldquote=\quote
+#+LaTeX_HEADER: \let\endoldquote=\endquote
+#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
+#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+
+** What is a value?
+
+In ethical theory, how "good" something is.
+
+- Value of a goal
+- Value of an action
+
+Values lead to hierarchies.
+
+- Cookies vs. health
+
+https://plato.stanford.edu/entries/value-theory/
+
+** Value Alignment in AI
+
+Today we'll focus on two broad areas of value alignment in AI:
+
+- *supervised statistical machine learning*, in which harmful biases in arise in pattern learning, and
+- *autonomous agents*, which we want to have human-aligned goals and *behavior*.
+
+** Good Goals, Harmful Outcomes
+
+Amazon's Sexist Hiring Tool
+
+- Resume evaluator trained on 10 yers of hiring data
+- Most software engineers are male
+- Tool learned from data to prefere males
+
+https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment-software-because-it-was-biased-against-women/
+
+** The Genie Problem
+
+
+
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={diverse nazis},height=1in]{diverse-nazis.png}
+
+\end{center}
+
+
+
+
+
+- Value: diversity
+- Result: inacurate and offensive images
+
+
+
+
+** AI Snake Oil
+
+
+
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={ai snake oil book},height=1in]{ai-snake-oil-book.jpg}
+
+\end{center}
+
+
+
+
+
+- AI, like other products, tends to be oversold
+- As AI engineers we need to be aware of AI's limitations
+
+#+begin_quote
+ It all comes down to honesty.
+#+end_quote
+
+
+
+
+** At least some AI companies are honest aobut their goals.
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={palantir saruman},height=1in]{palantir-saruman.png}
+
+\end{center}
+
+
+** Value Alignment as a Focus of AI Research
+
+
+
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={human compatible book},height=1in]{human-compatible-book.jpg}
+
+\end{center}
+
+
+
+
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={superintelligence book},height=1in]{superintelligence-book.jpg}
+
+\end{center}
+
+
+
+
+
+** Value Alignment in Autonomous Agents
+
+
+
+
+
+
+\begin{center}
+\textbf{Bad advice can be dangerous.}\\
+\vspace{.1in}
+
+#+latex: \includegraphics[alt={chatcheapt pineapple pizza advice},height=1in]{chatcheapt-pineapple-pizza-advice.pdf}
+
+\end{center}
+
+
+
+
+\rule{0.5pt}{.35\textheight}
+
+
+
+
+\begin{center}
+\textbf{Bad action is worse.}\\
+\vspace{.1in}
+
+#+latex: \includegraphics[alt={robot serving pineapple pizza},height=1in]{robot-serving-pineapple-pizza.pdf}
+
+\end{center}
+
+
+
+
+
+
+\begin{center}\rule{\textwidth}{0.5pt}\end{center}
+
+
+
+
+
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={christopher simpkins headshot 600px},height=1in]{christopher-simpkins-headshot-600px.jpg}
+#+latex: \includegraphics[alt={chris.simpkins.phd qr},height=1in]{chris.simpkins.phd-qr.png}
+
+\textbf{Christopher Simpkins}\\
+\small{Kennesaw State University}\\
+\small{\url{https://chris.simpkins.phd/}}
+\end{center}
+
+
+
+
+\rule{0.5pt}{.4\textheight}
+
+
+
+*General Interests*
+
+- Multiagent systems
+- Reinforcement learning
+- Deep learning
+- Causality
+- ...
+
+*Current thrust*: MARL approaches to value alignment
+
+
+
+
+
+** Value Alignment as a Theory of Mind Problem
+
+
+
+
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={angel demon},height=1in]{angel-demon.pdf}
+
+\end{center}
+
+
+
+
+\rule{0.5pt}{.4\textheight}
+
+
+
+
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={robot mtom},height=1in]{robot-mtom.pdf}
+
+\end{center}
+
+
+
+
+
+
+
+\begin{center}\rule{\textwidth}{0.5pt}\end{center}
+
+
+
+
+
+*Goal: learn values from behavior.*
+
+- Not just "don't run over pedestrians" but "don't harm humans."
+- Start with action restrictions
+- Learning approach
+
+    - Don't replace the Genie Problem with the knowledge acquisition bottleneck/bitter lesson.
+
+
+
+\rule{0.5pt}{.4\textheight}
+
+
+
+
+*Advances needed:*
+
+- Machine theory of mind
+- Imitation/apprenticeship learning
+- Offline reinforcement learning
+- World models -- causality
+
+*Impacts:*
+
+- Autonomous multi-agent systems
+- Human-AI teaming
+- Safe autonomy
+
+
+
+
+
+
+This is my note.
+
+- It can contain Markdown
+- like this list
+
+
+
+
+** Choosing Actions
+
+Elements of outcomes can be more or less desirable -- more or less *useful* -- to a given agent.
+
+- Utility is the quality of being useful.
+- That "usefulness" may simply be pleasure, or even altruism.
+
+Utility theory associates a utility value with each possible outcome, which induces a preference ordering over outcomes.
+
+#+begin_quote
+ An agent is rational if and only if it chooses the action that yields the highest expected utility, averaged over all the possible outcomes of the action.
+#+end_quote
+
+Each action, $a$, leads to a probability distribution over outcomes, or "result states":
+
+
+\begin{equation*}
+\sum_{s \in S} Pr(s) = 1
+\end{equation*}
+
+
+And each outcome state has a utility.  A rational decision-theoretic agent chooses the action that maximize expected utility, that is:
+
+
+\begin{equation*}
+\argmax_{a} \sum_{s \in S} Pr(s) U(s)
+\end{equation*}
+
+
+** Values, Utilities, Rewards, Goals
+
+- Values: general concept
+- Utility: quality of being useful
+- Reward: feedback from the enbvironment
+- Goal: state of the environment satisfying set of conditions
+
+Coconut cupcakes.
+
+** Reinforcement Learning in a Few Slides
+
+An intelligent agent learns how to behave from experience interacting with the world.
+
+- We represent subsets of the world as *environments* comprised of *states*..
+- An *agent* takes an *action* that causes a transition to a new state.
+- The agent receives a scalar feedback signal, called a *reward*, from the environment after the transition to a new state.
+- The agent maximizes the long-term expected value of cumulative reward.
+
+Reinforcement learning directly addresses the intelligent agent problem.  Its central hypothesis is:
+
+#+begin_quote
+All of what we mean by goals and purposes can be well thought of as the maximization of the expected value of the cumulative sum of a received scalar signal (called reward).[^SuttonBarto2018]
+#+end_quote
+
+[^SuttonBarto2018]: ttp://incompleteideas.net/book/the-book-2nd.html
+
+** Markov Process
+
+A markov process models the world as a set of states and associated transition probability distributions, calles a *transition function*, that models how the world moves from one state to the next.
+
+
+\[
+Pr(s_{t+1} | s_t)
+\]
+
+
+is the probability that the state at time $t+1$ is $s_{t+1}$, given that the previous state is $s_t$.  The fact that the transition probability depends only on the previous state and not the history of all previous states is called the *Markov assumption*.
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={../../deep learning/slides/ReinforceMDP},height=1in]{../../deep-learning/slides/ReinforceMDP.pdf}
+
+\end{center}
+
+
+A sequense of states from a Markov process is called a *trajectory*: $\tau = (s_1, S_2, ...)$.
+
+** Markov Reward Process
+
+A *Markov reward process* adds a reward distribution $Pr(r_{t+1} | s_t)$ (note that this implicitly accompanies a state transition).  Now a trajectory includes the rewards, $\tau = (s_1, r_2, s_2, r_3...)$, and the sum of cumulative discounted future rewards, the *return*, is:
+
+
+\[
+G_t = \sum_{k = 0}^\infty \gamma^k r_{t+k+1}
+\]
+
+
+$\gamma$ is the *discount factor* which says how much we discount future rewards.  With $\gamma < 0$ it decays to zero.
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={../../deep learning/slides/ReinforceMDP2},height=1in]{../../deep-learning/slides/ReinforceMDP2.pdf}
+
+\end{center}
+
+
+** Markov Decision Process (MDPs)
+
+A *Markov decision process* (MDP) adds a set of *actions* at each time step.  Now:
+
+- transition probabilities are $Pr(s_{t+1} | s_t, a_t)$.  Sometimes written as $T(s, a, s')$ -- a *transition model* that returns the probability that taking action $a$ in state $s$ results in state $s'$.
+- the reward probabilities are $Pr(r_{t+1} | s_t, a_t)$.  This is sometimes written as $r(s, a, s')$
+- a trajectory is $\tau = (s_1, a_1, r_2, s_2, a_2, r_3...)$
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={../../deep learning/slides/ReinforceMDP3},height=1in]{../../deep-learning/slides/ReinforceMDP3.pdf}
+
+\end{center}
+
+
+
+** Policy
+
+The goal of a reinforcement learning algorithm is to learn a *policy*: a deterministic or stochastic function mapping states to actions.
+
+- Stationary: $\pi(a | s)$
+- Non-stationary: $\pi(a_t | s_t)$
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={../../deep learning/slides/ReinforceMDPLoop},width=0.75\linewidth]{../../deep-learning/slides/ReinforceMDPLoop.pdf}
+
+\end{center}
+
+
+** State and Action Values
+
+- State value function: $v(s_t | \pi) = \mathbb{E} [G_t | s_t, \pi]$
+- Action value function: $q(s_t, a_t | \pi) = \mathbb{E} [G_t | s_t, a_t, \pi]$
+
+
+\begin{center}
+
+#+latex: \includegraphics[alt={../../deep learning/slides/ReinforceValueOfAction},width=0.75\linewidth]{../../deep-learning/slides/ReinforceValueOfAction.pdf}
+
+\end{center}
+
+
+** Optimal Policy
+
+An optimal policy maximizes the expected return.  Any MDP has a deterministic stationary optimal policy, i.e., it maximizes the value of every state.  Given this policy:
+
+
+\[
+v^*(s_t ) = \max_{\pi} \big( \mathbb{E} [G_t | s_t, \pi] \big)
+\]
+
+
+The optimal action value function is then:
+
+
+\[
+q^*(s_t, a_t ) = \max_{\pi} \big( \mathbb{E} [G_t | s_t, a_t \pi] \big)
+\]
+
+
+If we know $q^*$ we can use it to derive $\pi^*$:
+
+
+\[
+\pi^*(a_t | s_t ) \leftarrow \argmax_{a_t} \big( q^*(s_t, a_t ) \big)
+\]
+
+
+We'll see this idea when we solve MDPs using dynamic programming.
+
+
+** Bellman Equations
+
+If we substitute the action value function into the state value function we get:
+
+
+\[
+v(s_t ) = \sum_{a_t} \pi(a_t | s_t) \big( r(s_t, a_t) + \gamma \sum_{s_{t+1}} Pr(s_{t+1} | s_t, a_t) v(s_{t+1})  \big)
+\]
+
+
+If we substitute the state value function into the action value function we get:
+
+
+\[
+q(s_t, a_t) = r(s_t, a_t) + \gamma \sum_{s_{t+1}} Pr(s_{t+1} | s_t, a_t) \Huge( \sum_{a_{t+1}} \pi(a_{t+1} | s_{t+1}) q(s_{t+1}, a_{t+1})  \Huge)
+\]
+
+
+These two relations are called the *Bellman equations*.  They say that state and action values mult be self-consistent, so when we update the estimated value of a state or actoin, we have to update all the others that depend on the updated value.
+
+** Tabular RL
+
+In classical tabular RL, we represent the policy function as a table.
+
+- Model-based: use the MDP to solve for the best policy.
+
+    - Policy iteration
+    - Value iteration
+
+- Model-free: estimate from observed trajectories
+
+    Q-Learning
+
+    \begin{equation}
+    Q(s, a) \gets Q(s, a) + \alpha [R(s) + \gamma \max_{a'} Q(s', a') - Q(s, a)]
+    \end{equation}
+
+    SARSA
+
+    \begin{equation}
+    Q(s, a) \leftarrow Q(s, a) + \alpha [R(s) + \gamma Q(s', a') - Q(s, a))]
+    \end{equation}
+
+In modern RL we approximate the various functions -- $V(s)$, $Q(s, a)$, $\pi(s)$ -- using supervisd machine elarning, most notably deep neural networks ("deep RL").
+
+
+
+
+
+** Machine Theory of Mind
+
+An agent develops a model of how another agent thinks.  For RL, can model other agent's:
+
+- Value function
+- Reward function
+- Policy

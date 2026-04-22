@@ -1,0 +1,36 @@
+% Created 2026-04-21 Tue 17:02
+% Intended LaTeX compiler: pdflatex
+\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\author{Christopher Simpkins}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Christopher Simpkins},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 30.2 (Org mode 9.7.11)}, 
+ pdflang={English}}
+\begin{document}
+
+\tableofcontents
+
+(dolist (f (directory-files "./" nil "-notes.org"))
+  (org-latex-export-to-pdf f))
+
+(progn
+  (find-file "test-notes.org")
+  (org-latex-export-to-pdf))
+\end{document}

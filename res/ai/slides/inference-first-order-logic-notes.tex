@@ -1,0 +1,120 @@
+% Created 2026-04-21 Tue 19:38
+% Intended LaTeX compiler: lualatex
+\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{verbatim, multicol, tabularx,}
+\usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage{framed}
+\usepackage{xcolor,colortbl}
+\usepackage{media9}
+\usepackage[export]{adjustbox}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{shapes.geometric}
+\let\oldquote=\quote
+\let\endoldquote=\endquote
+\colorlet{shadecolor}{cyan!15}
+\renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+% From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+\lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+\hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=US]{english}
+\author{Christopher Simpkins}
+\date{Kennesaw State University}
+\title{Artificial Intelligence\\\medskip
+\large Inference in First-Order Logic}
+\hypersetup{
+ pdfauthor={Christopher Simpkins},
+ pdftitle={Artificial Intelligence},
+ pdfkeywords={},
+ pdfsubject={Artificial Intelligence Inference in First-Order Logic},
+ pdfcreator={Emacs 30.2 (Org mode 9.7.11)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\section{Propositional vs. First-Order Logc}
+\label{sec:org9add6c5}
+
+Foo
+\section{Unification and First-Order Inference}
+\label{sec:org1b9285d}
+
+
+\includegraphics[alt={aima fig 09_01 unification algorithm},height=1in]{aima-fig-09_01-unification-algorithm.pdf}
+\section{Unification and First-Order Inference}
+\label{sec:org5c9b070}
+
+
+\includegraphics[alt={aima fig 09_02 subsumption lattice},height=1in]{aima-fig-09_02-subsumption-lattice.pdf}
+\section{Forward Chaining}
+\label{sec:org8737edd}
+
+
+\includegraphics[alt={aima fig 09_03 fol fc ask algorithm},height=1in]{aima-fig-09_03-fol-fc-ask-algorithm.pdf}
+\section{Forward Chaining}
+\label{sec:org6a99f03}
+
+
+\includegraphics[alt={aima fig 09_04 proof tree fc crime},height=1in]{aima-fig-09_04-proof-tree-fc-crime.pdf}
+\section{Forward Chaining}
+\label{sec:org573b005}
+
+
+\includegraphics[alt={aima fig 09_05 constraint graph australia},height=1in]{aima-fig-09_05-constraint-graph-australia.pdf}
+\section{Backward Chaining}
+\label{sec:org32baddd}
+
+
+\includegraphics[alt={aima fig 09_06 fol bc ask algorithm},height=1in]{aima-fig-09_06-fol-bc-ask-algorithm.pdf}
+\section{Backward Chaining}
+\label{sec:org66fd782}
+
+
+\includegraphics[alt={aima fig 09_07 proof tree bc crime},height=1in]{aima-fig-09_07-proof-tree-bc-crime.pdf}
+\section{Logic Programming}
+\label{sec:org62a790f}
+
+
+\includegraphics[alt={aima fig 09_08 prolog infinite loop},height=1in]{aima-fig-09_08-prolog-infinite-loop.pdf}
+\section{Logic Programming}
+\label{sec:orga15e69a}
+
+
+\includegraphics[alt={aima fig 09_09 infinite proof tree},height=1in]{aima-fig-09_09-infinite-proof-tree.pdf}
+\section{Resolution}
+\label{sec:org0345b66}
+
+
+\includegraphics[alt={aima fig 09_10 resolution proof criminal},height=1in]{aima-fig-09_10-resolution-proof-criminal.pdf}
+\section{Resolution}
+\label{sec:orge5bf4ee}
+
+
+\includegraphics[alt={aima fig 09_11 resolution proof curiosity},height=1in]{aima-fig-09_11-resolution-proof-curiosity.pdf}
+\section{Completeness}
+\label{sec:orge2cbbb8}
+
+
+\includegraphics[alt={aima fig 09_12 structure completeness proof},height=1in]{aima-fig-09_12-structure-completeness-proof.pdf}
+\section{G\{$\backslash$"o\}del's Incompleteness Theorem}
+\label{sec:orgebe64ac}
+
+Foo
+\end{document}

@@ -4,26 +4,15 @@
 \usepackage{xcolor,colortbl}
 \usepackage{media9}
 \usepackage[export]{adjustbox}
-
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
-
-% % https://www.reddit.com/r/Professors/comments/1rg7mke/latex_and_the_ada_accessibility_requirements_a/
-% \usepackage{tagpdf}
-% \tagpdfsetup{activate-all}
-% \tagpdfsetup{math/alt/use}
-
-% Use article math fonts instead of ugly sans-serif math font
 \usefonttheme[onlymath]{serif}
-
 \usepackage{tikz,pgfplots}
 \usetikzlibrary{shapes.geometric}
-
 \let\oldquote=\quote
 \let\endoldquote=\endquote
 \colorlet{shadecolor}{cyan!15}
 \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
-
 % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
 \newcommand*\circled[1]{\tikz[baseline=(char.base)]{
             \node[shape=circle,draw,inner sep=2pt] (char) {#1};}}

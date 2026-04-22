@@ -1,4 +1,4 @@
---
+---
 title: Artificial Intelligence
 subtitle: Knowledge-Based AI
 author: Christopher Simpkins
@@ -12,6 +12,7 @@ header-includes:
     \input{beamer-common}
     ```
 ---
+
 
 ## Knowledge and AI
 
@@ -431,7 +432,7 @@ Predicates on time intervals.
 \end{center}
 ```
 
-$
+$$
 T(Equals(President(USA),GeorgeWashington),Begin(AD1789),End(AD1797))
 $$
 
@@ -489,31 +490,3 @@ Originally called **existential graphs**.
     - Knowledge AI fell out of favor, has never really recovered the mantle of AI
 
         - Didn't stop Doug Lennat and his team at [Cycorp](https://cyc.com/) from trying.
-
-<!--
-
-## Reasoning Systems for Categories
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-10_05-semantic-network-assertion-fly-event.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Description Logics
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-10_06-syntax-of-classic-description-logic.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Reasoning with Default Information
-
-Truth maintenance systems
-
--->
