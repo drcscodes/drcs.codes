@@ -36,7 +36,8 @@
 
 ** Spring 2026 Midterm Stats
 
-#+latex: \includegraphics[alt={cs3642 spring2026 midterm hist},height=1in]{cs3642-spring2026-midterm-hist.png}
+#+latex: \includegraphics[alt={cs3642 spring2026 midterm hist},height=3.0in]{cs3642-spring2026-midterm-hist.png}
+
 
 Min: 56, Max: 108, Mean: 89.1
 

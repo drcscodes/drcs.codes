@@ -47,11 +47,8 @@ A Bayesian network is a directed graph in which each node is annotated with quan
 ** Bayesian Network Topology
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 13_01 bayes net weather cavity},width=0.75\linewidth]{aima-fig-13_01-bayes-net-weather-cavity.pdf}
 
-\end{center}
 
 
 - The topology of the network -- the set of nodes and links -- specifies the conditional independence relationships that hold in the domain.
@@ -77,11 +74,8 @@ Given the evidence of who has or has not called, we would like to estimate the p
 The *syntax* of a Bayes net consists of a directed acyclic graph (DAG) with some local probability information attached to each node.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},width=0.75\linewidth]{aima-fig-13_02-bayes-net-alarm.pdf}
 
-\end{center}
 
 
 The full joint distribution for all the variables is defined by the topology and the
@@ -106,11 +100,8 @@ Each row in a CPT contains the conditional probability of each node value for a 
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},width=0.75\linewidth]{aima-fig-13_02-bayes-net-alarm.pdf}
 
-\end{center}
 
 
 
@@ -135,7 +126,8 @@ The probabilities actually summarize a potentially infinite set of circumstances
 
 
 
-#+latex: \includegraphics[alt={deadmau5},height=1in]{deadmau5.jpg}
+#+latex: \includegraphics[alt={deadmau5},height=1.2in]{deadmau5.jpg}
+
 
 
 
@@ -179,11 +171,7 @@ Using the abbreviations $j, m, a, b$ and $e$:
 
 
 
-\begin{center}
-
-#+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1in]{aima-fig-13_02-bayes-net-alarm.pdf}
-
-\end{center}
+#+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=2.0in]{aima-fig-13_02-bayes-net-alarm.pdf}
 
 
 
@@ -196,7 +184,6 @@ P(j, m, a, \neg b, \neg e) &= P(j | a) P(m | a) P(a | \neg b, \neg e) P(\neg b) 
                             &= 0.90 \times 0.70 \times 0.001 \times 0.99 \times 0.98\\
                             &= 0.000628
 \end{align*}
-
 
 ** Constructing Bayesian Networks
 
@@ -234,11 +221,8 @@ Suppose we have completed the network except for the choice of parents for $Mary
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1.6in]{aima-fig-13_02-bayes-net-alarm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1in]{aima-fig-13_02-bayes-net-alarm.pdf}
-
-\end{center}
 
 
 
@@ -246,13 +230,11 @@ Suppose we have completed the network except for the choice of parents for $Mary
 
 Formally, we believe that the following conditional independence statement holds:
 
-
 \vspace{-.2in}
 \[
 P(MaryCalls \mid JohnCalls,Alarm,Earthquake,Burglary) = P(MaryCalls \mid Alarm).
 \]
 \vspace{-.2in}
-
 
 Thus, Alarm will be the only parent node for MaryCalls.
 
@@ -305,11 +287,8 @@ We end up with 13 conditional probabilities.
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 13_03_a bayes net mjabe ordering},width=0.75\linewidth]{aima-fig-13_03_a-bayes-net-mjabe-ordering.pdf}
 
-\end{center}
 
 
 
@@ -335,11 +314,8 @@ There is still knowledge engineering involved, which includes design choices.
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 13_03_b bayes net mjeba ordering},height=2.0in]{aima-fig-13_03_b-bayes-net-mjeba-ordering.pdf}
 
-#+latex: \includegraphics[alt={aima fig 13_03_b bayes net mjeba ordering},height=1in]{aima-fig-13_03_b-bayes-net-mjeba-ordering.pdf}
-
-\end{center}
 
 
 
@@ -379,11 +355,8 @@ Example:
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},width=0.75\linewidth]{aima-fig-13_02-bayes-net-alarm.pdf}
 
-\end{center}
 
 
 
@@ -422,14 +395,11 @@ Using these two equations we can enumerate the appropriate probabilities to calc
 
 Using abbreviations and substituting into Eq 12.9 above ($e$ and $a$ are hidden):
 
-
 \[
 P(B \mid j, m) = \alpha P(B, j, m) = \alpha \sum_e \sum_a P(B, j, m, e, a)
 \]
 
-
 Then we substitute Eq 13.2 for $P(B, j, m, e, a)$ to get (only showing Burglary=true by the notation $b$):
-
 
 \vspace{-.1in}
 \begin{align*}
@@ -438,7 +408,6 @@ P(b \mid j, m) &= \alpha \sum_e \sum_a P(b) P(e) P(a \mid b, e) P(j \mid a) P(m 
                 &= \alpha P(b) \sum_e P(e) \sum_a P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{3}
 \end{align*}
 \vspace{-.1in}
-
 
 1. Substitute Eq 13.2 for $P(B, j, m, e, a)$
 2. Pull out $P(b)$ from summations because it doesn't depend on the other variable and is thus a constant in all the summation terms.
@@ -459,11 +428,7 @@ Substiting the values from the CPTs in the Bayes net into
 we get the expression tree:
 
 
-\begin{center}
-
-#+latex: \includegraphics[alt={aima fig 13_10 prob expression tree},height=1in]{aima-fig-13_10-prob-expression-tree.pdf}
-
-\end{center}
+#+latex: \includegraphics[alt={aima fig 13_10 prob expression tree},height=2.4in]{aima-fig-13_10-prob-expression-tree.pdf}
 
 
 
@@ -471,11 +436,9 @@ we get the expression tree:
 
 
 
-\begin{center}
 
-#+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1in]{aima-fig-13_02-bayes-net-alarm.pdf}
+#+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1.6in]{aima-fig-13_02-bayes-net-alarm.pdf}
 
-\end{center}
 
 
 
@@ -487,11 +450,8 @@ we get the expression tree:
 The ENUMERATION-ASK algorithm evaluates these expression trees using depth-first, left-to-right recursion.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 13_11 bayes net enumeration algorithm},width=0.75\linewidth]{aima-fig-13_11-bayes-net-enumeration-algorithm.pdf}
 
-\end{center}
 
 
 Unfortunately, its time complexity is $O(s^n)$.  But we can improve it ...
@@ -501,11 +461,8 @@ Unfortunately, its time complexity is $O(s^n)$.  But we can improve it ...
 Notice that the subexpressions for the products $P(j \mid a) P(m \mid a)$ and $P(j \mid \neg a) P(m \mid \neg a)$ are computed twice, once for each value of $E$.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 13_10 prob expression tree},width=0.75\linewidth]{aima-fig-13_10-prob-expression-tree.pdf}
 
-\end{center}
 
 
 ** Variable Elimination
@@ -579,9 +536,7 @@ P(\neg e)
 
 
 
-
 \vspace{.2in}
-
 
 
 
@@ -619,9 +574,7 @@ P(m \mid \neg a)
 
 
 
-
 \vspace{.2in}
-
 
 $\bm{f}_3(A, B, E)$ is a little more complicated ...
 
@@ -675,9 +628,7 @@ P(\neg a \mid \neg b, e) & P(\neg a \mid \neg b, \neg e)
 
 
 
-
 \includegraphics[width=0.75\textwidth, right]{aima-fig-13_02-bayes-net-alarm.pdf}
-
 
 
 
@@ -717,16 +668,13 @@ Now we are ready to evaluate the expression ...
 
 Given our factorized query:
 
-
 \vspace{-.1in}
 \[
 P(B \mid j, m) =
 \alpha \bm{f}_1(B) \times \sum_e \bm{f}_2(E) \times \sum_a \bm{f}_3(A,B,E) \times \bm{f}_4(A) \times \bm{f}_5(A)
 \]
 
-
 First, sum out A from the pointwise product of $\bm{f}_3(A,B,E)$, $\bm{f}_4(A)$, and $\bm{f}_5(A)$ yielding a new $2 \times 2$ factor, $\bm{f}_6(B,E)$:
-
 
 \vspace{-.2in}
 \begin{align*}
@@ -735,12 +683,10 @@ First, sum out A from the pointwise product of $\bm{f}_3(A,B,E)$, $\bm{f}_4(A)$,
 \end{align*}
 \vspace{-.2in}
 
-
 Now the query expression is $P(B \mid j, m) =
 \alpha \bm{f}_1(B) \times \sum_e \bm{f}_2(E) \times \bm{f}_6 (B, E)$
 
 Next, sum out $E$ from the product of $\bm{f}_2 (E)$ and $\bm{f}_6 (B, E)$, yielding a new factor $\bm{f}_7 (B)$:
-
 
 \vspace{-.2in}
 \begin{align*}
@@ -748,7 +694,6 @@ Next, sum out $E$ from the product of $\bm{f}_2 (E)$ and $\bm{f}_6 (B, E)$, yiel
             &= \bm{f}_2(e) \times \bm{f}_6(B, e) + \bm{f}_2(\neg e) \times \bm{f}_6(B, \neg e)
 \end{align*}
 \vspace{-.1in}
-
 
 Which leaves our final form of the query: $P(B \mid j, m) =\alpha \bm{f}_1(B) \times \bm{f}_7(B)$
 
@@ -770,29 +715,22 @@ The pointwise product of two factors $\bm{f}$ and $\bm{g}$ yields a new factor $
 Given $X, Y, Z$ boolean variables, result of pointwise product $\bm{f}(X, Y) \times \bm{g}(Y, Z) = \bm{h}(X, Y, Z)$ is:
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 13_12 pointwise multiplication},height=2.0in]{aima-fig-13_12-pointwise-multiplication.pdf}
 
-#+latex: \includegraphics[alt={aima fig 13_12 pointwise multiplication},height=1in]{aima-fig-13_12-pointwise-multiplication.pdf}
-
-\end{center}
 
 
 ** Summing out Variables
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 13_12 pointwise multiplication},height=1.6in]{aima-fig-13_12-pointwise-multiplication.pdf}
 
-#+latex: \includegraphics[alt={aima fig 13_12 pointwise multiplication},height=1in]{aima-fig-13_12-pointwise-multiplication.pdf}
-
-\end{center}
 
 
 
 Summing out a variable from a product of factors is done by adding up the submatrices
 formed by fixing the variable to each of its values in turn. For example, to sum out $X$ from
 $h(X,Y,Z)$, we write
-
 
 \vspace{-.25in}
 \begin{align*}
@@ -815,17 +753,13 @@ $h(X,Y,Z)$, we write
 \end{bmatrix}
 \end{align*}
 
-
 ** Variable Elimination Algorithm
 
 With these two basic operations, we can implement the variable elimination algorithm:
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 13_13 bayes net variable elimination algorithm},width=0.75\linewidth]{aima-fig-13_13-bayes-net-variable-elimination-algorithm.pdf}
 
-\end{center}
 
 
 Notes about the ~order~ function:
@@ -842,11 +776,8 @@ Notice that the Alarm Bayes net is *singly connected*, a.k.a., a *polytree*:
 - there is at mose one undirected path between any two nodes in the network.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1.6in]{aima-fig-13_02-bayes-net-alarm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1in]{aima-fig-13_02-bayes-net-alarm.pdf}
-
-\end{center}
 
 
 The time and space complexity of polytrees is linear in the size of the network.
@@ -860,11 +791,8 @@ The time and space complexity of polytrees is linear in the size of the network.
 Now consider *multiply-connected* networks such as the car insurance network:
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 13_09 bayes net car insurance},height=2.0in]{aima-fig-13_09-bayes-net-car-insurance.pdf}
 
-#+latex: \includegraphics[alt={aima fig 13_09 bayes net car insurance},height=1in]{aima-fig-13_09-bayes-net-car-insurance.pdf}
-
-\end{center}
 
 
 - Variable elimination can have exponential worst-case time and space complexity in multiply-connected networks.

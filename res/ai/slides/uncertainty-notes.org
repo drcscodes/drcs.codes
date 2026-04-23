@@ -88,6 +88,7 @@ Probability theory solves the qualification problem by summarizing the uncertain
 
 #+latex: \includegraphics[alt={neo architect prob dist screens},width=0.75\linewidth]{neo-architect-prob-dist-screens.png}
 
+
 ** Probabilities are about our uncertain knowledge.
 
 "80% chance (probability 0.8) patient with a toothache has a cavity."
@@ -133,28 +134,21 @@ Utility theory associates a utility value with each possible outcome, which indu
 #+end_quote
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 12_01 dt agent algorithm},height=1.2in]{aima-fig-12_01-dt-agent-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 12_01 dt agent algorithm},height=1in]{aima-fig-12_01-dt-agent-algorithm.pdf}
-
-\end{center}
 
 
 Each action, $a$, leads to a probability distribution over outcomes, or "result states":
 
-
-\begin{equation*}
+$$
 P(\text{RESULT}(a) = s') = \sum_{s \in S} P(s) P(s' \mid s, a)
-\end{equation*}
-
+$$
 
 And each outcome state has a utility.  A rational decision-theoretic agent chooses the action that maximize expected utility, that is:
 
-
-\begin{equation*}
+$$
 \argmax_{a} \sum_{s' \in S} P(\text{RESULT}(a) = s') U(s')
-\end{equation*}
-
+$$
 
 ** Probability Models
 
@@ -162,14 +156,11 @@ In logic we have satisfiabilty: $M(\alpha)$ is the set of all possible worlds in
 
 In probability theory the set of possible worlds is a *sample space*, $\Omega$, which must be mutually exclusive and exhaustive (one and only one possible world must be the case).
 
-
-\begin{equation*}
+$$
 0 \le P(\omega) \le 1 \text{ for every } \omega \text{ and } \sum_{\omega \in \Omega} P(\omega) = 1
-\end{equation*}
-
+$$
 
 Each $\omega$ is a possible world.  Probability textbooks typically call these outcomes.  For example, each of these pairs is a $\omega \in \Omega$ for the roll of two dice:
-
 
 \footnotesize
 \begin{tabular}{cccccc}
@@ -182,13 +173,11 @@ Each $\omega$ is a possible world.  Probability textbooks typically call these o
 \end{tabular}
 \normalsize
 
-
 In probability textbooks, an *experiment* leads to a sample space.  Here, the set of possible worlds comes from the task environment.
 
 ** Propositions and Events
 
 An *event*, which we denote with $\phi$ here, is a set of possible worlds, some subset of $\Omega$, or set of $\omega$, e.g., the event "doubles" contains the 6 boxed elements $\omega$:
-
 
 \footnotesize
 \begin{tabular}{cccccc}
@@ -200,7 +189,6 @@ An *event*, which we denote with $\phi$ here, is a set of possible worlds, some 
 (1, 6) & (2, 6) & (3, 6) & (4, 6) & (5, 6) & \boxed{(6, 6)}\\
 \end{tabular}
 \normalsize
-
 
 
 A *proposition* is an event expressed in a formal language; specifically, for each proposition, the corresponding set contains just those possible worlds in which the proposition holds.
@@ -267,14 +255,12 @@ Individual values are written in lowercase and often abbreviated.
 
 A *probability distribution* is an assignment of probabilities to all values of a rendom variable, e.g.:
 
-
 \begin{align*}
 P(Weather=sun)   &= 0.6 \\
 P(Weather=rain)  &= 0.1 \\
 P(Weather=cloud) &= 0.29 \\
 P(Weather=snow)  &= 0.01
 \end{align*}
-
 
 Which can also be written $P(Weather) = \langle 0.6, 0.1, 0.29. 0.01 \rangle$.
 
@@ -288,7 +274,6 @@ P(Weather, Cavity) = P(Weather  \mid  Cavity) P(Cavity)
 
 stands for the $4 \times 2 = 8$ equations:
 
-
 \begin{align*}
 P(W = sun \land C = true)    &= P(W = sun  \mid  C = true) P(C = true) \\
 P(W = rain \land C = true)   &= P(W = rain  \mid  C = true) P(C = true) \\
@@ -299,7 +284,6 @@ P(W = rain \land C = false)  &= P(W = rain  \mid  C = false) P(C = false) \\
 P(W = cloud \land C = false) &= P(W = cloud  \mid  C = false) P(C = false) \\
 P(W = snow \land C = false)  &= P(W = snow  \mid  C = false) P(C = false)
 \end{align*}
-
 
 ** Probability Axioms
 
@@ -330,11 +314,8 @@ De Finetti's Theorem:
 Example:
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 12_02 agent bets},width=0.75\linewidth]{aima-fig-12_02-agent-bets.pdf}
 
-\end{center}
 
 
 ** Inference Using Full Joint Distributions
@@ -342,11 +323,8 @@ Example:
 Knowledge base is full joint distribution of boolean random variables $Toothache, Cavity, Catch$.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 12_03 full joint toothache},width=0.75\linewidth]{aima-fig-12_03-full-joint-toothache.pdf}
 
-\end{center}
 
 
 - All probabilities above sum to 1.
@@ -363,15 +341,11 @@ P(cavity) = 0.108 + 0.012 + 0.072 + 0.008= 0.2
 ** Marginalization and Conditioning
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 12_03 full joint toothache},height=0.8in]{aima-fig-12_03-full-joint-toothache.pdf}
 
-#+latex: \includegraphics[alt={aima fig 12_03 full joint toothache},height=1in]{aima-fig-12_03-full-joint-toothache.pdf}
-
-\end{center}
 
 
 *Marginalization* means "summing out" the non-query variables, which we usually denote with $Z$:
-
 
 \vspace{-.1in}
 \[
@@ -379,9 +353,7 @@ P(Y) = \sum_z P(Y, Z=z)
 \]
 \vspace{-.1in}
 
-
 For example, let $Y = Cavity$:
-
 
 \vspace{-.2in}
 \begin{align*}
@@ -392,9 +364,7 @@ P(Cavity) &= P(Cavity, toothache, catch) + P(Cavity, toothache, \neg catch) \\
 \end{align*}
 \vspace{-.1in}
 
-
 Using the product rule in $P(Y) = \sum_z P(Y, Z=z)$ we obtain the *conditioning* rule:
-
 
 \vspace{-.1in}
 \[
@@ -402,31 +372,25 @@ P(Y) = \sum_z P(Y \mid z) P(z)
 \]
 \vspace{-.1in}
 
-
 These two rules are used widely in probabilistic reasoning.
 
 ** Condional Probability Distributions
 
 We're usually interested in conditional probabilities.  To get the conditional probabilites, we use the definition:
 
-
 \begin{align*}
 P(cavity  \mid  toothache) &= \frac{P(cavity \land toothache)}{P(toothache)}\\
                        &= \frac{0.108 + 0.012}{0.108 + 0.012 + 0.016 + 0.064} = 0.6
 \end{align*}
-
-
 
 \begin{align*}
 P(\neg cavity  \mid  toothache) &= \frac{P(\neg cavity \land toothache)}{P(toothache)}\\
                             &= \frac{0.016 + 0.064}{0.108 + 0.012 + 0.016 + 0.064} = 0.4
 \end{align*}
 
-
 ** Normalization
 
 Notice that $P(toothache)$ appears in denominator in both equations in the preceding conditional probability calculations.  We can vew it as a *normalization constant*, denoted $\alpha$, that ensures that the conditional probability distribution $P(Cavity  \mid  toothache)$ sums to 1.  Then we can write:
-
 
 \vspace{-.25in}
 \begin{align*}
@@ -436,7 +400,6 @@ P(Cavity  \mid  toothache) &= \alpha P(Cavity, toothache) \\
                        &= \alpha <0.12, 0.08> \\
                        &= <0.6, 0.4>
 \end{align*}
-
 
 The cool thing is that we don't even have to know $P(toothache)$ to calculate the conditional probability distribution $P(Cavity \mid toothache)$.  To make this point clearer, imagine the penultimate line above is:
 
@@ -477,11 +440,8 @@ P(a \mid b) = P(a) \text{ or } P(b \mid a) = P(b) \text{ or } P(a \land b) = P(a
 Can be a big help.  For example, if you have $n$ independent coin flips, then instead of $2^n$ full joint table, you have a product of $n$ distributions $P(C_i)$.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 12_04 factoring independence},height=1.2in]{aima-fig-12_04-factoring-independence.pdf}
 
-#+latex: \includegraphics[alt={aima fig 12_04 factoring independence},height=1in]{aima-fig-12_04-factoring-independence.pdf}
-
-\end{center}
 
 
 Unfortunately, independence rarely holds in the real world.
@@ -490,13 +450,11 @@ Unfortunately, independence rarely holds in the real world.
 
 Using the symmetry $P(X, Y) = P(Y, X)$ and the product rule we can derive *Bayes' rule*:
 
-
 \begin{align*}
 P(X, Y)     &= P(Y, X)\\
 P(Y \mid X)P(X) &= P(X \mid Y)P(Y)\\
 P(Y \mid X)      &= \frac{P(X \mid Y)P(Y)}{P(X)}
 \end{align*}
-
 
 The usefulness of Bayes' rule becomes apparent if we consider $X$ as an effect and $Y$ as a cause and we want to determine the cause of some effect (evidence) we observe:
 
@@ -514,18 +472,11 @@ Reasoning from effects to causes is also called *abductive reasoning*.  (Is Sher
 A cancer with occurence rate of 1% (.01) has a "90% accurate" test, and:
 
 
-\begin{center}
-
-#+latex: \includegraphics[alt={../../deep learning/slides/bishop dl fig2.3},height=1in]{../../deep-learning/slides/bishop-dl-fig2.3.pdf}
-
-\end{center}
+#+latex: \includegraphics[alt={../../deep learning/slides/bishop dl fig2.3},height=1.8in]{../../deep-learning/slides/bishop-dl-fig2.3.pdf}
 
 
-\begin{center}
 
 False positive rate: .03, False negative rate: 0.10
-
-\end{center}
 
 
 Questions:
@@ -541,7 +492,6 @@ The test is an effect.  Cancer is the cause.
 
 With our probabilistic machinery we can analyze this cancer screening example.  First, we model the problem in the language of Bayesian probability theory:
 
-
 \begin{align*}
 P(C=1)     &= \frac{1}{100}  \tag{Prior probability that someone has cancer}\\
 P(C=0)     &= \frac{99}{100} \tag{Prior probability that someone has no cancer}\\
@@ -551,14 +501,12 @@ P(T=1 \mid C=0) &= \frac{3}{100}  \tag{Conditional probability of positive test 
 P(T=0 \mid C=0) &= \frac{97}{100} \tag{Conditional probability of negative test given no cancer}
 \end{align*}
 
-
 Now we can answer the two questions we posed at the outset:
 
 - If we screen someone, what is the probability that they test positive?
 - If someone tests positive, what is the probability that they have cancer?
 
 ** Analysis of Medical Screening Example
-
 
 
 
@@ -576,9 +524,7 @@ P(T=0 \mid C=0) &= \frac{97}{100}
 
 
 
-
 If we screen someone, probability that they test positive (notice use of product rule: $P(a, b) = P(a \mid b) P(b)$ and rule 2nd Kolmogorov axiom $P(x \lor y) = P(x) + P(y) - P(x \land y)$):
-
 
 \vspace{-.1in}
 \begin{align*}
@@ -588,9 +534,7 @@ P(T=1) &= P(T=1 \mid C=0)P(C=0) + P(T=1 \mid C=1)P(C=1)\\
        &= .0387
 \end{align*}
 
-
 If someone tests positive, probability they have cancer :
-
 
 \vspace{-.1in}
 \begin{align*}
@@ -603,18 +547,14 @@ P(C=1 \mid T=1) &= \frac{P(T=1 \mid C=1)P(C=1)}{P(T=1)}\\
 
 
 
-
 ** Bayes' Rule and Combining Evidence
 
 If dentist's probe catches and patient has a toothache, then using the full joint:
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 12_03 full joint toothache},width=0.75\linewidth]{aima-fig-12_03-full-joint-toothache.pdf}
 
-\end{center}
 
 
 we can simply read off the answer:
@@ -662,12 +602,10 @@ P(Toothache,Catch \mid Cavity) = P(Toothache \mid Cavity) P(Catch \mid Cavity)
 
 We can decompose the full joint for $Toothache, Catch, Cavity$:
 
-
 \begin{align*}
 P(Toothache,Catch,Cavity) &= P(Toothache,Catch \mid Cavity) P(Cavity) \tag{product rule} \\
                            &= P(Toothache \mid Cavity) P(Catch \mid Cavity) P(Cavity) \tag{cond. ind. assertion above}
 \end{align*}
-
 
 This decomposes the large table smaller tables.  In general, this technique turns representation that grows as $O(2^n)$ to one that grows as $O(n)$.  Conditional independence assertions:
 

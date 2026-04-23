@@ -41,121 +41,85 @@ Foo
 ** Unification and First-Order Inference
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_01 unification algorithm},height=2.8in]{aima-fig-09_01-unification-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_01 unification algorithm},height=1in]{aima-fig-09_01-unification-algorithm.pdf}
-
-\end{center}
 
 
 ** Unification and First-Order Inference
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_02 subsumption lattice},height=2.8in]{aima-fig-09_02-subsumption-lattice.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_02 subsumption lattice},height=1in]{aima-fig-09_02-subsumption-lattice.pdf}
-
-\end{center}
 
 
 ** Forward Chaining
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_03 fol fc ask algorithm},height=2.8in]{aima-fig-09_03-fol-fc-ask-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_03 fol fc ask algorithm},height=1in]{aima-fig-09_03-fol-fc-ask-algorithm.pdf}
-
-\end{center}
 
 
 ** Forward Chaining
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_04 proof tree fc crime},height=2.8in]{aima-fig-09_04-proof-tree-fc-crime.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_04 proof tree fc crime},height=1in]{aima-fig-09_04-proof-tree-fc-crime.pdf}
-
-\end{center}
 
 
 ** Forward Chaining
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_05 constraint graph australia},height=2.8in]{aima-fig-09_05-constraint-graph-australia.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_05 constraint graph australia},height=1in]{aima-fig-09_05-constraint-graph-australia.pdf}
-
-\end{center}
 
 
 ** Backward Chaining
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_06 fol bc ask algorithm},height=2.8in]{aima-fig-09_06-fol-bc-ask-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_06 fol bc ask algorithm},height=1in]{aima-fig-09_06-fol-bc-ask-algorithm.pdf}
-
-\end{center}
 
 
 ** Backward Chaining
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_07 proof tree bc crime},height=2.8in]{aima-fig-09_07-proof-tree-bc-crime.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_07 proof tree bc crime},height=1in]{aima-fig-09_07-proof-tree-bc-crime.pdf}
-
-\end{center}
 
 
 ** Logic Programming
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_08 prolog infinite loop},height=2.8in]{aima-fig-09_08-prolog-infinite-loop.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_08 prolog infinite loop},height=1in]{aima-fig-09_08-prolog-infinite-loop.pdf}
-
-\end{center}
 
 
 ** Logic Programming
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_09 infinite proof tree},height=2.8in]{aima-fig-09_09-infinite-proof-tree.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_09 infinite proof tree},height=1in]{aima-fig-09_09-infinite-proof-tree.pdf}
-
-\end{center}
 
 
 ** Resolution
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_10 resolution proof criminal},height=2.8in]{aima-fig-09_10-resolution-proof-criminal.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_10 resolution proof criminal},height=1in]{aima-fig-09_10-resolution-proof-criminal.pdf}
-
-\end{center}
 
 
 ** Resolution
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_11 resolution proof curiosity},height=2.8in]{aima-fig-09_11-resolution-proof-curiosity.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_11 resolution proof curiosity},height=1in]{aima-fig-09_11-resolution-proof-curiosity.pdf}
-
-\end{center}
 
 
 ** Completeness
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 09_12 structure completeness proof},height=2.8in]{aima-fig-09_12-structure-completeness-proof.pdf}
 
-#+latex: \includegraphics[alt={aima fig 09_12 structure completeness proof},height=1in]{aima-fig-09_12-structure-completeness-proof.pdf}
-
-\end{center}
 
 
 ** G{\"o}del's Incompleteness Theorem

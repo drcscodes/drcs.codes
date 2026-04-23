@@ -240,7 +240,7 @@ Some basic concepts:
 
 - **Validity**: A sentence is valid if it is true in all models. For example, the sentence $P \land \neg P$ is valid. Valid sentences are also known as **tautologies**.
 
-- **Deduction theorem**: $\text{For any sentences $\alpha$ and $\beta$ }, \alpha \models \beta \text{ if and only iff the sentence } (\alpha \implies \beta) \text{ is valid.}$
+- **Deduction theorem**: For any sentences $\alpha$ and $\beta$, $\alpha \models \beta$ if and only iff the sentence $alpha \implies \beta$ is valid.
 
 - A sentence is **satisfiable** if it is true in, or satisfied by, *some* model
 

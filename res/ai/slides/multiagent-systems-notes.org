@@ -48,11 +48,8 @@ Dealing with multiagent environments:
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={mas book},height=2.0in]{mas-book.jpg}
 
-#+latex: \includegraphics[alt={mas book},height=1in]{mas-book.jpg}
-
-\end{center}
 
 
 MAS: https://www.masfoundations.org/
@@ -61,11 +58,8 @@ MAS: https://www.masfoundations.org/
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={marl book},height=2.0in]{marl-book.jpg}
 
-#+latex: \includegraphics[alt={marl book},height=1in]{marl-book.jpg}
-
-\end{center}
 
 
 MARL: https://www.marl-book.com/
@@ -215,32 +209,24 @@ Standard solution: pretend problems are decoupled and fix the interactions as th
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={doubles tennis},width=0.75\linewidth]{doubles-tennis.jpg}
 
-\end{center}
 
 
 
 
 
-
-\begin{center}
 
 #+latex: \includegraphics[alt={aima fig 18_01 doubles tennis problem},width=0.75\linewidth]{aima-fig-18_01-doubles-tennis-problem.pdf}
 
-\end{center}
 
 
 Here's a 2-step *joint plan* that works:
-
 
 \begin{align*}
 \text{PLAN 1}: &A : [Go(A,RightBaseline),Hit(A,Ball)] \\
                &B : [NoOp(B),NoOp(B)].
 \end{align*}
-
 
 
 
@@ -251,7 +237,6 @@ Here's a 2-step *joint plan* that works:
 
 What if both players try to $Hit$ at the same time?  Add a *concurrent action constraint* to prevent:
 
-
 \vspace{-.25in}
 \begin{align*}
 & Action(Hit(actor, Ball),\\
@@ -261,9 +246,7 @@ What if both players try to $Hit$ at the same time?  Add a *concurrent action co
 \end{align*}
 \vspace{-.25in}
 
-
 Some tasks require concurrent action, e.g., carrying a large cooler:
-
 
 \vspace{-.25in}
 \begin{align*}
@@ -274,11 +257,9 @@ Some tasks require concurrent action, e.g., carrying a large cooler:
 \end{align*}
 \vspace{-.25in}
 
-
 ** Cooperation and Coordination
 
 There can be multiple joint plans that acheive the goal:
-
 
 
 
@@ -291,13 +272,10 @@ There can be multiple joint plans that acheive the goal:
 
 
 
-
-
 \begin{align*}
 \text{PLAN 2}: &A : [Go(A,LeftNet),NoOp(A)] \\
                &B : [Go(B, RightBaseline), Hit(B, Ball)]
 \end{align*}
-
 
 
 
@@ -334,13 +312,11 @@ All players take action that are chosen simultaneously with no knowledge of othe
 Here is the payoff matrix for *two-finger Morra*, a game in which each player displays one or two fingers.
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
        & O: one         & O: two         \\\hline
 E: one & E = +2, O = -2 & E = -3, O = +3 \\\hline
 E: two & E = -3, O = +3 & E = +4, O = -4 \\\hline
 \end{tabular}
-\end{center}
 
 
 - $E$ is the *row player*, $O$ is the *column player*.
@@ -375,13 +351,11 @@ Two prisoners, $A$ and $B$, suspected of committing a crime together are taken t
 The game can be summarized in the following payoff matrix (row player's payoff is listed first):
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d         \\\hline
 A: c & -1, -1 & -5, 0 \\\hline
 A: d & 0, -5  & -3, -3 \\\hline
 \end{tabular}
-\end{center}
 
 
 The dillemma: should they confess or deny?
@@ -399,25 +373,21 @@ Consider a world of two TCP users, $A$ and $B$.
 - If one user uses a correct implmentation and the other a defective one, the correct user (or "sucker") gets 5 ms packet delays and the other gets 0 ms delays.
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d         \\\hline
 A: c & -1, -1 & -5, 0 \\\hline
 A: d & 0, -5  & -3, -3 \\\hline
 \end{tabular}
-\end{center}
 
 
 The Prisoner's dilemma is widely applicable.  In general:
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
        & C         & D        \\\hline
 C & a, a & b, c \\\hline
 D & c, b & d, d  \\\hline
 \end{tabular}
-\end{center}
 
 
 with $c > a > d > b$.  Adding $a > \frac{b+c}{2}$ guarantees that $(C, C)$ maximizes the sum of the agents' utilities/payoffs.
@@ -432,13 +402,11 @@ with $c > a > d > b$.  Adding $a > \frac{b+c}{2}$ guarantees that $(C, C)$ maxim
 Consider $A$'s response when $B$'s strategy is $c$:
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                 \\\hline
 A: c & \cellcolor{lightgray} -1, -1 &  -5, 0 \\\hline
 A: d & \cellcolor{lightgray} 0, -5   & -3, -3 \\\hline
 \end{tabular}
-\end{center}
 
 
 $A$'s highest payoff is with $d$.
@@ -446,13 +414,11 @@ $A$'s highest payoff is with $d$.
 How about when $B$'s strategy is $d$:
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                 \\\hline
 A: c & -1, -1  & \cellcolor{lightgray} -5, 0  \\\hline
 A: d & 0, -5   & \cellcolor{lightgray} -3, -3 \\\hline
 \end{tabular}
-\end{center}
 
 
 Again, $A$'s highest payoff is with $d$.  No matter what $B$ does, $A$'s *best response* is $d$.  So $d$ is a *dominant strategy* for $A$ -- $d$ acheives the highest payoff in response to every possible action of $B$.
@@ -463,13 +429,11 @@ Again, $A$'s highest payoff is with $d$.  No matter what $B$ does, $A$'s *best r
 Consider $B$'s response when $A$'s strategy is $c$:
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                                      \\\hline
 A: c & \cellcolor{lightgray} -1, -1  & \cellcolor{lightgray} -5, 0 \\\hline
 A: d & 0, -5                         & -3, -3                      \\\hline
 \end{tabular}
-\end{center}
 
 
 $B$'s highest payoff is with $d$.
@@ -477,13 +441,11 @@ $B$'s highest payoff is with $d$.
 How about when $A$'s strategy is $d$:
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                                      \\\hline
 A: c & -1, -1                      & -5, 0                         \\\hline
 A: d & \cellcolor{lightgray} 0, -5 & \cellcolor{lightgray}-3, -3   \\\hline
 \end{tabular}
-\end{center}
 
 
 Again, $B$'s highest payoff is with $d$.  No matter what $A$ does, $B$'s *best response* is $d$.  So the *dominant strategy* for $B$ is also $d$.
@@ -519,11 +481,8 @@ Utilitarian social welfare is a measure of how good an outcome is in the aggrega
 Classic formulation:
 
 
-\begin{center}
+#+latex: \includegraphics[alt={tragedy of commons classic},height=1.6in]{tragedy-of-commons-classic.jpg}
 
-#+latex: \includegraphics[alt={tragedy of commons classic},height=1in]{tragedy-of-commons-classic.jpg}
-
-\end{center}
 
 
 Modern instantiation: air pollution.
@@ -540,13 +499,10 @@ So, if there are 100 countries and each continues to pollute, the total utility 
 ** Nash Equilibria
 
 
-\begin{center}
+#+latex: \includegraphics[alt={beautiful mind bar scene},height=1.6in]{beautiful-mind-bar-scene.jpg}
 
-#+latex: \includegraphics[alt={beautiful mind bar scene},height=1in]{beautiful-mind-bar-scene.jpg}
 
 [[https://www.youtube.com/watch?v=QzwcGkfEra4][https://www.youtube.com/watch?v=QzwcGkfEra4]]
-
-\end{center}
 
 
 
@@ -566,25 +522,21 @@ Let's find the Nash equlibria in the Prisoner's Dilemma.
 - First, find the best reponses of the row player to each strategy of the column player (boxed):
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
   & C              & D         \\\hline
 C & -1, -1         & -5, 0 \\\hline
 D & \boxed{0}, -5  & \boxed{-3}, -3 \\\hline
 \end{tabular}
-\end{center}
 
 
 - Then find the best responses of the column player to each strategy of the column player (circled):
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
   & C              & D         \\\hline
 C & -1, -1         & -5, \circled{0} \\\hline
 D & \boxed{0}, -5  & \boxed{-3}, \circled{-3} \\\hline
 \end{tabular}
-\end{center}
 
 
 The Nash equilibria are the cases where both players' best responses coincide, here $(D, D)$.
@@ -600,13 +552,11 @@ A husband and wife wish to go to the movies, and they can select among two movie
 - the wife (player 1) prefers LW, the husband (player 2) prefers WL.
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
    & LW     & WL         \\\hline
 LW & 2, 1  & 0, 0 \\\hline
 WL & 0, 0  & 1, 2 \\\hline
 \end{tabular}
-\end{center}
 
 
 This is like a common-payoff game where both players get the same reward when they do the same thing, but each player has different payoffs when they coordinate.
@@ -618,25 +568,21 @@ Now lets find the Nash equilibria for the Battle of t he Sexes game.
 - First, find the best reponses of the row player to each strategy of the column player (boxed):
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
    & LW     & WL         \\\hline
 LW & \boxed{2}, 1  & 0, 0 \\\hline
 WL & 0, 0  & \boxed{1}, 2 \\\hline
 \end{tabular}
-\end{center}
 
 
 - Then find the best responses of the column player to each strategy of the column player (circled):
 
 
-\begin{center}
 \begin{tabular}{|c|c|c|}\hline
    & LW     & WL         \\\hline
 LW & \boxed{2}, \circled{1}  & 0, 0 \\\hline
 WL & 0, 0  & \boxed{1}, \circled{2} \\\hline
 \end{tabular}
-\end{center}
 
 
 Here we see that the only best responses for both players are also both Nash equilibria.
@@ -651,11 +597,8 @@ The simplest kind of multiple-move game is the repeated game (also called an *it
 - In an infinite game you don't know when it ends, so strategy changes.  We can represent infinite strategies with finite state machines:
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 18_03 ipd fsms},height=1.6in]{aima-fig-18_03-ipd-fsms.pdf}
 
-#+latex: \includegraphics[alt={aima fig 18_03 ipd fsms},height=1in]{aima-fig-18_03-ipd-fsms.pdf}
-
-\end{center}
 
 
 Note that AIMA uses $refuse$ for $confess/cooperate$ and $testify$ for $deny/defect$.
@@ -667,11 +610,8 @@ Note that AIMA uses $refuse$ for $confess/cooperate$ and $testify$ for $deny/def
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={axelrod evolution of cooperation book},height=3.2in]{axelrod-evolution-of-cooperation-book.jpg}
 
-#+latex: \includegraphics[alt={axelrod evolution of cooperation book},height=1in]{axelrod-evolution-of-cooperation-book.jpg}
-
-\end{center}
 
 
 
@@ -698,11 +638,8 @@ Knight, et. al. [^knight2025reviving] recently reproduced these results, confirm
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={kimmel science of revenge book},height=3.2in]{kimmel-science-of-revenge-book.jpg}
 
-#+latex: \includegraphics[alt={kimmel science of revenge book},height=1in]{kimmel-science-of-revenge-book.jpg}
-
-\end{center}
 
 
 
@@ -733,42 +670,30 @@ Perhaps there is a link between the results of Axelrod's IPD tournaments and neu
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={wolf pack},height=1.6in]{wolf-pack.png}
 
-#+latex: \includegraphics[alt={wolf pack},height=1in]{wolf-pack.png}
 
-\end{center}
 \vspace{.1in}
 
 
-
-\begin{center}
-
-#+latex: \includegraphics[alt={rise of wolf 8 book},height=1in]{rise-of-wolf-8-book.jpg}
-
-\end{center}
+#+latex: \includegraphics[alt={rise of wolf 8 book},height=2.0in]{rise-of-wolf-8-book.jpg}
 
 
 
 
 
 
-\begin{center}
 
-#+latex: \includegraphics[alt={Safari_ants},height=1in]{Safari_ants.jpg}
+#+latex: \includegraphics[alt={Safari_ants},height=1.2in]{Safari_ants.jpg}
 
-\end{center}
+
 \vspace{.1in}
 
 
+#+latex: \includegraphics[alt={bees honeycomb},height=1.2in]{bees-honeycomb.jpg}
 
-\begin{center}
-
-#+latex: \includegraphics[alt={bees honeycomb},height=1in]{bees-honeycomb.jpg}
 
 [[https://www.youtube.com/watch?v=F5rWmGe0HBI][https://www.youtube.com/watch?v=F5rWmGe0HBI]]
-
-\end{center}
 
 
 
@@ -780,13 +705,10 @@ Perhaps there is a link between the results of Axelrod's IPD tournaments and neu
 Humans are complicated -- and often amusing -- animals.  The Prisoner's Dilemma often occurs naturally, and sometimes artificially:
 
 
-\begin{center}
+#+latex: \includegraphics[alt={bachelor pad prisoners dilemma.},height=2.0in]{bachelor-pad-prisoners-dilemma.jpeg}
 
-#+latex: \includegraphics[alt={bachelor pad prisoners dilemma.},height=1in]{bachelor-pad-prisoners-dilemma.jpeg}
 
 [[https://www.youtube.com/watch?v=p1oyuqLFiXg][https://www.youtube.com/watch?v=p1oyuqLFiXg]] -- 1:06:30
-
-\end{center}
 
 
 

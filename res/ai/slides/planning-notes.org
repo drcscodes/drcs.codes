@@ -73,7 +73,6 @@ Action schema is a family of ground actions.
 
 
 Action schema:
-
 \vspace{-.25in}
 \begin{align*}
 & Action(Fly(p,from,to),\\
@@ -82,9 +81,7 @@ Action schema:
 \end{align*}
 \vspace{-.25in}
 
-
 Ground (variable-free) action:
-
 
 \vspace{-.25in}
 \begin{align*}
@@ -94,36 +91,26 @@ Ground (variable-free) action:
 \end{align*}
 \vspace{-.25in}
 
-
 ** Air Cargo Transport
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 11_01 pddl air cargo},height=2.8in]{aima-fig-11_01-pddl-air-cargo.pdf}
 
-#+latex: \includegraphics[alt={aima fig 11_01 pddl air cargo},height=1in]{aima-fig-11_01-pddl-air-cargo.pdf}
-
-\end{center}
 
 
 
 ** Blocks World
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 11_03 blocks world diagram},height=2.8in]{aima-fig-11_03-blocks-world-diagram.pdf}
 
-#+latex: \includegraphics[alt={aima fig 11_03 blocks world diagram},height=1in]{aima-fig-11_03-blocks-world-diagram.pdf}
-
-\end{center}
 
 
 ** Blocks World PDDL
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 11_04 pddl blocks world},height=2.8in]{aima-fig-11_04-pddl-blocks-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 11_04 pddl blocks world},height=1in]{aima-fig-11_04-pddl-blocks-world.pdf}
-
-\end{center}
 
 
 ** Classical Planning Algorithms
@@ -152,11 +139,8 @@ Ground (variable-free) action:
 - Backward search: unify goal states against effects of action schemas -- *relevant* actions.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 11_05 forward backward search},height=2.4in]{aima-fig-11_05-forward-backward-search.pdf}
 
-#+latex: \includegraphics[alt={aima fig 11_05 forward backward search},height=1in]{aima-fig-11_05-forward-backward-search.pdf}
-
-\end{center}
 
 
 
@@ -183,24 +167,18 @@ HLAs have one or more *refinements*.
 Here are two goal-achieving implementations for the $Go(Home, SFO)$ HLA:
 
 
-\begin{center}
 \vspace{.05in}
+#+latex: \includegraphics[alt={aima fig 11_07 a go home refinements},height=0.8in]{aima-fig-11_07-a-go-home-refinements.pdf}
 
-#+latex: \includegraphics[alt={aima fig 11_07 a go home refinements},height=1in]{aima-fig-11_07-a-go-home-refinements.pdf}
-
-\end{center}
 
 
 
 Refinements can be produced recursivley, as shown in this vacuum world navigation example:
 
 
-\begin{center}
 \vspace{.05in}
+#+latex: \includegraphics[alt={aima fig 11_07 b vacuum navigation recursion},height=1.6in]{aima-fig-11_07-b-vacuum-navigation-recursion.pdf}
 
-#+latex: \includegraphics[alt={aima fig 11_07 b vacuum navigation recursion},height=1in]{aima-fig-11_07-b-vacuum-navigation-recursion.pdf}
-
-\end{center}
 
 
 

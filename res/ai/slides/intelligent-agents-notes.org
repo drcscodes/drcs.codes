@@ -37,11 +37,8 @@
 ** What is an agent?
 
 
-\begin{center}
+#+latex: \includegraphics[alt={agent smith subway fight},height=3.2in]{agent-smith-subway-fight.jpg}
 
-#+latex: \includegraphics[alt={agent smith subway fight},height=1in]{agent-smith-subway-fight.jpg}
-
-\end{center}
 
 
 
@@ -50,11 +47,8 @@
 ** Agents
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 02_01 agent environment},width=0.75\linewidth]{aima-fig-02_01-agent-environment.pdf}
 
-\end{center}
 
 
 ** Agent Functions
@@ -62,12 +56,10 @@
 An *agent function* is an external tabulation of the agent's behavior.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 02_02 vacuum world},height=0.6in]{aima-fig-02_02-vacuum-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 02_02 vacuum world},height=1in]{aima-fig-02_02-vacuum-world.pdf}
-#+latex: \includegraphics[alt={aima fig 02_03 vacuum function},height=1in]{aima-fig-02_03-vacuum-function.pdf}
+#+latex: \includegraphics[alt={aima fig 02_03 vacuum function},height=3.0in]{aima-fig-02_03-vacuum-function.pdf}
 
-\end{center}
 
 
 An *agent program* is an implementation of an agent function inside the agent.
@@ -138,22 +130,16 @@ Notice that there is a blurring of the line between what we intuitively consider
 ** Taxi Task Environment
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 02_04 taxi task environment},width=0.75\linewidth]{aima-fig-02_04-taxi-task-environment.pdf}
 
-\end{center}
 
 
 
 ** Example Agent Types and Their PEAS Descriptions
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 02_05 agent types},height=3.6in]{aima-fig-02_05-agent-types.pdf}
 
-#+latex: \includegraphics[alt={aima fig 02_05 agent types},height=1in]{aima-fig-02_05-agent-types.pdf}
-
-\end{center}
 
 
 
@@ -176,11 +162,8 @@ Notice that there is a blurring of the line between what we intuitively consider
 ** Task Environment Examples
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 02_06 example tasks},height=3.6in]{aima-fig-02_06-example-tasks.pdf}
 
-#+latex: \includegraphics[alt={aima fig 02_06 example tasks},height=1in]{aima-fig-02_06-example-tasks.pdf}
-
-\end{center}
 
 
 ** The Structure of Agents
@@ -200,21 +183,16 @@ This entire course, indeed all of AI, is about designing intelligent agents.
 A table-driven agent program implements the agent function directly.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 02_07 table driven agent program},width=0.75\linewidth]{aima-fig-02_07-table-driven-agent-program.pdf}
 
-\end{center}
 
 
 If $\mathcal{P}$ is the set of possible percepts and $T$ is the lifetime of the agent, then the size of the agent table is impossibly large in practice:
 
-
 \vspace{-.2in}
-\begin{equation*}
+$$
 \sum_{t=1}^T |\mathcal{P}|^t
-\end{equation*}
-
+$$
 
 #+begin_quote
  Key idea: a full representation of the ideal agent program is usually impossible in practice.  Our job as AI agent developers is to design a compact representation of the ideal agent program.
@@ -223,33 +201,25 @@ If $\mathcal{P}$ is the set of possible percepts and $T$ is the lifetime of the 
 ** Reflex Vacuum Agent
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 02_02 vacuum world},width=0.75\linewidth]{aima-fig-02_02-vacuum-world.pdf}
+
 
 #+latex: \includegraphics[alt={aima fig 02_08 reflex vacuum agent program},width=0.75\linewidth]{aima-fig-02_08-reflex-vacuum-agent-program.pdf}
 
-\end{center}
 
 
 ** General Reflex Agents
 
-
 \begin{flushleft}
-
 #+latex: \includegraphics[alt={aima fig 02_10 reflex agent program},width=0.75\linewidth]{aima-fig-02_10-reflex-agent-program.pdf}
 
 \end{flushleft}
 
-
-
 \vspace{-.2in}
 \begin{flushright}
-
-#+latex: \includegraphics[alt={aima fig 02_09 reflex agent diagram},height=1in]{aima-fig-02_09-reflex-agent-diagram.pdf}
+#+latex: \includegraphics[alt={aima fig 02_09 reflex agent diagram},height=2.0in]{aima-fig-02_09-reflex-agent-diagram.pdf}
 
 \end{flushright}
-
 
 ** Condition-Action Rules
 
@@ -290,31 +260,22 @@ P(s, a, s') \text{ or } P(s_t \mid s_{t-1}, a_{t-1})
 
 ** Model-based Reflex Agents
 
-
 \begin{flushleft}
-
-#+latex: \includegraphics[alt={aima fig 02_12 model based reflex agent program},height=1in]{aima-fig-02_12-model-based-reflex-agent-program.pdf}
+#+latex: \includegraphics[alt={aima fig 02_12 model based reflex agent program},height=2.0in]{aima-fig-02_12-model-based-reflex-agent-program.pdf}
 
 \end{flushleft}
 
-
-
 \vspace{-.3in}
 \begin{flushright}
-
-#+latex: \includegraphics[alt={aima fig 02_11 model based reflex agent diagram},height=1in]{aima-fig-02_11-model-based-reflex-agent-diagram.pdf}
+#+latex: \includegraphics[alt={aima fig 02_11 model based reflex agent diagram},height=1.8in]{aima-fig-02_11-model-based-reflex-agent-diagram.pdf}
 
 \end{flushright}
-
 
 ** Model-based Goal-driven Agents
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 02_13 model based goal driven agent diagram},width=0.75\linewidth]{aima-fig-02_13-model-based-goal-driven-agent-diagram.pdf}
 
-\end{center}
 
 
 Agents select actions that achieve goals by using *search* and *planning* algorithms, which we'll start learning next lecture.
@@ -322,11 +283,8 @@ Agents select actions that achieve goals by using *search* and *planning* algori
 ** Model-based Utility-driven Agents
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 02_14 model based utility driven agent diagram},width=0.75\linewidth]{aima-fig-02_14-model-based-utility-driven-agent-diagram.pdf}
 
-\end{center}
 
 
 A utility-driven agent seeks states that are more desirable, which is a "soft" way of describing goals.
@@ -334,21 +292,15 @@ A utility-driven agent seeks states that are more desirable, which is a "soft" w
 ** Learning Agents
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 02_15 learning agent diagram},width=0.75\linewidth]{aima-fig-02_15-learning-agent-diagram.pdf}
 
-\end{center}
 
 
 ** State Representations
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 02_16 state representations},width=0.75\linewidth]{aima-fig-02_16-state-representations.pdf}
 
-\end{center}
 
 
 - Atomic representations are typically used in search-based problem solving.

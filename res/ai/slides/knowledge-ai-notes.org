@@ -34,6 +34,7 @@
 #+LaTeX_HEADER: \usepackage{polyglossia}
 #+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
 
+
 ** Knowledge and AI
 
 In AI, *knowledge-based* agents use a process of *reasoning* over an internal *representation* of knowledge to decide what actions to take.
@@ -51,11 +52,8 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 - MAKE-ACTION-SENTENCE constructs sentence asserting chosen action was executed.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_01 kb agent},height=1.6in]{aima-fig-07_01-kb-agent.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_01 kb agent},height=1in]{aima-fig-07_01-kb-agent.pdf}
-
-\end{center}
 
 
 - Logical agents are described at the *knowledge level* using *declarative* statements of knowledge and goals.
@@ -68,11 +66,8 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_02 wumpus world},height=1.2in]{aima-fig-07_02-wumpus-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_02 wumpus world},height=1in]{aima-fig-07_02-wumpus-world.pdf}
-
-\end{center}
 
 
 
@@ -105,11 +100,8 @@ Percepts encoded as list of five symbols indicating presense or absence (by None
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_03 first step wumpus world},height=1.6in]{aima-fig-07_03-first-step-wumpus-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_03 first step wumpus world},height=1in]{aima-fig-07_03-first-step-wumpus-world.pdf}
-
-\end{center}
 
 
 - (a) after percept [None,None,None,None,None]
@@ -149,11 +141,8 @@ Formal definition of entailment:
 The presence of pits in squares [1, 2], [2, 2] and [3, 1] gives rise to $2^3 = 8$ possible models.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_05 possible models pits},height=1.6in]{aima-fig-07_05-possible-models-pits.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_05 possible models pits},height=1in]{aima-fig-07_05-possible-models-pits.pdf}
-
-\end{center}
 
 
 Solid line delineates KB based on percept [None, None, None, None, None] in [1, 1] and [None,Breeze,None,None,None] in [2, 1].
@@ -186,11 +175,8 @@ which is pronounced "$\alpha$ is derived from $KB$ by $i$" or "$i$ derives $\alp
 If KB is true in the real world, then any sentence $\alpha$ derived from KB by a sound inference procedure is also true in the real world?
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_06 representation vs world},height=1.6in]{aima-fig-07_06-representation-vs-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_06 representation vs world},height=1in]{aima-fig-07_06-representation-vs-world.pdf}
-
-\end{center}
 
 
 *Grounding*: connection between logical reasoning and the real environment.  How do we know that KB is true in the real world.
@@ -229,21 +215,15 @@ If KB is true in the real world, then any sentence $\alpha$ derived from KB by a
 ** Grammar of Propositional Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_07 grammar of popositional logic},height=2.4in]{aima-fig-07_07-grammar-of-popositional-logic.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_07 grammar of popositional logic},height=1in]{aima-fig-07_07-grammar-of-popositional-logic.pdf}
-
-\end{center}
 
 
 ** Semantics of Propositional Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_08 truth tables logical connectives},height=2.8in]{aima-fig-07_08-truth-tables-logical-connectives.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_08 truth tables logical connectives},height=1in]{aima-fig-07_08-truth-tables-logical-connectives.pdf}
-
-\end{center}
 
 
 ** Propositional Theorem Proving
@@ -260,7 +240,7 @@ Some basic concepts:
 
 - *Validity*: A sentence is valid if it is true in all models. For example, the sentence $P \land \neg P$ is valid. Valid sentences are also known as *tautologies*.
 
-- *Deduction theorem*: $\text{For any sentences $\alpha$ and $\beta$ }, \alpha \models \beta \text{ if and only iff the sentence } (\alpha \implies \beta) \text{ is valid.}$
+- *Deduction theorem*: For any sentences $\alpha$ and $\beta$, $\alpha \models \beta$ if and only iff the sentence $alpha \implies \beta$ is valid.
 
 - A sentence is *satisfiable* if it is true in, or satisfied by, *some* model
 
@@ -290,11 +270,8 @@ And-Elimination:
 Functionally equivalent to inference rules.  Left side on top, right side on bottom.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_11 logical equivalences},height=2.4in]{aima-fig-07_11-logical-equivalences.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_11 logical equivalences},height=1in]{aima-fig-07_11-logical-equivalences.pdf}
-
-\end{center}
 
 
 
@@ -304,11 +281,8 @@ Functionally equivalent to inference rules.  Left side on top, right side on bot
 - First-order logic assumes that the world consists of objects with certain relations among them that do or do not hold.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 08_01 ontological epistemological commitments},height=1.2in]{aima-fig-08_01-ontological-epistemological-commitments.pdf}
 
-#+latex: \includegraphics[alt={aima fig 08_01 ontological epistemological commitments},height=1in]{aima-fig-08_01-ontological-epistemological-commitments.pdf}
-
-\end{center}
 
 
 - *Ontological commitment*: what a language assumes about the nature of reality.
@@ -319,11 +293,8 @@ Functionally equivalent to inference rules.  Left side on top, right side on bot
 ** Representational Power of First-Order Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 08_02 person king model},height=2.8in]{aima-fig-08_02-person-king-model.pdf}
 
-#+latex: \includegraphics[alt={aima fig 08_02 person king model},height=1in]{aima-fig-08_02-person-king-model.pdf}
-
-\end{center}
 
 
 ** First-Order Logic
@@ -411,11 +382,8 @@ Can also have subcategories, e.g., $Subset(Basketballs,Balls)$ or $Basketballs \
 Categories organize knowledge into *inheritance hierarchies*, or *taxonomies*, like this upper ontology of the world:
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 10_01 upper ontology world},height=2.0in]{aima-fig-10_01-upper-ontology-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 10_01 upper ontology world},height=1in]{aima-fig-10_01-upper-ontology-world.pdf}
-
-\end{center}
 
 
 
@@ -434,72 +402,61 @@ An *event calculus* encodes events, fluents, and time points, and the relationsh
     - $Happens(e,t1,t2)$ Event $e$ starts at time $t_1$ and ends at $t_2$
 
 
-\begin{center}
-
-#+latex: \includegraphics[alt={aima fig 10_02 predicates time intervals},height=1in]{aima-fig-10_02-predicates-time-intervals.pdf}
+#+latex: \includegraphics[alt={aima fig 10_02 predicates time intervals},height=1.6in]{aima-fig-10_02-predicates-time-intervals.pdf}
 
 Predicates on time intervals.
-\end{center}
 
 
 ** Fluents
 
 
-\begin{center}
-
-#+latex: \includegraphics[alt={aima fig 10_03 schematic object president},height=1in]{aima-fig-10_03-schematic-object-president.pdf}
-
-\end{center}
+#+latex: \includegraphics[alt={aima fig 10_03 schematic object president},height=2.0in]{aima-fig-10_03-schematic-object-president.pdf}
 
 
-$
-T(Equals(President(USA),GeorgeWashington),Begin(AD1789),End(AD1797))
+
 \begin{equation*}
+T(Equals(President(USA),GeorgeWashington),Begin(AD1789),End(AD1797))
+\end{equation*}
 
 Use $Equals$ function instead of logical predicate $=$ because can't have have predicate as argument to $T$.
 
 
-## Beliefs and Attitudes
+** Beliefs and Attitudes
 
 
 Beliefs are mental objects. Consider
 
-\end{equation*}
-Knows(Lois,CanFly(Superman))
 \begin{equation*}
+Knows(Lois,CanFly(Superman))
+\end{equation*}
 
 What if Lois knows that Clark Kent is Superman?
 
-```{=latex}
 \begin{align*}
 & (Superman = Clark) \land Knows(Lois,CanFly(Superman)) \\
 & \hspace{.2in} \models Knows(Lois,CanFly(Clark))
 \end{align*}
-```
 
-This gets out of hand quickly.  Need **modal logic**, which includes modal operators that take sentences as arguments instead of terms.  $A$ knows $P$ becomes:
+This gets out of hand quickly.  Need *modal logic*, which includes modal operators that take sentences as arguments instead of terms.  $A$ knows $P$ becomes:
 
-\end{equation*}
-\bm{K}_A P
 \begin{equation*}
+\bm{K}_A P
+\end{equation*}
 
 Where $\bm{K}$ is the modal operator for knowledge.  First argument $A$ is the agent and written as subscript.  Second argument, $P$, is the proposition that $A$ "knows."
 
-## Semantic Networks
+** Semantic Networks
 
-Originally called **existential graphs**.
+Originally called *existential graphs*.
 
-```{=latex}
-\begin{center}
-```
-![](aima-fig-10_04-semantic-network-4-objects.pdf){height="60%"}
-```{=latex}
-\end{center}
-```
 
-## Closing Thoughts
+#+latex: \includegraphics[alt={aima fig 10_04 semantic network 4 objects},height=2.4in]{aima-fig-10_04-semantic-network-4-objects.pdf}
 
-- **Much** more to knowledge-based AI than presented here
+
+
+** Closing Thoughts
+
+- *Much* more to knowledge-based AI than presented here
 - This overview enough to feel confident discussing knowledge-based AI at cocktail parties
 - Knowledge-based AI heart of *expert systems*, failure of which led to an AI winter
 
@@ -509,4 +466,4 @@ Originally called **existential graphs**.
 
     - Knowledge AI fell out of favor, has never really recovered the mantle of AI
 
-        - Didn't stop Doug Lennat and his team at [Cycorp](https://cyc.com/) from trying.
+        - Didn't stop Doug Lennat and his team at [[https://cyc.com/][Cycorp]] from trying.

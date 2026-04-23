@@ -66,11 +66,8 @@ That set of states that the agent believes is possible, {5, 7}, is called a *bel
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_09 vacuum states},width=0.75\linewidth]{aima-fig-04_09-vacuum-states.pdf}
 
-\end{center}
 
 
 
@@ -88,19 +85,11 @@ Let's depart from the book for a few slides and, instead of using an index into 
 So
 
 
-\begin{center}
-
 `Results(1,Suck) = {5, 7}`
-
-\end{center}
 
 becomes
 
-\begin{center}
-
 `Results(<LEFT, DIRTY, DIRTY>, Suck) = {<LEFT, CLEAN, DIRTY>, <LEFT, CLEAN, CLEAN>}`
-
-\end{center}
 
 
 Note that the factored representation is easier for us to read (don't have to look up states in a table), but the search algorithms we're considering here treat these states as atomic.
@@ -115,11 +104,7 @@ A conditional plan, a.k.a. *contingency plan*, is a plan that specifies action s
 Consider the start state, `<LEFT, DIRTY, DIRTY>`.  Due to the environment's nondeterminism, not possible to find a sequence of actions guaranteed to solve the problem.  But this simple conditional plan does:
 
 
-\begin{center}
-
 `[Suck, if State == <LEFT, CLEAN, DIRTY> then [Right, Suck] else []]`
-
-\end{center}
 
 
 
@@ -142,11 +127,8 @@ Trace this conditional plan through the tree on the right.
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 04_10 vacuum and or search tree},height=3.6in]{aima-fig-04_10-vacuum-and-or-search-tree.pdf}
 
-#+latex: \includegraphics[alt={aima fig 04_10 vacuum and or search tree},height=1in]{aima-fig-04_10-vacuum-and-or-search-tree.pdf}
-
-\end{center}
 
 
 
@@ -176,11 +158,8 @@ Trace this conditional plan through the tree on the right.
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 04_12 slippery vacuum search graph},height=3.6in]{aima-fig-04_12-slippery-vacuum-search-graph.pdf}
 
-#+latex: \includegraphics[alt={aima fig 04_12 slippery vacuum search graph},height=1in]{aima-fig-04_12-slippery-vacuum-search-graph.pdf}
-
-\end{center}
 
 
 
@@ -215,11 +194,8 @@ We say that the agent can *coerce* the world into state 7.
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_09 vacuum states},width=0.75\linewidth]{aima-fig-04_09-vacuum-states.pdf}
 
-\end{center}
 
 
 
@@ -255,21 +231,15 @@ Only 12 reachable belief states out of $2^8 = 256$ possible belief states.
 
 
 
-\begin{center}
-
-#+latex: \includegraphics[alt={aima fig 04_14 reachable sensorless vacuum belief states},height=1in]{aima-fig-04_14-reachable-sensorless-vacuum-belief-states.pdf}
-
-\end{center}
+#+latex: \includegraphics[alt={aima fig 04_14 reachable sensorless vacuum belief states},height=3.2in]{aima-fig-04_14-reachable-sensorless-vacuum-belief-states.pdf}
 
 
 
 
 
-\begin{center}
 
 #+latex: \includegraphics[alt={aima fig 04_09 vacuum states},width=0.75\linewidth]{aima-fig-04_09-vacuum-states.pdf}
 
-\end{center}
 
 
 
@@ -296,12 +266,10 @@ b' = Result(b,a) = \{s': s' = Result_P(s,a) \text{ and } s \in b\}
 
 With nondeterminism, the new belief state consists of all the possible results of applying the action to any of the states in the current belief state:
 
-
 \begin{align*}
 b'= Results(b,a) &= \{s': s' \in Results_P(s,a) and s \in b\}\\
                  &= \bigcup_{s \in b} Results_P(s,a)
 \end{align*}
-
 
 The size of $b'$ will be the same or smaller than b for deterministic actions, but may be larger than $b$ with nondeterministic actions.
 
@@ -311,11 +279,7 @@ The size of $b'$ will be the same or smaller than b for deterministic actions, b
 Apply the deterministic action to all states in $b$ to get $b'$.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_13_a sensorless vacuum belief state deterministic actions},width=0.75\linewidth]{aima-fig-04_13_a-sensorless-vacuum-belief-state-deterministic-actions.pdf}
-
-\end{center}
 
 
 
@@ -326,17 +290,12 @@ b' = Result(\{1, 3\}, Right) &= \{ Result_P(1,Right), Result_P(3,Right) \}\\
                              &= \{2, 4\}
 \end{align*}
 
-
 ** Predicting Belief States in Sensorless Slippery Vacuum World
 
 Apply the nondeterministic action to all states in $b$ to get $b'$.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_13_b sensorless vacuum belief state nondeterministic actions},width=0.75\linewidth]{aima-fig-04_13_b-sensorless-vacuum-belief-state-nondeterministic-actions.pdf}
-
-\end{center}
 
 
 
@@ -347,7 +306,6 @@ b' = Result(\{1, 3\}, Right) &= Result_P(1,Right) \cup Result_P(3,Right)\\
                              &= \{1, 2\} \cup \{4, 3\}\\
                              &= \{1, 2, 4, 3\}
 \end{align*}
-
 
 ** Search in Partially Observable Environments
 
@@ -380,11 +338,8 @@ How do we algorithmically get that belief state ...
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_09 vacuum states},width=0.75\linewidth]{aima-fig-04_09-vacuum-states.pdf}
 
-\end{center}
 
 
 
@@ -416,18 +371,14 @@ b_o = Update(\hat{b},o) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_15 local sensing vacuum state transitions},width=0.75\linewidth]{aima-fig-04_15-local-sensing-vacuum-state-transitions.pdf}
 
-\end{center}
 
 
 
 
 
 1. Predict $\hat{b} = Result(b, a)$
-
 \begin{multline*}
 \text{2. } PossiblePercepts(\hat{b}) = \\
 \{o : o = Percept(s) \text{ and } s \in \hat{b}\}
@@ -436,7 +387,6 @@ b_o = Update(\hat{b},o) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}
 \text{3. } b_o = Update(\hat{b},o) = \\
 \{s : o = Percept(s) \text{ and } s \in \hat{b}\}
 \end{multline*}
-
 
 
 Final column on left shows input to Update step, which will then compute the final $b_o$ based on percept/observation $o$.
@@ -454,7 +404,6 @@ Final column on left shows input to Update step, which will then compute the fin
 
 
 1. Predict:
-
 \vspace{-.25in}
 \begin{align*}
 \hat{b} &= Result(b, a)\\
@@ -462,9 +411,7 @@ Final column on left shows input to Update step, which will then compute the fin
         &= \{2, 4\}
 \end{align*}
 
-
 2. Possible percepts:
-
 \vspace{-.25in}
 \begin{align*}
 PossiblePercepts(\hat{b})  &= \{o : o = Percept(s) \text{ and } s \in \hat{b}\}\\
@@ -476,12 +423,8 @@ PossiblePercepts(\{2, 4\}) &= \{o : o = Percept(s) \text{ and } s \in \{2, 4\}\}
 
 
 
-
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_15_a local sensing vacuum deterministic state transitions},width=0.75\linewidth]{aima-fig-04_15_a-local-sensing-vacuum-deterministic-state-transitions.pdf}
 
-\end{center}
 
 
 
@@ -490,7 +433,6 @@ PossiblePercepts(\{2, 4\}) &= \{o : o = Percept(s) \text{ and } s \in \{2, 4\}\}
 Then the two belief states on the right are then fed to the final step once the agent gets a percept.  If the percept is $[R, Dirty]$, then:
 
 3. Update:
-
 \vspace{-.25in}
 \begin{align*}
 b_o &= Update(\hat{b},o) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}\\
@@ -498,14 +440,12 @@ b_o &= Update(\hat{b},o) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}\\
     &= \{2\}
 \end{align*}
 
-
 ** State Transitions with Local Sensing in Slippery Vacuum World
 
 
 
 
 1. Predict:
-
 \vspace{-.25in}
 \begin{align*}
 \hat{b} &= Result(b, a)\\
@@ -513,9 +453,7 @@ b_o &= Update(\hat{b},o) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}\\
         &= \{2, 1, 3, 4\}
 \end{align*}
 
-
 2. Possible percepts:
-
 \vspace{-.25in}
 \[
 PossiblePercepts(\hat{b}) = \{o : o = Percept(s) \text{ and } s \in \hat{b}\}
@@ -532,12 +470,8 @@ PossiblePercepts(\{2, 1, 3, 4\}) = \\
 
 
 
+#+latex: \includegraphics[alt={aima fig 04_15_b local sensing vacuum nondeterministic state transitions},height=2.0in]{aima-fig-04_15_b-local-sensing-vacuum-nondeterministic-state-transitions.pdf}
 
-\begin{center}
-
-#+latex: \includegraphics[alt={aima fig 04_15_b local sensing vacuum nondeterministic state transitions},height=1in]{aima-fig-04_15_b-local-sensing-vacuum-nondeterministic-state-transitions.pdf}
-
-\end{center}
 
 
 
@@ -546,14 +480,12 @@ PossiblePercepts(\{2, 1, 3, 4\}) = \\
 Then the three belief states on the right are then fed to the final step once the agent gets a percept.  If the percept is $[L, Dirty]$, then:
 
 3. Update:
-
 \vspace{-.25in}
 \begin{align*}
 b_o &= Update(\hat{b},o) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}\\
     &= Update(\{[R, Dirty], [L, Dirty], [L, Dirty], [R, Clean]\}) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}\\
     &= \{1, 3\}
 \end{align*}
-
 
 
 
@@ -577,11 +509,8 @@ Results(b,a) = \{b_o : b_o = Update(Predict(b,a),o) \text{ and }
 
 Kindergarten world (square not being actively cleaned can become dirty):
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_17 vacuum prediction update cycles},width=0.75\linewidth]{aima-fig-04_17-vacuum-prediction-update-cycles.pdf}
 
-\end{center}
 
 
 - Most real-world environments partially observable.  Belief state maintenance is core task.
@@ -599,11 +528,8 @@ Equation above is called a recursive state estimator because it computes the new
 Localization: typical robot state estimation problem in which the robot works out where it is, given a map of the world and a sequence of percepts and actions.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 04_18 robot localization},height=2.4in]{aima-fig-04_18-robot-localization.pdf}
 
-#+latex: \includegraphics[alt={aima fig 04_18 robot localization},height=1in]{aima-fig-04_18-robot-localization.pdf}
-
-\end{center}
 
 
 ** Online Seach

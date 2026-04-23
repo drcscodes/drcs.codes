@@ -51,11 +51,8 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 - MAKE-ACTION-SENTENCE constructs sentence asserting chosen action was executed.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_01 kb agent},height=1.6in]{aima-fig-07_01-kb-agent.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_01 kb agent},height=1in]{aima-fig-07_01-kb-agent.pdf}
-
-\end{center}
 
 
 - Logical agents are described at the *knowledge level* using *declarative* statements of knowledge and goals.
@@ -68,11 +65,8 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_02 wumpus world},height=1.2in]{aima-fig-07_02-wumpus-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_02 wumpus world},height=1in]{aima-fig-07_02-wumpus-world.pdf}
-
-\end{center}
 
 
 
@@ -105,11 +99,8 @@ Percepts encoded as list of five symbols indicating presense or absence (by None
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_03 first step wumpus world},height=1.6in]{aima-fig-07_03-first-step-wumpus-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_03 first step wumpus world},height=1in]{aima-fig-07_03-first-step-wumpus-world.pdf}
-
-\end{center}
 
 
 - (a) after percept [None,None,None,None,None]
@@ -118,11 +109,8 @@ Percepts encoded as list of five symbols indicating presense or absence (by None
 ** Later Steps Wumpus World
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_04 later steps wumpus world},height=2.8in]{aima-fig-07_04-later-steps-wumpus-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_04 later steps wumpus world},height=1in]{aima-fig-07_04-later-steps-wumpus-world.pdf}
-
-\end{center}
 
 
 ** Logic
@@ -159,11 +147,8 @@ Formal definition of entailment:
 The presence of pits in squares [1, 2], [2, 2] and [3, 1] gives rise to $2^3 = 8$ possible models.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_05 possible models pits},height=1.6in]{aima-fig-07_05-possible-models-pits.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_05 possible models pits},height=1in]{aima-fig-07_05-possible-models-pits.pdf}
-
-\end{center}
 
 
 Solid line delineates KB based on percept [None, None, None, None, None] in [1,1].
@@ -196,11 +181,8 @@ which is pronounced "$\alpha$ is derived from $KB$ by $i$" or "$i$ derives $\alp
 If KB is true in the real world, then any sentence $\alpha$ derived from KB by a sound inference procedure is also true in the real world?
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_06 representation vs world},height=1.6in]{aima-fig-07_06-representation-vs-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_06 representation vs world},height=1in]{aima-fig-07_06-representation-vs-world.pdf}
-
-\end{center}
 
 
 *Grounding*: connection between logical reasoning and the real environment.  How do we know that KB is true in the real world.
@@ -239,21 +221,15 @@ If KB is true in the real world, then any sentence $\alpha$ derived from KB by a
 ** Grammar of Propositional Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_07 grammar of popositional logic},height=2.8in]{aima-fig-07_07-grammar-of-popositional-logic.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_07 grammar of popositional logic},height=1in]{aima-fig-07_07-grammar-of-popositional-logic.pdf}
-
-\end{center}
 
 
 ** Semantics of Propositional Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_08 truth tables logical connectives},height=2.8in]{aima-fig-07_08-truth-tables-logical-connectives.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_08 truth tables logical connectives},height=1in]{aima-fig-07_08-truth-tables-logical-connectives.pdf}
-
-\end{center}
 
 
 ** Propositional Theorem Proving
@@ -291,140 +267,98 @@ Modus ponens
 ** Propositional Theorem Proving
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_09 truth table knowledge base},height=2.8in]{aima-fig-07_09-truth-table-knowledge-base.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_09 truth table knowledge base},height=1in]{aima-fig-07_09-truth-table-knowledge-base.pdf}
-
-\end{center}
 
 
 ** Propositional Theorem Proving
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_10 tt entails algorithm},height=2.8in]{aima-fig-07_10-tt-entails-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_10 tt entails algorithm},height=1in]{aima-fig-07_10-tt-entails-algorithm.pdf}
-
-\end{center}
 
 
 ** Propositional Theorem Proving
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_11 logical equivalences},height=2.8in]{aima-fig-07_11-logical-equivalences.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_11 logical equivalences},height=1in]{aima-fig-07_11-logical-equivalences.pdf}
-
-\end{center}
 
 
 ** Propositional Theorem Proving
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_12 grammar of cnf},height=2.8in]{aima-fig-07_12-grammar-of-cnf.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_12 grammar of cnf},height=1in]{aima-fig-07_12-grammar-of-cnf.pdf}
-
-\end{center}
 
 
 ** Propositional Theorem Proving
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_13 pl resolution algorithm},height=2.8in]{aima-fig-07_13-pl-resolution-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_13 pl resolution algorithm},height=1in]{aima-fig-07_13-pl-resolution-algorithm.pdf}
-
-\end{center}
 
 
 ** Propositional Theorem Proving
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_14 pl resolution application},height=2.8in]{aima-fig-07_14-pl-resolution-application.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_14 pl resolution application},height=1in]{aima-fig-07_14-pl-resolution-application.pdf}
-
-\end{center}
 
 
 ** Propositional Theorem Proving
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_15 pl fc entails algorithm},height=2.8in]{aima-fig-07_15-pl-fc-entails-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_15 pl fc entails algorithm},height=1in]{aima-fig-07_15-pl-fc-entails-algorithm.pdf}
-
-\end{center}
 
 
 ** Propositional Theorem Proving
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_16 horn clauses and or graph},height=2.8in]{aima-fig-07_16-horn-clauses-and-or-graph.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_16 horn clauses and or graph},height=1in]{aima-fig-07_16-horn-clauses-and-or-graph.pdf}
-
-\end{center}
 
 
 ** Propositional Model Checking
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_17 dpll algorithm},height=2.8in]{aima-fig-07_17-dpll-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_17 dpll algorithm},height=1in]{aima-fig-07_17-dpll-algorithm.pdf}
-
-\end{center}
 
 
 ** Propositional Model Checking
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_18 walksat algorithm},height=2.8in]{aima-fig-07_18-walksat-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_18 walksat algorithm},height=1in]{aima-fig-07_18-walksat-algorithm.pdf}
-
-\end{center}
 
 
 ** Propositional Model Checking
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_19 dpll vs walksat},height=2.8in]{aima-fig-07_19-dpll-vs-walksat.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_19 dpll vs walksat},height=1in]{aima-fig-07_19-dpll-vs-walksat.pdf}
-
-\end{center}
 
 
 ** Agents Based on Propositional Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_20 hybrid wumpus agent algorithm},height=2.8in]{aima-fig-07_20-hybrid-wumpus-agent-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_20 hybrid wumpus agent algorithm},height=1in]{aima-fig-07_20-hybrid-wumpus-agent-algorithm.pdf}
-
-\end{center}
 
 
 ** Agents Based on Propositional Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_21 1 cnf belief state},height=2.8in]{aima-fig-07_21-1-cnf-belief-state.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_21 1 cnf belief state},height=1in]{aima-fig-07_21-1-cnf-belief-state.pdf}
-
-\end{center}
 
 
 ** Agents Based on Propositional Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 07_22 satplan algorithm},height=2.8in]{aima-fig-07_22-satplan-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 07_22 satplan algorithm},height=1in]{aima-fig-07_22-satplan-algorithm.pdf}
-
-\end{center}
 
 

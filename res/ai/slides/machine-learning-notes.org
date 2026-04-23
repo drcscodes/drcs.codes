@@ -135,7 +135,8 @@ A learning algorithm uses elements of $\mathcal{D}$ to estimate parameters of of
 
 Classification is a supervised learning task in which the target function maps feature vectors in $\mathbb{R}^{d}$ to one of a defined set of classes.
 
-#+latex: \includegraphics[alt={../../deep learning/slides/cat classify},height=1in]{../../deep-learning/slides/cat-classify.png}
+#+latex: \includegraphics[alt={../../deep learning/slides/cat classify},height=2.0in]{../../deep-learning/slides/cat-classify.png}
+
 
 - In linear classification we assume that there are lines that separates classes acceptably well.
     - Binary: two classes
@@ -147,7 +148,8 @@ Classification is a supervised learning task in which the target function maps f
 
 Regression is a kind of supervised learning in which the target function maps feature vectors in $\mathbb{R}^{d}$ to arbitrary real values.
 
-#+latex: \includegraphics[alt={../../deep learning/slides/september sea ice},height=1in]{../../deep-learning/slides/september-sea-ice.png}
+#+latex: \includegraphics[alt={../../deep learning/slides/september sea ice},height=1.6in]{../../deep-learning/slides/september-sea-ice.png}
+
 
 - In linear regression we assume that there is a line that fits the data acceptably well.
     - Simple regression: one input variable, e.g.,  $f(x; \vec{\theta}) = wx + b$, where $\vec{\theta} = (w, b)$
@@ -214,7 +216,8 @@ We say it is structured because we impose the structure on it.  There is nothing
 
 
 
-#+latex: \includegraphics[alt={../../deep learning/slides/elsa anna bench.},height=1in]{../../deep-learning/slides/elsa-anna-bench.jpeg}
+#+latex: \includegraphics[alt={../../deep learning/slides/elsa anna bench.},height=1.8in]{../../deep-learning/slides/elsa-anna-bench.jpeg}
+
 
 
 Unstructured data is data whose structure is inherent in the data, not imposed by us.  Examples include images and natural langauge text.
@@ -226,7 +229,8 @@ Unstructured data is data whose structure is inherent in the data, not imposed b
 
 A scatter plot gives us intuition about the structure of the data.
 
-#+latex: \includegraphics[alt={../../deep learning/slides/credit scatter},height=1in]{../../deep-learning/slides/credit-scatter.png}
+#+latex: \includegraphics[alt={../../deep learning/slides/credit scatter},height=2.8in]{../../deep-learning/slides/credit-scatter.png}
+
 
 Is there a line that separates the +s from the -s?
 
@@ -234,7 +238,8 @@ Is there a line that separates the +s from the -s?
 
 Here's a line that separates the data into classes.
 
-#+latex: \includegraphics[alt={../../deep learning/slides/credit scatter separator},height=1in]{../../deep-learning/slides/credit-scatter-separator.png}
+#+latex: \includegraphics[alt={../../deep learning/slides/credit scatter separator},height=2.8in]{../../deep-learning/slides/credit-scatter-separator.png}
+
 
 Are there other lines? How many of these lines are there?
 
@@ -242,7 +247,8 @@ Are there other lines? How many of these lines are there?
 
 A *version space* is the set of all $h$ in $\mathcal{H}$ consistent with our training data.  For our credit data, it's the set of all lines that separate the classes.
 
-#+latex: \includegraphics[alt={../../deep learning/slides/credit scatter},height=1in]{../../deep-learning/slides/credit-scatter.png}
+#+latex: \includegraphics[alt={../../deep learning/slides/credit scatter},height=2.8in]{../../deep-learning/slides/credit-scatter.png}
+
 
 Machine learning algorithms find these lines algorithmically.
 
@@ -250,7 +256,8 @@ Machine learning algorithms find these lines algorithmically.
 
 It's a rite of passage to apply supervised learning to the Iris data set. The canonical source for the Iris data set is the [[https://archive.ics.uci.edu/ml/][UCI Machine Learning Repository]]. Download  [[https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data][iris.data]].
 
-#+latex: \includegraphics[alt={../../deep learning/slides/iris},height=1in]{../../deep-learning/slides/iris.jpg}
+#+latex: \includegraphics[alt={../../deep learning/slides/iris},height=2.4in]{../../deep-learning/slides/iris.jpg}
+
 
 ** Iris Data
 
@@ -378,7 +385,8 @@ import seaborn as sns
 sns.pairplot(X_iris_train, hue="species", size=1.5)
 #+end_src
 
-#+latex: \includegraphics[alt={../../deep learning/slides/iris pairplot},height=1in]{../../deep-learning/slides/iris-pairplot.png}
+#+latex: \includegraphics[alt={../../deep learning/slides/iris pairplot},height=2.4in]{../../deep-learning/slides/iris-pairplot.png}
+
 
 These look linearly separable, so we'll try a linear discriminant classifier, SVM.
 
@@ -432,7 +440,8 @@ A Scikit-learn estimator (model/hypothesis) is an object that has ~fit~ (train) 
 
 ** The Deep Learning Revolution
 
-#+latex: \includegraphics[alt={../../deep learning/slides/imagenet},height=1in]{../../deep-learning/slides/imagenet.png}
+#+latex: \includegraphics[alt={../../deep learning/slides/imagenet},height=2.4in]{../../deep-learning/slides/imagenet.png}
+
 
 
 In 2010, [[https://profiles.stanford.edu/fei-fei-li][Fei-Fei Li]] and her team published a data set of tens of millions of labeled photographs -- [[https://image-net.org][ImageNet]] -- and launched the annual ImageNet Large Scale Visual Recognition Challenge (ILSVRC)
@@ -441,7 +450,8 @@ In the first two years traditional approaches, characterized by complex feature 
 
 ** AlexNet
 
-#+latex: \includegraphics[alt={Ilya Sutskever, Geoff Hinton, Alex Krizhevsky},height=1in]{../../deep-learning/slides/ilya-geoff-alex.jpg}
+#+latex: \includegraphics[alt={Ilya Sutskever, Geoff Hinton, Alex Krizhevsky},height=2.0in]{../../deep-learning/slides/ilya-geoff-alex.jpg}
+
 
 In 2012, Alex Krizhevsky and Ilya Sutskever from Geoff Hinton's lab at the University of Toronto *dominated* the ILSVRC with what is now called [[https://www.cs.toronto.edu/~kriz/imagenet_classification_with_deep_convolutional.pdf][AlexNet]]
 
@@ -455,13 +465,15 @@ Since then, deep learning has practically taken over AI.
 
 Autonomous cars are teeming with deep learning models.
 
-#+latex: \includegraphics[alt={../../deep learning/slides/thrun autonomous cars},height=1in]{../../deep-learning/slides/thrun-autonomous-cars.png}
+#+latex: \includegraphics[alt={../../deep learning/slides/thrun autonomous cars},height=3.0in]{../../deep-learning/slides/thrun-autonomous-cars.png}
+
 
 ** Scene Labeling
 
 Convolutional deep neural networks (CNNs), or ConvNets, are widely used in vision applications.
 
-#+latex: \includegraphics[alt={../../deep learning/slides/farabet scene labeling},height=1in]{../../deep-learning/slides/farabet-scene-labeling.png}
+#+latex: \includegraphics[alt={../../deep learning/slides/farabet scene labeling},height=3.0in]{../../deep-learning/slides/farabet-scene-labeling.png}
+
 
 [^farabet]: Farabet et al. ICML 2012, PAMI 2013
 
@@ -469,7 +481,8 @@ Convolutional deep neural networks (CNNs), or ConvNets, are widely used in visio
 
 One of the early projects that popularized the uses of ReLU activation functions in deep neural networks.
 
-#+latex: \includegraphics[alt={../../deep learning/slides/zeiler speech recognition},height=1in]{../../deep-learning/slides/zeiler-speech-recognition.png}
+#+latex: \includegraphics[alt={../../deep learning/slides/zeiler speech recognition},height=3.2in]{../../deep-learning/slides/zeiler-speech-recognition.png}
+
 
 ** Generative AI
 

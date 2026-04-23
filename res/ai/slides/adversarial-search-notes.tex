@@ -1,4 +1,4 @@
-% Created 2026-04-21 Tue 19:37
+% Created 2026-04-22 Wed 22:22
 % Intended LaTeX compiler: lualatex
 \DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
 \documentclass[11pt]{article}
@@ -50,7 +50,7 @@
 
 \maketitle
 \section{Games}
-\label{sec:org0b67517}
+\label{sec:orgbe9f6ec}
 
 \textbf{Competitive environments}, in which two or more agents have conflicting goals, give rise to \textbf{adversarial search} problems.
 
@@ -66,7 +66,7 @@ Three approaches to dealing with multiagent environments:
 
 This lesson deals with the third approach.
 \section{From Game Theory to Adversarial AI}
-\label{sec:org4b811ce}
+\label{sec:org9ab10d0}
 
 In game theory, games like Chess and Go are deterministic, two-player, turn-taking, perfect information, zero-sum games.
 
@@ -88,7 +88,7 @@ In AI we commonly study two-player zero sum games, in which the "score" for one 
 Note: in Chess tournaments draws award each player scores of \(\frac{1}{2}\), but in an AI chess playing algorithms you can use +1, -1, and 0.  Alternatively, you can model chess as a "constant sum" game with scores of 1, 0, or \(\frac{1}{2}\).
 \end{quote}
 \section{Two-Player Zero-Sum Games}
-\label{sec:orga380c83}
+\label{sec:org44a18b7}
 
 Two players: MAX and MIN.  MAX moves first.
 
@@ -108,15 +108,16 @@ A game can be formally defined with the following elements:
 \item \(Utility(s,p)\): A utility function (also called an objective function or payoff function), which defines the final numeric value to player \(p\) when the game ends in terminal state \(s\).  In chess, the outcome is a win, loss, or draw, with values 1, 0, or 1/2. Some games have a wider range of possible outcomes—for example, the payoffs in backgammon range from 0 to 192.
 \end{itemize}
 \section{Tic-Tac-Toe Game Tree}
-\label{sec:org5ae562d}
+\label{sec:org08b67e9}
 
 
-\includegraphics[alt={aima fig 05_01 tic tac toe game tree},height=1in]{aima-fig-05_01-tic-tac-toe-game-tree.pdf}
+\includegraphics[alt={aima fig 05_01 tic tac toe game tree},height=2.8in]{aima-fig-05_01-tic-tac-toe-game-tree.pdf}
+
 
 
 Tic-tac-toe is relatively small -- fewer than \(9!= 362,880\) terminal nodes with only 5,478 distinct states.
 \section{Optimal Decisions in Games}
-\label{sec:orgd3eb0c2}
+\label{sec:org2342443}
 
 \begin{itemize}
 \item MAX searches for a sequence of actions leading to a win.
@@ -133,7 +134,7 @@ Minimax search generates a game tree with moves for both MAX and MIN
 \item One move by one player is called a \textbf{ply}.  A ply for MAX plus the response ply for MIN constitute a game move.
 \end{itemize}
 \section{Minimax Decision}
-\label{sec:orgb4c0523}
+\label{sec:org622a7d8}
 
 \begin{itemize}
 \item Given a game tree, the optimal strategy can be determined by working out the \textbf{minimax value} of each state in the tree, which we write as \(Minimax(s)\).
@@ -150,10 +151,11 @@ min_{a \in Actions(s)} Minimax(Result(s,a)) & \text{if } ToMove(s) = MIN
 \end{cases}
 \end{equation*}
 \section{Minimax Game Tree}
-\label{sec:orgc68b2d3}
+\label{sec:orgda48ed4}
 
 
 \includegraphics[alt={aima fig 05_02 two ply game tree},width=0.75\linewidth]{aima-fig-05_02-two-ply-game-tree.pdf}
+
 
 
 A two-ply game tree.
@@ -167,7 +169,7 @@ A two-ply game tree.
 \item MIN’s best reply is \(b_1\), because it leads to the state with the lowest minimax value.
 \end{itemize}
 \section{Minimax Algorithm}
-\label{sec:orgf7ddc56}
+\label{sec:org5ffd017}
 
 
 
@@ -184,7 +186,7 @@ A two-ply game tree.
 
 \includegraphics[alt={aima fig 05_03 minimax algorithm},width=0.75\linewidth]{aima-fig-05_03-minimax-algorithm.pdf}
 \section{Analysis of Minimax}
-\label{sec:org64223e1}
+\label{sec:org6944818}
 
 \begin{itemize}
 \item Time complexity: \(O(b^m)\)
@@ -204,7 +206,7 @@ Chess has an average branching factor of 35 and an average game has a depth of 8
 
 Clearly, minimax won't work for Chess.  We'll make two modifications to minimax that makes games like Chess tractable.
 \section{Alpha-Beta Pruning}
-\label{sec:org409f1b9}
+\label{sec:orgbb8b8ec}
 
 Number of game states is exponential in depth of tree, so we have to \textbf{prune} branches of the tree to make searching it tractable.
 
@@ -225,12 +227,13 @@ Number of game states is exponential in depth of tree, so we have to \textbf{pru
 
 Alpha-beta pruning cuts off the exploration of nodes if those nodes would not change move selection.
 \section{Alpha-Beta Pruning in Action}
-\label{sec:orgdbb9d56}
+\label{sec:org4d84f93}
 
 Intervals show range of possible values at each node,  \([\alpha, \beta]\).
 
 
-\includegraphics[alt={aima fig 05_05 f alpha beta tree},height=1in]{aima-fig-05_05-f-alpha-beta-tree.pdf}
+\includegraphics[alt={aima fig 05_05 f alpha beta tree},height=1.2in]{aima-fig-05_05-f-alpha-beta-tree.pdf}
+
 
 
 \vspace{-.1in}
@@ -244,7 +247,7 @@ Minimax(root) &= max(min(3,12,8),min(2,x,y),min(14,5,2)) \\
 
 In other words, the value of the root and hence the minimax decision are independent of the values of the leaves x and y, and therefore they can be pruned.
 \section{Alpha-Beta Calculation Stages}
-\label{sec:org78731ed}
+\label{sec:org3a98712}
 
 
 
@@ -269,7 +272,7 @@ In other words, the value of the root and hence the minimax decision are indepen
 
 \includegraphics[alt={aima fig 05_05 game tree calculation stages},width=0.75\linewidth]{aima-fig-05_05-game-tree-calculation-stages.pdf}
 \section{Alpha-Beta Search Algorithm}
-\label{sec:org1716812}
+\label{sec:orgbcec32e}
 
 
 
@@ -286,7 +289,7 @@ In other words, the value of the root and hence the minimax decision are indepen
 
 \includegraphics[alt={aima fig 05_07 alpha beta algorithm},width=0.75\linewidth]{aima-fig-05_07-alpha-beta-algorithm.pdf}
 \section{Heuristic Alpha-Beta Tree Search}
-\label{sec:org56c0cca}
+\label{sec:org7097a8b}
 
 Alpha-beta search helps, but it is still highly dependent on move ordering.  So we need more help in limiting search.
 
@@ -304,7 +307,7 @@ min_{a \in Actions(s)} HMinimax(Result(s,a), d+1) & \text{if } ToMove(s) = MIN
 \end{cases}
 \end{equation*}
 \section{Static Evaluation Functions}
-\label{sec:orgc9e8518}
+\label{sec:orgac7cd4a}
 
 A heuristic evaluation function \(Eval(s,p)\) returns an estimate of the expected utility of state \(s\) to player \(p\), just as the heuristic functions of Chapter 3 return an estimate of the distance to the goal.
 
@@ -324,10 +327,11 @@ Eval(s) = w_1 f_1(s) + w_2 f_2(s) + \cdots + w_n f_n(s) = \sum _{i=1}^n w_i f_i(
 \item Each \(w_i\) is a weight saying how important that feature is.
 \end{itemize}
 \section{Chess Configuration Examples}
-\label{sec:org463bfc1}
+\label{sec:orgb2e40d4}
 
 
 \includegraphics[alt={aima fig 05_08 chess positions},width=0.75\linewidth]{aima-fig-05_08-chess-positions.pdf}
+
 
 
 \begin{itemize}
@@ -335,7 +339,7 @@ Eval(s) = w_1 f_1(s) + w_2 f_2(s) + \cdots + w_n f_n(s) = \sum _{i=1}^n w_i f_i(
 \item (b) White will capture the queen, giving it an advantage that should be strong enough to win.
 \end{itemize}
 \section{Cutting Off Search}
-\label{sec:org705eff2}
+\label{sec:org7094e78}
 
 In alpha-beta search algorithm, keep track of depth so you can cut off at a particular depth and replace lines with \(IsTerminal(state)\) with
 
@@ -345,11 +349,12 @@ In alpha-beta search algorithm, keep track of depth so you can cut off at a part
 
 Best to apply cutoff quiescent positions, that is, positions that don't contain a killer move that would radically change the value of the position.  Adding this to the \(IsCutoff\) function is called \textbf{quiescence search}.
 \section{Horizon Effect}
-\label{sec:org99a24b6}
+\label{sec:org221ba0c}
 
 
 
-\includegraphics[alt={aima fig 05_09 chess horizon effect},height=1in]{aima-fig-05_09-chess-horizon-effect.pdf}
+\includegraphics[alt={aima fig 05_09 chess horizon effect},height=2.0in]{aima-fig-05_09-chess-horizon-effect.pdf}
+
 
 
 With Black to play, if Black only searches to a depth of 4-ply, it will see that
@@ -361,7 +366,7 @@ With Black to play, if Black only searches to a depth of 4-ply, it will see that
 
 This is an example of the horizon effect -- failing to see that these moves do not, in fact, save the bishop and ultimately result in a worse posiotion for black.
 \section{Monte Carlo Tree Search (MCTS)}
-\label{sec:orge053236}
+\label{sec:org307e9f1}
 
 Two major weaknesses of heuristic alpha-beta tree search:
 
@@ -387,10 +392,11 @@ Playout policy: bias move selection towards good ones.  Two options:
 \item Selection policy: focus computation on important parts of game tree by balancing exploration and exploitation.
 \end{itemize}
 \section{Selection-Based MCTS Algorithm}
-\label{sec:orgc55f555}
+\label{sec:org396aadd}
 
 
-\includegraphics[alt={aima fig 05_11 mcts algorithm},height=1in]{aima-fig-05_11-mcts-algorithm.pdf}
+\includegraphics[alt={aima fig 05_11 mcts algorithm},height=1.6in]{aima-fig-05_11-mcts-algorithm.pdf}
+
 
 
 \begin{itemize}
@@ -403,12 +409,13 @@ Playout policy: bias move selection towards good ones.  Two options:
 \item Back-propagation: use the result of the simulation to update all search tree nodes going up to the root.
 \end{itemize}
 \section{MCTS Iteration}
-\label{sec:org5ca490a}
+\label{sec:org3df325e}
 
 White just played (light purple nodes) -- black to play.
 
 
-\includegraphics[alt={aima fig 05_10 mcts iteration},height=1in]{aima-fig-05_10-mcts-iteration.pdf}
+\includegraphics[alt={aima fig 05_10 mcts iteration},height=1.6in]{aima-fig-05_10-mcts-iteration.pdf}
+
 
 
 \begin{itemize}
@@ -422,7 +429,7 @@ White just played (light purple nodes) -- black to play.
 \end{itemize}
 \end{itemize}
 \section{Upper Confidence Bound MCTS Selection Policy}
-\label{sec:org8805dc5}
+\label{sec:org7df2a45}
 
 \begin{equation*}
 UCB1(n) = \overbrace{\frac{U(n)}{N(n)}}^{\text{Exploitation Term}} + C \times \overbrace{\sqrt{ \frac{\log N (PARENT(n))}{N(n)} }}^{\text{Exploration Term}}
@@ -449,13 +456,14 @@ Remember that MCTS returns the node with the highest number of playouts, not the
 \item UCB1 ensures that node with most playouts is almost always node with highest win percentage -- selection process increasingly favors win percentage as number of playouts increases.
 \end{itemize}
 \section{UCB1 In Action -- Exploitation}
-\label{sec:org196eea9}
+\label{sec:org904fa65}
 
 
 
 
 
 \includegraphics[alt={aima fig 05_10 a mcts selection},width=0.75\linewidth]{aima-fig-05_10-a-mcts-selection.pdf}
+
 
 
 
@@ -483,13 +491,14 @@ UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }
         &= 1.09
 \end{align*}
 \section{UCB1 In Action -- Exploration}
-\label{sec:org5b3ef15}
+\label{sec:orgd8094eb}
 
 
 
 
 
 \includegraphics[alt={aima fig 05_10 a mcts selection},width=0.75\linewidth]{aima-fig-05_10-a-mcts-selection.pdf}
+
 
 
 
@@ -517,10 +526,11 @@ UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }
         &= 1.15 \checkmark
 \end{align*}
 \section{Errors in Heuristic Minimax Search}
-\label{sec:org70a6847}
+\label{sec:org584844a}
 
 
 \includegraphics[alt={aima fig 05_16 heuristic minimax errors},width=0.75\linewidth]{aima-fig-05_16-heuristic-minimax-errors.pdf}
+
 
 
 \begin{itemize}
@@ -529,7 +539,7 @@ UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }
 \item If evaluation function has random error with \(\sigma = 2\), left is better 58\% of the time.
 \end{itemize}
 \section{Closing Thoughts}
-\label{sec:orgdeb172c}
+\label{sec:orga3a1f5c}
 
 The game playing algorithms we considered here have limitations that we will address in furture lessons.
 

@@ -1,4 +1,4 @@
-% Created 2026-04-21 Tue 19:38
+% Created 2026-04-22 Wed 22:23
 % Intended LaTeX compiler: lualatex
 \DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
 \documentclass[11pt]{article}
@@ -50,7 +50,7 @@
 
 \maketitle
 \section{Informed (Heuristic) Search Strategies}
-\label{sec:org702e439}
+\label{sec:orgb9581a7}
 
 \begin{itemize}
 \item Use domain-specific hints about "distance" from goals
@@ -69,9 +69,10 @@ Example Heuristic for Romania, \(h_{SLD}\):
 \includegraphics[alt={aima fig 03_16 straight line distances},width=0.75\linewidth]{aima-fig-03_16-straight-line-distances.pdf}
 
 
+
 Straight line distances to Bucharest from each of the cities in Romania.
 \section{Greedy Best-First Search}
-\label{sec:org2811e07}
+\label{sec:org0cdfd68}
 
 \begin{itemize}
 \item Recall that best-first search uses a priority queue for its frontier, ordered by \(f(node)\)
@@ -80,12 +81,13 @@ Straight line distances to Bucharest from each of the cities in Romania.
 \end{itemize}
 
 
-\includegraphics[alt={aima fig 03_17 greedy best first progress},height=1in]{aima-fig-03_17-greedy-best-first-progress.pdf}
+\includegraphics[alt={aima fig 03_17 greedy best first progress},height=2.8in]{aima-fig-03_17-greedy-best-first-progress.pdf}
 \section{Optimality of Greedy Best-First Search}
-\label{sec:org27c3840}
+\label{sec:org936201b}
 
 
-\includegraphics[alt={aima fig 03_10 sibiu bucharest},height=1in]{aima-fig-03_10-sibiu-bucharest.pdf}
+\includegraphics[alt={aima fig 03_10 sibiu bucharest},height=2.0in]{aima-fig-03_10-sibiu-bucharest.pdf}
+
 
 
 \begin{itemize}
@@ -93,7 +95,7 @@ Straight line distances to Bucharest from each of the cities in Romania.
 \item The path through Rimnicu Vilcea and Pitesti is 32 miles shorter.
 \end{itemize}
 \section{\(A^*\) Search}
-\label{sec:orgdf58125}
+\label{sec:org9ddc488}
 
 \begin{equation*}
 f(node) = g(node) + h(node)
@@ -107,17 +109,17 @@ f(node) = g(node) + h(node)
 
 Heavily dependent on quality of heuristic function.
 \section{\(A^*\) Progress Part 1}
-\label{sec:orge0fb955}
+\label{sec:orgdaa6d85}
 
 
-\includegraphics[alt={aima fig 03_18 astar progress 1},height=1in]{aima-fig-03_18-astar-progress-1.pdf}
+\includegraphics[alt={aima fig 03_18 astar progress 1},height=3.6in]{aima-fig-03_18-astar-progress-1.pdf}
 \section{\(A^*\) Progress Part 2}
-\label{sec:orgd8335db}
+\label{sec:orgb59ba5f}
 
 
 \includegraphics[alt={aima fig 03_18 astar progress 2},width=0.75\linewidth]{aima-fig-03_18-astar-progress-2.pdf}
 \section{Admissibility and Consistency}
-\label{sec:orgf8e1df5}
+\label{sec:org960097b}
 
 \begin{itemize}
 \item An \textbf{admissible} heuristic never overestimates the cost to reach a goal.
@@ -128,12 +130,13 @@ Heavily dependent on quality of heuristic function.
 \includegraphics[alt={aima fig 03_19 consistency triangle inequality},width=0.75\linewidth]{aima-fig-03_19-consistency-triangle-inequality.pdf}
 
 
+
 \begin{itemize}
 \item Admissibility is required to guarantee cost-optimality in \(A^*\).
 \item Consistency improves performance by guaranteeing that the first time we reach a node, it is on the optimal path -- so we don't re-evaluate multiple paths to the same node.
 \end{itemize}
 \section{Satisficing Search: \(A^*\) vs Weighted \(A^*\)}
-\label{sec:org42e15e1}
+\label{sec:orga365043}
 
 \begin{itemize}
 \item Detour index: multiplier applied to straight-line distance to account for curvature of roads.  E.g., detour index of 1.3 means a road connecting locations 10 miles apart would be estimated as 13 miles long.
@@ -148,7 +151,8 @@ Heavily dependent on quality of heuristic function.
 
 
 
-\includegraphics[alt={aima fig 03_21 astar vs weighted astar},height=1in]{aima-fig-03_21-astar-vs-weighted-astar.png}
+\includegraphics[alt={aima fig 03_21 astar vs weighted astar},height=1.2in]{aima-fig-03_21-astar-vs-weighted-astar.png}
+
 
 
 (a) an \(A^*\) search and (b) a weighted \(A^*\) search with weight \(w = 2\).
@@ -158,7 +162,7 @@ Heavily dependent on quality of heuristic function.
 \item On this particular problem, weighted \(A^*\) explores 7 times fewer states and finds a path that is 5\% more costly.
 \end{itemize}
 \section{Memory-Bounded Search}
-\label{sec:org49e20cf}
+\label{sec:org1dd3360}
 
 \(A^*\) is not memory-efficient.  Some approaches to imporoving memory efficiency:
 
@@ -187,7 +191,7 @@ Heavily dependent on quality of heuristic function.
 \item \textbf{Simplified memory-bounded \(A^*\) (\(SMA^*\))} is similar to RBFS, but expands best leaf node until memory is full.  Then it discards the worst leaf and continues.
 \end{itemize}
 \section{Search Contours}
-\label{sec:org417f585}
+\label{sec:org753f446}
 
 \begin{itemize}
 \item In a topographical map, countours indicate a constant elevation
@@ -202,14 +206,16 @@ Heavily dependent on quality of heuristic function.
 \includegraphics[alt={aima fig 03_20 astar contours},width=0.75\linewidth]{aima-fig-03_20-astar-contours.pdf}
 
 
+
 \begin{itemize}
 \item Countours represent monotonically increasing path costs.
 \end{itemize}
 \section{Heuristic Functions}
-\label{sec:org0b568cc}
+\label{sec:orge99e749}
 
 
 \includegraphics[alt={aima fig 03_03 eight puzzle},width=0.75\linewidth]{aima-fig-03_03-eight-puzzle.pdf}
+
 
 
 \begin{itemize}
@@ -219,7 +225,7 @@ Heavily dependent on quality of heuristic function.
 
 True solution cost is 26, so neither heristic overestimates.
 \section{Heuristic Accuracy and Performance}
-\label{sec:orgfb22b0f}
+\label{sec:org94e53e5}
 
 \begin{itemize}
 \item Effective branching factor, \(b^*\): for \(N\) nodes, branching factor of uniform tree of depth \(d\) that would contain \(N+1\) nodes.  Want close to 1.
@@ -234,12 +240,13 @@ True solution cost is 26, so neither heristic overestimates.
 
 
 
+
 \begin{itemize}
 \item \(h_2\) dominates \(h_1\) because for any \(node\), \(h_2(node) \ge h_1(node)\)
 \item We want a heuristic that underestimates, but by as little as possible.
 \end{itemize}
 \section{Designing Heuristic Functions}
-\label{sec:orgb91bc39}
+\label{sec:org794e362}
 
 \begin{itemize}
 \item Relaxing the problem definition

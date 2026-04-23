@@ -39,11 +39,8 @@
 Recall belief state maintenance from the Kindergarten vacuum world (square not being actively cleaned can become dirty):
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 04_17 vacuum prediction update cycles},height=1.2in]{aima-fig-04_17-vacuum-prediction-update-cycles.pdf}
 
-#+latex: \includegraphics[alt={aima fig 04_17 vacuum prediction update cycles},height=1in]{aima-fig-04_17-vacuum-prediction-update-cycles.pdf}
-
-\end{center}
 
 
 - Most real-world environments partially observable.  Belief state maintenance is core task.
@@ -148,11 +145,8 @@ The transition model specifies the probability distribution over the latest stat
 In these Bayes nets:
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 14_01 bayes net markov processes},width=0.75\linewidth]{aima-fig-14_01-bayes-net-markov-processes.pdf}
 
-\end{center}
 
 
 - (a) First-order Markov process: $P(\bm{X}_t \mid \bm{X}_{0:t-1}) = P(\bm{X}_t \mid \bm{X}_{t-1})$
@@ -181,11 +175,8 @@ P(\bm{E}_t \mid \bm{X}_{0:t}, \bm{E}_{1:t-1}) = P(\bm{E}_t \mid \bm{X}_t) \tag{1
 \end{equation*}
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1.6in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
-
-\end{center}
 
 
 - Transition model is $P(Rain_t \mid Rain_{t-1})$.
@@ -286,7 +277,6 @@ P(\bm{X}_{t+1} \mid f \left( \bm{e}_{t+1}, P(\bm{X}_t \mid \bm{e}_{1:t}) \right)
 
 We can view the calculation as being composed of two parts: first, the current state distribution is projected forward from $t$ to $t + 1$; then it is updated using the new evidence $\bm{e}_{t+1}$. This two-part process emerges quite simply when the formula is rearranged:
 
-
 \vspace{-.25in}
 \begin{align*}
 P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) &= P(\bm{X}_{t+1} \mid \bm{e}_{1:t}, \bm{e}_{t+1}) \tag{Divide the evidence}\\
@@ -294,9 +284,7 @@ P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) &= P(\bm{X}_{t+1} \mid \bm{e}_{1:t}, \bm{e}_
                                      &= \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{update}} \underbrace{P(\bm{X}_{t+1} \mid \bm{e}_{1:t})}_{\text{prediction}} \tag{Sensor Markov assumption}
 \end{align*}
 
-
 Now plug in an expression for one-step prediction $P(\bm{X}_{t+1} \mid \bm{e}_{1:t})$ conditioned on the current state $\bm{X}_t$ to obtain the central result in probabilistic temoral reasoning:
-
 
 \vspace{-.25in}
 \begin{align*}
@@ -304,18 +292,15 @@ P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) &= \alpha P(\bm{e}_{t+1} \mid \bm{X}_{t+1}) 
                                      &= \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{P(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{P(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
 \end{align*}
 
-
 The last step applies the Markov assumption in the transition model.  All the terms come either from the model or from the previous state estimate.
 Hence, we have the desired recursive formulation.
 
 ** Forward Message Propagation
 
-
 \vspace{-.2in}
 \[
 P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{P(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{P(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
 \]
-
 
 We can think of the filtered estimate $P(\bm{X}_t \mid \bm{e}_{1:t})$ as a "message" $\bm{f}_{1:t}$ that is propagated forward along the sequence, modified by each transition and updated by each new observation. The process is given by
 
@@ -367,13 +352,10 @@ Compute $P(R_2 \mid u_{1:2})$:
 
 
 
-
 \vspace{-.2in}
-\begin{center}
 
-#+latex: \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
+#+latex: \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1.0in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
 
-\end{center}
 
 
 - Day 2: umbrella appears, $U_2 = true$.  Prediction from $t=1:2$:
@@ -409,7 +391,6 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 
 - *Filtering*, a.k.a., *state estimation* is the task of computing the *belief state* $P(\bm{X}_t \mid \bm{e}_{1:t})$ -- the posterior distribution over the most recent state given all the evidence to date.
 
-
 \fbox{
 \begin{minipage}{\textwidth}
 \begin{itemize}
@@ -417,7 +398,6 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 \end{itemize}
 \end{minipage}
 }
-
 - *Smoothing* is the task of computing the posterior distribution over a past state, given all evidence up to the present: $P(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
 
 - *Most likely explanation*: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
@@ -433,21 +413,17 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 
 Prediction can be seen simply as filtering without the addition of new evidence.  Filtering already includes a one-step prediciton.  So we can take Equation 14.5:
 
-
 \vspace{-.1in}
 \[
 P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{P(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{P(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
 \]
 
-
 remove the sensor model and extend the prediction to $t + k + 1$:
-
 
 \vspace{-.1in}
 \[
 P(\bm{X}_{t+k+1} \mid \bm{e}_{1:t}) =  \sum_{\bm{X}_{t+k}} \underbrace{P(\bm{X}_{t+k+1} \mid \bm{x}_{t+k})}_{\text{transition model}} \underbrace{P(\bm{x}_{t+k} \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.6}
 \]
-
 
 ** Making predictions is hard, especially about the future.
 
@@ -469,7 +445,6 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 
 - *Prediction* is the task of computing the posterior distribution over the future state, given all evidence to date: $P(\bm{X}_{t+k} \mid \bm{e}_{1:t})$ for some $k > 0$.
 
-
 \framebox{
 \begin{minipage}{\textwidth}
 \begin{itemize}
@@ -477,7 +452,6 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 \end{itemize}
 \end{minipage}
 }
-
 
 - *Most likely explanation*: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: $\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})$.
 
@@ -488,11 +462,8 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 14_03 smoothing},width=0.75\linewidth]{aima-fig-14_03-smoothing.pdf}
 
-\end{center}
 
 
 
@@ -506,7 +477,6 @@ estimated trajectory than filtering -- hence the name
 
 Split the computation into two parts -- the evidence up to $k$ and the evidence from $k + 1$ to $t$:
 
-
 \vspace{-.2in}
 \begin{align*}
 P(\bm{X}_{k} \mid \bm{e}_{1:t}) &= P(\bm{X}_{k} \mid \bm{e}_{1:k}, \bm{e}_{k+1:t}) \\
@@ -515,22 +485,18 @@ P(\bm{X}_{k} \mid \bm{e}_{1:t}) &= P(\bm{X}_{k} \mid \bm{e}_{1:k}, \bm{e}_{k+1:t
                                  &= \alpha \bm{f}_{1:k} \odot \bm{b}_{k+1:t} \tag{14.8}
 \end{align*}
 
-
 $\odot$ is elementwise multiplication, a.k.a. Hadamard product.
 
 The "forward" message, $\bm{f}_{1:k}$ can be computed by filtering forward using Equation 14.5.
-
 
 \[
 P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{P(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{P(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
 \]
 
 
-
 ** Backward Message for Smoothing
 
 The backward message, $\bm{b}_{k+1:t}$ can be computed by a recursive process running backward from $t$:
-
 
 \vspace{-.2in}
 \begin{align*}
@@ -539,7 +505,6 @@ P(\bm{e}_{k+1:t} \mid \bm{X}_k) &= \sum_{\bm{x}_{k+1}} P(\bm{e}_{k+1:t} \mid \bm
                                  &= \sum_{\bm{x}_{k+1}} P(\bm{e}_{k+1}, \bm{e}_{k+2:t} \mid \bm{x}_{k+1}) P(\bm{x}_{k+1} \mid \bm{X}_k) \\
                                  &= \sum_{\bm{x}_{k+1}} \underbrace{P(\bm{e}_{k+1} \mid \bm{x}_{k+1})}_{\text{sensor model}} \underbrace{P(\bm{e}_{k+2:t} \mid \bm{x}_{k+1})}_{\text{recursion}} \underbrace{P(\bm{x}_{k+1} \mid \bm{X}_k)}_{\text{transition model}} \tag{14.9}
 \end{align*}
-
 
 The last step follows by the conditional independence of $\bm{e}_{k+1}$ and $\bm{e}_{k+2:t}$, given $\bm{x}_{k+1}$.
 
@@ -559,7 +524,6 @@ $\bm{e}_{t+1:t}$ is an empty sequence, so we initialize the backward phase with 
 
 Let's compute the smoothed estimate for the probability of rain at time $k = 1$, given the umbrella observations on days 1 and 2.
 
-
 \vspace{-.2in}
 \begin{align*}
 P(\bm{X}_{k} \mid \bm{e}_{1:t}) &= \alpha P(\bm{X}_k \mid \bm{e}_{1:k}) P(\bm{e}_{k+1:t} \mid \bm{X}_k) \tag{14.8}\\
@@ -569,14 +533,10 @@ P(R_1 \mid u_1, u_2)            &= \alpha P(R_1 \mid u_1) P(u_2 \mid R_1) \tag{1
 
 
 
-
-
 \vspace{-.1in}
-\begin{center}
 
-#+latex: \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
+#+latex: \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1.2in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
 
-\end{center}
 
 
 
@@ -587,7 +547,6 @@ From filtering for Day 1 we already know $P(R_1 \mid u_1) = \alpha P(u_1 \mid R_
 
 So then we need to compute $P(u_2 \mid R_1)$ by applying the backward recursion in Equation 14.9:
 
-
 \vspace{-.2in}
 \begin{align*}
 P(\bm{e}_{k+1:t} \mid \bm{X}_k) &= \sum_{\bm{x}_{k+1}} P(\bm{e}_{k+1} \mid \bm{x}_{k+1}) P(\bm{e}_{k+2:t} \mid \bm{x}_{k+1}) P(\bm{x}_{k+1} \mid \bm{X}_k) \tag{14.9}\\
@@ -595,16 +554,13 @@ P(u_2 \mid R_1)                 &= \sum_{\bm{r}_{2}} P(u_2 \mid r_2) P( \mid r_2
                                  &= \left( 0.9 \cdot 1 \cdot \langle 0.7, 0.3 \rangle \right) + \left( 0.2 \cdot 1 \cdot \langle 0.3, 0.7 \rangle \right) = \langle 0.69, 0.41 \rangle
 \end{align*}
 
-
 Then plug both terms into Equation 14.10:
-
 
 \vspace{-.2in}
 \begin{align*}
 P(R_1 \mid u_1, u_2) &= \alpha P(R_1 \mid u_1) P(u_2 \mid R_1) \tag{14.10} \\
                       &= \alpha \langle 0.818, 0.182 \rangle \odot \langle 0.69, 0.41 \rangle \approx \langle 0.883, 0.117 \rangle
 \end{align*}
-
 
 Knowing it rained on Day 2 makes it more likely that it rained on Day 1.
 
@@ -631,11 +587,8 @@ This is the essence of the forward–backward smoothing algorithm ...
 ** Forward-Backward Smoothing Algorithm
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 14_04 forward backward algorithm},height=2.0in]{aima-fig-14_04-forward-backward-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 14_04 forward backward algorithm},height=1in]{aima-fig-14_04-forward-backward-algorithm.pdf}
-
-\end{center}
 
 
 $\text{FORWARD}(\bm{f}_{1:t}, \bm{e}_{t+1}) = P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) =$
@@ -660,7 +613,6 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 
 - *Smoothing* is the task of computing the posterior distribution over a past state, given all evidence up to the present: $P(\bm{X}_k \mid \bm{e}_{1:t})$ for some $k$ such that $0 \le k < t$.
 
-
 \fbox{
 \begin{minipage}{\textwidth}
 \begin{itemize}
@@ -668,7 +620,6 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 \end{itemize}
 \end{minipage}
 }
-
 
 ** Finding the Most Likely Sequence
 
@@ -680,11 +631,8 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 We can represent the possible states in a system with a *state trellis*:
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 14_05_a rain state trellis},width=0.75\linewidth]{aima-fig-14_05_a-rain-state-trellis.pdf}
 
-\end{center}
 
 
 Most likely sequence estimation is finding the most likely path through this graph, where the likelihood of any path is the product of the transition probabilities along the path and the probabilities of the given observations at each state.
@@ -692,11 +640,8 @@ Most likely sequence estimation is finding the most likely path through this gra
 ** Most Likely Paths Through A State Trellis
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 14_05_a rain state trellis},width=0.75\linewidth]{aima-fig-14_05_a-rain-state-trellis.pdf}
 
-\end{center}
 
 
 Say we want to estimate the most likely path that reaches $Rain_5 = true$.
@@ -733,13 +678,11 @@ Thus, the algorithm for computing the most likely sequence is similar to filteri
 
 Operation of the Viterbi algorithm for the umbrella observation sequence $[true,true,false,true,true]$, where the evidence starts at time 1.
 
-
 \centering
 \includegraphics[
     height=.4\textheight,
     alt={}]
     {aima-fig-14_05_b-viterbi-rain-state-probabilities.pdf}
-
 
 - For each $t$, we show the values of the message $\bm{m}_{1:t}$ , which gives the probability of the best sequence reaching each state at time t.
 

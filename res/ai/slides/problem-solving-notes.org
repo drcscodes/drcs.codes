@@ -48,11 +48,8 @@
 ** Problem-Solving Agents
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_01 romania},height=2.4in]{aima-fig-03_01-romania.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_01 romania},height=1in]{aima-fig-03_01-romania.pdf}
-
-\end{center}
 
 
 - In this lesson we consider a *state* to be our location in one of these cities.
@@ -114,11 +111,8 @@ A search problem consists of:
 - An optimal solution is a solution with lowest cost among all solutions.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_01 romania},height=2.4in]{aima-fig-03_01-romania.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_01 romania},height=1in]{aima-fig-03_01-romania.pdf}
-
-\end{center}
 
 - How many paths are there from ~Arad~ to ~Bucharest~?
 - What is/are the solutions to the `Arad-to-Bucharest` problem (assume perfect information -- fully observable, known dynamics, and deterministic actions)?
@@ -135,21 +129,15 @@ A search problem consists of:
 Here's a standardized environment for the vacuum cleaner agent, formulated as a grid world:
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_02 vacuum state space graph},height=2.0in]{aima-fig-03_02-vacuum-state-space-graph.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_02 vacuum state space graph},height=1in]{aima-fig-03_02-vacuum-state-space-graph.pdf}
-
-\end{center}
 
 
 ** Vacuum Cleaner Grid World
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_02 vacuum state space graph},height=1.6in]{aima-fig-03_02-vacuum-state-space-graph.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_02 vacuum state space graph},height=1in]{aima-fig-03_02-vacuum-state-space-graph.pdf}
-
-\end{center}
 
 
 - *States* include both the agent's location, and characteristics of the environment.  For the vacuum world, that's $2 \cdot 2^2 = 8$ states.
@@ -212,11 +200,8 @@ Don't confuse state space with search tree.
 Here is a search tree being imposed on the Romania state space graph by a search algorithm.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 03_05 search tree expansion},width=0.75\linewidth]{aima-fig-03_05-search-tree-expansion.pdf}
 
-\end{center}
 
 
 ** Elements of Search Algorithms
@@ -236,11 +221,8 @@ Root node is initial state.  At each node we can *expand* the node, which grows 
 ** Search Progression
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_04 arad bucharest partial trees},height=3.0in]{aima-fig-03_04-arad-bucharest-partial-trees.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_04 arad bucharest partial trees},height=1in]{aima-fig-03_04-arad-bucharest-partial-trees.pdf}
-
-\end{center}
 
 
 - *Expanded* nodes are lavender with bold letters.
@@ -253,11 +235,8 @@ Root node is initial state.  At each node we can *expand* the node, which grows 
 The *frontier* separates the interior region of expanded nodes from the exterior region of unexpanded nodes.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 03_06 separation property graph search},width=0.75\linewidth]{aima-fig-03_06-separation-property-graph-search.pdf}
 
-\end{center}
 
 
 Frontier is in green.  Interior is lavender.  Exterior is faint dashed.
@@ -269,11 +248,8 @@ Frontier is in green.  Interior is lavender.  Exterior is faint dashed.
 ** Redundant Paths
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_04 arad repeated},height=1.2in]{aima-fig-03_04-arad-repeated.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_04 arad repeated},height=1in]{aima-fig-03_04-arad-repeated.pdf}
-
-\end{center}
 
 
 In the path from ~Arad~ to ~Sibiu~ to ~Arad~,
@@ -376,11 +352,8 @@ Best-first search is an abstract search algorithm.  Name can be tricky to unders
 ** Best-First Search Algorithm
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_07 best first search algorithm},height=3.2in]{aima-fig-03_07-best-first-search-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_07 best first search algorithm},height=1in]{aima-fig-03_07-best-first-search-algorithm.pdf}
-
-\end{center}
 
 
 We'll now describe several uninformed search algorithms.  I recommend you also look at their [[https://github.com/aimacode/aima-python/blob/master/search4e.ipynb][implementations in Python]], which may be easier to follow.
@@ -416,19 +389,13 @@ But three optimizations afforded by the BFS algorithm and uniform path costs:
 ** BFS Algorithm
 
 
-\begin{center}
-
-#+latex: \includegraphics[alt={aima fig 03_08 bfs binary tree},height=1in]{aima-fig-03_08-bfs-binary-tree.pdf}
-
-\end{center}
+#+latex: \includegraphics[alt={aima fig 03_08 bfs binary tree},height=0.8in]{aima-fig-03_08-bfs-binary-tree.pdf}
 
 
 
-\begin{center}
 
-#+latex: \includegraphics[alt={aima fig 03_09 bfs algorithm},height=1in]{aima-fig-03_09-bfs-algorithm.pdf}
+#+latex: \includegraphics[alt={aima fig 03_09 bfs algorithm},height=2.4in]{aima-fig-03_09-bfs-algorithm.pdf}
 
-\end{center}
 
 
 ** Analysis of BFS
@@ -450,11 +417,8 @@ Uninformed search is not appropriate for exponential complexity problems except 
 BFS where the best-first $f(node)$ is the path cost to the current node.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_10 sibiu bucharest},height=1.2in]{aima-fig-03_10-sibiu-bucharest.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_10 sibiu bucharest},height=1in]{aima-fig-03_10-sibiu-bucharest.pdf}
-
-\end{center}
 
 
 - From Sibiu, exand Faragas and RV.
@@ -484,11 +448,8 @@ Let $C^*$ be the cost of the optimal solution and $\epsilon > 0$ be a lower boun
 ** Depth-First Search - FIFO Frontier
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_11 dfs progress},height=3.6in]{aima-fig-03_11-dfs-progress.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_11 dfs progress},height=1in]{aima-fig-03_11-dfs-progress.pdf}
-
-\end{center}
 
 
 ** Analysis of DFS
@@ -512,11 +473,8 @@ Why bother with DFS at all? *Memory efficiency*
 ** Depth-Limited Search
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 03_12 depth limited search algorithm},width=0.75\linewidth]{aima-fig-03_12-depth-limited-search-algorithm.pdf}
 
-\end{center}
 
 
 - If limit, $\ell$, too small, won't find goal.
@@ -527,11 +485,8 @@ Why bother with DFS at all? *Memory efficiency*
 ** Iterative Deepening Search
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_13 iterative deepening progress},height=3.6in]{aima-fig-03_13-iterative-deepening-progress.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_13 iterative deepening progress},height=1in]{aima-fig-03_13-iterative-deepening-progress.pdf}
-
-\end{center}
 
 
 ** Analysis of Iterative Deepening Search
@@ -560,11 +515,8 @@ Why bother with DFS at all? *Memory efficiency*
 ** Bidirectional Best-First Search
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 03_14 bidirectional best first search algorithm},height=3.2in]{aima-fig-03_14-bidirectional-best-first-search-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 03_14 bidirectional best first search algorithm},height=1in]{aima-fig-03_14-bidirectional-best-first-search-algorithm.pdf}
-
-\end{center}
 
 
 Motivation: $b^{\frac{d}{2}} + b^{\frac{d}{2}} \ll b^d$.
@@ -572,11 +524,8 @@ Motivation: $b^{\frac{d}{2}} + b^{\frac{d}{2}} \ll b^d$.
 ** Comparing Uninformed Search Algorithms
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 03_15 uninformed search comparisons},width=0.75\linewidth]{aima-fig-03_15-uninformed-search-comparisons.pdf}
 
-\end{center}
 
 
 Notes:

@@ -1,4 +1,4 @@
-% Created 2026-04-21 Tue 19:38
+% Created 2026-04-22 Wed 22:22
 % Intended LaTeX compiler: lualatex
 \DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
 \documentclass[11pt]{article}
@@ -50,7 +50,7 @@
 
 \maketitle
 \section{Making Simple Decisions}
-\label{sec:org626907f}
+\label{sec:orgcc48364}
 
 A decision-theoretic agent—an agent can make rational decisions based on what it believes and what it wants.
 
@@ -62,7 +62,7 @@ A decision-theoretic agent—an agent can make rational decisions based on what 
 
 This lesson deals with simple decisions, that is, decisions based on immediate outcomes in episodic environments.
 \section{Combining Beliefs and Desires under Uncertainty}
-\label{sec:orgbbbcb16}
+\label{sec:org9b8116f}
 
 \begin{itemize}
 \item Agent uncertain about current state, so each state has a probability \(P(s)\).
@@ -94,7 +94,7 @@ A few points:
 \item If an agent acts so as to maximize a utility function \textbf{that correctly reflects the performance measure}, then the agent will achieve the highest possible performance score (averaged over all the possible environments).
 \end{itemize}
 \section{Basis of Utility Theory}
-\label{sec:org2b311bf}
+\label{sec:org7c5727e}
 
 Notation:
 
@@ -110,7 +110,7 @@ Notation:
 L = [p_1, S_1; p_2, S_2; \dots p_n, S_n]
 \end{equation*}
 \section{Axioms of Utility Theory (1/2)}
-\label{sec:org7d0371f}
+\label{sec:orgb3b5f69}
 
 Six constraints that we require any reasonable preference relation to obey:
 
@@ -141,7 +141,7 @@ Six constraints that we require any reasonable preference relation to obey:
 \end{itemize}
 \end{itemize}
 \section{Axioms of Utility Theory (2/2)}
-\label{sec:org45f5a98}
+\label{sec:orgfeb3e8e}
 
 
 
@@ -169,7 +169,7 @@ Six constraints that we require any reasonable preference relation to obey:
 
 \includegraphics[alt={aima fig 16_01_b decomposability axiom},width=0.75\linewidth]{aima-fig-16_01_b-decomposability-axiom.pdf}
 \section{Nontransitive Preferences}
-\label{sec:org3eaf4c7}
+\label{sec:orgbd1c8c6}
 
 Suppose an agent held the following preferences for freely exchangeable goods: \(A \succ B \succ C \succ A\).
 
@@ -180,9 +180,10 @@ This agent would be willing, e.g., to exchange \(B\) plus \$.01 for \(A\), and s
 \includegraphics[alt={aima fig 16_01_a nontransitive preferences},width=0.75\linewidth]{aima-fig-16_01_a-nontransitive-preferences.pdf}
 
 
+
 The axioms of utility theory are rational because violating them leads to bad outcomes.
 \section{From Rational Preferences to Untilities}
-\label{sec:org0db37b1}
+\label{sec:org292bf86}
 
 \begin{itemize}
 \item \textbf{Existence of Utility Function}: If an agent’s preferences obey the axioms of utility, then there exists a function U such that \(U(A) > U(B)\) if and only if \(A\) is preferred to \(B\), and \(U(A) = U(B)\) if and only if the agent is indifferent between \(A\) and \(B\). That is,
@@ -208,7 +209,7 @@ Then \(U'\) and \(U\) are effectively equivalent because they lead to the same d
 
 So \(U(S)\) is a \textbf{value function} or \textbf{ordinal utility function}, in which an agent needs only a preference ranking on states -- the numbers don’t matter.
 \section{Utility Functions}
-\label{sec:org06adc76}
+\label{sec:orgb2c3a5e}
 
 A utility functions
 
@@ -226,7 +227,7 @@ Otherwise, they are arbitrary.
 
 To build a decision support system for humans we must try to infer the human's utility function, a process called \textbf{preference elicitation}.
 \section{Utility Scales and Preference Elicitation}
-\label{sec:orged2c84c}
+\label{sec:orgcb462a4}
 
 There is no absolute scale for utilities, but we can establish some scale.  Let
 
@@ -247,7 +248,7 @@ Assuming normalized probabilities, the utility of \(S\) is then given by \(p\). 
 
 Example:
 \section{The "Value" of Human Life}
-\label{sec:org495bd2c}
+\label{sec:org0461278}
 
 
 
@@ -271,9 +272,9 @@ Example:
 
 
 
-\includegraphics[alt={fight club formula meme},height=1in]{fight-club-formula-meme.png}
+\includegraphics[alt={fight club formula meme},height=3.2in]{fight-club-formula-meme.png}
 \section{The Utility of Money}
-\label{sec:org59d4271}
+\label{sec:orge83e6f9}
 
 Money is an obvious candidate for a utility measure.
 
@@ -307,24 +308,24 @@ Now say \(U((S_k) = 5\), \(U(S_{k+2,500,000})\) = 9\$, and \(U(S_{k+1,000,000} =
 
 "Utility of your first million is higher than your second."  A billionaire would likely have a locally linear utility function over such small amounts, so would accept the gamble.
 \section{Utility of Money Example}
-\label{sec:org8366508}
+\label{sec:org3a061d3}
 
 
 \includegraphics[alt={aima fig 16_02_a utility of money mr beard},width=0.75\linewidth]{aima-fig-16_02_a-utility-of-money-mr-beard.pdf}
 \section{Utility of Money in General}
-\label{sec:orga6f04b5}
+\label{sec:orge20711c}
 
 
 \includegraphics[alt={aima fig 16_02_b utility of money full range},width=0.75\linewidth]{aima-fig-16_02_b-utility-of-money-full-range.pdf}
 \section{The Optimzer's Curse}
-\label{sec:org92b8d54}
+\label{sec:org1bcf284}
 
 The greater the number of choices, the more biased your estimates are because you always pick "optimal" action.
 
 
 \includegraphics[alt={aima fig 16_03 optimism error},width=0.75\linewidth]{aima-fig-16_03-optimism-error.pdf}
 \section{Human Judgement and Irrationality}
-\label{sec:orge68fdd4}
+\label{sec:org191a75b}
 
 
 
@@ -354,9 +355,11 @@ Common errors in thinking:
 
 
 
-\includegraphics[alt={predictably irrational book},height=1in]{predictably-irrational-book.jpg}
+\includegraphics[alt={predictably irrational book},height=1.6in]{predictably-irrational-book.jpg}
 
-\includegraphics[alt={dan ariely},height=1in]{dan-ariely.png}
+
+\includegraphics[alt={dan ariely},height=1.6in]{dan-ariely.png}
+
 
 
 
@@ -364,7 +367,7 @@ Common errors in thinking:
 
 {[}\textsuperscript{DanAriely}]: \url{https://web.mit.edu/ariely/www/}
 \section{Multiattribute Utility Functions}
-\label{sec:orgbe0c987}
+\label{sec:org20b7b1f}
 
 Let the attributes be \(\bm{X} = X_1, \dots, X_n\) and the vector \(\bm{x} = \langle x_1, \dots, x_n \rangle\) be a complete set of variable values.
 
@@ -390,7 +393,7 @@ Two ways to deal with multiattribute utility funcitons:
 \item Combine attributes into a single utility value.
 \end{itemize}
 \section{Airport Siting Problem}
-\label{sec:org91e391a}
+\label{sec:org0f2c74b}
 
 Attributes of airport siting problem (where to locate an aiport):
 
@@ -401,7 +404,7 @@ Attributes of airport siting problem (where to locate an aiport):
 \item \(X_4\): Frugality, measured by the negative cost of construction.
 \end{itemize}
 \section{Strict Dominance}
-\label{sec:org5ae3418}
+\label{sec:org662676f}
 
 
 
@@ -420,7 +423,7 @@ Given two airport sites \(S_1 = \langle x_1^{(1)}, x_2^{(1)}, x_3^{(1)}, x_4^{(1
 
 \includegraphics[alt={aima fig 16_04_a dominance deterministic},width=0.75\linewidth]{aima-fig-16_04_a-dominance-deterministic.pdf}
 \section{Preference Structure}
-\label{sec:orgf564880}
+\label{sec:org5623274}
 
 Specifying complete utility function \(U(x_1, \dots, x_n)\) requires \(d^n\) values in the worst case.  Avoid this complexity by encoding some structure of preferences into \textbf{representation theorems}:
 
@@ -437,7 +440,7 @@ Where
 
 Example: Each \(x_i\) is an amount of money in an abitrary currency like Euros or Rupees, and each \(f_i\) converts the amount into USD.
 \section{Deterministic Preferences}
-\label{sec:orgb2234fa}
+\label{sec:org41f426d}
 
 Most common regularity in deterministic preferences is \textbf{preference independence}:
 
@@ -456,7 +459,7 @@ Airport siting example: let \(X_1 = Quietness\), \(X_2 = Frugality\), \(X_1 = Sa
 
 If we prefer \(\langle 20,000, 4B, 0.006 \rangle\), then this preference would hold for any \(x_3\).
 \section{Mutial Preference Independence}
-\label{sec:org9aec9a0}
+\label{sec:org29cfc2b}
 
 \textbf{Mutual prefence independence} (MPI) means that preference for each attribute has no effect on preference for other attributes.  When this holds, the agent's preferences can be represnented by a value function of the form:
 
@@ -472,7 +475,7 @@ V(quietness, frugality, safety) = quietness \times 10^4 + frugality + safety \ti
 
 This is an example of an \textbf{additive value function}.  Even when MPI doesn't hold, can be a useful simplifying assumption.
 \section{Non-MPI Example}
-\label{sec:org01aa4a4}
+\label{sec:org08459b0}
 
 
 
@@ -489,14 +492,15 @@ Hence, the tradeoff between dogs and chickens depends strongly on the number of 
 
 
 
-\includegraphics[alt={shepherd chickens},height=1in]{shepherd-chickens.jpg}
+\includegraphics[alt={shepherd chickens},height=3.0in]{shepherd-chickens.jpg}
+
 
 
 
 
 {[}\textsuperscript{ShepherdChickens}]: \url{https://www.reddit.com/r/germanshepherds/comments/p4sou1/our\_girl\_reyna\_watches\_her\_flock\_8\_of\_backyard/}
 \section{Syntax of Decision Networks}
-\label{sec:orgbe58806}
+\label{sec:orgc32f68c}
 
 
 

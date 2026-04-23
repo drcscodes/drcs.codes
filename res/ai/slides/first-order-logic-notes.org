@@ -37,51 +37,36 @@
 ** Representation
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 08_01 ontological epistemological commitments},height=2.8in]{aima-fig-08_01-ontological-epistemological-commitments.pdf}
 
-#+latex: \includegraphics[alt={aima fig 08_01 ontological epistemological commitments},height=1in]{aima-fig-08_01-ontological-epistemological-commitments.pdf}
-
-\end{center}
 
 
 ** Syntax and Semantics of First-Order Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 08_02 person king model},height=2.8in]{aima-fig-08_02-person-king-model.pdf}
 
-#+latex: \includegraphics[alt={aima fig 08_02 person king model},height=1in]{aima-fig-08_02-person-king-model.pdf}
-
-\end{center}
 
 
 ** Syntax and Semantics of First-Order Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 08_03 syntax of fol},height=2.8in]{aima-fig-08_03-syntax-of-fol.pdf}
 
-#+latex: \includegraphics[alt={aima fig 08_03 syntax of fol},height=1in]{aima-fig-08_03-syntax-of-fol.pdf}
-
-\end{center}
 
 
 ** Syntax and Semantics of First-Order Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 08_04 simple example models},height=2.8in]{aima-fig-08_04-simple-example-models.pdf}
 
-#+latex: \includegraphics[alt={aima fig 08_04 simple example models},height=1in]{aima-fig-08_04-simple-example-models.pdf}
-
-\end{center}
 
 
 ** Syntax and Semantics of First-Order Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 08_05 simple example models database semantics},height=2.8in]{aima-fig-08_05-simple-example-models-database-semantics.pdf}
 
-#+latex: \includegraphics[alt={aima fig 08_05 simple example models database semantics},height=1in]{aima-fig-08_05-simple-example-models-database-semantics.pdf}
-
-\end{center}
 
 
 ** Using First-Order Logic
@@ -91,9 +76,6 @@ Foo
 ** Knowledge Engineering in First-Order Logic
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 08_06 digital circuit},height=2.8in]{aima-fig-08_06-digital-circuit.pdf}
 
-#+latex: \includegraphics[alt={aima fig 08_06 digital circuit},height=1in]{aima-fig-08_06-digital-circuit.pdf}
-
-\end{center}
 

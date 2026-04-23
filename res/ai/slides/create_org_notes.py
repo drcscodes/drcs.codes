@@ -122,15 +122,21 @@ def process_image(args, line):
 
     if alt == "":
         alt = fname[:-4].replace("-", " ")
-
     # print(f"#+attr_latex: :alt {alt} :width 0.5\linewidth\n[[file:{fname}]]",
     #       file=args.outfile)
 
     if "height" in line:
-        print(f"#+latex: \\includegraphics[alt={{{alt}}},height=1in]{{{fname}}}",
+        match = re.match(r'!\[(.*?)\]\((.+?)\)\{height="?(\d+)(.+?)"?\}', line)
+        height = match.group(3)
+        unit = match.group(4)
+        if re.match(r'in|cm', unit):
+            height_attr = f"{height}{unit}"
+        if re.match(r'%', unit):
+            height_attr = f"{float(height)/25}in"
+        print(f"#+latex: \\includegraphics[alt={{{alt}}},height={height_attr}]{{{fname}}}\n",
               file=args.outfile)
     else:
-        print(f"#+latex: \\includegraphics[alt={{{alt}}},width=0.75\\linewidth]{{{fname}}}",
+        print(f"#+latex: \\includegraphics[alt={{{alt}}},width=0.75\\linewidth]{{{fname}}}\n",
               file=args.outfile)
 
 
@@ -175,6 +181,7 @@ def process_equation(args):
 
 def main(args):
     print(f"Reading from {args.infile}")
+    args.infile = fileinput.FileInput(args.infile)
     try:
         while True:
             line: str = next(args.infile)
@@ -202,5 +209,4 @@ def main(args):
 if __name__=="__main__":
     parser = make_argparser()
     args = parser.parse_args(sys.argv[1:])
-    args.infile = fileinput.FileInput(args.infile)
     main(args)

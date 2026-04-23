@@ -38,10 +38,15 @@
 
 <center>
 #+latex: \includegraphics[alt={./sam altman double polo},height=1in]{./sam-altman-double-polo.jpg}
+
 #+latex: \includegraphics[alt={./dario amodei},height=1in]{./dario-amodei.jpg}
+
 #+latex: \includegraphics[alt={./geoff hinton},height=1in]{./geoff-hinton.jpg}
+
 #+latex: \includegraphics[alt={./eric schmidt},height=1in]{./eric-schmidt.jpg}
+
 #+latex: \includegraphics[alt={./elon musk},height=1in]{./elon-musk.jpg}
+
 </center>
 
 
@@ -55,26 +60,21 @@ To be fair, there are many, many people who are wrong about AI.  But you probabl
 - Currently, unfortunately, overhyped.
 
 
-\begin{center}
-
 See my advisor's advisor's dated predictions:
 
-#+latex: \includegraphics[alt={rodney brooks},height=1in]{rodney-brooks.jpg}
+#+latex: \includegraphics[alt={rodney brooks},height=1.2in]{rodney-brooks.jpg}
+
 
 https://rodneybrooks.com/my-dated-predictions/
-
-\end{center}
 
 
 ** Why does it matter that the aforementioned hypers are wrong?
 
 Most of the truly groundbreaking discoveries in AI are yet to be made.
 
-
 \vspace{.25in}
-\begin{center}
+
 \LARGE{This makes AI exciting!}
-\end{center}
 
 
 - Many AI courses focus on *the current thing*, e.g.,  statistical machine learning, and neural networks.
@@ -93,11 +93,8 @@ Most of the truly groundbreaking discoveries in AI are yet to be made.
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={./simon1996sciences cover},height=2.4in]{./simon1996sciences-cover.jpg}
 
-#+latex: \includegraphics[alt={./simon1996sciences cover},height=1in]{./simon1996sciences-cover.jpg}
-
-\end{center}
 
 
 
@@ -129,14 +126,12 @@ Rationality
 Decompose AI into thinking and acting, and define standards of performance as fidelity to humans and quantitative rationality.
 
 
-
 \begin{tabular}{lr|cc}\\
      &          & \multicolumn{2}{c}{Standard} \\
      &          & Humanly  & Rationally \\\hline
 Mode & Acting   & Acting humanly & Acting rationally \\
      & Thinking & Thinking humanly & Thinking rationally \\
 \end{tabular}
-
 
 ** Acting humanly
 
@@ -224,7 +219,8 @@ Acting rationally
 
 How do brains process information?
 
-#+latex: \includegraphics[alt={./aima fig 01_02 computers vs brains},height=1in]{./aima-fig-01_02-computers-vs-brains.pdf}
+#+latex: \includegraphics[alt={./aima fig 01_02 computers vs brains},height=2.0in]{./aima-fig-01_02-computers-vs-brains.pdf}
+
 
 ** Psychology
 
@@ -246,16 +242,20 @@ How can we build an efficient computer?
 
 - Quantum computing
 
-#+latex: \includegraphics[alt={ai data center},height=1in]{ai-data-center.jpg}
+#+latex: \includegraphics[alt={ai data center},height=2.0in]{ai-data-center.jpg}
+
 
 ** Control theory and cybernetics
 
 How can artifacts operate under their own control?
 
-#+latex: \includegraphics[alt={robot hand},height=1in]{robot-hand.jpg}
-#+latex: \includegraphics[alt={self driving car},height=1in]{self-driving-car.jpg}
+#+latex: \includegraphics[alt={robot hand},height=1.2in]{robot-hand.jpg}
 
-#+latex: \includegraphics[alt={Power Relay 6},height=1in]{Power-Relay-6.jpg}
+#+latex: \includegraphics[alt={self driving car},height=1.2in]{self-driving-car.jpg}
+
+
+#+latex: \includegraphics[alt={Power Relay 6},height=1.2in]{Power-Relay-6.jpg}
+
 
 [[https://www.darpa.mil/research/programs/power][DARPA POWER Program]]
 
@@ -324,20 +324,23 @@ AI lament: once an AI problem is solved, it's no longer considered AI.
 
 
 
-#+latex: \includegraphics[alt={andrew barto},height=1in]{andrew-barto.jpg}
+#+latex: \includegraphics[alt={andrew barto},height=1.2in]{andrew-barto.jpg}
+
 
 [[https://people.cs.umass.edu/~barto/][Andrew Barto]]
 
 
 
 
-#+latex: \includegraphics[alt={rich sutton},height=1in]{rich-sutton.jpg}
+#+latex: \includegraphics[alt={rich sutton},height=1.2in]{rich-sutton.jpg}
+
 [[http://incompleteideas.net/][Rich Sutton]]
 
 
 
 
-#+latex: \includegraphics[alt={david silver},height=1in]{david-silver.jpg}
+#+latex: \includegraphics[alt={david silver},height=1.2in]{david-silver.jpg}
+
 [[https://davidstarsilver.wordpress.com/][David Silver]]
 
 

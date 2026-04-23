@@ -48,21 +48,15 @@ If you don't care about the path to a goal state, you can use *local search*.
 ** State Space Landscape
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_01 state space landscape},width=0.75\linewidth]{aima-fig-04_01-state-space-landscape.pdf}
 
-\end{center}
 
 
 ** Hill-Climbing Search
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_02 hill climbing algorithm},width=0.75\linewidth]{aima-fig-04_02-hill-climbing-algorithm.pdf}
 
-\end{center}
 
 
 Also known as *greedy local search*.
@@ -74,11 +68,8 @@ Also known as *greedy local search*.
 - 8 Queens state: row position for each of 8 columns, e.g., (a) below is `<1, 6, 2, 5, 7, 4, 8, 3>`
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 04_03 8 queens},height=2.0in]{aima-fig-04_03-8-queens.pdf}
 
-#+latex: \includegraphics[alt={aima fig 04_03 8 queens},height=1in]{aima-fig-04_03-8-queens.pdf}
-
-\end{center}
 
 
 - Action: move a single queen to new row within column.  Each state has $8 \cdot 7 = 56$ successor states.
@@ -97,7 +88,8 @@ Susceptible to getting stuck in:
 - ridges -- sequences of local maxima
 - plateaus, e.g., flat local maxima or shoulders.
 
-#+latex: \includegraphics[alt={aima fig 04_01 state space landscape},height=1in]{aima-fig-04_01-state-space-landscape.pdf}
+#+latex: \includegraphics[alt={aima fig 04_01 state space landscape},height=1.6in]{aima-fig-04_01-state-space-landscape.pdf}
+
 
 How to fix:
 
@@ -111,11 +103,8 @@ How to fix:
 Grid of states superimposed on ridge rising from left to right.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_04 ridges},width=0.75\linewidth]{aima-fig-04_04-ridges.pdf}
 
-\end{center}
 
 
 
@@ -124,11 +113,8 @@ Grid of states superimposed on ridge rising from left to right.
 ** Simulated Annealing
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 04_05 simulated annealing algorithm},height=1.2in]{aima-fig-04_05-simulated-annealing-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 04_05 simulated annealing algorithm},height=1in]{aima-fig-04_05-simulated-annealing-algorithm.pdf}
-
-\end{center}
 
 
 - Based on metallurgy -- gradually cool metal to reach low-energy crystalline state.
@@ -172,21 +158,15 @@ Elements of genetic algorithms:
 ** A Genetic Algorithm
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_08 genetic algorithm},width=0.75\linewidth]{aima-fig-04_08-genetic-algorithm.pdf}
 
-\end{center}
 
 
 ** Genetic Algorithm on 8-Queens Problem
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_06 genetic algorithm 8 queens illustration},width=0.75\linewidth]{aima-fig-04_06-genetic-algorithm-8-queens-illustration.pdf}
 
-\end{center}
 
 
 1. Population is generated in (a).
@@ -200,11 +180,8 @@ Elements of genetic algorithms:
 Here is a pictorial illustration of the crossover operation in the 8-queens problem:
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 04_07 8 queens crossover diagrams},width=0.75\linewidth]{aima-fig-04_07-8-queens-crossover-diagrams.pdf}
 
-\end{center}
 
 
 Is the random crossover operation depicted here meaningful for the 8-queens problem?
@@ -232,11 +209,8 @@ There is an interesting connection between biological evolution and AI, in parti
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima romania airports},height=3.2in]{aima-romania-airports.png}
 
-#+latex: \includegraphics[alt={aima romania airports},height=1in]{aima-romania-airports.png}
-
-\end{center}
 
 
 
@@ -334,11 +308,8 @@ where $\alpha$ is a *step size*, or learning rate.
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={../../deep learning/slides/TrainLRMin},height=3.2in]{../../deep-learning/slides/TrainLRMin.pdf}
 
-#+latex: \includegraphics[alt={../../deep learning/slides/TrainLRMin},height=1in]{../../deep-learning/slides/TrainLRMin.pdf}
-
-\end{center}
 
 
 
@@ -351,11 +322,8 @@ where $\alpha$ is a *step size*, or learning rate.
 A convex set is a set of points in which a line between any two points lies within the set.  A convex function is a function for which the points above the function form a convex set.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={../../deep learning/slides/TrainConvexProb},width=0.75\linewidth]{../../deep-learning/slides/TrainConvexProb.pdf}
 
-\end{center}
 
 
 There are mathematical properties of continuous spaces that rule out local minima.  Take my deep learning class to learn about them!
@@ -363,7 +331,6 @@ There are mathematical properties of continuous spaces that rule out local minim
 [^UDLBook]: https://udlbook.github.io/udlbook/
 
 ** Constrained Optimization via Linear Programming
-
 
 
 
@@ -380,12 +347,8 @@ There are mathematical properties of continuous spaces that rule out local minim
 
 
 
+#+latex: \includegraphics[alt={lp fig 02_01 half planes},height=2.8in]{lp-fig-02_01-half-planes.pdf}
 
-\begin{center}
-
-#+latex: \includegraphics[alt={lp fig 02_01 half planes},height=1in]{lp-fig-02_01-half-planes.pdf}
-
-\end{center}
 
 
 

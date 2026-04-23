@@ -67,9 +67,11 @@ We need to deal with uncertain knowledge, with *degrees of belief*.  For that, w
 
 #+latex: \includegraphics[alt={neo architect prob dist screens},width=0.75\linewidth]{neo-architect-prob-dist-screens.png}
 
+
 ** What do probabilities mean?
 
 #+latex: \includegraphics[alt={aima fig 12_02 agent bets},width=0.75\linewidth]{aima-fig-12_02-agent-bets.pdf}
+
 
 All I see is the ~code~.
 
@@ -106,33 +108,25 @@ If our knowledge changes, e.g., we find out patient has history of gum disease, 
 #+end_quote
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 12_01 dt agent algorithm},width=0.75\linewidth]{aima-fig-12_01-dt-agent-algorithm.pdf}
 
-\end{center}
 
 
 Each action, $a$, leads to a probability distribution over outcomes, or "result states":
 
-
-\begin{equation*}
+$$
 P(\text{RESULT}(a) = s') = \sum_{s \in S} P(s) P(s' \mid s, a)
-\end{equation*}
-
+$$
 
 And each outcome state has a utility.  A rational decision-theoretic agent chooses the action that maximize expected utility, that is:
 
-
-\begin{equation*}
+$$
 \argmax_{a} \sum_{s' \in S} P(\text{RESULT}(a) = s') U(s')
-\end{equation*}
-
+$$
 
 ** Propositions and Events
 
 An *event*, which we denote with $\phi$ here, is a set of possible worlds, some subset of $\Omega$, or set of $\omega$, e.g., the event "doubles" contains the 6 boxed elements $\omega$:
-
 
 \footnotesize
 \begin{tabular}{cccccc}
@@ -147,9 +141,7 @@ An *event*, which we denote with $\phi$ here, is a set of possible worlds, some 
 
 
 
-
 ** Analysis of Medical Screening Example
-
 
 
 
@@ -167,9 +159,7 @@ P(T=0 \mid C=0) &= \frac{97}{100}
 
 
 
-
 If we screen someone, probability that they test positive (notice use of product rule: $P(a, b) = P(a \mid b) P(b)$ and rule 2nd Kolmogorov axiom $P(x \lor y) = P(x) + P(y) - P(x \land y)$):
-
 
 \vspace{-.1in}
 \begin{align*}
@@ -178,7 +168,6 @@ P(T=1) &= P(T=1 \mid C=0)P(C=0) + P(T=1 \mid C=1)P(C=1)\\
        &= \frac{387}{10,000}\\
        &= .0387
 \end{align*}
-
 
 If someone tests positive, probability they have cancer :
 

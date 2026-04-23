@@ -87,11 +87,8 @@ A game can be formally defined with the following elements:
 ** Tic-Tac-Toe Game Tree
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 05_01 tic tac toe game tree},height=2.8in]{aima-fig-05_01-tic-tac-toe-game-tree.pdf}
 
-#+latex: \includegraphics[alt={aima fig 05_01 tic tac toe game tree},height=1in]{aima-fig-05_01-tic-tac-toe-game-tree.pdf}
-
-\end{center}
 
 
 Tic-tac-toe is relatively small -- fewer than $9!= 362,880$ terminal nodes with only 5,478 distinct states.
@@ -127,11 +124,8 @@ min_{a \in Actions(s)} Minimax(Result(s,a)) & \text{if } ToMove(s) = MIN
 ** Minimax Game Tree
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 05_02 two ply game tree},width=0.75\linewidth]{aima-fig-05_02-two-ply-game-tree.pdf}
 
-\end{center}
 
 
 A two-ply game tree.
@@ -156,11 +150,8 @@ A two-ply game tree.
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 05_03 minimax algorithm},width=0.75\linewidth]{aima-fig-05_03-minimax-algorithm.pdf}
 
-\end{center}
 
 
 
@@ -201,11 +192,7 @@ Alpha-beta pruning cuts off the exploration of nodes if those nodes would not ch
 Intervals show range of possible values at each node,  $[\alpha, \beta]$.
 
 
-\begin{center}
-
-#+latex: \includegraphics[alt={aima fig 05_05 f alpha beta tree},height=1in]{aima-fig-05_05-f-alpha-beta-tree.pdf}
-
-\end{center}
+#+latex: \includegraphics[alt={aima fig 05_05 f alpha beta tree},height=1.2in]{aima-fig-05_05-f-alpha-beta-tree.pdf}
 
 
 
@@ -217,7 +204,6 @@ Minimax(root) &= max(min(3,12,8),min(2,x,y),min(14,5,2)) \\
               &= 3.
 \end{align*}
 \vspace{-.2in}
-
 
 In other words, the value of the root and hence the minimax decision are independent of the values of the leaves x and y, and therefore they can be pruned.
 
@@ -244,11 +230,8 @@ In other words, the value of the root and hence the minimax decision are indepen
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 05_05 game tree calculation stages},width=0.75\linewidth]{aima-fig-05_05-game-tree-calculation-stages.pdf}
 
-\end{center}
 
 
 
@@ -268,11 +251,8 @@ In other words, the value of the root and hence the minimax decision are indepen
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 05_07 alpha beta algorithm},width=0.75\linewidth]{aima-fig-05_07-alpha-beta-algorithm.pdf}
 
-\end{center}
 
 
 
@@ -314,11 +294,8 @@ Eval(s) = w_1 f_1(s) + w_2 f_2(s) + \cdots + w_n f_n(s) = \sum _{i=1}^n w_i f_i(
 ** Chess Configuration Examples
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 05_08 chess positions},width=0.75\linewidth]{aima-fig-05_08-chess-positions.pdf}
 
-\end{center}
 
 
 - (a) Black has an advantage of a knight and two pawns, which should be enough to win the game.
@@ -339,11 +316,8 @@ Best to apply cutoff quiescent positions, that is, positions that don't contain 
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 05_09 chess horizon effect},height=2.0in]{aima-fig-05_09-chess-horizon-effect.pdf}
 
-#+latex: \includegraphics[alt={aima fig 05_09 chess horizon effect},height=1in]{aima-fig-05_09-chess-horizon-effect.pdf}
-
-\end{center}
 
 
 With Black to play, if Black only searches to a depth of 4-ply, it will see that
@@ -376,11 +350,8 @@ Playout policy: bias move selection towards good ones.  Two options:
 ** Selection-Based MCTS Algorithm
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 05_11 mcts algorithm},height=1.6in]{aima-fig-05_11-mcts-algorithm.pdf}
 
-#+latex: \includegraphics[alt={aima fig 05_11 mcts algorithm},height=1in]{aima-fig-05_11-mcts-algorithm.pdf}
-
-\end{center}
 
 
 - Selection: starting at root, choose a move leading to a successor node, and repeat that process, moving down the tree to a leaf.
@@ -396,11 +367,8 @@ Playout policy: bias move selection towards good ones.  Two options:
 White just played (light purple nodes) -- black to play.
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 05_10 mcts iteration},height=1.6in]{aima-fig-05_10-mcts-iteration.pdf}
 
-#+latex: \includegraphics[alt={aima fig 05_10 mcts iteration},height=1in]{aima-fig-05_10-mcts-iteration.pdf}
-
-\end{center}
 
 
 - (a) Select moves, all the way down the tree, ending at the leaf node marked 27/35 (27 wins for black out of 35 playouts).
@@ -439,11 +407,8 @@ Remember that MCTS returns the node with the highest number of playouts, not the
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 05_10 a mcts selection},width=0.75\linewidth]{aima-fig-05_10-a-mcts-selection.pdf}
 
-\end{center}
 
 
 
@@ -453,16 +418,13 @@ With $C = 1.4$,
 
 - the 60/79 node:
 
-
 \begin{align*}
 UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }\\
         &= \frac{60}{79} + 1.4 \times \sqrt{ \frac{\log 100}{79} }\\
         &= 1.1 \checkmark
 \end{align*}
 
-
 - and the 2/11 node:
-
 
 \begin{align*}
 UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }\\
@@ -474,18 +436,14 @@ UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }
 
 
 
-
 ** UCB1 In Action -- Exploration
 
 
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 05_10 a mcts selection},width=0.75\linewidth]{aima-fig-05_10-a-mcts-selection.pdf}
 
-\end{center}
 
 
 
@@ -495,16 +453,13 @@ With $C = 1.5$,
 
 - the 60/79 node
 
-
 \begin{align*}
 UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }\\
         &= \frac{60}{79} + 1.5 \times \sqrt{ \frac{\log 100}{79} }\\
         &= 1.12
 \end{align*}
 
-
 - and the 2/11 node:
-
 
 \begin{align*}
 UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }\\
@@ -520,15 +475,11 @@ UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }
 
 
 
-
 ** Errors in Heuristic Minimax Search
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 05_16 heuristic minimax errors},width=0.75\linewidth]{aima-fig-05_16-heuristic-minimax-errors.pdf}
 
-\end{center}
 
 
 - If evaluation function is 100% correct, right branch is correct.

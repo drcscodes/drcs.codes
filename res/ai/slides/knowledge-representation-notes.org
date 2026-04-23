@@ -37,11 +37,8 @@
 ** Ontological Engineering
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 10_01 upper ontology world},height=2.8in]{aima-fig-10_01-upper-ontology-world.pdf}
 
-#+latex: \includegraphics[alt={aima fig 10_01 upper ontology world},height=1in]{aima-fig-10_01-upper-ontology-world.pdf}
-
-\end{center}
 
 
 ** Categories and Objects
@@ -51,21 +48,15 @@ Foo
 ** Events
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 10_02 predicates time intervals},height=2.8in]{aima-fig-10_02-predicates-time-intervals.pdf}
 
-#+latex: \includegraphics[alt={aima fig 10_02 predicates time intervals},height=1in]{aima-fig-10_02-predicates-time-intervals.pdf}
-
-\end{center}
 
 
 ** Fluents
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 10_03 schematic object president},height=2.8in]{aima-fig-10_03-schematic-object-president.pdf}
 
-#+latex: \includegraphics[alt={aima fig 10_03 schematic object president},height=1in]{aima-fig-10_03-schematic-object-president.pdf}
-
-\end{center}
 
 
 ** Mental Objects and Modal Logic
@@ -75,31 +66,22 @@ Foo
 ** Reasoning Systems for Categories
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 10_04 semantic network 4 objects},height=2.8in]{aima-fig-10_04-semantic-network-4-objects.pdf}
 
-#+latex: \includegraphics[alt={aima fig 10_04 semantic network 4 objects},height=1in]{aima-fig-10_04-semantic-network-4-objects.pdf}
-
-\end{center}
 
 
 ** Reasoning Systems for Categories
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 10_05 semantic network assertion fly event},height=2.8in]{aima-fig-10_05-semantic-network-assertion-fly-event.pdf}
 
-#+latex: \includegraphics[alt={aima fig 10_05 semantic network assertion fly event},height=1in]{aima-fig-10_05-semantic-network-assertion-fly-event.pdf}
-
-\end{center}
 
 
 ** Description Logics
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 10_06 syntax of classic description logic},height=2.8in]{aima-fig-10_06-syntax-of-classic-description-logic.pdf}
 
-#+latex: \includegraphics[alt={aima fig 10_06 syntax of classic description logic},height=1in]{aima-fig-10_06-syntax-of-classic-description-logic.pdf}
-
-\end{center}
 
 
 ** Reasoning with Default Information

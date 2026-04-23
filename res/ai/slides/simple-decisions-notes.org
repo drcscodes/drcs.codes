@@ -127,11 +127,8 @@ Six constraints that we require any reasonable preference relation to obey:
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 16_01_b decomposability axiom},width=0.75\linewidth]{aima-fig-16_01_b-decomposability-axiom.pdf}
 
-\end{center}
 
 
 
@@ -146,11 +143,8 @@ This agent would be willing, e.g., to exchange $B$ plus $.01 for $A$, and so on.
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 16_01_a nontransitive preferences},width=0.75\linewidth]{aima-fig-16_01_a-nontransitive-preferences.pdf}
 
-\end{center}
 
 
 The axioms of utility theory are rational because violating them leads to bad outcomes.
@@ -226,7 +220,8 @@ Example:
 
 
 
-#+latex: \includegraphics[alt={fight club formula meme},height=1in]{fight-club-formula-meme.png}
+#+latex: \includegraphics[alt={fight club formula meme},height=3.2in]{fight-club-formula-meme.png}
+
 
 
 
@@ -245,12 +240,10 @@ Key idea: value of money not directly proportional to utility.
 
 - Let $k$ be current wealth and $S_n$ be the state of posessing total wealth of $n$ dollars.
 
-
 \begin{align*}
 EU(Accept)  &= \frac{1}{2} U (S_k) + \frac{1}{2} U (S_{k+2,500,000}) \\
 eu(Decline) &= U(S_{k+1,000,000})
 \end{align*}
-
 
 Now say $U((S_k) = 5$, $U(S_{k+2,500,000})$ = 9$, and $U(S_{k+1,000,000} = 8$.  Then
 
@@ -262,21 +255,15 @@ Now say $U((S_k) = 5$, $U(S_{k+2,500,000})$ = 9$, and $U(S_{k+1,000,000} = 8$.  
 ** Utility of Money Example
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 16_02_a utility of money mr beard},width=0.75\linewidth]{aima-fig-16_02_a-utility-of-money-mr-beard.pdf}
 
-\end{center}
 
 
 ** Utility of Money in General
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 16_02_b utility of money full range},width=0.75\linewidth]{aima-fig-16_02_b-utility-of-money-full-range.pdf}
 
-\end{center}
 
 
 ** The Optimzer's Curse
@@ -284,11 +271,8 @@ Now say $U((S_k) = 5$, $U(S_{k+2,500,000})$ = 9$, and $U(S_{k+1,000,000} = 8$.  
 The greater the number of choices, the more biased your estimates are because you always pick "optimal" action.
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 16_03 optimism error},width=0.75\linewidth]{aima-fig-16_03-optimism-error.pdf}
 
-\end{center}
 
 
 ** Human Judgement and Irrationality
@@ -315,17 +299,15 @@ Common errors in thinking:
 
 
 
-\begin{center}
+
+
+#+latex: \includegraphics[alt={predictably irrational book},height=1.6in]{predictably-irrational-book.jpg}
+
+
+#+latex: \includegraphics[alt={dan ariely},height=1.6in]{dan-ariely.png}
 
 
 
-#+latex: \includegraphics[alt={predictably irrational book},height=1in]{predictably-irrational-book.jpg}
-
-#+latex: \includegraphics[alt={dan ariely},height=1in]{dan-ariely.png}
-
-
-
-\end{center}
 
 
 
@@ -378,11 +360,8 @@ Given two airport sites $S_1 = \langle x_1^{(1)}, x_2^{(1)}, x_3^{(1)}, x_4^{(1)
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 16_04_a dominance deterministic},width=0.75\linewidth]{aima-fig-16_04_a-dominance-deterministic.pdf}
 
-\end{center}
 
 
 
@@ -451,7 +430,8 @@ Hence, the tradeoff between dogs and chickens depends strongly on the number of 
 
 
 
-#+latex: \includegraphics[alt={shepherd chickens},height=1in]{shepherd-chickens.jpg}
+#+latex: \includegraphics[alt={shepherd chickens},height=3.0in]{shepherd-chickens.jpg}
+
 
 
 
@@ -470,19 +450,14 @@ Hence, the tradeoff between dogs and chickens depends strongly on the number of 
     - Parent nodes can include decision nodes and chance nodes.
     - Each current-state chance node could be part of a large Bayesian network for assessing construction costs, air traffic levels, or litigation potentials.
 
-
 \vspace{.1in}
 
 
 
 
 
-
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 16_06 decision network airport siting},width=0.75\linewidth]{aima-fig-16_06-decision-network-airport-siting.pdf}
 
-\end{center}
 
 
 

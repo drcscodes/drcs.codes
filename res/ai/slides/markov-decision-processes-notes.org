@@ -48,11 +48,8 @@ Sequential decision problems incorporate utilities, uncertainty, and sensing, an
 ** Worlds
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_01 4x3 grid world stochastic actions},width=0.75\linewidth]{aima-fig-17_01-4x3-grid-world-stochastic-actions.pdf}
 
-\end{center}
 
 
 ** Markov Decision Processes (MDPs)
@@ -144,11 +141,8 @@ Finite time horizons lead to *nonstationary* policies, i.e., policies that diffe
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_01_a 4x3 grid world},width=0.75\linewidth]{aima-fig-17_01_a-4x3-grid-world.pdf}
 
-\end{center}
 
 
 The shorter time horizon forces the agent to risk ending up in state (4, 2), whereas the longer horizon allows the agent to take the long way around to the goal state.
@@ -157,11 +151,9 @@ The shorter time horizon forces the agent to risk ending up in state (4, 2), whe
 
 An infinite horizon gives us a *stationary* policy, because there is no time limit influencing the decision.  From the current time step $t$:
 
-
 \[
 G_t = r_{t+1} + r_{t+2} + \cdots + r_{t+k+1} =  \sum_{k = 0}^\infty \gamma^k r_{t+k+1}
 \]
-
 
 $\gamma$ is the *discount factor* which says how much we discount future rewards.  With $\gamma < 1$ it decays toward zero.
 
@@ -211,18 +203,14 @@ What is the optimal action in state (1, 1) given the following state values?
 
 
 
-\begin{center}
+#+latex: \includegraphics[alt={aima fig 17_03 state values},height=1.6in]{aima-fig-17_03-state-values.pdf}
 
-#+latex: \includegraphics[alt={aima fig 17_03 state values},height=1in]{aima-fig-17_03-state-values.pdf}
-
-\end{center}
 
 
 
 
 
 We plug the state values above and $\gamma = 1$ into:
-
 
 \vspace{-.2in}
 \begin{align*}
@@ -231,7 +219,6 @@ We plug the state values above and $\gamma = 1$ into:
             &[0.9(-0.04 + \gamma V(1,1)) + 0.1(-0.04 + \gamma V(2,1))], \tag{Down} \\
             &[0.8(-0.04 + \gamma V(2,1)) + 0.1(-0.04 + \gamma V(1,2)) + 0.1(-0.04 + \gamma V(1,1))] \Big) \tag{Right}
 \end{align*}
-
 
 which yields $Up$ as the optimal action because $Up$ is the action that maximizes $V((1, 1))$.
 
@@ -243,19 +230,15 @@ V(s) = \max_{a} Q(s, a)
 
 The optimal action value function is:
 
-
 \[
 Q^*(s_t, a_t ) = \max_{\pi} \big( \mathbb{E} [G_t | s_t, a_t^{\pi}] \big)
 \]
 
-
 If we know $Q^*$ we can use it to derive an optimal policy, $\pi^*$:
-
 
 \[
 \pi^*(a_t | s_t ) \leftarrow \argmax_{a_t} \left( Q^*(s_t, a_t ) \right)
 \]
-
 
 We'll see this idea when we solve MDPs using dynamic programming.
 
@@ -265,11 +248,8 @@ We'll see this idea when we solve MDPs using dynamic programming.
 Notice that in State (3, 1) there are two optimal actions:
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_02_a optimal policies},width=0.75\linewidth]{aima-fig-17_02_a-optimal-policies.pdf}
 
-\end{center}
 
 
 This results from the successor states having equal values, giving rise to multiple optimal policies.
@@ -279,11 +259,8 @@ This results from the successor states having equal values, giving rise to multi
 Notice how different reward structures for non-goal states influences the optimal policy:
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_02_b optimal policies different rewards},width=0.75\linewidth]{aima-fig-17_02_b-optimal-policies-different-rewards.pdf}
 
-\end{center}
 
 
 In general, negative rewards "motivate" the agent to seek the goal quickly.
@@ -291,11 +268,8 @@ In general, negative rewards "motivate" the agent to seek the goal quickly.
 ** Representing MDPs
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_04 decision network robot mdp},width=0.75\linewidth]{aima-fig-17_04-decision-network-robot-mdp.pdf}
 
-\end{center}
 
 
 
@@ -303,14 +277,11 @@ In general, negative rewards "motivate" the agent to seek the goal quickly.
 
 The value iteration algorithm initializes each state's value to a random value, then iteratively update these values by turning the Bellman equation into an update rule (the Bellman update):
 
-
 \begin{equation}\label{eqn:bellman-update}
 V_{i+1}(s) \leftarrow R(s) + \max_{a \in A} \sum_{s'} T(s, a, s') V_i(s')
 \end{equation}
 
-
 These updates are applied at the same time for all states, i.e., the values in iteration $i+1$ are calculated from the values in iteration $i$. The value iteration algorithm is shown in Algorithm \ref{alg:value-iteration}.
-
 
 \begin{algorithm}[H]
   \caption{Value Iteration}\label{alg:value-iteration}
@@ -326,25 +297,18 @@ These updates are applied at the same time for all states, i.e., the values in i
   \end{algorithmic}
 \end{algorithm}
 
-
 ** Value Iteration Algorithm
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_06 value iteration algorithm},width=0.75\linewidth]{aima-fig-17_06-value-iteration-algorithm.pdf}
 
-\end{center}
 
 
 ** Value Iteration Converges Quickly
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_07_a value estimates vs iterations plot},width=0.75\linewidth]{aima-fig-17_07_a-value-estimates-vs-iterations-plot.pdf}
 
-\end{center}
 
 
 
@@ -368,11 +332,8 @@ Note that since the update equation used in policy evaluation is linear, we can 
 ** Policy Iteration Algorithm
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_09 policy iteration algorithm},width=0.75\linewidth]{aima-fig-17_09-policy-iteration-algorithm.pdf}
 
-\end{center}
 
 
 
@@ -395,11 +356,8 @@ Many practical applications:
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_12_a simple bandit},width=0.75\linewidth]{aima-fig-17_12_a-simple-bandit.pdf}
 
-\end{center}
 
 
 
@@ -410,20 +368,14 @@ Many practical applications:
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_12_b general bandit},width=0.75\linewidth]{aima-fig-17_12_b-general-bandit.pdf}
 
-\end{center}
 
 
 
-
-\begin{center}
 
 #+latex: \includegraphics[alt={aima fig 17_13 switch mdp restart mdp},width=0.75\linewidth]{aima-fig-17_13-switch-mdp-restart-mdp.pdf}
 
-\end{center}
 
 
 ** Bernoulli Bandit
@@ -436,11 +388,8 @@ Many practical applications:
 
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_14_a bernoulli bandit reward process},width=0.75\linewidth]{aima-fig-17_14_a-bernoulli-bandit-reward-process.pdf}
 
-\end{center}
 
 
 
@@ -454,29 +403,20 @@ Many practical applications:
 ** POMDP Value Iteration Algorithm
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_16 pomdp value iteration algorithm},width=0.75\linewidth]{aima-fig-17_16-pomdp-value-iteration-algorithm.pdf}
 
-\end{center}
 
 
 ** Online POMDP Algorithms
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_17 pomdp expectimax tree},width=0.75\linewidth]{aima-fig-17_17-pomdp-expectimax-tree.pdf}
 
-\end{center}
 
 
 ** POMDP Belief Updates
 
 
-\begin{center}
-
 #+latex: \includegraphics[alt={aima fig 17_18 pomdp belief state sequence},width=0.75\linewidth]{aima-fig-17_18-pomdp-belief-state-sequence.pdf}
 
-\end{center}
 
