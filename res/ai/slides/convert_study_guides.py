@@ -7,41 +7,8 @@ import string
 import sys
 
 
-template = string.Template(r"""#+TITLE: $title
-#+SUBTITLE: $subtitle
-#+AUTHOR: $author
-#+INSTITUTE: $institute
-#+EMAIL:
-#+DATE: $institute
-#+DESCRIPTION: $title $subtitle
-#+KEYWORDS:
-#+LANGUAGE:  en
-#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
-#+LaTeX_COMPILER: lualatex
-#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
-#+LaTeX_HEADER: \usepackage{fontspec}
-#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
-#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
-#+LaTeX_HEADER: \usepackage{framed}
-#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
-#+LaTeX_HEADER: \usepackage{media9}
-#+LaTeX_HEADER: \usepackage[export]{adjustbox}
-#+LaTeX_HEADER: \usepackage{algorithm}
-#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
-#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
-#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
-#+LaTeX_HEADER: \let\oldquote=\quote
-#+LaTeX_HEADER: \let\endoldquote=\endquote
-#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
-#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
-#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
-#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
-#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
-#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
-#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
-#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
-#+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+template = string.Template(r"""
+
 """)
 
 
