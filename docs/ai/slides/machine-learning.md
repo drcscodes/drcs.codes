@@ -449,13 +449,133 @@ One of the early projects that popularized the uses of ReLU activation functions
 
 ![](../../deep-learning/slides/zeiler-speech-recognition.png){height=80%}
 
-## Generative AI
+## Large Language Models (LLMs) are Stochastic Parrots {#llms}
 
-What is "generative AI?"
+::::{.columns}
+::: {.column width="75%" valign="top"}
 
-- Two types of supervised machine learning models: discriminative and generative
-    - Discriminative, $p(y|x)$: learn a function that discriminates between classes
-    - Generative, $p(x, y)$: learn a joint probability distribution over data
-        - Enables generative models to both discriminate and *generate samples*
-- Modern GenAI based on deep learning
-- Gained attention with Ian Goodfellow's generative adversarial networks (GANs) in 2014, now auto-regressive transformer models all the rage, e.g., large language models (LLMs) like ChatGPT
+An LLM predicts next tokens, $x$, given previous tokens in the prompt
+
+$$
+\prod_{t=1}^{T} p(x_t \mid x_{1:t-1})
+$$
+
+The token stream includes LLM's output -- an LLM is *autoregressive*.
+
+- Autoregression gives LLM the ability to generate seemingly endless output, but it's just repeated next token-prediction.
+- LLMs are sub-symbolic models of text sequences with billions of parameters (floating-point numbers) "trained" on terabytes of data.
+  - **Training is a technical term meaning iteratively adjusting the parameters of a predictive model.  It has nothing to do with what we call training for human skills.**
+  - Training costs millions of dollars and takes months to years.
+  - Models "frozen in time."
+- Generated "answers" nothing more than statistically plausible sequences of text based on patterns in training data and prompt.
+  - LLMs don't give correct or incorrect answers.
+  - Every response is just a probabilistic event.
+
+:::
+::: {.column width="35%" valign="top"}
+
+![](michael-scott-start-sentence.jpg){height="80%"}
+
+:::
+::::
+
+```{=latex}
+\begin{center}
+{\large {\bf "Hallucination" is a marketing term -- a creative lie.}}
+\end{center}
+```
+
+
+
+## LLMs Don't Understand Anything
+
+```{=latex}
+\centering
+\includegraphics[height=.6\textheight]{gotham-chatbot-championship.png}
+```
+[^GotahmChatbotChampionship][^ruoss2025amortized][^Westerdale]
+
+
+
+[^GotahmChatbotChampionship]: [https://www.youtube.com/playlist?list=PLBRObSmbZluQwBIvxyiWfm_b495AnpzDn](https://www.youtube.com/playlist?list=PLBRObSmbZluQwBIvxyiWfm_b495AnpzDn)
+[^ruoss2025amortized]: [https://arxiv.org/abs/2402.04494](https://arxiv.org/abs/2402.04494)
+[^Westerdale]: [https://www.nicowesterdale.com/blog/why-llms-cant-play-chess](https://www.nicowesterdale.com/blog/why-llms-cant-play-chess)
+
+## "But they will fix hallucinations!"
+
+**No, they won't.**  It's like saying you'll keep adjusting the weighting of dice until they reliably roll what you "want."
+
+```{=latex}
+\begin{center}
+```
+![](dice.jpg){height="50%"}
+```{=latex}
+\end{center}
+```
+
+## "But I'm more productive with LLMs!"
+
+```{=latex}
+\begin{center}
+{\LARGE {\bf No, you are not!}}
+```
+![](forecasted-vs-observed.png){height="60%"}[^Becker2025]
+```{=latex}
+\end{center}
+```
+
+- Even highly skilled people *just want to believe* and can't be convinced otherwise.
+
+```{=latex}
+\begin{center}
+{\bf We're fighting not just grifters in Silicon Valley, but human nature.}
+\end{center}
+```
+
+[^Becker2025]: [https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
+
+## Experts can by hypers too.
+
+::::{.columns}
+::: {.column width="60%" valign="top"}
+
+```{=latex}
+\begin{center}
+
+```
+![](jaana-dogan-hype-mongering-2026-01-03.jpg){height="85%"}
+```{=latex}
+\end{center}
+```
+
+:::
+::: {.column width="50%" valign="top"}
+
+**People post nonsense like this constantly.**
+
+- Jaana Dogan is a principal engineer at Google.
+
+```{=latex}
+\begin{center}
+{\large She knows better!}
+\end{center}
+```
+
+- How is a junior engineer supposed to filter the noise?
+
+[https://x.com/rakyll/status/2007659740126761033](https://x.com/rakyll/status/2007659740126761033)
+
+:::
+::::
+
+## Concluding Word on LLMs
+
+The reality is that ChatGPT is an impressive toy.  Watch ~10 minutes from the 47-minute mark in this talk from Yann LeCun: [https://www.youtube.com/watch?v=pd0JmT6rYcI](https://www.youtube.com/watch?v=pd0JmT6rYcI)
+
+> "In a few years, nobody in their right mind will use auto-regressive LLMs [like GPT]." -- Yann LeCun, Turing Laureate and Deep Learning Pioneer
+
+- AI is powerful and useful.  It has been for decades.
+- The current LLM craze dominates the popular media, but is a small part of AI.
+- The key to getting value from AI is to *drive AI algorithm selection from problems*, not the other way around.
+
+    - Choose the right AI solution for a given problem, or no AI at all when that's the right call.
