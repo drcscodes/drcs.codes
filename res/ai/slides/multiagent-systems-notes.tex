@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:23
+% Created 2026-04-23 Thu 12:09
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,7 +53,7 @@
 
 \maketitle
 \section{Multiagent Systems}
-\label{sec:orgada8043}
+\label{sec:org0c3927a}
 
 
 Dealing with multiagent environments:
@@ -69,7 +72,6 @@ Dealing with multiagent environments:
 \includegraphics[alt={mas book},height=2.0in]{mas-book.jpg}
 
 
-
 MAS: \url{https://www.masfoundations.org/}
 
 
@@ -79,10 +81,9 @@ MAS: \url{https://www.masfoundations.org/}
 \includegraphics[alt={marl book},height=2.0in]{marl-book.jpg}
 
 
-
 MARL: \url{https://www.marl-book.com/}
 \section{Multiagent Environments}
-\label{sec:org9d6c4c4}
+\label{sec:orgeb53d67}
 
 Dealing with multiagent environments:
 
@@ -92,7 +93,7 @@ Dealing with multiagent environments:
 \item Multiple actors, each of which makes its own decisions
 \end{itemize}
 \section{One Decsion Maker}
-\label{sec:org0627bfd}
+\label{sec:org7e7abd5}
 
 Rests on \textbf{benevolent agent assumption}: agents will do what they are told.
 
@@ -116,7 +117,7 @@ Architectures:
 \end{itemize}
 \end{itemize}
 \section{Multiple Decision Makers}
-\label{sec:org0f4134c}
+\label{sec:org1caad37}
 
 All agents, a.k.a. \textbf{counterparts}, make decisions.  Two categories:
 
@@ -134,7 +135,7 @@ All agents, a.k.a. \textbf{counterparts}, make decisions.  Two categories:
 \end{itemize}
 \end{enumerate}
 \section{Game Theory}
-\label{sec:org22b3c89}
+\label{sec:orgd0cc9be}
 
 Multiple decision makers pursuing their own preferences.
 
@@ -152,7 +153,7 @@ Multiple decision makers pursuing their own preferences.
 
 Just as decision theory provides the theoretical foundation for single-agent decision making, game theory provides the theoretical foundation for multiagent decision making.
 \section{Game Theory in AI}
-\label{sec:orgcd38651}
+\label{sec:org92fad95}
 
 In AI, game theory can be used in two main ways:
 
@@ -172,7 +173,7 @@ In AI, game theory can be used in two main ways:
 \end{itemize}
 \end{enumerate}
 \section{Cooperative vs Noncooperative Games}
-\label{sec:org5db629b}
+\label{sec:org94898b9}
 
 Two broad categories of game models:
 
@@ -198,7 +199,7 @@ Often mix models:
 \item Company: individual \textbf{incentives} for employees designed to bring their behavior into alignment with company's goals.
 \end{itemize}
 \section{Multiagent Planning}
-\label{sec:org07589b6}
+\label{sec:orgd08f4e4}
 
 Use generic term \textbf{actor} for effectors, bodies and agents.  Need to define:
 
@@ -214,7 +215,7 @@ Agents must take into account the way in which their own actions interact with t
 \item Example: Agent \(A\)'s action might clobber the precoditions of the action Agent \(B\) planned to execute.
 \end{itemize}
 \section{Concurrency Models}
-\label{sec:org59c5d5e}
+\label{sec:org9278575}
 
 Three approaches to dealing with concurrency:
 
@@ -244,7 +245,7 @@ Three approaches to dealing with concurrency:
 \item \textbf{Synchronization}: global clock, each action takes one time step, joint actions execute simultaneously, no-ops in case "waiting" is needed.
 \end{enumerate}
 \section{Multiagent Transition Models}
-\label{sec:org3201feb}
+\label{sec:org5c021a7}
 
 Deterministic single-agent case: `RESULT(s, a)` with \(b\) choices for the action.
 
@@ -257,7 +258,7 @@ Multiagent case: with \(n\) actors, joint action \(\langle a_1, \dots, a_n \rang
 
 Standard solution: pretend problems are decoupled and fix the interactions as they arise, i.e., writing action schemas as if actors acted independently.  Let's see how this works with an example \ldots{}
 \section{Example: Doubles Tennis Planning}
-\label{sec:org9d5b628}
+\label{sec:orga204a90}
 
 
 
@@ -270,9 +271,7 @@ Standard solution: pretend problems are decoupled and fix the interactions as th
 
 
 
-
 \includegraphics[alt={aima fig 18_01 doubles tennis problem},width=0.75\linewidth]{aima-fig-18_01-doubles-tennis-problem.pdf}
-
 
 
 Here's a 2-step \textbf{joint plan} that works:
@@ -282,7 +281,7 @@ Here's a 2-step \textbf{joint plan} that works:
                &B : [NoOp(B),NoOp(B)].
 \end{align*}
 \section{Concurrent Action Constraints}
-\label{sec:orgdc50546}
+\label{sec:org130a0bf}
 
 
 What if both players try to \(Hit\) at the same time?  Add a \textbf{concurrent action constraint} to prevent:
@@ -307,7 +306,7 @@ Some tasks require concurrent action, e.g., carrying a large cooler:
 \end{align*}
 \vspace{-.25in}
 \section{Cooperation and Coordination}
-\label{sec:org7567e99}
+\label{sec:org0f8fe01}
 
 There can be multiple joint plans that acheive the goal:
 
@@ -348,7 +347,7 @@ If both agents choose Plan 1 or 2, goal is acheived.  If one agent chooses 1 and
 \end{itemize}
 \end{itemize}
 \section{Games with a Single Move: Normal Form Games}
-\label{sec:org4338ee8}
+\label{sec:orgef38c4c}
 
 All players take action that are chosen simultaneously with no knowledge of other players' choices and the result of the game is based on the profile of actions that are selected in this way.
 
@@ -366,11 +365,12 @@ All players take action that are chosen simultaneously with no knowledge of othe
 \end{itemize}
 \end{itemize}
 \section{Example: Two-Finger Morra}
-\label{sec:org3a92b74}
+\label{sec:orgb0e03fd}
 
 Here is the payoff matrix for \textbf{two-finger Morra}, a game in which each player displays one or two fingers.
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
        & O: one         & O: two         \\\hline
 E: one & E = +2, O = -2 & E = -3, O = +3 \\\hline
@@ -383,7 +383,7 @@ E: two & E = -3, O = +3 & E = +4, O = -4 \\\hline
 \item Each cell shows the payoffs given the players' actions.
 \end{itemize}
 \section{Solution Concepts}
-\label{sec:org9c1f080}
+\label{sec:org86f8672}
 
 A \textbf{solution concept} is a way of choosing actions that take other players' actions into account.  Some important terminology:
 
@@ -405,7 +405,7 @@ A \textbf{solution concept} is a way of choosing actions that take other players
 
 Solution concepts define rationality in games.
 \section{The Prisoner's Dilemma[\textsuperscript{PD}]}
-\label{sec:org0f4bac8}
+\label{sec:orgad3aabe}
 
 Two prisoners, \(A\) and \(B\), suspected of committing a crime together are taken to separate interrogation rooms, and each can either "confess" to the crime (a.k.a. "cooperate") or "deny" it (a.k.a. "defect").
 
@@ -418,6 +418,7 @@ Two prisoners, \(A\) and \(B\), suspected of committing a crime together are tak
 The game can be summarized in the following payoff matrix (row player's payoff is listed first):
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d         \\\hline
 A: c & -1, -1 & -5, 0 \\\hline
@@ -429,7 +430,7 @@ The dillemma: should they confess or deny?
 
 {[}\textsuperscript{PD}]: We adopt the more common notation found, e.g., in \url{https://www.marl-book.com/}, \url{https://www.masfoundations.org/}, and \url{https://www.amazon.com/Evolution-Cooperation-Robert-Axelrod/dp/1541606841/}
 \section{The TCP Game[\textsuperscript{TCP}]}
-\label{sec:org40d73aa}
+\label{sec:org7c42939}
 
 Internet traffic is governed by the TCP protocol. One feature of TCP is the \textbf{backoff} mechanism; if your data rates cause congestion, back off until congestion subsides.
 
@@ -442,6 +443,7 @@ Consider a world of two TCP users, \(A\) and \(B\).
 \end{itemize}
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d         \\\hline
 A: c & -1, -1 & -5, 0 \\\hline
@@ -452,6 +454,7 @@ A: d & 0, -5  & -3, -3 \\\hline
 The Prisoner's dilemma is widely applicable.  In general:
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
        & C         & D        \\\hline
 C & a, a & b, c \\\hline
@@ -463,7 +466,7 @@ with \(c > a > d > b\).  Adding \(a > \frac{b+c}{2}\) guarantees that \((C, C)\)
 
 {[}\textsuperscript{TCP}]: \url{https://www.masfoundations.org/} Section 3.2.1-3.2.3
 \section{Dominant Strategies and Equilibria}
-\label{sec:orgeeeb801}
+\label{sec:org35ae761}
 
 
 
@@ -471,6 +474,7 @@ with \(c > a > d > b\).  Adding \(a > \frac{b+c}{2}\) guarantees that \((C, C)\)
 Consider \(A\)'s response when \(B\)'s strategy is \(c\):
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                 \\\hline
 A: c & \cellcolor{lightgray} -1, -1 &  -5, 0 \\\hline
@@ -483,6 +487,7 @@ A: d & \cellcolor{lightgray} 0, -5   & -3, -3 \\\hline
 How about when \(B\)'s strategy is \(d\):
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                 \\\hline
 A: c & -1, -1  & \cellcolor{lightgray} -5, 0  \\\hline
@@ -498,6 +503,7 @@ Again, \(A\)'s highest payoff is with \(d\).  No matter what \(B\) does, \(A\)'s
 Consider \(B\)'s response when \(A\)'s strategy is \(c\):
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                                      \\\hline
 A: c & \cellcolor{lightgray} -1, -1  & \cellcolor{lightgray} -5, 0 \\\hline
@@ -510,6 +516,7 @@ A: d & 0, -5                         & -3, -3                      \\\hline
 How about when \(A\)'s strategy is \(d\):
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                                      \\\hline
 A: c & -1, -1                      & -5, 0                         \\\hline
@@ -530,7 +537,7 @@ When all players choose a dominant strategy, the result is a \textbf{dominant st
 
 Choosing a dominant strategy is \textbf{rational}.  But notice that the payoff under strategy profile \((d, d)\) is \([-3, -3]\) whereas the payoff for strategy profile \((c, c)\) is \([-1, -1]\).
 \section{Optimal Strategies and Social Welfare}
-\label{sec:org295f081}
+\label{sec:org7e81703}
 
 An \textbf{optimal strategy} for an agent optimizes the payoff/utility for that agent.  From the standpoint of \textbf{social welfare} we want to optimize the utility of all agents.
 
@@ -553,13 +560,12 @@ Utilitarian social welfare is a measure of how good an outcome is in the aggrega
 \item Assumes a common scale for utilities.
 \end{itemize}
 \section{Tragedy of the Commons}
-\label{sec:org3cfa0d9}
+\label{sec:orge43dd73}
 
 Classic formulation:
 
 
 \includegraphics[alt={tragedy of commons classic},height=1.6in]{tragedy-of-commons-classic.jpg}
-
 
 
 Modern instantiation: air pollution.
@@ -573,11 +579,10 @@ Modern instantiation: air pollution.
 
 So, if there are 100 countries and each continues to pollute, the total utility for each country is -104 -- far greater than the -10 for reducing pollution.  This is a version of The Prisoner's Dilemma.
 \section{Nash Equilibria}
-\label{sec:orgb4dac2d}
+\label{sec:org6298d38}
 
 
 \includegraphics[alt={beautiful mind bar scene},height=1.6in]{beautiful-mind-bar-scene.jpg}
-
 
 \href{https://www.youtube.com/watch?v=QzwcGkfEra4}{https://www.youtube.com/watch?v=QzwcGkfEra4}
 
@@ -594,7 +599,7 @@ stayed with their strategy choices.
 \end{itemize}
 multiple Nash equilibria.
 \section{Finding Nash Equilibria}
-\label{sec:orge67e109}
+\label{sec:org9656fe4}
 
 Let's find the Nash equlibria in the Prisoner's Dilemma.
 
@@ -603,6 +608,7 @@ Let's find the Nash equlibria in the Prisoner's Dilemma.
 \end{itemize}
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
   & C              & D         \\\hline
 C & -1, -1         & -5, 0 \\\hline
@@ -615,6 +621,7 @@ D & \boxed{0}, -5  & \boxed{-3}, -3 \\\hline
 \end{itemize}
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
   & C              & D         \\\hline
 C & -1, -1         & -5, \circled{0} \\\hline
@@ -626,7 +633,7 @@ The Nash equilibria are the cases where both players' best responses coincide, h
 
 This is sometimes called a "no regret" decision -- couldn't have done better given what other players did.
 \section{Coordination and Competition: Battle of the Sexes (MAS 3.2.3)}
-\label{sec:org23c3889}
+\label{sec:orgbe3db8f}
 
 A husband and wife wish to go to the movies, and they can select among two movies:
 "Lethal Weapon (LW)" and "Wondrous Love (WL)."
@@ -637,6 +644,7 @@ A husband and wife wish to go to the movies, and they can select among two movie
 \end{itemize}
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
    & LW     & WL         \\\hline
 LW & 2, 1  & 0, 0 \\\hline
@@ -646,7 +654,7 @@ WL & 0, 0  & 1, 2 \\\hline
 
 This is like a common-payoff game where both players get the same reward when they do the same thing, but each player has different payoffs when they coordinate.
 \section{Multiple Nash Equilibria}
-\label{sec:org4b7b7d5}
+\label{sec:org878f091}
 
 Now lets find the Nash equilibria for the Battle of t he Sexes game.
 
@@ -655,6 +663,7 @@ Now lets find the Nash equilibria for the Battle of t he Sexes game.
 \end{itemize}
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
    & LW     & WL         \\\hline
 LW & \boxed{2}, 1  & 0, 0 \\\hline
@@ -667,6 +676,7 @@ WL & 0, 0  & \boxed{1}, 2 \\\hline
 \end{itemize}
 
 
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{|c|c|c|}\hline
    & LW     & WL         \\\hline
 LW & \boxed{2}, \circled{1}  & 0, 0 \\\hline
@@ -676,7 +686,7 @@ WL & 0, 0  & \boxed{1}, \circled{2} \\\hline
 
 Here we see that the only best responses for both players are also both Nash equilibria.
 \section{Iterated Prisoner's Dilemma (IPD)}
-\label{sec:org810064a}
+\label{sec:org7f23d13}
 
 The simplest kind of multiple-move game is the repeated game (also called an \textbf{iterated game}), in which players repeatedly play rounds of a single-move game, called the \textbf{stage game}.
 
@@ -690,17 +700,15 @@ The simplest kind of multiple-move game is the repeated game (also called an \te
 \includegraphics[alt={aima fig 18_03 ipd fsms},height=1.6in]{aima-fig-18_03-ipd-fsms.pdf}
 
 
-
 Note that AIMA uses \(refuse\) for \(confess/cooperate\) and \(testify\) for \(deny/defect\).
 \section{Axelrod's IPD Tournaments}
-\label{sec:org1000b9a}
+\label{sec:org1b513c8}
 
 
 
 
 
 \includegraphics[alt={axelrod evolution of cooperation book},height=3.2in]{axelrod-evolution-of-cooperation-book.jpg}
-
 
 
 
@@ -718,14 +726,13 @@ Knight, et. al. [\textsuperscript{knight2025reviving}] recently reproduced these
 
 {[}\textsuperscript{knight2025reviving}]: \url{https://arxiv.org/abs/2510.15438}
 \section{Closing Thoughts: Rational Altruism}
-\label{sec:org0988bb2}
+\label{sec:orga9c5b50}
 
 
 
 
 
 \includegraphics[alt={kimmel science of revenge book},height=3.2in]{kimmel-science-of-revenge-book.jpg}
-
 
 
 
@@ -752,7 +759,7 @@ Perhaps there is a link between the results of Axelrod's IPD tournaments and neu
 
 {[}\textsuperscript{kimmel2025science}]: \url{https://www.amazon.com/Science-Revenge-Understanding-Deadliest-Addiction/dp/0593796519}
 \section{Lessons from Animals}
-\label{sec:orgb779397}
+\label{sec:org8934d13}
 
 
 
@@ -760,7 +767,6 @@ Perhaps there is a link between the results of Axelrod's IPD tournaments and neu
 
 
 \includegraphics[alt={wolf pack},height=1.6in]{wolf-pack.png}
-
 
 \vspace{.1in}
 
@@ -772,25 +778,21 @@ Perhaps there is a link between the results of Axelrod's IPD tournaments and neu
 
 
 
-
 \includegraphics[alt={Safari_ants},height=1.2in]{Safari_ants.jpg}
-
 
 \vspace{.1in}
 
 
 \includegraphics[alt={bees honeycomb},height=1.2in]{bees-honeycomb.jpg}
 
-
 \href{https://www.youtube.com/watch?v=F5rWmGe0HBI}{https://www.youtube.com/watch?v=F5rWmGe0HBI}
 \section{Humans are Complicated Animals}
-\label{sec:orgfc0a2ca}
+\label{sec:orgc27fc9b}
 
 Humans are complicated -- and often amusing -- animals.  The Prisoner's Dilemma often occurs naturally, and sometimes artificially:
 
 
 \includegraphics[alt={bachelor pad prisoners dilemma.},height=2.0in]{bachelor-pad-prisoners-dilemma.jpeg}
-
 
 \href{https://www.youtube.com/watch?v=p1oyuqLFiXg}{https://www.youtube.com/watch?v=p1oyuqLFiXg} -- 1:06:30
 \end{document}

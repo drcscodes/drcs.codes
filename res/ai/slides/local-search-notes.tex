@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:23
+% Created 2026-04-23 Thu 12:08
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,7 +53,7 @@
 
 \maketitle
 \section{Local Search}
-\label{sec:org66d0033}
+\label{sec:org5e519e7}
 
 If you don't care about the path to a goal state, you can use \textbf{local search}.
 
@@ -62,31 +65,29 @@ If you don't care about the path to a goal state, you can use \textbf{local sear
 \item Often used for \textbf{optmization} problems -- finding states that maximize or minimize an \textbf{objective function}.
 \end{itemize}
 \section{State Space Landscape}
-\label{sec:org7b6f5f6}
+\label{sec:org8e234fb}
 
 
 \includegraphics[alt={aima fig 04_01 state space landscape},width=0.75\linewidth]{aima-fig-04_01-state-space-landscape.pdf}
 \section{Hill-Climbing Search}
-\label{sec:org42e2f85}
+\label{sec:orgff47282}
 
 
 \includegraphics[alt={aima fig 04_02 hill climbing algorithm},width=0.75\linewidth]{aima-fig-04_02-hill-climbing-algorithm.pdf}
 
 
-
 Also known as \textbf{greedy local search}.
 \section{The 8 Queens Problem}
-\label{sec:orgd2c6d19}
+\label{sec:org750ca0d}
 
 \textbf{Complete-state formulation}: each state has all components of a solution.
 
 \begin{itemize}
-\item 8 Queens state: row position for each of 8 columns, e.g., (a) below is `<1, 6, 2, 5, 7, 4, 8, 3>`
+\item 8 Queens state: row position for each of 8 columns, e.g., (a) below is ``
 \end{itemize}
 
 
 \includegraphics[alt={aima fig 04_03 8 queens},height=2.0in]{aima-fig-04_03-8-queens.pdf}
-
 
 
 \begin{itemize}
@@ -98,7 +99,7 @@ Also known as \textbf{greedy local search}.
 \end{itemize}
 \end{itemize}
 \section{Disadvantages of Hill-Climbing}
-\label{sec:orgc0fd2cc}
+\label{sec:org426460c}
 
 
 
@@ -111,7 +112,6 @@ Susceptible to getting stuck in:
 \end{itemize}
 
 \includegraphics[alt={aima fig 04_01 state space landscape},height=1.6in]{aima-fig-04_01-state-space-landscape.pdf}
-
 
 How to fix:
 
@@ -129,11 +129,10 @@ Grid of states superimposed on ridge rising from left to right.
 
 \includegraphics[alt={aima fig 04_04 ridges},width=0.75\linewidth]{aima-fig-04_04-ridges.pdf}
 \section{Simulated Annealing}
-\label{sec:orga3b215b}
+\label{sec:org03f5aa1}
 
 
 \includegraphics[alt={aima fig 04_05 simulated annealing algorithm},height=1.2in]{aima-fig-04_05-simulated-annealing-algorithm.pdf}
-
 
 
 \begin{itemize}
@@ -156,7 +155,7 @@ Grid of states superimposed on ridge rising from left to right.
 
 If \(T\) decreases sufficiently slowly, then the Boltzman distribution, \(e^{\frac{\Delta E}{T}}\), ensures that all the probability is concentrated on the global maxima, so the algorithm finds a global maximum with probability approaching 1.
 \section{Evolutionary (Genetic) Algorithms}
-\label{sec:orgd014622}
+\label{sec:orgdb0cf76}
 
 A kind of \textbf{local beam search}: tracking \(k\) states instead of just one.
 
@@ -185,16 +184,15 @@ Elements of genetic algorithms:
 \end{itemize}
 \end{itemize}
 \section{A Genetic Algorithm}
-\label{sec:org39b28e7}
+\label{sec:orgffc7b23}
 
 
 \includegraphics[alt={aima fig 04_08 genetic algorithm},width=0.75\linewidth]{aima-fig-04_08-genetic-algorithm.pdf}
 \section{Genetic Algorithm on 8-Queens Problem}
-\label{sec:org045b00b}
+\label{sec:org8d23d2a}
 
 
 \includegraphics[alt={aima fig 04_06 genetic algorithm 8 queens illustration},width=0.75\linewidth]{aima-fig-04_06-genetic-algorithm-8-queens-illustration.pdf}
-
 
 
 \begin{enumerate}
@@ -205,7 +203,7 @@ Elements of genetic algorithms:
 \item In (e) "offspring" are randomly chosen for mutation.  For each chosen candidate, a "gene" is randomly chosen, then that gene is assigned a random "mutated" value.
 \end{enumerate}
 \section{Crossover in the 8-queens Problem}
-\label{sec:orgadf90fb}
+\label{sec:org5517327}
 
 Here is a pictorial illustration of the crossover operation in the 8-queens problem:
 
@@ -213,10 +211,9 @@ Here is a pictorial illustration of the crossover operation in the 8-queens prob
 \includegraphics[alt={aima fig 04_07 8 queens crossover diagrams},width=0.75\linewidth]{aima-fig-04_07-8-queens-crossover-diagrams.pdf}
 
 
-
 Is the random crossover operation depicted here meaningful for the 8-queens problem?
 \section{Genetic Algorithms and Biological Evolution}
-\label{sec:orge4d6658}
+\label{sec:orgf088406}
 
 Genetic algorithms borrow the language of biological evolution for marketing purposes, but are far more simplistic than biological evolution.  My takes:
 
@@ -238,7 +235,7 @@ There is an interesting connection between biological evolution and AI, in parti
 \end{itemize}
 \end{itemize}
 \section{Continuous State Spaces -- Airports In Romania}
-\label{sec:org30bf810}
+\label{sec:org032cd9b}
 
 
 
@@ -246,7 +243,6 @@ There is an interesting connection between biological evolution and AI, in parti
 
 
 \includegraphics[alt={aima romania airports},height=3.2in]{aima-romania-airports.png}
-
 
 
 
@@ -266,7 +262,7 @@ f(\bm{x}) = \sum_{i=1}^3 \sum_{c \in C_i} (x_i - x_c)^2 + (y_i - y_c)^2
 
 For a globally optimal solution, if the airports move "too much," the sets \(C_i\) change.  How to deal with that?
 \section{Local Gradient Descent}
-\label{sec:org462dc99}
+\label{sec:org23397ab}
 
 The gradient of
 
@@ -317,7 +313,7 @@ But that would only work for one airport.  We can decompose it into three local 
 \frac{\partial f}{\partial y_3} = 2 \sum_{c \in C_3} (y_3 - y_c)
 \end{equation*}
 \section{Gradient Descent in Action}
-\label{sec:orgc3673dd}
+\label{sec:org604da93}
 
 
 
@@ -346,10 +342,9 @@ where \(\alpha\) is a \textbf{step size}, or learning rate.
 
 
 
-
 {[}\textsuperscript{UDLBook}]: \url{https://udlbook.github.io/udlbook/}
 \section{Continuous State Spaces and Convexity}
-\label{sec:org57761e3}
+\label{sec:org422af2e}
 
 A convex set is a set of points in which a line between any two points lies within the set.  A convex function is a function for which the points above the function form a convex set.
 
@@ -357,12 +352,11 @@ A convex set is a set of points in which a line between any two points lies with
 \includegraphics[alt={../../deep learning/slides/TrainConvexProb},width=0.75\linewidth]{../../deep-learning/slides/TrainConvexProb.pdf}
 
 
-
 There are mathematical properties of continuous spaces that rule out local minima.  Take my deep learning class to learn about them!
 
 {[}\textsuperscript{UDLBook}]: \url{https://udlbook.github.io/udlbook/}
 \section{Constrained Optimization via Linear Programming}
-\label{sec:org3d8994f}
+\label{sec:org2af639b}
 
 
 
@@ -380,7 +374,6 @@ There are mathematical properties of continuous spaces that rule out local minim
 
 
 \includegraphics[alt={lp fig 02_01 half planes},height=2.8in]{lp-fig-02_01-half-planes.pdf}
-
 
 
 

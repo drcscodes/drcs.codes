@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Acting Under Uncertainty
 
@@ -88,7 +91,6 @@ Probability theory solves the qualification problem by summarizing the uncertain
 
 #+latex: \includegraphics[alt={neo architect prob dist screens},width=0.75\linewidth]{neo-architect-prob-dist-screens.png}
 
-
 ** Probabilities are about our uncertain knowledge.
 
 "80% chance (probability 0.8) patient with a toothache has a cavity."
@@ -137,7 +139,6 @@ Utility theory associates a utility value with each possible outcome, which indu
 #+latex: \includegraphics[alt={aima fig 12_01 dt agent algorithm},height=1.2in]{aima-fig-12_01-dt-agent-algorithm.pdf}
 
 
-
 Each action, $a$, leads to a probability distribution over outcomes, or "result states":
 
 $$
@@ -163,6 +164,7 @@ $$
 Each $\omega$ is a possible world.  Probability textbooks typically call these outcomes.  For example, each of these pairs is a $\omega \in \Omega$ for the roll of two dice:
 
 \footnotesize
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{cccccc}
 (1, 1) & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
 (1, 2) & (2, 2) & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
@@ -180,6 +182,7 @@ In probability textbooks, an *experiment* leads to a sample space.  Here, the se
 An *event*, which we denote with $\phi$ here, is a set of possible worlds, some subset of $\Omega$, or set of $\omega$, e.g., the event "doubles" contains the 6 boxed elements $\omega$:
 
 \footnotesize
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{cccccc}
 \boxed{(1, 1)} & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
 (1, 2) & \boxed{(2, 2)} & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
@@ -317,14 +320,12 @@ Example:
 #+latex: \includegraphics[alt={aima fig 12_02 agent bets},width=0.75\linewidth]{aima-fig-12_02-agent-bets.pdf}
 
 
-
 ** Inference Using Full Joint Distributions
 
 Knowledge base is full joint distribution of boolean random variables $Toothache, Cavity, Catch$.
 
 
 #+latex: \includegraphics[alt={aima fig 12_03 full joint toothache},width=0.75\linewidth]{aima-fig-12_03-full-joint-toothache.pdf}
-
 
 
 - All probabilities above sum to 1.
@@ -342,7 +343,6 @@ P(cavity) = 0.108 + 0.012 + 0.072 + 0.008= 0.2
 
 
 #+latex: \includegraphics[alt={aima fig 12_03 full joint toothache},height=0.8in]{aima-fig-12_03-full-joint-toothache.pdf}
-
 
 
 *Marginalization* means "summing out" the non-query variables, which we usually denote with $Z$:
@@ -443,7 +443,6 @@ Can be a big help.  For example, if you have $n$ independent coin flips, then in
 #+latex: \includegraphics[alt={aima fig 12_04 factoring independence},height=1.2in]{aima-fig-12_04-factoring-independence.pdf}
 
 
-
 Unfortunately, independence rarely holds in the real world.
 
 ** Bayes' Rule
@@ -473,7 +472,6 @@ A cancer with occurence rate of 1% (.01) has a "90% accurate" test, and:
 
 
 #+latex: \includegraphics[alt={../../deep learning/slides/bishop dl fig2.3},height=1.8in]{../../deep-learning/slides/bishop-dl-fig2.3.pdf}
-
 
 
 False positive rate: .03, False negative rate: 0.10
@@ -554,7 +552,6 @@ If dentist's probe catches and patient has a toothache, then using the full join
 
 
 #+latex: \includegraphics[alt={aima fig 12_03 full joint toothache},width=0.75\linewidth]{aima-fig-12_03-full-joint-toothache.pdf}
-
 
 
 we can simply read off the answer:

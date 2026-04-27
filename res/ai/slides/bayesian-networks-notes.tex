@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:22
+% Created 2026-04-23 Thu 12:07
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,7 +53,7 @@
 
 \maketitle
 \section{Representation of Uncertain Knowledge (AIMA 13.1--13.2)}
-\label{sec:orgd7a9f5d}
+\label{sec:orga912587}
 
 A Bayesian network is a directed graph in which each node is annotated with quantitative probability information. The full specification is as follows:
 
@@ -62,11 +65,10 @@ A Bayesian network is a directed graph in which each node is annotated with quan
 \item Each node \(X_i\) has associated probability information \(\theta(X_i | Parents(X_i))\) that quantifies the effect of the parents on the node using a finite number of parameters.
 \end{enumerate}
 \section{Bayesian Network Topology}
-\label{sec:org7efad5e}
+\label{sec:orge4b0c6c}
 
 
 \includegraphics[alt={aima fig 13_01 bayes net weather cavity},width=0.75\linewidth]{aima-fig-13_01-bayes-net-weather-cavity.pdf}
-
 
 
 \begin{itemize}
@@ -81,7 +83,7 @@ A Bayesian network is a directed graph in which each node is annotated with quan
 
 It is usually easy for a domain expert to decide what direct influences exist in the domain -- much easier, in fact, than actually specifying the probabilities themselves.
 \section{Example: Earthquake vs. Burglary}
-\label{sec:orgc81143c}
+\label{sec:org2cca9ae}
 
 You have a burglar alarm fairly reliable at detecting a burglary, but is occasionally set off by minor earthquakes.
 
@@ -93,7 +95,7 @@ You have a burglar alarm fairly reliable at detecting a burglary, but is occasio
 
 Given the evidence of who has or has not called, we would like to estimate the probability of a burglary.
 \section{Bayes Net for Earthquake vs. Burglary Reasoning}
-\label{sec:orgfbd5d09}
+\label{sec:org9254721}
 
 The \textbf{syntax} of a Bayes net consists of a directed acyclic graph (DAG) with some local probability information attached to each node.
 
@@ -101,11 +103,10 @@ The \textbf{syntax} of a Bayes net consists of a directed acyclic graph (DAG) wi
 \includegraphics[alt={aima fig 13_02 bayes net alarm},width=0.75\linewidth]{aima-fig-13_02-bayes-net-alarm.pdf}
 
 
-
 The full joint distribution for all the variables is defined by the topology and the
 local probability information recorded in conditional probability tables (CPTs).
 \section{Conditional Probability Tables}
-\label{sec:org6ffbb9c}
+\label{sec:org853b68f}
 
 Each row in a CPT contains the conditional probability of each node value for a conditioning case.  A conditioning case is a possible combination of values for the parent nodes -- a miniature possible world.
 
@@ -128,7 +129,7 @@ Each row in a CPT contains the conditional probability of each node value for a 
 
 \includegraphics[alt={aima fig 13_02 bayes net alarm},width=0.75\linewidth]{aima-fig-13_02-bayes-net-alarm.pdf}
 \section{Many Possibilities, Few Variables of Interest}
-\label{sec:orge6f483c}
+\label{sec:org9c5e686}
 
 Network does not explicitly represent Mary currently listening to loud music or telephone ringing and confusing John.
 
@@ -156,10 +157,9 @@ The probabilities actually summarize a potentially infinite set of circumstances
 
 
 
-
 In this way, a small agent can cope with a very large world, at least approximately.
 \section{Semantics of Bayesian Networks}
-\label{sec:orgf04ddc0}
+\label{sec:orgf11fc4f}
 
 The \textbf{semantics} defines how the syntax -- a DAG with local probabilities -- corresponds to a joint distribution over the variables of the network.
 
@@ -180,7 +180,7 @@ where \(parents(X_i)\) denotes the values of \(Parents(X_i)\) that appear in \(x
 
 So each entry in the joint distribution is the product of appropriate elements of the local CPTs in the Bayes net.
 \section{Example: An Alarm, Two Calls, but No Events of Interest}
-\label{sec:orgd466585}
+\label{sec:orgb8e6334}
 
 
 
@@ -208,7 +208,6 @@ Using the abbreviations \(j, m, a, b\) and \(e\):
 
 
 
-
 \begin{align*}
 P(x_1, \dots, x_n)         &= \prod_{i=1}^n P( x_i | parents(X_i)) \tag{13.2}\\
 P(j, m, a, \neg b, \neg e) &= P(j | a) P(m | a) P(a | \neg b, \neg e) P(\neg b) Pr (\neg e)\\
@@ -216,7 +215,7 @@ P(j, m, a, \neg b, \neg e) &= P(j | a) P(m | a) P(a | \neg b, \neg e) P(\neg b) 
                             &= 0.000628
 \end{align*}
 \section{Constructing Bayesian Networks}
-\label{sec:orgeaf8635}
+\label{sec:orgf617318}
 
 A Bayesian network is a correct representation of the domain only if each node is conditionally independent of its other predecessors in the node ordering, given its parents.  Mathematically, if \(Parents(X_i) \subseteq \{X_{i-1}, \dots, X_1\}\), then:
 
@@ -244,7 +243,7 @@ We can construct a valid Bayes net with this methodology:
 
 Intuitively, the parents of node \(X_i\) should contain all those nodes in \(\{X_1,\dots,X_{i-1}\}\) that directly influence \(X_i\).
 \section{Knowledge Engineering Considerations in Bayes Nets}
-\label{sec:org33f9e60}
+\label{sec:orgc97fcfd}
 
 
 
@@ -261,7 +260,6 @@ Suppose we have completed the network except for the choice of parents for \(Mar
 
 
 \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1.6in]{aima-fig-13_02-bayes-net-alarm.pdf}
-
 
 
 
@@ -286,7 +284,7 @@ Because
 
 there is no chance for inconsistency: it is impossible for the knowledge engineer or domain expert to create a Bayesian network that violates the axioms of probability.
 \section{Compactness of Bayesian Network Models}
-\label{sec:org289d3d6}
+\label{sec:org59a07f4}
 
 Bayes nets are complete and nonredundant, but their \textbf{compactness} is their "secret sauce."
 
@@ -315,7 +313,7 @@ Example: assume boolean variables.
 \end{itemize}
 \end{itemize}
 \section{Effects of Node Ordering}
-\label{sec:org467632c}
+\label{sec:org185615c}
 
 
 
@@ -342,7 +340,7 @@ We end up with 13 conditional probabilities.
 
 \includegraphics[alt={aima fig 13_03_a bayes net mjabe ordering},width=0.75\linewidth]{aima-fig-13_03_a-bayes-net-mjabe-ordering.pdf}
 \section{Knowledge Engineering in Probabilistic Systems}
-\label{sec:orgaff05bf}
+\label{sec:org46e1c57}
 
 
 
@@ -374,14 +372,13 @@ There is still knowledge engineering involved, which includes design choices.
 
 
 
-
 Any Bayes net represents the same joint distibution, but some are far more efficient.
 
 \begin{quote}
 Key takeaway: stick to causal models.  They are easier to specify, easier to get right, and they lead to more efficient Bayes nets.
 \end{quote}
 \section{Exact Inference in Bayesian Networks (AIMA 13.3)}
-\label{sec:org90ddd8f}
+\label{sec:org64e4dcf}
 
 Most common task in probabilistic inference: compute the \textbf{posterior probability} of a set of \textbf{query variables} given some \textbf{event} represented as a set of \textbf{evidence variables}.
 
@@ -418,12 +415,11 @@ Example:
 
 
 
-
 \begin{equation*}
 P(Buglary \mid JohnCalls = true, MaryCalls = true) = <0.284, 0.716>.
 \end{equation*}
 \section{Inference by Enumeration}
-\label{sec:org403d0fd}
+\label{sec:org32caacc}
 
 Recall that we can use the full joint distribution to answer any query:
 
@@ -449,7 +445,7 @@ Using these two equations we can enumerate the appropriate probabilities to calc
 \item In particular, we can get the answer by computing sums of products of conditional probabilities from a Bayes net.
 \end{itemize}
 \section{Example: Prob of Burglary Given JohnCalls = true and MaryCalls = true.}
-\label{sec:org9125cbb}
+\label{sec:orgd188b85}
 
 Using abbreviations and substituting into Eq 12.9 above (\(e\) and \(a\) are hidden):
 
@@ -475,7 +471,7 @@ P(b \mid j, m) &= \alpha \sum_e \sum_a P(b) P(e) P(a \mid b, e) P(j \mid a) P(m 
 
 Steps 2 and 3 above reduce the complexity of the computation from \(O(n2^n)\) to \(O(2^n)\).
 \section{Caclulation of Burglary given John and Mary Call}
-\label{sec:org188cb02}
+\label{sec:org11e272f}
 
 
 
@@ -496,10 +492,9 @@ we get the expression tree:
 
 
 
-
 \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1.6in]{aima-fig-13_02-bayes-net-alarm.pdf}
 \section{Enumeration Algorithm}
-\label{sec:org0208241}
+\label{sec:org8bdf86b}
 
 The ENUMERATION-ASK algorithm evaluates these expression trees using depth-first, left-to-right recursion.
 
@@ -507,17 +502,16 @@ The ENUMERATION-ASK algorithm evaluates these expression trees using depth-first
 \includegraphics[alt={aima fig 13_11 bayes net enumeration algorithm},width=0.75\linewidth]{aima-fig-13_11-bayes-net-enumeration-algorithm.pdf}
 
 
-
 Unfortunately, its time complexity is \(O(s^n)\).  But we can improve it \ldots{}
 \section{Repeated Calculations}
-\label{sec:orgc427448}
+\label{sec:org794e9bd}
 
 Notice that the subexpressions for the products \(P(j \mid a) P(m \mid a)\) and \(P(j \mid \neg a) P(m \mid \neg a)\) are computed twice, once for each value of \(E\).
 
 
 \includegraphics[alt={aima fig 13_10 prob expression tree},width=0.75\linewidth]{aima-fig-13_10-prob-expression-tree.pdf}
 \section{Variable Elimination}
-\label{sec:org4cb8a15}
+\label{sec:org696874a}
 
 The enumeration algorithm can be improved substantially by eliminating repeated calculations.
 
@@ -535,7 +529,7 @@ P(b \mid j, m) = \alpha P(b) \sum_e P(e) \sum_a P(a \mid b, e) P(j \mid a) P(m \
 
 in right-to-left order (that is, bottom up in the expression tree), storing intermediate results, and only doing summations for portions of the expression that depend on the variable.
 \section{Example: Variable Elimination in Burglary Network}
-\label{sec:orgc15f886}
+\label{sec:org9492935}
 
 First, annotate the *factor*s in the expression for the network:
 
@@ -634,7 +628,7 @@ P(m \mid \neg a)
 
 \(\bm{f}_3(A, B, E)\) is a little more complicated \ldots{}
 \section{Calculation of F 3}
-\label{sec:org8a87f98}
+\label{sec:org0b201c8}
 
 \begin{equation*}
 P(B \mid j, m) =
@@ -688,7 +682,7 @@ P(\neg a \mid \neg b, e) & P(\neg a \mid \neg b, \neg e)
 
 \includegraphics[width=0.75\textwidth, right]{aima-fig-13_02-bayes-net-alarm.pdf}
 \section{Factorized Query}
-\label{sec:orga34a0c0}
+\label{sec:org9547429}
 
 From our original query:
 
@@ -719,7 +713,7 @@ P(B \mid j, m) =
 
 Now we are ready to evaluate the expression \ldots{}
 \section{Expression Evaluation}
-\label{sec:orgb702da8}
+\label{sec:org08c9437}
 
 Given our factorized query:
 
@@ -754,7 +748,7 @@ Which leaves our final form of the query: \(P(B \mid j, m) =\alpha \bm{f}_1(B) \
 
 This expression can be evaluated by taking the pointwise product and normalizing the result.
 \section{Operations on Factors}
-\label{sec:org1a7c7ec}
+\label{sec:org30bcb0a}
 
 In the preceding manipulations we saw the two basic operations in variable elimination:
 
@@ -765,7 +759,7 @@ In the preceding manipulations we saw the two basic operations in variable elimi
 
 Now let's see how we calculate them.
 \section{Pointwise Product Example}
-\label{sec:orgec663df}
+\label{sec:org98051bc}
 
 The pointwise product of two factors \(\bm{f}\) and \(\bm{g}\) yields a new factor \(\bm{h}\) whose variables are the union of the variables in \(\bm{f}\) and \(\bm{g}\) and whose elements are given by the product of the corresponding elements in the two factors.
 
@@ -774,12 +768,11 @@ Given \(X, Y, Z\) boolean variables, result of pointwise product \(\bm{f}(X, Y) 
 
 \includegraphics[alt={aima fig 13_12 pointwise multiplication},height=2.0in]{aima-fig-13_12-pointwise-multiplication.pdf}
 \section{Summing out Variables}
-\label{sec:org2d03b2e}
+\label{sec:orgb36d1fc}
 
 
 
 \includegraphics[alt={aima fig 13_12 pointwise multiplication},height=1.6in]{aima-fig-13_12-pointwise-multiplication.pdf}
-
 
 
 
@@ -808,13 +801,12 @@ formed by fixing the variable to each of its values in turn. For example, to sum
 \end{bmatrix}
 \end{align*}
 \section{Variable Elimination Algorithm}
-\label{sec:orgef785a4}
+\label{sec:orgd47b229}
 
 With these two basic operations, we can implement the variable elimination algorithm:
 
 
 \includegraphics[alt={aima fig 13_13 bayes net variable elimination algorithm},width=0.75\linewidth]{aima-fig-13_13-bayes-net-variable-elimination-algorithm.pdf}
-
 
 
 Notes about the \texttt{order} function:
@@ -826,7 +818,7 @@ Notes about the \texttt{order} function:
 \item General rule: every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query.
 \end{itemize}
 \section{Complexity of Exact Inference in Polytrees}
-\label{sec:org931d88d}
+\label{sec:orgb098acc}
 
 Notice that the Alarm Bayes net is \textbf{singly connected}, a.k.a., a \textbf{polytree}:
 
@@ -838,7 +830,6 @@ Notice that the Alarm Bayes net is \textbf{singly connected}, a.k.a., a \textbf{
 \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1.6in]{aima-fig-13_02-bayes-net-alarm.pdf}
 
 
-
 The time and space complexity of polytrees is linear in the size of the network.
 
 \begin{itemize}
@@ -846,7 +837,7 @@ The time and space complexity of polytrees is linear in the size of the network.
 \item If \(|parents(X_i)| \le c, \forall i \in n\) for some constant \(c\) and number of nodes \(n\), then complexity is also linear in number of nodes.
 \end{itemize}
 \section{Complexity of Exact Inference in Multiply-connected Networks}
-\label{sec:org2aaa023}
+\label{sec:orgde4d793}
 
 Now consider \textbf{multiply-connected} networks such as the car insurance network:
 
@@ -854,13 +845,12 @@ Now consider \textbf{multiply-connected} networks such as the car insurance netw
 \includegraphics[alt={aima fig 13_09 bayes net car insurance},height=2.0in]{aima-fig-13_09-bayes-net-car-insurance.pdf}
 
 
-
 \begin{itemize}
 \item Variable elimination can have exponential worst-case time and space complexity in multiply-connected networks.
 \item \textbf{Since inference in Bayes nets includes inference in propositional logic as a special case, Bayes net inference is \textbf{NP-hard}}.
 \end{itemize}
 \section{Closing Thoughts}
-\label{sec:org9d40144}
+\label{sec:org7cee7e8}
 
 \begin{itemize}
 \item A Bayesian network is a directed acyclic graph whose nodes correspond to random variables; each node has a conditional distribution for the node, given its parents.

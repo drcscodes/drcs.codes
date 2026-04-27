@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Propositional vs. First-Order Logc
 
@@ -44,12 +47,10 @@ Foo
 #+latex: \includegraphics[alt={aima fig 09_01 unification algorithm},height=2.8in]{aima-fig-09_01-unification-algorithm.pdf}
 
 
-
 ** Unification and First-Order Inference
 
 
 #+latex: \includegraphics[alt={aima fig 09_02 subsumption lattice},height=2.8in]{aima-fig-09_02-subsumption-lattice.pdf}
-
 
 
 ** Forward Chaining
@@ -58,12 +59,10 @@ Foo
 #+latex: \includegraphics[alt={aima fig 09_03 fol fc ask algorithm},height=2.8in]{aima-fig-09_03-fol-fc-ask-algorithm.pdf}
 
 
-
 ** Forward Chaining
 
 
 #+latex: \includegraphics[alt={aima fig 09_04 proof tree fc crime},height=2.8in]{aima-fig-09_04-proof-tree-fc-crime.pdf}
-
 
 
 ** Forward Chaining
@@ -72,12 +71,10 @@ Foo
 #+latex: \includegraphics[alt={aima fig 09_05 constraint graph australia},height=2.8in]{aima-fig-09_05-constraint-graph-australia.pdf}
 
 
-
 ** Backward Chaining
 
 
 #+latex: \includegraphics[alt={aima fig 09_06 fol bc ask algorithm},height=2.8in]{aima-fig-09_06-fol-bc-ask-algorithm.pdf}
-
 
 
 ** Backward Chaining
@@ -86,12 +83,10 @@ Foo
 #+latex: \includegraphics[alt={aima fig 09_07 proof tree bc crime},height=2.8in]{aima-fig-09_07-proof-tree-bc-crime.pdf}
 
 
-
 ** Logic Programming
 
 
 #+latex: \includegraphics[alt={aima fig 09_08 prolog infinite loop},height=2.8in]{aima-fig-09_08-prolog-infinite-loop.pdf}
-
 
 
 ** Logic Programming
@@ -100,12 +95,10 @@ Foo
 #+latex: \includegraphics[alt={aima fig 09_09 infinite proof tree},height=2.8in]{aima-fig-09_09-infinite-proof-tree.pdf}
 
 
-
 ** Resolution
 
 
 #+latex: \includegraphics[alt={aima fig 09_10 resolution proof criminal},height=2.8in]{aima-fig-09_10-resolution-proof-criminal.pdf}
-
 
 
 ** Resolution
@@ -114,12 +107,10 @@ Foo
 #+latex: \includegraphics[alt={aima fig 09_11 resolution proof curiosity},height=2.8in]{aima-fig-09_11-resolution-proof-curiosity.pdf}
 
 
-
 ** Completeness
 
 
 #+latex: \includegraphics[alt={aima fig 09_12 structure completeness proof},height=2.8in]{aima-fig-09_12-structure-completeness-proof.pdf}
-
 
 
 ** G{\"o}del's Incompleteness Theorem

@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:24
+% Created 2026-04-23 Thu 12:10
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,7 +53,7 @@
 
 \maketitle
 \section{Acting Under Uncertainty}
-\label{sec:org9f94d89}
+\label{sec:org946b855}
 
 Logical agents maintain a belief state and generate contingency plans that account for every possibility.  This breaks down for nontrivial problems due to:
 
@@ -61,7 +64,7 @@ Logical agents maintain a belief state and generate contingency plans that accou
 \item Qualification problem.  The closed-world assumption allows us to simplify logical environment specifications for simple domains, but real-world domains contain far more detail which must be accounted for.
 \end{itemize}
 \section{From Logic to Probability Theory}
-\label{sec:org7ca5a1e}
+\label{sec:org46b4553}
 
 Consider:
 
@@ -91,7 +94,7 @@ But not all cavities hurt.  Logic fails to deal with complex domains like medica
 
 We need to deal with uncertain knowledge, with \textbf{degrees of belief}.  For that, we use probability theory.
 \section{Probability Theory as Knowledge Representation}
-\label{sec:orgf307239}
+\label{sec:org3d7745c}
 
 \begin{itemize}
 \item Ontological commitments of logic and probability theory same:
@@ -110,11 +113,11 @@ We need to deal with uncertain knowledge, with \textbf{degrees of belief}.  For 
 
 Probability theory solves the qualification problem by summarizing the uncertainty stemming from our laziness and ignorance.
 \section{What do probabilities mean?}
-\label{sec:orgc4c2306}
+\label{sec:org9ddab8c}
 
 \includegraphics[alt={neo architect prob dist screens},width=0.75\linewidth]{neo-architect-prob-dist-screens.png}
 \section{Probabilities are about our uncertain knowledge.}
-\label{sec:org3842f47}
+\label{sec:orgc6b1f5d}
 
 "80\% chance (probability 0.8) patient with a toothache has a cavity."
 
@@ -131,7 +134,7 @@ If our knowledge changes, e.g., we find out patient has history of gum disease, 
 
 "Given patient has a history of gum disease and a toothache, 40\% chance patient has gum disease."
 \section{Rational Decisions}
-\label{sec:org5b4e270}
+\label{sec:org7635440}
 
 How do we choose between different plans that acheive the goal?
 
@@ -162,7 +165,7 @@ Utility theory associates a utility value with each possible outcome, which indu
 An agent is rational if and only if it chooses the action that yields the highest expected utility, averaged over all the possible outcomes of the action.
 \end{quote}
 \section{Decision-Theoretic Agents}
-\label{sec:orga207a7e}
+\label{sec:org50da190}
 
 \begin{quote}
 Decision theory = probability theory + utility theory
@@ -170,7 +173,6 @@ Decision theory = probability theory + utility theory
 
 
 \includegraphics[alt={aima fig 12_01 dt agent algorithm},height=1.2in]{aima-fig-12_01-dt-agent-algorithm.pdf}
-
 
 
 Each action, \(a\), leads to a probability distribution over outcomes, or "result states":
@@ -185,7 +187,7 @@ $$
 \argmax_{a} \sum_{s' \in S} P(\text{RESULT}(a) = s') U(s')
 $$
 \section{Probability Models}
-\label{sec:orgda25639}
+\label{sec:orgfd194cf}
 
 In logic we have satisfiabilty: \(M(\alpha)\) is the set of all possible worlds in which sentence \(\alpha\) is true.
 
@@ -198,6 +200,7 @@ $$
 Each \(\omega\) is a possible world.  Probability textbooks typically call these outcomes.  For example, each of these pairs is a \(\omega \in \Omega\) for the roll of two dice:
 
 \footnotesize
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{cccccc}
 (1, 1) & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
 (1, 2) & (2, 2) & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
@@ -210,11 +213,12 @@ Each \(\omega\) is a possible world.  Probability textbooks typically call these
 
 In probability textbooks, an \textbf{experiment} leads to a sample space.  Here, the set of possible worlds comes from the task environment.
 \section{Propositions and Events}
-\label{sec:org3ba939b}
+\label{sec:org6973232}
 
 An \textbf{event}, which we denote with \(\phi\) here, is a set of possible worlds, some subset of \(\Omega\), or set of \(\omega\), e.g., the event "doubles" contains the 6 boxed elements \(\omega\):
 
 \footnotesize
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{cccccc}
 \boxed{(1, 1)} & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
 (1, 2) & \boxed{(2, 2)} & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
@@ -236,7 +240,7 @@ The probability associated with a proposition is defined to be the sum of the pr
 
 Example: \(P(Doubles) = P((1, 1)) + \cdots + P((6, 6)) = \frac{1}{36} + \cdots + \frac{1}{36} = \frac{1}{6}\)
 \section{Prior and Conditional Probabilities}
-\label{sec:orgf16e67a}
+\label{sec:org2738ee6}
 
 An \textbf{unconditional} or \textbf{prior} probability is a degree of belief in a proposition with no other information.
 
@@ -256,7 +260,7 @@ P(a \land b) = P(a  \mid  b) P(b)
 
 Note that \(P(a \land b)\) can also be written \(P(a,b)\) or \(P(ab)\).
 \section{Conditional probability is not implication.}
-\label{sec:orgd1932d5}
+\label{sec:org3ba0f46}
 
 The assertion
 
@@ -274,7 +278,7 @@ If we had the further information that the dentist found no cavities, certainly 
 P(cavity \mid toothache \land \neg cavity) = 0
 \end{equation*}
 \section{Probability Assertions}
-\label{sec:org56416d2}
+\label{sec:org8c2060e}
 
 
 A \textbf{random variable}, which begins with capital letter, is a function mapping from possible worlds \(\Omega\) to a set of possible values the variable can take.
@@ -302,7 +306,7 @@ P(Weather=snow)  &= 0.01
 
 Which can also be written \(P(Weather) = \langle 0.6, 0.1, 0.29. 0.01 \rangle\).
 \section{Joint Probability Distributions}
-\label{sec:org67bdd75}
+\label{sec:org7c26b2d}
 
 \(P(Weather, Cavity)\) denotes the probabilities of all combinations of \(Weather\) and \(Cavity\).  This notation is a compact representation of a \textbf{joint probability distribution}.  The notation
 
@@ -323,7 +327,7 @@ P(W = cloud \land C = false) &= P(W = cloud  \mid  C = false) P(C = false) \\
 P(W = snow \land C = false)  &= P(W = snow  \mid  C = false) P(C = false)
 \end{align*}
 \section{Probability Axioms}
-\label{sec:org5040c7f}
+\label{sec:org13ca1f9}
 
 All of probability theory can be built from \textbf{Kolmogorov's axioms}.
 
@@ -340,7 +344,7 @@ Probability of a disjunction, \textbf{inclusion-exlusion principle}:
 P(a \lor b) = P(a) + P(b) - P(a \land b)
 \end{equation*}
 \section{Why is probability theory a valid basis for rational behavior?}
-\label{sec:orgfbfa324}
+\label{sec:org9449e58}
 
 De Finetti's Theorem:
 
@@ -353,13 +357,12 @@ Example:
 
 \includegraphics[alt={aima fig 12_02 agent bets},width=0.75\linewidth]{aima-fig-12_02-agent-bets.pdf}
 \section{Inference Using Full Joint Distributions}
-\label{sec:orga9a2e4e}
+\label{sec:orgd5d8c15}
 
 Knowledge base is full joint distribution of boolean random variables \(Toothache, Cavity, Catch\).
 
 
 \includegraphics[alt={aima fig 12_03 full joint toothache},width=0.75\linewidth]{aima-fig-12_03-full-joint-toothache.pdf}
-
 
 
 \begin{itemize}
@@ -374,11 +377,10 @@ Unconditional or \textbf{marginal probability} of cavity:
 P(cavity) = 0.108 + 0.012 + 0.072 + 0.008= 0.2
 \end{equation*}
 \section{Marginalization and Conditioning}
-\label{sec:org6b2225c}
+\label{sec:orga7a8b78}
 
 
 \includegraphics[alt={aima fig 12_03 full joint toothache},height=0.8in]{aima-fig-12_03-full-joint-toothache.pdf}
-
 
 
 \textbf{Marginalization} means "summing out" the non-query variables, which we usually denote with \(Z\):
@@ -410,7 +412,7 @@ P(Y) = \sum_z P(Y \mid z) P(z)
 
 These two rules are used widely in probabilistic reasoning.
 \section{Condional Probability Distributions}
-\label{sec:org07ffea1}
+\label{sec:orgc65a121}
 
 We're usually interested in conditional probabilities.  To get the conditional probabilites, we use the definition:
 
@@ -424,7 +426,7 @@ P(\neg cavity  \mid  toothache) &= \frac{P(\neg cavity \land toothache)}{P(tooth
                             &= \frac{0.016 + 0.064}{0.108 + 0.012 + 0.016 + 0.064} = 0.4
 \end{align*}
 \section{Normalization}
-\label{sec:org916106a}
+\label{sec:org35ab9df}
 
 Notice that \(P(toothache)\) appears in denominator in both equations in the preceding conditional probability calculations.  We can vew it as a \textbf{normalization constant}, denoted \(\alpha\), that ensures that the conditional probability distribution \(P(Cavity  \mid  toothache)\) sums to 1.  Then we can write:
 
@@ -445,7 +447,7 @@ P(Cavity  \mid  toothache) = \alpha <0.3, 0.2>
 
 What's \(\alpha\)?
 \section{Inference Using the Full Joint Distribution}
-\label{sec:org78d4c87}
+\label{sec:org055db2d}
 
 All of the preceding can be summarized in a general inference procedure using full joint probability distributions.  Let \(E\) be a list of evidence variables, \(\bm{e}\) be a list of observed values for the evidence variables, and \(Y\) be the remaining unobserved variables.  Then:
 
@@ -461,7 +463,7 @@ Great, so we're done!  All we need is a full joint probability distribution and 
 
 So we need different approaches, which we cover next.
 \section{Independence}
-\label{sec:org7e1b6d9}
+\label{sec:orgbc5b3a2}
 
 Weather is not affecteed by teeth.  So we can assert:
 
@@ -481,10 +483,9 @@ Can be a big help.  For example, if you have \(n\) independent coin flips, then 
 \includegraphics[alt={aima fig 12_04 factoring independence},height=1.2in]{aima-fig-12_04-factoring-independence.pdf}
 
 
-
 Unfortunately, independence rarely holds in the real world.
 \section{Bayes' Rule}
-\label{sec:org8ca0f93}
+\label{sec:org861d600}
 
 Using the symmetry \(P(X, Y) = P(Y, X)\) and the product rule we can derive \textbf{Bayes' rule}:
 
@@ -507,13 +508,12 @@ P(\text{cause} \mid \text{effect}) = \frac{P(\text{effect} \mid \text{cause}) P(
 
 Reasoning from effects to causes is also called \textbf{abductive reasoning}.  (Is Sherlock Holmes truly employing deduction?)
 \section{A Medical Screening Example}
-\label{sec:orgc7b6b3a}
+\label{sec:org7b5e5b8}
 
 A cancer with occurence rate of 1\% (.01) has a "90\% accurate" test, and:
 
 
 \includegraphics[alt={../../deep learning/slides/bishop dl fig2.3},height=1.8in]{../../deep-learning/slides/bishop-dl-fig2.3.pdf}
-
 
 
 False positive rate: .03, False negative rate: 0.10
@@ -528,7 +528,7 @@ Questions:
 
 The test is an effect.  Cancer is the cause.
 \section{Analysis of Medical Screening Example}
-\label{sec:org356b53c}
+\label{sec:org94e1716}
 
 
 With our probabilistic machinery we can analyze this cancer screening example.  First, we model the problem in the language of Bayesian probability theory:
@@ -549,7 +549,7 @@ Now we can answer the two questions we posed at the outset:
 \item If someone tests positive, what is the probability that they have cancer?
 \end{itemize}
 \section{Analysis of Medical Screening Example}
-\label{sec:org49352e3}
+\label{sec:orgbc26c59}
 
 
 
@@ -587,14 +587,13 @@ P(C=1 \mid T=1) &= \frac{P(T=1 \mid C=1)P(C=1)}{P(T=1)}\\
            &\approx 0.23
 \end{align*}
 \section{Bayes' Rule and Combining Evidence}
-\label{sec:org05127ae}
+\label{sec:orge46172a}
 
 If dentist's probe catches and patient has a toothache, then using the full joint:
 
 
 
 \includegraphics[alt={aima fig 12_03 full joint toothache},width=0.75\linewidth]{aima-fig-12_03-full-joint-toothache.pdf}
-
 
 
 we can simply read off the answer:
@@ -613,7 +612,7 @@ P(Cavity  \mid  toothache \land catch) = \alpha P(toothache \land catch  \mid  C
 
 But, again, we have \(O(2^n)\) combinations of observed evidence.  We need some additional domain knowledge.
 \section{Conditional Independence}
-\label{sec:orgb3714e1}
+\label{sec:org3fad6f6}
 
 Toothache and Catch are not independent: if the probe catches in the tooth, then it is likely that the tooth has a cavity and that the cavity causes a toothache.
 
@@ -632,7 +631,7 @@ P(X,Y  \mid Z) = P(X  \mid Z) P(Y  \mid Z)
 
 Given these independence assertions we can say \(P(X  \mid Y,Z) = P(X  \mid Z)\) and \(P(Y  \mid X,Z) = P(Y  \mid Z)\).
 \section{Factoring a Joint Distribution using Conditional Independence}
-\label{sec:orgf65d596}
+\label{sec:orgcba83e1}
 
 Given the conditional independence assertion
 
@@ -656,7 +655,7 @@ This decomposes the large table smaller tables.  In general, this technique turn
 
 Conceptually, we say that \(Cavity\) \textbf{separates} \(Toothache\) and \(Catch\) because it is a direct cause of both of them.
 \section{Closing Thoughts}
-\label{sec:org1f81418}
+\label{sec:orgc4f032f}
 
 The world is uncertain, more precisely, our \textbf{knowledge} of the world is uncertain.
 

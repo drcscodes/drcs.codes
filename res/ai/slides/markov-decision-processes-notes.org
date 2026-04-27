@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Sequential Decisions
 
@@ -49,7 +52,6 @@ Sequential decision problems incorporate utilities, uncertainty, and sensing, an
 
 
 #+latex: \includegraphics[alt={aima fig 17_01 4x3 grid world stochastic actions},width=0.75\linewidth]{aima-fig-17_01-4x3-grid-world-stochastic-actions.pdf}
-
 
 
 ** Markov Decision Processes (MDPs)
@@ -144,7 +146,6 @@ Finite time horizons lead to *nonstationary* policies, i.e., policies that diffe
 #+latex: \includegraphics[alt={aima fig 17_01_a 4x3 grid world},width=0.75\linewidth]{aima-fig-17_01_a-4x3-grid-world.pdf}
 
 
-
 The shorter time horizon forces the agent to risk ending up in state (4, 2), whereas the longer horizon allows the agent to take the long way around to the goal state.
 
 ** Infinite Horizon Return
@@ -209,7 +210,6 @@ What is the optimal action in state (1, 1) given the following state values?
 
 
 
-
 We plug the state values above and $\gamma = 1$ into:
 
 \vspace{-.2in}
@@ -251,7 +251,6 @@ Notice that in State (3, 1) there are two optimal actions:
 #+latex: \includegraphics[alt={aima fig 17_02_a optimal policies},width=0.75\linewidth]{aima-fig-17_02_a-optimal-policies.pdf}
 
 
-
 This results from the successor states having equal values, giving rise to multiple optimal policies.
 
 ** Reward Structures
@@ -262,14 +261,12 @@ Notice how different reward structures for non-goal states influences the optima
 #+latex: \includegraphics[alt={aima fig 17_02_b optimal policies different rewards},width=0.75\linewidth]{aima-fig-17_02_b-optimal-policies-different-rewards.pdf}
 
 
-
 In general, negative rewards "motivate" the agent to seek the goal quickly.
 
 ** Representing MDPs
 
 
 #+latex: \includegraphics[alt={aima fig 17_04 decision network robot mdp},width=0.75\linewidth]{aima-fig-17_04-decision-network-robot-mdp.pdf}
-
 
 
 
@@ -303,12 +300,10 @@ These updates are applied at the same time for all states, i.e., the values in i
 #+latex: \includegraphics[alt={aima fig 17_06 value iteration algorithm},width=0.75\linewidth]{aima-fig-17_06-value-iteration-algorithm.pdf}
 
 
-
 ** Value Iteration Converges Quickly
 
 
 #+latex: \includegraphics[alt={aima fig 17_07_a value estimates vs iterations plot},width=0.75\linewidth]{aima-fig-17_07_a-value-estimates-vs-iterations-plot.pdf}
-
 
 
 
@@ -333,7 +328,6 @@ Note that since the update equation used in policy evaluation is linear, we can 
 
 
 #+latex: \includegraphics[alt={aima fig 17_09 policy iteration algorithm},width=0.75\linewidth]{aima-fig-17_09-policy-iteration-algorithm.pdf}
-
 
 
 
@@ -362,7 +356,6 @@ Many practical applications:
 
 
 
-
 ** Optimal Bandit Policy via Gittins Index
 
 
@@ -373,9 +366,7 @@ Many practical applications:
 
 
 
-
 #+latex: \includegraphics[alt={aima fig 17_13 switch mdp restart mdp},width=0.75\linewidth]{aima-fig-17_13-switch-mdp-restart-mdp.pdf}
-
 
 
 ** Bernoulli Bandit
@@ -394,7 +385,6 @@ Many practical applications:
 
 
 
-
 ** Approximately Optimal Bandit Policies
 
 
@@ -406,17 +396,14 @@ Many practical applications:
 #+latex: \includegraphics[alt={aima fig 17_16 pomdp value iteration algorithm},width=0.75\linewidth]{aima-fig-17_16-pomdp-value-iteration-algorithm.pdf}
 
 
-
 ** Online POMDP Algorithms
 
 
 #+latex: \includegraphics[alt={aima fig 17_17 pomdp expectimax tree},width=0.75\linewidth]{aima-fig-17_17-pomdp-expectimax-tree.pdf}
 
 
-
 ** POMDP Belief Updates
 
 
 #+latex: \includegraphics[alt={aima fig 17_18 pomdp belief state sequence},width=0.75\linewidth]{aima-fig-17_18-pomdp-belief-state-sequence.pdf}
-
 

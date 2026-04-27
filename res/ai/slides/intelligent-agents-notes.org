@@ -31,14 +31,16 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** What is an agent?
 
 
 #+latex: \includegraphics[alt={agent smith subway fight},height=3.2in]{agent-smith-subway-fight.jpg}
-
 
 
 
@@ -50,16 +52,13 @@
 #+latex: \includegraphics[alt={aima fig 02_01 agent environment},width=0.75\linewidth]{aima-fig-02_01-agent-environment.pdf}
 
 
-
 ** Agent Functions
 
 An *agent function* is an external tabulation of the agent's behavior.
 
 
 #+latex: \includegraphics[alt={aima fig 02_02 vacuum world},height=0.6in]{aima-fig-02_02-vacuum-world.pdf}
-
 #+latex: \includegraphics[alt={aima fig 02_03 vacuum function},height=3.0in]{aima-fig-02_03-vacuum-function.pdf}
-
 
 
 An *agent program* is an implementation of an agent function inside the agent.
@@ -134,12 +133,10 @@ Notice that there is a blurring of the line between what we intuitively consider
 
 
 
-
 ** Example Agent Types and Their PEAS Descriptions
 
 
 #+latex: \includegraphics[alt={aima fig 02_05 agent types},height=3.6in]{aima-fig-02_05-agent-types.pdf}
-
 
 
 
@@ -165,7 +162,6 @@ Notice that there is a blurring of the line between what we intuitively consider
 #+latex: \includegraphics[alt={aima fig 02_06 example tasks},height=3.6in]{aima-fig-02_06-example-tasks.pdf}
 
 
-
 ** The Structure of Agents
 
 - An *agent program* is an implementation of an agent function inside the agent.
@@ -186,7 +182,6 @@ A table-driven agent program implements the agent function directly.
 #+latex: \includegraphics[alt={aima fig 02_07 table driven agent program},width=0.75\linewidth]{aima-fig-02_07-table-driven-agent-program.pdf}
 
 
-
 If $\mathcal{P}$ is the set of possible percepts and $T$ is the lifetime of the agent, then the size of the agent table is impossibly large in practice:
 
 \vspace{-.2in}
@@ -203,22 +198,18 @@ $$
 
 #+latex: \includegraphics[alt={aima fig 02_02 vacuum world},width=0.75\linewidth]{aima-fig-02_02-vacuum-world.pdf}
 
-
 #+latex: \includegraphics[alt={aima fig 02_08 reflex vacuum agent program},width=0.75\linewidth]{aima-fig-02_08-reflex-vacuum-agent-program.pdf}
-
 
 
 ** General Reflex Agents
 
 \begin{flushleft}
 #+latex: \includegraphics[alt={aima fig 02_10 reflex agent program},width=0.75\linewidth]{aima-fig-02_10-reflex-agent-program.pdf}
-
 \end{flushleft}
 
 \vspace{-.2in}
 \begin{flushright}
 #+latex: \includegraphics[alt={aima fig 02_09 reflex agent diagram},height=2.0in]{aima-fig-02_09-reflex-agent-diagram.pdf}
-
 \end{flushright}
 
 ** Condition-Action Rules
@@ -262,20 +253,17 @@ P(s, a, s') \text{ or } P(s_t \mid s_{t-1}, a_{t-1})
 
 \begin{flushleft}
 #+latex: \includegraphics[alt={aima fig 02_12 model based reflex agent program},height=2.0in]{aima-fig-02_12-model-based-reflex-agent-program.pdf}
-
 \end{flushleft}
 
 \vspace{-.3in}
 \begin{flushright}
 #+latex: \includegraphics[alt={aima fig 02_11 model based reflex agent diagram},height=1.8in]{aima-fig-02_11-model-based-reflex-agent-diagram.pdf}
-
 \end{flushright}
 
 ** Model-based Goal-driven Agents
 
 
 #+latex: \includegraphics[alt={aima fig 02_13 model based goal driven agent diagram},width=0.75\linewidth]{aima-fig-02_13-model-based-goal-driven-agent-diagram.pdf}
-
 
 
 Agents select actions that achieve goals by using *search* and *planning* algorithms, which we'll start learning next lecture.
@@ -286,7 +274,6 @@ Agents select actions that achieve goals by using *search* and *planning* algori
 #+latex: \includegraphics[alt={aima fig 02_14 model based utility driven agent diagram},width=0.75\linewidth]{aima-fig-02_14-model-based-utility-driven-agent-diagram.pdf}
 
 
-
 A utility-driven agent seeks states that are more desirable, which is a "soft" way of describing goals.
 
 ** Learning Agents
@@ -295,12 +282,10 @@ A utility-driven agent seeks states that are more desirable, which is a "soft" w
 #+latex: \includegraphics[alt={aima fig 02_15 learning agent diagram},width=0.75\linewidth]{aima-fig-02_15-learning-agent-diagram.pdf}
 
 
-
 ** State Representations
 
 
 #+latex: \includegraphics[alt={aima fig 02_16 state representations},width=0.75\linewidth]{aima-fig-02_16-state-representations.pdf}
-
 
 
 - Atomic representations are typically used in search-based problem solving.

@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 
 ** Knowledge and AI
@@ -55,7 +58,6 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 #+latex: \includegraphics[alt={aima fig 07_01 kb agent},height=1.6in]{aima-fig-07_01-kb-agent.pdf}
 
 
-
 - Logical agents are described at the *knowledge level* using *declarative* statements of knowledge and goals.
 - At the *implemetation level* we use a *procedureal* approach, encoding behaviors directly in program code.
 
@@ -67,7 +69,6 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 
 
 #+latex: \includegraphics[alt={aima fig 07_02 wumpus world},height=1.2in]{aima-fig-07_02-wumpus-world.pdf}
-
 
 
 
@@ -101,7 +102,6 @@ Percepts encoded as list of five symbols indicating presense or absence (by None
 
 
 #+latex: \includegraphics[alt={aima fig 07_03 first step wumpus world},height=1.6in]{aima-fig-07_03-first-step-wumpus-world.pdf}
-
 
 
 - (a) after percept [None,None,None,None,None]
@@ -144,7 +144,6 @@ The presence of pits in squares [1, 2], [2, 2] and [3, 1] gives rise to $2^3 = 8
 #+latex: \includegraphics[alt={aima fig 07_05 possible models pits},height=1.6in]{aima-fig-07_05-possible-models-pits.pdf}
 
 
-
 Solid line delineates KB based on percept [None, None, None, None, None] in [1, 1] and [None,Breeze,None,None,None] in [2, 1].
 
 - (a). $\alpha_1$ = "There is no pit in [1, 2]."  Here, $KB \models \alpha_1$
@@ -176,7 +175,6 @@ If KB is true in the real world, then any sentence $\alpha$ derived from KB by a
 
 
 #+latex: \includegraphics[alt={aima fig 07_06 representation vs world},height=1.6in]{aima-fig-07_06-representation-vs-world.pdf}
-
 
 
 *Grounding*: connection between logical reasoning and the real environment.  How do we know that KB is true in the real world.
@@ -218,12 +216,10 @@ If KB is true in the real world, then any sentence $\alpha$ derived from KB by a
 #+latex: \includegraphics[alt={aima fig 07_07 grammar of popositional logic},height=2.4in]{aima-fig-07_07-grammar-of-popositional-logic.pdf}
 
 
-
 ** Semantics of Propositional Logic
 
 
 #+latex: \includegraphics[alt={aima fig 07_08 truth tables logical connectives},height=2.8in]{aima-fig-07_08-truth-tables-logical-connectives.pdf}
-
 
 
 ** Propositional Theorem Proving
@@ -274,7 +270,6 @@ Functionally equivalent to inference rules.  Left side on top, right side on bot
 
 
 
-
 ** Representational Power of Formal Languages
 
 - Propositional logic assumes that there are facts that either hold or do not hold in the world. Each fact can be in one of two states—true or false—and each model assigns true or false to each proposition symbol.
@@ -282,7 +277,6 @@ Functionally equivalent to inference rules.  Left side on top, right side on bot
 
 
 #+latex: \includegraphics[alt={aima fig 08_01 ontological epistemological commitments},height=1.2in]{aima-fig-08_01-ontological-epistemological-commitments.pdf}
-
 
 
 - *Ontological commitment*: what a language assumes about the nature of reality.
@@ -294,7 +288,6 @@ Functionally equivalent to inference rules.  Left side on top, right side on bot
 
 
 #+latex: \includegraphics[alt={aima fig 08_02 person king model},height=2.8in]{aima-fig-08_02-person-king-model.pdf}
-
 
 
 ** First-Order Logic
@@ -386,7 +379,6 @@ Categories organize knowledge into *inheritance hierarchies*, or *taxonomies*, l
 
 
 
-
 ** Events and Time
 
 An *event calculus* encodes events, fluents, and time points, and the relationships between them.
@@ -403,7 +395,6 @@ An *event calculus* encodes events, fluents, and time points, and the relationsh
 
 
 #+latex: \includegraphics[alt={aima fig 10_02 predicates time intervals},height=1.6in]{aima-fig-10_02-predicates-time-intervals.pdf}
-
 Predicates on time intervals.
 
 
@@ -411,7 +402,6 @@ Predicates on time intervals.
 
 
 #+latex: \includegraphics[alt={aima fig 10_03 schematic object president},height=2.0in]{aima-fig-10_03-schematic-object-president.pdf}
-
 
 
 \begin{equation*}
@@ -451,7 +441,6 @@ Originally called *existential graphs*.
 
 
 #+latex: \includegraphics[alt={aima fig 10_04 semantic network 4 objects},height=2.4in]{aima-fig-10_04-semantic-network-4-objects.pdf}
-
 
 
 ** Closing Thoughts

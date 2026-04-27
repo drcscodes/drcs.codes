@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:23
+% Created 2026-04-23 Thu 12:08
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,7 +53,7 @@
 
 \maketitle
 \section{Knowledge and AI}
-\label{sec:orgdf85f23}
+\label{sec:org3aea377}
 
 In AI, \textbf{knowledge-based} agents use a process of \textbf{reasoning} over an internal \textbf{representation} of knowledge to decide what actions to take.
 
@@ -62,7 +65,7 @@ In AI, \textbf{knowledge-based} agents use a process of \textbf{reasoning} over 
 \item \textbf{Background knowledge}: sentences present in an agent's knowledge base before it starts perceiving and acting.
 \end{itemize}
 \section{Knowledge-Based Agents}
-\label{sec:org902c757}
+\label{sec:orge96fdbb}
 
 \begin{itemize}
 \item MAKE-PERCEPT-SENTENCE constructs sentence asserting that agent perceived the given percept at the given time.
@@ -74,20 +77,18 @@ In AI, \textbf{knowledge-based} agents use a process of \textbf{reasoning} over 
 \includegraphics[alt={aima fig 07_01 kb agent},height=1.6in]{aima-fig-07_01-kb-agent.pdf}
 
 
-
 \begin{itemize}
 \item Logical agents are described at the \textbf{knowledge level} using \textbf{declarative} statements of knowledge and goals.
 \item At the \textbf{implemetation level} we use a \textbf{procedureal} approach, encoding behaviors directly in program code.
 \end{itemize}
 \section{The Wumpus World}
-\label{sec:orgf1cb9ba}
+\label{sec:org337d79a}
 
 
 
 
 
 \includegraphics[alt={aima fig 07_02 wumpus world},height=1.2in]{aima-fig-07_02-wumpus-world.pdf}
-
 
 
 
@@ -110,7 +111,7 @@ A cave that you can drop into or climb out of at square [1, 1].
 \item \textbf{Actuators}: Forward, TurnLeft by \(90^\circ\), or TurnRight by \(90^\circ\). The agent dies if it enters pit or a live wumpus square.  Moves into walls have no effect.  Grab picks up gold if agent in gold square. Shoot can fires arrow in direction agent is facing. The arrow continues until it either hits (and hence kills) the wumpus or hits a wall. The agent has only one arrow, so only the first Shoot action has any effect. Climb climbs out of the cave if at [1,1].
 \end{itemize}
 \section{First Steps Wumpus World}
-\label{sec:orgfdd2826}
+\label{sec:org8eb1c89}
 
 \begin{itemize}
 \item \textbf{Sensors}: The agent has five sensors, each of which gives a single bit of information:
@@ -131,13 +132,12 @@ Percepts encoded as list of five symbols indicating presense or absence (by None
 \includegraphics[alt={aima fig 07_03 first step wumpus world},height=1.6in]{aima-fig-07_03-first-step-wumpus-world.pdf}
 
 
-
 \begin{itemize}
 \item (a) after percept [None,None,None,None,None]
 \item (b) after moving to [2,1] and perceiving [None,Breeze,None,None,None]
 \end{itemize}
 \section{Logic}
-\label{sec:org76fbaa5}
+\label{sec:org70cc261}
 
 Basics:
 
@@ -176,13 +176,12 @@ Formal definition of entailment:
 \alpha \models \beta \text{ if and only if } M(\alpha) \subseteq M(\beta)
 \end{equation*}
 \section{Possible Models of Pits in Wumpus World}
-\label{sec:org4098eb0}
+\label{sec:org68f3d41}
 
 The presence of pits in squares [1, 2], [2, 2] and [3, 1] gives rise to \(2^3 = 8\) possible models.
 
 
 \includegraphics[alt={aima fig 07_05 possible models pits},height=1.6in]{aima-fig-07_05-possible-models-pits.pdf}
-
 
 
 Solid line delineates KB based on percept [None, None, None, None, None] in [1, 1] and [None,Breeze,None,None,None] in [2, 1].
@@ -198,7 +197,7 @@ Logical inference via model checking: because of (b), cannot conclude \(\alpha_2
 \item \(M(KB) \models \alpha_1\) but  \(M(KB) \nvDash \alpha_2\)
 \end{itemize}
 \section{Inference Algorithms}
-\label{sec:org58c8d61}
+\label{sec:org499010b}
 
 If an inference algorithm \(i\) can derive \(\alpha\) from \(KB\), we write
 
@@ -216,13 +215,12 @@ which is pronounced "\(\alpha\) is derived from \(KB\) by \(i\)" or "\(i\) deriv
 \item An inference algorithm is \textbf{complete} if it can derive any sentence that is entailed.
 \end{itemize}
 \section{Representation vs World}
-\label{sec:org36df229}
+\label{sec:orgd1c36ee}
 
 If KB is true in the real world, then any sentence \(\alpha\) derived from KB by a sound inference procedure is also true in the real world?
 
 
 \includegraphics[alt={aima fig 07_06 representation vs world},height=1.6in]{aima-fig-07_06-representation-vs-world.pdf}
-
 
 
 \textbf{Grounding}: connection between logical reasoning and the real environment.  How do we know that KB is true in the real world.
@@ -232,7 +230,7 @@ If KB is true in the real world, then any sentence \(\alpha\) derived from KB by
 \item For us: if agent perceives it, it is true.
 \end{itemize}
 \section{Propositional Logic}
-\label{sec:org1c4e5ce}
+\label{sec:org0fa38bc}
 
 \begin{itemize}
 \item \textbf{Atomic} sentences consist of a single proposition symbol.
@@ -268,17 +266,17 @@ If KB is true in the real world, then any sentence \(\alpha\) derived from KB by
 \item \(\iff\) (if and only if).  Binary connective. \(W_{1,3} \iff \neg W_{2,2}\) is a \textbf{biconditional}
 \end{itemize}
 \section{Grammar of Propositional Logic}
-\label{sec:org5b56bfe}
+\label{sec:org4c54086}
 
 
 \includegraphics[alt={aima fig 07_07 grammar of popositional logic},height=2.4in]{aima-fig-07_07-grammar-of-popositional-logic.pdf}
 \section{Semantics of Propositional Logic}
-\label{sec:org1df1b2a}
+\label{sec:org04992db}
 
 
 \includegraphics[alt={aima fig 07_08 truth tables logical connectives},height=2.8in]{aima-fig-07_08-truth-tables-logical-connectives.pdf}
 \section{Propositional Theorem Proving}
-\label{sec:orgfccf6ef}
+\label{sec:orgf7ea5ac}
 
 So far we've done \textbf{model checking}: enumerating models and showing that the sentence must hold in all models.
 
@@ -300,7 +298,7 @@ Some basic concepts:
 \item A sentence is \textbf{satisfiable} if it is true in, or satisfied by, \textbf{some} model
 \end{itemize}
 \section{Inference Rules}
-\label{sec:org2b13cb2}
+\label{sec:orgeb36e1c}
 
 General form:
 
@@ -321,14 +319,14 @@ And-Elimination:
 \frac{\alpha \land \beta}{\alpha}
 \end{equation*}
 \section{Logical Equivalences}
-\label{sec:orgd5938f6}
+\label{sec:orga17865d}
 
 Functionally equivalent to inference rules.  Left side on top, right side on bottom.
 
 
 \includegraphics[alt={aima fig 07_11 logical equivalences},height=2.4in]{aima-fig-07_11-logical-equivalences.pdf}
 \section{Representational Power of Formal Languages}
-\label{sec:orgd392c70}
+\label{sec:orgb9aa457}
 
 \begin{itemize}
 \item Propositional logic assumes that there are facts that either hold or do not hold in the world. Each fact can be in one of two states—true or false—and each model assigns true or false to each proposition symbol.
@@ -339,7 +337,6 @@ Functionally equivalent to inference rules.  Left side on top, right side on bot
 \includegraphics[alt={aima fig 08_01 ontological epistemological commitments},height=1.2in]{aima-fig-08_01-ontological-epistemological-commitments.pdf}
 
 
-
 \begin{itemize}
 \item \textbf{Ontological commitment}: what a language assumes about the nature of reality.
 \item \textbf{Epistemological commitments}: the possible states of knowledge a language allows with respect to each fact.
@@ -347,12 +344,12 @@ Functionally equivalent to inference rules.  Left side on top, right side on bot
 
 \textbf{Sapir-Whorf Hypothesis}: you can only think things you can express in a language you know.
 \section{Representational Power of First-Order Logic}
-\label{sec:org45c852c}
+\label{sec:org810e621}
 
 
 \includegraphics[alt={aima fig 08_02 person king model},height=2.8in]{aima-fig-08_02-person-king-model.pdf}
 \section{First-Order Logic}
-\label{sec:orga5b0f23}
+\label{sec:orgef0f19f}
 
 Also known as first-order predicate logic.
 
@@ -397,7 +394,7 @@ Quantifiers:
 \end{itemize}
 \end{itemize}
 \section{Knowledge Representation}
-\label{sec:orgdeca9d1}
+\label{sec:org33766a1}
 
 Complex reasoning requires representation of abstract concepts:
 
@@ -410,7 +407,7 @@ Complex reasoning requires representation of abstract concepts:
 
 Representing abstract concepts is sometimes called \textbf{ontological engineering}.
 \section{Physical Objects}
-\label{sec:org2479684}
+\label{sec:orgd4c720e}
 
 \begin{itemize}
 \item Categories vs objects
@@ -451,7 +448,7 @@ Representing abstract concepts is sometimes called \textbf{ontological engineeri
 \end{itemize}
 \end{itemize}
 \section{Categories and Objects}
-\label{sec:org08e5c79}
+\label{sec:org7e04cf5}
 
 Two choices for representing a category:
 
@@ -471,7 +468,7 @@ Categories organize knowledge into \textbf{inheritance hierarchies}, or \textbf{
 
 \includegraphics[alt={aima fig 10_01 upper ontology world},height=2.0in]{aima-fig-10_01-upper-ontology-world.pdf}
 \section{Events and Time}
-\label{sec:orgd66dd24}
+\label{sec:orgecf5972}
 
 An \textbf{event calculus} encodes events, fluents, and time points, and the relationships between them.
 
@@ -493,14 +490,12 @@ An \textbf{event calculus} encodes events, fluents, and time points, and the rel
 
 
 \includegraphics[alt={aima fig 10_02 predicates time intervals},height=1.6in]{aima-fig-10_02-predicates-time-intervals.pdf}
-
 Predicates on time intervals.
 \section{Fluents}
-\label{sec:org3d08857}
+\label{sec:org5e0edad}
 
 
 \includegraphics[alt={aima fig 10_03 schematic object president},height=2.0in]{aima-fig-10_03-schematic-object-president.pdf}
-
 
 
 \begin{equation*}
@@ -509,7 +504,7 @@ T(Equals(President(USA),GeorgeWashington),Begin(AD1789),End(AD1797))
 
 Use \(Equals\) function instead of logical predicate \(=\) because can't have have predicate as argument to \(T\).
 \section{Beliefs and Attitudes}
-\label{sec:org925bfd6}
+\label{sec:orgb179ae4}
 
 
 Beliefs are mental objects. Consider
@@ -533,14 +528,14 @@ This gets out of hand quickly.  Need \textbf{modal logic}, which includes modal 
 
 Where \(\bm{K}\) is the modal operator for knowledge.  First argument \(A\) is the agent and written as subscript.  Second argument, \(P\), is the proposition that \(A\) "knows."
 \section{Semantic Networks}
-\label{sec:orgfcd4e71}
+\label{sec:orgdc66d48}
 
 Originally called \textbf{existential graphs}.
 
 
 \includegraphics[alt={aima fig 10_04 semantic network 4 objects},height=2.4in]{aima-fig-10_04-semantic-network-4-objects.pdf}
 \section{Closing Thoughts}
-\label{sec:orgaf5414d}
+\label{sec:org8d05744}
 
 \begin{itemize}
 \item \textbf{Much} more to knowledge-based AI than presented here

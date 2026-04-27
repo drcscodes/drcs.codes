@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:24
+% Created 2026-04-23 Thu 12:09
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,13 +53,12 @@
 
 \maketitle
 \section{Probabilistic Temporal Reasoning}
-\label{sec:orgfe3a0ee}
+\label{sec:orgf5dae79}
 
 Recall belief state maintenance from the Kindergarten vacuum world (square not being actively cleaned can become dirty):
 
 
 \includegraphics[alt={aima fig 04_17 vacuum prediction update cycles},height=1.2in]{aima-fig-04_17-vacuum-prediction-update-cycles.pdf}
-
 
 
 \begin{itemize}
@@ -74,7 +76,7 @@ b' = Update(Predict(b,a),o).
 
 Previous methods allowed us to represent belief states as sets of possible worlds, but could not compute or represent how likely these states were.  In this lesson we use the tools of probability theory to quantify our degree of belief in elements of the belief state.
 \section{Elements of Stochastic Temporal Models}
-\label{sec:org95d54a5}
+\label{sec:org3ef288b}
 
 A changing world is modeled using
 
@@ -86,7 +88,7 @@ A changing world is modeled using
 \item a sensor model (a.k.a. observation model) describing the probability of each percept at time \(t\), given the current state of the world.
 \end{itemize}
 \section{Time and Uncertainty}
-\label{sec:orgb108ec3}
+\label{sec:org9fb30bf}
 
 Static worlds: each random variable has a single fixed value.
 
@@ -113,7 +115,7 @@ Other examples:
 \item Interpreting written or spoken sequences of words
 \end{itemize}
 \section{Discrete-Time Models}
-\label{sec:orgb9e8e62}
+\label{sec:org9e295f2}
 
 In \textbf{Discrete-time} models:
 
@@ -136,7 +138,7 @@ Discrete vs continuous time:
 \item Descrete-time models presented here are approximations to SDEs.
 \end{itemize}
 \section{States and Observations}
-\label{sec:orgde6410a}
+\label{sec:org80b404e}
 
 Each time slice contains a set of random variables:
 
@@ -174,7 +176,7 @@ A few assumptions about \(t\):
 \end{itemize}
 \end{itemize}
 \section{Transition Models}
-\label{sec:org86ff39d}
+\label{sec:orgc1e92d0}
 
 The transition model specifies the probability distribution over the latest state variables, given previous values: \(P(\bm{X}_t \mid \bm{X}_{0:t-1})\)
 
@@ -193,13 +195,12 @@ In these Bayes nets:
 \includegraphics[alt={aima fig 14_01 bayes net markov processes},width=0.75\linewidth]{aima-fig-14_01-bayes-net-markov-processes.pdf}
 
 
-
 \begin{itemize}
 \item (a) First-order Markov process: \(P(\bm{X}_t \mid \bm{X}_{0:t-1}) = P(\bm{X}_t \mid \bm{X}_{t-1})\)
 \item (b) Second-order Markov process: \(P(\bm{X}_t \mid \bm{X}_{0:t-1}) = P(\bm{X}_t \mid \bm{X}_{t-2}, \bm{X}_{t-1})\)
 \end{itemize}
 \section{Time-Homogeneous Processes}
-\label{sec:org7d21443}
+\label{sec:org18450ca}
 
 Problem:
 
@@ -217,7 +218,7 @@ Example: Umbrella world
 \item Only need one conditional probability table.
 \end{itemize}
 \section{Sensor Models}
-\label{sec:org73d75ba}
+\label{sec:org48f6453}
 
 \textbf{Sensor Markov assumption}: state alone is sufficient to generate current sensor values.
 
@@ -227,7 +228,6 @@ P(\bm{E}_t \mid \bm{X}_{0:t}, \bm{E}_{1:t-1}) = P(\bm{E}_t \mid \bm{X}_t) \tag{1
 
 
 \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1.6in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
-
 
 
 \begin{itemize}
@@ -240,7 +240,7 @@ P(\bm{E}_t \mid \bm{X}_{0:t}, \bm{E}_{1:t-1}) = P(\bm{E}_t \mid \bm{X}_t) \tag{1
 \end{itemize}
 \end{itemize}
 \section{Full Joint Distribution Over All Variables in a Temporal Model}
-\label{sec:org8c3cebb}
+\label{sec:orgf4a7fe9}
 
 For the initial state of the system at time \(0\) we specify a prior \(P(\bm{x}_0)\).  Now we can use Equation 13.2
 
@@ -261,7 +261,7 @@ Standard Bayes nets can only represent a finite set of variables.  Dynamic Bayes
 \item using implicit universal quantification to define sensor and transition models for every time step.
 \end{itemize}
 \section{Markov Model Considerations}
-\label{sec:orgf75a38b}
+\label{sec:org0a78957}
 
 Sometimes Markov assumption is valid, sometimes it's only an approximation.  Two ways to improve the approximation:
 
@@ -273,7 +273,7 @@ Sometimes Markov assumption is valid, sometimes it's only an approximation.  Two
 \item Add additional state variables.  E.g., add \(Season_t\) for hisotircal records, or \(Temperature_t\), \(Humidity_t\), and \(Pressure_t\) to use a physical model of rainy conditions.
 \end{enumerate}
 \section{Example: Battery Drainage in a Mobile Robot}
-\label{sec:org5134ad2}
+\label{sec:orgbd61434}
 
 Two state variables: velocity and position.  Use Newton's laws of motion to calculate new positions.  Add probabilistic error (e.g., Gaussian noise) to account for uncertainty in velocity due to terrain, wind, etc.
 
@@ -291,7 +291,7 @@ Solution: Add a state variable for battery level.  Track level in one of two way
 \item Better: add a new sensor for battery level.
 \end{enumerate}
 \section{Inference in Temporal Models}
-\label{sec:org6eb9f57}
+\label{sec:org50777b6}
 
 Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
 
@@ -305,7 +305,7 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 \item \textbf{Most likely explanation}: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: \(\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})\).
 \end{itemize}
 \section{Learning Temporal Models}
-\label{sec:orgef20271}
+\label{sec:orgfcec186}
 
 Unknown transition and sensor models can be learned from observations.
 
@@ -319,7 +319,7 @@ Unknown transition and sensor models can be learned from observations.
 
 We'll return to these ideas in our lesson on statistical learning.
 \section{Filtering}
-\label{sec:orgf4d8ea0}
+\label{sec:org89665b7}
 
 \textbf{Filtering}, a.k.a., \textbf{state estimation} is the task of computing the \textbf{belief state} \(P(\bm{X}_t \mid \bm{e}_{1:t})\) -- the posterior distribution over the most recent state given all the evidence to date.
 
@@ -342,7 +342,7 @@ In other words, given the result of filtering up to time \(t\), the agent needs 
 P(\bm{X}_{t+1} \mid f \left( \bm{e}_{t+1}, P(\bm{X}_t \mid \bm{e}_{1:t}) \right)
 \end{equation*}
 \section{Recursive State Estimation}
-\label{sec:orgf8ae428}
+\label{sec:orgb7aa51e}
 
 We can view the calculation as being composed of two parts: first, the current state distribution is projected forward from \(t\) to \(t + 1\); then it is updated using the new evidence \(\bm{e}_{t+1}\). This two-part process emerges quite simply when the formula is rearranged:
 
@@ -364,7 +364,7 @@ P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) &= \alpha P(\bm{e}_{t+1} \mid \bm{X}_{t+1}) 
 The last step applies the Markov assumption in the transition model.  All the terms come either from the model or from the previous state estimate.
 Hence, we have the desired recursive formulation.
 \section{Forward Message Propagation}
-\label{sec:org5575edf}
+\label{sec:org124e659}
 
 \vspace{-.2in}
 \[
@@ -390,7 +390,7 @@ When all the state variables are discrete, the time for each update is constant 
 \item \textbf{The time and space requirements for updating must be constant if a finite agent is to keep track of the current state distribution indefinitely}.
 \end{itemize}
 \section{Example: Filtering in the Umbrella World}
-\label{sec:org6d82dd2}
+\label{sec:orgf9e840f}
 
 
 
@@ -432,7 +432,6 @@ P(R_1 \mid u_1) &= \alpha P(u_1 \mid R_1) P(R_1) \\
 \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1.0in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
 
 
-
 \begin{itemize}
 \item Day 2: umbrella appears, \(U_2 = true\).  Prediction from \(t=1:2\):
 
@@ -458,7 +457,7 @@ P(R_2 \mid u_1, u_2) &= \alpha P(u_2 \mid R_2) P(R_2 \mid u_1) \\
 ```
 \end{itemize}
 \section{Inference in Temporal Models}
-\label{sec:org1b6ff09}
+\label{sec:org364c54c}
 
 Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
 
@@ -479,7 +478,7 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 \item \textbf{Most likely explanation}: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: \(\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})\).
 \end{itemize}
 \section{Prediction}
-\label{sec:org420e29d}
+\label{sec:org24210d9}
 
 \textbf{Prediction} is the task of computing the posterior distribution over the future state, given all evidence to date: \(P(\bm{X}_{t+k} \mid \bm{e}_{1:t})\) for some \(k > 0\).
 
@@ -503,7 +502,7 @@ remove the sensor model and extend the prediction to \(t + k + 1\):
 P(\bm{X}_{t+k+1} \mid \bm{e}_{1:t}) =  \sum_{\bm{X}_{t+k}} \underbrace{P(\bm{X}_{t+k+1} \mid \bm{x}_{t+k})}_{\text{transition model}} \underbrace{P(\bm{x}_{t+k} \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.6}
 \]
 \section{Making predictions is hard, especially about the future.}
-\label{sec:orga69710e}
+\label{sec:org8ef2858}
 
 As we try to predict further and further into the future, the predicted distribution for rain converges to a fixed point \(\langle 0.5,0.5 \rangle\), after which it remains constant for all time.
 
@@ -517,7 +516,7 @@ As we try to predict further and further into the future, the predicted distribu
 
 The more the uncertainty in the transition model, the shorter will be the mixing time and the more the future is obscured.
 \section{Inference in Temporal Models}
-\label{sec:org7c247b7}
+\label{sec:org6a1fdfd}
 
 Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
 
@@ -539,14 +538,13 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 \item \textbf{Most likely explanation}: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: \(\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})\).
 \end{itemize}
 \section{Smoothing}
-\label{sec:org2c1a61a}
+\label{sec:orgad337d6}
 
 \textbf{Smoothing} is the task of computing the posterior distribution over a past state, given all evidence up to the present: \(P(\bm{X}_k \mid \bm{e}_{1:t})\) for some \(k\) such that \(0 \le k < t\).
 
 
 
 \includegraphics[alt={aima fig 14_03 smoothing},width=0.75\linewidth]{aima-fig-14_03-smoothing.pdf}
-
 
 
 
@@ -560,7 +558,7 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 \end{itemize}
 estimated trajectory than filtering -- hence the name
 \section{Recursive Message Passing for Smoothing}
-\label{sec:org452e0a5}
+\label{sec:orgaa5f69a}
 
 Split the computation into two parts -- the evidence up to \(k\) and the evidence from \(k + 1\) to \(t\):
 
@@ -580,7 +578,7 @@ The "forward" message, \(\bm{f}_{1:k}\) can be computed by filtering forward usi
 P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha \underbrace{P(\bm{e}_{t+1} \mid \bm{X}_{t+1})}_{\text{sensor model}} \sum_{\bm{X}_t} \underbrace{P(\bm{X}_{t+1} \mid \bm{x}_t)}_{\text{transition model}} \underbrace{P(\bm{x}_t \mid \bm{e}_{1:t})}_{\text{recursion}} \tag{14.5}
 \]
 \section{Backward Message for Smoothing}
-\label{sec:orgcec4549}
+\label{sec:org989b45b}
 
 The backward message, \(\bm{b}_{k+1:t}\) can be computed by a recursive process running backward from \(t\):
 
@@ -602,7 +600,7 @@ Equation 14.9 in message form is
 
 \(\bm{e}_{t+1:t}\) is an empty sequence, so we initialize the backward phase with \(\bm{b}_{t+1:t} = P(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}\), where \(\bm{1}\) is a vector of 1s.
 \section{Example: Smoothed Umbrella World State Estimate}
-\label{sec:org791d329}
+\label{sec:orgd7c9485}
 
 
 
@@ -621,7 +619,6 @@ P(R_1 \mid u_1, u_2)            &= \alpha P(R_1 \mid u_1) P(u_2 \mid R_1) \tag{1
 \vspace{-.1in}
 
 \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1.2in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
-
 
 
 
@@ -649,7 +646,7 @@ P(R_1 \mid u_1, u_2) &= \alpha P(R_1 \mid u_1) P(u_2 \mid R_1) \tag{14.10} \\
 
 Knowing it rained on Day 2 makes it more likely that it rained on Day 1.
 \section{Complexity of Smoothing}
-\label{sec:org4062bfa}
+\label{sec:org8d62cc5}
 
 The forward and backward recursions each take constant time per step.  So:
 
@@ -675,11 +672,10 @@ This is the essence of the forward–backward smoothing algorithm \ldots{}
 \item BTW, you'll see this algorithmic structure again when you learn about deep neural networks.
 \end{itemize}
 \section{Forward-Backward Smoothing Algorithm}
-\label{sec:org4018236}
+\label{sec:org35c42dd}
 
 
 \includegraphics[alt={aima fig 14_04 forward backward algorithm},height=2.0in]{aima-fig-14_04-forward-backward-algorithm.pdf}
-
 
 
 \(\text{FORWARD}(\bm{f}_{1:t}, \bm{e}_{t+1}) = P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) =\)
@@ -698,7 +694,7 @@ This is the essence of the forward–backward smoothing algorithm \ldots{}
 \item initialize backward phase with \(\bm{b}_{t+1:t} = P(\bm{e}_{t+1:t} \mid \bm{X}_t) = \bm{1}\), where \(\bm{1} =\) vector of 1s.
 \end{itemize}
 \section{Inference in Temporal Models}
-\label{sec:orgf7391a8}
+\label{sec:org1b10227}
 
 Given the general structure of a probabilistic temporal model, we can perform basic inference tasks:
 
@@ -718,7 +714,7 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 \end{minipage}
 \}
 \section{Finding the Most Likely Sequence}
-\label{sec:org1b62c3d}
+\label{sec:org3c6c41c}
 
 \textbf{Most likely explanation}: Given a sequence of observations, we might wish to find the sequence of states that is most likely to have generated those observations: \(\argmax_{x_{1:t}} P(\bm{x}_{1:t} \mid \bm{e}_{1:t})\).
 
@@ -733,14 +729,12 @@ We can represent the possible states in a system with a \textbf{state trellis}:
 \includegraphics[alt={aima fig 14_05_a rain state trellis},width=0.75\linewidth]{aima-fig-14_05_a-rain-state-trellis.pdf}
 
 
-
 Most likely sequence estimation is finding the most likely path through this graph, where the likelihood of any path is the product of the transition probabilities along the path and the probabilities of the given observations at each state.
 \section{Most Likely Paths Through A State Trellis}
-\label{sec:org7f6327c}
+\label{sec:org3740e0c}
 
 
 \includegraphics[alt={aima fig 14_05_a rain state trellis},width=0.75\linewidth]{aima-fig-14_05_a-rain-state-trellis.pdf}
-
 
 
 Say we want to estimate the most likely path that reaches \(Rain_5 = true\).
@@ -753,7 +747,7 @@ Say we want to estimate the most likely path that reaches \(Rain_5 = true\).
 
 So there is a recursive relationship between most likely paths to each state \(\bm{x}_{t+1}\) and most likely paths to each state \(\bm{x}_{t}\).  We can use this property to construct a recursive algorithm for for computing the most likely path given the evidence.
 \section{Viterbi Algorithm}
-\label{sec:orgb325119}
+\label{sec:orgfe94216}
 
 We will use a recursively computed message \(\bm{m}_{1:t}\), like the forward message \(\bm{f}_{1:t}\) in the filtering algorithm:
 
@@ -777,7 +771,7 @@ By applying a similar derivation to the one we used for the filtering equation (
 
 Thus, the algorithm for computing the most likely sequence is similar to filtering: it starts at time 0 with the prior \(\bm{m}_{1:0} = P(\bm{X}_0)\) and then runs forward along the sequence, computing the \(\bm{m}\) message at each time step using Equation (14.11).
 \section{Operation of Viterbi Algorithm in Umbrella World}
-\label{sec:org73d84fa}
+\label{sec:orgd5b9c99}
 
 Operation of the Viterbi algorithm for the umbrella observation sequence \([true,true,false,true,true]\), where the evidence starts at time 1.
 
@@ -795,7 +789,7 @@ Operation of the Viterbi algorithm for the umbrella observation sequence \([true
 \item Following the bold arrows back from the most likely state in \(\bm{m}_{1:5}\) gives the most likely sequence, shown by the bold outlines and darker shading.
 \end{itemize}
 \section{Practical computational considerations}
-\label{sec:org40ad145}
+\label{sec:org592a732}
 
 For longer sequences, likely to get floating point underflow.  Two solutions:
 

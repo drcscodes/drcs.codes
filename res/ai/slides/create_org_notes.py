@@ -40,8 +40,11 @@ template = string.Template(r"""#+TITLE: $title
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 """)
 
 
@@ -96,6 +99,7 @@ def orgify(line):
     line = re.sub(r'^##','**', line)
     line = re.sub(r'\*\*(.+?)\*\*', r'*\1*', line)
     line = re.sub(r'`(\w+?)`', r'~\1~', line)
+    line = re.sub(r'<.+?>', '', line)
     line = re.sub(r'!\[\]\((.+?)\)\{width="(.+?)%"\}',
                   r'#+attr_latex: :width 0.\2\\textwidth\n[[file:\1]]', line)
     line = re.sub(r'!\[\]\((.+?)\)\{height="(.+?)%"\}',
@@ -133,14 +137,15 @@ def process_image(args, line):
             height_attr = f"{height}{unit}"
         if re.match(r'%', unit):
             height_attr = f"{float(height)/25}in"
-        print(f"#+latex: \\includegraphics[alt={{{alt}}},height={height_attr}]{{{fname}}}\n",
+        print(f"#+latex: \\includegraphics[alt={{{alt}}},height={height_attr}]{{{fname}}}",
               file=args.outfile)
     else:
-        print(f"#+latex: \\includegraphics[alt={{{alt}}},width=0.75\\linewidth]{{{fname}}}\n",
+        print(f"#+latex: \\includegraphics[alt={{{alt}}},width=0.75\\linewidth]{{{fname}}}",
               file=args.outfile)
 
 
 def process_latex_block(args):
+    print(r"#+begin_latex", file=args.outfile)
     try:
         while True:
             line = next(args.infile)
@@ -148,7 +153,10 @@ def process_latex_block(args):
                 break
             elif (r"\begin{center}" in line) or (r"\end{center}" in line):
                 line = "\n"
+            elif (r"\begin{tabular}" in line):
+                line = f"\\tagpdfsetup{{table/header-rows={{1}}}}\n{line}"
             print(line, end="", file=args.outfile)
+        print(r"#+end_latex", file=args.outfile)
     except StopIteration:
         print(f"ERROR: StopIteration in LaTeX code block at line {args.infile.filelineno()}: {line}", file=sys.stderr)
 

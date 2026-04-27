@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Representation of Uncertain Knowledge (AIMA 13.1--13.2)
 
@@ -48,7 +51,6 @@ A Bayesian network is a directed graph in which each node is annotated with quan
 
 
 #+latex: \includegraphics[alt={aima fig 13_01 bayes net weather cavity},width=0.75\linewidth]{aima-fig-13_01-bayes-net-weather-cavity.pdf}
-
 
 
 - The topology of the network -- the set of nodes and links -- specifies the conditional independence relationships that hold in the domain.
@@ -75,7 +77,6 @@ The *syntax* of a Bayes net consists of a directed acyclic graph (DAG) with some
 
 
 #+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},width=0.75\linewidth]{aima-fig-13_02-bayes-net-alarm.pdf}
-
 
 
 The full joint distribution for all the variables is defined by the topology and the
@@ -106,7 +107,6 @@ Each row in a CPT contains the conditional probability of each node value for a 
 
 
 
-
 ** Many Possibilities, Few Variables of Interest
 
 Network does not explicitly represent Mary currently listening to loud music or telephone ringing and confusing John.
@@ -127,7 +127,6 @@ The probabilities actually summarize a potentially infinite set of circumstances
 
 
 #+latex: \includegraphics[alt={deadmau5},height=1.2in]{deadmau5.jpg}
-
 
 
 
@@ -177,7 +176,6 @@ Using the abbreviations $j, m, a, b$ and $e$:
 
 
 
-
 \begin{align*}
 P(x_1, \dots, x_n)         &= \prod_{i=1}^n P( x_i | parents(X_i)) \tag{13.2}\\
 P(j, m, a, \neg b, \neg e) &= P(j | a) P(m | a) P(a | \neg b, \neg e) P(\neg b) Pr (\neg e)\\
@@ -222,7 +220,6 @@ Suppose we have completed the network except for the choice of parents for $Mary
 
 
 #+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1.6in]{aima-fig-13_02-bayes-net-alarm.pdf}
-
 
 
 
@@ -293,7 +290,6 @@ We end up with 13 conditional probabilities.
 
 
 
-
 ** Knowledge Engineering in Probabilistic Systems
 
 
@@ -315,7 +311,6 @@ There is still knowledge engineering involved, which includes design choices.
 
 
 #+latex: \includegraphics[alt={aima fig 13_03_b bayes net mjeba ordering},height=2.0in]{aima-fig-13_03_b-bayes-net-mjeba-ordering.pdf}
-
 
 
 
@@ -356,7 +351,6 @@ Example:
 
 
 #+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},width=0.75\linewidth]{aima-fig-13_02-bayes-net-alarm.pdf}
-
 
 
 
@@ -436,9 +430,7 @@ we get the expression tree:
 
 
 
-
 #+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1.6in]{aima-fig-13_02-bayes-net-alarm.pdf}
-
 
 
 
@@ -453,7 +445,6 @@ The ENUMERATION-ASK algorithm evaluates these expression trees using depth-first
 #+latex: \includegraphics[alt={aima fig 13_11 bayes net enumeration algorithm},width=0.75\linewidth]{aima-fig-13_11-bayes-net-enumeration-algorithm.pdf}
 
 
-
 Unfortunately, its time complexity is $O(s^n)$.  But we can improve it ...
 
 ** Repeated Calculations
@@ -462,7 +453,6 @@ Notice that the subexpressions for the products $P(j \mid a) P(m \mid a)$ and $P
 
 
 #+latex: \includegraphics[alt={aima fig 13_10 prob expression tree},width=0.75\linewidth]{aima-fig-13_10-prob-expression-tree.pdf}
-
 
 
 ** Variable Elimination
@@ -718,13 +708,11 @@ Given $X, Y, Z$ boolean variables, result of pointwise product $\bm{f}(X, Y) \ti
 #+latex: \includegraphics[alt={aima fig 13_12 pointwise multiplication},height=2.0in]{aima-fig-13_12-pointwise-multiplication.pdf}
 
 
-
 ** Summing out Variables
 
 
 
 #+latex: \includegraphics[alt={aima fig 13_12 pointwise multiplication},height=1.6in]{aima-fig-13_12-pointwise-multiplication.pdf}
-
 
 
 
@@ -761,7 +749,6 @@ With these two basic operations, we can implement the variable elimination algor
 #+latex: \includegraphics[alt={aima fig 13_13 bayes net variable elimination algorithm},width=0.75\linewidth]{aima-fig-13_13-bayes-net-variable-elimination-algorithm.pdf}
 
 
-
 Notes about the ~order~ function:
 
 - Any ordering works, some orderings lead to more efficient algorithms.
@@ -779,7 +766,6 @@ Notice that the Alarm Bayes net is *singly connected*, a.k.a., a *polytree*:
 #+latex: \includegraphics[alt={aima fig 13_02 bayes net alarm},height=1.6in]{aima-fig-13_02-bayes-net-alarm.pdf}
 
 
-
 The time and space complexity of polytrees is linear in the size of the network.
 
 - Size of network is defined as number of CPT entries.
@@ -792,7 +778,6 @@ Now consider *multiply-connected* networks such as the car insurance network:
 
 
 #+latex: \includegraphics[alt={aima fig 13_09 bayes net car insurance},height=2.0in]{aima-fig-13_09-bayes-net-car-insurance.pdf}
-
 
 
 - Variable elimination can have exponential worst-case time and space complexity in multiply-connected networks.

@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Informed (Heuristic) Search Strategies
 
@@ -49,7 +52,6 @@ Example Heuristic for Romania, $h_{SLD}$:
 #+latex: \includegraphics[alt={aima fig 03_16 straight line distances},width=0.75\linewidth]{aima-fig-03_16-straight-line-distances.pdf}
 
 
-
 Straight line distances to Bucharest from each of the cities in Romania.
 
 ** Greedy Best-First Search
@@ -62,12 +64,10 @@ Straight line distances to Bucharest from each of the cities in Romania.
 #+latex: \includegraphics[alt={aima fig 03_17 greedy best first progress},height=2.8in]{aima-fig-03_17-greedy-best-first-progress.pdf}
 
 
-
 ** Optimality of Greedy Best-First Search
 
 
 #+latex: \includegraphics[alt={aima fig 03_10 sibiu bucharest},height=2.0in]{aima-fig-03_10-sibiu-bucharest.pdf}
-
 
 
 - Greedy best-first search returns the path via Sibiu and Fagaras to Bucharest.
@@ -91,12 +91,10 @@ Heavily dependent on quality of heuristic function.
 #+latex: \includegraphics[alt={aima fig 03_18 astar progress 1},height=3.6in]{aima-fig-03_18-astar-progress-1.pdf}
 
 
-
 ** $A^*$ Progress Part 2
 
 
 #+latex: \includegraphics[alt={aima fig 03_18 astar progress 2},width=0.75\linewidth]{aima-fig-03_18-astar-progress-2.pdf}
-
 
 
 ** Admissibility and Consistency
@@ -106,7 +104,6 @@ Heavily dependent on quality of heuristic function.
 
 
 #+latex: \includegraphics[alt={aima fig 03_19 consistency triangle inequality},width=0.75\linewidth]{aima-fig-03_19-consistency-triangle-inequality.pdf}
-
 
 
 - Admissibility is required to guarantee cost-optimality in $A^*$.
@@ -124,7 +121,6 @@ Heavily dependent on quality of heuristic function.
 
 
 #+latex: \includegraphics[alt={aima fig 03_21 astar vs weighted astar},height=1.2in]{aima-fig-03_21-astar-vs-weighted-astar.png}
-
 
 
 (a) an $A^*$ search and (b) a weighted $A^*$ search with weight $w = 2$.
@@ -164,14 +160,12 @@ $A^*$ is not memory-efficient.  Some approaches to imporoving memory efficiency:
 #+latex: \includegraphics[alt={aima fig 03_20 astar contours},width=0.75\linewidth]{aima-fig-03_20-astar-contours.pdf}
 
 
-
 - Countours represent monotonically increasing path costs.
 
 ** Heuristic Functions
 
 
 #+latex: \includegraphics[alt={aima fig 03_03 eight puzzle},width=0.75\linewidth]{aima-fig-03_03-eight-puzzle.pdf}
-
 
 
 - Misplaced tiles, $h_1 = 8$.
@@ -187,7 +181,6 @@ True solution cost is 26, so neither heristic overestimates.
 
 
 #+latex: \includegraphics[alt={aima fig 03_26 eight puzzle heuristics comparisons},width=0.75\linewidth]{aima-fig-03_26-eight-puzzle-heuristics-comparisons.pdf}
-
 
 
 

@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** What is machine learning?
 
@@ -44,7 +47,7 @@ Machine Learning is the study of algorithms that
 - at some task ~T~
 - with experience ~E~.
 
-A well-defined learning task is given by `<P, T, E>`.
+A well-defined learning task is given by ``.
 
 ** Examples of Machine Learning Tasks [^mooney]
 
@@ -137,7 +140,6 @@ Classification is a supervised learning task in which the target function maps f
 
 #+latex: \includegraphics[alt={../../deep learning/slides/cat classify},height=2.0in]{../../deep-learning/slides/cat-classify.png}
 
-
 - In linear classification we assume that there are lines that separates classes acceptably well.
     - Binary: two classes
     - Multiclass: more than two classes
@@ -149,7 +151,6 @@ Classification is a supervised learning task in which the target function maps f
 Regression is a kind of supervised learning in which the target function maps feature vectors in $\mathbb{R}^{d}$ to arbitrary real values.
 
 #+latex: \includegraphics[alt={../../deep learning/slides/september sea ice},height=1.6in]{../../deep-learning/slides/september-sea-ice.png}
-
 
 - In linear regression we assume that there is a line that fits the data acceptably well.
     - Simple regression: one input variable, e.g.,  $f(x; \vec{\theta}) = wx + b$, where $\vec{\theta} = (w, b)$
@@ -219,7 +220,6 @@ We say it is structured because we impose the structure on it.  There is nothing
 #+latex: \includegraphics[alt={../../deep learning/slides/elsa anna bench.},height=1.8in]{../../deep-learning/slides/elsa-anna-bench.jpeg}
 
 
-
 Unstructured data is data whose structure is inherent in the data, not imposed by us.  Examples include images and natural langauge text.
 
 
@@ -231,7 +231,6 @@ A scatter plot gives us intuition about the structure of the data.
 
 #+latex: \includegraphics[alt={../../deep learning/slides/credit scatter},height=2.8in]{../../deep-learning/slides/credit-scatter.png}
 
-
 Is there a line that separates the +s from the -s?
 
 ** A Linear Separator
@@ -239,7 +238,6 @@ Is there a line that separates the +s from the -s?
 Here's a line that separates the data into classes.
 
 #+latex: \includegraphics[alt={../../deep learning/slides/credit scatter separator},height=2.8in]{../../deep-learning/slides/credit-scatter-separator.png}
-
 
 Are there other lines? How many of these lines are there?
 
@@ -249,7 +247,6 @@ A *version space* is the set of all $h$ in $\mathcal{H}$ consistent with our tra
 
 #+latex: \includegraphics[alt={../../deep learning/slides/credit scatter},height=2.8in]{../../deep-learning/slides/credit-scatter.png}
 
-
 Machine learning algorithms find these lines algorithmically.
 
 ** A Practical Example: Iris Classification
@@ -257,7 +254,6 @@ Machine learning algorithms find these lines algorithmically.
 It's a rite of passage to apply supervised learning to the Iris data set. The canonical source for the Iris data set is the [[https://archive.ics.uci.edu/ml/][UCI Machine Learning Repository]]. Download  [[https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data][iris.data]].
 
 #+latex: \includegraphics[alt={../../deep learning/slides/iris},height=2.4in]{../../deep-learning/slides/iris.jpg}
-
 
 ** Iris Data
 
@@ -387,7 +383,6 @@ sns.pairplot(X_iris_train, hue="species", size=1.5)
 
 #+latex: \includegraphics[alt={../../deep learning/slides/iris pairplot},height=2.4in]{../../deep-learning/slides/iris-pairplot.png}
 
-
 These look linearly separable, so we'll try a linear discriminant classifier, SVM.
 
 ** Step 4: Set algorithm hyperparameters
@@ -443,7 +438,6 @@ A Scikit-learn estimator (model/hypothesis) is an object that has ~fit~ (train) 
 #+latex: \includegraphics[alt={../../deep learning/slides/imagenet},height=2.4in]{../../deep-learning/slides/imagenet.png}
 
 
-
 In 2010, [[https://profiles.stanford.edu/fei-fei-li][Fei-Fei Li]] and her team published a data set of tens of millions of labeled photographs -- [[https://image-net.org][ImageNet]] -- and launched the annual ImageNet Large Scale Visual Recognition Challenge (ILSVRC)
 
 In the first two years traditional approaches, characterized by complex feature engineering, continued to win.
@@ -451,7 +445,6 @@ In the first two years traditional approaches, characterized by complex feature 
 ** AlexNet
 
 #+latex: \includegraphics[alt={Ilya Sutskever, Geoff Hinton, Alex Krizhevsky},height=2.0in]{../../deep-learning/slides/ilya-geoff-alex.jpg}
-
 
 In 2012, Alex Krizhevsky and Ilya Sutskever from Geoff Hinton's lab at the University of Toronto *dominated* the ILSVRC with what is now called [[https://www.cs.toronto.edu/~kriz/imagenet_classification_with_deep_convolutional.pdf][AlexNet]]
 
@@ -467,13 +460,11 @@ Autonomous cars are teeming with deep learning models.
 
 #+latex: \includegraphics[alt={../../deep learning/slides/thrun autonomous cars},height=3.0in]{../../deep-learning/slides/thrun-autonomous-cars.png}
 
-
 ** Scene Labeling
 
 Convolutional deep neural networks (CNNs), or ConvNets, are widely used in vision applications.
 
 #+latex: \includegraphics[alt={../../deep learning/slides/farabet scene labeling},height=3.0in]{../../deep-learning/slides/farabet-scene-labeling.png}
-
 
 [^farabet]: Farabet et al. ICML 2012, PAMI 2013
 
@@ -482,7 +473,6 @@ Convolutional deep neural networks (CNNs), or ConvNets, are widely used in visio
 One of the early projects that popularized the uses of ReLU activation functions in deep neural networks.
 
 #+latex: \includegraphics[alt={../../deep learning/slides/zeiler speech recognition},height=3.2in]{../../deep-learning/slides/zeiler-speech-recognition.png}
-
 
 ** Generative AI
 

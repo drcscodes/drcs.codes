@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:23
+% Created 2026-04-23 Thu 12:08
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,7 +53,7 @@
 
 \maketitle
 \section{Informed (Heuristic) Search Strategies}
-\label{sec:orgb9581a7}
+\label{sec:org041083e}
 
 \begin{itemize}
 \item Use domain-specific hints about "distance" from goals
@@ -69,10 +72,9 @@ Example Heuristic for Romania, \(h_{SLD}\):
 \includegraphics[alt={aima fig 03_16 straight line distances},width=0.75\linewidth]{aima-fig-03_16-straight-line-distances.pdf}
 
 
-
 Straight line distances to Bucharest from each of the cities in Romania.
 \section{Greedy Best-First Search}
-\label{sec:org0cdfd68}
+\label{sec:org85e4813}
 
 \begin{itemize}
 \item Recall that best-first search uses a priority queue for its frontier, ordered by \(f(node)\)
@@ -83,11 +85,10 @@ Straight line distances to Bucharest from each of the cities in Romania.
 
 \includegraphics[alt={aima fig 03_17 greedy best first progress},height=2.8in]{aima-fig-03_17-greedy-best-first-progress.pdf}
 \section{Optimality of Greedy Best-First Search}
-\label{sec:org936201b}
+\label{sec:org178581f}
 
 
 \includegraphics[alt={aima fig 03_10 sibiu bucharest},height=2.0in]{aima-fig-03_10-sibiu-bucharest.pdf}
-
 
 
 \begin{itemize}
@@ -95,7 +96,7 @@ Straight line distances to Bucharest from each of the cities in Romania.
 \item The path through Rimnicu Vilcea and Pitesti is 32 miles shorter.
 \end{itemize}
 \section{\(A^*\) Search}
-\label{sec:org9ddc488}
+\label{sec:org6c95114}
 
 \begin{equation*}
 f(node) = g(node) + h(node)
@@ -109,17 +110,17 @@ f(node) = g(node) + h(node)
 
 Heavily dependent on quality of heuristic function.
 \section{\(A^*\) Progress Part 1}
-\label{sec:orgdaa6d85}
+\label{sec:org5b34a93}
 
 
 \includegraphics[alt={aima fig 03_18 astar progress 1},height=3.6in]{aima-fig-03_18-astar-progress-1.pdf}
 \section{\(A^*\) Progress Part 2}
-\label{sec:orgb59ba5f}
+\label{sec:orgfb7d890}
 
 
 \includegraphics[alt={aima fig 03_18 astar progress 2},width=0.75\linewidth]{aima-fig-03_18-astar-progress-2.pdf}
 \section{Admissibility and Consistency}
-\label{sec:org960097b}
+\label{sec:org2ec75b8}
 
 \begin{itemize}
 \item An \textbf{admissible} heuristic never overestimates the cost to reach a goal.
@@ -130,13 +131,12 @@ Heavily dependent on quality of heuristic function.
 \includegraphics[alt={aima fig 03_19 consistency triangle inequality},width=0.75\linewidth]{aima-fig-03_19-consistency-triangle-inequality.pdf}
 
 
-
 \begin{itemize}
 \item Admissibility is required to guarantee cost-optimality in \(A^*\).
 \item Consistency improves performance by guaranteeing that the first time we reach a node, it is on the optimal path -- so we don't re-evaluate multiple paths to the same node.
 \end{itemize}
 \section{Satisficing Search: \(A^*\) vs Weighted \(A^*\)}
-\label{sec:orga365043}
+\label{sec:org6d3acfe}
 
 \begin{itemize}
 \item Detour index: multiplier applied to straight-line distance to account for curvature of roads.  E.g., detour index of 1.3 means a road connecting locations 10 miles apart would be estimated as 13 miles long.
@@ -154,7 +154,6 @@ Heavily dependent on quality of heuristic function.
 \includegraphics[alt={aima fig 03_21 astar vs weighted astar},height=1.2in]{aima-fig-03_21-astar-vs-weighted-astar.png}
 
 
-
 (a) an \(A^*\) search and (b) a weighted \(A^*\) search with weight \(w = 2\).
 
 \begin{itemize}
@@ -162,7 +161,7 @@ Heavily dependent on quality of heuristic function.
 \item On this particular problem, weighted \(A^*\) explores 7 times fewer states and finds a path that is 5\% more costly.
 \end{itemize}
 \section{Memory-Bounded Search}
-\label{sec:org1dd3360}
+\label{sec:org80aa413}
 
 \(A^*\) is not memory-efficient.  Some approaches to imporoving memory efficiency:
 
@@ -191,7 +190,7 @@ Heavily dependent on quality of heuristic function.
 \item \textbf{Simplified memory-bounded \(A^*\) (\(SMA^*\))} is similar to RBFS, but expands best leaf node until memory is full.  Then it discards the worst leaf and continues.
 \end{itemize}
 \section{Search Contours}
-\label{sec:org753f446}
+\label{sec:org88467b0}
 
 \begin{itemize}
 \item In a topographical map, countours indicate a constant elevation
@@ -206,16 +205,14 @@ Heavily dependent on quality of heuristic function.
 \includegraphics[alt={aima fig 03_20 astar contours},width=0.75\linewidth]{aima-fig-03_20-astar-contours.pdf}
 
 
-
 \begin{itemize}
 \item Countours represent monotonically increasing path costs.
 \end{itemize}
 \section{Heuristic Functions}
-\label{sec:orge99e749}
+\label{sec:org38c08ee}
 
 
 \includegraphics[alt={aima fig 03_03 eight puzzle},width=0.75\linewidth]{aima-fig-03_03-eight-puzzle.pdf}
-
 
 
 \begin{itemize}
@@ -225,7 +222,7 @@ Heavily dependent on quality of heuristic function.
 
 True solution cost is 26, so neither heristic overestimates.
 \section{Heuristic Accuracy and Performance}
-\label{sec:org94e53e5}
+\label{sec:org57c5972}
 
 \begin{itemize}
 \item Effective branching factor, \(b^*\): for \(N\) nodes, branching factor of uniform tree of depth \(d\) that would contain \(N+1\) nodes.  Want close to 1.
@@ -240,13 +237,12 @@ True solution cost is 26, so neither heristic overestimates.
 
 
 
-
 \begin{itemize}
 \item \(h_2\) dominates \(h_1\) because for any \(node\), \(h_2(node) \ge h_1(node)\)
 \item We want a heuristic that underestimates, but by as little as possible.
 \end{itemize}
 \section{Designing Heuristic Functions}
-\label{sec:org794e362}
+\label{sec:org356aec4}
 
 \begin{itemize}
 \item Relaxing the problem definition

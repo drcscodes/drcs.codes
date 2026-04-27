@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Multiagent Systems
 
@@ -51,7 +54,6 @@ Dealing with multiagent environments:
 #+latex: \includegraphics[alt={mas book},height=2.0in]{mas-book.jpg}
 
 
-
 MAS: https://www.masfoundations.org/
 
 
@@ -59,7 +61,6 @@ MAS: https://www.masfoundations.org/
 
 
 #+latex: \includegraphics[alt={marl book},height=2.0in]{marl-book.jpg}
-
 
 
 MARL: https://www.marl-book.com/
@@ -216,9 +217,7 @@ Standard solution: pretend problems are decoupled and fix the interactions as th
 
 
 
-
 #+latex: \includegraphics[alt={aima fig 18_01 doubles tennis problem},width=0.75\linewidth]{aima-fig-18_01-doubles-tennis-problem.pdf}
-
 
 
 Here's a 2-step *joint plan* that works:
@@ -312,6 +311,7 @@ All players take action that are chosen simultaneously with no knowledge of othe
 Here is the payoff matrix for *two-finger Morra*, a game in which each player displays one or two fingers.
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
        & O: one         & O: two         \\\hline
 E: one & E = +2, O = -2 & E = -3, O = +3 \\\hline
@@ -351,6 +351,7 @@ Two prisoners, $A$ and $B$, suspected of committing a crime together are taken t
 The game can be summarized in the following payoff matrix (row player's payoff is listed first):
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d         \\\hline
 A: c & -1, -1 & -5, 0 \\\hline
@@ -373,6 +374,7 @@ Consider a world of two TCP users, $A$ and $B$.
 - If one user uses a correct implmentation and the other a defective one, the correct user (or "sucker") gets 5 ms packet delays and the other gets 0 ms delays.
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d         \\\hline
 A: c & -1, -1 & -5, 0 \\\hline
@@ -383,6 +385,7 @@ A: d & 0, -5  & -3, -3 \\\hline
 The Prisoner's dilemma is widely applicable.  In general:
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
        & C         & D        \\\hline
 C & a, a & b, c \\\hline
@@ -402,6 +405,7 @@ with $c > a > d > b$.  Adding $a > \frac{b+c}{2}$ guarantees that $(C, C)$ maxim
 Consider $A$'s response when $B$'s strategy is $c$:
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                 \\\hline
 A: c & \cellcolor{lightgray} -1, -1 &  -5, 0 \\\hline
@@ -414,6 +418,7 @@ $A$'s highest payoff is with $d$.
 How about when $B$'s strategy is $d$:
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                 \\\hline
 A: c & -1, -1  & \cellcolor{lightgray} -5, 0  \\\hline
@@ -429,6 +434,7 @@ Again, $A$'s highest payoff is with $d$.  No matter what $B$ does, $A$'s *best r
 Consider $B$'s response when $A$'s strategy is $c$:
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                                      \\\hline
 A: c & \cellcolor{lightgray} -1, -1  & \cellcolor{lightgray} -5, 0 \\\hline
@@ -441,6 +447,7 @@ $B$'s highest payoff is with $d$.
 How about when $A$'s strategy is $d$:
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
        & B: c         & B: d                                      \\\hline
 A: c & -1, -1                      & -5, 0                         \\\hline
@@ -484,7 +491,6 @@ Classic formulation:
 #+latex: \includegraphics[alt={tragedy of commons classic},height=1.6in]{tragedy-of-commons-classic.jpg}
 
 
-
 Modern instantiation: air pollution.
 
 - Air is a common good.
@@ -500,7 +506,6 @@ So, if there are 100 countries and each continues to pollute, the total utility 
 
 
 #+latex: \includegraphics[alt={beautiful mind bar scene},height=1.6in]{beautiful-mind-bar-scene.jpg}
-
 
 [[https://www.youtube.com/watch?v=QzwcGkfEra4][https://www.youtube.com/watch?v=QzwcGkfEra4]]
 
@@ -522,6 +527,7 @@ Let's find the Nash equlibria in the Prisoner's Dilemma.
 - First, find the best reponses of the row player to each strategy of the column player (boxed):
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
   & C              & D         \\\hline
 C & -1, -1         & -5, 0 \\\hline
@@ -532,6 +538,7 @@ D & \boxed{0}, -5  & \boxed{-3}, -3 \\\hline
 - Then find the best responses of the column player to each strategy of the column player (circled):
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
   & C              & D         \\\hline
 C & -1, -1         & -5, \circled{0} \\\hline
@@ -552,6 +559,7 @@ A husband and wife wish to go to the movies, and they can select among two movie
 - the wife (player 1) prefers LW, the husband (player 2) prefers WL.
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
    & LW     & WL         \\\hline
 LW & 2, 1  & 0, 0 \\\hline
@@ -568,6 +576,7 @@ Now lets find the Nash equilibria for the Battle of t he Sexes game.
 - First, find the best reponses of the row player to each strategy of the column player (boxed):
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
    & LW     & WL         \\\hline
 LW & \boxed{2}, 1  & 0, 0 \\\hline
@@ -578,6 +587,7 @@ WL & 0, 0  & \boxed{1}, 2 \\\hline
 - Then find the best responses of the column player to each strategy of the column player (circled):
 
 
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{|c|c|c|}\hline
    & LW     & WL         \\\hline
 LW & \boxed{2}, \circled{1}  & 0, 0 \\\hline
@@ -600,7 +610,6 @@ The simplest kind of multiple-move game is the repeated game (also called an *it
 #+latex: \includegraphics[alt={aima fig 18_03 ipd fsms},height=1.6in]{aima-fig-18_03-ipd-fsms.pdf}
 
 
-
 Note that AIMA uses $refuse$ for $confess/cooperate$ and $testify$ for $deny/defect$.
 
 
@@ -611,7 +620,6 @@ Note that AIMA uses $refuse$ for $confess/cooperate$ and $testify$ for $deny/def
 
 
 #+latex: \includegraphics[alt={axelrod evolution of cooperation book},height=3.2in]{axelrod-evolution-of-cooperation-book.jpg}
-
 
 
 
@@ -644,7 +652,6 @@ Knight, et. al. [^knight2025reviving] recently reproduced these results, confirm
 
 
 
-
 The lesson of The Prisoner's Dilemma is that individually rational action often leads not just to lower total *social* utility, but lower *indivdual* utility over the long run.
 
 - Previously we saw that if an agent's utility function aligns with the external performance measure of its task environment, then maximizing its utility maximizes its performance.
@@ -672,7 +679,6 @@ Perhaps there is a link between the results of Axelrod's IPD tournaments and neu
 
 #+latex: \includegraphics[alt={wolf pack},height=1.6in]{wolf-pack.png}
 
-
 \vspace{.1in}
 
 
@@ -683,15 +689,12 @@ Perhaps there is a link between the results of Axelrod's IPD tournaments and neu
 
 
 
-
 #+latex: \includegraphics[alt={Safari_ants},height=1.2in]{Safari_ants.jpg}
-
 
 \vspace{.1in}
 
 
 #+latex: \includegraphics[alt={bees honeycomb},height=1.2in]{bees-honeycomb.jpg}
-
 
 [[https://www.youtube.com/watch?v=F5rWmGe0HBI][https://www.youtube.com/watch?v=F5rWmGe0HBI]]
 
@@ -706,7 +709,6 @@ Humans are complicated -- and often amusing -- animals.  The Prisoner's Dilemma 
 
 
 #+latex: \includegraphics[alt={bachelor pad prisoners dilemma.},height=2.0in]{bachelor-pad-prisoners-dilemma.jpeg}
-
 
 [[https://www.youtube.com/watch?v=p1oyuqLFiXg][https://www.youtube.com/watch?v=p1oyuqLFiXg]] -- 1:06:30
 

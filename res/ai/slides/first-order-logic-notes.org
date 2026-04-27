@@ -31,14 +31,16 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Representation
 
 
 #+latex: \includegraphics[alt={aima fig 08_01 ontological epistemological commitments},height=2.8in]{aima-fig-08_01-ontological-epistemological-commitments.pdf}
-
 
 
 ** Syntax and Semantics of First-Order Logic
@@ -47,12 +49,10 @@
 #+latex: \includegraphics[alt={aima fig 08_02 person king model},height=2.8in]{aima-fig-08_02-person-king-model.pdf}
 
 
-
 ** Syntax and Semantics of First-Order Logic
 
 
 #+latex: \includegraphics[alt={aima fig 08_03 syntax of fol},height=2.8in]{aima-fig-08_03-syntax-of-fol.pdf}
-
 
 
 ** Syntax and Semantics of First-Order Logic
@@ -61,12 +61,10 @@
 #+latex: \includegraphics[alt={aima fig 08_04 simple example models},height=2.8in]{aima-fig-08_04-simple-example-models.pdf}
 
 
-
 ** Syntax and Semantics of First-Order Logic
 
 
 #+latex: \includegraphics[alt={aima fig 08_05 simple example models database semantics},height=2.8in]{aima-fig-08_05-simple-example-models-database-semantics.pdf}
-
 
 
 ** Using First-Order Logic
@@ -77,5 +75,4 @@ Foo
 
 
 #+latex: \includegraphics[alt={aima fig 08_06 digital circuit},height=2.8in]{aima-fig-08_06-digital-circuit.pdf}
-
 

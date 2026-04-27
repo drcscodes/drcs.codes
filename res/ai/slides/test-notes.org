@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 
 ** From Logic to Probability Theory
@@ -67,11 +70,9 @@ We need to deal with uncertain knowledge, with *degrees of belief*.  For that, w
 
 #+latex: \includegraphics[alt={neo architect prob dist screens},width=0.75\linewidth]{neo-architect-prob-dist-screens.png}
 
-
 ** What do probabilities mean?
 
 #+latex: \includegraphics[alt={aima fig 12_02 agent bets},width=0.75\linewidth]{aima-fig-12_02-agent-bets.pdf}
-
 
 All I see is the ~code~.
 
@@ -111,7 +112,6 @@ If our knowledge changes, e.g., we find out patient has history of gum disease, 
 #+latex: \includegraphics[alt={aima fig 12_01 dt agent algorithm},width=0.75\linewidth]{aima-fig-12_01-dt-agent-algorithm.pdf}
 
 
-
 Each action, $a$, leads to a probability distribution over outcomes, or "result states":
 
 $$
@@ -129,6 +129,7 @@ $$
 An *event*, which we denote with $\phi$ here, is a set of possible worlds, some subset of $\Omega$, or set of $\omega$, e.g., the event "doubles" contains the 6 boxed elements $\omega$:
 
 \footnotesize
+\tagpdfsetup{table/header-rows={1}}
 \begin{tabular}{cccccc}
 \boxed{(1, 1)} & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
 (1, 2) & \boxed{(2, 2)} & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\

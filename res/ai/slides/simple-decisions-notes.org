@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Making Simple Decisions
 
@@ -134,7 +137,6 @@ Six constraints that we require any reasonable preference relation to obey:
 
 
 
-
 ** Nontransitive Preferences
 
 Suppose an agent held the following preferences for freely exchangeable goods: $A \succ B \succ C \succ A$.
@@ -144,7 +146,6 @@ This agent would be willing, e.g., to exchange $B$ plus $.01 for $A$, and so on.
 
 
 #+latex: \includegraphics[alt={aima fig 16_01_a nontransitive preferences},width=0.75\linewidth]{aima-fig-16_01_a-nontransitive-preferences.pdf}
-
 
 
 The axioms of utility theory are rational because violating them leads to bad outcomes.
@@ -225,7 +226,6 @@ Example:
 
 
 
-
 ** The Utility of Money
 
 Money is an obvious candidate for a utility measure.
@@ -258,12 +258,10 @@ Now say $U((S_k) = 5$, $U(S_{k+2,500,000})$ = 9$, and $U(S_{k+1,000,000} = 8$.  
 #+latex: \includegraphics[alt={aima fig 16_02_a utility of money mr beard},width=0.75\linewidth]{aima-fig-16_02_a-utility-of-money-mr-beard.pdf}
 
 
-
 ** Utility of Money in General
 
 
 #+latex: \includegraphics[alt={aima fig 16_02_b utility of money full range},width=0.75\linewidth]{aima-fig-16_02_b-utility-of-money-full-range.pdf}
-
 
 
 ** The Optimzer's Curse
@@ -272,7 +270,6 @@ The greater the number of choices, the more biased your estimates are because yo
 
 
 #+latex: \includegraphics[alt={aima fig 16_03 optimism error},width=0.75\linewidth]{aima-fig-16_03-optimism-error.pdf}
-
 
 
 ** Human Judgement and Irrationality
@@ -303,9 +300,7 @@ Common errors in thinking:
 
 #+latex: \includegraphics[alt={predictably irrational book},height=1.6in]{predictably-irrational-book.jpg}
 
-
 #+latex: \includegraphics[alt={dan ariely},height=1.6in]{dan-ariely.png}
-
 
 
 
@@ -361,7 +356,6 @@ Given two airport sites $S_1 = \langle x_1^{(1)}, x_2^{(1)}, x_3^{(1)}, x_4^{(1)
 
 
 #+latex: \includegraphics[alt={aima fig 16_04_a dominance deterministic},width=0.75\linewidth]{aima-fig-16_04_a-dominance-deterministic.pdf}
-
 
 
 
@@ -435,7 +429,6 @@ Hence, the tradeoff between dogs and chickens depends strongly on the number of 
 
 
 
-
 [^ShepherdChickens]: https://www.reddit.com/r/germanshepherds/comments/p4sou1/our_girl_reyna_watches_her_flock_8_of_backyard/
 
 ** Syntax of Decision Networks
@@ -457,7 +450,6 @@ Hence, the tradeoff between dogs and chickens depends strongly on the number of 
 
 
 #+latex: \includegraphics[alt={aima fig 16_06 decision network airport siting},width=0.75\linewidth]{aima-fig-16_06-decision-network-airport-siting.pdf}
-
 
 
 

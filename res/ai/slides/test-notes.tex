@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:24
+% Created 2026-04-23 Thu 12:09
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,7 +53,7 @@
 
 \maketitle
 \section{From Logic to Probability Theory}
-\label{sec:orgf11e969}
+\label{sec:orgb4215f7}
 
 Consider:
 
@@ -80,14 +83,13 @@ But not all cavities hurt.  Logic fails to deal with complex domains like medica
 
 We need to deal with uncertain knowledge, with \textbf{degrees of belief}.  For that, we use probability theory.
 \section{What do probabilities mean?}
-\label{sec:orgd9fb3a2}
+\label{sec:orgab0386a}
 
 \includegraphics[alt={neo architect prob dist screens},width=0.75\linewidth]{neo-architect-prob-dist-screens.png}
 \section{What do probabilities mean?}
-\label{sec:org65224a9}
+\label{sec:org912ce61}
 
 \includegraphics[alt={aima fig 12_02 agent bets},width=0.75\linewidth]{aima-fig-12_02-agent-bets.pdf}
-
 
 All I see is the \texttt{code}.
 
@@ -99,7 +101,7 @@ if it_is_not_processed:
         there_is_another_problem
 \end{lstlisting}
 \section{Probabilities are about our uncertain knowledge.}
-\label{sec:orgf61c91e}
+\label{sec:org4f8d885}
 
 "80\% chance (probability 0.8) patient with a toothache has a cavity."
 
@@ -119,7 +121,7 @@ If our knowledge changes, e.g., we find out patient has history of gum disease, 
 {[}\textsuperscript{fn}]: Footnote
 {[}\textsuperscript{fn2}]: \url{https://this/isn't/real}
 \section{Decision-Theoretic Agents}
-\label{sec:orge614f51}
+\label{sec:org5bf3a08}
 
 \begin{quote}
 Decision theory = probability theory + utility theory
@@ -127,7 +129,6 @@ Decision theory = probability theory + utility theory
 
 
 \includegraphics[alt={aima fig 12_01 dt agent algorithm},width=0.75\linewidth]{aima-fig-12_01-dt-agent-algorithm.pdf}
-
 
 
 Each action, \(a\), leads to a probability distribution over outcomes, or "result states":
@@ -142,11 +143,12 @@ $$
 \argmax_{a} \sum_{s' \in S} P(\text{RESULT}(a) = s') U(s')
 $$
 \section{Propositions and Events}
-\label{sec:orge6d4709}
+\label{sec:org131a00a}
 
 An \textbf{event}, which we denote with \(\phi\) here, is a set of possible worlds, some subset of \(\Omega\), or set of \(\omega\), e.g., the event "doubles" contains the 6 boxed elements \(\omega\):
 
 \footnotesize
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{cccccc}
 \boxed{(1, 1)} & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
 (1, 2) & \boxed{(2, 2)} & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
@@ -157,7 +159,7 @@ An \textbf{event}, which we denote with \(\phi\) here, is a set of possible worl
 \end{tabular}
 \normalsize
 \section{Analysis of Medical Screening Example}
-\label{sec:orgfbe7e7f}
+\label{sec:org27367f9}
 
 
 

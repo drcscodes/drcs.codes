@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:24
+% Created 2026-04-23 Thu 12:09
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,7 +53,7 @@
 
 \maketitle
 \section{Planning Agents}
-\label{sec:org736138b}
+\label{sec:org1a90ea7}
 
 \begin{itemize}
 \item Problem Solving Agents
@@ -60,11 +63,10 @@
 \item Uninformed Search
 \end{itemize}
 \section{Problem-Solving Agents}
-\label{sec:org7cdc069}
+\label{sec:org27e93f3}
 
 
 \includegraphics[alt={aima fig 03_01 romania},height=2.4in]{aima-fig-03_01-romania.pdf}
-
 
 
 \begin{itemize}
@@ -74,7 +76,7 @@
 
 This is the essence of problem solving: transforming a current state into a goal state.  The first family of algorithms we'll study for problem solving are \textbf{search} algorithms.
 \section{Problem Solving Process}
-\label{sec:org858cd12}
+\label{sec:org82b029d}
 
 To solve a problem, we
 
@@ -92,7 +94,7 @@ To solve a problem, we
 \item \textbf{Execute} the actions in the solution.
 \end{itemize}
 \section{Open-Loop vs. Closed-Loop Control}
-\label{sec:orga156574}
+\label{sec:org62f4cef}
 
 \begin{itemize}
 \item In an \textbf{open-loop} system the agent gets no feedback, i.e., sensor input, after executing an action.
@@ -109,7 +111,7 @@ To solve a problem, we
 \end{itemize}
 \end{itemize}
 \section{Search Problems}
-\label{sec:orgf99dbac}
+\label{sec:org78938fb}
 
 A search problem consists of:
 
@@ -137,7 +139,7 @@ A search problem consists of:
 \item An \textbf{action cost function}, `ACTION-COST(s, a, s')` or \(c(s, a, s')\) which returns the cost of executing action \(a\) in state \(s\) and reaching state \(s'\).
 \end{itemize}
 \section{Solution}
-\label{sec:orgf9f8d9d}
+\label{sec:org20c4665}
 
 \begin{itemize}
 \item A solution is a path from the start state to the a goal state.
@@ -147,13 +149,12 @@ A search problem consists of:
 
 \includegraphics[alt={aima fig 03_01 romania},height=2.4in]{aima-fig-03_01-romania.pdf}
 
-
 \begin{itemize}
 \item How many paths are there from \texttt{Arad} to \texttt{Bucharest}?
 \item What is/are the solutions to the `Arad-to-Bucharest` problem (assume perfect information -- fully observable, known dynamics, and deterministic actions)?
 \end{itemize}
 \section{Example Problems}
-\label{sec:orgff3680c}
+\label{sec:orgad8c030}
 
 \begin{itemize}
 \item \textbf{Standardized problems} use idealized environments designed to illustrate or exercise various problem-solving methods.  See, for example, \href{https://gymnasium.farama.org/}{Gymnasium}.
@@ -173,11 +174,10 @@ Here's a standardized environment for the vacuum cleaner agent, formulated as a 
 
 \includegraphics[alt={aima fig 03_02 vacuum state space graph},height=2.0in]{aima-fig-03_02-vacuum-state-space-graph.pdf}
 \section{Vacuum Cleaner Grid World}
-\label{sec:org13ef598}
+\label{sec:orgb52b96c}
 
 
 \includegraphics[alt={aima fig 03_02 vacuum state space graph},height=1.6in]{aima-fig-03_02-vacuum-state-space-graph.pdf}
-
 
 
 \begin{itemize}
@@ -198,7 +198,7 @@ Here's a standardized environment for the vacuum cleaner agent, formulated as a 
 \item \textbf{Action cost} (path cost) is 1.
 \end{itemize}
 \section{Route Finding}
-\label{sec:orga9eb80e}
+\label{sec:org4377b0f}
 
 \begin{itemize}
 \item \textbf{States}: a location (e.g., an airport) and the time.
@@ -219,7 +219,7 @@ Here's a standardized environment for the vacuum cleaner agent, formulated as a 
 \item \textbf{Action cost}: A combination of monetary cost, waiting time, flight time, customs and immigration procedures, seat quality, time of day, type of airplane, frequent-flyer reward points, and so on.
 \end{itemize}
 \section{Real-World Problems}
-\label{sec:org09b0a1b}
+\label{sec:org8de28ca}
 
 \begin{itemize}
 \item \textbf{Touring problems}
@@ -238,7 +238,7 @@ Here's a standardized environment for the vacuum cleaner agent, formulated as a 
 \end{itemize}
 \end{itemize}
 \section{Search Algorithms}
-\label{sec:org36c96ff}
+\label{sec:org614fde9}
 
 A \textbf{search algorithm} takes a search problem as input and returns a solution, or an indication of failure.
 
@@ -264,7 +264,7 @@ Here is a search tree being imposed on the Romania state space graph by a search
 
 \includegraphics[alt={aima fig 03_05 search tree expansion},width=0.75\linewidth]{aima-fig-03_05-search-tree-expansion.pdf}
 \section{Elements of Search Algorithms}
-\label{sec:orga6a01f6}
+\label{sec:org903a791}
 
 Essence of search:
 
@@ -284,11 +284,10 @@ Root node is initial state.  At each node we can \textbf{expand} the node, which
 \end{itemize}
 \end{itemize}
 \section{Search Progression}
-\label{sec:orgc1db6e8}
+\label{sec:org6ed054f}
 
 
 \includegraphics[alt={aima fig 03_04 arad bucharest partial trees},height=3.0in]{aima-fig-03_04-arad-bucharest-partial-trees.pdf}
-
 
 
 \begin{itemize}
@@ -297,13 +296,12 @@ Root node is initial state.  At each node we can \textbf{expand} the node, which
 \item Nodes in dashed-line ovals are candidates for expansion.
 \end{itemize}
 \section{Separation Property of Graph Search}
-\label{sec:org6097cdf}
+\label{sec:org1c1d30f}
 
 The \textbf{frontier} separates the interior region of expanded nodes from the exterior region of unexpanded nodes.
 
 
 \includegraphics[alt={aima fig 03_06 separation property graph search},width=0.75\linewidth]{aima-fig-03_06-separation-property-graph-search.pdf}
-
 
 
 Frontier is in green.  Interior is lavender.  Exterior is faint dashed.
@@ -314,11 +312,10 @@ Frontier is in green.  Interior is lavender.  Exterior is faint dashed.
 \item (c) Remaining successors of root expanded in clockwise order.
 \end{itemize}
 \section{Redundant Paths}
-\label{sec:orgaea85df}
+\label{sec:org934ad77}
 
 
 \includegraphics[alt={aima fig 03_04 arad repeated},height=1.2in]{aima-fig-03_04-arad-repeated.pdf}
-
 
 
 In the path from \texttt{Arad} to \texttt{Sibiu} to \texttt{Arad},
@@ -346,7 +343,7 @@ Cycle special case of \textbf{redundant path}: multiple paths to the same state.
 \end{itemize}
 \end{enumerate}
 \section{Measuring Problem-Solving Performance}
-\label{sec:org8d733d2}
+\label{sec:orgf3ea960}
 
 \begin{itemize}
 \item \textbf{Completeness}: Is the algorithm guaranteed to find a solution when there is one, and to correctly report failure when there is not?
@@ -366,7 +363,7 @@ For \textbf{explicit} graphs, like Romania, time and space complexity typically 
 
 For \textbf{implicit} state space graphs we characterize time and space complexity in terms of depth, \(d\) (number of actions in an optimal solution), and branching factor, \(b\) (number of successor nodes per node).  For most of our discussions, we'll use this characterization.
 \section{Implementation Note: The \texttt{yield} statement}
-\label{sec:org217a2b5}
+\label{sec:orgbe01eab}
 
 A function containing a \texttt{yield} statement is a \textbf{generator}.  Use a generator to turn a data generating process into an iterator.  Node expansion is a data generating process.
 
@@ -394,7 +391,7 @@ x=7
 x=9
 \end{lstlisting}
 \section{Search Data Structures}
-\label{sec:orgf9510a8}
+\label{sec:org105587d}
 
 Node:
 
@@ -422,7 +419,7 @@ Queues used in search algorithms:
 \item A \textbf{LIFO queue} or last-in-first-out queue (also known as a stack) pops first the most recently added node; we shall see it is used in depth-first search.
 \end{itemize}
 \section{Best-First Search}
-\label{sec:orga385712}
+\label{sec:org8602b86}
 
 Best-first search is an abstract search algorithm.  Name can be tricky to understand.
 
@@ -436,16 +433,15 @@ Best-first search is an abstract search algorithm.  Name can be tricky to unders
 The evaluation function considers the path to the node, not any property of the node itself.  Remember, a solution to a search problem is characterized by the \textbf{path} from the root to the goal, not some characteristic of the goal.
 \end{quote}
 \section{Best-First Search Algorithm}
-\label{sec:org08baabe}
+\label{sec:org4870f25}
 
 
 \includegraphics[alt={aima fig 03_07 best first search algorithm},height=3.2in]{aima-fig-03_07-best-first-search-algorithm.pdf}
 
 
-
 We'll now describe several uninformed search algorithms.  I recommend you also look at their \href{https://github.com/aimacode/aima-python/blob/master/search4e.ipynb}{implementations in Python}, which may be easier to follow.
 \section{Uninformed Search Strategies}
-\label{sec:orga62fafc}
+\label{sec:orgf20bcfd}
 
 Uninformed search strategies have no information about which actions are better for reaching a goal.  In these cases we can only do systematic searches of the state space.  We'll discuss
 
@@ -458,7 +454,7 @@ Uninformed search strategies have no information about which actions are better 
 \item Bidirectional search
 \end{itemize}
 \section{Breadth-First Search}
-\label{sec:org9ff64d2}
+\label{sec:orgad994dd}
 
 \begin{itemize}
 \item Good when path costs are uniform.
@@ -479,17 +475,16 @@ But three optimizations afforded by the BFS algorithm and uniform path costs:
 \item \textbf{Early goal test} -- as soon as we expand a node, we can test it.
 \end{itemize}
 \section{BFS Algorithm}
-\label{sec:org31ec4a9}
+\label{sec:orgb2f7220}
 
 
 \includegraphics[alt={aima fig 03_08 bfs binary tree},height=0.8in]{aima-fig-03_08-bfs-binary-tree.pdf}
 
 
 
-
 \includegraphics[alt={aima fig 03_09 bfs algorithm},height=2.4in]{aima-fig-03_09-bfs-algorithm.pdf}
 \section{Analysis of BFS}
-\label{sec:org9550166}
+\label{sec:org28062d1}
 
 \begin{itemize}
 \item Complete, because it generates all nodes at each depth.
@@ -509,13 +504,12 @@ Uninformed search is not appropriate for exponential complexity problems except 
 \item Same problem, but with \(d = 14\)?
 \end{itemize}
 \section{Uniform-Cost Search (Dijkstra's Algorithm)}
-\label{sec:orgd18b893}
+\label{sec:org2d882ab}
 
 BFS where the best-first \(f(node)\) is the path cost to the current node.
 
 
 \includegraphics[alt={aima fig 03_10 sibiu bucharest},height=1.2in]{aima-fig-03_10-sibiu-bucharest.pdf}
-
 
 
 \begin{itemize}
@@ -536,7 +530,7 @@ BFS where the best-first \(f(node)\) is the path cost to the current node.
 \item Apply goal test to Bucharest node before expansion, finding it to be the goal.
 \end{itemize}
 \section{Analysis of Uniform-Cost Search}
-\label{sec:org6db04fd}
+\label{sec:orgc71be30}
 
 Let \(C^*\) be the cost of the optimal solution and \(\epsilon > 0\) be a lower bound on the cost of each action.
 
@@ -552,12 +546,12 @@ Let \(C^*\) be the cost of the optimal solution and \(\epsilon > 0\) be a lower 
 \end{itemize}
 \end{itemize}
 \section{Depth-First Search - FIFO Frontier}
-\label{sec:org9d520f5}
+\label{sec:org05ff64e}
 
 
 \includegraphics[alt={aima fig 03_11 dfs progress},height=3.6in]{aima-fig-03_11-dfs-progress.pdf}
 \section{Analysis of DFS}
-\label{sec:orge50d68c}
+\label{sec:orgbb6c67e}
 
 \begin{itemize}
 \item Not cost-optimal -- returns first solution it finds
@@ -580,11 +574,10 @@ Let \(C^*\) be the cost of the optimal solution and \(\epsilon > 0\) be a lower 
 
 Why bother with DFS at all? \textbf{Memory efficiency}
 \section{Depth-Limited Search}
-\label{sec:org53d55ce}
+\label{sec:org3725f65}
 
 
 \includegraphics[alt={aima fig 03_12 depth limited search algorithm},width=0.75\linewidth]{aima-fig-03_12-depth-limited-search-algorithm.pdf}
-
 
 
 \begin{itemize}
@@ -596,12 +589,12 @@ Why bother with DFS at all? \textbf{Memory efficiency}
 \end{itemize}
 \end{itemize}
 \section{Iterative Deepening Search}
-\label{sec:org2a4c19e}
+\label{sec:orge691bb4}
 
 
 \includegraphics[alt={aima fig 03_13 iterative deepening progress},height=3.6in]{aima-fig-03_13-iterative-deepening-progress.pdf}
 \section{Analysis of Iterative Deepening Search}
-\label{sec:org624fd0c}
+\label{sec:orga877902}
 
 \begin{itemize}
 \item Cost-optimal for state spaces where all actions have same cost.
@@ -633,20 +626,18 @@ Why bother with DFS at all? \textbf{Memory efficiency}
 In general, iterative deepening search is the preferred uninformed search method when the search state space is larger than can fit in memory and The depth of the solution is not known.
 \end{quote}
 \section{Bidirectional Best-First Search}
-\label{sec:org7462e12}
+\label{sec:org26c342f}
 
 
 \includegraphics[alt={aima fig 03_14 bidirectional best first search algorithm},height=3.2in]{aima-fig-03_14-bidirectional-best-first-search-algorithm.pdf}
 
 
-
 Motivation: \(b^{\frac{d}{2}} + b^{\frac{d}{2}} \ll b^d\).
 \section{Comparing Uninformed Search Algorithms}
-\label{sec:org0d0a3ce}
+\label{sec:orgf40b539}
 
 
 \includegraphics[alt={aima fig 03_15 uninformed search comparisons},width=0.75\linewidth]{aima-fig-03_15-uninformed-search-comparisons.pdf}
-
 
 
 Notes:

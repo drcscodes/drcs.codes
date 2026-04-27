@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Local Search
 
@@ -51,12 +54,10 @@ If you don't care about the path to a goal state, you can use *local search*.
 #+latex: \includegraphics[alt={aima fig 04_01 state space landscape},width=0.75\linewidth]{aima-fig-04_01-state-space-landscape.pdf}
 
 
-
 ** Hill-Climbing Search
 
 
 #+latex: \includegraphics[alt={aima fig 04_02 hill climbing algorithm},width=0.75\linewidth]{aima-fig-04_02-hill-climbing-algorithm.pdf}
-
 
 
 Also known as *greedy local search*.
@@ -65,11 +66,10 @@ Also known as *greedy local search*.
 
 *Complete-state formulation*: each state has all components of a solution.
 
-- 8 Queens state: row position for each of 8 columns, e.g., (a) below is `<1, 6, 2, 5, 7, 4, 8, 3>`
+- 8 Queens state: row position for each of 8 columns, e.g., (a) below is ``
 
 
 #+latex: \includegraphics[alt={aima fig 04_03 8 queens},height=2.0in]{aima-fig-04_03-8-queens.pdf}
-
 
 
 - Action: move a single queen to new row within column.  Each state has $8 \cdot 7 = 56$ successor states.
@@ -90,7 +90,6 @@ Susceptible to getting stuck in:
 
 #+latex: \includegraphics[alt={aima fig 04_01 state space landscape},height=1.6in]{aima-fig-04_01-state-space-landscape.pdf}
 
-
 How to fix:
 
 - Allow "sideways" moves
@@ -109,12 +108,10 @@ Grid of states superimposed on ridge rising from left to right.
 
 
 
-
 ** Simulated Annealing
 
 
 #+latex: \includegraphics[alt={aima fig 04_05 simulated annealing algorithm},height=1.2in]{aima-fig-04_05-simulated-annealing-algorithm.pdf}
-
 
 
 - Based on metallurgy -- gradually cool metal to reach low-energy crystalline state.
@@ -161,12 +158,10 @@ Elements of genetic algorithms:
 #+latex: \includegraphics[alt={aima fig 04_08 genetic algorithm},width=0.75\linewidth]{aima-fig-04_08-genetic-algorithm.pdf}
 
 
-
 ** Genetic Algorithm on 8-Queens Problem
 
 
 #+latex: \includegraphics[alt={aima fig 04_06 genetic algorithm 8 queens illustration},width=0.75\linewidth]{aima-fig-04_06-genetic-algorithm-8-queens-illustration.pdf}
-
 
 
 1. Population is generated in (a).
@@ -181,7 +176,6 @@ Here is a pictorial illustration of the crossover operation in the 8-queens prob
 
 
 #+latex: \includegraphics[alt={aima fig 04_07 8 queens crossover diagrams},width=0.75\linewidth]{aima-fig-04_07-8-queens-crossover-diagrams.pdf}
-
 
 
 Is the random crossover operation depicted here meaningful for the 8-queens problem?
@@ -210,7 +204,6 @@ There is an interesting connection between biological evolution and AI, in parti
 
 
 #+latex: \includegraphics[alt={aima romania airports},height=3.2in]{aima-romania-airports.png}
-
 
 
 
@@ -314,7 +307,6 @@ where $\alpha$ is a *step size*, or learning rate.
 
 
 
-
 [^UDLBook]: https://udlbook.github.io/udlbook/
 
 ** Continuous State Spaces and Convexity
@@ -323,7 +315,6 @@ A convex set is a set of points in which a line between any two points lies with
 
 
 #+latex: \includegraphics[alt={../../deep learning/slides/TrainConvexProb},width=0.75\linewidth]{../../deep-learning/slides/TrainConvexProb.pdf}
-
 
 
 There are mathematical properties of continuous spaces that rule out local minima.  Take my deep learning class to learn about them!
@@ -348,7 +339,6 @@ There are mathematical properties of continuous spaces that rule out local minim
 
 
 #+latex: \includegraphics[alt={lp fig 02_01 half planes},height=2.8in]{lp-fig-02_01-half-planes.pdf}
-
 
 
 

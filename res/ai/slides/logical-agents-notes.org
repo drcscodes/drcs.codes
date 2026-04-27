@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Logic and AI
 
@@ -44,12 +47,10 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 #+latex: \includegraphics[alt={aima fig 07_01 kb agent},height=2.8in]{aima-fig-07_01-kb-agent.pdf}
 
 
-
 ** The Wumpus World
 
 
 #+latex: \includegraphics[alt={aima fig 07_02 wumpus world},height=2.8in]{aima-fig-07_02-wumpus-world.pdf}
-
 
 
 ** First Steps Wumpus WOrld
@@ -58,19 +59,16 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 #+latex: \includegraphics[alt={aima fig 07_03 first step wumpus world},height=2.8in]{aima-fig-07_03-first-step-wumpus-world.pdf}
 
 
-
 ** Later Steps Wumpus World
 
 
 #+latex: \includegraphics[alt={aima fig 07_04 later steps wumpus world},height=2.8in]{aima-fig-07_04-later-steps-wumpus-world.pdf}
 
 
-
 ** Logic
 
 
 #+latex: \includegraphics[alt={aima fig 07_05 possible models pits},height=2.8in]{aima-fig-07_05-possible-models-pits.pdf}
-
 
 
 ** Logic
@@ -80,12 +78,10 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 
 
 
-
 ** Propositional Logic
 
 
 #+latex: \includegraphics[alt={aima fig 07_07 grammar of popositional logic},height=2.8in]{aima-fig-07_07-grammar-of-popositional-logic.pdf}
-
 
 
 ** Propositional Logic
@@ -94,12 +90,10 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 #+latex: \includegraphics[alt={aima fig 07_08 truth tables logical connectives},height=2.8in]{aima-fig-07_08-truth-tables-logical-connectives.pdf}
 
 
-
 ** Propositional Theorem Proving
 
 
 #+latex: \includegraphics[alt={aima fig 07_09 truth table knowledge base},height=2.8in]{aima-fig-07_09-truth-table-knowledge-base.pdf}
-
 
 
 ** Propositional Theorem Proving
@@ -108,12 +102,10 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 #+latex: \includegraphics[alt={aima fig 07_10 tt entails algorithm},height=2.8in]{aima-fig-07_10-tt-entails-algorithm.pdf}
 
 
-
 ** Propositional Theorem Proving
 
 
 #+latex: \includegraphics[alt={aima fig 07_11 logical equivalences},height=2.8in]{aima-fig-07_11-logical-equivalences.pdf}
-
 
 
 ** Propositional Theorem Proving
@@ -122,12 +114,10 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 #+latex: \includegraphics[alt={aima fig 07_12 grammar of cnf},height=2.8in]{aima-fig-07_12-grammar-of-cnf.pdf}
 
 
-
 ** Propositional Theorem Proving
 
 
 #+latex: \includegraphics[alt={aima fig 07_13 pl resolution algorithm},height=2.8in]{aima-fig-07_13-pl-resolution-algorithm.pdf}
-
 
 
 ** Propositional Theorem Proving
@@ -136,12 +126,10 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 #+latex: \includegraphics[alt={aima fig 07_14 pl resolution application},height=2.8in]{aima-fig-07_14-pl-resolution-application.pdf}
 
 
-
 ** Propositional Theorem Proving
 
 
 #+latex: \includegraphics[alt={aima fig 07_15 pl fc entails algorithm},height=2.8in]{aima-fig-07_15-pl-fc-entails-algorithm.pdf}
-
 
 
 ** Propositional Theorem Proving
@@ -150,12 +138,10 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 #+latex: \includegraphics[alt={aima fig 07_16 horn clauses and or graph},height=2.8in]{aima-fig-07_16-horn-clauses-and-or-graph.pdf}
 
 
-
 ** Propositional Model Checking
 
 
 #+latex: \includegraphics[alt={aima fig 07_17 dpll algorithm},height=2.8in]{aima-fig-07_17-dpll-algorithm.pdf}
-
 
 
 ** Propositional Model Checking
@@ -164,12 +150,10 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 #+latex: \includegraphics[alt={aima fig 07_18 walksat algorithm},height=2.8in]{aima-fig-07_18-walksat-algorithm.pdf}
 
 
-
 ** Propositional Model Checking
 
 
 #+latex: \includegraphics[alt={aima fig 07_19 dpll vs walksat},height=2.8in]{aima-fig-07_19-dpll-vs-walksat.pdf}
-
 
 
 ** Agents Based on Propositional Logic
@@ -178,17 +162,14 @@ In AI, *knowledge-based* agents use a process of *reasoning* over an internal *r
 #+latex: \includegraphics[alt={aima fig 07_20 hybrid wumpus agent algorithm},height=2.8in]{aima-fig-07_20-hybrid-wumpus-agent-algorithm.pdf}
 
 
-
 ** Agents Based on Propositional Logic
 
 
 #+latex: \includegraphics[alt={aima fig 07_21 1 cnf belief state},height=2.8in]{aima-fig-07_21-1-cnf-belief-state.pdf}
 
 
-
 ** Agents Based on Propositional Logic
 
 
 #+latex: \includegraphics[alt={aima fig 07_22 satplan algorithm},height=2.8in]{aima-fig-07_22-satplan-algorithm.pdf}
-
 

@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Classical Planning
 
@@ -98,19 +101,16 @@ Ground (variable-free) action:
 
 
 
-
 ** Blocks World
 
 
 #+latex: \includegraphics[alt={aima fig 11_03 blocks world diagram},height=2.8in]{aima-fig-11_03-blocks-world-diagram.pdf}
 
 
-
 ** Blocks World PDDL
 
 
 #+latex: \includegraphics[alt={aima fig 11_04 pddl blocks world},height=2.8in]{aima-fig-11_04-pddl-blocks-world.pdf}
-
 
 
 ** Classical Planning Algorithms
@@ -143,7 +143,6 @@ Ground (variable-free) action:
 
 
 
-
 ** Hierarchical Planning
 
 
@@ -172,13 +171,11 @@ Here are two goal-achieving implementations for the $Go(Home, SFO)$ HLA:
 
 
 
-
 Refinements can be produced recursivley, as shown in this vacuum world navigation example:
 
 
 \vspace{.05in}
 #+latex: \includegraphics[alt={aima fig 11_07 b vacuum navigation recursion},height=1.6in]{aima-fig-11_07-b-vacuum-navigation-recursion.pdf}
-
 
 
 

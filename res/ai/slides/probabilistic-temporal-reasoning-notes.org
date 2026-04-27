@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Probabilistic Temporal Reasoning
 
@@ -40,7 +43,6 @@ Recall belief state maintenance from the Kindergarten vacuum world (square not b
 
 
 #+latex: \includegraphics[alt={aima fig 04_17 vacuum prediction update cycles},height=1.2in]{aima-fig-04_17-vacuum-prediction-update-cycles.pdf}
-
 
 
 - Most real-world environments partially observable.  Belief state maintenance is core task.
@@ -148,7 +150,6 @@ In these Bayes nets:
 #+latex: \includegraphics[alt={aima fig 14_01 bayes net markov processes},width=0.75\linewidth]{aima-fig-14_01-bayes-net-markov-processes.pdf}
 
 
-
 - (a) First-order Markov process: $P(\bm{X}_t \mid \bm{X}_{0:t-1}) = P(\bm{X}_t \mid \bm{X}_{t-1})$
 - (b) Second-order Markov process: $P(\bm{X}_t \mid \bm{X}_{0:t-1}) = P(\bm{X}_t \mid \bm{X}_{t-2}, \bm{X}_{t-1})$
 
@@ -176,7 +177,6 @@ P(\bm{E}_t \mid \bm{X}_{0:t}, \bm{E}_{1:t-1}) = P(\bm{E}_t \mid \bm{X}_t) \tag{1
 
 
 #+latex: \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1.6in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
-
 
 
 - Transition model is $P(Rain_t \mid Rain_{t-1})$.
@@ -357,7 +357,6 @@ Compute $P(R_2 \mid u_{1:2})$:
 #+latex: \includegraphics[alt={aima fig 14_02 bayes net umbrella world},height=1.0in]{aima-fig-14_02-bayes-net-umbrella-world.pdf}
 
 
-
 - Day 2: umbrella appears, $U_2 = true$.  Prediction from $t=1:2$:
 
     ```{=latex}
@@ -466,7 +465,6 @@ Given the general structure of a probabilistic temporal model, we can perform ba
 
 
 
-
 - Umbrella example: compute the probability that it rained last Wednesday, given all the observations of the umbrella carrier made up to today.
 - Smoothing provides a better estimate of the state at time $k$ than was available at that time, because it incorporates more evidence.
 
@@ -542,7 +540,6 @@ P(R_1 \mid u_1, u_2)            &= \alpha P(R_1 \mid u_1) P(u_2 \mid R_1) \tag{1
 
 
 
-
 From filtering for Day 1 we already know $P(R_1 \mid u_1) = \alpha P(u_1 \mid R_1) P(R_1) = \langle 0.818, 0.182 \rangle$.
 
 So then we need to compute $P(u_2 \mid R_1)$ by applying the backward recursion in Equation 14.9:
@@ -590,7 +587,6 @@ This is the essence of the forward–backward smoothing algorithm ...
 #+latex: \includegraphics[alt={aima fig 14_04 forward backward algorithm},height=2.0in]{aima-fig-14_04-forward-backward-algorithm.pdf}
 
 
-
 $\text{FORWARD}(\bm{f}_{1:t}, \bm{e}_{t+1}) = P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) =$
 
 - $P(\bm{X}_{t+1} \mid \bm{e}_{1:t+1}) = \alpha P(\bm{e}_{t+1} \mid \bm{X}_{t+1}) \sum_{\bm{X}_t} P(\bm{X}_{t+1} \mid \bm{x}_t) P(\bm{x}_t \mid \bm{e}_{1:t})$ (14.5) and
@@ -634,14 +630,12 @@ We can represent the possible states in a system with a *state trellis*:
 #+latex: \includegraphics[alt={aima fig 14_05_a rain state trellis},width=0.75\linewidth]{aima-fig-14_05_a-rain-state-trellis.pdf}
 
 
-
 Most likely sequence estimation is finding the most likely path through this graph, where the likelihood of any path is the product of the transition probabilities along the path and the probabilities of the given observations at each state.
 
 ** Most Likely Paths Through A State Trellis
 
 
 #+latex: \includegraphics[alt={aima fig 14_05_a rain state trellis},width=0.75\linewidth]{aima-fig-14_05_a-rain-state-trellis.pdf}
-
 
 
 Say we want to estimate the most likely path that reaches $Rain_5 = true$.

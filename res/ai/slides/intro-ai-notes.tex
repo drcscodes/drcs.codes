@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:23
+% Created 2026-04-23 Thu 12:22
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,20 +53,15 @@
 
 \maketitle
 \section{These people are wrong.}
-\label{sec:orgc723aa1}
+\label{sec:org32fea2e}
 
-<center>
+
 \includegraphics[alt={./sam altman double polo},height=1in]{./sam-altman-double-polo.jpg}
-
 \includegraphics[alt={./dario amodei},height=1in]{./dario-amodei.jpg}
-
 \includegraphics[alt={./geoff hinton},height=1in]{./geoff-hinton.jpg}
-
 \includegraphics[alt={./eric schmidt},height=1in]{./eric-schmidt.jpg}
-
 \includegraphics[alt={./elon musk},height=1in]{./elon-musk.jpg}
 
-</center>
 
 
 To be fair, there are many, many people who are wrong about AI.  But you probably recognize these guys.
@@ -72,29 +70,34 @@ To be fair, there are many, many people who are wrong about AI.  But you probabl
 \item The emergence of "human-level AI" has been "just a few years away" since 1956.  All of these predictions have been wrong.
 \end{itemize}
 \section{We are decades, perhaps centuries away from "solving" AI.}
-\label{sec:org59089da}
+\label{sec:orgbb64cef}
 
 \begin{itemize}
 \item AI is immature.
 \item Currently, unfortunately, overhyped.
 \end{itemize}
 
+\begin{latex}
 
+\end{latex}
 See my advisor's advisor's dated predictions:
 
 \includegraphics[alt={rodney brooks},height=1.2in]{rodney-brooks.jpg}
 
-
 \url{https://rodneybrooks.com/my-dated-predictions/}
+\begin{latex}
+
+\end{latex}
 \section{Why does it matter that the aforementioned hypers are wrong?}
-\label{sec:org15baf58}
+\label{sec:org5de8c0b}
 
 Most of the truly groundbreaking discoveries in AI are yet to be made.
 
+\begin{latex}
 \vspace{.25in}
 
 \LARGE{This makes AI exciting!}
-
+\end{latex}
 
 \begin{itemize}
 \item Many AI courses focus on \textbf{the current thing}, e.g.,  statistical machine learning, and neural networks.
@@ -109,15 +112,18 @@ Most of the truly groundbreaking discoveries in AI are yet to be made.
 \end{itemize}
 \end{itemize}
 \section{What is AI?}
-\label{sec:org755eb26}
+\label{sec:orgb78b4b7}
 
 
 
 
+\begin{latex}
 
+\end{latex}
 \includegraphics[alt={./simon1996sciences cover},height=2.4in]{./simon1996sciences-cover.jpg}
+\begin{latex}
 
-
+\end{latex}
 
 
 
@@ -149,19 +155,22 @@ Rationality
 
 {[}\textsuperscript{simon1996sciences}]: \url{https://mitpress.mit.edu/9780262691918/the-sciences-of-the-artificial/}
 \section{Four Approaches to AI}
-\label{sec:org8cd81d0}
+\label{sec:org8dfbfb5}
 
 Decompose AI into thinking and acting, and define standards of performance as fidelity to humans and quantitative rationality.
 
 
+\begin{latex}
+\tagpdfsetup\{table/header-rows=\{1\}\}
 \begin{tabular}{lr|cc}\\
      &          & \multicolumn{2}{c}{Standard} \\
      &          & Humanly  & Rationally \\\hline
 Mode & Acting   & Acting humanly & Acting rationally \\
      & Thinking & Thinking humanly & Thinking rationally \\
 \end{tabular}
+\end{latex}
 \section{Acting humanly}
-\label{sec:org7a71ecd}
+\label{sec:orgda442e7}
 
 Turing test
 
@@ -181,7 +190,7 @@ Total Turing test
 
 Nobody cares about Turing tests.
 \section{Rationality}
-\label{sec:orgc1d8f1d}
+\label{sec:orgb06beb4}
 
 "Doing the right thing."
 
@@ -213,7 +222,7 @@ Thinking is nothing more than acting in an imagined space.
 -- Konrad Lorenz via Bernhard Schölkopf
 \end{quote}
 \section{Foundations of AI}
-\label{sec:org9938c3f}
+\label{sec:org6d156c0}
 
 \begin{itemize}
 \item Philosophy
@@ -227,7 +236,7 @@ Thinking is nothing more than acting in an imagined space.
 
 Such a rich tapestry!
 \section{Philosophy}
-\label{sec:org0672545}
+\label{sec:org313a2d2}
 
 \begin{itemize}
 \item Can formal rules be used to draw valid conclusions?
@@ -236,7 +245,7 @@ Such a rich tapestry!
 \item How does knowledge lead to action?
 \end{itemize}
 \section{Mathematics}
-\label{sec:orgad8c18b}
+\label{sec:org8860eba}
 
 \begin{itemize}
 \item What are the formal rules to draw valid conclusions?
@@ -249,7 +258,7 @@ Such a rich tapestry!
 \item Optimization
 \end{itemize}
 \section{Economics}
-\label{sec:org178feb2}
+\label{sec:orge3f43bc}
 
 Acting rationally
 
@@ -259,13 +268,13 @@ Acting rationally
 \item How should we do this when the payoff may be far in the future?
 \end{itemize}
 \section{Neuroscience}
-\label{sec:orgf4f927a}
+\label{sec:org24f8f1b}
 
 How do brains process information?
 
 \includegraphics[alt={./aima fig 01_02 computers vs brains},height=2.0in]{./aima-fig-01_02-computers-vs-brains.pdf}
 \section{Psychology}
-\label{sec:org64adfde}
+\label{sec:orge901d0e}
 
 How do humans and animals think and act?
 
@@ -279,7 +288,7 @@ How do humans and animals think and act?
 \end{itemize}
 \end{itemize}
 \section{Computer Engineering}
-\label{sec:org36e7e54}
+\label{sec:orgc04211b}
 
 How can we build an efficient computer?
 
@@ -295,21 +304,18 @@ How can we build an efficient computer?
 
 \includegraphics[alt={ai data center},height=2.0in]{ai-data-center.jpg}
 \section{Control theory and cybernetics}
-\label{sec:org1ff3247}
+\label{sec:orgb987ff7}
 
 How can artifacts operate under their own control?
 
 \includegraphics[alt={robot hand},height=1.2in]{robot-hand.jpg}
-
 \includegraphics[alt={self driving car},height=1.2in]{self-driving-car.jpg}
-
 
 \includegraphics[alt={Power Relay 6},height=1.2in]{Power-Relay-6.jpg}
 
-
 \href{https://www.darpa.mil/research/programs/power}{DARPA POWER Program}
 \section{Impact of AI}
-\label{sec:org53acc84}
+\label{sec:orgf22becd}
 
 Turing award winners:
 
@@ -325,7 +331,7 @@ Turing award winners:
 
 AI lament: once an AI problem is solved, it's no longer considered AI.
 \section{History of AI}
-\label{sec:org05ab996}
+\label{sec:org36f7f80}
 
 \begin{itemize}
 \item MucCulloch, Pitts, Hebb (1943-1949)
@@ -361,7 +367,7 @@ AI lament: once an AI problem is solved, it's no longer considered AI.
 \end{itemize}
 \end{itemize}
 \section{Modern AI}
-\label{sec:org2742bc9}
+\label{sec:org59c7d4d}
 
 \begin{itemize}
 \item Return of neural networks (1986-present)
@@ -391,13 +397,12 @@ AI lament: once an AI problem is solved, it's no longer considered AI.
 \end{itemize}
 \end{itemize}
 \section{Future of AI}
-\label{sec:org99441f5}
+\label{sec:orga55cb19}
 
 
 
 
 \includegraphics[alt={andrew barto},height=1.2in]{andrew-barto.jpg}
-
 
 \href{https://people.cs.umass.edu/\~barto/}{Andrew Barto}
 
@@ -405,14 +410,12 @@ AI lament: once an AI problem is solved, it's no longer considered AI.
 
 
 \includegraphics[alt={rich sutton},height=1.2in]{rich-sutton.jpg}
-
 \href{http://incompleteideas.net/}{Rich Sutton}
 
 
 
 
 \includegraphics[alt={david silver},height=1.2in]{david-silver.jpg}
-
 \href{https://davidstarsilver.wordpress.com/}{David Silver}
 
 

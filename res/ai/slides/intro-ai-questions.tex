@@ -1,13 +1,17 @@
 \DocumentMetadata{%
-  lang = en,
+  lang = en-US,
   pdfversion = 2.0,
   pdfstandard = ua-2,
-  pdfstandard = a-4,
-  testphase = {phase-III, title, table, math, firstaid}
+  tagging = on,
+  tagging-setup = {math/setup=mathml-SE},
 }
 \documentclass[]{exam}
 
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
+
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 
 \input{intro-ai-body}

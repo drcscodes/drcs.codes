@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** Games
 
@@ -90,7 +93,6 @@ A game can be formally defined with the following elements:
 #+latex: \includegraphics[alt={aima fig 05_01 tic tac toe game tree},height=2.8in]{aima-fig-05_01-tic-tac-toe-game-tree.pdf}
 
 
-
 Tic-tac-toe is relatively small -- fewer than $9!= 362,880$ terminal nodes with only 5,478 distinct states.
 
 ** Optimal Decisions in Games
@@ -127,7 +129,6 @@ min_{a \in Actions(s)} Minimax(Result(s,a)) & \text{if } ToMove(s) = MIN
 #+latex: \includegraphics[alt={aima fig 05_02 two ply game tree},width=0.75\linewidth]{aima-fig-05_02-two-ply-game-tree.pdf}
 
 
-
 A two-ply game tree.
 
 - $\triangle$ nodes are "MAX nodes," --  MAX’s turn to move.
@@ -151,7 +152,6 @@ A two-ply game tree.
 
 
 #+latex: \includegraphics[alt={aima fig 05_03 minimax algorithm},width=0.75\linewidth]{aima-fig-05_03-minimax-algorithm.pdf}
-
 
 
 
@@ -195,7 +195,6 @@ Intervals show range of possible values at each node,  $[\alpha, \beta]$.
 #+latex: \includegraphics[alt={aima fig 05_05 f alpha beta tree},height=1.2in]{aima-fig-05_05-f-alpha-beta-tree.pdf}
 
 
-
 \vspace{-.1in}
 \begin{align*}
 Minimax(root) &= max(min(3,12,8),min(2,x,y),min(14,5,2)) \\
@@ -237,7 +236,6 @@ In other words, the value of the root and hence the minimax decision are indepen
 
 
 
-
 ** Alpha-Beta Search Algorithm
 
 
@@ -252,7 +250,6 @@ In other words, the value of the root and hence the minimax decision are indepen
 
 
 #+latex: \includegraphics[alt={aima fig 05_07 alpha beta algorithm},width=0.75\linewidth]{aima-fig-05_07-alpha-beta-algorithm.pdf}
-
 
 
 
@@ -297,7 +294,6 @@ Eval(s) = w_1 f_1(s) + w_2 f_2(s) + \cdots + w_n f_n(s) = \sum _{i=1}^n w_i f_i(
 #+latex: \includegraphics[alt={aima fig 05_08 chess positions},width=0.75\linewidth]{aima-fig-05_08-chess-positions.pdf}
 
 
-
 - (a) Black has an advantage of a knight and two pawns, which should be enough to win the game.
 - (b) White will capture the queen, giving it an advantage that should be strong enough to win.
 
@@ -317,7 +313,6 @@ Best to apply cutoff quiescent positions, that is, positions that don't contain 
 
 
 #+latex: \includegraphics[alt={aima fig 05_09 chess horizon effect},height=2.0in]{aima-fig-05_09-chess-horizon-effect.pdf}
-
 
 
 With Black to play, if Black only searches to a depth of 4-ply, it will see that
@@ -353,7 +348,6 @@ Playout policy: bias move selection towards good ones.  Two options:
 #+latex: \includegraphics[alt={aima fig 05_11 mcts algorithm},height=1.6in]{aima-fig-05_11-mcts-algorithm.pdf}
 
 
-
 - Selection: starting at root, choose a move leading to a successor node, and repeat that process, moving down the tree to a leaf.
 
 - Expansion: grow the search tree by generating a new child of the selected node.
@@ -368,7 +362,6 @@ White just played (light purple nodes) -- black to play.
 
 
 #+latex: \includegraphics[alt={aima fig 05_10 mcts iteration},height=1.6in]{aima-fig-05_10-mcts-iteration.pdf}
-
 
 
 - (a) Select moves, all the way down the tree, ending at the leaf node marked 27/35 (27 wins for black out of 35 playouts).
@@ -413,7 +406,6 @@ Remember that MCTS returns the node with the highest number of playouts, not the
 
 
 
-
 With $C = 1.4$,
 
 - the 60/79 node:
@@ -443,7 +435,6 @@ UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }
 
 
 #+latex: \includegraphics[alt={aima fig 05_10 a mcts selection},width=0.75\linewidth]{aima-fig-05_10-a-mcts-selection.pdf}
-
 
 
 
@@ -479,7 +470,6 @@ UCB1(n) &= \frac{U(n)}{N(n)} + C \times \sqrt{ \frac{\log N (PARENT(n))}{N(n)} }
 
 
 #+latex: \includegraphics[alt={aima fig 05_16 heuristic minimax errors},width=0.75\linewidth]{aima-fig-05_16-heuristic-minimax-errors.pdf}
-
 
 
 - If evaluation function is 100% correct, right branch is correct.

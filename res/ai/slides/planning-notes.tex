@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:24
+% Created 2026-04-23 Thu 12:09
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artlificial Intelligence\\\medskip
@@ -50,7 +53,7 @@
 
 \maketitle
 \section{Classical Planning}
-\label{sec:org1e98fec}
+\label{sec:org2774430}
 
 Classical planning is the task of finding a sequence of actions to accomplish a goal in a discrete, deterministic, static, fully observable environment.  Two previous approaches:
 
@@ -78,7 +81,7 @@ Planning Domain Definition Language solves these problems using a factored repre
 \item PDDL uses \textbf{database semantics}, or the \textbf{closed-world assumption}: any fluents not mentioned are false, and unique names represent distinct objects.
 \end{itemize}
 \section{Planning Domain Definition Language (PDDL)}
-\label{sec:orgd48c3ef}
+\label{sec:orgae39039}
 
 Action schema is a family of ground actions.
 
@@ -122,22 +125,22 @@ Ground (variable-free) action:
 \end{align*}
 \vspace{-.25in}
 \section{Air Cargo Transport}
-\label{sec:org04c0859}
+\label{sec:org1bc3025}
 
 
 \includegraphics[alt={aima fig 11_01 pddl air cargo},height=2.8in]{aima-fig-11_01-pddl-air-cargo.pdf}
 \section{Blocks World}
-\label{sec:org9102888}
+\label{sec:orged8f0a5}
 
 
 \includegraphics[alt={aima fig 11_03 blocks world diagram},height=2.8in]{aima-fig-11_03-blocks-world-diagram.pdf}
 \section{Blocks World PDDL}
-\label{sec:org4727082}
+\label{sec:orgab0585c}
 
 
 \includegraphics[alt={aima fig 11_04 pddl blocks world},height=2.8in]{aima-fig-11_04-pddl-blocks-world.pdf}
 \section{Classical Planning Algorithms}
-\label{sec:orgb77c36e}
+\label{sec:orgda71617}
 
 \begin{itemize}
 \item Forward state space search
@@ -163,7 +166,7 @@ Ground (variable-free) action:
 \end{itemize}
 \end{itemize}
 \section{Forward and Backward State Space Planning}
-\label{sec:org4bc7085}
+\label{sec:orgc6c00e9}
 
 \begin{itemize}
 \item Forward search: unify current state against preconditions of each action schema -- \textbf{applicable} actions.
@@ -174,7 +177,7 @@ Ground (variable-free) action:
 
 \includegraphics[alt={aima fig 11_05 forward backward search},height=2.4in]{aima-fig-11_05-forward-backward-search.pdf}
 \section{Hierarchical Planning}
-\label{sec:org433bc3f}
+\label{sec:orgb78ffb4}
 
 
 
@@ -206,14 +209,13 @@ Here are two goal-achieving implementations for the \(Go(Home, SFO)\) HLA:
 
 
 
-
 Refinements can be produced recursivley, as shown in this vacuum world navigation example:
 
 
 \vspace{.05in}
 \includegraphics[alt={aima fig 11_07 b vacuum navigation recursion},height=1.6in]{aima-fig-11_07-b-vacuum-navigation-recursion.pdf}
 \section{Closing Thoughts}
-\label{sec:orge890d82}
+\label{sec:orgc77fb0c}
 
 \begin{itemize}
 \item Fun to create toy worlds and solve them.

@@ -31,8 +31,11 @@
 #+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
 #+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 #+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
 #+LaTeX_HEADER: \usepackage{polyglossia}
-#+LaTeX_HEADER: \setdefaultlanguage[variant=US]{english}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
 
 ** What is a value?
 
@@ -76,7 +79,6 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 
 
 
-
 - Value: diversity
 - Result: inacurate and offensive images
 
@@ -90,7 +92,6 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 
 
 #+latex: \includegraphics[alt={ai snake oil book},height=3.0in]{ai-snake-oil-book.jpg}
-
 
 
 
@@ -112,7 +113,6 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 #+latex: \includegraphics[alt={palantir saruman},height=3.0in]{palantir-saruman.png}
 
 
-
 ** Value Alignment as a Focus of AI Research
 
 
@@ -126,9 +126,7 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 
 
 
-
 #+latex: \includegraphics[alt={superintelligence book},height=3.0in]{superintelligence-book.jpg}
-
 
 
 
@@ -144,7 +142,6 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 \textbf{Bad advice can be dangerous.}\\
 \vspace{.1in}
 #+latex: \includegraphics[alt={chatcheapt pineapple pizza advice},height=1.0in]{chatcheapt-pineapple-pizza-advice.pdf}
-
 
 
 
@@ -169,11 +166,8 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 
 
 
-
 #+latex: \includegraphics[alt={christopher simpkins headshot 600px},height=1.0in]{christopher-simpkins-headshot-600px.jpg}
-
 #+latex: \includegraphics[alt={chris.simpkins.phd qr},height=1.0in]{chris.simpkins.phd-qr.png}
-
 \textbf{Christopher Simpkins}\\
 \small{Kennesaw State University}\\
 \small{\url{https://chris.simpkins.phd/}}
@@ -211,7 +205,6 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 
 
 
-
 \rule{0.5pt}{.4\textheight}
 
 
@@ -220,7 +213,6 @@ https://www.technologyreview.com/2018/10/10/139858/amazon-ditched-ai-recruitment
 
 
 #+latex: \includegraphics[alt={robot mtom},height=1.4in]{robot-mtom.pdf}
-
 
 
 
@@ -338,7 +330,6 @@ is the probability that the state at time $t+1$ is $s_{t+1}$, given that the pre
 #+latex: \includegraphics[alt={../../deep learning/slides/ReinforceMDP},height=1.6in]{../../deep-learning/slides/ReinforceMDP.pdf}
 
 
-
 A sequense of states from a Markov process is called a *trajectory*: $\tau = (s_1, S_2, ...)$.
 
 ** Markov Reward Process
@@ -355,7 +346,6 @@ $\gamma$ is the *discount factor* which says how much we discount future rewards
 #+latex: \includegraphics[alt={../../deep learning/slides/ReinforceMDP2},height=1.6in]{../../deep-learning/slides/ReinforceMDP2.pdf}
 
 
-
 ** Markov Decision Process (MDPs)
 
 A *Markov decision process* (MDP) adds a set of *actions* at each time step.  Now:
@@ -366,7 +356,6 @@ A *Markov decision process* (MDP) adds a set of *actions* at each time step.  No
 
 
 #+latex: \includegraphics[alt={../../deep learning/slides/ReinforceMDP3},height=2.0in]{../../deep-learning/slides/ReinforceMDP3.pdf}
-
 
 
 
@@ -381,7 +370,6 @@ The goal of a reinforcement learning algorithm is to learn a *policy*: a determi
 #+latex: \includegraphics[alt={../../deep learning/slides/ReinforceMDPLoop},width=0.75\linewidth]{../../deep-learning/slides/ReinforceMDPLoop.pdf}
 
 
-
 ** State and Action Values
 
 - State value function: $v(s_t | \pi) = \mathbb{E} [G_t | s_t, \pi]$
@@ -389,7 +377,6 @@ The goal of a reinforcement learning algorithm is to learn a *policy*: a determi
 
 
 #+latex: \includegraphics[alt={../../deep learning/slides/ReinforceValueOfAction},width=0.75\linewidth]{../../deep-learning/slides/ReinforceValueOfAction.pdf}
-
 
 
 ** Optimal Policy

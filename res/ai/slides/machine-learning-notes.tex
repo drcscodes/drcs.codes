@@ -1,6 +1,6 @@
-% Created 2026-04-22 Wed 22:23
+% Created 2026-04-23 Thu 12:08
 % Intended LaTeX compiler: lualatex
-\DocumentMetadata{lang = en, pdfversion = 2.0, pdfstandard = ua-2, pdfstandard = a-4, testphase = {phase-III, title, table, math, firstaid}}
+\DocumentMetadata{lang = en-US,pdfversion = 2.0,pdfstandard = ua-2,tagging = on,tagging-setup = {math/setup=mathml-SE},}
 \documentclass[11pt]{article}
 \usepackage{amsmath}
 \usepackage{fontspec}
@@ -33,8 +33,11 @@
 \DeclareMathOperator*{\argmax}{arg\!max}
 \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
 \hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 \usepackage{polyglossia}
-\setdefaultlanguage[variant=US]{english}
+\setdefaultlanguage[variant=en-US]{english}
 \author{Christopher Simpkins}
 \date{Kennesaw State University}
 \title{Artificial Intelligence\\\medskip
@@ -50,7 +53,7 @@
 
 \maketitle
 \section{What is machine learning?}
-\label{sec:orga9d8010}
+\label{sec:orgbd3903f}
 
 Definition by Tom Mitchell (1998):
 
@@ -62,9 +65,9 @@ Machine Learning is the study of algorithms that
 \item with experience \texttt{E}.
 \end{itemize}
 
-A well-defined learning task is given by `<P, T, E>`.
+A well-defined learning task is given by ``.
 \section{Examples of Machine Learning Tasks [\textsuperscript{mooney}]}
-\label{sec:org1f16178}
+\label{sec:orgfa10237}
 
 Improve on task \texttt{T}, with performance \texttt{P}, given experience \texttt{E}
 
@@ -98,7 +101,7 @@ Improve on task \texttt{T}, with performance \texttt{P}, given experience \textt
 
 {[}\textsuperscript{mooney}]: Slide credit: Ray Mooney
 \section{Elements of Machine Learning Problems}
-\label{sec:orgbd0627d}
+\label{sec:orgf90c1dd}
 
 Every machine learning problem includes
 
@@ -114,7 +117,7 @@ Every machine learning problem includes
 
 Our model, or hypothesis, comes from a model/hypothesis class.  Once the parameters are learned, we have an instance of the hypothesis class tuned to our particular machine learning problem.
 \section{Kinds of Machine Learning Tasks}
-\label{sec:org87c76d0}
+\label{sec:orgbb6a3e6}
 
 \begin{itemize}
 \item Classification: identify the correct label for an instance
@@ -141,7 +144,7 @@ Our model, or hypothesis, comes from a model/hypothesis class.  Once the paramet
 \end{itemize}
 \end{itemize}
 \section{Kinds of Machine Learning Algorithms}
-\label{sec:org293d82d}
+\label{sec:orgeea52d4}
 
 \begin{itemize}
 \item Supervised
@@ -166,7 +169,7 @@ Our model, or hypothesis, comes from a model/hypothesis class.  Once the paramet
 
 Classification using supervised learning methods makes up the lion's share of machine learning.
 \section{Supervised Learning Problem Setup}
-\label{sec:org336d77d}
+\label{sec:org447be2f}
 
 Every machine learning problem contains the following elements:
 
@@ -183,12 +186,11 @@ Every machine learning problem contains the following elements:
 
 A learning algorithm uses elements of \(\mathcal{D}\) to estimate parameters of of a particular \(h(\vec{x})\) from \(\mathcal{H}\) which maps every \(\vec{x}\) to an element of \(\mathcal{Y}\).
 \section{Classification Example}
-\label{sec:org705f152}
+\label{sec:org0a45966}
 
 Classification is a supervised learning task in which the target function maps feature vectors in \(\mathbb{R}^{d}\) to one of a defined set of classes.
 
 \includegraphics[alt={../../deep learning/slides/cat classify},height=2.0in]{../../deep-learning/slides/cat-classify.png}
-
 
 \begin{itemize}
 \item In linear classification we assume that there are lines that separates classes acceptably well.
@@ -200,12 +202,11 @@ Classification is a supervised learning task in which the target function maps f
 
 {[}\textsuperscript{cs231n}]: \url{https://cs231n.github.io/classification/}
 \section{Regression Example}
-\label{sec:orgdedb314}
+\label{sec:org3f8ad9d}
 
 Regression is a kind of supervised learning in which the target function maps feature vectors in \(\mathbb{R}^{d}\) to arbitrary real values.
 
 \includegraphics[alt={../../deep learning/slides/september sea ice},height=1.6in]{../../deep-learning/slides/september-sea-ice.png}
-
 
 \begin{itemize}
 \item In linear regression we assume that there is a line that fits the data acceptably well.
@@ -218,7 +219,7 @@ Regression is a kind of supervised learning in which the target function maps fe
 
 {[}\textsuperscript{byron}-boots]: \url{https://www.cc.gatech.edu/\~bboots3/CS4641-Fall2018/Lecture3/03\_LinearRegression.pdf}
 \section{Example: Credit Scoring}
-\label{sec:org333aa13}
+\label{sec:org3859f0d}
 
 Let's create a credit score based on two variables: age and income (in thousands), which we'll say are real numbers.
 
@@ -237,7 +238,7 @@ From that "score" we take a decision:
 \item Deny credit if \(\sum_{i=1}^{d} w_i x_i\) < threshold
 \end{itemize}
 \section{Data Sets}
-\label{sec:org9160e13}
+\label{sec:org077b530}
 
 Consider a hypothetical data set, \(\mathcal{D}\), for the credit scoring problem.
 
@@ -262,7 +263,7 @@ Data in this form is often called a \textbf{design matrix}, an \(N \times D\) ma
 \item each of the \(D\) columns represents a \textbf{feature} (or \textbf{covariate} or \textbf{predictor}) of the data examples.
 \end{itemize}
 \section{Tabular Data vs. Unstructured Data}
-\label{sec:org202e565}
+\label{sec:org1b5548e}
 
 
 
@@ -287,43 +288,39 @@ We say it is structured because we impose the structure on it.  There is nothing
 \includegraphics[alt={../../deep learning/slides/elsa anna bench.},height=1.8in]{../../deep-learning/slides/elsa-anna-bench.jpeg}
 
 
-
 Unstructured data is data whose structure is inherent in the data, not imposed by us.  Examples include images and natural langauge text.
 \section{Credit Data Plot}
-\label{sec:org0a670e4}
+\label{sec:org4b70193}
 
 A scatter plot gives us intuition about the structure of the data.
 
 \includegraphics[alt={../../deep learning/slides/credit scatter},height=2.8in]{../../deep-learning/slides/credit-scatter.png}
 
-
 Is there a line that separates the +s from the -s?
 \section{A Linear Separator}
-\label{sec:orga6a66f9}
+\label{sec:org5ffb106}
 
 Here's a line that separates the data into classes.
 
 \includegraphics[alt={../../deep learning/slides/credit scatter separator},height=2.8in]{../../deep-learning/slides/credit-scatter-separator.png}
 
-
 Are there other lines? How many of these lines are there?
 \section{Version Spaces}
-\label{sec:org0c609ae}
+\label{sec:org1bb0c08}
 
 A \textbf{version space} is the set of all \(h\) in \(\mathcal{H}\) consistent with our training data.  For our credit data, it's the set of all lines that separate the classes.
 
 \includegraphics[alt={../../deep learning/slides/credit scatter},height=2.8in]{../../deep-learning/slides/credit-scatter.png}
 
-
 Machine learning algorithms find these lines algorithmically.
 \section{A Practical Example: Iris Classification}
-\label{sec:orgc8f913f}
+\label{sec:orge011142}
 
 It's a rite of passage to apply supervised learning to the Iris data set. The canonical source for the Iris data set is the \href{https://archive.ics.uci.edu/ml/}{UCI Machine Learning Repository}. Download  \href{https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data}{iris.data}.
 
 \includegraphics[alt={../../deep learning/slides/iris},height=2.4in]{../../deep-learning/slides/iris.jpg}
 \section{Iris Data}
-\label{sec:orgd9922d8}
+\label{sec:orga613022}
 
 The data set contains 150 instance of Iris flowers with
 
@@ -348,7 +345,7 @@ and
 \end{itemize}
 \end{itemize}
 \section{Scikit-learn Recipe}
-\label{sec:org9925138}
+\label{sec:orga0e01bc}
 
 \begin{enumerate}
 \item Set up feature matrix and target array
@@ -361,7 +358,7 @@ and
 
 Let's apply this recipe to a data set.
 \section{Scikit-learn Data Representation}
-\label{sec:org4942299}
+\label{sec:org59ddf42}
 
 The basic supervised learning setup in Scikit-learn is:
 
@@ -382,7 +379,7 @@ The basic supervised learning setup in Scikit-learn is:
 
 We can easily obtain these with a Pandas DataFrame.
 \section{Step 1: Iris feature matix and target array}
-\label{sec:org6339725}
+\label{sec:orgdbf882e}
 
 From the description on the \href{https://archive.ics.uci.edu/ml/datasets/Iris}{Iris Data Set page} we know that the Iris instances have four features -- (sepal\textsubscript{length}, sepal\textsubscript{width}, petal\textsubscript{length}, petal\textsubscript{width}) -- and three classes -- (Iris-setosa, Iris-versicolour, Iris-virginica). We can read these into a DataFrame with [\textsuperscript{DataLoaders}]
 
@@ -405,7 +402,7 @@ This DataFrame (in \href{http://vita.had.co.nz/papers/tidy-data.pdf}{tidy format
 
 \href{https://github.com/uci-ml-repo/ucimlrepo}{\^{}DataLoaders]: You can get this data set through Scikit-learn's datasets module or the [ucimlrepo} package, but I want to show the use of Pandas for general data manipulation.
 \section{Step 1.1: Scikit-learn Input Data}
-\label{sec:orgaba97fc}
+\label{sec:orga9749bb}
 
 For Scikit-learn we need a feature matrix \texttt{X} and target array \texttt{y}:
 
@@ -422,7 +419,7 @@ X_iris.shape[0] == y_iris.shape[0] # True
 
 There are 150 samples and 150 target labels.
 \section{Step 2: Separate Data into Training and Test Sets}
-\label{sec:org9d9e1eb}
+\label{sec:org8672eb8}
 
 We want to separate our data into non-overlapping training and test subsets. Since the data in our data set are arranged in a neat order, we should randomize the samples and split in a way that represents each class equally in the training and test sets. Scikit-learn provides a library functoin to do this:
 
@@ -442,7 +439,7 @@ You will often want to create a third set, a \textbf{validation} set, which you 
 Set aside your test set at the beginning of the process and don't use it for anything but testing!
 \end{quote}
 \section{Step 3.1: Choose a model}
-\label{sec:orgfff30ef}
+\label{sec:org4700624}
 
 In your machine learning class you'll learn that no hypothesis class (aka model class, aka hypothesis class, aka algorithm, aka estimator) is best for all data [\textsuperscript{fn2}]. You must choose your model class based on the data. Things to consider:
 
@@ -456,7 +453,7 @@ Scikit-learn calls models \textbf{estimators}.
 
 \href{https://www.cc.gatech.edu/\~isbell/reading/papers/nfl-optimization.pdf}{\^{}fn2]: [Wolpert and Macready, \textbf{No Free Lunch Theorems for Optimization}}
 \section{Step 3: Visualizing the Iris data}
-\label{sec:orga4f24c8}
+\label{sec:org888497f}
 
 You can begin to explore your data with a pairplot:
 
@@ -467,10 +464,9 @@ sns.pairplot(X_iris_train, hue="species", size=1.5)
 
 \includegraphics[alt={../../deep learning/slides/iris pairplot},height=2.4in]{../../deep-learning/slides/iris-pairplot.png}
 
-
 These look linearly separable, so we'll try a linear discriminant classifier, SVM.
 \section{Step 4: Set algorithm hyperparameters}
-\label{sec:org9518f52}
+\label{sec:orgcf60879}
 
 Hyperparameters are parameters of the algorithm or fixed parameters of the model, as opposed to the learnable parameters of the model that are adjusted by the learning algorithm.
 
@@ -481,7 +477,7 @@ model = svm.SVC(kernel="linear")
 
 Most parameters are optional, with reasonable default values. Beacuse we know the Iris data set is so well-suited to liner classifiers we choose a \texttt{linear} kernel (deafult is \texttt{rbf} -- radial basis function)
 \section{Step 5: Fit model to data}
-\label{sec:org455cb5d}
+\label{sec:org94049d3}
 
 The General Form of Learning Algorithms is:
 
@@ -504,7 +500,7 @@ When the algorithm is finished, you have a model, a particular \(h \in \mathcal{
 model.fit(X_iris_train, y_iris_train)
 \end{lstlisting}
 \section{Step 6: Apply model to new data}
-\label{sec:org8148020}
+\label{sec:org185a6e5}
 
 To apply the trained model to new (unseen) data, pass an array of instances to \texttt{predict}:
 
@@ -524,20 +520,18 @@ As you can see, a linear SVM classifier works perfectly on the Iris data. Try ou
 
 A Scikit-learn estimator (model/hypothesis) is an object that has \texttt{fit} (train) and \texttt{predict} (test) methods.
 \section{The Deep Learning Revolution}
-\label{sec:orgd8ad018}
+\label{sec:org609292f}
 
 \includegraphics[alt={../../deep learning/slides/imagenet},height=2.4in]{../../deep-learning/slides/imagenet.png}
-
 
 
 In 2010, \href{https://profiles.stanford.edu/fei-fei-li}{Fei-Fei Li} and her team published a data set of tens of millions of labeled photographs -- \href{https://image-net.org}{ImageNet} -- and launched the annual ImageNet Large Scale Visual Recognition Challenge (ILSVRC)
 
 In the first two years traditional approaches, characterized by complex feature engineering, continued to win.
 \section{AlexNet}
-\label{sec:org4856e17}
+\label{sec:org261e179}
 
 \includegraphics[alt={Ilya Sutskever, Geoff Hinton, Alex Krizhevsky},height=2.0in]{../../deep-learning/slides/ilya-geoff-alex.jpg}
-
 
 In 2012, Alex Krizhevsky and Ilya Sutskever from Geoff Hinton's lab at the University of Toronto \textbf{dominated} the ILSVRC with what is now called \href{https://www.cs.toronto.edu/\~kriz/imagenet\_classification\_with\_deep\_convolutional.pdf}{AlexNet}
 
@@ -546,28 +540,27 @@ Since then, deep learning has practically taken over AI.
 
 {[}\textsuperscript{UTorontoHintonNobel}]: \url{https://web.cs.toronto.edu/news-events/news/congratulations-pour-in-for-geoffrey-hinton-after-nobel-win}
 \section{Autonomous Cars}
-\label{sec:orgab4a917}
+\label{sec:org7fec871}
 
 Autonomous cars are teeming with deep learning models.
 
 \includegraphics[alt={../../deep learning/slides/thrun autonomous cars},height=3.0in]{../../deep-learning/slides/thrun-autonomous-cars.png}
 \section{Scene Labeling}
-\label{sec:orgefcf7c8}
+\label{sec:org24a96c6}
 
 Convolutional deep neural networks (CNNs), or ConvNets, are widely used in vision applications.
 
 \includegraphics[alt={../../deep learning/slides/farabet scene labeling},height=3.0in]{../../deep-learning/slides/farabet-scene-labeling.png}
 
-
 {[}\textsuperscript{farabet}]: Farabet et al. ICML 2012, PAMI 2013
 \section{Speech Recognition}
-\label{sec:org03d5ba3}
+\label{sec:org76ff0ce}
 
 One of the early projects that popularized the uses of ReLU activation functions in deep neural networks.
 
 \includegraphics[alt={../../deep learning/slides/zeiler speech recognition},height=3.2in]{../../deep-learning/slides/zeiler-speech-recognition.png}
 \section{Generative AI}
-\label{sec:org9304975}
+\label{sec:org8197f3f}
 
 What is "generative AI?"
 
