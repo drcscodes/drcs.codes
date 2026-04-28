@@ -16,13 +16,13 @@ header-includes:
 
 ## Making Simple Decisions
 
+> This slide deck summarizes the most important topics from the lesson on Decision Theory and Multiagent Systems.  Refer to those lessons for more details.
+
 A decision-theoretic agent—an agent can make rational decisions based on what it believes and what it wants.
 
 - A goal-based agent has a binary distinction between good (goal) and bad (non-goal) states.
 
 - A decision-theoretic agent assigns a continuous range of values to states, enabling decision-making even when no best option is available.
-
-This lesson deals with simple decisions, that is, decisions based on immediate outcomes in episodic environments.
 
 ## Combining Beliefs and Desires under Uncertainty
 
@@ -54,7 +54,7 @@ A few points:
 
 ## Basis of Utility Theory
 
-Notation:
+Preference notation:
 
 - $A \succ B$: the agent prefers $A$ over $B$.
 - $A \sim B$: the agent is indifferent between $A$ and $B$.
@@ -133,7 +133,7 @@ This agent would be willing, e.g., to exchange $B$ plus $.01 for $A$, and so on.
 
 The axioms of utility theory are rational because violating them leads to bad outcomes.
 
-## From Rational Preferences to Untilities
+## From Rational Preferences to Utilities
 
 - **Existence of Utility Function**: If an agent’s preferences obey the axioms of utility, then there exists a function U such that $U(A) > U(B)$ if and only if $A$ is preferred to $B$, and $U(A) = U(B)$ if and only if the agent is indifferent between $A$ and $B$. That is,
 
@@ -182,103 +182,7 @@ Then preference elicitation can proceed by
 
 Assuming normalized probabilities, the utility of $S$ is then given by $p$.  We repeat this process for every $S$ to get the full utility function.
 
-## The "Value" of Human Life
-
-:::: {.columns}
-::: {.column width="50%"}
-
-- Asbestos in schools paradox.
-
-- US govt agencies like FDA and EPA use the **value of a statistical life** to determine the costs and benefits of regulations.  In 2019 this was $10M.
-
-- A **micromort** is a one in a million chance of death.
-
-    - Say driving a car for 230 miles incurs a risk of one micromort.
-    - If you drive 92,000 miles that's 400 micromorts.
-    - If you're willing to pay $12,000 more for a car that halves your risk of death, then a micromort has a value of $60 to you.
-
-- **QALY** is quality-adjusted life year. Patients are willing to accept a shorter life expectancy to avoid a disability.
-
-:::
-::: {.column width="50%"}
-
-![](fight-club-formula-meme.png){height="80%"}
-
-:::
-::::
-
-## The Utility of Money
-
-Money is an obvious candidate for a utility measure.
-
-- Most agents exhibit a **monotonic preference** for more money.
-- However, money is not necessarily a utility function because it says nothing about preferences between *lotteries* involving money.
-
-    - Example: Choose between $1,000,000 and a 50% chance for $2,500,000.
-    - The **expected monetary value** (EMV) of the gamble is $.5 (\$0) + .5 (\$2,500,000) = \$1,250,000$
-
-Key idea: value of money not directly proportional to utility.
-
-- Let $k$ be current wealth and $S_n$ be the state of posessing total wealth of $n$ dollars.
-
-```{=latex}
-\begin{align*}
-EU(Accept)  &= \frac{1}{2} U (S_k) + \frac{1}{2} U (S_{k+2,500,000}) \\
-EU(Decline) &= U(S_{k+1,000,000})
-\end{align*}
-```
-
-Now say $U((S_k) = 5$, $U(S_{k+2,500,000})$ = 9$, and $U(S_{k+1,000,000} = 8$.  Then
-
-- $EU(Accept) = 7$
-- $EU(Decline) = 8$
-
-"Utility of your first million is higher than your second."  A billionaire would likely have a locally linear utility function over such small amounts, so would accept the gamble.
-
-## Human Judgement and Irrationality
-
-:::: {.columns}
-::: {.column width="60%"}
-
-- Decision theory is a **normative theory** -- how people *should* act.
-- Actualy behavior is described by a **descriptive theory**.
-
-Humans aren't "rational." (Ariely, 2009)
-
-Allais Paradox: people don't act in accordance with utility theory.
-
-Common errors in thinking:
-
-- Ambiguity aversion
-- Framing effect
-- Anchoring effect
-
-
-:::
-::: {.column width="40%"}
-
-
-```{=latex}
-\begin{center}
-```
-
-
-![](predictably-irrational-book.jpg){height="40%"}
-
-![](dan-ariely.png){height="40%"}[^DanAriely]
-
-
-```{=latex}
-\end{center}
-```
-
-
-[^DanAriely]: https://web.mit.edu/ariely/www/
-
-:::
-::::
-
-## Preference Structure
+## Multiattribute Preference Structure
 
 Specifying complete utility function $U(x_1, \dots, x_n)$ requires $d^n$ values in the worst case.  Avoid this complexity by encoding some structure of preferences into **representation theorems**:
 
@@ -331,23 +235,6 @@ MARL: https://www.marl-book.com/
 :::
 ::::
 
-## One Decsion Maker
-
-Rests on **benevolent agent assumption**: agents will do what they are told.
-
-Action synchronization:
-
-- Sumultaneous/joint actions
-- Mutually exclusive actions executed at different times
-- Sequential actions: $A$ before $B$ when $A$'s postconditions are $B$'s preconditions
-
-Architectures:
-
-- **Multieffector planning**: multiple concurrently acting effectors
-- **Multibody planning**: physically decoupled effectors
-
-    - Centralized planning: sensor information from each body is pooled
-    - Decentralized planning: plan execution partially or fully decoupled, explicit communication to share information when possible (e.g., back in comms range)
 
 ## Multiple Decision Makers
 
@@ -390,24 +277,6 @@ In AI, game theory can be used in two main ways:
 
     - Example: protocols for Internet routers
     - Example: criminal legal system
-
-## Cooperative vs Noncooperative Games
-
-Two broad categories of game models:
-
-1. Cooperative games:
-
-    - Binding agreement between agents ensuring cooperation.
-
-2. Noncooperative games:
-
-    - Not necessarily competitive.
-    - Simply means no binding agreement to cooperate.
-
-Often mix models:
-
-- Package company: centralized planning for routes and trucks, decentralized execution via autonomous decisions of drivers and pilots responsing individually to real-time conditions.
-- Company: individual **incentives** for employees designed to bring their behavior into alignment with company's goals.
 
 ## Games with a Single Move: Normal Form Games
 
@@ -768,7 +637,7 @@ Note that AIMA uses $refuse$ for $confess/cooperate$ and $testify$ for $deny/def
 
 In the 1980s, Robert Axelrod organized a series of computer tournaments in which computer programs submitted by contestants implemented any strategy of their choosing.  Suprising key findings:
 
-- Tit for tat was the winning strategy.
+- **Tit for tat was the winning strategy.**
 - Starting out cooperate is better.
 - Adding forgiveness helps.
 
@@ -778,102 +647,3 @@ Knight, et. al. [^knight2025reviving] recently reproduced these results, confirm
 
 :::
 ::::
-
-
-
-## Closing Thoughts: Rational Altruism
-
-:::: {.columns}
-::: {.column width="50%"}
-
-```{=latex}
-\begin{center}
-```
-![](kimmel-science-of-revenge-book.jpg){height="80%"}[^kimmel2025science]
-```{=latex}
-\end{center}
-```
-
-:::
-::: {.column width="50%"}
-
-The lesson of The Prisoner's Dilemma is that individually rational action often leads not just to lower total *social* utility, but lower *indivdual* utility over the long run.
-
-- Previously we saw that if an agent's utility function aligns with the external performance measure of its task environment, then maximizing its utility maximizes its performance.
-- How do we get global utility into local utility functions?
-
-There is exciting research in neuroscience that suggests that social good and individual utility are aligned.
-
-- Revenge triggers the same dopamine reponse as addiction.
-- Forgiveness cuts this cycle.
-
-Perhaps there is a link between the results of Axelrod's IPD tournaments and neurobiology.
-
-:::
-::::
-
-[^kimmel2025science]: https://www.amazon.com/Science-Revenge-Understanding-Deadliest-Addiction/dp/0593796519
-
-
-## Lessons from Animals
-
-:::: {.columns}
-::: {.column width="45%"}
-
-
-```{=latex}
-\begin{center}
-```
-![](wolf-pack.png){height="40%"}
-```{=latex}
-\end{center}
-\vspace{.1in}
-```
-
-```{=latex}
-\begin{center}
-```
-![](rise-of-wolf-8-book.jpg){height="50%"}
-```{=latex}
-\end{center}
-```
-
-:::
-::: {.column width="60%"}
-
-```{=latex}
-\begin{center}
-```
-![](Safari_ants.jpg){height="30%"}
-```{=latex}
-\end{center}
-\vspace{.1in}
-```
-
-```{=latex}
-\begin{center}
-```
-![](bees-honeycomb.jpg){height="30%"}
-
-[https://www.youtube.com/watch?v=F5rWmGe0HBI](https://www.youtube.com/watch?v=F5rWmGe0HBI)
-```{=latex}
-\end{center}
-```
-
-:::
-::::
-
-
-## Humans are Complicated Animals
-
-Humans are complicated -- and often amusing -- animals.  The Prisoner's Dilemma often occurs naturally, and sometimes artificially:
-
-```{=latex}
-\begin{center}
-```
-![](bachelor-pad-prisoners-dilemma.jpeg){height="50%"}
-
-[https://www.youtube.com/watch?v=p1oyuqLFiXg](https://www.youtube.com/watch?v=p1oyuqLFiXg) -- 1:06:30
-```{=latex}
-\end{center}
-```

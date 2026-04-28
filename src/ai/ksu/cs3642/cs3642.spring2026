@@ -5,7 +5,7 @@ Week 1
 Week 2
 2026-01-19;MLK Day - No Class;;
 2026-01-21;intelligent-agents;;
-Problem Solving
+Search
 Week 3
 2026-01-26;Weather Cancellation;;Financial Aid Disbursement (2026-01-26),Unpaid Course Deletion (2026-01-27)
 2026-01-28;problem-solving;Due: [PA0](pa0.html),Assigned: [PA1](pa1.html);
@@ -15,14 +15,14 @@ Week 4
 Week 5
 2026-02-09;adversarial-search;;
 2026-02-11;local-search;Due: [PA1](pa1.html);
-Knowledge, Reasoning, and Planning
+Symbolic Reasoning and Planning
 Week 6
 2026-02-16;nondeterministic-search;;
 2026-02-18;knowledge-ai,planning;;
 Week 7
 2026-02-23;midterm-review;;
 2026-02-25;midterm-exam;;
-Uncertain Knowledge and Reasoning
+Probabilistic Reasoning and Planning
 Week 8
 2026-03-02;uncertainty;Assigned: [PA3](pa3.html);
 2026-03-04;bayesian-networks;;
@@ -38,7 +38,7 @@ Week 11
 Week 12
 2026-03-30;Value Alignment;;
 2026-04-01;LLMs are Not the Answer: Relevant AI for Business Transformation;;Withdrawal Deadline (2026-04-03)
-Decision Making and Reinforcement Learning
+Decision Making
 Week 13
 2026-04-06;mdps;;Virtual Lecture,AAAI Spring Symposia (2026-04-07)
 2026-04-08;td-learning;;Virtual Lecture,AAAI Spring Symposia (2026-04-08),AAAI Spring Symposia (2026-04-09)
@@ -47,7 +47,7 @@ Week 14
 2026-04-15;Video Lectures (See D2L Announcement);;
 Week 15
 2026-04-20;Guest Lecture: [John Cortese](https://www.mit.edu/~jo15811/);;
-2026-04-22;No Class (Paint Swap);;
+2026-04-22;multiagent-systems;;
 Week 16
 2026-04-27;decision-making;;
 2026-04-29;machine-learning;;
