@@ -53,7 +53,7 @@
         "videos": []
     },
     {
-        "part": "Problem Solving"
+        "part": "Search"
     },
     {
         "topic": "problem-solving",
@@ -154,7 +154,7 @@
         "include_semester": true
     },
     {
-        "part": "Knowledge, Reasoning, and Planning"
+        "part": "Symbolic Reasoning and Planning"
     },
     {
         "topic": "knowledge-ai",
@@ -256,7 +256,7 @@
         "videos": []
     },
     {
-        "part": "Uncertain Knowledge and Reasoning"
+        "part": "Probabilistic Reasoning"
     },
     {
         "topic": "uncertainty",
@@ -379,7 +379,20 @@
         "include_semester": false
     },
     {
-        "part": "Decision Making and Reinforcement Learning"
+        "part": "Decision Making"
+    },
+    {
+        "topic": "decision-making",
+        "slides": "[Decision Making](@root/ai/slides/decision-making.pdf)",
+        "reading": [
+            "AIMA: 16, 18",
+            "MAS: 1-2"
+        ],
+        "exercises": [],
+        "assignments": [
+        ],
+        "videos": [],
+        "include_semester": false
     },
     {
         "topic": "decision-theory",
@@ -513,7 +526,7 @@
     },
     {
         "topic": "machine-learning",
-        "slides": "[Machine Learning](@root/ml/slides/machine-learning.pdf)",
+        "slides": "[Machine Learning](@root/ai/slides/machine-learning.pdf)",
         "reading": [
             "PMLAI: 1",
             "AIMA: 19.1-19.6"

@@ -1,0 +1,176 @@
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage[margin=1in]{geometry}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Machine Learning Study Guide (AIMA 19.1-19.6)}
+\author{Artificial Intelligence}
+\date{}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{0} % So that next \section is 1
+\section{Machine Learning}
+
+\begin{questions}
+
+According to Tom Mitchell, machine learning is the study of algorithms that
+
+\begin{itemize}
+\item improve their performance {\tt P}
+\item at some task {\tt T}
+\item with experience {\tt E}.
+\end{itemize}
+
+A well-defined learning task is given by {\tt <P, T, E>}.
+
+Formulate the following problems according to Tom Mitchell's machine learning problem specification (see \href{https://drcs.codes/ai/slides/machine-learning.pdf}{Machine Learning Slides}) and the specification our textbook. For each of the following problems specify:
+
+\begin{itemize}
+\item The task {\tt T},
+\item The performance measure {\tt P},
+\item The experience {\tt E},
+\item The target function $f: \mathcal{X} \rightarrow \mathcal{Y}$, that is,
+\begin{itemize}
+\item the input space $\mathcal{X}$, and
+\item the output space $\mathcal{Y}$.
+\end{itemize}
+\end{itemize}
+
+Remember that a function maps a domain to a co-domain, and these domains are sets.
+
+\question Medical diagnosis: A patient walks in with a medical history and some symptoms, and you want to identify the problem.
+
+\ifprintanswers
+\begin{solution}
+\begin{itemize}
+\item Task, {\tt T}: diagnose problem
+\item Performance, {\tt P}: diagnosis is correct or incorrect
+\item Experience, {\tt E}: $<medical-history, symptoms>$
+\item Target function $f: \mathcal{X} \rightarrow \mathcal{Y}$:
+\begin{itemize}
+\item $\mathcal{X} = \{\vec{x} \vert x_1 \in \{family-history-heart-disease\}, x_2 \in \mathbb{R} = cholesterol-level \}$ and other such features
+\item $\mathcal{Y} = \{disease_1, disease_2, ..., disease_n \}$
+\end{itemize}
+\end{itemize}
+\end{solution}
+\else
+\vspace{3in}
+\fi
+
+
+\question Approximating a function $\bm{X} \mapsto \bm{y}$ given a set of instances $\bm{X}$ and associated labels $\bm{y}$ is an example of ...
+
+
+
+\begin{solution}[.5in]
+supervised learning.
+\end{solution}
+
+
+\question Predicting the price of a house given its characteristics, e.g., number of rooms, square footage, etc., is an example of ...
+
+\begin{solution}[.5in]
+regression.
+\end{solution}
+
+
+\question Predicting the object contained in an image from a finite list of options is an example of ...
+
+\begin{solution}[.5in]
+classification.
+\end{solution}
+
+\end{questions}
+
+\section{Supervised Statistical Machine Learning}
+
+\begin{questions}
+
+\question In a supervised learning problem, you are given a labeled data set with which to develop and train a classifier.  What is the most important step in the process before choosing a model/hypothesis class and training the classifier?
+
+\begin{solution}[.5in]
+Set aside a test set, and optionally a validation set, and only use the test set for testing the model you develop and training.
+\end{solution}
+
+\question What does {\it training} mean in the context of statistical machine learning?
+
+\begin{solution}[.5in]
+Iteratively adjusting the learnable parameters of a statistical model to minimize some error function.
+\end{solution}
+
+\question What is a {\it hyperparameter}?
+
+\begin{solution}[.5in]
+A hyperparameter is a parameter to the learning algorithm or fixed parameters of the model, as opposed to the parameters that are adjusted, aka {\it learned} by the algorithm in the training process.  Hyperparameters are fixed at the beginning of training and affect the training process in various ways.  Examples of hyperparameters include learning rate, neural network architecture (layers and nodes), and choices of neural network activation functions.
+\end{solution}
+
+
+\question Distinguish between {\tabular data} and {\it unstructured data}.
+
+\begin{solution}{1in}
+Tabular data is also called {\it structured data}.  We say it is structured because we impose the structure on it.  There is nothing inherent in the data that requires a particular feature to come before another, but we must choose some order and stick with it.
+
+Unstructured data is data whose structure is inherent in the data, not imposed by us.  Examples include images and natural language text.
+\end{solution}
+
+\end{questions}
+
+\end{document}

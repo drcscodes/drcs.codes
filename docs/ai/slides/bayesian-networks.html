@@ -1,0 +1,1291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-04-19 Sun 19:21 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Artificial Intelligence</title>
+<meta name="author" content="Christopher Simpkins" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Artificial Intelligence
+<br />
+<span class="subtitle">Bayesian Networks</span>
+</h1>
+<div id="outline-container-org2ede9f5" class="outline-2">
+<h2 id="org2ede9f5"><span class="section-number-2">1.</span> Representation of Uncertain Knowledge (AIMA 13.1&#x2013;13.2)</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+A Bayesian network is a directed graph in which each node is annotated with quantitative probability information. The full specification is as follows:
+</p>
+
+<ol class="org-ol">
+<li>Each node corresponds to a random variable, which may be discrete or continuous.</li>
+
+<li>Directed links or arrows connect pairs of nodes. If there is an arrow from node \(X\) to node \(Y\), then \(X\) is said to be a parent of \(Y\). The graph has no directed cycles and hence is a directed acyclic graph, or DAG.</li>
+
+<li>Each node \(X_i\) has associated probability information \(\theta(X_i | Parents(X_i))\) that quantifies the effect of the parents on the node using a finite number of parameters.</li>
+</ol>
+</div>
+</div>
+<div id="outline-container-orgd9b9b69" class="outline-2">
+<h2 id="orgd9b9b69"><span class="section-number-2">2.</span> Bayesian Network Topology</h2>
+<div class="outline-text-2" id="text-2">
+<p alt="Bayes Net Weather Cavity">
+<a href="aima-fig-13_01-bayes-net-weather-cavity.pdf" alt="Bayes Net Weather Cavity">aima-fig-13_01-bayes-net-weather-cavity.pdf</a>
+</p>
+
+<ul class="org-ul">
+<li>The topology of the network &#x2013; the set of nodes and links &#x2013; specifies the conditional independence relationships that hold in the domain.
+
+<ul class="org-ul">
+<li>\(Toothache\) and \(Catch\) are conditionally independent given \(Cavity\).</li>
+</ul></li>
+
+<li>Intuitiveley, and arrow \(X \rightarrow Y\) means \(X\) has a direct influence on \(Y\) &#x2013; so parents should be <b>causes</b> of effects.</li>
+</ul>
+
+<p>
+It is usually easy for a domain expert to decide what direct influences exist in the domain &#x2013; much easier, in fact, than actually specifying the probabilities themselves.
+</p>
+</div>
+</div>
+<div id="outline-container-org1f2b79d" class="outline-2">
+<h2 id="org1f2b79d"><span class="section-number-2">3.</span> Example: Earthquake vs. Burglary</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+You have a burglar alarm fairly reliable at detecting a burglary, but is occasionally set off by minor earthquakes.
+</p>
+
+<ul class="org-ul">
+<li>Two neighbors, John and Mary, who promise to call when they hear the alarm.</li>
+<li>John nearly always calls when he hears the alarm, but sometimes confuses the telephone ringing with the alarm and calls then, too.</li>
+<li>Mary, on the other hand, likes rather loud music and often misses the alarm altogether.</li>
+</ul>
+
+<p>
+Given the evidence of who has or has not called, we would like to estimate the probability of a burglary.
+</p>
+</div>
+</div>
+<div id="outline-container-org2c8e24c" class="outline-2">
+<h2 id="org2c8e24c"><span class="section-number-2">4.</span> Bayes Net for Earthquake vs. Burglary Reasoning</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The <b>syntax</b> of a Bayes net consists of a directed acyclic graph (DAG) with some local probability information attached to each node.
+</p>
+
+<p>
+<a href="aima-fig-13_02-bayes-net-alarm.pdf">aima-fig-13_02-bayes-net-alarm.pdf</a>
+</p>
+
+<p>
+The full joint distribution for all the variables is defined by the topology and the
+local probability information recorded in conditional probability tables (CPTs).
+</p>
+</div>
+</div>
+<div id="outline-container-org25f536d" class="outline-2">
+<h2 id="org25f536d"><span class="section-number-2">5.</span> Conditional Probability Tables</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+Each row in a CPT contains the conditional probability of each node value for a conditioning case.  A conditioning case is a possible combination of values for the parent nodes &#x2013; a miniature possible world.
+</p>
+
+<p>
+<a href="aima-fig-13_02-bayes-net-alarm.pdf">aima-fig-13_02-bayes-net-alarm.pdf</a>
+</p>
+
+<ul class="org-ul">
+<li>Each row must sum to 1, because the entries represent an exhaustive set of cases for the variable.</li>
+
+<li>For Boolean variables, once you know the probability of \(true\) is \(p\), the probability of \(false\) must be \(1 - p\), so we often omit the second number.</li>
+
+<li>In general, a table for a Boolean variable with \(k\) Boolean parents contains \(2^k\) independently specifiable probabilities.</li>
+
+<li>A node with no parents has only one row, representing the prior probabilities of each possible value of the variable.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org744227f" class="outline-2">
+<h2 id="org744227f"><span class="section-number-2">6.</span> Many Possibilities, Few Variables of Interest</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+Network does not explicitly represent Mary currently listening to loud music or telephone ringing and confusing John.
+</p>
+
+<ul class="org-ul">
+<li>These factors are summarized in the uncertainty associated with the links from \(Alarm\) to \(JohnCalls\) and \(MaryCalls\).</li>
+
+<li>This shows both laziness and ignorance in operation: a lot of work to find out the likelihood of those factors, and we have no reasonable way to obtain the relevant information anyway.</li>
+</ul>
+
+<p>
+The probabilities actually summarize a potentially infinite set of circumstances:
+</p>
+
+<p>
+<img src="deadmau5.jpg" alt="deadmau5.jpg" />{height="30%"}
+</p>
+
+<ul class="org-ul">
+<li>The alarm might fail to sound (humidity, power failure, dead battery, cut wires, a dead mouse stuck in the bell, etc.) or</li>
+<li>John or Mary might fail to call and report it (out to lunch, on vacation, temporarily deaf, passing helicopter, etc.).</li>
+</ul>
+
+
+<p>
+In this way, a small agent can cope with a very large world, at least approximately.
+</p>
+</div>
+</div>
+<div id="outline-container-orga786834" class="outline-2">
+<h2 id="orga786834"><span class="section-number-2">7.</span> Semantics of Bayesian Networks</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+The <b>semantics</b> defines how the syntax &#x2013; a DAG with local probabilities &#x2013; corresponds to a joint distribution over the variables of the network.
+</p>
+
+<p>
+A Bayes net contains:
+</p>
+
+<ul class="org-ul">
+<li>\(n\) variables, \(X_1, \dots , X_n\), and</li>
+<li>(implicit) joint distributions \(P(X_1 = x_1 \land \dots \land X_n = x_n)\), or \(P(x_1, \dots, x_n)\).</li>
+</ul>
+
+<p>
+Each entry in the joint distribution is defined by:
+</p>
+
+<p>
+\[
+P(x_1, \dots, x_n) = \prod_{i=1}^n \theta ( x_i | parents(X_i))
+\]
+</p>
+
+<p>
+where \(parents(X_i)\) denotes the values of \(Parents(X_i)\) that appear in \(x_1, dots, x_n\).
+</p>
+
+<p>
+So each entry in the joint distribution is the product of appropriate elements of the local CPTs in the Bayes net.
+</p>
+</div>
+</div>
+<div id="outline-container-orgcc9133a" class="outline-2">
+<h2 id="orgcc9133a"><span class="section-number-2">8.</span> Example: An Alarm, Two Calls, but No Events of Interest</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+What is the probability that John and Mary call, but no earthquake or burglary occur?
+</p>
+
+<p>
+<a href="aima-fig-13_02-bayes-net-alarm.pdf">aima-fig-13_02-bayes-net-alarm.pdf</a>{height="50%"}
+</p>
+
+<ul class="org-ul">
+<li>Take each entry \(i\) in each CPT \(\theta\) to mean \(P(x_1 | parents(X_i)\)
+
+<ul class="org-ul">
+<li>The entries in the CPTs must be accurate conditional probabilities for the variables given their parents for the Bayes net to be useful in performing probabilistic inference.</li>
+</ul></li>
+
+<li>Use those values in the calculation of the joint probability using</li>
+</ul>
+<p>
+Using the abbreviations \(j, m, a, b\) and \(e\):
+</p>
+
+
+
+\begin{align*}
+P(x_1, \dots, x_n)         &= \prod_{i=1}^n P( x_i | parents(X_i)) \tag{13.2}\\
+P(j, m, a, \neg b, \neg e) &= P(j | a) P(m | a) P(a | \neg b, \neg e) P(\neg b) Pr (\neg e)\\
+                            &= 0.90 \times 0.70 \times 0.001 \times 0.99 \times 0.98\\
+                            &= 0.000628
+\end{align*}
+</div>
+</div>
+<div id="outline-container-org2eb0a4c" class="outline-2">
+<h2 id="org2eb0a4c"><span class="section-number-2">9.</span> Constructing Bayesian Networks</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+A Bayesian network is a correct representation of the domain only if each node is conditionally independent of its other predecessors in the node ordering, given its parents.  Mathematically, if \(Parents(X_i) \subseteq \{X_{i-1}, \dots, X_1\}\), then:
+</p>
+
+<p>
+\[
+P(X_i \mid X_{i-1}, \dots, X_i) = P(X_i \vert Parents(X_i)) \tag{13.3}
+\]
+</p>
+
+<p>
+We can construct a valid Bayes net with this methodology:
+</p>
+
+<ol class="org-ol">
+<li>Nodes: First determine the set of variables that are required to model the domain. Now order them, \(\{X_1, \dots ,X_n\}\). Any order will work, but the resulting network will be more compact if the variables are ordered such that causes precede effects.
+
+<ul class="org-ul">
+<li>For the Burglary-Earthquake domain, \(B,E,A,J,M\) or \(E,B,A,M,J\) work.</li>
+</ul></li>
+
+<li>Links: For \(i = 1\) to \(n\) do:
+
+<ul class="org-ul">
+<li>Choose a minimal set of parents for \(X_i\) from \(X_1, \dots ,X_{i-1}\), such that Equation (13.3) is satisfied.</li>
+<li>For each parent insert a link from the parent to \(X_i\).</li>
+<li>CPTs: Write down the conditional probability table, \(P(X_i|Parents(X_i))\).</li>
+</ul></li>
+</ol>
+
+<p>
+Intuitively, the parents of node \(X_i\) should contain all those nodes in \(\{X_1,\dots,X_{i-1}\}\) that directly influence \(X_i\).
+</p>
+</div>
+</div>
+<div id="outline-container-org088d417" class="outline-2">
+<h2 id="org088d417"><span class="section-number-2">10.</span> Knowledge Engineering Considerations in Bayes Nets</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+Suppose we have completed the network except for the choice of parents for \(MaryCalls\). We know:
+</p>
+
+<ul class="org-ul">
+<li>\(MaryCalls\) is influenced by  Burglary or Earthquake, but not directly. Our domain knowledge tells us that these events influence Mary’s calling behavior only through their effect on the alarm.</li>
+<li>Also, given the state of the alarm, whether John calls has no influence on Mary’s calling.</li>
+</ul>
+
+
+<p>
+<a href="aima-fig-13_02-bayes-net-alarm.pdf">aima-fig-13_02-bayes-net-alarm.pdf</a>{height="40%"}
+</p>
+
+<p>
+Formally, we believe that the following conditional independence statement holds:
+</p>
+
+
+<p>
+\vspace{-.2in}
+\[
+P(MaryCalls \mid JohnCalls,Alarm,Earthquake,Burglary) = P(MaryCalls \mid Alarm).
+\]
+\vspace{-.2in}
+</p>
+
+
+<p>
+Thus, Alarm will be the only parent node for MaryCalls.
+</p>
+
+<p>
+Because
+</p>
+
+<ul class="org-ul">
+<li>each node is connected only to earlier nodes, this construction method guarantees that the network is acyclic, and</li>
+<li>there are no redundant probability values,</li>
+</ul>
+
+<p>
+there is no chance for inconsistency: it is impossible for the knowledge engineer or domain expert to create a Bayesian network that violates the axioms of probability.
+</p>
+</div>
+</div>
+<div id="outline-container-orga0e401d" class="outline-2">
+<h2 id="orga0e401d"><span class="section-number-2">11.</span> Compactness of Bayesian Network Models</h2>
+<div class="outline-text-2" id="text-11">
+<p>
+Bayes nets are complete and nonredundant, but their <b>compactness</b> is their "secret sauce."
+</p>
+
+<ul class="org-ul">
+<li>Bayes nets are a kind of <b><b>locally structured</b></b>, or <b><b>sparse</b></b> system.
+
+<ul class="org-ul">
+<li>In locally structured systems, each component interacts only with a bounded number, \(k\), of other components, where \(k \ll n\), the total number of components.</li>
+<li>Local structure typically results in linear rather than exponential complexity.</li>
+</ul></li>
+</ul>
+
+<p>
+Example: assume boolean variables.
+</p>
+
+<ul class="org-ul">
+<li>With \(n\) variables, the full joint distribution is \(2^n\) numbers.
+
+<ul class="org-ul">
+<li>With 30 variables that's \(2^{30} = 1,073,741,824\) numbers.</li>
+</ul></li>
+
+<li>With \(n\) variables, each of which is influenced by \(k\) parents, each CPT is \(2^k\) numbers and a full Bayesian network has \(n \cdot 2^k\) numbers.
+
+<ul class="org-ul">
+<li>With 30 variables that's \(30 \cdot 2^5\) = 960 numbers.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0004a45" class="outline-2">
+<h2 id="org0004a45"><span class="section-number-2">12.</span> Effects of Node Ordering</h2>
+<div class="outline-text-2" id="text-12">
+<p>
+We saw earlier that \(B, E, A, J, M\) is a good node ordering because causes come before effects.  With this node ordering we get 10 conditional probabilities.  What if we choose a different ordering, like \(M, J, A, B, E\)?
+</p>
+
+<ul class="org-ul">
+<li>Add \(MaryCalls\): No parents.</li>
+
+<li>Add \(JohnCalls\): If Mary calls, alarm probably sounded, which increases prob that John calls.  So \(JohnCalls\) needs \(MaryCalls\) as a parent.</li>
+
+<li>Add \(Alarm\): The more calls, the more likely alarm sounded, so \(Alarm\) needs \(MaryCalls\) and \(JohnCalls\) as parents.</li>
+
+<li>Add \(Burglary\): Given knowledge of alarm, calls irrelevant: \(P(Burglary \mid Alarm,JohnCalls,MaryCalls) = P(Burglary \mid Alarm)\).  So just \(Alarm\) as parent.</li>
+
+<li>Add \(Earthquake\): With alarm, earthquake more likely.  But burglary explains alarm, and probability of an earthquake only slightly higher than normal. So need both \(Alarm\) and \(Burglary\) as parents.</li>
+</ul>
+
+<p>
+We end up with 13 conditional probabilities.
+</p>
+
+
+<p>
+<a href="aima-fig-13_03_a-bayes-net-mjabe-ordering.pdf">aima-fig-13_03_a-bayes-net-mjabe-ordering.pdf</a>
+</p>
+</div>
+</div>
+<div id="outline-container-org62f448d" class="outline-2">
+<h2 id="org62f448d"><span class="section-number-2">13.</span> Knowledge Engineering in Probabilistic Systems</h2>
+<div class="outline-text-2" id="text-13">
+<p>
+There is still knowledge engineering involved, which includes design choices.
+</p>
+
+<ul class="org-ul">
+<li>You may choose to trade a small amount of accuracy for the improved performance of leaving out an influence variable.
+
+<ul class="org-ul">
+<li>If there's a large earthquake, John and Mary probably won't call even if they hear the alarm.  Could choose to include links from \(EarthQuake\) to \(JohnCalls\) and \(MaryCalls\).  This would increase accuracy slightly, but probably not worth the extra complexity.</li>
+</ul></li>
+
+<li>And as we just saw, node ordering matters, potentially quite a bit.
+
+<ul class="org-ul">
+<li>With node ordering \(M, J, E, B, A\) the resulting Bayes net requires 31 probabilities &#x2013; same as the full joint distribution.</li>
+</ul></li>
+</ul>
+
+
+<p>
+<a href="aima-fig-13_03_b-bayes-net-mjeba-ordering.pdf">aima-fig-13_03_b-bayes-net-mjeba-ordering.pdf</a>{height="50%"}
+</p>
+
+
+<p>
+Any Bayes net represents the same joint distibution, but some are far more efficient.
+</p>
+
+<p>
+&gt; Key takeaway: stick to causal models.  They are easier to specify, easier to get right, and they lead to more efficient Bayes nets.
+</p>
+</div>
+</div>
+<div id="outline-container-org96382dc" class="outline-2">
+<h2 id="org96382dc"><span class="section-number-2">14.</span> Exact Inference in Bayesian Networks (AIMA 13.3)</h2>
+<div class="outline-text-2" id="text-14">
+<p>
+Most common task in probabilistic inference: compute the <b>posterior probability</b> of a set of <b><b>query variables</b></b> given some <b><b>event</b></b> represented as a set of <b><b>evidence variables</b></b>.
+</p>
+
+
+<p>
+Notation:
+</p>
+
+<ul class="org-ul">
+<li>Query variable: \(X\)</li>
+<li>Set of evidence variables: \(\bm{E} = \{E_1, \dots, E_m\}\)</li>
+<li>Particular observed event: \(\bm{e}\)</li>
+<li>Hidden (nonevidence, nonquery) variables: \(\bm{Y} = \{Y_1, \dots, Y_l\}\)</li>
+<li>Typical query: \(P(X \mid e)\)</li>
+</ul>
+
+<p>
+Example:
+</p>
+
+<ul class="org-ul">
+<li>\(X\) is the boolean random variable \(Burglary\)</li>
+<li>\(\bm{E} = \{JohnCalls, MaryCalls\}\)</li>
+<li>\(\bm{e} = \{JohnCalls = true, MaryCalls = true\}\)</li>
+<li>\(\bm{Y} = \{EarthQuake, Alarm\}\)</li>
+</ul>
+
+
+
+<p>
+<a href="aima-fig-13_02-bayes-net-alarm.pdf">aima-fig-13_02-bayes-net-alarm.pdf</a>
+</p>
+
+
+<p>
+\[
+P(Buglary \mid JohnCalls = true, MaryCalls = true) = <0.284, 0.716>.
+\]
+</p>
+</div>
+</div>
+<div id="outline-container-org6d1581a" class="outline-2">
+<h2 id="org6d1581a"><span class="section-number-2">15.</span> Inference by Enumeration</h2>
+<div class="outline-text-2" id="text-15">
+<p>
+Recall that we can use the full joint distribution to answer any query:
+</p>
+
+<p>
+\[
+P(X \mid \bm{e})
+= \frac{P(\bm{e} \mid X) P(X)}{P(\bm{e})}
+= \frac{P(\bm{e}, X)}{P(\bm{e})}
+= \frac{P(X, \bm{e})}{P(\bm{e})}
+= \alpha P(X, \bm{e})
+= \alpha \sum_y P(X, \bm{e}, \bm{y}) \tag{12.9}
+\]
+</p>
+
+
+<p>
+And that a Bayes net completely represents the full joint distribution, so we can reduce the computation of a joint to:
+</p>
+
+<p>
+\[
+P(x_1, \dots, x_n) = \prod_{i=1}^n P( x_i | parents(X_i)) \tag{13.2}
+\]
+</p>
+
+<p>
+Using these two equations we can enumerate the appropriate probabilities to calculate the answer to any probabilistic query.
+</p>
+
+<ul class="org-ul">
+<li>In particular, we can get the answer by computing sums of products of conditional probabilities from a Bayes net.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org46b5a15" class="outline-2">
+<h2 id="org46b5a15"><span class="section-number-2">16.</span> Example: \(P(Burglary \mid JohnCalls=true, MaryCalls=true)\).</h2>
+<div class="outline-text-2" id="text-16">
+<p>
+Using abbreviations and substituting into Eq 12.9 above (\(e\) and \(a\) are hidden):
+</p>
+
+
+<p>
+\[
+P(B \mid j, m) = \alpha P(B, j, m) = \alpha \sum_e \sum_a P(B, j, m, e, a)
+\]
+</p>
+
+
+<p>
+Then we substitute Eq 13.2 for \(P(B, j, m, e, a)\) to get (only showing Burglary=true by the notation \(b\)):
+</p>
+
+
+<p>
+\vspace{-.1in}
+</p>
+\begin{align*}
+P(b \mid j, m) &= \alpha \sum_e \sum_a P(b) P(e) P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{1}\\
+                &= \alpha P(b) \sum_e \sum_a P(e) P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{2}\\
+                &= \alpha P(b) \sum_e P(e) \sum_a P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{3}
+\end{align*}
+<p>
+\vspace{-.1in}
+</p>
+
+
+<ol class="org-ol">
+<li>Substitute Eq 13.2 for \(P(B, j, m, e, a)\)</li>
+<li>Pull out \(P(b)\) from summations because it doesn't depend on the other variable and is thus a constant in all the summation terms.</li>
+<li>Pull out \(P(e)\) from the summation over the \(a\) values because each value of \(e\) doesn't depend on the other variables in the summation over the \(a\) values and is thus a constant in the summation terms over the values of \(a\).</li>
+</ol>
+
+<p>
+Steps 2 and 3 above reduce the complexity of the computation from \(O(n2^n)\) to \(O(2^n)\).
+</p>
+</div>
+</div>
+<div id="outline-container-org30b053d" class="outline-2">
+<h2 id="org30b053d"><span class="section-number-2">17.</span> Caclulation of \(P(b \mid j, m)\)</h2>
+<div class="outline-text-2" id="text-17">
+<p>
+Substiting the values from the CPTs in the Bayes net into
+\[
+\alpha P(b) \sum_e P(e) \sum_a P(a \mid b, e) P(j \mid a) P(m \mid a)
+\]
+</p>
+
+<p>
+we get the expression tree:
+</p>
+
+<p>
+<a href="aima-fig-13_10-prob-expression-tree.pdf">aima-fig-13_10-prob-expression-tree.pdf</a>{height="60%"}
+</p>
+
+
+<p>
+<a href="aima-fig-13_02-bayes-net-alarm.pdf">aima-fig-13_02-bayes-net-alarm.pdf</a>{height="40%"}
+</p>
+</div>
+</div>
+<div id="outline-container-org016b307" class="outline-2">
+<h2 id="org016b307"><span class="section-number-2">18.</span> Enumeration Algorithm</h2>
+<div class="outline-text-2" id="text-18">
+<p>
+The ENUMERATION-ASK algorithm evaluates these expression trees using depth-first, left-to-right recursion.
+</p>
+
+<p>
+<a href="aima-fig-13_11-bayes-net-enumeration-algorithm.pdf">aima-fig-13_11-bayes-net-enumeration-algorithm.pdf</a>
+</p>
+
+<p>
+Unfortunately, its time complexity is \(O(s^n)\).  But we can improve it &#x2026;
+</p>
+</div>
+</div>
+<div id="outline-container-orgdae9172" class="outline-2">
+<h2 id="orgdae9172"><span class="section-number-2">19.</span> Repeated Calculations</h2>
+<div class="outline-text-2" id="text-19">
+<p>
+Notice that the subexpressions for the products \(P(j \mid a) P(m \mid a)\) and \(P(j \mid \neg a) P(m \mid \neg a)\) are computed twice, once for each value of \(E\).
+</p>
+
+<p>
+<a href="aima-fig-13_10-prob-expression-tree.pdf">aima-fig-13_10-prob-expression-tree.pdf</a>
+</p>
+</div>
+</div>
+<div id="outline-container-orge2a0e04" class="outline-2">
+<h2 id="orge2a0e04"><span class="section-number-2">20.</span> Variable Elimination</h2>
+<div class="outline-text-2" id="text-20">
+<p>
+The enumeration algorithm can be improved substantially by eliminating repeated calculations.
+</p>
+
+<ul class="org-ul">
+<li>Idea:  do the calculation once and save the results for later use.</li>
+<li>This is a form of dynamic programming.</li>
+<li>Several versions of this approach; variable elimination algorithm is simplest.</li>
+</ul>
+
+<p>
+Variable elimination works by evaluating expressions such as
+</p>
+
+<p>
+\[
+P(b \mid j, m) = \alpha P(b) \sum_e P(e) \sum_a P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{13.5}
+\]
+</p>
+
+<p>
+in right-to-left order (that is, bottom up in the expression tree), storing intermediate results, and only doing summations for portions of the expression that depend on the variable.
+</p>
+</div>
+</div>
+<div id="outline-container-org76bfd46" class="outline-2">
+<h2 id="org76bfd46"><span class="section-number-2">21.</span> Example: Variable Elimination in Burglary Network</h2>
+<div class="outline-text-2" id="text-21">
+<p>
+First, annotate the **factor**s in the expression for the network:
+</p>
+
+<p>
+\[
+P(B \mid j, m) =
+\alpha \underbrace{P(B)}_{\bm{f}_1(B)}
+\sum_e
+\underbrace{P(e)}_{\bm{f}_2(E)}
+\sum_a
+\underbrace{P(a \mid B, e)}_{\bm{f}_3(A,B,E)}
+\underbrace{P(j \mid a)}_{\bm{f}_4(A)}
+\underbrace{P(m \mid a)}_{\bm{f}_5(A)}
+\]
+</p>
+
+<ul class="org-ul">
+<li>Each factor is a matrix indexed by the values of its argument variables.</li>
+<li>Notice that the factors for \(P(j \mid a)\) and \(P(m | a)\) do not include \(j\) and \(m\).  This is because the values of \(j\) and \(m\) (\(JohnCalls=true\) and \(MaryCalls-true\)) are fixed by the query.</li>
+</ul>
+
+<p>
+So the factors are:
+</p>
+
+<p>
+\[
+\bm{f}<sub>1</sub>(B) =
+</p>
+\begin{bmatrix}
+P(b) \\
+P(\neg b)
+\end{bmatrix}
+<p>
+=
+</p>
+\begin{bmatrix}
+0.001 \\
+0.999
+\end{bmatrix}
+<p>
+\]
+</p>
+
+
+<p>
+\[
+\bm{f}<sub>2</sub>(E) =
+</p>
+\begin{bmatrix}
+P(e) \\
+P(\neg e)
+\end{bmatrix}
+<p>
+=
+</p>
+\begin{bmatrix}
+0.002 \\
+0.998
+\end{bmatrix}
+<p>
+\]
+</p>
+
+
+<p>
+\vspace{.2in}
+</p>
+
+
+
+<p>
+\[
+\bm{f}<sub>4</sub>(A) =
+</p>
+\begin{bmatrix}
+P(j \mid a) \\
+P(j \mid \neg a)
+\end{bmatrix}
+<p>
+=
+</p>
+\begin{bmatrix}
+0.090 \\
+0.05
+\end{bmatrix}
+<p>
+\]
+</p>
+
+
+
+<p>
+\[
+\bm{f}<sub>5</sub>(A) =
+</p>
+\begin{bmatrix}
+P(m \mid a) \\
+P(m \mid \neg a)
+\end{bmatrix}
+<p>
+=
+</p>
+\begin{bmatrix}
+0.070 \\
+0.01
+\end{bmatrix}
+<p>
+\]
+</p>
+
+<p>
+\vspace{.2in}
+</p>
+
+
+<p>
+\(\bm{f}_3(A, B, E)\) is a little more complicated &#x2026;
+</p>
+</div>
+</div>
+<div id="outline-container-orgbe70b34" class="outline-2">
+<h2 id="orgbe70b34"><span class="section-number-2">22.</span> \(\bm{f}_3(A, B, E)\)</h2>
+<div class="outline-text-2" id="text-22">
+<p>
+\[
+P(B \mid j, m) =
+\alpha \underbrace{P(B)}_{\bm{f}_1(B)}
+\sum_e
+\underbrace{P(e)}_{\bm{f}_2(E)}
+\sum_a
+\underbrace{P(a \mid B, e)}_{\bm{f}_3(A,B,E)}
+\underbrace{P(j \mid a)}_{\bm{f}_4(A)}
+\underbrace{P(m \mid a)}_{\bm{f}_5(A)}
+\]
+</p>
+
+<p>
+\(\bm{f}_3(A, B, E)\) is a \(2 \times 2 \times 2\) matrix (or a rank-3 tensor).  Here's one way to think about it:
+</p>
+
+<ul class="org-ul">
+<li>First index with \(A\), yielding two \(2 \times 2\) submatrices (one for each of the two values of \(A\)).</li>
+<li>Rows of each submatrix is indexed by \(B\) and columns by \(E\).</li>
+<li>The entries in the submatrices are the values of \(P(A \mid B, E)\)</li>
+</ul>
+
+<p>
+\[
+\bm{f}<sub>3</sub><sup>(a)</sup> (B, E) =
+</p>
+\begin{bmatrix}
+P(a \mid b,e) & P(a \mid b, \neg e) \\
+P(a \mid \neg b, e) & P(a \mid \neg b, \neg e)
+\end{bmatrix}
+<p>
+=
+</p>
+\begin{bmatrix}
+0.95 & 0.94\\
+0.29 & 0.001
+\end{bmatrix}
+<p>
+\]
+</p>
+
+<p>
+\[
+\bm{f}<sub>3</sub><sup>(&not; a)</sup> (B, E) =
+</p>
+\begin{bmatrix}
+P(\neg a \mid b,e) & P(\neg a \mid b, \neg e) \\
+P(\neg a \mid \neg b, e) & P(\neg a \mid \neg b, \neg e)
+\end{bmatrix}
+<p>
+=
+</p>
+\begin{bmatrix}
+0.05 & 0.06\\
+0.71 & 0.999
+\end{bmatrix}
+<p>
+\]
+</p>
+
+
+
+<p>
+\includegraphics[width=0.75\textwidth, right]{aima-fig-13_02-bayes-net-alarm.pdf}
+</p>
+</div>
+</div>
+<div id="outline-container-org56eec09" class="outline-2">
+<h2 id="org56eec09"><span class="section-number-2">23.</span> Factorized Query</h2>
+<div class="outline-text-2" id="text-23">
+<p>
+From our original query:
+</p>
+
+<p>
+\[
+P(b \mid j, m) = \alpha P(b) \sum_e P(e) \sum_a P(a \mid b, e) P(j \mid a) P(m \mid a) \tag{13.5}
+\]
+</p>
+
+<p>
+We annotated the factors:
+</p>
+
+
+<p>
+\[
+P(B \mid j, m) =
+\alpha \underbrace{P(B)}_{\bm{f}_1(B)}
+\sum_e
+\underbrace{P(e)}_{\bm{f}_2(E)}
+\sum_a
+\underbrace{P(a \mid B, e)}_{\bm{f}_3(A,B,E)}
+\underbrace{P(j \mid a)}_{\bm{f}_4(A)}
+\underbrace{P(m \mid a)}_{\bm{f}_5(A)}
+\]
+</p>
+
+<p>
+And now we substitute the factor expressions for the original expresions so we can manipulate the factors using the <b><b>pointwise product</b></b> operation, denoted with \(\times\) here:
+</p>
+
+<p>
+\[
+P(B \mid j, m) =
+\alpha \bm{f}_1(B) \times \sum_e \bm{f}_2(E) \times \sum_a \bm{f}_3(A,B,E) \times \bm{f}_4(A) \times \bm{f}_5(A)
+\]
+</p>
+
+<p>
+Now we are ready to evaluate the expression &#x2026;
+</p>
+</div>
+</div>
+<div id="outline-container-orgda65ed6" class="outline-2">
+<h2 id="orgda65ed6"><span class="section-number-2">24.</span> Expression Evaluation</h2>
+<div class="outline-text-2" id="text-24">
+<p>
+Given our factorized query:
+</p>
+
+
+<p>
+\vspace{-.1in}
+\[
+P(B \mid j, m) =
+\alpha \bm{f}_1(B) \times \sum_e \bm{f}_2(E) \times \sum_a \bm{f}_3(A,B,E) \times \bm{f}_4(A) \times \bm{f}_5(A)
+\]
+</p>
+
+
+<p>
+First, sum out A from the pointwise product of \(\bm{f}_3(A,B,E)\), \(\bm{f}_4(A)\), and \(\bm{f}_5(A)\) yielding a new \(2 \times 2\) factor, \(\bm{f}_6(B,E)\):
+</p>
+
+
+<p>
+\vspace{-.2in}
+</p>
+\begin{align*}
+\bm{f}_6(B,E) &= \sum_a \bm{f}_3(A,B,E) \times \bm{f}_4(A) \times \bm{f}_5(A) \\
+              &= (\bm{f}_3(a,B,E) \times \bm{f}_4(a) \times \bm{f}_5(a)) + (\bm{f}_3(\neg a,B,E) \times \bm{f}_4(\neg a) \times \bm{f}_5(\neg a))
+\end{align*}
+<p>
+\vspace{-.2in}
+</p>
+
+
+<p>
+Now the query expression is \(P(B \mid j, m) =
+\alpha \bm{f}_1(B) \times \sum_e \bm{f}_2(E) \times \bm{f}_6 (B, E)\)
+</p>
+
+<p>
+Next, sum out \(E\) from the product of \(\bm{f}_2 (E)\) and \(\bm{f}_6 (B, E)\), yielding a new factor \(\bm{f}_7 (B)\):
+</p>
+
+
+<p>
+\vspace{-.2in}
+</p>
+\begin{align*}
+\bm{f}_7(B) &= \sum_e \bm{f}_2(E) \times \bm{f}_6(B, E) \\
+            &= \bm{f}_2(e) \times \bm{f}_6(B, e) + \bm{f}_2(\neg e) \times \bm{f}_6(B, \neg e)
+\end{align*}
+<p>
+\vspace{-.1in}
+</p>
+
+
+<p>
+Which leaves our final form of the query: \(P(B \mid j, m) =\alpha \bm{f}_1(B) \times \bm{f}_7(B)\)
+</p>
+
+<p>
+This expression can be evaluated by taking the pointwise product and normalizing the result.
+</p>
+</div>
+</div>
+<div id="outline-container-org5b4516b" class="outline-2">
+<h2 id="org5b4516b"><span class="section-number-2">25.</span> Operations on Factors</h2>
+<div class="outline-text-2" id="text-25">
+<p>
+In the preceding manipulations we saw the two basic operations in variable elimination:
+</p>
+
+<ol class="org-ol">
+<li>the pointwise product operation, and</li>
+<li>summing out hidden variables from products of factors.</li>
+</ol>
+
+<p>
+Now let's see how we calculate them.
+</p>
+</div>
+</div>
+<div id="outline-container-org947bfb2" class="outline-2">
+<h2 id="org947bfb2"><span class="section-number-2">26.</span> Pointwise Product Example</h2>
+<div class="outline-text-2" id="text-26">
+<p>
+The pointwise product of two factors \(\bm{f}\) and \(\bm{g}\) yields a new factor \(\bm{h}\) whose variables are the union of the variables in \(\bm{f}\) and \(\bm{g}\) and whose elements are given by the product of the corresponding elements in the two factors.
+</p>
+
+<p>
+Given \(X, Y, Z\) boolean variables, result of pointwise product \(\bm{f}(X, Y) \times \bm{g}(Y, Z) = \bm{h}(X, Y, Z)\) is:
+</p>
+
+<p>
+<a href="aima-fig-13_12-pointwise-multiplication.pdf">aima-fig-13_12-pointwise-multiplication.pdf</a>{height="50%"}
+</p>
+</div>
+</div>
+<div id="outline-container-org819f560" class="outline-2">
+<h2 id="org819f560"><span class="section-number-2">27.</span> Summing out Variables</h2>
+<div class="outline-text-2" id="text-27">
+<p>
+<a href="aima-fig-13_12-pointwise-multiplication.pdf">aima-fig-13_12-pointwise-multiplication.pdf</a>{height="40%"}
+</p>
+
+
+<p>
+Summing out a variable from a product of factors is done by adding up the submatrices
+formed by fixing the variable to each of its values in turn. For example, to sum out \(X\) from
+\(h(X,Y,Z)\), we write
+</p>
+
+
+<p>
+\vspace{-.25in}
+</p>
+\begin{align*}
+\bm{h}_2 (Y, Z) &= \sum_x \bm{h}(X, Y, Z)\\
+                &= \bm{h}(x, Y, Z) + \bm{h}(\neg x, Y, Z) \\
+&=
+\begin{bmatrix}
+.06 & .24 \\
+.42 & .28
+\end{bmatrix}
++
+\begin{bmatrix}
+.18 & .72 \\
+.06 & .04
+\end{bmatrix} \\
+&=
+\begin{bmatrix}
+.24 & .96 \\
+.48 & .32
+\end{bmatrix}
+\end{align*}
+</div>
+</div>
+<div id="outline-container-orgaa82a3c" class="outline-2">
+<h2 id="orgaa82a3c"><span class="section-number-2">28.</span> Variable Elimination Algorithm</h2>
+<div class="outline-text-2" id="text-28">
+<p>
+With these two basic operations, we can implement the variable elimination algorithm:
+</p>
+
+<p>
+<a href="aima-fig-13_13-bayes-net-variable-elimination-algorithm.pdf">aima-fig-13_13-bayes-net-variable-elimination-algorithm.pdf</a>
+</p>
+
+<p>
+Notes about the `order` function:
+</p>
+
+<ul class="org-ul">
+<li>Any ordering works, some orderings lead to more efficient algorithms.</li>
+<li>No tractable algorithm for determining optimal ordering.</li>
+<li>One heuristic: eliminate whichever variable minimizes the size of the next factor to be contructed.</li>
+<li>General rule: every variable that is not an ancestor of a query variable or evidence variable is irrelevant to the query.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org9d040e0" class="outline-2">
+<h2 id="org9d040e0"><span class="section-number-2">29.</span> Complexity of Exact Inference in Polytrees</h2>
+<div class="outline-text-2" id="text-29">
+<p>
+Notice that the Alarm Bayes net is <b><b>singly connected</b></b>, a.k.a., a <b><b>polytree</b></b>:
+</p>
+
+<ul class="org-ul">
+<li>there is at mose one undirected path between any two nodes in the network.</li>
+</ul>
+
+<p>
+<a href="aima-fig-13_02-bayes-net-alarm.pdf">aima-fig-13_02-bayes-net-alarm.pdf</a>{height="40%"}
+</p>
+
+<p>
+The time and space complexity of polytrees is linear in the size of the network.
+</p>
+
+<ul class="org-ul">
+<li>Size of network is defined as number of CPT entries.</li>
+<li>If \(|parents(X_i)| \le c, \forall i \in n\) for some constant \(c\) and number of nodes \(n\), then complexity is also linear in number of nodes.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgadf7ab2" class="outline-2">
+<h2 id="orgadf7ab2"><span class="section-number-2">30.</span> Complexity of Exact Inference in Multiply-connected Networks</h2>
+<div class="outline-text-2" id="text-30">
+<p>
+Now consider <b><b>multiply-connected</b></b> networks such as the car insurance network:
+</p>
+
+<p>
+<a href="aima-fig-13_09-bayes-net-car-insurance.pdf">aima-fig-13_09-bayes-net-car-insurance.pdf</a>{height="50%"}
+</p>
+
+<ul class="org-ul">
+<li>Variable elimination can have exponential worst-case time and space complexity in multiply-connected networks.</li>
+<li><b>Since inference in Bayes nets includes inference in propositional logic as a special case, Bayes net inference is <b><b>NP-hard</b></b></b>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org73b35c4" class="outline-2">
+<h2 id="org73b35c4"><span class="section-number-2">31.</span> Closing Thoughts</h2>
+<div class="outline-text-2" id="text-31">
+<ul class="org-ul">
+<li>A Bayesian network is a directed acyclic graph whose nodes correspond to random variables; each node has a conditional distribution for the node, given its parents.</li>
+
+<li>Bayesian networks provide a concise way to represent conditional independence rela- tionships in the domain.</li>
+
+<li>A Bayesian network specifies a joint probability distribution over its variables. The probability of any given assignment to all the variables is defined as the product of the corresponding entries in the local conditional distributions. A Bayesian network is often exponentially smaller than an explicitly enumerated joint distribution.</li>
+
+<li>Many conditional distributions can be represented compactly by canonical families of distributions. Hybrid Bayesian networks, which include both discrete and continuous variables, use a variety of canonical distributions.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Christopher Simpkins</p>
+<p class="date">Created: 2026-04-19 Sun 19:21</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
