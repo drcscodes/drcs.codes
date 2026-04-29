@@ -1,170 +1,19 @@
+\DocumentMetadata{%
+  lang = en-US,
+  pdfversion = 2.0,
+  pdfstandard = ua-2,
+  tagging = on,
+  tagging-setup = {math/setup=mathml-SE},
+}
 \documentclass[]{exam}
 
-\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
-\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
-\usepackage[margin=1in]{geometry}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 
-\lstset{
-  extendedchars=\true,
-  inputencoding=utf8,
-  literate=
-  {é}{{\'{e}}}1
-  {è}{{\`{e}}}1
-  {ê}{{\^{e}}}1
-  {ë}{{\¨{e}}}1
-  {û}{{\^{u}}}1
-  {ù}{{\`{u}}}1
-  {â}{{\^{a}}}1
-  {à}{{\`{a}}}1
-  {î}{{\^{i}}}1
-  {ô}{{\^{o}}}1
-  {ç}{{\c{c}}}1
-  {Ç}{{\c{C}}}1
-  {É}{{\'{E}}}1
-  {Ê}{{\^{E}}}1
-  {À}{{\`{A}}}1
-  {Â}{{\^{A}}}1
-  {Î}{{\^{I}}}1
-  {Ö}{{\"O}}1
-  {Ä}{{\"A}}1
-  {Ü}{{\"U}}1
-  {ö}{{\"o}}1
-  {ä}{{\"a}}1
-  {ü}{{\"u}}1
-  {ß}{{\ss}}1
-  ,
-  aboveskip=1mm,
-  belowskip=1mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\scriptsize\ttfamily},
-  numbers=left,
-  frame=single,
-  framextopmargin=0pt,
-  framexbottommargin=0pt,
-  breaklines=true,
-  breakatwhitespace=true,
-  keywordstyle=\color{blue},
-  identifierstyle=\color{violet},
-  stringstyle=\color{teal},
-  commentstyle=\color{darkgray}
-}
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=en-US]{english}
 
-\hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{hyperref}
 
-\headheight = 0.05 in
-\headsep = 0.05 in
-\parskip = 0.05in
-\parindent = 0.0in
-\floatsep = 0.05in
-
-\DeclareMathOperator*{\argmin}{arg\!min}
-\DeclareMathOperator*{\argmax}{arg\!max}
-
-\title{Knowledge-Based AI Review}
-\author{Artificial Intelligence}
-\date{}
-
-\begin{document}
-\maketitle
-
-\begin{questions}
-
-
-\setcounter{section}{0} % So that next \section is 1
-
-\question In the context of propositional logic, define sentence.
-
-\begin{solution}[.75in]
-An assertion about the world expressed in a **knowledge represeantation language**, like propositional logic.
-\end{solution}
-
-\question In the context of propositional logic, define knowledge base.
-
-\begin{solution}[.75in]
-A set of sentences.
-\end{solution}
-
-\question In the context of propositional logic, define axiom.
-
-\begin{solution}[.75in]
-Sentences taken as given -- not derived from other sentences, assumptions.
-\end{solution}
-
-\question In the context of propositional logic, define inference.
-
-\begin{solution}[.75in]
-Deriving new sentences from old sentences.
-\end{solution}
-
-\question Define grounding.
-
-\begin{solution}[.75in]
-Connection between logical reasoning and the real environment.  How do we know that KB is true in the real world.
-\end{solution}
-
-\question Define entailment.
-
-\begin{solution}[1in]
-Entailment: $\alpha \models \beta$: $\beta$ follows logically from $\alpha$.  Formally:
-
-$$
-\alpha \models \beta \text{ if and only if } M(\alpha) \subseteq M(\beta)
-$$
-
-\end{solution}
-
-\newpage
-
-\question In the context of logical reasoning, define model.
-
-\begin{solution}[.75in]
-A model is a formal specification of a possible world, that is, a set of assignments of values to the variables in the sentences of a knowledge base.
-\end{solution}
-
-
-\question In the context of logical reasoning, define model checking.
-
-\begin{solution}[.75in]
-Model checking is enumerating all models and showing that a sentence is valid, that is, the sentence holds in all models.
-\end{solution}
-
-\question List two methods of establishing the truth of a logical sentence.
-
-\begin{solution}[.75in]
-Model checking and theorem proving.
-\end{solution}
-
-\question Define satisfiability.
-
-\begin{solution}[.75in]
-A sentence is **satisfiable** if it is true in, or satisfied by, *some* model
-\end{solution}
-
-\question How does logical theorem proving work?
-
-\begin{solution}[.75in]
-Applying rules of inference directly to the sentences in our knowledge base to construct a proof of the desired sentence without consulting models.
-\end{solution}
-
-\question Translate the following English sentence into first-order logic: ``All that glitter is not gold.''
-
-\begin{solution}[.75in]
-$\forall x, Glitters(x) \implies \neg Gold(x)$
-\end{solution}
-
-\question Translate the following English sentence into first-order logic: ``There's someone for everyone.''
-
-\begin{solution}[.75in]
-$\forall x, \exists y, IsFor(y, x)$
-\end{solution}
-
-\question Express the following Engilsh sentence in a formal ontological knowledge representation language: ``A hot dog is a sandwich.''
-
-\begin{solution}[.75in]
-$Sandwich(HotDog)$, or $HotDog \in Sandwiches$.
-\end{solution}
-
-\end{questions}
-
-\end{document}
+\input{knowledge-ai-body}
