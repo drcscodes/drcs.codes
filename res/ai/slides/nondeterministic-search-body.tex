@@ -1,0 +1,137 @@
+
+
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage{algpseudocode, algorithm}
+\usepackage[margin=1in]{geometry}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Nondeterministic Search Study Guide}
+\author{Artificial Intelligence}
+\date{}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{0} % So that next \section is 1
+
+\section{Belief State Search}
+
+\begin{questions}
+
+\question Define belief state.
+
+\begin{solution}[.5in]
+An agent's belief state is a set of states that the agent believes is possible.  For example, if $Results(1,Suck) = \{5, 7\}$ and the agent executes $Suck$ in State 1, then the agent's belief state is \{5, 7\}.
+
+\end{solution}
+
+\question What form does the solution (sequence of actions that leads to a goal state) to an environment with nondeterministic actions take?
+
+\begin{solution}[.5in]
+A conditional/contingency plan.
+\end{solution}
+
+\question Is it possible to find a solution to a problem in a sensorless environment?
+
+\begin{solution}[1in]
+Yes.  Even if the environment is nondeterministic, as long as the environment is known, e.g., agent has a map, then the environment can be coerced into a goal state by taking actions that successively eliminiate non-goal states from the agent's belief states.
+\end{solution}
+
+\question Describe the three-step state estimation procedure used by agents in partially observable environments.
+
+\begin{solution}[3in]
+\begin{itemize}
+\item The {\bf prediction} stage computes the belief state resulting from the action, Result(b,a).  Because this is a prediction, we use the notation $\hat{b} = Result(b,a)$, where the hat over the $b$ means "estimated," and we also use Predict(b,a) as a synonym for Result(b,a).  Remember, a belief state is a {\bf set} of states.
+
+\vspace{-.1in}
+
+\[
+\hat{b} = Result(b,a) = Predict(b, a)
+\]
+
+\item The {\bf possible percepts }stage computes the set of percepts that could be observed in the predicted belief state, that is, the set of percepts that could produce the predicted belief state (using the letter $o$ for observation):
+
+\vspace{-.1in}
+
+\[
+PossiblePercepts(\hat{b}) = \{o : o = Percept(s) \text{ and } s \in \hat{b}\}
+\]
+
+\item The {\bf update} stage computes, for each possible percept, the belief state that would result from the percept. The updated belief state $b_o$ is the set of states in $b$ that could have produced the percept:
+
+\vspace{-.1in}
+
+\[
+b_o = Update(\hat{b},o) = \{s : o = Percept(s) \text{ and } s \in \hat{b}\}
+\]
+
+
+
+\end{itemize}
+
+\end{solution}
+
+%% Extra questions
+
+
+
+\end{questions}
+
+\end{document}

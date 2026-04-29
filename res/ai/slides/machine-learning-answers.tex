@@ -1,3 +1,17 @@
+\DocumentMetadata{%
+  lang = en-US,
+  pdfversion = 2.0,
+  pdfstandard = ua-2,
+  tagging = on,
+  tagging-setup = {math/setup=mathml-SE},
+}
 \documentclass[answers]{exam}
+
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
+
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=en-US]{english}
 
 \input{machine-learning-body}

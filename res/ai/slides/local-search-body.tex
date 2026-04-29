@@ -1,0 +1,167 @@
+
+
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage{algpseudocode, algorithm}
+\usepackage[margin=1in]{geometry}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Local Search Study Guide}
+\author{Artificial Intelligence}
+\date{}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{0} % So that next \section is 1
+
+\section{Performance Surfaces}
+
+\begin{center}
+\includegraphics[height=1.5in]{../../deep-learning/slides/TrainConvexProb.pdf}
+\end{center}
+
+\begin{questions}
+
+\question Which of the functions above is/are convex?
+
+\begin{solution}[.25in]
+Convex: b
+\end{solution}
+
+
+\question Which of the points above is/are a local minimum?
+
+\begin{solution}[.25in]
+Local minima:  1, 3, 7
+\end{solution}
+
+
+\question Which of the points above is/are a global minimum?
+
+\begin{solution}[.25in]
+Global minima: 2, 5, 6
+\end{solution}
+
+\end{questions}
+
+\section{Local Search Algorithms}
+
+\begin{questions}
+
+\question Write the basic hill-climbing algorithm.
+
+\begin{solution}[3in]
+\includegraphics[]{aima-fig-04_02-hill-climbing-algorithm.pdf}
+\end{solution}
+
+\question What is the main weakness of hill-climbing algorithms?
+
+\begin{solution}[.5in]
+They get stuck in local minima.
+\end{solution}
+
+\question How can the basic hill-climbing algorithm be modified to overcome its weaknesses?
+
+\ifprintanswers
+\begin{itemize}[nosep]
+\item Allow "sideways" moves
+\item Stochastic hill climbing chooses randomly from uphill moves. Stochastic beam search does this with $k$ states in parallel.
+\item Random restart hill climbing restarts from multiple initial states.
+\end{itemize}
+\else
+\vspace{1.75in}
+\fi
+
+\question How does simulated annealing avoid getting stuck in local minima?
+
+\begin{solution}[1.75in]
+  Instead of picking the best move, simulated annealing picks a random move. If the move is better than current state, it is always accepted. Otherwise, the algorithm accepts the move with some probability less than 1. The probability decreases exponentially with the ``badness'' of the move -- the amount $\Delta E$ by which the evaluation is worsened. The probability also decreases as the ``temperature'' $T$ goes down: ``bad'' moves are more likely to be allowed at the start when $T$ is high, and they become more unlikely as $T$ decreases. If the schedule lowers $T$ to 0 slowly enough, then a property of the Boltzmann distribution, $e^{\Delta E/T}$ , is that all the probability is concentrated on the global maxima, which the algorithm will find with probability approaching 1.
+\end{solution}
+
+\question What is (stochastic) beam search?
+
+\begin{solution}[1.75in]
+Local beam search keeps track of $k$ states rather than just one. It begins with $k$ randomly generated states. At each step, all the successors of all $k$ states are generated. If any one is a goal, the algorithm halts. Otherwise, it selects the $k$ best successors from the complete list and repeats.  In this way, information is passed among the parallel search threads.
+
+Local beam search can suffer from lack of diversity -- all $k$ states clusterred in a small region of the state space.  Stochastic beam search fixes this problem by not simply choosing the top $k$ successors, but successors with probability proportional to the successor's value, thus increasing diversity.
+\end{solution}
+
+\question What does the mixing number parameter, $\rho$, in the basic algorithm control?
+
+\begin{solution}[.5in]
+The number of ``parents'' used to generate new candidate solutions.
+\end{solution}
+
+\question What do you have when you set $\rho = 1$ in the basic genetic algorithm?
+
+\begin{solution}[.5in]
+When $\rho = 1$, the basic genetic algorithm is equivalent to stochastic beam search.
+\end{solution}
+
+\question In gradient descent algorithms, what happens if you set the step size/learning rate parameter too high?
+
+\begin{solution}[.5in]
+The algorithm might ``skip over'' the minimum.
+\end{solution}
+
+\end{questions}
+
+
+\end{document}
