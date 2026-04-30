@@ -1,0 +1,347 @@
+#+TITLE: Artificial Intelligence
+#+SUBTITLE: Local Search
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE: Kennesaw State University
+#+DESCRIPTION: Artificial Intelligence Local Search
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+#+LaTeX_HEADER: \usepackage{framed}
+#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
+#+LaTeX_HEADER: \usepackage{media9}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+#+LaTeX_HEADER: \usepackage{algorithm}
+#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
+#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
+#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
+#+LaTeX_HEADER: \let\oldquote=\quote
+#+LaTeX_HEADER: \let\endoldquote=\endquote
+#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
+#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
+
+** Local Search
+
+If you don't care about the path to a goal state, you can use *local search*.
+
+- Search neighbors of current state, moving to best neighbor.
+- Track only current state.
+- Uses very little memory.
+- Can find reasonable solutions in large or infinite state spaces.
+- Often used for *optmization* problems -- finding states that maximize or minimize an *objective function*.
+
+
+** State Space Landscape
+
+
+#+latex: \includegraphics[alt={aima fig 04_01 state space landscape},width=0.75\linewidth]{aima-fig-04_01-state-space-landscape.pdf}
+
+
+** Hill-Climbing Search
+
+
+#+latex: \includegraphics[alt={aima fig 04_02 hill climbing algorithm},width=0.75\linewidth]{aima-fig-04_02-hill-climbing-algorithm.pdf}
+
+
+Also known as *greedy local search*.
+
+** The 8 Queens Problem
+
+*Complete-state formulation*: each state has all components of a solution.
+
+- 8 Queens state: row position for each of 8 columns, e.g., (a) below is ``
+
+
+#+latex: \includegraphics[alt={aima fig 04_03 8 queens},height=2.0in]{aima-fig-04_03-8-queens.pdf}
+
+
+- Action: move a single queen to new row within column.  Each state has $8 \cdot 7 = 56$ successor states.
+- Possible heuristic: number of pairs of attacking queens (even if blocked).  (b) above has $h = 17$.
+
+    - Useful to remember: $\binom{n}{k} = \frac{n!}{k!(n-k)!}$
+
+
+** Disadvantages of Hill-Climbing
+
+
+
+Susceptible to getting stuck in:
+
+- local maxima
+- ridges -- sequences of local maxima
+- plateaus, e.g., flat local maxima or shoulders.
+
+#+latex: \includegraphics[alt={aima fig 04_01 state space landscape},height=1.6in]{aima-fig-04_01-state-space-landscape.pdf}
+
+How to fix:
+
+- Allow "sideways" moves
+- Stochastic hill climbing chooses randomly from uphill moves. Stochastic beam search does this with $k$ states in parallel.
+- Random restart hill climbing restarts from multiple initial states.
+
+
+
+
+Grid of states superimposed on ridge rising from left to right.
+
+
+#+latex: \includegraphics[alt={aima fig 04_04 ridges},width=0.75\linewidth]{aima-fig-04_04-ridges.pdf}
+
+
+
+
+
+** Simulated Annealing
+
+
+#+latex: \includegraphics[alt={aima fig 04_05 simulated annealing algorithm},height=1.2in]{aima-fig-04_05-simulated-annealing-algorithm.pdf}
+
+
+- Based on metallurgy -- gradually cool metal to reach low-energy crystalline state.
+- Intuition: think of gradient descent instead of gradient ascent -- multiple shallow valleys, one deepest valley.  Shake ball out of shallow valleys into deepest valley.
+- Similar to hill climbing, but picks a random move and
+
+    - accepts it if its better,
+    - if not better, accept with probability < 1.
+
+- Probability of accepting a worse move depends on:
+
+    - how much worse the move is, $\Delta E$, and
+    - the current "temperature," $T$.
+
+If $T$ decreases sufficiently slowly, then the Boltzman distribution, $e^{\frac{\Delta E}{T}}$, ensures that all the probability is concentrated on the global maxima, so the algorithm finds a global maximum with probability approaching 1.
+
+** Evolutionary (Genetic) Algorithms
+
+A kind of *local beam search*: tracking $k$ states instead of just one.
+
+Elements of genetic algorithms:
+
+- Fitness function.
+- Population size.
+- Candidate representation:
+
+    - Typically a string (vector) over a finite alphabet.
+    - *Evolution strategies*: sequence of real numbers.
+    - *Genetic programming*: computer programs.
+
+- Mixing number, $\rho$: number of "parents" from which to generate new candidates.  When $\rho = 1$, stochastic beam search.
+- Selection process for choosing "parents."
+- Recombination procedure.
+- Mutation rate.
+- Composition of next generation.
+
+    - Elitism: choose top-scoring candidates.
+    - Culling: eliminate bottom-scoring candidates.
+
+
+** A Genetic Algorithm
+
+
+#+latex: \includegraphics[alt={aima fig 04_08 genetic algorithm},width=0.75\linewidth]{aima-fig-04_08-genetic-algorithm.pdf}
+
+
+** Genetic Algorithm on 8-Queens Problem
+
+
+#+latex: \includegraphics[alt={aima fig 04_06 genetic algorithm 8 queens illustration},width=0.75\linewidth]{aima-fig-04_06-genetic-algorithm-8-queens-illustration.pdf}
+
+
+1. Population is generated in (a).
+2. Fitness function is applied to population, which is then ranked by fitness score.
+3. Highest-scoring candidates are selected for reproduction in (c).
+4. Crossover operation is applied to candidates in (c) to produce "children" in (d).
+5. In (e) "offspring" are randomly chosen for mutation.  For each chosen candidate, a "gene" is randomly chosen, then that gene is assigned a random "mutated" value.
+
+** Crossover in the 8-queens Problem
+
+Here is a pictorial illustration of the crossover operation in the 8-queens problem:
+
+
+#+latex: \includegraphics[alt={aima fig 04_07 8 queens crossover diagrams},width=0.75\linewidth]{aima-fig-04_07-8-queens-crossover-diagrams.pdf}
+
+
+Is the random crossover operation depicted here meaningful for the 8-queens problem?
+
+** Genetic Algorithms and Biological Evolution
+
+Genetic algorithms borrow the language of biological evolution for marketing purposes, but are far more simplistic than biological evolution.  My takes:
+
+- Genetic algorithms are just stochastic beam search with "sexual" successor generation and "mutation."
+- If there is no meaningful crossover operation, genetic algorithms are just random walks in the state space graph.
+
+There is an interesting connection between biological evolution and AI, in particular learning.
+
+- Learning is adaptation. With experience an agent adapts to a task, getting better at the task.
+- Biological evolution can be seen as a learning process whereby specieses "learn" to perform better in their environments.
+- The Baldwin effect: immutable traits vs. online learning ability.
+
+    - Plasticity, or the ability to learn, allows a species to adapt to an environment for which it is ill-suited.  E.g., building shelters, fire, etc. in cold regions.
+    - Things that are harder, or impossible, to learn online must be encoded in the genome.  E.g., the way our body uses the air it breathes or the sun.
+
+** Continuous State Spaces -- Airports In Romania
+
+
+
+
+
+
+#+latex: \includegraphics[alt={aima romania airports},height=3.2in]{aima-romania-airports.png}
+
+
+
+
+
+If each airport $\bm{x}_i$ is at location $(x_i, y_i)$ and the set of cities closest to airport $\bm{x}_i$ is $C_i$, then
+
+\begin{equation*}
+f(\bm{x}) = f(x_1, y_1, x_2, y_2, x_3, y_3)
+\end{equation*}
+
+and we want to minimize
+
+\begin{equation*}
+f(\bm{x}) = \sum_{i=1}^3 \sum_{c \in C_i} (x_i - x_c)^2 + (y_i - y_c)^2
+\end{equation*}
+
+For a globally optimal solution, if the airports move "too much," the sets $C_i$ change.  How to deal with that?
+
+
+
+
+** Local Gradient Descent
+
+The gradient of
+
+\begin{equation*}
+f(\bm{x}) = \sum_{i=1}^3 \sum_{c \in C_i} (x_i - x_c)^2 + (y_i - y_c)^2
+\end{equation*}
+
+is
+
+\begin{equation*}
+\nabla f = \left( \frac{\partial f}{\partial x_1},
+                  \frac{\partial f}{\partial y_1},
+                  \frac{\partial f}{\partial x_2},
+                  \frac{\partial f}{\partial y_2},
+                  \frac{\partial f}{\partial x_3},
+                  \frac{\partial f}{\partial y_3} \right)
+\end{equation*}
+
+But that would only work for one airport.  We can decompose it into three local problems:
+
+
+
+
+\begin{equation*}
+\frac{\partial f}{\partial x_1} = 2 \sum_{c \in C_1} (x_1 - x_c)
+\end{equation*}
+\begin{equation*}
+\frac{\partial f}{\partial y_1} = 2 \sum_{c \in C_1} (y_1 - y_c)
+\end{equation*}
+
+
+
+
+\begin{equation*}
+\frac{\partial f}{\partial x_2} = 2 \sum_{c \in C_2} (x_2 - x_c)
+\end{equation*}
+\begin{equation*}
+\frac{\partial f}{\partial y_2} = 2 \sum_{c \in C_2} (y_2 - y_c)
+\end{equation*}
+
+
+
+
+\begin{equation*}
+\frac{\partial f}{\partial x_3} = 2 \sum_{c \in C_3} (x_3 - x_c)
+\end{equation*}
+\begin{equation*}
+\frac{\partial f}{\partial y_3} = 2 \sum_{c \in C_3} (y_3 - y_c)
+\end{equation*}
+
+
+
+
+** Gradient Descent in Action
+
+
+
+
+Given our 3 gradient expressions, we can use the update rule:
+
+\begin{equation*}
+\bm{x} \leftarrow \bm{x} + \alpha \nabla f(\bm{x})
+\end{equation*}
+
+where $\alpha$ is a *step size*, or learning rate.
+
+- What if $\alpha$ is "too big?"
+
+- What if $\alpha$ is "too small?"
+
+
+
+
+
+#+latex: \includegraphics[alt={../../deep learning/slides/TrainLRMin},height=3.2in]{../../deep-learning/slides/TrainLRMin.pdf}
+
+
+
+
+
+[^UDLBook]: https://udlbook.github.io/udlbook/
+
+** Continuous State Spaces and Convexity
+
+A convex set is a set of points in which a line between any two points lies within the set.  A convex function is a function for which the points above the function form a convex set.
+
+
+#+latex: \includegraphics[alt={../../deep learning/slides/TrainConvexProb},width=0.75\linewidth]{../../deep-learning/slides/TrainConvexProb.pdf}
+
+
+There are mathematical properties of continuous spaces that rule out local minima.  Take my deep learning class to learn about them!
+
+[^UDLBook]: https://udlbook.github.io/udlbook/
+
+** Constrained Optimization via Linear Programming
+
+
+
+
+\begin{align*}
+\text{maximize }    3x_1 + 2x_2  \\
+\text{subject to }  -x_1 + 3x_2 &\le  12 \\
+                    x_1 + x_2   &\le  8 \\
+                    2x_1 - x_2  &\le  10 \\
+                    x_1, x_2    &\ge  0
+\end{align*}
+
+
+
+
+
+#+latex: \includegraphics[alt={lp fig 02_01 half planes},height=2.8in]{lp-fig-02_01-half-planes.pdf}
+
+
+
+
+
+[^LPBook]: https://vanderbei.princeton.edu/LPbook/

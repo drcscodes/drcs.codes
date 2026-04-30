@@ -241,7 +241,7 @@ Unknown transition and sensor models can be learned from observations.
 
 - Learning via iterative update algorithm, expectation–maximization or EM, or Bayesian updating of the model parameters given the evidence.
 
-We'll return to these ideas in our lesson on [statistical learning](statistical-learning.pdf).
+We'll return to these ideas in our lesson on statistical learning.
 
 ## Filtering
 

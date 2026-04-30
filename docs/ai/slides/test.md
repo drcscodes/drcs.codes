@@ -47,6 +47,20 @@ We need to deal with uncertain knowledge, with **degrees of belief**.  For that,
 
 ![](neo-architect-prob-dist-screens.png)
 
+## What do probabilities mean?
+
+![](aima-fig-12_02-agent-bets.pdf)
+
+All I see is the `code`.
+
+```python
+this_is = a_python_code_block
+if it_is_not_processed:
+    it_is_likely_within_a_column_env
+    if not_in_colmn_env:
+        there_is_another_problem
+```
+
 ## Probabilities are about our uncertain knowledge.
 
 "80% chance (probability 0.8) patient with a toothache has a cavity."
@@ -54,11 +68,14 @@ We need to deal with uncertain knowledge, with **degrees of belief**.  For that,
 - Out of all the situations that are indistinguishable from the current situation *as far as our knowledge goes*, the patient will have a cavity in 80% of them.
 - Belief could come from statistical data, or domain theory, or combination of sources.
 
-> There is no uncertainty in the actual world.  The patient either has a cavity or does not. Probabilities refer to our knowledge of the world state, not the actual world state.
+> There is no uncertainty in the actual world.  The patient either has a cavity or does not. Probabilities refer to our knowledge of the world state, not the actual world state.[^fn]
 
-If our knowledge changes, e.g., we find out patient has history of gum disease, we make a different statement.
+If our knowledge changes, e.g., we find out patient has history of gum disease, we make a different statement. Here is a [linktext](linktarget).
 
 "Given patient has a history of gum disease and a toothache, 40% chance patient has gum disease."
+
+[^fn]: Footnote
+[^fn2]: https://this/isn't/real
 
 ## Decision-Theoretic Agents
 
@@ -67,7 +84,7 @@ If our knowledge changes, e.g., we find out patient has history of gum disease, 
 ```{=latex}
 \begin{center}
 ```
-![](aima-fig-12_01-dt-agent-algorithm.pdf){height="30%"}
+![](aima-fig-12_01-dt-agent-algorithm.pdf){width="30%"}
 ```{=latex}
 \end{center}
 ```
@@ -156,15 +173,6 @@ P(T=1) &= P(T=1 \mid C=0)P(C=0) + P(T=1 \mid C=1)P(C=1)\\
 
 If someone tests positive, probability they have cancer :
 
-```{=latex}
-\vspace{-.1in}
-\begin{align*}
-P(C=1 \mid T=1) &= \frac{P(T=1 \mid C=1)P(C=1)}{P(T=1)}\\
-           &= \frac{90}{100} \times \frac{1}{100} \times \frac{10,000}{387} \\
-           &= \frac{90}{387}\\
-           &\approx 0.23
-\end{align*}
-```
 
 :::
 ::::

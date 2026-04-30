@@ -1,0 +1,103 @@
+
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage[margin=1in]{geometry}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Temporal-Difference Learning Study Guide (AIMA 22, RLAI 6)}
+\author{Artificial Intelligence}
+\date{}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{0} % So that next \section is 1
+\section{Reinforcement Learning}
+
+\begin{questions}
+
+\question What is reinforcement learning?
+
+\begin{solution}[1in]
+Reinforcement learning is learning how to map states to actions by interacting with an environment that provides numerical feedback signals, which we call {\it rewards}.  A reinforcement learning agent tries to maximize long-term reward, not just one-step reward.
+\end{solution}
+
+\question What is the {\it reward hypothesis}?
+
+\begin{solution}[1in]
+All of what we mean by goals and purposes can be well thought of as the maximization of the expected value of the cumulative sum of a received scalar signal (called reward).
+\end{solution}
+
+
+\question What does ``model-free'' mean in the context of reinforcement learning algorithms that assume there is an underlying MDP model of the environment?
+
+\begin{solution}[1in]
+Model-free RL algorithms don't know the underlying MDP, so they learn policies or value functions directly by sampling interactions with the environment.
+\end{solution}
+
+\question How many time steps does TD(0) learning use in its target to update to the value of a state?
+
+\begin{solution}[.5in]
+1
+\end{solution}
+
+
+\end{questions}
+
+\end{document}

@@ -441,7 +441,7 @@ Using these two equations we can enumerate the appropriate probabilities to calc
 
 - In particular, we can get the answer by computing sums of products of conditional probabilities from a Bayes net.
 
-## Example: $P(Burglary \mid JohnCalls=true, MaryCalls=true)$.
+## Example: Prob of Burglary Given JohnCalls = true and MaryCalls = true.
 
 Using abbreviations and substituting into Eq 12.9 above ($e$ and $a$ are hidden):
 
@@ -469,7 +469,7 @@ P(b \mid j, m) &= \alpha \sum_e \sum_a P(b) P(e) P(a \mid b, e) P(j \mid a) P(m 
 
 Steps 2 and 3 above reduce the complexity of the computation from $O(n2^n)$ to $O(2^n)$.
 
-## Caclulation of $P(b \mid j, m)$
+## Caclulation of Burglary given John and Mary Call
 
 :::: {.columns}
 ::: {.column width="70%"}
@@ -648,7 +648,7 @@ $$
 
 $\bm{f}_3(A, B, E)$ is a little more complicated ...
 
-## $\bm{f}_3(A, B, E)$
+## Calculation of F 3
 
 $$
 P(B \mid j, m) =

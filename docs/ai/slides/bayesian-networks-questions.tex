@@ -1,108 +1,19 @@
+\DocumentMetadata{%
+  lang = en-US,
+  pdfversion = 2.0,
+  pdfstandard = ua-2,
+  tagging = on,
+  tagging-setup = {math/setup=mathml-SE},
+}
 \documentclass[]{exam}
 
-\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
-\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
-\usepackage[margin=1in]{geometry}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 
-\lstset{
-  extendedchars=\true,
-  inputencoding=utf8,
-  literate=
-  {é}{{\'{e}}}1
-  {è}{{\`{e}}}1
-  {ê}{{\^{e}}}1
-  {ë}{{\¨{e}}}1
-  {û}{{\^{u}}}1
-  {ù}{{\`{u}}}1
-  {â}{{\^{a}}}1
-  {à}{{\`{a}}}1
-  {î}{{\^{i}}}1
-  {ô}{{\^{o}}}1
-  {ç}{{\c{c}}}1
-  {Ç}{{\c{C}}}1
-  {É}{{\'{E}}}1
-  {Ê}{{\^{E}}}1
-  {À}{{\`{A}}}1
-  {Â}{{\^{A}}}1
-  {Î}{{\^{I}}}1
-  {Ö}{{\"O}}1
-  {Ä}{{\"A}}1
-  {Ü}{{\"U}}1
-  {ö}{{\"o}}1
-  {ä}{{\"a}}1
-  {ü}{{\"u}}1
-  {ß}{{\ss}}1
-  ,
-  aboveskip=1mm,
-  belowskip=1mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\scriptsize\ttfamily},
-  numbers=left,
-  frame=single,
-  framextopmargin=0pt,
-  framexbottommargin=0pt,
-  breaklines=true,
-  breakatwhitespace=true,
-  keywordstyle=\color{blue},
-  identifierstyle=\color{violet},
-  stringstyle=\color{teal},
-  commentstyle=\color{darkgray}
-}
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=en-US]{english}
 
-\hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{hyperref}
 
-\headheight = 0.05 in
-\headsep = 0.05 in
-\parskip = 0.05in
-\parindent = 0.0in
-\floatsep = 0.05in
-
-\DeclareMathOperator*{\argmin}{arg\!min}
-\DeclareMathOperator*{\argmax}{arg\!max}
-
-\title{Bayesian Networks Review}
-\author{Artificial Intelligence}
-\date{}
-
-\begin{document}
-\maketitle
-
-\begin{questions}
-
-
-\setcounter{section}{0} % So that next \section is 1
-
-\question Given the following Bayes' net: \includegraphics[height=2in]{aima-fig-13_15_a-sprinkler-bayes-net.pdf}
-
-What is the probability that the grass is wet, the sprinkler didn't run, it rained recently, and it is cloudy?
-
-\begin{solution}[2.5in]
-\begin{align*}
-P(x_1, \dots, x_n) &= \prod_{i=1}^n P( x_i | parents(X_i)) \tag{13.2}\\
-P(w, \neg s, r, c) &= P(w \mid \neg s, r) P(\neg s \mid c) P(r \mid c) P(c)\\
-                   &= (0.90) (0.90) (0.80) (0.5) \\
-                   &= 0.324
-\end{align*}
-
-\end{solution}
-
-\question Elsa is unlikely to chew up slippers, $P(ElsaChews) = 0.1$, Anna is more likely, $P(AnnaChews) = 0.3$.  If the slippers are chewed, whether she or her sister did it, Elsa is likely to go into her crate and look concerned, $P(ElsaConcerned \mid SlippersChewed) = 0.8$.  If you were constructing a Bayesian network, in which topological order would you include the variables $ElsaConcerned, SlippersChewed, ElsaChews, AnnaChews$?
-
-\begin{center}
-\includegraphics[height=1.25in]{anna-slipper-stairs.jpg}
-\includegraphics[height=1.25in]{elsa-concerned.jpg}
-\end{center}
-
-\begin{solution}[.25in]
-\[
-ElsaChews, AnnaChews, SlippersChewed, ElsaConcerned
-\]
-
-You could reverse the order of $ElsaChews$ and $AnnaChews$.
-\end{solution}
-
-
-\end{questions}
-
-\end{document}
+\input{bayesian-networks-body}

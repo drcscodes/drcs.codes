@@ -1,4 +1,4 @@
---
+---
 title: Artificial Intelligence
 subtitle: Knowledge-Based AI
 author: Christopher Simpkins
@@ -12,6 +12,7 @@ header-includes:
     \input{beamer-common}
     ```
 ---
+
 
 ## Knowledge and AI
 
@@ -239,7 +240,7 @@ Some basic concepts:
 
 - **Validity**: A sentence is valid if it is true in all models. For example, the sentence $P \land \neg P$ is valid. Valid sentences are also known as **tautologies**.
 
-- **Deduction theorem**: $\text{For any sentences $\alpha$ and $\beta$ }, \alpha \models \beta \text{ if and only iff the sentence } (\alpha \implies \beta) \text{ is valid.}$
+- **Deduction theorem**: For any sentences $\alpha$ and $\beta$, $\alpha \models \beta$ if and only iff the sentence $alpha \implies \beta$ is valid.
 
 - A sentence is **satisfiable** if it is true in, or satisfied by, *some* model
 
@@ -431,7 +432,7 @@ Predicates on time intervals.
 \end{center}
 ```
 
-$
+$$
 T(Equals(President(USA),GeorgeWashington),Begin(AD1789),End(AD1797))
 $$
 
@@ -489,31 +490,3 @@ Originally called **existential graphs**.
     - Knowledge AI fell out of favor, has never really recovered the mantle of AI
 
         - Didn't stop Doug Lennat and his team at [Cycorp](https://cyc.com/) from trying.
-
-<!--
-
-## Reasoning Systems for Categories
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-10_05-semantic-network-assertion-fly-event.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Description Logics
-
-```{=latex}
-\begin{center}
-```
-![](aima-fig-10_06-syntax-of-classic-description-logic.pdf){height="70%"}
-```{=latex}
-\end{center}
-```
-
-## Reasoning with Default Information
-
-Truth maintenance systems
-
--->

@@ -1,160 +1,19 @@
+\DocumentMetadata{%
+  lang = en-US,
+  pdfversion = 2.0,
+  pdfstandard = ua-2,
+  tagging = on,
+  tagging-setup = {math/setup=mathml-SE},
+}
 \documentclass[]{exam}
 
-\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
-\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
-\usepackage[margin=1in]{geometry}
+\usepackage{tagpdf}
+\tagpdfsetup{activate-all}
+\tagpdfsetup{math/alt/use}
 
-\lstset{
-  extendedchars=\true,
-  inputencoding=utf8,
-  literate=
-  {é}{{\'{e}}}1
-  {è}{{\`{e}}}1
-  {ê}{{\^{e}}}1
-  {ë}{{\¨{e}}}1
-  {û}{{\^{u}}}1
-  {ù}{{\`{u}}}1
-  {â}{{\^{a}}}1
-  {à}{{\`{a}}}1
-  {î}{{\^{i}}}1
-  {ô}{{\^{o}}}1
-  {ç}{{\c{c}}}1
-  {Ç}{{\c{C}}}1
-  {É}{{\'{E}}}1
-  {Ê}{{\^{E}}}1
-  {À}{{\`{A}}}1
-  {Â}{{\^{A}}}1
-  {Î}{{\^{I}}}1
-  {Ö}{{\"O}}1
-  {Ä}{{\"A}}1
-  {Ü}{{\"U}}1
-  {ö}{{\"o}}1
-  {ä}{{\"a}}1
-  {ü}{{\"u}}1
-  {ß}{{\ss}}1
-  ,
-  aboveskip=1mm,
-  belowskip=1mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\scriptsize\ttfamily},
-  numbers=left,
-  frame=single,
-  framextopmargin=0pt,
-  framexbottommargin=0pt,
-  breaklines=true,
-  breakatwhitespace=true,
-  keywordstyle=\color{blue},
-  identifierstyle=\color{violet},
-  stringstyle=\color{teal},
-  commentstyle=\color{darkgray}
-}
+\usepackage{polyglossia}
+\setdefaultlanguage[variant=en-US]{english}
 
-\hypersetup{colorlinks=true,urlcolor=blue}
+\usepackage{hyperref}
 
-\headheight = 0.05 in
-\headsep = 0.05 in
-\parskip = 0.05in
-\parindent = 0.0in
-\floatsep = 0.05in
-
-\DeclareMathOperator*{\argmin}{arg\!min}
-\DeclareMathOperator*{\argmax}{arg\!max}
-
-\title{Probabilistic Inference Review (AIMA 13.3-13.4)}
-\author{Artificial Intelligence}
-\date{}
-
-\begin{document}
-\maketitle
-
-\begin{questions}
-
-
-\setcounter{section}{0} % So that next \section is 1
-
-% \question You observe that the grass is wet and it is cloudy.  Given the following Bayes' net:
-
-% \includegraphics[height=2in]{aima-fig-13_15_a-sprinkler-bayes-net.pdf}
-
-% What is the probability that it rained recently?
-
-% \begin{solution}[.5in]
-% In general, we can answer any probabilistic query using the full joint distribution:
-
-% \[
-% Pr(X | \bm{e}) = \alpha Pr(X, \bm{e}) = \alpha \sum_y Pr(X, \bm{e}, \bm{y}) \tag{12.9}
-% \]
-
-
-% And that a Bayes net completely represents the full joint distribution, so we can reduce the computation of a joint to:
-
-% \[
-% Pr(x_1, \dots, x_n) = \prod_{i=1}^n Pr( x_i | parents(X_i)) \tag{13.2}
-% \]
-
-% Rain, $r$, is our query variable, $w, c$ are our evidence variables, and $S$, is hidden.
-
-% \begin{align*}
-% Pr(r \mid w, c) &= \alpha  \sum_s Pr(w \mid S, r)  \tag{1}\\
-%                 &= \alpha Pr(c)  \sum_a Pr(e) Pr(a \mid b, e) Pr(j \mid a) Pr(m \mid a) \tag{2}\\
-%                 &= \alpha Pr(b) Pr(e) \sum_a Pr(a \mid b, e) Pr(j \mid a) Pr(m \mid a) \tag{3}
-% \end{align*}
-
-% 1. Substitute Eq 13.2 for $Pr(r, w, c, s)$
-% 2. Pull out $Pr(b)$ from summations because it doesn't depend on the other variable and is thus a constant in all the summation terms.
-% 3. Pull out $Pr(e)$ from the summation over the $a$ values because each value of $e$ doesn't depend on the other variables in the summation over the $a$ values and is thus a constant in the summation terms over the values of $a$.
-
-% \end{solution}
-
-
-\question  Given the network:
-
-\includegraphics[height=1.5in]{aima-fig-13_02-bayes-net-alarm.pdf}
-
-\[
-Pr(b \mid j, m) = \alpha Pr(b) \sum_e Pr(e) \sum_a Pr(a \mid b, e) Pr(j \mid a) Pr(m \mid a) \tag{13.5}
-\]
-
-Annotate the factors in the expression for the network.
-
-\begin{solution}[1.25in]
-\vspace{-.1in}
-\[
-Pr(B \mid j, m) =
-\alpha \underbrace{Pr(B)}_{\bm{f}_1(B)}
-\sum_e
-\underbrace{Pr(e)}_{\bm{f}_2(E)}
-\sum_a
-\underbrace{Pr(a \mid B, e)}_{\bm{f}_3(A,B,E)}
-\underbrace{Pr(j \mid a)}_{\bm{f}_4(A)}
-\underbrace{Pr(m \mid a)}_{\bm{f}_5(A)}
-\]
-
-\end{solution}
-
-\question What is the difference between direct sampling and Markov chain Monte Carlo sampling?
-
-\begin{solution}[1in]
-Direct sampling methods generate events based on the probabilities in the Bayes net by sampling all the nodes in the network.
-
-Markov chain Monte Carlo methods generate one sample, then generates each additional sample by making a random change to the preceding sample.
-\end{solution}
-
-\question  What is the idea behind importance sampling?
-
-\begin{solution}[.75in]
-The general statistical technique of importance sampling aims to emulate the effect of sampling
-from a distribution $P$ using samples from another distribution $Q$ whose samples are easier to obtain.
-\end{solution}
-
-\question The Metropolis-Hastings sampling algorithm is similar in structure to which local search algorithm?
-
-\begin{solution}[.25in]
-Simulated annealing.
-\end{solution}
-
-
-\end{questions}
-
-\end{document}
+\input{probabilistic-inference-body}

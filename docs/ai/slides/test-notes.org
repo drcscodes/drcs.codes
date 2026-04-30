@@ -1,0 +1,177 @@
+#+TITLE: Artificial Intelligence
+#+SUBTITLE: Uncertainty
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE: Kennesaw State University
+#+DESCRIPTION: Artificial Intelligence Uncertainty
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+#+LaTeX_HEADER: \usepackage{framed}
+#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
+#+LaTeX_HEADER: \usepackage{media9}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+#+LaTeX_HEADER: \usepackage{algorithm}
+#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
+#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
+#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
+#+LaTeX_HEADER: \let\oldquote=\quote
+#+LaTeX_HEADER: \let\endoldquote=\endquote
+#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
+#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
+
+
+** From Logic to Probability Theory
+
+Consider:
+
+\begin{equation*}
+Toothacke \implies Cavity
+\end{equation*}
+
+Not all patients with toothaches have cavities.  How about:
+
+\begin{equation*}
+Toothache \implies Cavity \lor GumProblem \lor Abscess \dots
+\end{equation*}
+
+We'd need large list after the dots.  Try causal direction:
+
+\begin{equation*}
+Cavity \implies Toothache
+\end{equation*}
+
+But not all cavities hurt.  Logic fails to deal with complex domains like medical diagonosis due to:
+
+- *Exhaustivity* (laziness).  Too many antecedents or consequents to list.
+- *Theoretical ignorance*. Rare to have complete logical theory of nontrivial domain.
+- *Practical ignorance*.  Even with a complete domain theory, hard to measure all the necessary inputs (medical tests, etc.)
+
+We need to deal with uncertain knowledge, with *degrees of belief*.  For that, we use probability theory.
+
+** What do probabilities mean?
+
+#+latex: \includegraphics[alt={neo architect prob dist screens},width=0.75\linewidth]{neo-architect-prob-dist-screens.png}
+
+** What do probabilities mean?
+
+#+latex: \includegraphics[alt={aima fig 12_02 agent bets},width=0.75\linewidth]{aima-fig-12_02-agent-bets.pdf}
+
+All I see is the ~code~.
+
+#+begin_src python
+this_is = a_python_code_block
+if it_is_not_processed:
+    it_is_likely_within_a_column_env
+    if not_in_colmn_env:
+        there_is_another_problem
+#+end_src
+
+** Probabilities are about our uncertain knowledge.
+
+"80% chance (probability 0.8) patient with a toothache has a cavity."
+
+- Out of all the situations that are indistinguishable from the current situation *as far as our knowledge goes*, the patient will have a cavity in 80% of them.
+- Belief could come from statistical data, or domain theory, or combination of sources.
+
+#+begin_quote
+ There is no uncertainty in the actual world.  The patient either has a cavity or does not. Probabilities refer to our knowledge of the world state, not the actual world state.[^fn]
+#+end_quote
+
+If our knowledge changes, e.g., we find out patient has history of gum disease, we make a different statement. Here is a [[linktarget][linktext]].
+
+"Given patient has a history of gum disease and a toothache, 40% chance patient has gum disease."
+
+[^fn]: Footnote
+[^fn2]: https://this/isn't/real
+
+** Decision-Theoretic Agents
+
+#+begin_quote
+ Decision theory = probability theory + utility theory
+#+end_quote
+
+
+#+latex: \includegraphics[alt={aima fig 12_01 dt agent algorithm},width=0.75\linewidth]{aima-fig-12_01-dt-agent-algorithm.pdf}
+
+
+Each action, $a$, leads to a probability distribution over outcomes, or "result states":
+
+$$
+P(\text{RESULT}(a) = s') = \sum_{s \in S} P(s) P(s' \mid s, a)
+$$
+
+And each outcome state has a utility.  A rational decision-theoretic agent chooses the action that maximize expected utility, that is:
+
+$$
+\argmax_{a} \sum_{s' \in S} P(\text{RESULT}(a) = s') U(s')
+$$
+
+** Propositions and Events
+
+An *event*, which we denote with $\phi$ here, is a set of possible worlds, some subset of $\Omega$, or set of $\omega$, e.g., the event "doubles" contains the 6 boxed elements $\omega$:
+
+\footnotesize
+\tagpdfsetup{table/header-rows={1}}
+\begin{tabular}{cccccc}
+\boxed{(1, 1)} & (2, 1) & (3, 1) & (4, 1) & (5, 1) & (6, 1)\\
+(1, 2) & \boxed{(2, 2)} & (3, 2) & (4, 2) & (5, 2) & (6, 2)\\
+(1, 3) & (2, 3) & \boxed{(3, 3)} & (4, 3) & (5, 3) & (6, 3)\\
+(1, 4) & (2, 4) & (3, 4) & \boxed{(4, 4)} & (5, 4) & (6, 4)\\
+(1, 5) & (2, 5) & (3, 5) & (4, 5) & \boxed{(5, 5)} & (6, 5)\\
+(1, 6) & (2, 6) & (3, 6) & (4, 6) & (5, 6) & \boxed{(6, 6)}\\
+\end{tabular}
+\normalsize
+
+
+
+** Analysis of Medical Screening Example
+
+
+
+
+
+\begin{align*}
+P(C=1)     &= \frac{1}{100} \\
+P(C=0)     &= \frac{99}{100}\\
+P(T=1 \mid C=1) &= \frac{90}{100}\\
+P(T=0 \mid C=1) &= \frac{10}{100}\\
+P(T=1 \mid C=0) &= \frac{3}{100} \\
+P(T=0 \mid C=0) &= \frac{97}{100}
+\end{align*}
+
+
+
+
+If we screen someone, probability that they test positive (notice use of product rule: $P(a, b) = P(a \mid b) P(b)$ and rule 2nd Kolmogorov axiom $P(x \lor y) = P(x) + P(y) - P(x \land y)$):
+
+\vspace{-.1in}
+\begin{align*}
+P(T=1) &= P(T=1 \mid C=0)P(C=0) + P(T=1 \mid C=1)P(C=1)\\
+       &= \frac{3}{100} \times \frac{99}{100} + \frac{90}{100} \times \frac{1}{100}\\
+       &= \frac{387}{10,000}\\
+       &= .0387
+\end{align*}
+
+If someone tests positive, probability they have cancer :
+
+
+
+

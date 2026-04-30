@@ -230,7 +230,7 @@ Machine learning algorithms find these lines algorithmically.
 
 It's a rite of passage to apply supervised learning to the Iris data set. The canonical source for the Iris data set is the [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/). Download  [iris.data](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data).
 
-![](../../deep-learning/slides/iris.jpg){height=6-%}
+![](../../deep-learning/slides/iris.jpg){height=60%}
 
 ## Iris Data
 

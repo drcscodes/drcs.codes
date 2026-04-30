@@ -15,17 +15,14 @@ header-includes:
 
 ## These people are wrong.
 
-```{=latex}
-\begin{center}
-```
-![](./sam-altman-double-polo.jpg){height="25%"}
-![](./dario-amodei.jpg){height="25%"}
-![](./geoff-hinton.jpg){height="25%"}
-![](./eric-schmidt.jpg){height="25%"}
-![](./elon-musk.jpg){height="25%"}
-```{=latex}
-\end{center}
-```
+<center>
+![](./sam-altman-double-polo.jpg){height="1in"}
+![](./dario-amodei.jpg){height="1in"}
+![](./geoff-hinton.jpg){height="1in"}
+![](./eric-schmidt.jpg){height="1in"}
+![](./elon-musk.jpg){height="1in"}
+</center>
+
 
 To be fair, there are many, many people who are wrong about AI.  But you probably recognize these guys.
 
@@ -88,12 +85,12 @@ Most of the truly groundbreaking discoveries in AI are yet to be made.
 
 Artificial
 
-- Man-made.  Syntehetic.
+- Man-made.  Synthetic.
 
 Intelligence
 
 - Problem solving
-- Inference
+- Reasoning
 - Decision making
 - Learning
 

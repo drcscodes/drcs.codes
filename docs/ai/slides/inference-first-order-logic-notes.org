@@ -1,0 +1,118 @@
+#+TITLE: Artificial Intelligence
+#+SUBTITLE: Inference in First-Order Logic
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE: Kennesaw State University
+#+DESCRIPTION: Artificial Intelligence Inference in First-Order Logic
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+#+LaTeX_HEADER: \usepackage{framed}
+#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
+#+LaTeX_HEADER: \usepackage{media9}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+#+LaTeX_HEADER: \usepackage{algorithm}
+#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
+#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
+#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
+#+LaTeX_HEADER: \let\oldquote=\quote
+#+LaTeX_HEADER: \let\endoldquote=\endquote
+#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
+#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
+
+** Propositional vs. First-Order Logc
+
+Foo
+
+** Unification and First-Order Inference
+
+
+#+latex: \includegraphics[alt={aima fig 09_01 unification algorithm},height=2.8in]{aima-fig-09_01-unification-algorithm.pdf}
+
+
+** Unification and First-Order Inference
+
+
+#+latex: \includegraphics[alt={aima fig 09_02 subsumption lattice},height=2.8in]{aima-fig-09_02-subsumption-lattice.pdf}
+
+
+** Forward Chaining
+
+
+#+latex: \includegraphics[alt={aima fig 09_03 fol fc ask algorithm},height=2.8in]{aima-fig-09_03-fol-fc-ask-algorithm.pdf}
+
+
+** Forward Chaining
+
+
+#+latex: \includegraphics[alt={aima fig 09_04 proof tree fc crime},height=2.8in]{aima-fig-09_04-proof-tree-fc-crime.pdf}
+
+
+** Forward Chaining
+
+
+#+latex: \includegraphics[alt={aima fig 09_05 constraint graph australia},height=2.8in]{aima-fig-09_05-constraint-graph-australia.pdf}
+
+
+** Backward Chaining
+
+
+#+latex: \includegraphics[alt={aima fig 09_06 fol bc ask algorithm},height=2.8in]{aima-fig-09_06-fol-bc-ask-algorithm.pdf}
+
+
+** Backward Chaining
+
+
+#+latex: \includegraphics[alt={aima fig 09_07 proof tree bc crime},height=2.8in]{aima-fig-09_07-proof-tree-bc-crime.pdf}
+
+
+** Logic Programming
+
+
+#+latex: \includegraphics[alt={aima fig 09_08 prolog infinite loop},height=2.8in]{aima-fig-09_08-prolog-infinite-loop.pdf}
+
+
+** Logic Programming
+
+
+#+latex: \includegraphics[alt={aima fig 09_09 infinite proof tree},height=2.8in]{aima-fig-09_09-infinite-proof-tree.pdf}
+
+
+** Resolution
+
+
+#+latex: \includegraphics[alt={aima fig 09_10 resolution proof criminal},height=2.8in]{aima-fig-09_10-resolution-proof-criminal.pdf}
+
+
+** Resolution
+
+
+#+latex: \includegraphics[alt={aima fig 09_11 resolution proof curiosity},height=2.8in]{aima-fig-09_11-resolution-proof-curiosity.pdf}
+
+
+** Completeness
+
+
+#+latex: \includegraphics[alt={aima fig 09_12 structure completeness proof},height=2.8in]{aima-fig-09_12-structure-completeness-proof.pdf}
+
+
+** G{\"o}del's Incompleteness Theorem
+
+Foo

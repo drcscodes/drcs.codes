@@ -1,0 +1,54 @@
+#+TITLE: Artificial Intelligence
+#+SUBTITLE: CS 3642 Spring 2026 Midterm Stats
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE: Kennesaw State University
+#+DESCRIPTION: Artificial Intelligence CS 3642 Spring 2026 Midterm Stats
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+#+LaTeX_HEADER: \usepackage{framed}
+#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
+#+LaTeX_HEADER: \usepackage{media9}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+#+LaTeX_HEADER: \usepackage{algorithm}
+#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
+#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
+#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
+#+LaTeX_HEADER: \let\oldquote=\quote
+#+LaTeX_HEADER: \let\endoldquote=\endquote
+#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
+#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
+
+** Spring 2026 Midterm Stats
+
+#+latex: \includegraphics[alt={cs3642 spring2026 midterm hist},height=3.0in]{cs3642-spring2026-midterm-hist.png}
+
+Min: 56, Max: 108, Mean: 89.1
+
+** Historical Stats
+
+*Midterm*
+
+Min: 64, Max: 108, Mean: 98.9
+
+*Final*
+
+Min: 64, Max: 108, Mean: 95.6

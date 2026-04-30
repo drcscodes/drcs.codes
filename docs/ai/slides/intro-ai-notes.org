@@ -1,0 +1,350 @@
+#+TITLE: Artificial Intelligence
+#+SUBTITLE: Artificial Intelligence
+#+AUTHOR: Christopher Simpkins
+#+INSTITUTE: Kennesaw State University
+#+EMAIL:
+#+DATE: Kennesaw State University
+#+DESCRIPTION: Artificial Intelligence Artificial Intelligence
+#+KEYWORDS:
+#+LANGUAGE:  en
+#+OPTIONS: H:2 toc:nil num:t org-image-max-width:5in org-image-align:center
+#+LaTeX_COMPILER: lualatex
+#+LaTeX_HEADER: \usepackage[margin=1in]{geometry}
+#+LaTeX_HEADER: \usepackage{fontspec}
+#+LaTeX_HEADER: \usepackage{verbatim, multicol, tabularx,}
+#+LaTeX_HEADER: \usepackage{amsmath, amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+#+LaTeX_HEADER: \usepackage{framed}
+#+LaTeX_HEADER: \usepackage{xcolor,colortbl}
+#+LaTeX_HEADER: \usepackage{media9}
+#+LaTeX_HEADER: \usepackage[export]{adjustbox}
+#+LaTeX_HEADER: \usepackage{algorithm}
+#+LaTeX_HEADER: \usepackage[noend]{algpseudocode}
+#+LaTeX_HEADER: \usepackage{tikz,pgfplots}
+#+LaTeX_HEADER: \usetikzlibrary{shapes.geometric}
+#+LaTeX_HEADER: \let\oldquote=\quote
+#+LaTeX_HEADER: \let\endoldquote=\endquote
+#+LaTeX_HEADER: \colorlet{shadecolor}{cyan!15}
+#+LaTeX_HEADER: \renewenvironment{quote}{\begin{shaded*}\begin{oldquote}}{\end{oldquote}\end{shaded*}}
+#+LaTeX_HEADER: % From https://tex.stackexchange.com/questions/7032/good-way-to-make-textcircled-numbers
+#+LaTeX_HEADER: \newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmin}{arg\!min}
+#+LaTeX_HEADER: \DeclareMathOperator*{\argmax}{arg\!max}
+#+LaTeX_HEADER: \lstset{frame=tb, aboveskip=1mm, belowskip=0mm, showstringspaces=false, columns=flexible, basicstyle={\scriptsize\ttfamily}, numbers=left, frame=single, breaklines=true, breakatwhitespace=true}
+#+LaTeX_HEADER: \hypersetup{colorlinks=true,urlcolor=blue}
+#+LaTeX_HEADER: \usepackage{tagpdf}
+#+LaTeX_HEADER: \tagpdfsetup{activate-all}
+#+LaTeX_HEADER: \tagpdfsetup{math/alt/use}
+#+LaTeX_HEADER: \usepackage{polyglossia}
+#+LaTeX_HEADER: \setdefaultlanguage[variant=en-US]{english}
+
+** These people are wrong.
+
+
+#+latex: \includegraphics[alt={./sam altman double polo},height=1in]{./sam-altman-double-polo.jpg}
+#+latex: \includegraphics[alt={./dario amodei},height=1in]{./dario-amodei.jpg}
+#+latex: \includegraphics[alt={./geoff hinton},height=1in]{./geoff-hinton.jpg}
+#+latex: \includegraphics[alt={./eric schmidt},height=1in]{./eric-schmidt.jpg}
+#+latex: \includegraphics[alt={./elon musk},height=1in]{./elon-musk.jpg}
+
+
+
+To be fair, there are many, many people who are wrong about AI.  But you probably recognize these guys.
+
+- The emergence of "human-level AI" has been "just a few years away" since 1956.  All of these predictions have been wrong.
+
+** We are decades, perhaps centuries away from "solving" AI.
+
+- AI is immature.
+- Currently, unfortunately, overhyped.
+
+#+begin_latex
+
+#+end_latex
+See my advisor's advisor's dated predictions:
+
+#+latex: \includegraphics[alt={rodney brooks},height=1.2in]{rodney-brooks.jpg}
+
+https://rodneybrooks.com/my-dated-predictions/
+#+begin_latex
+
+#+end_latex
+
+** Why does it matter that the aforementioned hypers are wrong?
+
+Most of the truly groundbreaking discoveries in AI are yet to be made.
+
+#+begin_latex
+\vspace{.25in}
+
+\LARGE{This makes AI exciting!}
+
+#+end_latex
+
+- Many AI courses focus on *the current thing*, e.g.,  statistical machine learning, and neural networks.
+- This course covers the full spectrum of AI so that you're ready to spot and develop promising new directions.
+
+    - We'll spend little time on machine learning, and barely touch on neural networks.
+
+        - We have entire courses for those subjects!
+
+
+
+
+** What is AI?
+
+
+
+
+#+begin_latex
+
+#+end_latex
+#+latex: \includegraphics[alt={./simon1996sciences cover},height=2.4in]{./simon1996sciences-cover.jpg}
+#+begin_latex
+
+#+end_latex
+
+
+
+
+
+Artificial
+
+- Man-made.  Synthetic.
+
+Intelligence
+
+- Problem solving
+- Reasoning
+- Decision making
+- Learning
+
+Rationality
+
+- Doing the right thing.
+
+
+
+
+[^simon1996sciences]: https://mitpress.mit.edu/9780262691918/the-sciences-of-the-artificial/
+
+** Four Approaches to AI
+
+Decompose AI into thinking and acting, and define standards of performance as fidelity to humans and quantitative rationality.
+
+
+#+begin_latex
+\tagpdfsetup{table/header-rows={1}}
+\begin{tabular}{lr|cc}\\
+     &          & \multicolumn{2}{c}{Standard} \\
+     &          & Humanly  & Rationally \\\hline
+Mode & Acting   & Acting humanly & Acting rationally \\
+     & Thinking & Thinking humanly & Thinking rationally \\
+\end{tabular}
+#+end_latex
+
+** Acting humanly
+
+Turing test
+
+- Natural language processing
+- Knowledge representation
+- Automated reasoning
+- Machine learning
+
+Total Turing test
+
+- Computer vision
+- Robotics
+
+Nobody cares about Turing tests.
+
+** Rationality
+
+"Doing the right thing."
+
+- Acting rationally - goal maximizing behavior
+
+    - Choosing actions which reach goals with minimal cost
+    - Choosing actions which maximize a payoff relative to other agents
+    - Choosing actions which maximize long-term expected reward
+
+- Thinking rationally - "laws of thought"
+
+    - Logic
+    - Probabilistic inference
+
+
+#+begin_quote
+ Thinking is nothing more than acting in an imagined space.
+#+end_quote
+#+begin_quote
+
+#+end_quote
+#+begin_quote
+ -- Konrad Lorenz via Bernhard Schölkopf
+#+end_quote
+
+
+** Foundations of AI
+
+- Philosophy
+- Mathematics
+- Neuroscience
+- Psychology
+- Computer Engineering
+- Control theory and cybernetics
+- Linguistics
+
+Such a rich tapestry!
+
+** Philosophy
+
+- Can formal rules be used to draw valid conclusions?
+- How does the mind arise from a physical brain?
+- Where does knowledge come from?
+- How does knowledge lead to action?
+
+** Mathematics
+
+- What are the formal rules to draw valid conclusions?
+- What can be computed?
+- How do we reason with uncertain information?
+
+- Logic
+- Probability and statistics
+- Algorithms, computability and complexity
+- Optimization
+
+
+** Economics
+
+Acting rationally
+
+- How should we make decisions in accordance with our preferences?
+- How should we do this when others may not go along?
+- How should we do this when the payoff may be far in the future?
+
+** Neuroscience
+
+How do brains process information?
+
+#+latex: \includegraphics[alt={./aima fig 01_02 computers vs brains},height=2.0in]{./aima-fig-01_02-computers-vs-brains.pdf}
+
+** Psychology
+
+How do humans and animals think and act?
+
+- Cognitive modeling
+- Behaviorism
+
+    - Operant conditioning
+    - "Reinforcement learning"
+
+** Computer Engineering
+
+How can we build an efficient computer?
+
+- High performance computing
+
+    - Today's LLMs take years of compute time to train.
+
+- Quantum computing
+
+#+latex: \includegraphics[alt={ai data center},height=2.0in]{ai-data-center.jpg}
+
+** Control theory and cybernetics
+
+How can artifacts operate under their own control?
+
+#+latex: \includegraphics[alt={robot hand},height=1.2in]{robot-hand.jpg}
+#+latex: \includegraphics[alt={self driving car},height=1.2in]{self-driving-car.jpg}
+
+#+latex: \includegraphics[alt={Power Relay 6},height=1.2in]{Power-Relay-6.jpg}
+
+[[https://www.darpa.mil/research/programs/power][DARPA POWER Program]]
+
+** Impact of AI
+
+Turing award winners:
+
+- Marvin Minsky (1969)
+- John McCarthy (1971)
+- Allen Newell and Herbert Simon (1975)
+- Ed Feigenbaum and Raj Reddy (1994)
+- Judea Pearl (1994)
+- Yoshua Bengio, Geoffrey Hinton, and Yann LeCun (2019)
+- Rich Sutton and Andrew Barto (2024)
+
+AI lament: once an AI problem is solved, it's no longer considered AI.
+
+** History of AI
+
+- MucCulloch, Pitts, Hebb (1943-1949)
+
+    - Perceptrons
+    - Hebbian learning
+
+- 1956 Dartmouth AI Workshop
+
+    - Organized by John McCarthy, Marvin Minsky, Claude Shannon, Nathaniel Rochester
+    - Attended by Allen Newell and Herbert Simon from Carnegie Tech, Trenchard More from Princeton, Arthur Samuel from IBM, and Ray Solomonoff and Oliver Selfridge from MIT
+
+- Symbolic AI (1952-1969) -- "clever Lisp programs"
+
+- First AI Winter (1966-1973)
+
+    - Lighthill report (Lighthill, 1973) -- British government ended most AI funding
+
+- Expert Systems (1969-1986)
+
+- Second AI Winter (1986)
+
+    - Experts systems failed to deliver on their inventors' promises.
+    - Knowledge acquisition bottleneck.
+    - Adaptability, brittleness.
+
+** Modern AI
+
+- Return of neural networks (1986-present)
+
+    - Symbolism vs Connectionism
+    - Geoff Hinton, et. al.
+
+- Probabilistic reasoning and machine learning (1987-present)
+
+    - Neats vs scruffies
+    - "Physics envy"
+
+- Big data (2001-present)
+
+    - Large data sets -- don't fit on a single machine
+
+- Deep learning (2011-present)
+
+    - You may have heard of it?
+
+** Future of AI
+
+
+
+
+#+latex: \includegraphics[alt={andrew barto},height=1.2in]{andrew-barto.jpg}
+
+[[https://people.cs.umass.edu/~barto/][Andrew Barto]]
+
+
+
+
+#+latex: \includegraphics[alt={rich sutton},height=1.2in]{rich-sutton.jpg}
+[[http://incompleteideas.net/][Rich Sutton]]
+
+
+
+
+#+latex: \includegraphics[alt={david silver},height=1.2in]{david-silver.jpg}
+[[https://davidstarsilver.wordpress.com/][David Silver]]
+
+
+
+
+[[https://storage.googleapis.com/deepmind-media/Era-of-Experience%20/The%20Era%20of%20Experience%20Paper.pdf][The Era of Experience]]
