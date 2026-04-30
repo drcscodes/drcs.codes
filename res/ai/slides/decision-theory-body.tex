@@ -1,0 +1,103 @@
+
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage[margin=1in]{geometry}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Decision Theory Study Guide (AIMA 22, RLAI 6)}
+\author{Artificial Intelligence}
+\date{}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{0} % So that next \section is 1
+\section{Preferences}
+
+\begin{questions}
+
+\question Consider the following preferences: an agent prefer puppies to kittens, kittens to babies, and babies to puppies.  Are these preferences rational?  Why or why not?
+
+\begin{solution}[.5in]
+These preferences are not rational because they violate the transitivity axiom of preference theory, namely, $(A \succ B) \land (B \succ C) \implies (A \succ C)$.  Given the agent's first two preferences, it is irrational to prefer babies to puppies.
+\end{solution}
+
+\end{questions}
+
+\section{Utilities}
+
+\begin{questions}
+
+\question I prefer chocolate chip cookes to iced sugar cookies.  If I were to assign numerical utility values to each of these cookies I would assign a utility of 10 to chocolate chip cookies and 12 to iced sugar cookies.  Are my utility values valid?  Why or why not?
+
+\begin{solution}[.5in]
+Given my preferences, these utility values are not valid values of a utility function for a rational agent.  If an agent’s preferences obey the axioms of utility, then there exists a utility function $U$ such that $U(A) > U(B)$ if and only if $A$ is preferred to $B$, and $U(A) = U(B)$ if and only if the agent is indifferent between $A$ and $B$. That is, $U(A) > U(B) \iff A \succ B$ and $U(A) = U(B) \iff A \sim B$.
+\end{solution}
+
+\question Given two attributes of cookies, $icing$ and $nuts$, an agent has the following preferences: $icing \succ \neg icing$, $\neg nuts \succ nuts$.  What can you say about the agent's choice between cookie $A$ with icing and no nuts, and cookie $B$ with nuts and no icing?
+
+\begin{solution}[.5in]
+Cookie $A$ {\it strictly dominates} Cookie $B$.
+\end{solution}
+
+\end{questions}
+
+
+
+\end{document}
