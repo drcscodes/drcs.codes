@@ -400,7 +400,10 @@
         "reading": [
             "AIMA: 16"
         ],
-        "exercises": [],
+        "exercises": [
+            "[Decision Theory Questions](@root/ai/slides/decision-theory-questions.pdf)",
+            "[Decision Theory Answers](@root/ai/slides/decision-theory-answers.pdf)"
+        ],
         "assignments": [
         ],
         "videos": []
@@ -443,6 +446,9 @@
         "assignments": [
         ],
         "videos": []
+    },
+    {
+        "part": "Reinforcement Learning"
     },
     {
         "topic": "bandits",
@@ -522,7 +528,7 @@
         ]
     },
     {
-        "part": "Machine Learning"
+        "part": "Supervised Machine Learning"
     },
     {
         "topic": "machine-learning",
