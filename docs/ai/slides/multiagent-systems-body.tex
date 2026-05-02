@@ -1,0 +1,115 @@
+
+\usepackage{verbatim, multicol, tabularx,hyperref, tikz, enumitem}
+\usepackage{amsmath,amsthm, amssymb, stmaryrd, latexsym, bm, listings, qtree}
+\usepackage[margin=1in]{geometry}
+
+\lstset{
+  extendedchars=\true,
+  inputencoding=utf8,
+  literate=
+  {é}{{\'{e}}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {î}{{\^{i}}}1
+  {ô}{{\^{o}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {À}{{\`{A}}}1
+  {Â}{{\^{A}}}1
+  {Î}{{\^{I}}}1
+  {Ö}{{\"O}}1
+  {Ä}{{\"A}}1
+  {Ü}{{\"U}}1
+  {ö}{{\"o}}1
+  {ä}{{\"a}}1
+  {ü}{{\"u}}1
+  {ß}{{\ss}}1
+  ,
+  aboveskip=1mm,
+  belowskip=1mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\scriptsize\ttfamily},
+  numbers=left,
+  frame=single,
+  framextopmargin=0pt,
+  framexbottommargin=0pt,
+  breaklines=true,
+  breakatwhitespace=true,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{violet},
+  stringstyle=\color{teal},
+  commentstyle=\color{darkgray}
+}
+
+\hypersetup{colorlinks=true,urlcolor=blue}
+
+\headheight = 0.05 in
+\headsep = 0.05 in
+\parskip = 0.05in
+\parindent = 0.0in
+\floatsep = 0.05in
+
+\DeclareMathOperator*{\argmin}{arg\!min}
+\DeclareMathOperator*{\argmax}{arg\!max}
+
+\title{Multiagent Systems Study Guide}
+\author{Artificial Intelligence}
+\date{}
+
+\begin{document}
+\maketitle
+
+\setcounter{section}{0} % So that next \section is 1
+\section{Game Theory}
+
+\begin{questions}
+
+\question Given this payoff matrix for the Battle of the Sexes game:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+   & LW     & WL         \\\hline
+LW & \textsuperscript{a} 2, 1  & \textsuperscript{b} 0, 0 \\\hline
+WL & \textsuperscript{c} 0, 0  & \textsuperscript{d} 1, 2 \\\hline
+\end{tabular}
+\end{center}
+
+Which cell, or cells is/are a Nash equilibrium?
+
+\begin{solution}[.5in]
+a and d
+\end{solution}
+
+\question Given this payoff matrix for the Prisoner's Dilemma game:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}\hline
+  & C      & D         \\\hline
+C & \textsuperscript{a} -1, -1 & \textsuperscript{b} -5, 0 \\\hline
+D & \textsuperscript{c} 0, -5  & \textsuperscript{d} -3, -3 \\\hline
+\end{tabular}
+\end{center}
+
+Which cell, or cells is/are a Nash equilibrium?
+
+\begin{solution}[.5in]
+d
+\end{solution}
+
+\question In Axelrod's famous computer Iterated Prisoner's Dilemma tournaments, which high-level strategy was best, on average?
+
+\begin{solution}[.5in]
+Tit For Tat
+\end{solution}
+
+\end{questions}
+
+\end{document}
