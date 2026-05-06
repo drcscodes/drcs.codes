@@ -519,7 +519,7 @@
     },
     {
         "topic": "td-learning",
-        "slides": "[Temporal-Difference Learning](@root/rl/slides/td-learning.pdf)",
+        "slides": "[Temporal-Difference Learning](@root/ai/slides/td-learning.pdf)",
         "reading": [
             "AIMA: 22",
             "RLAI: 6"
