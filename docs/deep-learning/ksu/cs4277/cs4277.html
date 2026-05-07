@@ -14,419 +14,61 @@
       </ul>
     </nav>
     <div class="main">
-    {
-    "url": "https://drcs.codes/databases/ksu/cs4277/schedule.html",
-    "number": "CS 4277",
-    "title": "Deep Learning",
-    "description": "This course covers the foundations of Deep Learning; how to build neural networks and how to design successful deep learning projects. The course topics include convolutional networks, sequence modeling such as recurrent and recursive neural networks (RNNs), long short-term memory (LSTM), Adam, Dropout, BatchNorm, Xavier/He initialization, state-of-the-art technologies, and research topics leveraging Deep Learning. The course includes programming assignments in a modern deep learning framework.",
-    "credit_hours": "3-0-3",
-    "learning_outcomes": [
-        "understand the state-of-the-art technologies and their trends driving Deep Learning",
-        "build, train, and apply fully connected deep neural networks",
-        "understand how to implement efficient neural networks",
-        "understand key parameters in Deep Learning architecture",
-        "explain how Deep Learning works",
-        "demonstrate the capability of communication with peers for research ideas in Deep Learning related fields"
-    ],
-    "grading": [
-        "Problem sets: 20%",
-        "Programming assignments: 20%",
-        "Research project: 20%",
-        "Exams: 40%"
-    ],
-    "assignments": [
-        "4-5 Problem sets (PS)",
-        "3-4 Programming assignments (PA)",
-        "Research project",
-        "Midterm Exam",
-        "Final Exam"
-    ],
-    "prerequisites": [
-        "CS 3642 Artificial Intelligence"
-    ],
-    "corequisites": [
-        "CS 4267 Machine Learning"
-    ],
-    "required_materials": [
-        "UDL: Understanding Deep Learning, by Simon J.D. Prince, [https://udlbook.github.io/udlbook/](https://udlbook.github.io/udlbook/)"
-    ],
-    "recommended_materials": [
-        "DLFC: Deep Learning Foundations and Concepts, by Bishop and Bishop, [https://www.bishopbook.com](https://www.bishopbook.com)",
-        "DDL: Dive into Deep Learning, by Ashton Zhang, et. al., [https://d2l.ai](https://d2l.ai)",
-        "DL: Deep Learning, by Goodfellow, Bengio and Courville, [https://www.deeplearningbook.org](https://www.deeplearningbook.org)",
-        "LDL: Learning Deep Learning, by Ekman, [https://ldlbook.com](https://ldlbook.com)",
-        "NND: Neural Network Design, by Hagan, et. al., [https://hagan.okstate.edu/nnd.html](https://hagan.okstate.edu/nnd.html)",
-        "DLI: Deep Learning Illustrated, by Jon Krohn: [https://www.deeplearningillustrated.com](https://www.deeplearningillustrated.com)",
-        "ITLA: Information Theory, Inference and Learning Algorithms, by David MacKay, [http://www.inference.org.uk/mackay/itila/book.html](http://www.inference.org.uk/mackay/itila/book.html)"
-    ],
-    "technology_requirements": [
-    ],
-    "lessons": [
-        {
-            "part": "Foundations"
-        },
-        {
-            "topic": "intro-course",
-            "slides": "Course Introduction",
-            "reading": [
-                "[Syllabus](syllabus.html)",
-                "[Meet Prof. Simpkins](https://cs1331.github.io/slides/meet-simpkins.html)"
-            ],
-            "exercises": [],
-            "assignments": [],
-            "videos": []
-        },
-        {
-            "topic": "machine-learning",
-            "slides": "[Machine Learning](@root/deep-learning/slides/machine-learning.pdf)",
-            "reading": [
-                "UDL: 1, 2"
-            ],
-            "exercises": [],
-            "assignments": [
-                "Assigned: [PS1](ps1.pdf)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "shallow-networks",
-            "slides": "[Shallow Networks](@root/deep-learning/slides/shallow-networks.pdf)",
-            "reading": [
-                "UDL: 3"
-            ],
-            "exercises": [],
-            "assignments": [
-                "Assigned: [Project](project.html)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "deep-networks1",
-            "slides": "[Deep Networks](@root/deep-learning/slides/deep-networks.pdf)",
-            "reading": [
-                "UDL: 4"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "deep-networks2",
-            "slides": "[Deep Networks](@root/deep-learning/slides/deep-networks.pdf)",
-            "reading": [
-                "UDL: 4"
-            ],
-            "exercises": [],
-            "assignments": [
-                "Assigned: [PA1](pa1.html)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "probability",
-            "slides": "[Probability](@root/deep-learning/slides/probability.pdf)",
-            "reading": [
-                "UDL: Appendix A",
-                "DLFC: 2, 3",
-                "ITLA 1, 2"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "loss-functions",
-            "slides": "[Loss Functions](@root/deep-learning/slides/loss-functions.pdf)",
-            "reading": [
-                "UDL: 5"
-            ],
-            "exercises": [
-            ],
-            "assignments": [
-                "Due: [PS1](ps1.pdf)",
-                "Assigned: [PS2](ps2.pdf)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "fitting-models",
-            "slides": "[Fitting Models](@root/deep-learning/slides/CM20315_06_Fitting.pdf)",
-            "reading": [
-                "UDL: 6",
-                "UDL: Appendix B.5",
-                "DLFC: Appendix A",
-                "DDL: 2.3-2.4",
-                "[Matrix Cookbook](https://www.math.uwaterloo.ca/~hwolkowi/matrixcookbook.pdf)"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "gradients-initialization",
-            "slides": "[Gradients and Initialization](@root/deep-learning/slides/CM20315_07_Gradients_Initialization.pdf)",
-            "reading": [
-                "UDL: 7"
-            ],
-            "exercises": [
-            ],
-            "assignments": [
-                "Due: [Project Proposal](project.html)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "measuring-performance",
-            "slides": "[Measuring Performance](@root/deep-learning/slides/CM20315_08_Performance.pdf)",
-            "reading": [
-                "UDL: 8"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "regularization",
-            "slides": "[Regularization](@root/deep-learning/slides/CM20315_09_Regularization.pdf)",
-            "reading": [
-                "UDL: 9"
-            ],
-            "exercises": [],
-            "assignments": [
-                "Due: [PA1](pa1.html)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "midterm-review",
-            "slides": "Midterm Review",
-            "reading": [
-                "[Midterm Review](midterm-review.pdf)",
-                "[Midterm Review Answers](midterm-review-answers.pdf)"
-            ],
-            "exercises": [],
-            "assignments": [
-                "Due: [PS2](ps2.pdf)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "midterm-exam",
-            "slides": "Midterm Exam",
-            "reading": [
-            ],
-            "exercises": [],
-            "assignments": [],
-            "videos": []
-        },
-        {
-            "part": "Supervised Deep Learning"
-        },
-        {
-            "topic": "convolutional-networks1",
-            "slides": "[Convolutional Networks](@root/deep-learning/slides/CM20315_10_Convolutional.pdf)",
-            "reading": [
-                "UDL: 10"
-            ],
-            "exercises": [],
-            "assignments": [
-                "Assigned: [PS3](ps3.pdf)",
-                "Assigned: [PA2](pa2.html)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "convolutional-networks2",
-            "slides": "[Convolutional Networks](@root/deep-learning/slides/convolutional-networks.pdf)",
-            "reading": [
-                "UDL: 10"
-            ],
-            "exercises": [],
-            "assignments": [],
-            "videos": []
-        },
-        {
-            "topic": "residual-networks",
-            "slides": "[Residual Networks](@root/deep-learning/slides/residual-networks.pdf)",
-            "reading": [
-                "UDL: 11"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "transformers1",
-            "slides": "[Transformers](@root/deep-learning/slides/CM20315_12_Transformers.pdf)",
-            "reading": [
-                "UDL: 12",
-                "[Attention is All You Need](https://arxiv.org/pdf/1706.03762)"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "transformers2",
-            "slides": "[Transformers](@root/deep-learning/slides/CM20315_12_Transformers.pdf)",
-            "reading": [
-                "UDL: 12",
-                "[Attention is All You Need](https://arxiv.org/pdf/1706.03762)"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "graph-neural-networks",
-            "slides": "[Graph Neural Networks](@root/deep-learning/slides/graph-neural-networks.pdf)",
-            "reading": [
-                "UDL: 13"
-            ],
-            "exercises": [
-            ],
-            "assignments": [
-                "Due: [Project Results](project.html)"
-            ],
-            "videos": []
-        },
-        {
-            "part": "Generative Deep Learning"
-        },
-        {
-            "topic": "generative-adversarial-networks1",
-            "slides": "[Generative Adversarial Networks](@root/deep-learning/slides/generative-adversarial-networks.pdf)",
-            "reading": [
-                "UDL: 14,15"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "generative-adversarial-networks2",
-            "slides": "[Generative Adversarial Networks](@root/deep-learning/slides/generative-adversarial-networks.pdf)",
-            "reading": [
-                "UDL: 14,15"
-            ],
-            "exercises": [],
-            "assignments": [
-                "Due: [PS3](ps3.pdf)",
-                "Assigned: [PS4](ps4.pdf)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "normalizing-flows",
-            "slides": "[Normalizing Flows](@root/deep-learning/slides/normalizing-flows.pdf)",
-            "reading": [
-                "UDL: 16"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "variational-autoencoders",
-            "slides": "[Variational Autoencoders](@root/deep-learning/slides/variational-autoencoders.pdf)",
-            "reading": [
-                "UDL: 17"
-            ],
-            "exercises": [],
-            "assignments": [
-                "Due: [PA2](pa2.html)",
-                "Assigned: [PA3](pa3.html)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "diffusion-models",
-            "slides": "[Diffusion Models](@root/deep-learning/slides/diffusion-models.pdf)",
-            "reading": [
-                "UDL: 18"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "part": "Beyond Deep Learning"
-        },
-        {
-            "topic": "deep-reinforcement-learning",
-            "slides": "[Deep Reinforcement Learning](@root/deep-learning/slides/deep-reinforcement-learning.pdf)",
-            "reading": [
-                "UDL: 19"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "deep-learning-philosophy",
-            "slides": "[Deep Learning Philosophy](@root/deep-learning/slides/deep-learning-philosophy.pdf)",
-            "reading": [
-                "UDL: 20"
-            ],
-            "exercises": [],
-            "assignments": [
-            ],
-            "videos": []
-        },
-        {
-            "topic": "deep-learning-ethics",
-            "slides": "[Deep Learning Ethics](@root/deep-learning/slides/deep-learning-ethics.pdf)",
-            "reading": [
-                "UDL: 21"
-            ],
-            "exercises": [],
-            "assignments": [
-                "Due: [PA3](pa3.html)"
-            ],
-            "videos": []
-        },
-        {
-            "topic": "project-presentations1",
-            "slides": "Project Presentations",
-            "reading": [
-            ],
-            "exercises": [],
-            "assignments": [],
-            "videos": []
-        },
-        {
-            "topic": "project-presentations2",
-            "slides": "Project Presentations",
-            "reading": [
-            ],
-            "exercises": [],
-            "assignments": ["Due: [Final Project Paper](project.html)"],
-            "videos": []
-        },
-        {
-            "topic": "final-review",
-            "slides": "Final Exam Review",
-            "reading": [
-            ],
-            "exercises": [],
-            "assignments": [
-                "Due: [PS4](ps4.pdf)"
-            ],
-            "videos": []
-        }
-    ]
-}
+    Foundations
+Week 1
+2025-01-06;intro-course;;
+2025-01-08;machine-learning;;Registration Ends (2025-01-10),Payment Deadline (2025-01-10)
+Week 2
+2025-01-13;shallow-networks;;
+2025-01-15;deep-networks1;Assigned: [PS1](ps1.pdf),Assigned: [Project](project.html);Financial Aid Disbursement (2025-01-17),Graduation Petition Deadline (2025-01-17)
+Week 3
+2025-01-20;MLK Jr Day - No Class;;Unpaid Course Deletion (2025-01-21)
+2025-01-22;deep-networks2;Assigned: [PA1](pa1.html);
+Week 4
+2025-01-27;Workshop;;
+2025-01-29;probability;Assigned: [PS2](ps2.pdf);
+Week 5
+2025-02-03;loss-functions;Due 2025-02-04:[PS1](ps1.pdf);
+2025-02-05;loss-functions;;
+Week 6
+2025-02-10;fitting-models;Due: [Project Proposal](project.html);
+2025-02-12;gradients-initialization;Due 2025-02-13: [PA1](pa1.html);
+Week 7
+2025-02-17;midterm-review;Due: [PS2](ps2.pdf);
+2025-02-19;midterm-exam;;
+Week 8
+2025-02-24;Midterm Grades Review;;
+2025-02-26;measuring-performance;;
+Week 9
+2025-03-03;regularization;;
+2025-03-05;[PyTorch Workshop](pytorch.html);;
+Week 10: Spring Break
+2025-03-10;Spring Break - No Class;;
+2025-03-12;Spring Break - No Class;;
+Supervised Deep Learning
+Week 11
+2025-03-17;convolutional-networks1;;
+2025-03-19;convolutional-networks2;;Midterm Grades Due (2025-03-21)
+Week 12
+2025-03-24;residual-networks;;
+2025-03-26;residual-networks;;
+Generative Deep Learning
+Week 13
+2025-03-31;transformers1;Assigned: [PS3](ps3.pdf);
+2025-04-02;transformers2;;
+Week 14
+2025-04-07;transformers2;;
+2025-04-09;graph-neural-networks;Due 2025-04-11: [Project Results](project.html);
+Week 15
+2025-04-14;deep-reinforcement-learning;Assigned: [PS4](ps4.pdf);
+2025-04-16;deep-reinforcement-learning;;
+Week 16
+2025-04-21;project-presentations1;;
+2025-04-23;project-presentations2;;
+Week 17
+2025-04-28;final-review;Due: [PS4](ps4.pdf), [Final Project Paper](project.html);
+Week 18
+2025-05-05;Final Exam, 15:30-17:30;[Final Review](final-review.pdf), [Final Review Answers](final-review-answers.pdf);
 
     </div>
 </body>

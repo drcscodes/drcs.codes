@@ -10,29 +10,29 @@ Week 3
 2026-06-02;local-search;;
 2026-06-04;nondeterministic-search;;
 Week 4
-2026-06-09;adversarial-search;Due: [PA1](pa1.html),Assigned: [PA2](pa2.html);
+2026-06-09;adversarial-search;Due: [PA1](pa1.html)
+2026-06-11;exam1;;
 Symbolic Reasoning and Planning
-2026-06-11;knowledge-ai;;
 Week 5
-2026-06-16;planning;;Financial Aid Disbursement (2026-06-16),Unpaid Course Deletion (2026-06-17)
-2026-06-18;midterm-review;;
-Week 6
-2026-06-23;midterm-exam;;
+2026-06-16;knowledge-ai;;Financial Aid Disbursement (2026-06-16),Unpaid Course Deletion (2026-06-17)
+2026-06-18;planning;;
 Probabilistic Reasoning
-2026-06-25;uncertainty;Due: [PA2](pa2.html),Assigned: [PA3](pa3.html);
+Week 6
+2026-06-23;uncertainty;Due: [PA1](pa1.html)
+2026-06-25;bayesian-networks;;
 Week 7
-2026-06-30;bayesian-networks;;
-2026-07-02;probabilistic-inference;;
+2026-06-30;probabilistic-inference;;
+2026-07-02;probabilistic-temporal-reasoning;;
 Week 8
-2026-07-07;probabilistic-temporal-reasoning;;Midterm Grades Due (2026-07-07)
+2026-07-07;exam2;;Midterm Grades Due (2026-07-07)
 Decision Making
-2026-07-09;decision-theory;;
+2026-07-09;decision-theory;;Assigned: [PA4](pa4.html);
 Week 9
 2026-07-14;multiagent-systems;;Withdrawal Deadline (2026-07-14)
 Reinforcement Learning
-2026-07-16;mdps;Due: [PA3](pa3.html),Assigned: [PA4](pa4.html);
+2026-07-16;mdps;
 Week 10
 2026-07-21;td-learning;;
 Supervised Machine Learning
-2026-07-23;machine-learning;;
+2026-07-23;machine-learning;;Due: [PA4](pa4.html)
 ???;Final Exam;;Sec 01: ???
