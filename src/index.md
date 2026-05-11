@@ -13,3 +13,5 @@ title: Dr. CS Codes
     - [KSU CS 4277](@root/deep-learning/ksu/cs4277/schedule.html)
 - [Databases](@root/databases/lessons.html)
     - [KSU CS 6070](@root/databases/ksu/cs6070/schedule.html)
+- [Research](@root/research/)
+    - [KSU CS 8998](@root/research/ksu/cs8998/schedule.html)

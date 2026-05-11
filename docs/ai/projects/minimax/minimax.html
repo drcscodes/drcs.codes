@@ -136,7 +136,29 @@ util.py Useful data structures for implementing search algorithms. You don't nee
 <p><em>Grading</em>: Because we check your code to determine whether it explores the correct number of states, it is important that you perform alpha-beta pruning without reordering children. In other words, successor states should always be processed in the order returned by <code>GameState.getLegalActions</code>. Again, do not call <code>GameState.generateSuccessor</code> more than necessary.</p>
 <p><strong>You must not prune on equality in order to match the set of states explored by our autograder</strong>. (Indeed, alternatively, but incompatible with our autograder, would be to also allow for pruning on equality and invoke alpha-beta once on each child of the root node, but this will not match the autograder.)</p>
 <p>The pseudo-code below represents the algorithm you should implement for this question.</p>
-<p><img alt="Alpha-Beta Implementation" src="alpha_beta_impl.png" width="90%" /></p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># alpha: MAX&#39;s best option on path to root</span>
+<span class="c1"># beta: MIN&#39;s best option on path to root</span>
+
+<span class="k">def</span> <span class="nf">max_value</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="o">-</span><span class="n">infinity</span>
+    <span class="k">for</span> <span class="n">each</span> <span class="n">successor</span> <span class="n">of</span> <span class="n">state</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">successor</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;</span> <span class="n">beta</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">v</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">alpha</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">alpha</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">v</span>
+
+<span class="k">def</span> <span class="nf">min_value</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+    <span class="n">v</span> <span class="o">=</span> <span class="o">+</span><span class="n">infinity</span>
+    <span class="k">for</span> <span class="n">each</span> <span class="n">successor</span> <span class="n">of</span> <span class="n">state</span><span class="p">:</span>
+        <span class="n">v</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">successor</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="n">alpha</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">v</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">beta</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">beta</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">v</span>
+</code></pre></div>
 <p>To test and debug your code, run</p>
 <div class="codehilite"><pre><span></span><code>python<span class="w"> </span>autograder.py<span class="w"> </span>-q<span class="w"> </span>q3
 </code></pre></div>

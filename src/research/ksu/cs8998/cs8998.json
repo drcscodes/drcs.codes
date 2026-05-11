@@ -1,0 +1,29 @@
+{
+    "url": "https://drcs.codes/ai/ksu/cs8998/",
+    "number": "CS 8998",
+    "title": "Advanced Research in Computer Science",
+    "description": "This course is offered to students in the Ph.D. in Computer Science or the Ph.D. in Analytics and Data Science. It allows students to conduct research work under the advisor’s supervision. Up to six hours may be applied to the major area.",
+    "credit_hours": "1-to-3",
+    "learning_outcomes": [
+        "Demonstrate domain and research knowledge by producing a submission-ready research publication."
+    ],
+    "grading": [
+        "Research project: 100%"
+    ],
+    "assignments": [
+        "Research project"
+    ],
+    "prerequisites": [
+    ],
+    "corequisites": [
+    ],
+    "required_materials": [
+    ],
+    "recommended_materials": [
+        "Writing for Computer Science, 3ed,  [https://link.springer.com/book/10.1007/978-1-4471-6639-9](https://link.springer.com/book/10.1007/978-1-4471-6639-9)"
+    ],
+    "technology_requirements": [
+        "Computer capable of accessing the internet and running modern compilers, interpreters, and text editors"
+    ],
+    "lessons": "../../lessons.json"
+}

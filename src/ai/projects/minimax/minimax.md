@@ -206,7 +206,30 @@ The `AlphaBetaAgent` minimax values should be identical to the `MinimaxAgent` mi
 
 The pseudo-code below represents the algorithm you should implement for this question.
 
-![Alpha-Beta Implementation](alpha_beta_impl.png){width="90%"}
+```python
+# alpha: MAX's best option on path to root
+# beta: MIN's best option on path to root
+
+def max_value(state, alpha, beta):
+    v = -infinity
+    for each successor of state:
+        v = max(v, value(successor, alpha, beta))
+        if v > beta:
+            return v
+        else:
+            alpha = max(alpha, v)
+    return v
+
+def min_value(state, alpha, beta):
+    v = +infinity
+    for each successor of state:
+        v = min(v, value(successor, alpha, beta))
+        if v < alpha:
+            return v
+        else:
+            beta = min(beta, v)
+    return v
+```
 
 To test and debug your code, run
 

@@ -145,6 +145,12 @@ Hint: On the default BookGrid, running value iteration for 5 iterations should g
 python gridworld.py -a value -i 5
 ```
 
+| 0.51 | 0.72 | 0.84 | 1.00  |
+|------|------|------|-------|
+| 0.27 |      | 0.55 | -1.00 |
+|------|------|------|-------|
+| 0.00 | 0.22 | 0.37 | 0.13  |
+
 ![Value iteration diagram](value_iter_diagram.png)
 
 Grading: Your value iteration agent will be graded on a new grid. We will check your values, Q-values, and policies after fixed numbers of iterations and at convergence (e.g. after 100 iterations).

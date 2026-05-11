@@ -1,27 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-    <link rel="stylesheet" href="../../../assets/css/main.css">
-    <link rel="stylesheet" href="../../../assets/css/codehilite.css">
-</head>
-<body>
-    <nav>
-      <ul class="navbar">
-        <li class="navbar-item" style="float: left"><a class="navbar-link" href="../../../index.html">Dr. CS Codes</a></li>
-        <li class="navbar-item" style="float: right"><a class="navbar-link" href="https://chris.simpkins.phd/">Prof. Simpkins</a></li>
-      </ul>
-    </nav>
-    <div class="main">
-    {
-    "CRN": "85264",
+{
+    "CRN": "53180",
     "academic_term": "Summer 2026",
     "first_day": "2026-05-18",
     "last_day": "2026-07-27",
-    "days": "MWF",
-    "modality": "Online",
-    "meeting_times": "N/A",
+    "days": "W",
+    "modality": "Traditional F2F",
+    "meeting_times": "Weekly, flexible",
     "room": "Online",
     "instructor": "Christopher Simpkins",
     "email": "christopher.simpkins@kennesaw.edu",
@@ -44,10 +28,5 @@
         "2026-08-03": "Final Grades Due by Noon"
     },
     "final_exam": {
-        "???": "Sec 01: ???"
     }
 }
-
-    </div>
-</body>
-</html>
