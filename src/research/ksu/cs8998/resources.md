@@ -11,6 +11,12 @@ title: CS 8998 Resources
 - [Research Papers](papers.html), [.bib file](ai.bib)
 - [ACM Computing Classification System](https://www.acm.org/publications/class-2012)
 
+## Reading
+
+- [How to Do Research](https://greatresearch.org/).  Web site that accompanied a course all first-year PhD students took at Georgia Tech (I took the course before Nick and Alex taught it).
+- [The Illustrated Guide to a PhD](https://matt.might.net/articles/phd-school-in-pictures/)
+- [3 Qualities of Successful PhD Students](https://matt.might.net/articles/successful-phd-students/)
+
 ## Programming Environments
 
 - Essential [Software Setup](software-setup.html) you'll need for this course.

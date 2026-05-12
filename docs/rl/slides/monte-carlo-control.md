@@ -37,7 +37,8 @@ Monte Carlo methods are ways of solving the reinforcement learning problem based
 ## Example: Blackjack
 
 ```{=late x }
-\begin{cards}
+\begin{card
+s}
 \crdpair{\crdKs}{\crdtenh}%
 \end{cards}
 ```
@@ -63,7 +64,7 @@ Foo
 
 In dynamic programming MDP solution, values are backed up from each possible successor states:
 
-$$
+k$$
 v_{\pi} = \sum_a \pi (a \mid s) \sum_{s',r} p(s', r \mid s, a) \left[ r + \gamma v_{\pi} (s') \right]
 $$
 
