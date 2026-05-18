@@ -157,7 +157,7 @@
         "topic": "exam1",
         "slides": "Exam 1",
         "reading": [
-            "AIMA: 1-11"
+            "AIMA: 1-6"
         ],
         "exercises": [],
         "assignments": [
@@ -385,7 +385,7 @@
         "topic": "exam2",
         "slides": "Exam 2",
         "reading": [
-            "AIMA: 12-14"
+            "AIMA: 7-14"
         ],
         "exercises": [],
         "assignments": [
