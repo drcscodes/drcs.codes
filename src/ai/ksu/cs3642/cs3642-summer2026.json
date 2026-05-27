@@ -1,9 +1,9 @@
 {
     "CRN": "50149",
     "academic_term": "Summer 2026",
-    "first_day": "2026-05-18",
-    "last_day": "2026-07-27",
-    "days": "TR",
+    "first_day": "2026-06-03",
+    "last_day": "2026-07-23",
+    "days": "MWF",
     "modality": "Online",
     "meeting_times": "N/A",
     "room": "Online",
@@ -19,15 +19,14 @@
         "2026-07-03": "Independence Day"
     },
     "reminders": {
-        "2026-05-18": "Registration Ends,Payment Deadline",
+        "2026-06-09": "Registration Ends,Payment Deadline",
         "2026-06-16": "Financial Aid Disbursement",
         "2026-06-17": "Unpaid Course Deletion",
-        "2026-07-07": "Midterm Grades Due",
-        "2026-07-14": "Withdrawal Deadline",
-        "2026-07-25": "Application to Graduate Deadline",
+        "2026-07-02": "Midterm Grades Due",
+        "2026-07-09": "Withdrawal Deadline",
         "2026-08-03": "Final Grades Due by Noon"
     },
     "final_exam": {
-        "2026-07-30": "Sec 01: ???"
+        "2026-07-28": "Sec 01: ???"
     }
 }

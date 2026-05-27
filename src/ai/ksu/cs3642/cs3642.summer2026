@@ -1,39 +1,39 @@
 Artificial Intelligence
 Week 1
-2026-05-19;intro-ai;Assigned: [PA0](pa0.html);
-2026-05-21;intelligent-agents;;
+2026-06-03;intro-ai;Assigned: [PA0](pa0.html);
+2026-06-05;intelligent-agents;;
 Search
 Week 2
-2026-05-26;problem-solving;Due: [PA0](pa0.html),Assigned: [PA1](pa1.html);
-2026-05-28;heuristic-search;;
+2026-06-08;problem-solving;Due: [PA0](pa0.html),Assigned: [PA1](pa1.html);Registration Ends (2026-06-09),Payment Deadline (2026-06-09)
+2026-06-10;heuristic-search;;
+2026-06-12;local-search;;
 Week 3
-2026-06-02;local-search;;
-2026-06-04;nondeterministic-search;;
+2026-06-15;nondeterministic-search;;Financial Aid Disbursement (2026-06-16)
+2026-06-17;adversarial-search;Due: [PA1](pa1.html),Assigned: [PA2](pa2.html);Unpaid Course Deletion (2026-06-17)
+2026-06-19;June 19th - No Class;;
 Week 4
-2026-06-09;adversarial-search;Due: [PA1](pa1.html),Assigned: [PA2](pa2.html);
-2026-06-11;exam1;;
+2026-06-22;exam1;;
 Symbolic Reasoning and Planning
-Week 5
-2026-06-16;knowledge-ai;;Financial Aid Disbursement (2026-06-16),Unpaid Course Deletion (2026-06-17)
-2026-06-18;planning;;
+2026-06-24;knowledge-ai;;
+2026-06-26;planning;;
 Probabilistic Reasoning
+Week 5
+2026-06-29;uncertainty;Due: [PA2](pa2.html),Assigned: [PA3](pa3.html);
+2026-07-01;bayesian-networks;;Midterm Grades Due (2026-07-02)
+2026-07-03;Independence Day - No Class;;
 Week 6
-2026-06-23;uncertainty;Due: [PA2](pa2.html),Assigned: [PA3](pa3.html);
-2026-06-25;bayesian-networks;;
-Week 7
-2026-06-30;probabilistic-inference;;
-2026-07-02;probabilistic-temporal-reasoning;;
-Week 8
-2026-07-07;exam2;;Midterm Grades Due (2026-07-07)
+2026-07-06;probabilistic-inference;;
+2026-07-08;probabilistic-temporal-reasoning;;Withdrawal Deadline (2026-07-09)
+2026-07-10;exam2;;
 Decision Making
-2026-07-09;decision-theory;Due: [PA3](pa3.html),Assigned: [PA4](pa4.html);
-Week 9
-2026-07-14;multiagent-systems;;Withdrawal Deadline (2026-07-14)
+Week 7
+2026-07-13;decision-theory;Due: [PA3](pa3.html),Assigned: [PA4](pa4.html);
+2026-07-15;multiagent-systems;;
 Reinforcement Learning
-2026-07-16;mdps;;
-Week 10
-2026-07-21;td-learning;;
+2026-07-17;mdps;;
+Week 8
+2026-07-20;td-learning;;
 Supervised Machine Learning
-2026-07-23;machine-learning;Due: [PA4](pa4.html);
+2026-07-22;machine-learning;Due: [PA4](pa4.html);
 Final Exams
-2026-07-30;Final Exam;;Sec 01: ???
+2026-07-28;Final Exam;;Sec 01: ???
